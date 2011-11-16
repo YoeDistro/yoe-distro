@@ -12,16 +12,21 @@ bitbake systemd-console-image
 ===========================================================
 MOTIVATION
 
-The first thing you need to do is source the following file:
+This build template is designed to be used for product
+build systems (used to build product software), and thus
+has the following goals:
+
+1) simplicity: uses well understood things like bash and
+   git submodules.
+2) robustness: git submodules may be a pain, but they are
+   a robust solution for production environments.
+
+===========================================================
+DOCUMENTATION
 
 . envsetup.sh
 
 This file will create a bunch of functions in the environment
 prefixed with oe_ that can be executed.
-
-
-===========================================================
-DETAILS
-
 
 
