@@ -1,0 +1,15 @@
+[submodule "sources/bitbake"]
+	path = sources/bitbake
+	url = git://git.openembedded.org/bitbake
+[submodule "sources/openembedded-core"]
+	path = sources/openembedded-core
+	url = git://git.openembedded.org/openembedded-core
+[submodule "sources/meta-openembedded"]
+	path = sources/meta-openembedded
+	url = git://git.openembedded.org/meta-openembedded
+[submodule "sources/meta-angstrom"]
+	path = sources/meta-angstrom
+	url = git://git.angstrom-distribution.org/meta-angstrom
+[submodule "sources/meta-texasinstruments"]
+	path = sources/meta-texasinstruments
+	url = git://git.angstrom-distribution.org/meta-texasinstruments

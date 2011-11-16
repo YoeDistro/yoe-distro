@@ -1,0 +1,27 @@
+BEC OE-core build template
+
+Build system based on oe-core, OpenEmbedded, and Angstrom
+
+===========================================================
+EXAMPLE of setting up a beagleboard build:
+
+. envsetup.sh
+oe_setup beagleboard
+bitbake systemd-console-image
+
+===========================================================
+MOTIVATION
+
+The first thing you need to do is source the following file:
+
+. envsetup.sh
+
+This file will create a bunch of functions in the environment
+prefixed with oe_ that can be executed.
+
+
+===========================================================
+DETAILS
+
+
+
