@@ -19,14 +19,46 @@ has the following goals:
 1) simplicity: uses well understood things like bash and
    git submodules.
 2) robustness: git submodules may be a pain, but they are
-   a robust solution for production environments.
+   a robust solution for production environments, and 
+   error handling is pretty good.
 
 ===========================================================
-DOCUMENTATION
+USING
+
+In general, this build system must be run in a bash shell.
+To set up the environment, source the following file:
 
 . envsetup.sh
 
 This file will create a bunch of functions in the environment
-prefixed with oe_ that can be executed.
+prefixed with oe_ that can be executed.  Type oe_ <tab><tab>
+to see them.
+
+Information on various files/directories:
+  - build: temporary directory where build actually takes place
+  - conf: configuration files for the build
+  - sources: various sources used for the build.  Most entries
+    in this directory are git submodules, but the downloads
+    directory contains files that are downloaded by various
+    recipes during builds.
+  - scripts: utility scripts
+  - localconfig.sh: file created by  envsetup.sh that contains
+    directory specific variables based on the build system location.
+
+To add a new layer:
+
+  git submodule add <git URI> sources/meta-mylayer
+  add layer to conf/bblayers.conf
+
+conf/layer.conf contains settings that are commonly modified such
+as parallel build options.
+
+===========================================================
+LICENSE
+
+This build system is licensed under the MIT license which is the
+same license as oe-core, etc.  See COPYING.MIT
+
+Contributions are welcome: please email cbrake@bec-systems.com
 
 

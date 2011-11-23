@@ -14,10 +14,11 @@
 #           Print bitbake command it executes
 # 20091012: Add argument to accept commit id.
 # 20091202: Fix proxy setup
+
+# Changes by Cliff Brake
+# 20111101: modify script to work with BEC build template
 #
-# For further changes consult 'git log' or browse to:
-#   http://git.angstrom-distribution.org/cgi-bin/cgit.cgi/setup-scripts/
-# to see the latest revision history
+
 
 ###############################################################################
 # User specific vars like proxy servers
