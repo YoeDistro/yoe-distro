@@ -42,6 +42,8 @@ export SVS_VERSION
 # Workaround for differences between yocto bitbake and vanilla bitbake
 export BBFETCH2=True
 
+export OE_DEPLOY_DIR=${OE_BASE}/build/tmp-angstrom_2010_x-eglibc/deploy/images/beagleboard
+
 #--------------------------------------------------------------------------
 # If an env already exists, use it, otherwise generate it
 #--------------------------------------------------------------------------
@@ -153,6 +155,11 @@ function oe_update_all()
     git submodule update
 }
 
+function oe_update_all_submodules_to_master
+{
+  git submodule foreach "git checkout master && git pull"
+}
+
 ###############################################################################
 # CLEAN_OE() - Delete TMPDIR
 ###############################################################################
@@ -243,6 +250,119 @@ _EOF
         export GIT_PROXY_COMMAND=${GIT_CONFIG_DIR}/git-proxy.sh
     fi
 }
+
+function oe_partition_sd_3()
+{
+  # create 3 partitions
+  # taken from a standalone script
+  # (c) 2009 Graeme Gregory
+  # This script is GPLv3 licensed!
+
+  if [ ! $1 ]; then
+    echo "Usage: antero_partition_sd /dev/sdX"
+    echo "Warning, make sure you specify your SD card and not a workstation disk"
+    echo
+    return 1
+  fi
+
+  DRIVE=$1
+
+  sudo umount ${DRIVE}1 2>/dev/null
+  sudo umount ${DRIVE}2 2>/dev/null
+  sudo umount ${DRIVE}3 2>/dev/null
+
+  sudo dd if=/dev/zero of=$DRIVE bs=1024 count=1024
+
+  SIZE=`sudo fdisk -l $DRIVE | grep Disk | awk '{print $5}'`
+
+  echo DISK SIZE - $SIZE bytes
+
+  CYLINDERS=`echo $SIZE/255/63/512 | bc`
+  CYLINDER_SIZE=`echo $SIZE/$CYLINDERS | bc`
+  CYLINDERS_ROOTFS=`echo 512*1024*1024/$CYLINDER_SIZE | bc`
+
+  echo CYLINDERS - $CYLINDERS
+  echo CYLINDERS in rootfs - $CYLINDERS_ROOTFS
+
+  {
+  echo ,9,0x0C,*
+  echo ,$CYLINDERS_ROOTFS,0x83,-
+  echo ,,0x83,-
+  } | sudo sfdisk -D -H 255 -S 63 -C $CYLINDERS $DRIVE
+
+  sudo mkfs.vfat -F 32 -n "omap-boot" ${DRIVE}1
+  sudo mke2fs -j -L "omap-rootfs" ${DRIVE}2
+  sudo mke2fs -j -L "omap-data" ${DRIVE}3
+}
+
+function oe_partition_sd()
+{
+  # create 2 partitions
+  # taken from a standalone script
+  # (c) 2009 Graeme Gregory
+  # This script is GPLv3 licensed!
+
+  if [ ! $1 ]; then
+    echo "Usage: antero_partition_sd /dev/sdX"
+    echo "Warning, make sure you specify your SD card and not a workstation disk"
+    echo
+    return 1
+  fi
+
+  DRIVE=$1
+
+  sudo umount ${DRIVE}1 2>/dev/null
+  sudo umount ${DRIVE}2 2>/dev/null
+
+  sudo dd if=/dev/zero of=$DRIVE bs=1024 count=1024
+
+  SIZE=`sudo fdisk -l $DRIVE | grep Disk | awk '{print $5}'`
+
+  echo DISK SIZE - $SIZE bytes
+
+  CYLINDERS=`echo $SIZE/255/63/512 | bc`
+  CYLINDER_SIZE=`echo $SIZE/$CYLINDERS | bc`
+  CYLINDERS_ROOTFS=`echo 512*1024*1024/$CYLINDER_SIZE | bc`
+
+  echo CYLINDERS - $CYLINDERS
+  echo CYLINDERS in rootfs - $CYLINDERS_ROOTFS
+
+  {
+  echo ,9,0x0C,*
+  echo ,,0x83,-
+  } | sudo sfdisk -D -H 255 -S 63 -C $CYLINDERS $DRIVE
+
+  sudo mkfs.vfat -F 32 -n "omap-boot" ${DRIVE}1
+  sudo mke2fs -j -L "omap-rootfs" ${DRIVE}2
+}
+
+function oe_install_sd_rootfs
+{
+  echo "Installing rootfs files ..."
+  if [ ! -e /media/omap-rootfs ]; then
+    echo "/media/omap-rootfs not found, please insert or partition SD card"
+    return 1
+  fi
+
+  sudo rm -rf /media/omap-rootfs/*
+  cd /media/omap-rootfs/
+  sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-image-beagleboard.tar.bz2
+  cd -
+}
+
+function oe_install_sd_boot
+{
+  cp ${OE_DEPLOY_DIR}/x-load-beagleboard.bin.ift /media/omap-boot/MLO
+  cp ${OE_DEPLOY_DIR}/u-boot.bin /media/omap-boot
+  cp ${OE_DEPLOY_DIR}/uImage-beagleboard.bin /media/omap-boot/uImage
+}
+
+function oe_sync_feed()
+{
+  bitbake package-index
+  rsync -av --delete ${OE_BASE}/build/tmp-angstrom_2010_x-eglibc/deploy/ipk/ /var/www/oe-build-core/
+}
+
 
 ###############################################################################
 # setup for cross compiling programs manually
