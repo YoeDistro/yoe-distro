@@ -1,6 +1,6 @@
 BEC OE-core build template
 
-Build system based on oe-core, OpenEmbedded, and Angstrom
+Build system based on oe-core, OpenEmbedded, and Angstrom.
 
 ===========================================================
 EXAMPLE of setting up a beagleboard build:
