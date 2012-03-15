@@ -7,7 +7,7 @@ EXAMPLE of setting up a beagleboard build:
 
 . envsetup.sh
 oe_setup beagleboard
-bitbake systemd-console-image
+bitbake systemd-image
 
 ===========================================================
 MOTIVATION
