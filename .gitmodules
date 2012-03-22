@@ -15,4 +15,4 @@
 	url = git://git.angstrom-distribution.org/meta-texasinstruments
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
-	url = git@git.bec-systems.com:meta-bec
+	url = git://git.bec-systems.com/meta-bec
