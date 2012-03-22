@@ -352,8 +352,8 @@ function oe_install_sd_rootfs
 
 function oe_install_sd_boot
 {
-  cp ${OE_DEPLOY_DIR}/x-load-beagleboard.bin.ift /media/omap-boot/MLO
-  cp ${OE_DEPLOY_DIR}/u-boot.bin /media/omap-boot
+  cp ${OE_DEPLOY_DIR}/MLO /media/omap-boot/MLO
+  cp ${OE_DEPLOY_DIR}/u-boot.img /media/omap-boot/
   cp ${OE_DEPLOY_DIR}/uImage-beagleboard.bin /media/omap-boot/uImage
 }
 
