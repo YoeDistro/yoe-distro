@@ -1,0 +1,3 @@
+SANITY_VERSION 1
+TMPDIR /scratch/oe/oe-build-core/build/tmp-angstrom_2010_x-eglibc
+SSTATE_DIR /scratch/oe/oe-build-core/build/sstate-cache
