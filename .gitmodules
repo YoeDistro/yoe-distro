@@ -9,10 +9,10 @@
 	url = git://git.openembedded.org/meta-openembedded
 [submodule "sources/meta-angstrom"]
 	path = sources/meta-angstrom
-	url = git://git.angstrom-distribution.org/meta-angstrom
+	url = git://github.com/Angstrom-distribution/meta-angstrom.git
 [submodule "sources/meta-texasinstruments"]
 	path = sources/meta-texasinstruments
-	url = git://git.angstrom-distribution.org/meta-texasinstruments
+	url = git://github.com/Angstrom-distribution/meta-ti.git
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
 	url = git://git.bec-systems.com/meta-bec
