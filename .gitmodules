@@ -10,9 +10,9 @@
 [submodule "sources/meta-angstrom"]
 	path = sources/meta-angstrom
 	url = git://github.com/Angstrom-distribution/meta-angstrom.git
-[submodule "sources/meta-texasinstruments"]
-	path = sources/meta-texasinstruments
-	url = git://github.com/Angstrom-distribution/meta-ti.git
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
 	url = git://git.bec-systems.com/meta-bec
+[submodule "sources/meta-ti"]
+	path = sources/meta-ti
+	url = git://git.yoctoproject.org/meta-ti
