@@ -336,7 +336,7 @@ function oe_partition_sd()
   sudo mke2fs -j -L "omap-rootfs" ${DRIVE}2
 }
 
-function oe_install_sd_rootfs
+function oe_install_sd_rootfs_systemd_image
 {
   echo "Installing rootfs files ..."
   if [ ! -e /media/omap-rootfs ]; then
@@ -347,6 +347,20 @@ function oe_install_sd_rootfs
   sudo rm -rf /media/omap-rootfs/*
   cd /media/omap-rootfs/
   sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-image-beagleboard.tar.bz2
+  cd -
+}
+
+function oe_install_sd_rootfs_systemd_gnome_image
+{
+  echo "Installing rootfs files ..."
+  if [ ! -e /media/omap-rootfs ]; then
+    echo "/media/omap-rootfs not found, please insert or partition SD card"
+    return 1
+  fi
+
+  sudo rm -rf /media/omap-rootfs/*
+  cd /media/omap-rootfs/
+  sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-GNOME-image-beagleboard.tar.bz2
   cd -
 }
 
