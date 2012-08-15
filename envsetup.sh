@@ -19,6 +19,14 @@
 # 20111101: modify script to work with BEC build template
 #
 
+###############################################################################
+# Machine/Distro setup -- this is the main configuration for the build
+# these variables can be set externally in the shell, or here
+###############################################################################
+
+if [ -n "${MACHINE-1}" ]; then export MACHINE=beagleboard; fi
+if [ -n "${DISTRO-1}" ]; then export DISTRO=angstrom-v2012.x; fi
+
 
 ###############################################################################
 # User specific vars like proxy servers
@@ -31,18 +39,74 @@ PROXYHOST=""
 ###############################################################################
 # OE_BASE    - The root directory for all OE sources and development.
 ###############################################################################
-OE_BASE=${PWD}
-# incremement this to force recreation of config files
-BASE_VERSION=4
-OE_ENV_FILE=localconfig.sh
-SVS_VERSION=5.60.09
+OE_BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-export SVS_VERSION
+# incremement this to force recreation of config files.  This should be done
+# whenever anything major changes
+BASE_VERSION=6
+OE_ENV_FILE=localconfig.sh
 
 # Workaround for differences between yocto bitbake and vanilla bitbake
 export BBFETCH2=True
 
-export OE_DEPLOY_DIR=${OE_BASE}/build/tmp-angstrom_2010_x-eglibc/deploy/images/beagleboard
+export DISTRO_DIRNAME=`echo $DISTRO | sed s#[.-]#_#g`
+export OE_DEPLOY_DIR=${OE_BASE}/build/tmp-${DISTRO_DIRNAME}-eglibc/deploy/images/${MACHINE}
+
+#--------------------------------------------------------------------------
+# Specify the root directory for your OpenEmbedded development
+#--------------------------------------------------------------------------
+OE_BUILD_DIR=${OE_BASE}
+OE_BUILD_TMPDIR="${OE_BUILD_DIR}/build/tmp-${DISTRO_DIRNAME}"
+OE_SOURCE_DIR=${OE_BASE}/sources
+
+export BUILDDIR=${OE_BUILD_DIR}
+mkdir -p ${OE_BUILD_DIR}
+mkdir -p ${OE_SOURCE_DIR}
+export OE_BASE
+
+#--------------------------------------------------------------------------
+# Include up-to-date bitbake in our PATH.
+#--------------------------------------------------------------------------
+export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${PATH}
+# remove duplicate entries from path
+# export PATH=`echo $PATH_ | awk -F: '{for (i=1;i<=NF;i++) { if ( !x[$i]++ ) printf("%s:",$i); }}'`
+export PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}}}'<<<$PATH`
+
+#--------------------------------------------------------------------------
+# Make sure Bitbake doesn't filter out the following variables from our
+# environment.
+#--------------------------------------------------------------------------
+export BB_ENV_EXTRAWHITE="MACHINE DISTRO TCLIBC TCMODE GIT_PROXY_COMMAND http_proxy ftp_proxy https_proxy all_proxy ALL_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY SDKMACHINE BB_NUMBER_THREADS OE_BASE SVS_VERSION"
+
+#--------------------------------------------------------------------------
+# Specify proxy information
+#--------------------------------------------------------------------------
+if [ "x$PROXYHOST" != "x"  ] ; then
+    export http_proxy=http://${PROXYHOST}:${PROXYPORT}/
+    export ftp_proxy=http://${PROXYHOST}:${PROXYPORT}/
+
+    export SVN_CONFIG_DIR=${OE_BUILD_DIR}/subversion_config
+    export GIT_CONFIG_DIR=${OE_BUILD_DIR}/git_config
+
+    export GIT_PROXY_COMMAND="${GIT_CONFIG_DIR}/git-proxy.sh"
+
+    config_svn_proxy
+    config_git_proxy
+fi
+
+#--------------------------------------------------------------------------
+# Set up the bitbake path to find the OpenEmbedded recipes.
+#--------------------------------------------------------------------------
+export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/openembedded-core/meta${BBPATH_EXTRA}
+
+#--------------------------------------------------------------------------
+# Reconfigure dash
+#--------------------------------------------------------------------------
+if [ "$(readlink /bin/sh)" = "dash" ] ; then
+    sudo aptitude install expect -y
+    expect -c 'spawn sudo dpkg-reconfigure -freadline dash; send "n\n"; interact;'
+fi
+
 
 #--------------------------------------------------------------------------
 # If an env already exists, use it, otherwise generate it
@@ -55,96 +119,54 @@ fi
 if [ x"${BASE_VERSION}" != x"${SCRIPTS_BASE_VERSION}" ] ; then
 	echo "BASE_VERSION mismatch, recreating ${OE_ENV_FILE}"
 	rm -f ${OE_ENV_FILE}
+
+elif [ x"${DISTRO_DIRNAME}" != x"${SCRIPTS_DISTRO_DIRNAME}" ] ; then
+  echo "DISTRO name has changed, recreating ${OE_ENV_FILE}"
+  rm -f ${OE_ENV_FILE}
 fi
 
 if [ -e ${OE_ENV_FILE} ] ; then
     . ${OE_ENV_FILE}
 else
 
-    mkdir -p ~/.oe/
-
     #--------------------------------------------------------------------------
     # Specify distribution information
     #--------------------------------------------------------------------------
-    DISTRO="angstrom-2010.x"
-    DISTRO_DIRNAME=`echo $DISTRO | sed s#[.-]#_#g`
 
     echo "export SCRIPTS_BASE_VERSION=${BASE_VERSION}" > ${OE_ENV_FILE}
-    echo "export BBFETCH2=True" >> ${OE_ENV_FILE}
+    echo "export SCRIPTS_DISTRO_DIRNAME=\"${DISTRO_DIRNAME}\"" >> ${OE_ENV_FILE}
 
-    echo "export DISTRO=\"${DISTRO}\"" >> ${OE_ENV_FILE}
-    echo "export DISTRO_DIRNAME=\"${DISTRO_DIRNAME}\"" >> ${OE_ENV_FILE}
-
-    #--------------------------------------------------------------------------
-    # Specify the root directory for your OpenEmbedded development
-    #--------------------------------------------------------------------------
-    OE_BUILD_DIR=${OE_BASE}
-    OE_BUILD_TMPDIR="${OE_BUILD_DIR}/build/tmp-${DISTRO_DIRNAME}"
-    OE_SOURCE_DIR=${OE_BASE}/sources
-
-    export BUILDDIR=${OE_BUILD_DIR}
-    mkdir -p ${OE_BUILD_DIR}
-    mkdir -p ${OE_SOURCE_DIR}
-    export OE_BASE
-
-    echo "export OE_BUILD_DIR=\"${OE_BUILD_DIR}\"" >> ${OE_ENV_FILE}
-    echo "export BUILDDIR=\"${OE_BUILD_DIR}\"" >> ${OE_ENV_FILE}
-    echo "export OE_BUILD_TMPDIR=\"${OE_BUILD_TMPDIR}\"" >> ${OE_ENV_FILE}
-    echo "export OE_SOURCE_DIR=\"${OE_SOURCE_DIR}\"" >> ${OE_ENV_FILE}
-
-    echo "export OE_BASE=\"${OE_BASE}\"" >> ${OE_ENV_FILE}
-
-    #--------------------------------------------------------------------------
-    # Include up-to-date bitbake in our PATH.
-    #--------------------------------------------------------------------------
-    export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${PATH}
-
-    echo "export PATH=\"${PATH}\"" >> ${OE_ENV_FILE}
-
-    #--------------------------------------------------------------------------
-    # Make sure Bitbake doesn't filter out the following variables from our
-    # environment.
-    #--------------------------------------------------------------------------
-    export BB_ENV_EXTRAWHITE="MACHINE DISTRO TCLIBC TCMODE GIT_PROXY_COMMAND http_proxy ftp_proxy https_proxy all_proxy ALL_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY SDKMACHINE BB_NUMBER_THREADS OE_BASE SVS_VERSION"
-
-    echo "export BB_ENV_EXTRAWHITE=\"${BB_ENV_EXTRAWHITE}\"" >> ${OE_ENV_FILE}
-
-    #--------------------------------------------------------------------------
-    # Specify proxy information
-    #--------------------------------------------------------------------------
-    if [ "x$PROXYHOST" != "x"  ] ; then
-        export http_proxy=http://${PROXYHOST}:${PROXYPORT}/
-        export ftp_proxy=http://${PROXYHOST}:${PROXYPORT}/
-
-        export SVN_CONFIG_DIR=${OE_BUILD_DIR}/subversion_config
-        export GIT_CONFIG_DIR=${OE_BUILD_DIR}/git_config
-
-        echo "export http_proxy=\"${http_proxy}\"" >> ${OE_ENV_FILE}
-        echo "export ftp_proxy=\"${ftp_proxy}\"" >> ${OE_ENV_FILE}
-        echo "export SVN_CONFIG_DIR=\"${SVN_CONFIG_DIR}\"" >> ${OE_ENV_FILE}
-        echo "export GIT_CONFIG_DIR=\"${GIT_CONFIG_DIR}\"" >> ${OE_ENV_FILE}
-        echo "export GIT_PROXY_COMMAND=\"\${GIT_CONFIG_DIR}/git-proxy.sh\"" >> ${OE_ENV_FILE}
-
-        config_svn_proxy
-        config_git_proxy
-    fi
-
-    #--------------------------------------------------------------------------
-    # Set up the bitbake path to find the OpenEmbedded recipes.
-    #--------------------------------------------------------------------------
-    export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/openembedded-core/meta${BBPATH_EXTRA}
-
-    echo "export BBPATH=\"${BBPATH}\"" >> ${OE_ENV_FILE}
-
-    #--------------------------------------------------------------------------
-    # Reconfigure dash
-    #--------------------------------------------------------------------------
-    if [ "$(readlink /bin/sh)" = "dash" ] ; then
-        sudo aptitude install expect -y
-        expect -c 'spawn sudo dpkg-reconfigure -freadline dash; send "n\n"; interact;'
-    fi
 
     echo "${OE_ENV_FILE} created"
+
+    #--------------------------------------------------------------------------
+    # Write out the OE bitbake configuration file.
+    #--------------------------------------------------------------------------
+    mkdir -p ${OE_BUILD_DIR}/conf
+
+    SITE_CONF=${OE_BUILD_DIR}/conf/site.conf
+    cat > $SITE_CONF <<_EOF
+
+SCONF_VERSION = "1"
+
+# Where to store sources
+DL_DIR = "${OE_SOURCE_DIR}/downloads"
+
+# Where to save shared state
+SSTATE_DIR = "${OE_BUILD_DIR}/build/sstate-cache"
+
+# Which files do we want to parse:
+BBFILES ?= "${OE_SOURCE_DIR}/openembedded-core/meta/recipes-*/*/*.bb"
+
+TMPDIR = "${OE_BUILD_TMPDIR}"
+
+# Go through the Firewall
+#HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
+
+_EOF
+
+    echo "${SITE_CONF} has been updated"
+
 fi # if -e ${OE_ENV_FILE}
 
 ###############################################################################
@@ -176,41 +198,8 @@ function oe_clean()
 ###############################################################################
 function oe_setup()
 {
-    CL_MACHINE=$1
-
     git submodule init
     git submodule update
-
-    MACHINE="${CL_MACHINE}"
-
-    #--------------------------------------------------------------------------
-    # Write out the OE bitbake configuration file.
-    #--------------------------------------------------------------------------
-    mkdir -p ${OE_BUILD_DIR}/conf
-
-    cat > ${OE_BUILD_DIR}/conf/site.conf <<_EOF
-
-SCONF_VERSION = "1"
-
-# Where to store sources
-DL_DIR = "${OE_SOURCE_DIR}/downloads"
-
-# Where to save shared state
-SSTATE_DIR = "${OE_BUILD_DIR}/build/sstate-cache"
-
-# Which files do we want to parse:
-BBFILES ?= "${OE_SOURCE_DIR}/openembedded-core/meta/recipes-*/*/*.bb"
-
-TMPDIR = "${OE_BUILD_TMPDIR}"
-
-# Go through the Firewall
-#HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
-
-_EOF
-    
-    cat > ${OE_BUILD_DIR}/conf/auto.conf <<_EOF
-MACHINE ?= "${MACHINE}"
-_EOF
 
 }
 
@@ -380,10 +369,12 @@ function oe_sync_feed()
 
 ###############################################################################
 # setup for cross compiling programs manually
+# the following variables are needed to cross compile kernel/u-boot,
+# most applications, Qt apps, etc.
 ###############################################################################
 
 BUILD_ARCH=`uname -m`
-CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin/armv5te-angstrom-linux-gnueabi
+CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin/armv7a-angstrom-linux-gnueabi
 OE_STAGING_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin
 export PATH=$CROSS_COMPILER_PATH:$OE_STAGING_PATH:$PATH
 export ARCH=arm
