@@ -50,7 +50,7 @@ To add a new layer:
   git submodule add <git URI> sources/meta-mylayer
   add layer to conf/bblayers.conf
 
-conf/layer.conf contains settings that are commonly modified such
+conf/local.conf contains settings that are commonly modified such
 as parallel build options.
 
 ===========================================================
