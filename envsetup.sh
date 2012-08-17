@@ -363,7 +363,7 @@ function oe_install_sd_boot
 function oe_sync_feed()
 {
   bitbake package-index
-  rsync -av --delete ${OE_BASE}/build/tmp-angstrom_2010_x-eglibc/deploy/ipk/ /var/www/oe-build-core/
+  rsync -av --delete ${OE_BUILD_TMPDIR}-eglibc/deploy/ipk/ /var/www/oe-build-core/
 }
 
 
@@ -374,7 +374,7 @@ function oe_sync_feed()
 ###############################################################################
 
 BUILD_ARCH=`uname -m`
-CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin/armv7a-angstrom-linux-gnueabi
+CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin/armv7a-vfp-neon-angstrom-linux-gnueabi
 OE_STAGING_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin
 export PATH=$CROSS_COMPILER_PATH:$OE_STAGING_PATH:$PATH
 export ARCH=arm
