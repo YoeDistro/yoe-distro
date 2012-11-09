@@ -25,7 +25,7 @@
 ###############################################################################
 
 if [ -n "${MACHINE-1}" ]; then export MACHINE=beagleboard; fi
-if [ -n "${DISTRO-1}" ]; then export DISTRO=angstrom-v2012.x; fi
+if [ -n "${DISTRO-1}" ]; then export DISTRO=angstrom-next; fi
 
 
 ###############################################################################
@@ -268,7 +268,7 @@ function oe_partition_sd_3()
 
   CYLINDERS=`echo $SIZE/255/63/512 | bc`
   CYLINDER_SIZE=`echo $SIZE/$CYLINDERS | bc`
-  CYLINDERS_ROOTFS=`echo 512*1024*1024/$CYLINDER_SIZE | bc`
+  CYLINDERS_ROOTFS=`echo 700*1024*1024/$CYLINDER_SIZE | bc`
 
   echo CYLINDERS - $CYLINDERS
   echo CYLINDERS in rootfs - $CYLINDERS_ROOTFS
