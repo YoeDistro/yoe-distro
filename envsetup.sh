@@ -24,9 +24,22 @@
 # these variables can be set externally in the shell, or here
 ###############################################################################
 
-if [ -n "${MACHINE-1}" ]; then export MACHINE=beagleboard; fi
-if [ -n "${DISTRO-1}" ]; then export DISTRO=angstrom-next; fi
+if [ -z "${MACHINE}" ]
+  then export MACHINE=beagleboard
+  echo "Setting MACHINE=$MACHINE"
+fi
 
+if [ -z "${DISTRO}" ]
+  then export DISTRO=angstrom-next
+  echo "Setting DISTRO=$DISTRO"
+fi
+
+# set the location of the automounted location for removable storage
+# newer gnome systems
+export MEDIA=/run/media/$USER
+
+# older systems
+#export MEDIA=/media/
 
 ###############################################################################
 # User specific vars like proxy servers
@@ -328,36 +341,36 @@ function oe_partition_sd()
 function oe_install_sd_rootfs_systemd_image
 {
   echo "Installing rootfs files ..."
-  if [ ! -e /media/omap-rootfs ]; then
-    echo "/media/omap-rootfs not found, please insert or partition SD card"
+  if [ ! -e /$MEDIA/omap-rootfs ]; then
+    echo "/$MEDIA/omap-rootfs not found, please insert or partition SD card"
     return 1
   fi
 
-  sudo rm -rf /media/omap-rootfs/*
-  cd /media/omap-rootfs/
-  sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-image-beagleboard.tar.bz2
+  sudo rm -rf /$MEDIA/omap-rootfs/*
+  cd /$MEDIA/omap-rootfs/
+  sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-image-$MACHINE.tar.bz2
   cd -
 }
 
 function oe_install_sd_rootfs_systemd_gnome_image
 {
   echo "Installing rootfs files ..."
-  if [ ! -e /media/omap-rootfs ]; then
-    echo "/media/omap-rootfs not found, please insert or partition SD card"
+  if [ ! -e /$MEDIA/omap-rootfs ]; then
+    echo "/$MEDIA/omap-rootfs not found, please insert or partition SD card"
     return 1
   fi
 
-  sudo rm -rf /media/omap-rootfs/*
-  cd /media/omap-rootfs/
-  sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-GNOME-image-beagleboard.tar.bz2
+  sudo rm -rf /$MEDIA/omap-rootfs/*
+  cd /$MEDIA/omap-rootfs/
+  sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-GNOME-image-$MACHINE.tar.bz2
   cd -
 }
 
 function oe_install_sd_boot
 {
-  cp ${OE_DEPLOY_DIR}/MLO /media/omap-boot/MLO
-  cp ${OE_DEPLOY_DIR}/u-boot.img /media/omap-boot/
-  cp ${OE_DEPLOY_DIR}/uImage-beagleboard.bin /media/omap-boot/uImage
+  cp ${OE_DEPLOY_DIR}/MLO /$MEDIA/omap-boot/MLO
+  cp ${OE_DEPLOY_DIR}/u-boot.img /$MEDIA/omap-boot/
+  cp ${OE_DEPLOY_DIR}/uImage-$MACHINE.bin /$MEDIA/omap-boot/uImage
 }
 
 function oe_sync_feed()
