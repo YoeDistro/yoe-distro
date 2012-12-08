@@ -373,12 +373,13 @@ function oe_install_sd_boot
   cp ${OE_DEPLOY_DIR}/uImage-$MACHINE.bin /$MEDIA/omap-boot/uImage
 }
 
-function oe_sync_feed()
+function oe_feed_server()
 {
+  cd $OE_BASE
   bitbake package-index
-  rsync -av --delete ${OE_BUILD_TMPDIR}-eglibc/deploy/ipk/ /var/www/oe-build-core/
+  node tools/feed-server/app.js
+  cd -
 }
-
 
 ###############################################################################
 # setup for cross compiling programs manually
