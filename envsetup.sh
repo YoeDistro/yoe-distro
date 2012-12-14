@@ -381,6 +381,28 @@ function oe_feed_server()
   cd -
 }
 
+function oe_search_file()
+{
+  if [ -z $1 ]; then 
+    echo "Usage: oe_search_file filename"
+    return
+  fi
+  cd $OE_BASE/sources
+  find -name downloads -prune -o -name $1 -print
+  cd -
+}
+
+function oe_search_text()
+{
+  if test -z $1; then 
+    echo "Usage: oe_search_text searchtext"
+    return
+  fi
+  cd $OE_BASE/sources
+  find -name downloads -prune -o -name $1 -print | xargs grep $2
+  cd -
+}
+
 ###############################################################################
 # setup for cross compiling programs manually
 # the following variables are needed to cross compile kernel/u-boot,
