@@ -403,6 +403,13 @@ function oe_search_text()
   cd -
 }
 
+function oe_setup_python_path()
+{
+  # the following can be used in distros like ARCH where python3 is now the default
+  # see https://wiki.archlinux.org/index.php/Python
+  export PATH=~/bin:$PATH
+}
+
 ###############################################################################
 # setup for cross compiling programs manually
 # the following variables are needed to cross compile kernel/u-boot,
