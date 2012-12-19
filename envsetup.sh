@@ -24,22 +24,25 @@
 # these variables can be set externally in the shell, or here
 ###############################################################################
 
-if [ -z "${MACHINE}" ]
-  then export MACHINE=beagleboard
+if [ -z "${MACHINE}" ]; then
+  export MACHINE=beagleboard
   echo "Setting MACHINE=$MACHINE"
 fi
 
-if [ -z "${DISTRO}" ]
-  then export DISTRO=angstrom-next
+if [ -z "${DISTRO}" ]; then
+  export DISTRO=angstrom-next
   echo "Setting DISTRO=$DISTRO"
 fi
 
-# set the location of the automounted location for removable storage
-# newer gnome systems
-export MEDIA=/run/media/$USER
+if [ -z "${MEDIA}" ]; then
+  # set the location of the automounted location for removable storage
+  # newer gnome systems
+  # export MEDIA=/run/media/$USER
 
-# older systems
-#export MEDIA=/media/
+  # older systems
+  export MEDIA=/media/
+
+fi
 
 ###############################################################################
 # User specific vars like proxy servers
@@ -55,8 +58,8 @@ PROXYHOST=""
 OE_BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # incremement this to force recreation of config files.  This should be done
-# whenever anything major changes
-BASE_VERSION=6
+# whenever the DISTRO, or anything major changes
+BASE_VERSION=9
 OE_ENV_FILE=localconfig.sh
 
 # Workaround for differences between yocto bitbake and vanilla bitbake
