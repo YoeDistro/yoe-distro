@@ -402,7 +402,7 @@ function oe_search_text()
     return
   fi
   cd $OE_BASE/sources
-  find -name downloads -prune -o -name $1 -print | xargs grep $2
+  find -type f | xargs grep $1
   cd -
 }
 
