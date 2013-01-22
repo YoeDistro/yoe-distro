@@ -351,7 +351,7 @@ function oe_install_sd_rootfs_systemd_image
 
   sudo rm -rf /$MEDIA/omap-rootfs/*
   cd /$MEDIA/omap-rootfs/
-  sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-image-$MACHINE.tar.bz2
+  sudo tar -xzvf ${OE_DEPLOY_DIR}/systemd-image-$MACHINE.tar.gz
   cd -
 }
 
@@ -365,7 +365,7 @@ function oe_install_sd_rootfs_systemd_gnome_image
 
   sudo rm -rf /$MEDIA/omap-rootfs/*
   cd /$MEDIA/omap-rootfs/
-  sudo tar -xjvf ${OE_DEPLOY_DIR}/systemd-GNOME-image-$MACHINE.tar.bz2
+  sudo tar -xzvf ${OE_DEPLOY_DIR}/systemd-GNOME-image-$MACHINE.tar.gz
   cd -
 }
 
