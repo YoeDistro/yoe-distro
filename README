@@ -6,7 +6,7 @@ Build system based on oe-core, OpenEmbedded, and Angstrom.
 EXAMPLE of setting up a beagleboard build:
 
 . envsetup.sh
-oe_setup beagleboard
+oe_setup
 bitbake systemd-image
 
 ===========================================================
