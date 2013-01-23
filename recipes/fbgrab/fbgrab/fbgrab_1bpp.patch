@@ -1,0 +1,52 @@
+--- fbgrab-1.0.orig/fbgrab.c	2002-04-15 22:22:54.000000000 +0200
++++ fbgrab-1.0/fbgrab.c	2008-12-15 20:18:55.000000000 +0100
+@@ -135,6 +135,26 @@
+ 	fatal_error("Error: Not enough memory or data\n");
+ }
+ 
++static void convert1to32(int width, int height, 
++			    unsigned char *inbuffer, 
++			    unsigned char *outbuffer)
++{
++    unsigned int i, j;
++    unsigned char *ptr = outbuffer;
++
++    for (i=0; i < (unsigned int) height*width >> 3; i++)
++    {
++	for(j=0; j < 8; j++)
++	{
++	    /* BLUE = 0, GREEN = 1, RED = 2 */
++	    *ptr = *(ptr+1) = *(ptr+2) = ((inbuffer[i] >> (7-j)) & 1) ? 255 : 0;
++	    /* ALPHA = 3 */
++	    *(ptr+3) = '\0';
++	    ptr += 4;
++	}
++    }
++}
++
+ static void convert1555to32(int width, int height, 
+ 			    unsigned char *inbuffer, 
+ 			    unsigned char *outbuffer)
+@@ -270,6 +290,10 @@
+     
+     switch(bits) 
+     {
++    case 1:
++	convert1to32(width, height, inbuffer, outbuffer);
++	write_PNG(outbuffer, filename, width, height, interlace);
++	break;
+     case 15:
+ 	convert1555to32(width, height, inbuffer, outbuffer);
+ 	write_PNG(outbuffer, filename, width, height, interlace);
+@@ -405,7 +429,10 @@
+ 	strncpy(infile, device, MAX_LEN - 1);
+     }
+     
+-    buf_size = width * height * (((unsigned int) bitdepth + 7) >> 3);
++    if (bitdepth == 1)
++	buf_size = (width * height) >> 3;
++    else
++	buf_size = width * height * (((unsigned int) bitdepth + 7) >> 3);
+ 
+     buf_p = malloc(buf_size);
+     
