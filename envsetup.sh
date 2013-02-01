@@ -19,6 +19,11 @@
 # 20111101: modify script to work with BEC build template
 #
 
+if [ -f local.sh ]; then
+  echo "reading local settings"
+  . local.sh
+fi
+
 ###############################################################################
 # Machine/Distro setup -- this is the main configuration for the build
 # these variables can be set externally in the shell, or here
