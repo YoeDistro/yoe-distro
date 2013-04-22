@@ -20,3 +20,4 @@ nor/rootfs/
 alphaupdatelist.txt
 conf/toolchain.cmake
 bitbake.lock
+local.sh
