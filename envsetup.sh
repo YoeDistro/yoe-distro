@@ -384,7 +384,7 @@ function oe_install_sd_boot
 
   cp ${OE_DEPLOY_DIR}/MLO /$MEDIA/$OMAPBOOT/MLO
   cp ${OE_DEPLOY_DIR}/u-boot.img /$MEDIA/$OMAPBOOT/
-  cp ${OE_DEPLOY_DIR}/uImage-$MACHINE.bin /$MEDIA/$OMAPBOOT/uImage
+  cp ${OE_DEPLOY_DIR}/uImage-$MACHINE.* /$MEDIA/$OMAPBOOT/uImage
 }
 
 function oe_feed_server()

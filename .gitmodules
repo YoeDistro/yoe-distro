@@ -16,3 +16,9 @@
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = git://git.yoctoproject.org/meta-ti
+[submodule "sources/meta-beagleboard"]
+	path = sources/meta-beagleboard
+	url = git://github.com/beagleboard/meta-beagleboard.git
+[submodule "sources/meta-gumstix-community"]
+	path = sources/meta-gumstix-community
+	url = git://gitorious.org/schnitzeltony-oe-meta/meta-gumstix-community.git
