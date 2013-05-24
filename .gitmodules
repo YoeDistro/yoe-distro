@@ -22,3 +22,6 @@
 [submodule "sources/meta-gumstix-community"]
 	path = sources/meta-gumstix-community
 	url = git://gitorious.org/schnitzeltony-oe-meta/meta-gumstix-community.git
+[submodule "sources/meta-browser"]
+	path = sources/meta-browser
+	url = git://github.com/OSSystems/meta-browser.git
