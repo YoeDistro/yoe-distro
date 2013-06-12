@@ -1,12 +1,12 @@
 [submodule "sources/bitbake"]
 	path = sources/bitbake
-	url = git://git.openembedded.org/bitbake
+	url = git://github.com/openembedded/bitbake.git
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
-	url = git://git.openembedded.org/openembedded-core
+	url = git://github.com/openembedded/oe-core.git
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
-	url = git://git.openembedded.org/meta-openembedded
+	url = git://github.com/openembedded/meta-oe.git
 [submodule "sources/meta-angstrom"]
 	path = sources/meta-angstrom
 	url = git://github.com/Angstrom-distribution/meta-angstrom.git
