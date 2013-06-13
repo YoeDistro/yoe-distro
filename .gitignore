@@ -21,3 +21,5 @@ alphaupdatelist.txt
 conf/toolchain.cmake
 bitbake.lock
 local.sh
+cache
+buildhistory
