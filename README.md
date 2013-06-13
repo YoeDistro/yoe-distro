@@ -36,37 +36,6 @@ has the following goals:
 1. generate a modern Linux root filesystem.
 1. uses systemd
 
-Using
------
-
-In general, this build system must be run in a bash shell.
-To set up the environment, source the following file:
-
-. envsetup.sh
-
-This file will create a bunch of functions in the environment
-prefixed with oe_ that can be executed.  Type oe_ <tab><tab>
-to see them.
-
-Information on various files/directories:
-  - build: temporary directory where build actually takes place
-  - conf: configuration files for the build
-  - sources: various sources used for the build.  Most entries
-    in this directory are git submodules, but the downloads
-    directory contains files that are downloaded by various
-    recipes during builds.
-  - scripts: utility scripts
-  - localconfig.sh: file created by  envsetup.sh that contains
-    directory specific variables based on the build system location.
-
-To add a new layer:
-
-  git submodule add <git URI> sources/meta-mylayer
-  add layer to conf/bblayers.conf
-
-conf/local.conf contains settings that are commonly modified such
-as parallel build options.
-
 Tested Targets
 --------------
 
@@ -79,6 +48,64 @@ Tested Targets
 * Gumstix Overo
  * BSP components from meta-gumstix-community
  * 3.5 kernel
+
+Using
+-----
+
+### envsetup.sh
+
+This is where all the magic happens.  In general, this build system 
+must be run in a bash shell.  To set up the environment, source the following file:
+
+. envsetup.sh
+
+This file will create a bunch of functions in the environment
+prefixed with oe_ that can be executed.  Type oe_ <tab><tab>
+to see them.
+
+### directories and key files
+
+* build: temporary directory where build actually takes place
+* conf: configuration files for the build
+* sources: various sources used for the build.  Most entries
+in this directory are git submodules, but the downloads
+directory contains files that are downloaded by various
+recipes during builds.
+* tools: utility scripts
+* localconfig.sh: file created by envsetup.sh that contains
+directory specific variables based on the build system location.
+* local.sh: can be used to customize MACHINE, and other variables
+
+### building for another machine
+
+export MACHINE=[my machine]
+. envsetup.sh
+
+### adding a new layer
+
+*  git submodule add <git URI> sources/meta-mylayer
+*  add layer to conf/bblayers.conf
+
+### customizing settings
+
+conf/local.conf contains settings that are commonly modified such
+as parallel build options.
+
+### starting a local feed server
+
+Sometimes you want to install packages you build on the target system
+without building and re-installing the entire rootfs.  This can be done
+using a feed server.
+
+* Workstation: oe_feed_server (this starts a feed server on port 4000)
+* Target: modify /etc/opkg to http://[your workstation IP]:4000
+* Target: opkg update
+* Target: opkg install [package]
+
+This advantage of a feed server versus scp'ing opkg files to the target
+and installing manually is that dependencies will automatically get installed.
+This mechanism is very useful for packages that are only needed occasionally
+during development (gdb, screen, strace, iperf, etc).
 
 License
 -------
