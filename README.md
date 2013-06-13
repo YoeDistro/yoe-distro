@@ -1,9 +1,10 @@
-BEC OE-core build template
+BEC OpenEmbedded build template
+===============================
 
 Build system based on oe-core, OpenEmbedded, and Angstrom.
 
 Example
-=======
+-------
 
 This following is example of building and installing a linux system from
 scratch on the BeagleBoard.
@@ -21,7 +22,7 @@ scratch on the BeagleBoard.
 * [Install SD card in beagleboard and enjoy your new image]
 
 Motivation
-==========
+----------
 
 This build template is designed to be used for product
 build systems (used to build product software), and thus
@@ -36,7 +37,7 @@ has the following goals:
 1. uses systemd
 
 Using
-=====
+-----
 
 In general, this build system must be run in a bash shell.
 To set up the environment, source the following file:
@@ -67,7 +68,7 @@ conf/local.conf contains settings that are commonly modified such
 as parallel build options.
 
 Tested Targets
-==============
+--------------
 
 * BeagleBoard
  * BSP components from meta-ti
@@ -80,7 +81,7 @@ Tested Targets
  * 3.5 kernel
 
 License
-=======
+-------
 
 This build system is licensed under the MIT license which is the
 same license as oe-core, etc.  See COPYING.MIT
