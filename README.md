@@ -2,7 +2,7 @@ BEC OE-core build template
 
 Build system based on oe-core, OpenEmbedded, and Angstrom.
 
-EXAMPLE
+Example
 =======
 
 This following is example of building and installing a linux system from
@@ -13,14 +13,14 @@ scratch on the BeagleBoard.
 * . envsetup.sh
 * oe_setup
 * bitbake systemd-image
-* <insert SD card>
+* [insert SD card]
 * lsblk (note sd card device)
 * oe_partition_sd /dev/sdX
 * oe_install_sd_boot (install MLO, u-boot, kernel)
 * oe_install_sd_rootfs_systemd_gnome_image
-* <install SD card in beagleboard and enjoy your new image>
+* [Install SD card in beagleboard and enjoy your new image]
 
-MOTIVATION
+Motivation
 ==========
 
 This build template is designed to be used for product
@@ -35,7 +35,7 @@ has the following goals:
 1. generate a modern Linux root filesystem.
 1. uses systemd
 
-USING
+Using
 =====
 
 In general, this build system must be run in a bash shell.
@@ -70,16 +70,16 @@ Tested Targets
 ==============
 
 * BeagleBoard
-** BSP components from meta-ti
-** 3.2 kernel
+ * BSP components from meta-ti
+ * 3.2 kernel
 * BeagleBone
-** BSP components from meta-beagleboard
-** 3.8 kernel
+ * BSP components from meta-beagleboard
+ * 3.8 kernel
 * Gumstix Overo
-** BSP components from meta-gumstix-community
-** 3.5 kernel
+ * BSP components from meta-gumstix-community
+ * 3.5 kernel
 
-LICENSE
+License
 =======
 
 This build system is licensed under the MIT license which is the
