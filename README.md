@@ -78,8 +78,8 @@ directory specific variables based on the build system location.
 
 ### building for another machine
 
-export MACHINE=[my machine]
-. envsetup.sh
+* export MACHINE=[my machine]
+* bitbake [recipe name]
 
 ### adding a new layer
 
