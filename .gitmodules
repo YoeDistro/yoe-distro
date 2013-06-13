@@ -25,3 +25,9 @@
 [submodule "sources/meta-browser"]
 	path = sources/meta-browser
 	url = git://github.com/OSSystems/meta-browser.git
+[submodule "sources/meta-fsl-arm"]
+	path = sources/meta-fsl-arm
+	url = git://git.yoctoproject.org/meta-fsl-arm
+[submodule "sources/meta-fsl-arm-extra"]
+	path = sources/meta-fsl-arm-extra
+	url = git://github.com/Freescale/meta-fsl-arm-extra.git
