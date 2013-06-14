@@ -36,18 +36,22 @@ has the following goals:
 1. generate a modern Linux root filesystem.
 1. uses systemd
 
-Tested Targets
---------------
+Tested Machines
+---------------
 
-* BeagleBoard
+* beagleboard
  * BSP components from meta-ti
  * 3.2 kernel
-* BeagleBone
+* beaglebone
  * BSP components from meta-beagleboard
  * 3.8 kernel
-* Gumstix Overo
+* overo (Gumstix)
  * BSP components from meta-gumstix-community
  * 3.5 kernel
+* wandboard-dual
+ * in progress
+ * BSP components from meta-fsl-arm and meta-fsl-arm-extra
+ * must set ACCEPT_FSL_EULA = "1" in local.conf or locallocal.conf
 
 Using
 -----
