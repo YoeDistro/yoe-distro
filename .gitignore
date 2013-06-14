@@ -3,6 +3,7 @@ sources/downloads
 conf/auto.conf
 conf/sanity_info
 conf/site.conf
+conf/locallocal.conf
 pseudodone
 git_config
 subversion_config/
