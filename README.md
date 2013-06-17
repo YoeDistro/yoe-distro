@@ -30,9 +30,12 @@ has the following goals:
 
 1. simplicity: uses well understood things like bash and
    git submodules.
-1. robustness: git submodules may be a pain, but they are
+1. robustness: Git submodules may be a pain, but they are
    a robust solution for production environments, and 
-   error handling is pretty good.
+   error handling is pretty good.  Git submodules are also very good at making
+   sure you are building exactly what was checked in, because it locks every
+   submodule down to a specific version, which is generally what you want for a production
+   build system, where the build must be absolutely repeatable.
 1. generate a modern Linux root filesystem.
 1. uses systemd
 
