@@ -1,33 +1,44 @@
 [submodule "sources/bitbake"]
 	path = sources/bitbake
 	url = git://github.com/openembedded/bitbake.git
+	branch = master
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = git://github.com/openembedded/oe-core.git
+	branch = master
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = git://github.com/openembedded/meta-oe.git
+	branch = master
 [submodule "sources/meta-angstrom"]
 	path = sources/meta-angstrom
 	url = git://github.com/Angstrom-distribution/meta-angstrom.git
+	branch = master
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
 	url = git://git.bec-systems.com/meta-bec
+	branch = master
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = git://git.yoctoproject.org/meta-ti
+	branch = master
 [submodule "sources/meta-beagleboard"]
 	path = sources/meta-beagleboard
 	url = git://github.com/beagleboard/meta-beagleboard.git
+	branch = master
 [submodule "sources/meta-gumstix-community"]
 	path = sources/meta-gumstix-community
 	url = git://gitorious.org/schnitzeltony-oe-meta/meta-gumstix-community.git
+	branch = master
 [submodule "sources/meta-browser"]
 	path = sources/meta-browser
 	url = git://github.com/OSSystems/meta-browser.git
+	branch = master
 [submodule "sources/meta-fsl-arm"]
 	path = sources/meta-fsl-arm
 	url = git://git.yoctoproject.org/meta-fsl-arm
+	branch = master-next
 [submodule "sources/meta-fsl-arm-extra"]
 	path = sources/meta-fsl-arm-extra
 	url = git://github.com/Freescale/meta-fsl-arm-extra.git
+	branch = master-next
