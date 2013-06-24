@@ -20,6 +20,7 @@ scratch on the BeagleBoard.
 * oe_install_sd_boot (install MLO, u-boot, kernel)
 * oe_install_sd_rootfs_systemd_gnome_image
 * [Install SD card in beagleboard and enjoy your new image]
+* oe_console (fire up a serial console for the machine)
 
 Motivation
 ----------
@@ -30,9 +31,9 @@ has the following goals:
 
 1. simplicity: uses well understood things like bash and
    git submodules.
-1. robustness: Git submodules may be a pain, but they are
+1. robustness: Git submodules are
    a robust solution for production environments, and 
-   error handling is pretty good.  Git submodules are also very good at making
+   error handling good.  Git submodules are also very good at making
    sure you are building exactly what was checked in, because it locks every
    submodule down to a specific version, which is generally what you want for a production
    build system, where the build must be absolutely repeatable.

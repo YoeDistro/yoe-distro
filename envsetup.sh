@@ -424,6 +424,13 @@ function oe_setup_python_path()
   export PATH=~/bin:$PATH
 }
 
+function oe_console()
+{
+  # requires serial->usb device be mapped to /dev/ttyUSB_<machine name>
+  # see http://bec-systems.com/site/1004/perisistent-device-names-usb-serial-ports
+  screen /dev/ttyUSB_${MACHINE} 115200
+}
+
 ###############################################################################
 # setup for cross compiling programs manually
 # the following variables are needed to cross compile kernel/u-boot,
