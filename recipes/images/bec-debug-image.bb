@@ -49,6 +49,8 @@ IMAGE_INSTALL += "\
 	sox \
 	strace \
     ethtool \
+    python \
+    python-pyserial \
 	"
 
 export IMAGE_BASENAME = "bec-debug-image"
