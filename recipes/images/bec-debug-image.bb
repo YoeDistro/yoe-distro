@@ -1,6 +1,10 @@
 # this image includes the base utilities needed to exercise most
 # embedded linux hardware
 
+# note, the following must be set to build netperf:
+# LICENSE_FLAGS_WHITELIST = "non-commercial"
+# see conf/locallocal.conf.sample in BEC build template
+
 require recipes-images/angstrom/systemd-image.bb
 
 #	e2fsprogs \
