@@ -39,6 +39,8 @@ has the following goals:
    build system, where the build must be absolutely repeatable.
 1. generate a modern Linux root filesystem.
 1. uses systemd
+1. track development of layers (we want the latest bits)
+1. support a range of common development platforms and processors
 
 Tested Machines
 ---------------
