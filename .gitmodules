@@ -37,8 +37,8 @@
 [submodule "sources/meta-fsl-arm"]
 	path = sources/meta-fsl-arm
 	url = git://git.yoctoproject.org/meta-fsl-arm
-	branch = master-next
+	branch = master
 [submodule "sources/meta-fsl-arm-extra"]
 	path = sources/meta-fsl-arm-extra
 	url = git://github.com/Freescale/meta-fsl-arm-extra.git
-	branch = master-next
+	branch = master
