@@ -16,7 +16,7 @@
 	branch = master
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
-	url = git://git.bec-systems.com/meta-bec
+	url = git://github.com/cbrake/meta-bec.git
 	branch = master
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
