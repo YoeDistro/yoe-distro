@@ -18,7 +18,7 @@ scratch on the BeagleBoard.
 * lsblk (note sd card device)
 * oe_partition_sd /dev/sdX
 * oe_install_sd_boot (install MLO, u-boot, kernel)
-* oe_install_sd_rootfs_systemd_gnome_image
+* oe_install_sd_rootfs_systemd_image
 * [Install SD card in beagleboard and enjoy your new image]
 * oe_console (fire up a serial console for the machine)
 
