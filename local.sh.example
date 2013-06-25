@@ -1,0 +1,5 @@
+# file to store local env variables
+
+export MACHINE=overo
+export MEDIA=/run/media/$USER
+
