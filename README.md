@@ -40,7 +40,7 @@ has the following goals:
 1. generate a modern Linux root filesystem.
 1. uses systemd
 1. track development of layers (we want the latest bits)
-1. support a range of common development platforms and processors
+1. support a range of common development platforms and SOCs
 
 Tested Machines
 ---------------
