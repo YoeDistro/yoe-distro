@@ -34,6 +34,17 @@ if [ -z "${MACHINE}" ]; then
   echo "Setting MACHINE=$MACHINE"
 fi
 
+case $MACHINE in 
+  beagleboard|beaglebone|overo)
+    export MACHINE_ARCH=cortexa8hf-vfp-neon
+    ;;
+  wandboard-dual)
+    export MACHINE_ARCH=armv7a-vfp-neon
+    ;;
+  *)
+    echo "Note: Don't know how to set MACHINE_ARCH"
+esac
+
 if [ -z "${DISTRO}" ]; then
   export DISTRO=angstrom-next
   echo "Setting DISTRO=$DISTRO"
@@ -393,6 +404,16 @@ function oe_feed_server()
   bitbake package-index
   node tools/feed-server/app.js
   cd -
+}
+
+function oe_setup_feed_server()
+{
+  # set MACHINE_IP in local.sh
+  HOST_IP=`hostname -i | tr -d ' '`
+  ssh root@$MACHINE_IP "rm /etc/opkg/*feed*"
+  ssh root@$MACHINE_IP "echo 'src/gz all http://$HOST_IP:4000/all' > /etc/opkg/base-feed.conf"
+  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_ARCH http://mars:4000/$MACHINE_ARCH' >> /etc/opkg/base-feed.conf"
+  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE http://mars:4000/$MACHINE' >> /etc/opkg/base-feed.conf"
 }
 
 function oe_search_file()
