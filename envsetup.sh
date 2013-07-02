@@ -412,8 +412,8 @@ function oe_setup_feed_server()
   HOST_IP=`hostname -i | tr -d ' '`
   ssh root@$MACHINE_IP "rm /etc/opkg/*feed*"
   ssh root@$MACHINE_IP "echo 'src/gz all http://$HOST_IP:4000/all' > /etc/opkg/base-feed.conf"
-  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_ARCH http://mars:4000/$MACHINE_ARCH' >> /etc/opkg/base-feed.conf"
-  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE http://mars:4000/$MACHINE' >> /etc/opkg/base-feed.conf"
+  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_ARCH http://$HOST_IP:4000/$MACHINE_ARCH' >> /etc/opkg/base-feed.conf"
+  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE http://$HOST_IP:4000/$MACHINE' >> /etc/opkg/base-feed.conf"
 }
 
 function oe_search_file()
@@ -459,7 +459,7 @@ function oe_console()
 ###############################################################################
 
 BUILD_ARCH=`uname -m`
-CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin/armv7a-vfp-neon-angstrom-linux-gnueabi
+CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin/$MACHINE_ARCH-angstrom-linux-gnueabi
 OE_STAGING_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin
 export PATH=$CROSS_COMPILER_PATH:$OE_STAGING_PATH:$PATH
 export ARCH=arm
