@@ -25,7 +25,7 @@ scratch on the BeagleBoard.
 Motivation
 ----------
 
-This build template is designed to be used for product
+This build template is designed to be used for production
 build systems (used to build product software), and thus
 has the following goals:
 
