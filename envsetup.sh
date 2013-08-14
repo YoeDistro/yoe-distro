@@ -311,6 +311,10 @@ function oe_partition_sd_3()
   echo ,,0x83,-
   } | sudo sfdisk -D -H 255 -S 63 -C $CYLINDERS $DRIVE
 
+  sudo umount ${DRIVE}1 2>/dev/null
+  sudo umount ${DRIVE}2 2>/dev/null
+  sudo umount ${DRIVE}3 2>/dev/null
+
   sudo mkfs.vfat -F 32 -n "omap-boot" ${DRIVE}1
   sudo mke2fs -j -L "omap-rootfs" ${DRIVE}2
   sudo mke2fs -j -L "omap-data" ${DRIVE}3
@@ -352,6 +356,9 @@ function oe_partition_sd()
   echo ,9,0x0C,*
   echo ,,0x83,-
   } | sudo sfdisk -D -H 255 -S 63 -C $CYLINDERS $DRIVE
+
+  sudo umount ${DRIVE}1 2>/dev/null
+  sudo umount ${DRIVE}2 2>/dev/null
 
   sudo mkfs.vfat -F 32 -n "omap-boot" ${DRIVE}1
   sudo mke2fs -j -L "omap-rootfs" ${DRIVE}2
