@@ -16,11 +16,11 @@ scratch on the BeagleBoard.
 * bitbake systemd-image
 * [insert SD card]
 * lsblk (note sd card device)
-* oe_partition_sd /dev/sdX
-* oe_install_sd_boot (install MLO, u-boot, kernel)
-* oe_install_sd_rootfs_systemd_image
+* oe\_partition\_sd /dev/sdX
+* oe\_install\_sd\_boot (install MLO, u-boot, kernel)
+* oe\_install\_sd\_rootfs\_systemd\_image
 * [Install SD card in beagleboard and enjoy your new image]
-* oe_console (fire up a serial console for the machine)
+* oe\_console (fire up a serial console for the machine)
 
 Motivation
 ----------
@@ -57,7 +57,7 @@ Tested Machines
 * wandboard-dual
  * in progress
  * BSP components from meta-fsl-arm and meta-fsl-arm-extra
- * must set ACCEPT_FSL_EULA = "1" in local.conf or locallocal.conf
+ * must set ACCEPT\_FSL\_EULA = "1" in local.conf or locallocal.conf
 
 Using
 -----
@@ -70,7 +70,7 @@ must be run in a bash shell.  To set up the environment, source the following fi
 . envsetup.sh
 
 This file will create a bunch of functions in the environment
-prefixed with oe_ that can be executed.  Type oe_ <tab><tab>
+prefixed with oe\_ that can be executed.  Type oe\_ <tab><tab>
 to see them.
 
 ### directories and key files
@@ -107,7 +107,7 @@ Sometimes you want to install packages you build on the target system
 without building and re-installing the entire rootfs.  This can be done
 using a feed server.
 
-* Workstation: oe_feed_server (this starts a feed server on port 4000)
+* Workstation: oe\_feed\_server (this starts a feed server on port 4000)
 * Target: modify /etc/opkg to http://[your workstation IP]:4000
 * Target: opkg update
 * Target: opkg install [package]
