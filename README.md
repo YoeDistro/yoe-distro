@@ -117,6 +117,14 @@ and installing manually is that dependencies will automatically get installed.
 This mechanism is very useful for packages that are only needed occasionally
 during development (gdb, screen, strace, iperf, etc).
 
+### updating the submodules to the latest
+
+Assuming you have a recent version of git, you can make use of the branch
+values specified in .gitmodules to update each submodule branch to the 
+HEAD of the specified branch:
+
+git submodule update --remote
+
 License
 -------
 
