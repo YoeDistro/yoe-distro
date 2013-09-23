@@ -379,6 +379,28 @@ function oe_install_sd_rootfs_systemd_image
   cd -
 }
 
+function oe_install_sd_rootfs
+{
+  IMAGE_NAME=$1
+
+  if [ -z $IMAGE_NAME ]; then 
+    echo "Usage: oe_install_sd_rootfs <image name>"
+    echo "Example: oe_install_sd_rootfs systemd-image"
+    return
+  fi
+  
+  echo "Installing rootfs files for $IMAGE_NAME ..."
+  if [ ! -e /$MEDIA/omap-rootfs ]; then
+    echo "/$MEDIA/omap-rootfs not found, please insert or partition SD card"
+    return 1
+  fi
+
+  sudo rm -rf /$MEDIA/omap-rootfs/*
+  cd /$MEDIA/omap-rootfs/
+  sudo tar -xzvf ${OE_DEPLOY_DIR}/$IMAGE_NAME-$MACHINE.tar.gz
+  cd -
+}
+
 function oe_install_sd_rootfs_systemd_gnome_image
 {
   echo "Installing rootfs files ..."
