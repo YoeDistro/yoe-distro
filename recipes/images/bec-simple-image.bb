@@ -13,6 +13,7 @@ IMAGE_INSTALL += " \
 	packagegroup-basic \
 	${ROOTFS_PKGMANAGE_PKGS} \
 	timestamp-service \
+    network-hotplug \
 "
 
 IMAGE_DEV_MANAGER   = "udev"
