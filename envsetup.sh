@@ -100,9 +100,25 @@ export OE_BASE
 # Include up-to-date bitbake in our PATH.
 #--------------------------------------------------------------------------
 export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${PATH}
+export PATH=${OE_BASE}/tools:${PATH}
 # remove duplicate entries from path
 # export PATH=`echo $PATH_ | awk -F: '{for (i=1;i<=NF;i++) { if ( !x[$i]++ ) printf("%s:",$i); }}'`
 export PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}}}'<<<$PATH`
+
+
+#--------------------------------------------------------------------------
+# set up soft links to /usr/bin/python2 if it exists
+# this helps if /usr/bin/python is python3
+#--------------------------------------------------------------------------
+if [ -e /usr/bin/python2 ] && ! [ -L tools/python ]; then 
+  echo "linking to python2"
+  ln -s /usr/bin/python2 tools/python
+fi
+
+if [ -e /usr/bin/python2-config ] && ! [ -L tools/python-config ]; then
+  echo "linking to python2-config"
+  ln -s /usr/bin/python2-config tools/python-config
+fi
 
 #--------------------------------------------------------------------------
 # Make sure Bitbake doesn't filter out the following variables from our
@@ -466,13 +482,6 @@ function oe_search_text()
   cd $OE_BASE/sources
   find -name downloads -prune -o -type f -print | xargs grep $1
   cd -
-}
-
-function oe_setup_python_path()
-{
-  # the following can be used in distros like ARCH where python3 is now the default
-  # see https://wiki.archlinux.org/index.php/Python
-  export PATH=~/bin:$PATH
 }
 
 function oe_console()
