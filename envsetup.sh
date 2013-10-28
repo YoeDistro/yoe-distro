@@ -24,6 +24,20 @@ if [ -f local.sh ]; then
   . local.sh
 fi
 
+BUILDHOST_DISTRO=`egrep -h ^ID= /etc/*-release | sed 's#^ID=##'`
+
+case $BUILDHOST_DISTRO in
+    arch)
+	NODEJS=node
+	;;
+    ubuntu)
+	NODEJS=nodejs
+	;;
+	*)
+	NODEJS=nodejs
+	;;
+esac
+
 ###############################################################################
 # Machine/Distro setup -- this is the main configuration for the build
 # these variables can be set externally in the shell, or here
@@ -448,7 +462,7 @@ function oe_feed_server()
 {
   cd $OE_BASE
   bitbake package-index
-  node tools/feed-server/app.js
+  $NODEJS tools/feed-server/app.js
   cd -
 }
 
