@@ -304,7 +304,7 @@ _EOF
 
 function oe_partition_sd_3()
 {
-  # create 3 partitions
+  # create 3 partitions for TI OMAP type CPUs
   # taken from a standalone script
   # (c) 2009 Graeme Gregory
   # This script is GPLv3 licensed!
@@ -353,7 +353,7 @@ function oe_partition_sd_3()
 
 function oe_partition_sd()
 {
-  # create 2 partitions
+  # create 2 partitions for TI OMAP type CPUs
   # taken from a standalone script
   # (c) 2009 Graeme Gregory
   # This script is GPLv3 licensed!
@@ -395,18 +395,9 @@ function oe_partition_sd()
   sudo mke2fs -j -L "omap-rootfs" ${DRIVE}2
 }
 
-function oe_install_sd_rootfs_systemd_image
+function oe_partition_sd_imx6()
 {
-  echo "Installing rootfs files ..."
-  if [ ! -e /$MEDIA/omap-rootfs ]; then
-    echo "/$MEDIA/omap-rootfs not found, please insert or partition SD card"
-    return 1
-  fi
-
-  sudo rm -rf /$MEDIA/omap-rootfs/*
-  cd /$MEDIA/omap-rootfs/
-  sudo tar -xzvf ${OE_DEPLOY_DIR}/systemd-image-$MACHINE.tar.gz
-  cd -
+  echo "TODO"
 }
 
 function oe_install_sd_rootfs
@@ -428,20 +419,6 @@ function oe_install_sd_rootfs
   sudo rm -rf /$MEDIA/omap-rootfs/*
   cd /$MEDIA/omap-rootfs/
   sudo tar -xzvf ${OE_DEPLOY_DIR}/$IMAGE_NAME-$MACHINE.tar.gz
-  cd -
-}
-
-function oe_install_sd_rootfs_systemd_gnome_image
-{
-  echo "Installing rootfs files ..."
-  if [ ! -e /$MEDIA/omap-rootfs ]; then
-    echo "/$MEDIA/omap-rootfs not found, please insert or partition SD card"
-    return 1
-  fi
-
-  sudo rm -rf /$MEDIA/omap-rootfs/*
-  cd /$MEDIA/omap-rootfs/
-  sudo tar -xzvf ${OE_DEPLOY_DIR}/systemd-GNOME-image-$MACHINE.tar.gz
   cd -
 }
 
@@ -503,6 +480,20 @@ function oe_console()
   # requires serial->usb device be mapped to /dev/ttyUSB_<machine name>
   # see http://bec-systems.com/site/1004/perisistent-device-names-usb-serial-ports
   screen /dev/ttyUSB_${MACHINE} 115200
+}
+
+function oe_build_all()
+{
+  # build images for all routinely tested platforms
+  MACHINES="beagleboard beaglebone overo wandboard-dual"
+  for m in $MACHINES; do
+    echo "=========================="
+    echo "Building $m ....."
+    export MACHINE=$m 
+    if ! bitbake systemd-image; then 
+      return
+    fi
+  done
 }
 
 ###############################################################################
