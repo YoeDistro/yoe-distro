@@ -4,3 +4,9 @@
 export MACHINE=overo
 export MEDIA=/run/media/$USER
 
+# use the following to set the IP or hostname
+# for the oe_setup_feed_server function
+# if you have a decent DHCP server, then this is often
+# the same as MACHINE
+export MACHINE_IP=$MACHINE
+

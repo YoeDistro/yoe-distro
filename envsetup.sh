@@ -310,7 +310,7 @@ function oe_partition_sd_3()
   # This script is GPLv3 licensed!
 
   if [ ! $1 ]; then
-    echo "Usage: antero_partition_sd /dev/sdX"
+    echo "Usage: oe_partition_sd /dev/sdX"
     echo "Warning, make sure you specify your SD card and not a workstation disk"
     echo
     return 1
@@ -342,6 +342,7 @@ function oe_partition_sd_3()
   } | sudo sfdisk -D -H 255 -S 63 -C $CYLINDERS $DRIVE
 
   sudo umount ${DRIVE}1 2>/dev/null
+  # If you get the message WARNING: Not enough clusters for a 32 bit FAT!, reduce cluster -s2, or -s1
   sudo mkfs.vfat -F32 -s2 -n "omap-boot" ${DRIVE}1
 
   sudo umount ${DRIVE}2 2>/dev/null
@@ -359,7 +360,7 @@ function oe_partition_sd()
   # This script is GPLv3 licensed!
 
   if [ ! $1 ]; then
-    echo "Usage: antero_partition_sd /dev/sdX"
+    echo "Usage: oe_partition_sd /dev/sdX"
     echo "Warning, make sure you specify your SD card and not a workstation disk"
     echo
     return 1
@@ -389,6 +390,7 @@ function oe_partition_sd()
   } | sudo sfdisk -D -H 255 -S 63 -C $CYLINDERS $DRIVE
 
   sudo umount ${DRIVE}1 2>/dev/null
+  # If you get the message WARNING: Not enough clusters for a 32 bit FAT!, reduce cluster -s2, or -s1
   sudo mkfs.vfat -F32 -s2 -n "omap-boot" ${DRIVE}1
 
   sudo umount ${DRIVE}2 2>/dev/null
