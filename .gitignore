@@ -24,3 +24,5 @@ bitbake.lock
 local.sh
 cache
 buildhistory
+tools/python
+tools/python-config
