@@ -9,8 +9,8 @@ Example
 This following is example of building and installing a linux system from
 scratch on the BeagleBoard.
 
-* git clone git://github.com/cbrake/oe-build-core.git
-* cd oe-build-core
+* git clone git://github.com/cbrake/oe-build.git
+* cd oe-build
 * . envsetup.sh
 * oe_setup
 * bitbake systemd-image
