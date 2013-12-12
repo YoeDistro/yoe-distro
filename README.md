@@ -77,9 +77,9 @@ to see them.
 
 * build: temporary directory where build actually takes place
 * conf: configuration files for the build
-* sources: various sources used for the build.  Most entries
-in this directory are git submodules, but the downloads
-directory contains files that are downloaded by various
+* sources: various sources used for the build.  The entries
+in this directory are git submodules.
+* downloads: contains files that are downloaded by various
 recipes during builds.
 * tools: utility scripts
 * localconfig.sh: file created by envsetup.sh that contains
