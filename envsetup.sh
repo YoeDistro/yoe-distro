@@ -343,10 +343,10 @@ function oe_partition_sd_3()
 
   sudo umount ${DRIVE}1 2>/dev/null
   # If you get the message WARNING: Not enough clusters for a 32 bit FAT!, reduce cluster -s2, or -s1
-  sudo mkfs.vfat -F32 -s2 -n "omap-boot" ${DRIVE}1
+  sudo mkfs.vfat -F32 -s2 -n "boot" ${DRIVE}1
 
   sudo umount ${DRIVE}2 2>/dev/null
-  sudo mke2fs -j -L "omap-rootfs" ${DRIVE}2
+  sudo mke2fs -j -L "rootfs" ${DRIVE}2
 
   sudo umount ${DRIVE}3 2>/dev/null
   sudo mke2fs -j -L "omap-data" ${DRIVE}3
@@ -394,7 +394,7 @@ function oe_partition_sd()
   sudo mkfs.vfat -F32 -s2 -n "omap-boot" ${DRIVE}1
 
   sudo umount ${DRIVE}2 2>/dev/null
-  sudo mke2fs -j -L "omap-rootfs" ${DRIVE}2
+  sudo mke2fs -j -L "rootfs" ${DRIVE}2
 }
 
 function oe_partition_sd_imx6()
@@ -413,13 +413,13 @@ function oe_install_sd_rootfs
   fi
   
   echo "Installing rootfs files for $IMAGE_NAME ..."
-  if [ ! -e /$MEDIA/omap-rootfs ]; then
-    echo "/$MEDIA/omap-rootfs not found, please insert or partition SD card"
+  if [ ! -e /$MEDIA/rootfs ]; then
+    echo "/$MEDIA/rootfs not found, please insert or partition SD card"
     return 1
   fi
 
-  sudo rm -rf /$MEDIA/omap-rootfs/*
-  cd /$MEDIA/omap-rootfs/
+  sudo rm -rf /$MEDIA/rootfs/*
+  cd /$MEDIA/rootfs/
   sudo tar -xzvf ${OE_DEPLOY_DIR}/$IMAGE_NAME-$MACHINE.tar.gz
   cd -
 }
