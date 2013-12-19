@@ -89,7 +89,7 @@ OE_BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # incremement this to force recreation of config files.  This should be done
 # whenever the DISTRO, or anything major changes
-BASE_VERSION=9
+BASE_VERSION=10
 OE_ENV_FILE=localconfig.sh
 
 # Workaround for differences between yocto bitbake and vanilla bitbake
