@@ -85,7 +85,10 @@ PROXYHOST=""
 ###############################################################################
 # OE_BASE    - The root directory for all OE sources and development.
 ###############################################################################
-OE_BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+OE_BASE="`dirname $BASH_SOURCE`"
+OE_BASE=`readlink -f "$OE_BASE"`
+
+cd $OE_BASE
 
 # incremement this to force recreation of config files.  This should be done
 # whenever the DISTRO, or anything major changes
