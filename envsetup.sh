@@ -49,11 +49,8 @@ if [ -z "${MACHINE}" ]; then
 fi
 
 case $MACHINE in 
-  beagleboard|beaglebone|overo)
-    export MACHINE_ARCH=cortexa8hf-vfp-neon
-    ;;
-  wandboard-dual)
-    export MACHINE_ARCH=armv7a-vfp-neon
+  beagleboard|beaglebone|overo|wandboard-dual)
+    export MACHINE_ARCH=armv7ahf-vfp-neon
     ;;
   *)
     echo "Note: Don't know how to set MACHINE_ARCH"
