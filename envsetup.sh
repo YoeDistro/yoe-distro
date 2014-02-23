@@ -24,7 +24,7 @@ if [ -f local.sh ]; then
   . local.sh
 fi
 
-BUILDHOST_DISTRO=`egrep -h ^ID= /etc/*-release | sed 's#^ID=##'`
+BUILDHOST_DISTRO=`egrep -h '^ID=' /etc/*-release | sed 's#^ID=##'`
 
 case $BUILDHOST_DISTRO in
     arch)
@@ -82,8 +82,7 @@ PROXYHOST=""
 ###############################################################################
 # OE_BASE    - The root directory for all OE sources and development.
 ###############################################################################
-OE_BASE="`dirname $BASH_SOURCE`"
-OE_BASE=`readlink -f "$OE_BASE"`
+OE_BASE=$(/bin/readlink -f `dirname ${0}`)
 
 cd $OE_BASE
 
@@ -95,7 +94,7 @@ OE_ENV_FILE=localconfig.sh
 # Workaround for differences between yocto bitbake and vanilla bitbake
 export BBFETCH2=True
 
-export DISTRO_DIRNAME=`echo $DISTRO | sed s#[.-]#_#g`
+export DISTRO_DIRNAME=`echo $DISTRO | sed 's#[.-]#_#g'`
 export OE_DEPLOY_DIR=${OE_BASE}/build/tmp-${DISTRO_DIRNAME}-eglibc/deploy/images/${MACHINE}
 
 #--------------------------------------------------------------------------
