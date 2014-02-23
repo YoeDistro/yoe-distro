@@ -21,7 +21,7 @@
 
 if [ -f local.sh ]; then
   echo "reading local settings"
-  . local.sh
+  source local.sh
 fi
 
 BUILDHOST_DISTRO=`egrep -h '^ID=' /etc/*-release | sed 's#^ID=##'`
@@ -174,7 +174,7 @@ fi
 #--------------------------------------------------------------------------
 
 if [ -e ${OE_ENV_FILE} ] ; then
-    . ${OE_ENV_FILE}
+    source ${OE_ENV_FILE}
 fi
 
 if [ x"${BASE_VERSION}" != x"${SCRIPTS_BASE_VERSION}" ] ; then
@@ -187,7 +187,7 @@ elif [ x"${DISTRO_DIRNAME}" != x"${SCRIPTS_DISTRO_DIRNAME}" ] ; then
 fi
 
 if [ -e ${OE_ENV_FILE} ] ; then
-    . ${OE_ENV_FILE}
+    source ${OE_ENV_FILE}
 else
 
     #--------------------------------------------------------------------------
