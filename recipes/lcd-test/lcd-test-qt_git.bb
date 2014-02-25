@@ -3,7 +3,7 @@ HOMEPAGE = "https://github.com/cbrake/lcd-test"
 SECTION = "utils"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.MIT;md5=544799d0b492f119fa04641d1b8868ed"
-SRCREV = "bbc73b79dc5e6d26c079c6fe939cf0bc80c976f7"
+SRCREV = "d63387ec78cf8497e37d6d21dce683ee9b9e358a"
 
 SRC_URI = "git://github.com/cbrake/lcd-test.git;branch=master;protocol=git"
 
