@@ -82,7 +82,7 @@ PROXYHOST=""
 ###############################################################################
 # OE_BASE    - The root directory for all OE sources and development.
 ###############################################################################
-OE_BASE=$(/bin/readlink -f `dirname ${0}`)
+OE_BASE=$(/bin/readlink -f `dirname '${0}'`)
 
 cd $OE_BASE
 
