@@ -40,3 +40,6 @@
 [submodule "sources/meta-linaro"]
 	path = sources/meta-linaro
 	url = git://git.linaro.org/openembedded/meta-linaro.git
+[submodule "sources/meta-intel"]
+	path = sources/meta-intel
+	url = git://git.yoctoproject.org/meta-intel
