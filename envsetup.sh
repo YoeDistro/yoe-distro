@@ -48,12 +48,17 @@ if [ -z "${MACHINE}" ]; then
   echo "Setting MACHINE=$MACHINE"
 fi
 
-case $MACHINE in 
+case $MACHINE in
   beagleboard|beaglebone|overo|wandboard-dual)
-    export MACHINE_ARCH=armv7ahf-vfp-neon
+    export MACHINE_ARCH=armv7at2hf-vfp-neon
+    export MACHINE_SUBARCH=armv7ahf-vfp-neon
+    ;;
+  intel-corei7-64)
+    export MACHINE_ARCH=corei7-64
+    export MACHINE_SUBARCH=intel_corei7_64
     ;;
   *)
-    echo "Note: Don't know how to set MACHINE_ARCH"
+    echo "Note: Don't know how to set MACHINE_ARCH and MACHINE_SUBARCH"
 esac
 
 if [ -z "${DISTRO}" ]; then
@@ -95,7 +100,7 @@ OE_ENV_FILE=localconfig.sh
 export BBFETCH2=True
 
 export DISTRO_DIRNAME=`echo $DISTRO | sed 's#[.-]#_#g'`
-export OE_DEPLOY_DIR=${OE_BASE}/build/tmp-${DISTRO_DIRNAME}-eglibc/deploy/images/${MACHINE}
+export OE_DEPLOY_DIR=${OE_BASE}/build/tmp-${DISTRO_DIRNAME}-glibc/deploy/images/${MACHINE}
 
 #--------------------------------------------------------------------------
 # Specify the root directory for your OpenEmbedded development
@@ -123,7 +128,7 @@ export PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}
 # set up soft links to /usr/bin/python2 if it exists
 # this helps if /usr/bin/python is python3
 #--------------------------------------------------------------------------
-if [ -e /usr/bin/python2 ] && ! [ -L tools/python ]; then 
+if [ -e /usr/bin/python2 ] && ! [ -L tools/python ]; then
   echo "linking to python2"
   ln -s /usr/bin/python2 tools/python
 fi
@@ -451,6 +456,7 @@ function oe_setup_feed_server()
   ssh root@$MACHINE_IP "rm /etc/opkg/*feed*"
   ssh root@$MACHINE_IP "echo 'src/gz all http://$HOST_IP:4000/all' > /etc/opkg/base-feed.conf"
   ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_ARCH http://$HOST_IP:4000/$MACHINE_ARCH' >> /etc/opkg/base-feed.conf"
+  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_SUBARCH http://$HOST_IP:4000/$MACHINE_SUBARCH' >> /etc/opkg/base-feed.conf"
   ssh root@$MACHINE_IP "echo 'src/gz $MACHINE http://$HOST_IP:4000/$MACHINE' >> /etc/opkg/base-feed.conf"
 }
 
@@ -490,8 +496,8 @@ function oe_build_all()
   for m in $MACHINES; do
     echo "=========================="
     echo "Building $m ....."
-    export MACHINE=$m 
-    if ! bitbake systemd-image; then 
+    export MACHINE=$m
+    if ! bitbake systemd-image; then
       return
     fi
   done
@@ -504,14 +510,14 @@ function oe_build_all()
 ###############################################################################
 
 BUILD_ARCH=`uname -m`
-CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin/$MACHINE_ARCH-angstrom-linux-gnueabi
-OE_STAGING_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/${BUILD_ARCH}-linux/usr/bin
+CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin/$MACHINE_ARCH-angstrom-linux-gnueabi
+OE_STAGING_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin
 export PATH=$CROSS_COMPILER_PATH:$OE_STAGING_PATH:$PATH
 export ARCH=arm
 export CROSS_COMPILE=arm-angstrom-linux-gnueabi-
 
-export PKG_CONFIG_PATH=${OE_BUILD_TMPDIR}-eglibc/sysroots/cm-x270/usr/lib/pkgconfig
-export PKG_CONFIG_SYSROOT_DIR=${OE_BUILD_TMPDIR}-eglibc/sysroots/cm-x270
+export PKG_CONFIG_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/cm-x270/usr/lib/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR=${OE_BUILD_TMPDIR}-glibc/sysroots/cm-x270
 
 # FIXME, the rest needs finished
 export QMAKESPEC="${TOPDIR}/tmp/sysroots/armv7a-angstrom-linux-gnueabi/usr/share/qt4/mkspecs/linux-gnueabi-oe-g++"
