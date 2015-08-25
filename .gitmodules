@@ -37,9 +37,12 @@
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/meta-qt5/meta-qt5.git
+	branch = jansa/master
 [submodule "sources/meta-linaro"]
 	path = sources/meta-linaro
 	url = git://git.linaro.org/openembedded/meta-linaro.git
+	branch = master
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
+	branch = master
