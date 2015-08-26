@@ -96,6 +96,11 @@ directory specific variables based on the build system location.
 *  git submodule add <git URI> sources/meta-mylayer
 *  add layer to conf/bblayers.conf
 
+### removing a new layer
+
+*  git rm sources/meta-mylayer
+*  remove layer from conf/bblayers.conf
+
 ### customizing settings
 
 conf/local.conf contains settings that are commonly modified such
