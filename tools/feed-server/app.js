@@ -5,8 +5,8 @@ var express = require('express')
 
 var app = express()
 
-app.use('/', express.static(__dirname + '/../../build/tmp-angstrom_next-eglibc/deploy/ipk/'))
-app.use('/', express.directory(__dirname +'/../../build/tmp-angstrom_next-eglibc/deploy/ipk/'))
+app.use('/', express.static(__dirname + '/../../build/tmp-angstrom-glibc/deploy/ipk/'))
+app.use('/', express.directory(__dirname +'/../../build/tmp-angstrom-glibc/deploy/ipk/'))
 
 console.log("feed server started on port 4000")
 app.listen(4000)
