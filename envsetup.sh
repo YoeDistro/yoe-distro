@@ -475,6 +475,9 @@ function oe_partition_sd_mbm()
     DEVICE_SIZE=$(sudo parted -s $DEVICE unit mb print | grep ^Disk | cut -d" " -f 3 | sed -e "s/MB//")
   fi
 
+  BOOT_SIZE=100
+  ROOTFS_SIZE=700
+
   ROOTFS_SIZE=$((DEVICE_SIZE-BOOT_SIZE))
   ROOTFS_START=$((BOOT_SIZE))
   ROOTFS_END=$((ROOTFS_START+ROOTFS_SIZE))
@@ -484,7 +487,8 @@ function oe_partition_sd_mbm()
   echo "ROOTFS_START: $ROOTFS_START"
   echo "ROOTFS_END: $ROOTFS_END"
 
-  BOOT_SIZE=100
+  return
+
   sudo dd if=/dev/zero of=$DEVICE bs=512 count=2 || return 1
   sudo parted -s $DEVICE mklabel msdos || return 1
   sudo parted -s $DEVICE mkpart primary 0% $BOOT_SIZE || return 1
