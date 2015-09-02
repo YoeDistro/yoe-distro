@@ -44,7 +44,7 @@ esac
 ###############################################################################
 
 if [ -z "${MACHINE}" ]; then
-  export MACHINE=beagleboard
+  export MACHINE=beaglebone
   echo "Setting MACHINE=$MACHINE"
 fi
 
