@@ -44,7 +44,7 @@ esac
 ###############################################################################
 
 if [ -z "${MACHINE}" ]; then
-  export MACHINE=beagleboard
+  export MACHINE=beaglebone
   echo "Setting MACHINE=$MACHINE"
 fi
 
@@ -54,7 +54,7 @@ case $MACHINE in
     export MACHINE_SUBARCH=armv7ahf-vfp-neon
     ;;
   intel-corei7-64)
-    export MACHINE_ARCH=corei7-64
+    export MACHINE_ARCH=x86_64
     export MACHINE_SUBARCH=intel_corei7_64
     ;;
   *)
@@ -415,15 +415,26 @@ function oe_install_sd_rootfs
     echo "Example: oe_install_sd_rootfs systemd-image"
     return
   fi
-  
+
+  rf_names="rootfs root ROOT ROOTFS"
+
+  for r in $rf_names; do 
+    if [ -e $MEDIA/$r ]; then
+      ROOTFS=$MEDIA/$r
+      break
+    fi
+  done
+
+  echo "ROOTFS: $ROOTFS"
+
   echo "Installing rootfs files for $IMAGE_NAME ..."
-  if [ ! -e /$MEDIA/rootfs ]; then
-    echo "/$MEDIA/rootfs not found, please insert or partition SD card"
+  if [ ! -e $ROOTFS ]; then
+    echo "rootfs not found, please insert or partition SD card"
     return 1
   fi
 
-  sudo rm -rf /$MEDIA/rootfs/*
-  cd /$MEDIA/rootfs/
+  sudo rm -rf $ROOTFS/*
+  cd $ROOTFS/
   sudo tar -xzvf ${OE_DEPLOY_DIR}/$IMAGE_NAME-$MACHINE.tar.gz
   cd -
 }
@@ -439,6 +450,60 @@ function oe_install_sd_boot
   cp ${OE_DEPLOY_DIR}/MLO /$MEDIA/$OMAPBOOT/MLO
   cp ${OE_DEPLOY_DIR}/u-boot.img /$MEDIA/$OMAPBOOT/
   cp ${OE_DEPLOY_DIR}/uImage-$MACHINE.* /$MEDIA/$OMAPBOOT/uImage
+}
+
+# Minnowboard max functions
+function oe_partition_sd_mbm()
+{
+  if [ ! $1 ]; then
+    echo "Usage: oe_partition_sd /dev/sdX"
+    echo "Warning, make sure you specify your SD card and not a workstation disk"
+    echo
+    return 1
+  fi
+
+  DEVICE=$1
+
+  sudo echo "starting ..." || return 1
+  sudo umount ${DEVICE}1 2>/dev/null
+  sudo umount ${DEVICE}2 2>/dev/null
+  sudo umount ${DEVICE}3 2>/dev/null
+
+  DEVICE_SIZE=$(sudo parted -s $DEVICE unit mb print | grep ^Disk | cut -d" " -f 3 | sed -e "s/MB//")
+  if [ "$DEVICE_SIZE" = "" ] ; then
+    parted -s $DEVICE mklabel msdos || return 1
+    DEVICE_SIZE=$(sudo parted -s $DEVICE unit mb print | grep ^Disk | cut -d" " -f 3 | sed -e "s/MB//")
+  fi
+
+  BOOT_SIZE=100
+  ROOTFS_SIZE=700
+
+  ROOTFS_SIZE=$((DEVICE_SIZE-BOOT_SIZE))
+  ROOTFS_START=$((BOOT_SIZE))
+  ROOTFS_END=$((ROOTFS_START+ROOTFS_SIZE))
+
+  echo "DEVICE_SIZE: $DEVICE_SIZE"
+  echo "ROOTFS_SIZE: $ROOTFS_SIZE"
+  echo "ROOTFS_START: $ROOTFS_START"
+  echo "ROOTFS_END: $ROOTFS_END"
+
+  return
+
+  sudo dd if=/dev/zero of=$DEVICE bs=512 count=2 || return 1
+  sudo parted -s $DEVICE mklabel msdos || return 1
+  sudo parted -s $DEVICE mkpart primary 0% $BOOT_SIZE || return 1
+  sudo parted -s $DEVICE set 1 boot on || return 1
+  sudo parted -s $DEVICE mkpart primary $ROOTFS_START $ROOTFS_END || return 1
+  sudo mkfs.vfat -I ${DEVICE}1 -n "EFI" || return 1
+  sudo mkfs.ext3 -F ${DEVICE}2 -L "ROOT" || return 1
+
+  echo "all done :-)"
+}
+
+function oe_install_sd_boot_mbm()
+{
+  cp ${OE_DEPLOY_DIR}/bzImage /$MEDIA/EFI/vmlinuz.efi
+  echo "vmlinuz.efi root=/dev/mmcblk0p2 ro rootwait quiet console=ttyS0,115200 console=tty0" > /$MEDIA/EFI/startup.nsh
 }
 
 function oe_feed_server()
@@ -511,8 +576,9 @@ function oe_build_all()
 
 BUILD_ARCH=`uname -m`
 CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin/$MACHINE_ARCH-angstrom-linux-gnueabi
-OE_STAGING_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin
-export PATH=$CROSS_COMPILER_PATH:$OE_STAGING_PATH:$PATH
+OE_SYSROOTS_USR_BIN=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin
+OE_SYSROOTS_USR_SBIN=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/sbin
+export PATH=$CROSS_COMPILER_PATH:$OE_SYSROOTS_USR_BIN:$OE_SYSROOTS_USR_SBIN:$PATH
 export ARCH=arm
 export CROSS_COMPILE=arm-angstrom-linux-gnueabi-
 

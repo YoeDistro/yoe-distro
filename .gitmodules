@@ -4,11 +4,11 @@
 	branch = master
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
-	url = git://github.com/openembedded/oe-core.git
+	url = git://github.com/openembedded/openembedded-core.git
 	branch = master
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
-	url = git://github.com/openembedded/meta-oe.git
+	url = git://github.com/openembedded/meta-openembedded.git
 	branch = master
 [submodule "sources/meta-angstrom"]
 	path = sources/meta-angstrom
@@ -37,7 +37,7 @@
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/meta-qt5/meta-qt5.git
-	branch = jansa/master
+	branch = master
 [submodule "sources/meta-linaro"]
 	path = sources/meta-linaro
 	url = git://git.linaro.org/openembedded/meta-linaro.git
