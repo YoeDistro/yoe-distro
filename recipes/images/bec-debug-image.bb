@@ -5,14 +5,13 @@
 # LICENSE_FLAGS_WHITELIST = "non-commercial"
 # see conf/locallocal.conf.sample in BEC build template
 
-require recipes-images/angstrom/systemd-image.bb
-
 #	e2fsprogs \
 #	e2fsprogs-mke2fs \
 #	e2fsprogs-fsck \
 #	e2fsprogs-e2fsck \
 #	e2fsprogs-tune2fs \
-#	
+#
+require recipes-extended/images/core-image-full-cmdline.bb
 
 IMAGE_INSTALL += "\
 	rsync \
@@ -48,10 +47,9 @@ IMAGE_INSTALL += "\
 	cpuburn-neon \
 	sox \
 	strace \
-    ethtool \
-    python \
-    python-pyserial \
+	ethtool \
+	python \
+	python-pyserial \
 	"
 
 export IMAGE_BASENAME = "bec-debug-image"
-
