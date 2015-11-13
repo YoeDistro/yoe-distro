@@ -10,10 +10,6 @@
 	path = sources/meta-openembedded
 	url = git://github.com/openembedded/meta-openembedded.git
 	branch = master
-[submodule "sources/meta-angstrom"]
-	path = sources/meta-angstrom
-	url = git://github.com/Angstrom-distribution/meta-angstrom.git
-	branch = master
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
 	url = git://github.com/cbrake/meta-bec.git
@@ -37,10 +33,6 @@
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/meta-qt5/meta-qt5.git
-	branch = master
-[submodule "sources/meta-linaro"]
-	path = sources/meta-linaro
-	url = git://git.linaro.org/openembedded/meta-linaro.git
 	branch = master
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
