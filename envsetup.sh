@@ -61,11 +61,6 @@ case $MACHINE in
     echo "Note: Don't know how to set MACHINE_ARCH and MACHINE_SUBARCH"
 esac
 
-if [ -z "${DISTRO}" ]; then
-  export DISTRO=angstrom
-  echo "Setting DISTRO=$DISTRO"
-fi
-
 if [ -z "${MEDIA}" ]; then
   # set the location of the automounted location for removable storage
   # newer gnome systems
@@ -100,13 +95,13 @@ OE_ENV_FILE=localconfig.sh
 export BBFETCH2=True
 
 export DISTRO_DIRNAME=`echo $DISTRO | sed 's#[.-]#_#g'`
-export OE_DEPLOY_DIR=${OE_BASE}/build/tmp-${DISTRO_DIRNAME}-glibc/deploy/images/${MACHINE}
+export OE_DEPLOY_DIR=${OE_BASE}/build/tmp/deploy/images/${MACHINE}
 
 #--------------------------------------------------------------------------
 # Specify the root directory for your OpenEmbedded development
 #--------------------------------------------------------------------------
 OE_BUILD_DIR=${OE_BASE}
-OE_BUILD_TMPDIR="${OE_BUILD_DIR}/build/tmp-${DISTRO_DIRNAME}"
+OE_BUILD_TMPDIR="${OE_BUILD_DIR}/build/tmp"
 OE_SOURCE_DIR=${OE_BASE}/sources
 
 export BUILDDIR=${OE_BUILD_DIR}
@@ -224,7 +219,7 @@ SSTATE_DIR = "${OE_BUILD_DIR}/build/sstate-cache"
 # Which files do we want to parse:
 BBFILES ?= "${OE_SOURCE_DIR}/openembedded-core/meta/recipes-*/*/*.bb"
 
-TMPDIR = "${OE_BUILD_TMPDIR}"
+TMPDIR = "${OE_BUILD_DIR}/build/tmp"
 
 # Go through the Firewall
 #HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
@@ -568,6 +563,11 @@ function oe_build_all()
   done
 }
 
+function oe_clean_sstate()
+{
+  $OE_BASE/sources/openembedded-core/scripts/sstate-cache-management.sh -d --cache-dir=$OE_BASE/build/sstate-cache
+}
+
 ###############################################################################
 # setup for cross compiling programs manually
 # the following variables are needed to cross compile kernel/u-boot,
@@ -575,24 +575,24 @@ function oe_build_all()
 ###############################################################################
 
 BUILD_ARCH=`uname -m`
-CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin/$MACHINE_ARCH-angstrom-linux-gnueabi
+CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin/$MACHINE_ARCH-bec-linux-gnueabi
 OE_SYSROOTS_USR_BIN=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin
 OE_SYSROOTS_USR_SBIN=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/sbin
 export PATH=$CROSS_COMPILER_PATH:$OE_SYSROOTS_USR_BIN:$OE_SYSROOTS_USR_SBIN:$PATH
 export ARCH=arm
-export CROSS_COMPILE=arm-angstrom-linux-gnueabi-
+export CROSS_COMPILE=arm-bec-linux-gnueabi-
 
 export PKG_CONFIG_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/cm-x270/usr/lib/pkgconfig
 export PKG_CONFIG_SYSROOT_DIR=${OE_BUILD_TMPDIR}-glibc/sysroots/cm-x270
 
 # FIXME, the rest needs finished
-export QMAKESPEC="${TOPDIR}/tmp/sysroots/armv7a-angstrom-linux-gnueabi/usr/share/qt4/mkspecs/linux-gnueabi-oe-g++"
+export QMAKESPEC="${TOPDIR}/tmp/sysroots/armv7a-bec-linux-gnueabi/usr/share/qt4/mkspecs/linux-gnueabi-bec-g++"
 
-export OE_QMAKE_CC=arm-angstrom-linux-gnueabi-gcc
-export OE_QMAKE_CXX=arm-angstrom-linux-gnueabi-g++
-export OE_QMAKE_LINK=arm-angstrom-linux-gnueabi-g++
-export OE_QMAKE_LIBDIR_QT="${TOPDIR}/tmp/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib"
-export OE_QMAKE_INCDIR_QT="${TOPDIR}/tmp/sysroots/armv7a-angstrom-linux-gnueabi/usr/include/qt4"
+export OE_QMAKE_CC=arm-bec-linux-gnueabi-gcc
+export OE_QMAKE_CXX=arm-bec-linux-gnueabi-g++
+export OE_QMAKE_LINK=arm-bec-linux-gnueabi-g++
+export OE_QMAKE_LIBDIR_QT="${TOPDIR}/tmp/sysroots/armv7a-bec-linux-gnueabi/usr/lib"
+export OE_QMAKE_INCDIR_QT="${TOPDIR}/tmp/sysroots/armv7a-bec-linux-gnueabi/usr/include/qt4"
 export OE_QMAKE_MOC="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/moc4"
 export OE_QMAKE_UIC="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/uic4"
 export OE_QMAKE_UIC3="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/uic34"
