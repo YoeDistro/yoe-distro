@@ -1,5 +1,5 @@
-BEC OpenEmbedded build template
-===============================
+BEC OpenEmbedded Distribution template
+======================================
 
 Build system based on oe-core, OpenEmbedded, and Angstrom.
 
@@ -32,7 +32,7 @@ has the following goals:
 1. simplicity: uses well understood things like bash and
    git submodules.
 1. robustness: Git submodules are
-   a robust solution for production environments, and 
+   a robust solution for production environments, and
    error handling good.  Git submodules are also very good at making
    sure you are building exactly what was checked in, because it locks every
    submodule down to a specific version, which is generally what you want for a production
@@ -64,7 +64,7 @@ Using
 
 ### envsetup.sh
 
-This is where all the magic happens.  In general, this build system 
+This is where all the magic happens.  In general, this build system
 must be run in a bash shell.  To set up the environment, source the following file:
 
 . envsetup.sh
@@ -125,7 +125,7 @@ during development (gdb, screen, strace, iperf, etc).
 ### updating the submodules to the latest
 
 Assuming you have a recent version of git, you can make use of the branch
-values specified in .gitmodules to update each submodule branch to the 
+values specified in .gitmodules to update each submodule branch to the
 HEAD of the specified branch:
 
 git submodule update --remote
