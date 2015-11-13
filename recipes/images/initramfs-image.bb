@@ -16,16 +16,16 @@ IMAGE_LINGUAS = ""
 LICENSE = "MIT"
 
 IMAGE_INSTALL = "\
-    base-files \
-    base-passwd \
-    busybox \
-    mtd-utils \
-    e2fsprogs \
-    e2fsprogs-mke2fs \
-    util-linux-fsck \
-    e2fsprogs-e2fsck \
-    e2fsprogs-tune2fs \
-    psplash \
+	base-files \
+	base-passwd \
+	busybox \
+	mtd-utils \
+	e2fsprogs \
+	e2fsprogs-mke2fs \
+	util-linux-fsck \
+	e2fsprogs-e2fsck \
+	e2fsprogs-tune2fs \
+	psplash \
     "
 
 IMAGE_FSTYPES = "${INITRAMFS_FSTYPES}"
