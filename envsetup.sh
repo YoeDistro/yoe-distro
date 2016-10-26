@@ -568,6 +568,23 @@ function oe_clean_sstate()
   $OE_BASE/sources/openembedded-core/scripts/sstate-cache-management.sh -d --cache-dir=$OE_BASE/build/sstate-cache
 }
 
+# Docker integration
+# set DOCKER_REPO to something like cbrake/oe-build
+
+function dkr()
+{
+  docker run --rm -it -v $(pwd):$(pwd) -v ~/.ssh:/home/build/.ssh -v ~/.gitconfig:/home/build/.gitconfig ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $1 $2 $3 $4 $5 $6 $7 $8"
+}
+
+function bitbake()
+{
+  if [ -z $DOCKER_REPO ]; then
+    ${OE_BASE}/sources/bitbake/bin/bitbake $@
+  else
+    dkr "${OE_BASE}/sources/bitbake/bin/bitbake $@"
+  fi
+}
+
 ###############################################################################
 # setup for cross compiling programs manually
 # the following variables are needed to cross compile kernel/u-boot,

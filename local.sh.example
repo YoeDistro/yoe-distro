@@ -1,12 +1,16 @@
 # file to store local env variables
 # copy to local.sh and modify
 
-export MACHINE=overo
-export MEDIA=/run/media/$USER
+#export MACHINE=overo
+#export MEDIA=/run/media/$USER
 
 # use the following to set the IP or hostname
 # for the oe_setup_feed_server function
 # if you have a decent DHCP server, then this is often
 # the same as MACHINE
-export MACHINE_IP=$MACHINE
+#export MACHINE_IP=$MACHINE
+
+# configure docker container to run bitbake in
+#export DOCKER_REPO=cbrake/oe-build
+
 
