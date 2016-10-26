@@ -22,13 +22,13 @@
 	path = sources/meta-browser
 	url = git://github.com/OSSystems/meta-browser.git
 	branch = master
-[submodule "sources/meta-fsl-arm"]
-	path = sources/meta-fsl-arm
-	url = git://git.yoctoproject.org/meta-fsl-arm
+[submodule "sources/meta-freescale"]
+	path = sources/meta-freescale
+	url = git://git.yoctoproject.org/meta-freescale
 	branch = master
-[submodule "sources/meta-fsl-arm-extra"]
-	path = sources/meta-fsl-arm-extra
-	url = git://github.com/Freescale/meta-fsl-arm-extra.git
+[submodule "sources/meta-freescale-3rdparty"]
+	path = sources/meta-freescale-3rdparty
+	url = git://github.com/Freescale/meta-freescale-3rdparty.git
 	branch = master
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
