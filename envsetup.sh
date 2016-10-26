@@ -570,6 +570,9 @@ function oe_clean_sstate()
 
 # Docker integration
 # set DOCKER_REPO to something like cbrake/oe-build
+# Note, set DOCKER_REPO outside of envsetup.sh, otherwise
+# it will get set in container, which is not what you want.
+# local.sh is a good place to set DOCKER_REPO
 
 function dkr()
 {
