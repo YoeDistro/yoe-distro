@@ -38,3 +38,6 @@
 	path = sources/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
 	branch = master
+[submodule "sources/meta-qt4"]
+	path = sources/meta-qt4
+	url = git://git.yoctoproject.org/meta-qt4
