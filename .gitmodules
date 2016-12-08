@@ -1,15 +1,15 @@
 [submodule "sources/bitbake"]
 	path = sources/bitbake
 	url = git://github.com/openembedded/bitbake.git
-	branch = master
+	branch = 1.32
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = git://github.com/openembedded/openembedded-core.git
-	branch = master
+	branch = morty
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = git://github.com/openembedded/meta-openembedded.git
-	branch = master
+	branch = morty
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
 	url = git://github.com/cbrake/meta-bec.git
@@ -17,7 +17,7 @@
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = git://git.yoctoproject.org/meta-ti
-	branch = master
+	branch = morty
 [submodule "sources/meta-browser"]
 	path = sources/meta-browser
 	url = git://github.com/OSSystems/meta-browser.git
@@ -37,7 +37,7 @@
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
-	branch = master
+	branch = morty
 [submodule "sources/meta-qt4"]
 	path = sources/meta-qt4
 	url = git://git.yoctoproject.org/meta-qt4
