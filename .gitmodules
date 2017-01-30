@@ -41,4 +41,4 @@
 [submodule "sources/meta-variscite-mx6ul-mx7"]
 	path = sources/meta-variscite-mx6ul-mx7
 	url = git://github.com/kraj/meta-variscite-mx6ul-mx7
-	branch = imx_4.1.15_ga-var01
+	branch = kraj/imx_4.1.15_ga-var01
