@@ -49,7 +49,7 @@ if [ -z "${MACHINE}" ]; then
 fi
 
 case $MACHINE in
-  beagleboard|beaglebone|overo|wandboard-dual)
+  beagleboard|beaglebone|overo|wandboard-dual|imx6ul-var-dart)
     export MACHINE_ARCH=armv7at2hf-vfp-neon
     export MACHINE_SUBARCH=armv7ahf-vfp-neon
     ;;
@@ -552,7 +552,7 @@ function oe_console()
 function oe_build_all()
 {
   # build images for all routinely tested platforms
-  MACHINES="beagleboard beaglebone overo wandboard-dual"
+  MACHINES="beagleboard beaglebone overo wandboard-dual imx6ul-var-dart"
   for m in $MACHINES; do
     echo "=========================="
     echo "Building $m ....."
