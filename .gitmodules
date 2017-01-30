@@ -38,6 +38,7 @@
 	path = sources/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
 	branch = morty
-[submodule "sources/meta-qt4"]
-	path = sources/meta-qt4
-	url = git://git.yoctoproject.org/meta-qt4
+[submodule "sources/meta-variscite-mx6ul-mx7"]
+	path = sources/meta-variscite-mx6ul-mx7
+	url = git://github.com/kraj/meta-variscite-mx6ul-mx7
+	branch = imx_4.1.15_ga-var01
