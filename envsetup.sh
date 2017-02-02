@@ -561,7 +561,12 @@ function oe_clean_sstate()
 
 function dkr()
 {
-  docker run --rm -it -v $(pwd):$(pwd) -v ~/.ssh:/home/build/.ssh -v ~/.gitconfig:/home/build/.gitconfig ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $1 $2 $3 $4 $5 $6 $7 $8"
+  docker run --rm -it  \
+    -v $(pwd):$(pwd) \
+    -v ~/.ssh:/home/build/.ssh \
+    -v ~/.gitconfig:/home/build/.gitconfig \
+    -e MACHINE=$MACHINE \
+    ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $1 $2 $3 $4 $5 $6 $7 $8"
 }
 
 function bitbake()
