@@ -5,11 +5,11 @@
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = git://github.com/openembedded/openembedded-core.git
-	branch = morty
+	branch = master
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = git://github.com/openembedded/meta-openembedded.git
-	branch = morty
+	branch = master
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
 	url = git://github.com/cbrake/meta-bec.git
@@ -17,27 +17,27 @@
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = git://git.yoctoproject.org/meta-ti
-	branch = morty
+	branch = master
 [submodule "sources/meta-browser"]
 	path = sources/meta-browser
 	url = git://github.com/OSSystems/meta-browser.git
-	branch = morty
+	branch = master
 [submodule "sources/meta-freescale"]
 	path = sources/meta-freescale
 	url = git://git.yoctoproject.org/meta-freescale
-	branch = morty
+	branch = master
 [submodule "sources/meta-freescale-3rdparty"]
 	path = sources/meta-freescale-3rdparty
 	url = git://github.com/Freescale/meta-freescale-3rdparty.git
-	branch = morty
+	branch = master
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/meta-qt5/meta-qt5.git
-	branch = morty
+	branch = master
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
-	branch = morty
+	branch = master
 [submodule "sources/meta-variscite-mx6ul-mx7"]
 	path = sources/meta-variscite-mx6ul-mx7
 	url = git://github.com/kraj/meta-variscite-mx6ul-mx7
