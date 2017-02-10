@@ -1,7 +1,7 @@
 [submodule "sources/bitbake"]
 	path = sources/bitbake
 	url = git://github.com/openembedded/bitbake.git
-	branch = 1.32
+	branch = master
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = git://github.com/openembedded/openembedded-core.git
@@ -38,7 +38,11 @@
 	path = sources/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
 	branch = master
-[submodule "sources/meta-variscite-mx6ul-mx7"]
-	path = sources/meta-variscite-mx6ul-mx7
-	url = git://github.com/kraj/meta-variscite-mx6ul-mx7
-	branch = kraj/imx_4.1.15_ga-var01
+[submodule "sources/meta-variscite-imx"]
+	path = sources/meta-variscite-imx
+	url = git://github.com/kraj/meta-variscite-imx.git
+	branch = kraj/Krogoth-imx-4.1.15-var01
+[submodule "sources/meta-freescale-distro"]
+	path = sources/meta-freescale-distro
+	url = git://github.com/Freescale/meta-freescale-distro.git
+	branch = master
