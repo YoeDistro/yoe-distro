@@ -561,12 +561,19 @@ function oe_clean_sstate()
 
 function dkr()
 {
+  CMD=$1
+
+  if [ ! $CMD ]; then
+    echo "setting dkr action to shell"
+    CMD=/bin/bash
+  fi
+
   docker run --rm -it  \
     -v $(pwd):$(pwd) \
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
     -e MACHINE=$MACHINE \
-    ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $1 $2 $3 $4 $5 $6 $7 $8"
+    ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $CMD $2 $3 $4 $5 $6 $7 $8"
 }
 
 function bitbake()
