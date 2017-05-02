@@ -53,6 +53,14 @@ case $MACHINE in
     export MACHINE_ARCH=armv7at2hf-vfp-neon
     export MACHINE_SUBARCH=armv7ahf-vfp-neon
     ;;
+  raspberrypi3|raspberrypi2)
+    export MACHINE_ARCH=armv7vet2hf-neon-vfpv4
+    export MACHINE_SUBARCH=armv7vet2hf-neon-vfpv4
+    ;;
+  dragonboard-410c|raspberrypi3-64)
+    export MACHINE_ARCH=aarch64
+    export MACHINE_SUBARCH=aarch64
+    ;;
   intel-corei7-64)
     export MACHINE_ARCH=x86_64
     export MACHINE_SUBARCH=intel_corei7_64

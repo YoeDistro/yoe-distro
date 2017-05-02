@@ -46,3 +46,12 @@
 	path = sources/meta-freescale-distro
 	url = git://github.com/Freescale/meta-freescale-distro.git
 	branch = master
+[submodule "sources/meta-raspberrypi"]
+	path = sources/meta-raspberrypi
+	url = git://github.com/kraj/meta-raspberrypi
+[submodule "sources/meta-96boards"]
+	path = sources/meta-96boards
+	url = git://github.com/kraj/meta-96boards
+[submodule "sources/meta-qcom"]
+	path = sources/meta-qcom
+	url = git://github.com/kraj/meta-qcom
