@@ -126,6 +126,21 @@ export PATH=${OE_BASE}/tools:${PATH}
 # export PATH=`echo $PATH_ | awk -F: '{for (i=1;i<=NF;i++) { if ( !x[$i]++ ) printf("%s:",$i); }}'`
 export PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}}}'<<<$PATH`
 
+
+#--------------------------------------------------------------------------
+# set up soft links to /usr/bin/python2 if it exists
+# this helps if /usr/bin/python is python3
+#--------------------------------------------------------------------------
+if [ -e /usr/bin/python2 ] && ! [ -L tools/python ]; then
+  echo "linking to python2"
+  ln -s /usr/bin/python2 tools/python
+fi
+
+if [ -e /usr/bin/python2-config ] && ! [ -L tools/python-config ]; then
+  echo "linking to python2-config"
+  ln -s /usr/bin/python2-config tools/python-config
+fi
+
 #--------------------------------------------------------------------------
 # Make sure Bitbake doesn't filter out the following variables from our
 # environment.
