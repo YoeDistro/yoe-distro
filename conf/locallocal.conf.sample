@@ -4,6 +4,9 @@
 # required for Freescale stuff to build
 ACCEPT_FSL_EULA = "1"
 
+# required for Qualcomm stuff to build
+ACCEPT_EULA = "1"
+
 # required to build netperf
 LICENSE_FLAGS_WHITELIST = "non-commercial"
 

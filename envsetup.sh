@@ -53,6 +53,14 @@ case $MACHINE in
     export MACHINE_ARCH=armv7at2hf-vfp-neon
     export MACHINE_SUBARCH=armv7ahf-vfp-neon
     ;;
+  raspberrypi3|raspberrypi2)
+    export MACHINE_ARCH=armv7vet2hf-neon-vfpv4
+    export MACHINE_SUBARCH=armv7vet2hf-neon-vfpv4
+    ;;
+  dragonboard-410c|raspberrypi3-64)
+    export MACHINE_ARCH=aarch64
+    export MACHINE_SUBARCH=aarch64
+    ;;
   intel-corei7-64)
     export MACHINE_ARCH=x86_64
     export MACHINE_SUBARCH=intel_corei7_64
@@ -117,6 +125,21 @@ export PATH=${OE_BASE}/tools:${PATH}
 # remove duplicate entries from path
 # export PATH=`echo $PATH_ | awk -F: '{for (i=1;i<=NF;i++) { if ( !x[$i]++ ) printf("%s:",$i); }}'`
 export PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}}}'<<<$PATH`
+
+
+#--------------------------------------------------------------------------
+# set up soft links to /usr/bin/python2 if it exists
+# this helps if /usr/bin/python is python3
+#--------------------------------------------------------------------------
+if [ -e /usr/bin/python2 ] && ! [ -L tools/python ]; then
+  echo "linking to python2"
+  ln -s /usr/bin/python2 tools/python
+fi
+
+if [ -e /usr/bin/python2-config ] && ! [ -L tools/python-config ]; then
+  echo "linking to python2-config"
+  ln -s /usr/bin/python2-config tools/python-config
+fi
 
 #--------------------------------------------------------------------------
 # Make sure Bitbake doesn't filter out the following variables from our
