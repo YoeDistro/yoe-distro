@@ -38,10 +38,6 @@
 	path = sources/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
 	branch = master
-[submodule "sources/meta-variscite-imx"]
-	path = sources/meta-variscite-imx
-	url = git://github.com/kraj/meta-variscite-imx.git
-	branch = kraj/Krogoth-imx-4.1.15-var01
 [submodule "sources/meta-freescale-distro"]
 	path = sources/meta-freescale-distro
 	url = git://github.com/Freescale/meta-freescale-distro.git
@@ -55,3 +51,7 @@
 [submodule "sources/meta-qcom"]
 	path = sources/meta-qcom
 	url = git://github.com/kraj/meta-qcom
+[submodule "sources/meta-variscite-fslc"]
+	path = sources/meta-variscite-fslc
+	url = git://github.com/varigit/meta-variscite-fslc.git
+	branch = morty
