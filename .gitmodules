@@ -45,13 +45,16 @@
 [submodule "sources/meta-raspberrypi"]
 	path = sources/meta-raspberrypi
 	url = git://github.com/kraj/meta-raspberrypi
+	branch = master
 [submodule "sources/meta-96boards"]
 	path = sources/meta-96boards
 	url = git://github.com/kraj/meta-96boards
+	branch = master
 [submodule "sources/meta-qcom"]
 	path = sources/meta-qcom
 	url = git://github.com/kraj/meta-qcom
+	branch = master
 [submodule "sources/meta-variscite-fslc"]
 	path = sources/meta-variscite-fslc
-	url = git://github.com/varigit/meta-variscite-fslc.git
+	url = git://github.com/kraj/meta-variscite-fslc.git
 	branch = morty
