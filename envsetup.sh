@@ -26,18 +26,6 @@ fi
 
 BUILDHOST_DISTRO=`egrep -h '^ID=' /etc/*-release | sed 's#^ID=##'`
 
-case $BUILDHOST_DISTRO in
-    arch)
-	NODEJS=node
-	;;
-    ubuntu)
-	NODEJS=nodejs
-	;;
-	*)
-	NODEJS=nodejs
-	;;
-esac
-
 ###############################################################################
 # Machine/Distro setup -- this is the main configuration for the build
 # these variables can be set externally in the shell, or here
@@ -511,10 +499,12 @@ function oe_install_sd_boot_mbm()
 
 function oe_feed_server()
 {
+  SAVEDPWD=$PWD
   cd $OE_BASE
   bitbake package-index
-  $NODEJS tools/feed-server/app.js
-  cd -
+  cd build/tmp/deploy/ipk
+  python3 -m http.server 4000
+  cd $SAVEDPWD
 }
 
 function oe_setup_feed_server()
