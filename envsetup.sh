@@ -37,9 +37,13 @@ if [ -z "${MACHINE}" ]; then
 fi
 
 case $MACHINE in
-  beagleboard|beaglebone|overo|wandboard-dual|imx6ul-var-dart)
+  beagleboard|beaglebone|overo|wandboard-dual)
     export MACHINE_ARCH=armv7at2hf-vfp-neon
     export MACHINE_SUBARCH=armv7ahf-vfp-neon
+    ;;
+  imx6ul-var-dart)
+    export MACHINE_ARCH=cortexa7t2hf-neon
+    export MACHINE_SUBARCH=cortexa7t2hf-neon-mx6ul
     ;;
   raspberrypi3|raspberrypi2)
     export MACHINE_ARCH=armv7vet2hf-neon-vfpv4
@@ -511,11 +515,12 @@ function oe_setup_feed_server()
 {
   # set MACHINE_IP in local.sh
   HOST_IP=`hostname -i | tr -d ' '`
+  CANONICAL_MACHINE=`echo "$MACHINE" | tr - _`
   ssh root@$MACHINE_IP "rm /etc/opkg/*feed*"
   ssh root@$MACHINE_IP "echo 'src/gz all http://$HOST_IP:4000/all' > /etc/opkg/base-feed.conf"
   ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_ARCH http://$HOST_IP:4000/$MACHINE_ARCH' >> /etc/opkg/base-feed.conf"
   ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_SUBARCH http://$HOST_IP:4000/$MACHINE_SUBARCH' >> /etc/opkg/base-feed.conf"
-  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE http://$HOST_IP:4000/$MACHINE' >> /etc/opkg/base-feed.conf"
+  ssh root@$MACHINE_IP "echo 'src/gz $CANONICAL_MACHINE http://$HOST_IP:4000/$CANONICAL_MACHINE' >> /etc/opkg/base-feed.conf"
 }
 
 function oe_search_file()
