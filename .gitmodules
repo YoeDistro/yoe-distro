@@ -5,11 +5,11 @@
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = git://github.com/kraj/openembedded-core.git
-	branch = kraj/master
+	branch = master
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = git://github.com/kraj/meta-openembedded.git
-	branch = kraj/master
+	branch = master
 [submodule "sources/meta-bec"]
 	path = sources/meta-bec
 	url = git://github.com/cbrake/meta-bec.git
@@ -45,7 +45,7 @@
 [submodule "sources/meta-raspberrypi"]
 	path = sources/meta-raspberrypi
 	url = git://github.com/kraj/meta-raspberrypi
-	branch = kraj/master
+	branch = master
 [submodule "sources/meta-96boards"]
 	path = sources/meta-96boards
 	url = git://github.com/kraj/meta-96boards
