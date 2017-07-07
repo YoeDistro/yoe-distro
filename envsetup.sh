@@ -32,8 +32,8 @@ BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/*-release | sed 's#^ID=##')
 ###############################################################################
 
 if [ -z "${MACHINE}" ]; then
-  export MACHINE=beaglebone
-  echo "Setting MACHINE=$MACHINE"
+  echo "MACHINE must be set before sourcing this script"
+  return
 fi
 
 case $MACHINE in
@@ -562,34 +562,18 @@ function bitbake() {
 }
 
 ###############################################################################
-# setup for cross compiling programs manually
-# the following variables are needed to cross compile kernel/u-boot,
-# most applications, Qt apps, etc.
+# Setup for cross compiling kernel, u-boot, and simple programs outside of OE.
+# For more complex applications, you are much better off generating a SDK.
+#
+# Note, for this to work, you must run: bitbake build-sysroots
+#
 ###############################################################################
 
 BUILD_ARCH=$(uname -m)
-CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin/$MACHINE_ARCH-bec-linux-gnueabi
-OE_SYSROOTS_USR_BIN=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/bin
-OE_SYSROOTS_USR_SBIN=${OE_BUILD_TMPDIR}-glibc/sysroots/${BUILD_ARCH}-linux/usr/sbin
+CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}/sysroots/${BUILD_ARCH}/usr/bin/arm-bec-linux-gnueabi
+OE_SYSROOTS_USR_BIN=${OE_BUILD_TMPDIR}/sysroots/${BUILD_ARCH}/usr/bin
+OE_SYSROOTS_USR_SBIN=${OE_BUILD_TMPDIR}/sysroots/${BUILD_ARCH}/usr/sbin
+
 export PATH=$CROSS_COMPILER_PATH:$OE_SYSROOTS_USR_BIN:$OE_SYSROOTS_USR_SBIN:$PATH
 export ARCH=arm
 export CROSS_COMPILE=arm-bec-linux-gnueabi-
-
-export PKG_CONFIG_PATH=${OE_BUILD_TMPDIR}-glibc/sysroots/cm-x270/usr/lib/pkgconfig
-export PKG_CONFIG_SYSROOT_DIR=${OE_BUILD_TMPDIR}-glibc/sysroots/cm-x270
-
-# FIXME, the rest needs finished
-export QMAKESPEC="${TOPDIR}/tmp/sysroots/armv7a-bec-linux-gnueabi/usr/share/qt4/mkspecs/linux-gnueabi-bec-g++"
-
-export OE_QMAKE_CC=arm-bec-linux-gnueabi-gcc
-export OE_QMAKE_CXX=arm-bec-linux-gnueabi-g++
-export OE_QMAKE_LINK=arm-bec-linux-gnueabi-g++
-export OE_QMAKE_LIBDIR_QT="${TOPDIR}/tmp/sysroots/armv7a-bec-linux-gnueabi/usr/lib"
-export OE_QMAKE_INCDIR_QT="${TOPDIR}/tmp/sysroots/armv7a-bec-linux-gnueabi/usr/include/qt4"
-export OE_QMAKE_MOC="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/moc4"
-export OE_QMAKE_UIC="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/uic4"
-export OE_QMAKE_UIC3="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/uic34"
-export OE_QMAKE_RCC="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/rcc4"
-export OE_QMAKE_QDBUSCPP2XML="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/qdbuscpp2xml4"
-export OE_QMAKE_QDBUSXML2CPP="${TOPDIR}/tmp/sysroots/x86_64-linux/usr/bin/qdbusxml2cpp4"
-export OE_QMAKE_QT_CONFIG="{TOPDIR}/tmp/sysroots/x86_64-linux/usr/share/qtopia/mkspecs/qconfig.pri"
