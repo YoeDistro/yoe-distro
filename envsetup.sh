@@ -37,29 +37,29 @@ if [ -z "${MACHINE}" ]; then
 fi
 
 case $MACHINE in
-  beagleboard | beaglebone | overo | wandboard-dual)
-    export MACHINE_ARCH=armv7at2hf-vfp-neon
-    export MACHINE_SUBARCH=armv7ahf-vfp-neon
-    ;;
-  imx6ul-var-dart)
-    export MACHINE_ARCH=cortexa7t2hf-neon
-    export MACHINE_SUBARCH=cortexa7t2hf-neon-mx6ul
-    ;;
-  raspberrypi3 | raspberrypi2)
-    export MACHINE_ARCH=armv7vet2hf-neon-vfpv4
-    export MACHINE_SUBARCH=armv7vet2hf-neon-vfpv4
-    ;;
-  dragonboard-410c | raspberrypi3-64)
-    export MACHINE_ARCH=aarch64
-    export MACHINE_SUBARCH=aarch64
-    ;;
-  intel-corei7-64)
-    export MACHINE_ARCH=x86_64
-    export MACHINE_SUBARCH=intel_corei7_64
-    ;;
-  *)
-    echo "Note: Don't know how to set MACHINE_ARCH and MACHINE_SUBARCH"
-    ;;
+beagleboard | beaglebone | overo | wandboard-dual)
+  export MACHINE_ARCH=armv7at2hf-vfp-neon
+  export MACHINE_SUBARCH=armv7ahf-vfp-neon
+  ;;
+imx6ul-var-dart)
+  export MACHINE_ARCH=cortexa7t2hf-neon
+  export MACHINE_SUBARCH=cortexa7t2hf-neon-mx6ul
+  ;;
+raspberrypi3 | raspberrypi2)
+  export MACHINE_ARCH=armv7vet2hf-neon-vfpv4
+  export MACHINE_SUBARCH=armv7vet2hf-neon-vfpv4
+  ;;
+dragonboard-410c | raspberrypi3-64)
+  export MACHINE_ARCH=aarch64
+  export MACHINE_SUBARCH=aarch64
+  ;;
+intel-corei7-64)
+  export MACHINE_ARCH=x86_64
+  export MACHINE_SUBARCH=intel_corei7_64
+  ;;
+*)
+  echo "Note: Don't know how to set MACHINE_ARCH and MACHINE_SUBARCH"
+  ;;
 esac
 
 if [ -z "${MEDIA}" ]; then
