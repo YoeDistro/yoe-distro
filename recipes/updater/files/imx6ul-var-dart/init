@@ -28,20 +28,20 @@ MTD_DATA=5
 
 init_gpio() {
   # turn on Audio amp
-  echo 18 > /sys/class/gpio/export
-  echo out > /sys/class/gpio/gpio18/direction
-  echo 1 > /sys/class/gpio/gpio18/value
+  echo 18 >/sys/class/gpio/export
+  echo out >/sys/class/gpio/gpio18/direction
+  echo 1 >/sys/class/gpio/gpio18/value
 }
 
 # populate bootparam environment
 populate_bootparams() {
-  for p in `cat /proc/cmdline`; do
-    opt=`echo $p | cut -d'=' -f1`
-    opt=`echo $opt | tr '.-' '__'`
-    if [ "`echo $p | cut -d'=' -f1`" = "$p" ]; then
+  for p in $(cat /proc/cmdline); do
+    opt=$(echo $p | cut -d'=' -f1)
+    opt=$(echo $opt | tr '.-' '__')
+    if [ "$(echo $p | cut -d'=' -f1)" = "$p" ]; then
       eval "bootparam_${opt}=true"
     else
-      value="`echo $p | cut -d'=' -f2-`"
+      value="$(echo $p | cut -d'=' -f2-)"
       eval "bootparam_${opt}=\"${value}\""
     fi
   done
@@ -167,7 +167,7 @@ process_update() {
     return 1
   fi
 
-  cd /tmp 
+  cd /tmp
   if ! md5sum -c update.md5; then
     msg "Error: checksum error in update file"
     return 1
@@ -246,7 +246,6 @@ mount_sd_boot() {
   return 1
 }
 
-
 umount_usb() {
   if mount | grep usb; then
     umount /usb
@@ -266,7 +265,7 @@ find_update_file() {
   update=""
   for ext in $extensions; do
     update=$(echo $(ls update_dart*.${ext} -v -r 2>/dev/null) | sed "s/update.${ext}//" | sed "s/${ext}.*/${ext}/" | sed "s/^\s*//")
-    if echo $update | grep update > /dev/null; then
+    if echo $update | grep update >/dev/null; then
       echo $update
       break
     fi
@@ -277,7 +276,7 @@ find_update_file() {
       echo update.img
     fi
   fi
-  cd - > /dev/null
+  cd - >/dev/null
 }
 
 update_from_usb() {
@@ -372,7 +371,6 @@ boot() {
 
   umount_usb
 
-
   msg "Moving filesystems into rootfs..."
   mkdir -p $ROOTFS_MOUNT/media/data
   mount --move /data $ROOTFS_MOUNT/media/data
@@ -401,4 +399,3 @@ initialize
 mount_data
 update
 boot
-
