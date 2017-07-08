@@ -254,14 +254,14 @@ umount_usb() {
   return 0
 }
 
-# searches for update*.pwu and update*.img files
+# searches for update*.upd and update*.img files
 # and then uses the newest version file it finds
 # also supports the legacy update.img format for now
 
 find_update_file() {
   DIR=$1
   cd $DIR
-  extensions="pwu img"
+  extensions="upd img"
   update=""
   for ext in $extensions; do
     update=$(echo $(ls update_dart*.${ext} -v -r 2>/dev/null) | sed "s/update.${ext}//" | sed "s/${ext}.*/${ext}/" | sed "s/^\s*//")
