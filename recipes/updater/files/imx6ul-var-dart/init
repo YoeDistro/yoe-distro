@@ -15,7 +15,7 @@ msg() {
   echo "$@" >/dev/console
 }
 
-UPDATER_VERSION="60"
+UPDATER_VERSION="62"
 
 BOOT="mtd1"
 KERNEL="mtd3"
@@ -118,12 +118,18 @@ update_kernel() {
     rm zImage.dump2
   fi
 
-  if [ -e zImage.dtb ]; then
+  if dmesg | grep "Machine.*ULL"; then
+    DTB_FILE=zImage-ull.dtb
+  else
+    DTB_FILE=zImage.dtb
+  fi
+
+  if [ -e $DTB_FILE ]; then
     msg "checking if dtb needs to be updated"
-    SIZE=$(stat -c%s zImage.dtb)
+    SIZE=$(stat -c%s $DTB_FILE)
     nanddump -s 0xbe0000 -l $SIZE -f dtb.dump /dev/$KERNEL || return 1
     dd if=dtb.dump of=dtb.dump2 bs=$SIZE count=1
-    if ! diff zImage.dtb dtb.dump2 2>/dev/null; then
+    if ! diff $DTB_FILE dtb.dump2 2>/dev/null; then
       msg "dtb needs updated"
       kernel_needs_update=1
     else
@@ -135,11 +141,12 @@ update_kernel() {
 
   if [ "$kernel_needs_update" = "1" ]; then
     msg "updating kernel image"
+    msg "DTB: $DTB_FILE"
     flash_eraseall /dev/$KERNEL || return 1
     msg "writing zImage"
     nandwrite -p /dev/$KERNEL zImage || return 1
     msg "writing dtb"
-    nandwrite -p -s 0xbe0000 /dev/$KERNEL zImage.dtb || return 1
+    nandwrite -p -s 0xbe0000 /dev/$KERNEL $DTB_FILE || return 1
     msg "kernel update complete"
     boot_updated=1
   fi
@@ -254,14 +261,14 @@ umount_usb() {
   return 0
 }
 
-# searches for update*.upd and update*.img files
+# searches for update*.pwu and update*.img files
 # and then uses the newest version file it finds
 # also supports the legacy update.img format for now
 
 find_update_file() {
   DIR=$1
   cd $DIR
-  extensions="upd img"
+  extensions="pwu img"
   update=""
   for ext in $extensions; do
     update=$(echo $(ls update_dart*.${ext} -v -r 2>/dev/null) | sed "s/update.${ext}//" | sed "s/${ext}.*/${ext}/" | sed "s/^\s*//")
