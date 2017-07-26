@@ -10,12 +10,21 @@
 #mtd5       data  0x3f00000  0x4100000         65         520
 #total size = 0x8000000, 128MiB
 
+UPDATER_VERSION="2"
+
+source platform
+
 # Prints information
 msg() {
   echo "$@" >/dev/console
 }
 
-UPDATER_VERSION="62"
+speak() {
+  if [ "UPDATER_SPEECH" = "1" ]; then
+    espeak $1
+  fi
+}
+
 
 BOOT="mtd1"
 KERNEL="mtd3"
@@ -25,27 +34,6 @@ ROOTFS_MOUNT="/root"
 
 MTD_ROOTFS=4
 MTD_DATA=5
-
-init_gpio() {
-  # turn on Audio amp
-  echo 18 >/sys/class/gpio/export
-  echo out >/sys/class/gpio/gpio18/direction
-  echo 1 >/sys/class/gpio/gpio18/value
-}
-
-# populate bootparam environment
-populate_bootparams() {
-  for p in $(cat /proc/cmdline); do
-    opt=$(echo $p | cut -d'=' -f1)
-    opt=$(echo $opt | tr '.-' '__')
-    if [ "$(echo $p | cut -d'=' -f1)" = "$p" ]; then
-      eval "bootparam_${opt}=true"
-    else
-      value="$(echo $p | cut -d'=' -f2-)"
-      eval "bootparam_${opt}=\"${value}\""
-    fi
-  done
-}
 
 format_data_partition() {
   msg "format_data"
@@ -69,7 +57,7 @@ mount_data() {
     format_data_partition
     if ! mount -t ubifs ubi1:ubidata $DATA_MOUNT_POINT; then
       msg "data partition mount after format failed, bailing"
-      espeak "updater, data partition error, please service unit"
+      speak "updater, data partition error, please service unit"
       return 1
     fi
   fi
@@ -179,14 +167,14 @@ process_update() {
     msg "Error: checksum error in update file"
     return 1
   else
-    espeak "updating system"
+    speak "updating system"
     boot_updated=0
     update_uboot || return 1
     update_kernel || return 1
 
     if [ "$boot_updated" = "1" ]; then
       msg "Boot components updated, rebooting ..."
-      espeak "rebooting"
+      speak "rebooting"
       reboot -f
     fi
 
@@ -199,7 +187,7 @@ process_update() {
   # not doing this for now
   # while [ -e /sys/class/scsi_disk/* ]; do sleep 1; done
 
-  espeak "update complete"
+  speak "update complete"
   return 0
 }
 
@@ -211,16 +199,23 @@ initialize() {
   mount -t sysfs sysfs /sys
   mount -t proc proc /proc
 
-  init_gpio
+  plat_init
 
   # attach MTD partitions first so they are always in the right order
-  ubiattach -m $MTD_ROOTFS
-  ubiattach -m $MTD_DATA
+  if ! ubiattach -m $MTD_ROOTFS; then
+    flash_eraseall /dev/mtd$MTD_ROOTFS
+    ubiattach -m $MTD_ROOTFS
+  fi
+
+  if ! ubiattach -m $MTD_DATA; then
+    flash_eraseall /dev/mtd$MTD_DATA
+    ubiattach -m $MTD_DATA
+  fi
 
   msg "Sleeping for 3 second(s) for USB flash to settle..."
   sleep 3
 
-  espeak "point watch dart, updater version $UPDATER_VERSION"
+  speak "point watch dart, updater version $UPDATER_VERSION"
 
   mkdir -p /usb
   mkdir -p /data
@@ -287,13 +282,13 @@ find_update_file() {
 }
 
 update_from_usb() {
-  espeak "updater, found u s b disk"
+  speak "updater, found u s b disk"
   update_file=$(find_update_file /usb)
   if echo $update_file | grep update; then
     msg "Found update image file on USB disk: $update_file"
     if ! process_update /usb/$update_file; then
       msg "Failed to process update from USB"
-      espeak "updater, failed to process update from u s b"
+      speak "updater, failed to process update from u s b"
       return 1
     else
       msg "Update from USB complete"
@@ -310,11 +305,11 @@ update_from_sd() {
     msg "Found update image file on SD disk: $update_file"
     if ! process_update /boot/$update_file; then
       msg "Failed to process update from SD"
-      espeak "updater, failed to process update from s d"
+      speak "updater, failed to process update from s d"
       return 1
     else
       msg "Update from SD complete"
-      espeak "update from s d complete, please remove s d card and cycle power"
+      speak "update from s d complete, please remove s d card and cycle power"
       sleep 9999d
     fi
   fi
@@ -327,7 +322,7 @@ update_from_data() {
     msg "Found update on data partition: $update_file"
     if ! process_update /data/update/$update_file; then
       msg "Failed to process update from nand"
-      espeak "updater, failed to process update from nand"
+      speak "updater, failed to process update from nand"
     else
       msg "Update from nand complete"
     fi
@@ -343,7 +338,7 @@ update_from_data() {
 mount_rootfs_sd() {
   if ! mount /dev/mmcblk0p2 $ROOTFS_MOUNT; then
     msg "Error mount SD rootfs, please fix ..."
-    espeak "updater, S D file system error"
+    speak "updater, S D file system error"
     sleep 9999d
   fi
 
@@ -358,7 +353,7 @@ mount_rootfs_nand() {
 
   if ! mount -tubifs ubi0:rootfs $ROOTFS_MOUNT; then
     msg "Error mounting nand rootfs, please fix ..."
-    espeak "updater, root f s file system error, please service unit"
+    speak "updater, root f s file system error, please service unit"
     sleep 9999d
   fi
 }
@@ -368,11 +363,11 @@ boot() {
 
   if [ -e /dev/mmcblk0p1 ]; then
     msg "Booting from SD ..."
-    espeak "booting system from S D"
+    speak "booting system from S D"
     mount_rootfs_sd
   else
     msg "Booting from NAND ..."
-    espeak "booting system"
+    speak "booting system"
     mount_rootfs_nand
   fi
 
