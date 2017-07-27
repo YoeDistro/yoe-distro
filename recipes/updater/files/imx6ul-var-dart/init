@@ -10,7 +10,7 @@
 #mtd5       data  0x3f00000  0x4100000         65         520
 #total size = 0x8000000, 128MiB
 
-UPDATER_VERSION="2"
+UPDATER_VERSION="3"
 
 source platform
 
@@ -202,15 +202,8 @@ initialize() {
   plat_init
 
   # attach MTD partitions first so they are always in the right order
-  if ! ubiattach -m $MTD_ROOTFS; then
-    flash_eraseall /dev/mtd$MTD_ROOTFS
-    ubiattach -m $MTD_ROOTFS
-  fi
-
-  if ! ubiattach -m $MTD_DATA; then
-    flash_eraseall /dev/mtd$MTD_DATA
-    ubiattach -m $MTD_DATA
-  fi
+  ubiattach -m $MTD_ROOTFS
+  ubiattach -m $MTD_DATA
 
   msg "Sleeping for 3 second(s) for USB flash to settle..."
   sleep 3
