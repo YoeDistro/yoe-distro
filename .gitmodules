@@ -57,4 +57,4 @@
 [submodule "sources/meta-variscite-fslc"]
 	path = sources/meta-variscite-fslc
 	url = git://github.com/kraj/meta-variscite-fslc.git
-	branch = morty
+	branch = pyro
