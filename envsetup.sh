@@ -58,7 +58,7 @@ intel-corei7-64)
   export MACHINE_SUBARCH=intel_corei7_64
   ;;
 *)
-  echo "Note: Don't know how to set MACHINE_ARCH and MACHINE_SUBARCH"
+  echo "Note: Don't know how to set MACHINE_ARCH and MACHINE_SUBARCH feed server setup function will not work correctly"
   ;;
 esac
 
@@ -538,11 +538,11 @@ function oe_clean_sstate() {
 # local.sh is a good place to set DOCKER_REPO
 
 function dkr() {
-  CMD=$1
+  CMD="$1"
 
-  if [ ! $CMD ]; then
+  if [ -z "$CMD" ]; then
     echo "setting dkr action to shell"
-    CMD=/bin/bash
+    CMD="/bin/bash"
   fi
 
   docker run --rm -it \
