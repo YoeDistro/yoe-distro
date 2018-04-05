@@ -200,9 +200,6 @@ DL_DIR = "${OE_BASE}/downloads"
 # Where to save shared state
 SSTATE_DIR = "${OE_BUILD_DIR}/build/sstate-cache"
 
-# Which files do we want to parse:
-BBFILES ?= "${OE_SOURCE_DIR}/openembedded-core/meta/recipes-*/*/*.bb"
-
 TMPDIR = "${OE_BUILD_DIR}/build/tmp"
 
 # Go through the Firewall
@@ -549,6 +546,7 @@ function dkr() {
     -v $(pwd):$(pwd) \
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
+    -v /stash/downloads:/stash/downloads \
     -e MACHINE=$MACHINE \
     ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $CMD $2 $3 $4 $5 $6 $7 $8"
 }
@@ -560,20 +558,3 @@ function bitbake() {
     dkr "${OE_BASE}/sources/bitbake/bin/bitbake $@"
   fi
 }
-
-###############################################################################
-# Setup for cross compiling kernel, u-boot, and simple programs outside of OE.
-# For more complex applications, you are much better off generating a SDK.
-#
-# Note, for this to work, you must run: bitbake build-sysroots
-#
-###############################################################################
-
-BUILD_ARCH=$(uname -m)
-CROSS_COMPILER_PATH=${OE_BUILD_TMPDIR}/sysroots/${BUILD_ARCH}/usr/bin/arm-bec-linux-gnueabi
-OE_SYSROOTS_USR_BIN=${OE_BUILD_TMPDIR}/sysroots/${BUILD_ARCH}/usr/bin
-OE_SYSROOTS_USR_SBIN=${OE_BUILD_TMPDIR}/sysroots/${BUILD_ARCH}/usr/sbin
-
-export PATH=$CROSS_COMPILER_PATH:$OE_SYSROOTS_USR_BIN:$OE_SYSROOTS_USR_SBIN:$PATH
-export ARCH=arm
-export CROSS_COMPILE=arm-bec-linux-gnueabi-
