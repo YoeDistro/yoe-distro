@@ -49,7 +49,7 @@ raspberrypi3 | raspberrypi2)
   export MACHINE_ARCH=armv7vet2hf-neon-vfpv4
   export MACHINE_SUBARCH=armv7vet2hf-neon-vfpv4
   ;;
-dragonboard-410c | raspberrypi3-64)
+dragonboard-410c | raspberrypi3-64 | odroid-c2)
   export MACHINE_ARCH=aarch64
   export MACHINE_SUBARCH=aarch64
   ;;
