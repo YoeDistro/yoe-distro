@@ -11,6 +11,7 @@
 #export MACHINE_IP=$MACHINE
 
 # configure docker container to run bitbake in
-#export DOCKER_REPO=cbrake/oe-build
+#export DOCKER_REPO=cbrake/oe-build:stretch
+
 
 
