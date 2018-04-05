@@ -547,6 +547,8 @@ function dkr() {
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
     -v /stash/downloads:/stash/downloads \
+    -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent \
+    -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
     ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $CMD $2 $3 $4 $5 $6 $7 $8"
 }
