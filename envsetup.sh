@@ -57,6 +57,10 @@ intel-corei7-64)
   export MACHINE_ARCH=x86_64
   export MACHINE_SUBARCH=intel_corei7_64
   ;;
+qemuriscv64)
+  export MACHINE_ARCH=riscv64
+  export MACHINE_SUBARCH=riscv64
+  ;;
 *)
   echo "Note: Don't know how to set MACHINE_ARCH and MACHINE_SUBARCH feed server setup function will not work correctly"
   ;;
@@ -525,7 +529,7 @@ function oe_build_all() {
 }
 
 function oe_clean_sstate() {
-  $OE_BASE/sources/openembedded-core/scripts/sstate-cache-management.sh -d --cache-dir=$OE_BASE/build/sstate-cache
+  $OE_BASE/sources/openembedded-core/scripts/sstate-cache-management.sh -d -y --cache-dir=$OE_BASE/build/sstate-cache
 }
 
 # Docker integration
