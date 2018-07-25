@@ -10,6 +10,10 @@ Name=en*
 
 [Network]
 DHCP=yes
+
+[DHCP]
+RouteMetric=10
+ClientIdentifier=mac
 EOF
 
         cat << EOF > ${IMAGE_ROOTFS}${sysconfdir}/systemd/network/11-eth.network
@@ -18,6 +22,10 @@ Name=eth*
 
 [Network]
 DHCP=yes
+
+[DHCP]
+RouteMetric=10
+ClientIdentifier=mac
 EOF
 
         cat << EOF > ${IMAGE_ROOTFS}${sysconfdir}/systemd/network/12-wl.network
@@ -26,6 +34,10 @@ Name=wl*
 
 [Network]
 DHCP=yes
+
+[DHCP]
+RouteMetric=20
+ClientIdentifier=mac
 EOF
 
 }
