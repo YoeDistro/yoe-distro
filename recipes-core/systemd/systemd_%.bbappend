@@ -1,1 +1,1 @@
-PACKAGECONFIG_append = "resolved networkd"
+PACKAGECONFIG_append = " resolved networkd "
