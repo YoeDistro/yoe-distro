@@ -10,6 +10,12 @@
 # the same as MACHINE
 #export MACHINE_IP=$MACHINE
 
+# When setting up feeds it will try to use this
+# hosts IP address to configure the server on target
+# machine, however if a different IP address is to be
+# used then set it up here
+# export HOST_IP=10.10.10.10
+
 # configure docker container to run bitbake in
 #export DOCKER_REPO=cbrake/oe-build:stretch
 
