@@ -36,36 +36,6 @@ if [ -z "${MACHINE}" ]; then
   return
 fi
 
-case $MACHINE in
-beagleboard | beaglebone | overo | wandboard-dual)
-  export MACHINE_ARCH=armv7at2hf-vfp-neon
-  export MACHINE_SUBARCH=armv7ahf-vfp-neon
-  ;;
-imx6ul-var-dart)
-  export MACHINE_ARCH=cortexa7t2hf-neon
-  export MACHINE_SUBARCH=cortexa7t2hf-neon-mx6ul
-  ;;
-raspberrypi3 | raspberrypi2)
-  export MACHINE_ARCH=armv7vet2hf-neon-vfpv4
-  export MACHINE_SUBARCH=armv7vet2hf-neon-vfpv4
-  ;;
-dragonboard-410c | raspberrypi3-64 | odroid-c2)
-  export MACHINE_ARCH=aarch64
-  export MACHINE_SUBARCH=aarch64
-  ;;
-intel-corei7-64)
-  export MACHINE_ARCH=x86_64
-  export MACHINE_SUBARCH=intel_corei7_64
-  ;;
-qemuriscv64)
-  export MACHINE_ARCH=riscv64
-  export MACHINE_SUBARCH=riscv64
-  ;;
-*)
-  echo "Note: Don't know how to set MACHINE_ARCH and MACHINE_SUBARCH feed server setup function will not work correctly"
-  ;;
-esac
-
 if [ -z "${MEDIA}" ]; then
   # set the location of the automounted location for removable storage
   # newer gnome systems
@@ -474,19 +444,22 @@ function oe_feed_server() {
   cd $OE_BASE
   bitbake package-index
   cd build/tmp/deploy/ipk
-  python3 -m http.server 4000
+  python3 -m http.server 8000
   cd $SAVEDPWD
 }
 
 function oe_setup_feed_server() {
-  # set MACHINE_IP in local.sh
-  HOST_IP=$(hostname -i | tr -d ' ')
-  CANONICAL_MACHINE=$(echo "$MACHINE" | tr - _)
-  ssh root@$MACHINE_IP "rm /etc/opkg/*feed*"
-  ssh root@$MACHINE_IP "echo 'src/gz all http://$HOST_IP:4000/all' > /etc/opkg/base-feed.conf"
-  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_ARCH http://$HOST_IP:4000/$MACHINE_ARCH' >> /etc/opkg/base-feed.conf"
-  ssh root@$MACHINE_IP "echo 'src/gz $MACHINE_SUBARCH http://$HOST_IP:4000/$MACHINE_SUBARCH' >> /etc/opkg/base-feed.conf"
-  ssh root@$MACHINE_IP "echo 'src/gz $CANONICAL_MACHINE http://$HOST_IP:4000/$CANONICAL_MACHINE' >> /etc/opkg/base-feed.conf"
+  # set TARGET_IP in local.sh
+  # set HOST_IP in local.sh if different
+  if [ -n "${HOST_IP}" ]; then
+    HOST_IP=$(hostname -i | cut -d' ' -f 1)
+  fi
+  ssh root@$MACHINE_IP ls /etc/opkg/base-feeds.conf > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "opkg is not installed, can't setup feeds on  machine $MACHINE_IP"
+  else
+    ssh root@$MACHINE_IP "sed -i -e 's|http://.*\/|http://$HOST_IP:8000/|' /etc/opkg/base-feeds.conf"
+  fi
 }
 
 function oe_search_file() {
