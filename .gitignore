@@ -21,8 +21,11 @@ nor/rootfs/
 alphaupdatelist.txt
 conf/toolchain.cmake
 bitbake.lock
+bitbake-cookerdaemon.log
 local.sh
 cache
 buildhistory
 tools/python
 tools/python-config
+workspace/*
+logs/
