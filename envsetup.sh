@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Original script done by Don Darling
 # Later changes by Koen Kooi and Brijesh Singh
@@ -18,12 +18,10 @@
 # Changes by Cliff Brake
 # 20111101: modify script to work with BEC build template
 #
-
 if [ -f local.sh ]; then
   echo "reading local settings"
   source local.sh
 fi
-
 BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/*-release | sed 's#^ID=##')
 
 ###############################################################################
@@ -31,11 +29,21 @@ BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/*-release | sed 's#^ID=##')
 # these variables can be set externally in the shell, or here
 ###############################################################################
 
+# Try to infer the machine name from envsetup script itself
+# so we can create symlinks like
+# <machine>-envsetup.sh -> envsetup.sh
+# and it will automatically set MACHINE variable
+scriptname=${0##*/}
+mach=${scriptname%-*}
+if [ -n "${mach}" -a "${mach}" != "${scriptname}" ]; then
+  MACHINE=${mach}
+fi
 if [ -z "${MACHINE}" ]; then
   echo "MACHINE must be set before sourcing this script"
   return
 fi
-
+export MACHINE
+echo "setting MACHINE=$MACHINE"
 if [ -z "${MEDIA}" ]; then
   # set the location of the automounted location for removable storage
   # newer gnome systems
