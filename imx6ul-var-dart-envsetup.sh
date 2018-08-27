@@ -1,6 +1,3 @@
-export MACHINE=imx6ul-var-dart
-export MACHINE_SHORT=dart
-
 . envsetup.sh
 
 function oe_partition_sd_mx6() {
