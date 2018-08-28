@@ -67,7 +67,7 @@ Using
 This is where all the magic happens.  In general, this build system
 must be run in a bash shell.  To set up the environment, source the following file:
 
-. envsetup.sh
+. ./envsetup.sh
 
 This file will create a bunch of functions in the environment
 prefixed with oe\_ that can be executed.  Type oe\_ <tab><tab>
@@ -93,13 +93,15 @@ directory specific variables based on the build system location.
 
 ### adding a new layer
 
-*  git submodule add <git URI> sources/meta-mylayer
-*  add layer to conf/bblayers.conf
+*  Adding rocko branch of meta-altera layer to layer mix
+
+oe_add_layer https://github.com/kraj/meta-altera rocko
 
 ### removing a new layer
 
-*  git rm sources/meta-mylayer
-*  remove layer from conf/bblayers.conf
+*  Remove meta-altera
+
+oe_remove_layer meta-altera
 
 ### customizing settings
 

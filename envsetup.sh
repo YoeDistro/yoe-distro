@@ -297,6 +297,43 @@ function oe_search_text() {
   cd -
 }
 
+function oe_add_layer() {
+  if test -z $1; then
+    echo "Usage:  oe_add_layer <url> [<branch>]"
+    return
+  fi
+  cd $OE_BASE
+  if [ -z "$2" ]; then
+    br="master"
+  else
+    br="$2"
+  fi
+  n=`echo $1 | awk -F "[/:]" '{ print $NF }'`
+  if [[ -e sources/$n && ! -e sources/$n/.git ]]; then
+    echo "'sources/$n' already exists and is not a valid git repo"
+    return
+  fi
+  git submodule add -b $br -f $1 sources/$n
+  git submodule init sources/$n
+  bitbake-layers add-layer sources/$n && sed -i -e "s|$OE_BASE|\${TOPDIR}|" conf/bblayers.conf
+  echo "please commit with - git add conf/bblayers.conf && git commit -s -m'Added module $n'"
+}
+
+function oe_remove_layer() {
+  if test -z $1; then
+    echo "Usage:  oe_remove_layer <layer-name>"
+    return
+  fi
+  cd $OE_BASE
+  m=sources/$1
+  bitbake-layers remove-layer $1
+  git submodule deinit -f $m
+  git rm -r -f $m
+  echo "please commit with - git add conf/bblayers.conf && git commit -s -m'Added module $n'"
+  rm -rf .git/modules/$m
+  #rm -rf $m
+}
+
 function oe_console() {
   # requires serial->usb device be mapped to /dev/ttyUSB_<machine name>
   # see http://bec-systems.com/site/1004/perisistent-device-names-usb-serial-ports
