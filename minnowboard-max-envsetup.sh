@@ -1,4 +1,4 @@
-# TODO add MACHINE export
+. envsetup.sh
 
 # Minnowboard max functions
 function oe_partition_sd_mbm() {
