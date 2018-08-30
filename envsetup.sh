@@ -20,7 +20,7 @@
 #
 if [ -f local.sh ]; then
   echo "reading local settings"
-  source local.sh
+  . ./local.sh
 fi
 BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/*-release | sed 's#^ID=##')
 
@@ -33,7 +33,16 @@ BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/*-release | sed 's#^ID=##')
 # so we can create symlinks like
 # <machine>-envsetup.sh -> envsetup.sh
 # and it will automatically set MACHINE variable
-scriptname=${0##*/}
+
+if [ "${0##*/}" = "dash" ]; then
+  echo "dash shell is not supported"
+  return
+fi
+
+arg0=$0
+test -n "$BASH" && arg0=$BASH_SOURCE[0]
+
+scriptname="${arg0##*/}"
 mach=${scriptname%-*}
 if [ -n "${mach}" -a "${mach}" != "${scriptname}" ]; then
   MACHINE=${mach}
@@ -98,9 +107,7 @@ export OE_BASE
 export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${PATH}
 export PATH=${OE_BASE}/tools:${PATH}
 # remove duplicate entries from path
-# export PATH=`echo $PATH_ | awk -F: '{for (i=1;i<=NF;i++) { if ( !x[$i]++ ) printf("%s:",$i); }}'`
-export PATH=$(awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}}}' <<<$PATH)
-
+export PATH=`echo $PATH | tr ':' '\n' | sort | uniq | tr '\n' ':'`
 #--------------------------------------------------------------------------
 # Make sure Bitbake doesn't filter out the following variables from our
 # environment.
@@ -141,7 +148,7 @@ fi
 #--------------------------------------------------------------------------
 
 if [ -e ${OE_ENV_FILE} ]; then
-  source ${OE_ENV_FILE}
+  . ./${OE_ENV_FILE}
 fi
 
 if [ x"${BASE_VERSION}" != x"${SCRIPTS_BASE_VERSION}" ]; then
@@ -154,7 +161,7 @@ elif [ x"${DISTRO_DIRNAME}" != x"${SCRIPTS_DISTRO_DIRNAME}" ]; then
 fi
 
 if [ -e ${OE_ENV_FILE} ]; then
-  source ${OE_ENV_FILE}
+  . ./${OE_ENV_FILE}
 else
 
   #--------------------------------------------------------------------------
@@ -196,18 +203,18 @@ fi # if -e ${OE_ENV_FILE}
 ###############################################################################
 # UPDATE_ALL() - Make sure everything is up to date
 ###############################################################################
-function oe_update_all() {
+oe_update_all() {
   git submodule update
 }
 
-function oe_update_all_submodules_to_master() {
+oe_update_all_submodules_to_master() {
   git submodule foreach "git checkout master && git pull"
 }
 
 ###############################################################################
 # CLEAN_OE() - Delete TMPDIR
 ###############################################################################
-function oe_clean() {
+oe_clean() {
   echo "Cleaning ${OE_BUILD_TMPDIR}"
   rm -rf ${OE_BUILD_TMPDIR}
 }
@@ -216,7 +223,7 @@ function oe_clean() {
 # OE_CONFIG() - Configure OE for a target
 # machine is first parameter
 ###############################################################################
-function oe_setup() {
+oe_setup() {
   git submodule init
   git submodule update
 
@@ -225,7 +232,7 @@ function oe_setup() {
 ###############################################################################
 # CONFIG_SVN_PROXY() - Configure subversion proxy information
 ###############################################################################
-function oe_config_svn_proxy() {
+oe_config_svn_proxy() {
   if [ ! -f ${SVN_CONFIG_DIR}/servers ]; then
     mkdir -p ${SVN_CONFIG_DIR}
     cat >>${SVN_CONFIG_DIR}/servers <<_EOF
@@ -239,7 +246,7 @@ _EOF
 ###############################################################################
 # CONFIG_GIT_PROXY() - Configure GIT proxy information
 ###############################################################################
-function oe_config_git_proxy() {
+oe_config_git_proxy() {
   if [ ! -f ${GIT_CONFIG_DIR}/git-proxy.sh ]; then
     mkdir -p ${GIT_CONFIG_DIR}
     cat >${GIT_CONFIG_DIR}/git-proxy.sh <<_EOF
@@ -254,7 +261,7 @@ _EOF
   fi
 }
 
-function oe_feed_server() {
+oe_feed_server() {
   SAVEDPWD=$PWD
   cd $OE_BASE
   bitbake package-index
@@ -263,7 +270,7 @@ function oe_feed_server() {
   cd $SAVEDPWD
 }
 
-function oe_setup_feed_server() {
+oe_setup_feed_server() {
   # set TARGET_IP in local.sh
   # set HOST_IP in local.sh if different
   if [ -n "${HOST_IP}" ]; then
@@ -277,7 +284,7 @@ function oe_setup_feed_server() {
   fi
 }
 
-function oe_search_file() {
+oe_search_file() {
   if [ -z $1 ]; then
     echo "Usage: oe_search_file filename"
     return
@@ -287,7 +294,7 @@ function oe_search_file() {
   cd -
 }
 
-function oe_search_text() {
+oe_search_text() {
   if test -z $1; then
     echo "Usage: oe_search_text searchtext"
     return
@@ -297,7 +304,7 @@ function oe_search_text() {
   cd -
 }
 
-function oe_add_layer() {
+oe_add_layer() {
   if test -z $1; then
     echo "Usage:  oe_add_layer <url> [<branch>]"
     return
@@ -319,7 +326,7 @@ function oe_add_layer() {
   echo "please commit with - git add conf/bblayers.conf && git commit -s -m'Added module $n'"
 }
 
-function oe_remove_layer() {
+oe_remove_layer() {
   if test -z $1; then
     echo "Usage:  oe_remove_layer <layer-name>"
     return
@@ -334,13 +341,13 @@ function oe_remove_layer() {
   #rm -rf $m
 }
 
-function oe_console() {
+oe_console() {
   # requires serial->usb device be mapped to /dev/ttyUSB_<machine name>
   # see http://bec-systems.com/site/1004/perisistent-device-names-usb-serial-ports
   screen /dev/ttyUSB_${MACHINE} 115200
 }
 
-function oe_build_all() {
+oe_build_all() {
   # build images for all routinely tested platforms
   MACHINES="beagleboard beaglebone overo wandboard-dual imx6ul-var-dart"
   for m in $MACHINES; do
@@ -353,7 +360,7 @@ function oe_build_all() {
   done
 }
 
-function oe_clean_sstate() {
+oe_clean_sstate() {
   $OE_BASE/sources/openembedded-core/scripts/sstate-cache-management.sh -d -y --cache-dir=$OE_BASE/build/sstate-cache
 }
 
@@ -363,7 +370,7 @@ function oe_clean_sstate() {
 # it will get set in container, which is not what you want.
 # local.sh is a good place to set DOCKER_REPO
 
-function dkr() {
+dkr() {
   CMD="$1"
 
   if [ -z "$CMD" ]; then
@@ -382,7 +389,7 @@ function dkr() {
     ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $CMD $2 $3 $4 $5 $6 $7 $8"
 }
 
-function bitbake() {
+bitbake() {
   if [ -z $DOCKER_REPO ]; then
     ${OE_BASE}/sources/bitbake/bin/bitbake $@
   else
