@@ -1,3 +1,5 @@
+export MACHINE=minnowboard-max
+
 . envsetup.sh
 
 # Minnowboard max functions
