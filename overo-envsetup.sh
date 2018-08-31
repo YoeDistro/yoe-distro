@@ -1,3 +1,5 @@
+export MACHINE=overo
+
 . envsetup.sh
 
 function oe_partition_sd() {
