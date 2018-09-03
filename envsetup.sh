@@ -107,7 +107,7 @@ export OE_BASE
 export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${PATH}
 export PATH=${OE_BASE}/tools:${PATH}
 # remove duplicate entries from path
-export PATH=`echo $PATH | tr ':' '\n' | sort | uniq | tr '\n' ':'`
+export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 #--------------------------------------------------------------------------
 # Make sure Bitbake doesn't filter out the following variables from our
 # environment.
@@ -302,6 +302,10 @@ oe_search_text() {
   cd $OE_BASE/sources
   find -name downloads -prune -o -type f -print | xargs grep $1
   cd -
+}
+
+oe_show_env() {
+  echo "MACHINE = $MACHINE"
 }
 
 oe_add_layer() {
