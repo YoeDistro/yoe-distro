@@ -10,13 +10,14 @@
 #mtd5       data  0x3f00000  0x4100000         65         520
 #total size = 0x8000000, 128MiB
 
-UPDATER_VERSION="15"
+UPDATER_VERSION="20"
 
 source /platform
 
 speak() {
   if [ "$UPDATER_SPEECH" = "1" ]; then
-    espeak $1
+    msg "speak $1"
+    espeak "$1"
   fi
 }
 
