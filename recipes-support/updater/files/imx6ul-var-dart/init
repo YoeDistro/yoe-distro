@@ -12,7 +12,7 @@
 
 UPDATER_VERSION="15"
 
-source platform
+source /platform
 
 speak() {
   if [ "$UPDATER_SPEECH" = "1" ]; then
