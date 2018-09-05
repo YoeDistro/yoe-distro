@@ -247,6 +247,8 @@ initialize() {
 
   speak "updater version $UPDATER_VERSION"
 
+  sleep 3
+
   mkdir -p /usb
   mkdir -p /data
 }
