@@ -1,10 +1,8 @@
-BEC OpenEmbedded Distribution template
-======================================
+# BEC OpenEmbedded Distribution template
 
 Build system based on oe-core, OpenEmbedded, and Angstrom.
 
-Example
--------
+## Example
 
 This following is example of building and installing a linux system from
 scratch on the BeagleBoard.
@@ -16,14 +14,13 @@ scratch on the BeagleBoard.
 * bitbake systemd-image
 * [insert SD card]
 * lsblk (note sd card device)
-* oe\_partition\_sd /dev/sdX
-* oe\_install\_sd\_boot (install MLO, u-boot, kernel)
-* oe\_install\_sd\_rootfs\_systemd\_image
+* oe_partition_sd /dev/sdX
+* oe_install_sd_boot (install MLO, u-boot, kernel)
+* oe_install_sd_rootfs_systemd_image
 * [Install SD card in beagleboard and enjoy your new image]
-* oe\_console (fire up a serial console for the machine)
+* oe_console (fire up a serial console for the machine)
 
-Motivation
-----------
+## Motivation
 
 This build template is designed to be used for production
 build systems (used to build product software), and thus
@@ -33,7 +30,7 @@ has the following goals:
    git submodules.
 1. robustness: Git submodules are
    a robust solution for production environments, and
-   error handling good.  Git submodules are also very good at making
+   error handling good. Git submodules are also very good at making
    sure you are building exactly what was checked in, because it locks every
    submodule down to a specific version, which is generally what you want for a production
    build system, where the build must be absolutely repeatable.
@@ -42,48 +39,34 @@ has the following goals:
 1. track development of layers (we want the latest bits)
 1. support a range of common development platforms and SOCs
 
-Tested Machines
----------------
+## Tested Machines
 
-* beagleboard
- * BSP components from meta-ti
- * 3.2 kernel
-* beaglebone
- * BSP components from meta-beagleboard
- * 3.8 kernel
-* overo (Gumstix)
- * BSP components from meta-gumstix-community
- * 3.5 kernel
-* wandboard-dual
- * in progress
- * BSP components from meta-fsl-arm and meta-fsl-arm-extra
- * must set ACCEPT\_FSL\_EULA = "1" in local.conf or locallocal.conf
+See the \<machine\>-envsetup.sh files for examples of machines we regularly test with.
 
-Using
------
+## Using
 
 ### envsetup.sh
 
-This is where all the magic happens.  In general, this build system
-must be run in a bash shell.  To set up the environment, source the following file:
+This is where all the magic happens. In general, this build system
+must be run in a bash shell. To set up the environment, source the following file:
 
 . ./envsetup.sh
 
 This file will create a bunch of functions in the environment
-prefixed with oe\_ that can be executed.  Type oe\_ <tab><tab>
+prefixed with oe\_ that can be executed. Type oe\_ <tab><tab>
 to see them.
 
 ### directories and key files
 
 * build: temporary directory where build actually takes place
 * conf: configuration files for the build
-* sources: various sources used for the build.  The entries
-in this directory are git submodules.
+* sources: various sources used for the build. The entries
+  in this directory are git submodules.
 * downloads: contains files that are downloaded by various
-recipes during builds.
+  recipes during builds.
 * tools: utility scripts
 * localconfig.sh: file created by envsetup.sh that contains
-directory specific variables based on the build system location.
+  directory specific variables based on the build system location.
 * local.sh: can be used to customize MACHINE, and other variables
 
 ### building for another machine
@@ -93,13 +76,13 @@ directory specific variables based on the build system location.
 
 ### adding a new layer
 
-*  Adding rocko branch of meta-altera layer to layer mix
+* Adding rocko branch of meta-altera layer to layer mix
 
 oe_add_layer https://github.com/kraj/meta-altera rocko
 
 ### removing a new layer
 
-*  Remove meta-altera
+* Remove meta-altera
 
 oe_remove_layer meta-altera
 
@@ -111,10 +94,10 @@ as parallel build options.
 ### starting a local feed server
 
 Sometimes you want to install packages you build on the target system
-without building and re-installing the entire rootfs.  This can be done
+without building and re-installing the entire rootfs. This can be done
 using a feed server.
 
-* Workstation: oe\_feed\_server (this starts a feed server on port 4000)
+* Workstation: oe_feed_server (this starts a feed server on port 4000)
 * Target: modify /etc/opkg to http://[your workstation IP]:4000
 * Target: opkg update
 * Target: opkg install [package]
@@ -132,12 +115,9 @@ HEAD of the specified branch:
 
 git submodule update --remote
 
-License
--------
+## License
 
 This build system is licensed under the MIT license which is the
-same license as oe-core, etc.  See COPYING.MIT
+same license as oe-core, etc. See COPYING.MIT
 
 Contributions are welcome: please email cbrake@bec-systems.com
-
-
