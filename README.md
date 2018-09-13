@@ -50,7 +50,9 @@ See the \<machine\>-envsetup.sh files for examples of machines we regularly test
 This is where all the magic happens. In general, this build system
 must be run in a bash shell. To set up the environment, source the following file:
 
-. ./envsetup.sh
+. ./\<machine\>-envsetup.sh
+
+Or, you can export a MACHINE environment variable, and then source envsetup.sh.
 
 This file will create a bunch of functions in the environment
 prefixed with oe\_ that can be executed. Type oe\_ <tab><tab>
