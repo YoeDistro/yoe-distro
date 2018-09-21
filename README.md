@@ -1,7 +1,7 @@
 # Yoe Embedded Linux Distribution
 
 Yoe is an Embedded Linux Distribution optimized for product development.
-It is built on **Y**octo and **O**penEmbedded with a focus on simplicity.
+It is built on **Y**octo and **O**pen**E**mbedded with a focus on simplicity.
 
 ## Example
 
