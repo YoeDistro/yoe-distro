@@ -203,18 +203,18 @@ fi # if -e ${OE_ENV_FILE}
 ###############################################################################
 # UPDATE_ALL() - Make sure everything is up to date
 ###############################################################################
-oe_update_all() {
+yoe_update_all() {
   git submodule update
 }
 
-oe_update_all_submodules_to_master() {
+yoe_update_all_submodules_to_master() {
   git submodule foreach "git checkout master && git pull"
 }
 
 ###############################################################################
 # CLEAN_OE() - Delete TMPDIR
 ###############################################################################
-oe_clean() {
+yoe_clean() {
   echo "Cleaning ${OE_BUILD_TMPDIR}"
   rm -rf ${OE_BUILD_TMPDIR}
 }
@@ -223,7 +223,7 @@ oe_clean() {
 # OE_CONFIG() - Configure OE for a target
 # machine is first parameter
 ###############################################################################
-oe_setup() {
+yoe_setup() {
   git submodule init
   git submodule update
 
@@ -232,7 +232,7 @@ oe_setup() {
 ###############################################################################
 # CONFIG_SVN_PROXY() - Configure subversion proxy information
 ###############################################################################
-oe_config_svn_proxy() {
+yoe_config_svn_proxy() {
   if [ ! -f ${SVN_CONFIG_DIR}/servers ]; then
     mkdir -p ${SVN_CONFIG_DIR}
     cat >>${SVN_CONFIG_DIR}/servers <<_EOF
@@ -246,7 +246,7 @@ _EOF
 ###############################################################################
 # CONFIG_GIT_PROXY() - Configure GIT proxy information
 ###############################################################################
-oe_config_git_proxy() {
+yoe_config_git_proxy() {
   if [ ! -f ${GIT_CONFIG_DIR}/git-proxy.sh ]; then
     mkdir -p ${GIT_CONFIG_DIR}
     cat >${GIT_CONFIG_DIR}/git-proxy.sh <<_EOF
@@ -261,7 +261,7 @@ _EOF
   fi
 }
 
-oe_feed_server() {
+yoe_feed_server() {
   SAVEDPWD=$PWD
   cd $OE_BASE
   bitbake package-index
@@ -270,13 +270,13 @@ oe_feed_server() {
   cd $SAVEDPWD
 }
 
-oe_setup_feed_server() {
+yoe_setup_feed_server() {
   # set TARGET_IP in local.sh
   # set HOST_IP in local.sh if different
   if [ -n "${HOST_IP}" ]; then
     HOST_IP=$(hostname -i | cut -d' ' -f 1)
   fi
-  ssh root@$MACHINE_IP ls /etc/opkg/base-feeds.conf > /dev/null 2>&1
+  ssh root@$MACHINE_IP ls /etc/opkg/base-feeds.conf >/dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "opkg is not installed, can't setup feeds on  machine $MACHINE_IP"
   else
@@ -284,9 +284,9 @@ oe_setup_feed_server() {
   fi
 }
 
-oe_search_file() {
+yoe_search_file() {
   if [ -z $1 ]; then
-    echo "Usage: oe_search_file filename"
+    echo "Usage: yoe_search_file filename"
     return
   fi
   cd $OE_BASE/sources
@@ -294,9 +294,9 @@ oe_search_file() {
   cd -
 }
 
-oe_search_text() {
+yoe_search_text() {
   if test -z $1; then
-    echo "Usage: oe_search_text searchtext"
+    echo "Usage: yoe_search_text searchtext"
     return
   fi
   cd $OE_BASE/sources
@@ -304,13 +304,13 @@ oe_search_text() {
   cd -
 }
 
-oe_show_env() {
+yoe_show_env() {
   echo "MACHINE = $MACHINE"
 }
 
-oe_add_layer() {
+yoe_add_layer() {
   if test -z $1; then
-    echo "Usage:  oe_add_layer <url> [<branch>]"
+    echo "Usage:  yoe_add_layer <url> [<branch>]"
     return
   fi
   cd $OE_BASE
@@ -319,7 +319,7 @@ oe_add_layer() {
   else
     br="$2"
   fi
-  n=`echo $1 | awk -F "[/:]" '{ print $NF }'`
+  n=$(echo $1 | awk -F "[/:]" '{ print $NF }')
   if [[ -e sources/$n && ! -e sources/$n/.git ]]; then
     echo "'sources/$n' already exists and is not a valid git repo"
     return
@@ -330,9 +330,9 @@ oe_add_layer() {
   echo "please commit with - git add conf/bblayers.conf && git commit -s -m'Added module $n'"
 }
 
-oe_remove_layer() {
+yoe_remove_layer() {
   if test -z $1; then
-    echo "Usage:  oe_remove_layer <layer-name>"
+    echo "Usage:  yoe_remove_layer <layer-name>"
     return
   fi
   cd $OE_BASE
@@ -345,13 +345,13 @@ oe_remove_layer() {
   #rm -rf $m
 }
 
-oe_console() {
+yoe_console() {
   # requires serial->usb device be mapped to /dev/ttyUSB_<machine name>
   # see http://bec-systems.com/site/1004/perisistent-device-names-usb-serial-ports
   screen /dev/ttyUSB_${MACHINE} 115200
 }
 
-oe_build_all() {
+yoe_build_all() {
   # build images for all routinely tested platforms
   MACHINES="beagleboard beaglebone overo wandboard-dual imx6ul-var-dart"
   for m in $MACHINES; do
@@ -364,7 +364,7 @@ oe_build_all() {
   done
 }
 
-oe_clean_sstate() {
+yoe_clean_sstate() {
   $OE_BASE/sources/openembedded-core/scripts/sstate-cache-management.sh -d -y --cache-dir=$OE_BASE/build/sstate-cache
 }
 

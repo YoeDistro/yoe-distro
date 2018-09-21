@@ -8,23 +8,23 @@ It is built on **Y**octo and **O**pen**E**mbedded with a focus on simplicity.
 This following is example of building and installing a linux system from
 scratch on the BeagleBoard.
 
-* git clone git://github.com/cbrake/oe-build.git
-* cd oe-build
+* git clone git://github.com/YoeDistro/yoe-distro.git
+* cd yoe-distro
 * . envsetup.sh
-* oe_setup
+* yoe_setup
 * bitbake systemd-image
 * [insert SD card]
 * lsblk (note sd card device)
-* oe_partition_sd /dev/sdX
-* oe_install_sd_boot (install MLO, u-boot, kernel)
-* oe_install_sd_rootfs_systemd_image
+* yoe_partition_sd /dev/sdX
+* yoe_install_sd_boot (install MLO, u-boot, kernel)
+* yoe_install_sd_rootfs_systemd_image
 * [Install SD card in beagleboard and enjoy your new image]
-* oe_console (fire up a serial console for the machine)
+* yoe_console (fire up a serial console for the machine)
 
 ## Motivation
 
 This build template is designed to be used for production
-build systems (used to build product software), and thus
+build systems (used to build products), and thus
 has the following goals:
 
 1. simplicity: uses well understood things like bash and
@@ -35,10 +35,10 @@ has the following goals:
    sure you are building exactly what was checked in, because it locks every
    submodule down to a specific version, which is generally what you want for a production
    build system, where the build must be absolutely repeatable.
-1. generate a modern Linux root filesystem.
-1. uses systemd
-1. track development of layers (we want the latest bits)
-1. support a range of common development platforms and SOCs
+1. modern: generate a modern Linux root filesystem using the latest technologies
+1. broad platform support: support a range of common development platforms, system on
+   chips (SoC), and system on modules (SOM)
+1. extendable: simple to modify and add your own custom software to the system
 
 ## Tested Machines
 
@@ -56,7 +56,7 @@ must be run in a bash shell. To set up the environment, source the following fil
 Or, you can export a MACHINE environment variable, and then source envsetup.sh.
 
 This file will create a bunch of functions in the environment
-prefixed with oe\_ that can be executed. Type oe\_ <tab><tab>
+prefixed with yoe\_ that can be executed. Type yoe\_ <tab><tab>
 to see them.
 
 ### directories and key files
@@ -81,13 +81,13 @@ to see them.
 
 * Adding rocko branch of meta-altera layer to layer mix
 
-oe_add_layer https://github.com/kraj/meta-altera rocko
+yoe_add_layer https://github.com/kraj/meta-altera rocko
 
 ### removing a new layer
 
 * Remove meta-altera
 
-oe_remove_layer meta-altera
+yoe_remove_layer meta-altera
 
 ### customizing settings
 
@@ -100,7 +100,7 @@ Sometimes you want to install packages you build on the target system
 without building and re-installing the entire rootfs. This can be done
 using a feed server.
 
-* Workstation: oe_feed_server (this starts a feed server on port 4000)
+* Workstation: yoe_feed_server (this starts a feed server on port 4000)
 * Target: modify /etc/opkg to http://[your workstation IP]:4000
 * Target: opkg update
 * Target: opkg install [package]
