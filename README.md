@@ -1,6 +1,7 @@
-# BEC OpenEmbedded Distribution template
+# Yoe Embedded Linux Distribution
 
-Build system based on oe-core, OpenEmbedded, and Angstrom.
+Yoe is an Embedded Linux Distribution optimized for product development.
+It is built on **Y**octo and **O**penEmbedded with a focus on simplicity.
 
 ## Example
 
@@ -115,7 +116,7 @@ Assuming you have a recent version of git, you can make use of the branch
 values specified in .gitmodules to update each submodule branch to the
 HEAD of the specified branch:
 
-git submodule update --remote
+```git submodule update --remote```
 
 ## License
 
