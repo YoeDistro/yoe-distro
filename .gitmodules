@@ -54,3 +54,7 @@
 	path = sources/meta-yoe
 	url = git://github.com/YoeDistro/meta-yoe
 	branch = master
+[submodule "sources/meta-riscv"]
+	path = sources/meta-riscv
+	url = git://github.com/YoeDistro/meta-riscv
+	branch = master
