@@ -13,6 +13,6 @@ IMAGE_INSTALL += " \
 	packagegroup-basic \
 	network-hotplug \
 "
-export IMAGE_BASENAME = "bec-simple-image"
+export IMAGE_BASENAME = "yoe-simple-image"
 
 inherit core-image

@@ -52,4 +52,4 @@ IMAGE_INSTALL += "\
 	python-pyserial \
 	"
 
-export IMAGE_BASENAME = "bec-debug-image"
+export IMAGE_BASENAME = "yoe-debug-image"
