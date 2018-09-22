@@ -143,6 +143,12 @@ if [ "$(readlink /bin/sh)" = "dash" ]; then
   expect -c 'spawn sudo dpkg-reconfigure -freadline dash; send "n\n"; interact;'
 fi
 
+if [ -z "$(readlink ${OE_BUILD_DIR}/tools/python)" ]; then
+  mkdir -p ${OE_BUILD_DIR}/tools
+  ln -sf /usr/bin/python2 ${OE_BUILD_DIR}/tools/python
+  ln -sf /usr/bin/python2-config ${OE_BUILD_DIR}/tools/python-config
+fi
+
 #--------------------------------------------------------------------------
 # If an env already exists, use it, otherwise generate it
 #--------------------------------------------------------------------------
