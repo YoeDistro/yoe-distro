@@ -1,0 +1,10 @@
+[Match]
+Name=eth*
+Name=en*
+
+[Network]
+DHCP=v4
+
+[DHCP]
+RouteMetric=10
+ClientIdentifier=mac
