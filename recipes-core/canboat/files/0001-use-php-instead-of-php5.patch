@@ -1,0 +1,61 @@
+From 85987c659762939241e4bdd4223e63eb5997b181 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Sun, 20 May 2018 16:22:29 -0700
+Subject: [PATCH] use php instead of php5
+
+OE ships php5 as php
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ airmar/airmar.php             | 2 +-
+ n2kd/n2kd_monitor             | 2 +-
+ send-message/format-message   | 2 +-
+ util/list-product-information | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/airmar/airmar.php b/airmar/airmar.php
+index ccd4b4d..46ed49d 100755
+--- a/airmar/airmar.php
++++ b/airmar/airmar.php
+@@ -1,4 +1,4 @@
+-#!/usr/bin/php5
++#!/usr/bin/env php
+ <?php
+ if (!is_array($argv))
+ {
+diff --git a/n2kd/n2kd_monitor b/n2kd/n2kd_monitor
+index f8cfd42..4cb4766 100755
+--- a/n2kd/n2kd_monitor
++++ b/n2kd/n2kd_monitor
+@@ -233,7 +233,7 @@ for (;;)
+         open STDIN, '/dev/null' or die "Can't read /dev/null: $!";
+         open STDOUT, '>>', $MONITOR_LOGFILE or die "Can't write to $MONITOR_LOGFILE $!";
+         open STDERR, '>&STDOUT' or die "Can't dup stdout: $!";
+-        exec 'php5', '/usr/local/bin/n2k.php', '-monitor';
++        exec 'php', '/usr/bin/n2k.php', '-monitor';
+       }
+       if (!$monitor)
+       {
+diff --git a/send-message/format-message b/send-message/format-message
+index 590a815..2d91185 100755
+--- a/send-message/format-message
++++ b/send-message/format-message
+@@ -1,4 +1,4 @@
+-#!/usr/bin/php5
++#!/usr/bin/env php
+ <?
+ #
+ # Format a particular N2K command
+diff --git a/util/list-product-information b/util/list-product-information
+index d958ae4..a54a0f2 100755
+--- a/util/list-product-information
++++ b/util/list-product-information
+@@ -1,4 +1,4 @@
+-#!/usr/bin/php5
++#!/usr/bin/env php
+ <?php
+ #
+ # A very limited script engine that sends and receives CAN messages.
+-- 
+2.17.0
+
