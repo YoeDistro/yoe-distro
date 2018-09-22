@@ -10,10 +10,6 @@
 	path = sources/meta-openembedded
 	url = git://github.com/kraj/meta-openembedded.git
 	branch = master
-[submodule "sources/meta-bec"]
-	path = sources/meta-bec
-	url = git://github.com/cbrake/meta-bec.git
-	branch = master
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = git://git.yoctoproject.org/meta-ti
@@ -58,3 +54,7 @@
 	path = sources/meta-variscite-fslc
 	url = git://github.com/kraj/meta-variscite-fslc.git
 	branch = pyro
+[submodule "sources/meta-yoe"]
+	path = sources/meta-yoe
+	url = git://github.com/YoeDistro/meta-yoe
+	branch = master
