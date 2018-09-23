@@ -24,20 +24,33 @@ if [ -f local.sh ]; then
 fi
 BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/*-release | sed 's#^ID=##')
 
+if [ "${0##*/}" = "dash" ]; then
+  echo "dash shell is not supported"
+  return
+fi
+###############################################################################
+# Reconfigure dash on debian-like systems
+###############################################################################
+which aptitude > /dev/null 2>&1
+ret=$?
+if [ "$(readlink /bin/sh)" = "dash" -a "$ret" = "0" ]; then
+  sudo aptitude install expect -y
+  expect -c 'spawn sudo dpkg-reconfigure -freadline dash; send "n\n"; interact;'
+elif [ "${0##*/}" = "dash" ]; then
+  echo "dash as default shell is not supported"
+  return
+fi
+
 ###############################################################################
 # Machine/Distro setup -- this is the main configuration for the build
 # these variables can be set externally in the shell, or here
 ###############################################################################
 
+
 # Try to infer the machine name from envsetup script itself
 # so we can create symlinks like
 # <machine>-envsetup.sh -> envsetup.sh
 # and it will automatically set MACHINE variable
-
-if [ "${0##*/}" = "dash" ]; then
-  echo "dash shell is not supported"
-  return
-fi
 
 arg0=$0
 test -n "$BASH" && arg0=$BASH_SOURCE[0]
@@ -134,14 +147,6 @@ fi
 # Set up the bitbake path to find the OpenEmbedded recipes.
 #--------------------------------------------------------------------------
 export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/openembedded-core/meta${BBPATH_EXTRA}
-
-#--------------------------------------------------------------------------
-# Reconfigure dash
-#--------------------------------------------------------------------------
-if [ "$(readlink /bin/sh)" = "dash" ]; then
-  sudo aptitude install expect -y
-  expect -c 'spawn sudo dpkg-reconfigure -freadline dash; send "n\n"; interact;'
-fi
 
 if [ -z "$(readlink ${OE_BUILD_DIR}/tools/python)" ]; then
   mkdir -p ${OE_BUILD_DIR}/tools
