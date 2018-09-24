@@ -31,7 +31,7 @@ fi
 ###############################################################################
 # Reconfigure dash on debian-like systems
 ###############################################################################
-which aptitude > /dev/null 2>&1
+which aptitude >/dev/null 2>&1
 ret=$?
 if [ "$(readlink /bin/sh)" = "dash" -a "$ret" = "0" ]; then
   sudo aptitude install expect -y
@@ -45,7 +45,6 @@ fi
 # Machine/Distro setup -- this is the main configuration for the build
 # these variables can be set externally in the shell, or here
 ###############################################################################
-
 
 # Try to infer the machine name from envsetup script itself
 # so we can create symlinks like
