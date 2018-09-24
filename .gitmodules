@@ -58,3 +58,7 @@
 	path = sources/meta-riscv
 	url = git://github.com/YoeDistro/meta-riscv
 	branch = master
+[submodule "sources/meta-odroid"]
+	path = sources/meta-odroid
+	url = git://github.com/YoeDistro/meta-odroid
+	branch = master
