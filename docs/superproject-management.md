@@ -36,8 +36,8 @@ more). From this, we derive Yoe's requirements (somewhat ordered by priority).
 available upstream.
 
 Every solution has tradeoffs. To accomplish one goal, you
-often have to accept compromises on another goal, so it is not likely we can
-accomplish all of these goals.
+often have to accept compromises on another goal, so it is not likely no
+one tools is best to accomplish all of these goals.
 
 ## Git Submodules
 
