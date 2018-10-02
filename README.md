@@ -6,19 +6,19 @@ It is built on **Y**octo and **O**pen**E**mbedded with a focus on simplicity.
 ## Example
 
 This following is example of building and installing a linux system from
-scratch on the BeagleBoard.
+scratch on a Raspberry PI 3:
 
 * git clone git://github.com/YoeDistro/yoe-distro.git
 * cd yoe-distro
-* . envsetup.sh
+* . raspberrypi3-64-envsetup.sh
 * yoe_setup
-* bitbake systemd-image
+* bitbake core-image-minimal
 * [insert SD card]
 * lsblk (note sd card device)
 * yoe_partition_sd /dev/sdX
 * yoe_install_sd_boot (install MLO, u-boot, kernel)
 * yoe_install_sd_rootfs_systemd_image
-* [Install SD card in beagleboard and enjoy your new image]
+* [Install SD card in a Raspberry PI and enjoy your new image]
 * yoe_console (fire up a serial console for the machine)
 
 ## Motivation
