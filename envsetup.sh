@@ -392,12 +392,18 @@ dkr() {
     CMD="/bin/bash"
   fi
 
+  SSH_AUTH_DIR=~/
+
+  if [ -n "$SSH_AUTH_SOCK" ]; then
+    SSH_AUTH_DIR=$(readlink -f $SSH_AUTH_SOCK)
+  fi
+
   docker run --rm -it \
     -v $(pwd):$(pwd) \
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
     -v /stash/downloads:/stash/downloads \
-    -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent \
+    -v $SSH_AUTH_DIR:/ssh-agent \
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
     --user $UID:$GID \
