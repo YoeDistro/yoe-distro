@@ -1,3 +1,5 @@
+<img src="docs/yoe.png?raw=true" width="150">
+
 # Yoe Embedded Linux Distribution
 
 Yoe is an Embedded Linux Distribution optimized for product development.
