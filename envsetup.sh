@@ -417,3 +417,18 @@ bitbake() {
     dkr "${OE_BASE}/sources/bitbake/bin/bitbake $@"
   fi
 }
+
+###############################################################################
+# Machine independent install scripts
+###############################################################################
+
+yoe_install_sd_image() {
+  IMAGE_NAME=$1
+  SD=$2
+
+  if [ -z $IMAGE_NAME ] || [ -z $SD ]; then
+    echo "Usage:"
+  fi
+
+  # todo -- needs finished
+}
