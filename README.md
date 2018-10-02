@@ -1,4 +1,4 @@
-![Yoe](docs/yoe.png?raw=true "Yoe" =200x)
+![Yoe](docs/yoe.png?raw=true =200x200)
 
 # Yoe Embedded Linux Distribution
 
