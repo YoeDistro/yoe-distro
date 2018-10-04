@@ -4,8 +4,7 @@
 
 Yoe is an Embedded Linux Distribution optimized for product development.
 It is built on **Y**octo and **O**pen**E**mbedded with a focus on simplicity.
-Yoe aims to be a straightforward way to pull together various Yocto layers
-and BSPs in a production grade build system.
+This distribution does not end at demo images but rather begins there.
 
 ## Example
 
@@ -38,22 +37,26 @@ goals:
    is as simple as possible. Emphasis is on logical organization, minimal magic, and good
    tooling where it makes sense. We try to minimize uneeded indirection or abstraction
    unless it really adds value.
-1. **robust**: easy to lock down subprojects (layers) to known versions for
-   repeatable builds using git submodules.
 1. **modern**: generate a modern Linux root filesystem using the latest technologies.
 1. **broad platform support**: support a range of common development platforms, system on
    chips (SoC), and system on modules (SOM). You should not have to use a different
    build system for every SOC/SOM you might choose to use in your products.
+1. **repeatable**: easy to lock down subprojects (layers) to known versions for
+     repeatable builds
 1. **extendable**: simple to modify and add your own custom software, scripts and tooling.
-1. **host independence**: product lifecycles run for many years, so we need a solution where
+   The focus is not in hiding or abstracting Yocto functionality, but rather provider simpler
+   and clearer ways to use it.
+1. **maintainable**: product lifecycles run for many years, so we need a solution where
    we can build images on a number of different hosts as time marches on. We achieve this
    through a simple and transparent docker wrapper that contains all the host dependencies
    needed. This wrapper is invisible (the file system still lives on the host), and is
    optional if you choose not to use it.
 1. **transparent**: we try to use industry standard tools (git, bitbake, etc) where possible
-   and not invent a lot of new tooling that needs to be learned to understand how things work.
+   and not invent a lot of new tooling that needs to be learned to use the system.
    As an example, much of the tooling (envsetup.sh) are simple bash functions and are easy
    to learn from. Using Yoe will teach you about Yocto.
+1. **minimal**: Embedded Linux images can quickly become bloated so we support technologies
+   like musl libc, opkg package manager, etc. where appropriate.
 
 ## Tested Machines
 

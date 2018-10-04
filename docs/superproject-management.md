@@ -1,6 +1,6 @@
 # Git Superproject Management
 
-One controversial decisions in Yoe is the choice of
+One controversial choice in Yoe is the use of
 Git Submodules vs Repo. Because we need to manage multiple
 Git repositories, something is needed. There are a number of
 solutions including:
@@ -9,7 +9,7 @@ solutions including:
 * Google repo
 * Git subtree
 * custom scripts
-* Poky style monorepo
+* Poky style combo repo
 
 In this document, we will use the OE term "layers" to refer to git
 subrepositories (submodules). Superproject is the term that describes
@@ -19,9 +19,9 @@ the project that manages all the subprojects (layers).
 
 Yoe is designed foremost for product development, or using Yocto/OE to
 build software that will be deployed in real products (vs a technology demo
-build for a vendors CPU/SOM). It is also designed to be used by people who may
+build). It is also designed to be used by people who may
 not be embedded Linux/Git experts, but yet want to create builds and make
-incremental improvements over the long product lifecycle (can be 5 years or
+incremental improvements over long product lifecycles (can be 5 years or
 more). From this, we derive Yoe's requirements (somewhat ordered by priority).
 
 1. know exactly what version of all software (layers) were used in a particular
@@ -61,7 +61,7 @@ one tools is best to accomplish all of these goals.
     http://bec-systems.com/site/696/git-submodules-what-to-do-when-you-commit-to-no-branch
   * removing submodules can be a little confusing
   * updating a submodule URL requires a "sync" to propagate changes to working
-    subodule.
+    submodule.
 
 ## Google Repo
 
@@ -94,10 +94,10 @@ all the subprojects into one repo, and likely not optimal for managing layers,
 most of which will rarely change during a product lifecycle. It seems to be
 a tool for more advanced users.
 
-## Poky style monorepo
+## Poky style combo repo
 
 One popular trend these days are [monorepos](http://danluu.com/monorepo/) which
-are popular these days in large companies.
+are popular in various large companies (like Google and Facebook).
 [Poky](http://git.yoctoproject.org/cgit/cgit.cgi/poky) is somewhat of a monorepo
 in that it contains bitbake, oe-core, and some other things in one git
 repo. This makes it easy to checkout one repository and build a demo image if
@@ -106,13 +106,12 @@ have to deal with multiple repositories or figure out the
 [combo-layer](http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/scripts/combo-layer)
 tool. Additionally, if you make changes to one of the pieces of Poky,
 extracting these changes to submit back upstream is not as easy as if the
-repositories were simply split out in their original form. Also, it is an all
-or nothing type setup -- if you need a bitbake fix, you can't move to a different
-version of bitbake without moving the who thing.
+repositories were simply split out in their original form. Also, it is less obvious
+you might update just one port of the combo repo, but not others.
 
 It seems monorepos are best for projects where a company owns everything in the
 repo. With a Yocto build, most of the layers come from third parties. In this
-scenario, it seems a superproject type setup is a better fit. And, we favor the
+scenario, it seems a superproject type setup is a better fit. We favor the
 transparency of showing clearly where each layer came from so it is obvious where
 to go for support, etc.
 
@@ -131,7 +130,7 @@ release except application code. These product cycles can be 5 years or more
 with 100's of releases. During this time, the layers may change from time to
 time to add new packages, tweak the system files, or update to a new version
 of Yocto, but these layer changes are relatively few compared to the application
-changes. We want to optimize the experience for this use case where developer
+changes. We want to optimize the experience for this use case where a developer
 using Yoe is not a Yocto expert, but knows enough to tweak recipes, run builds, etc.
 
 The ability to manage both configuration files, documentation,
@@ -160,15 +159,10 @@ are not.
 
 (Note, I don't claim Yoe meets this lofty goal, but this is the vision.)
 
-Tagging the build system for each release is also simpler with git submodules because
-it is a simple git add/commit/tag routine that developers are familiar with.
-With repo, tooling typically needs to be added to switch the layers in the manifest file
-from floating branches to locked down versions.
-
 It seems git submodules are still a better fit for the use case Yoe was designed for,
 however this is not set in stone, but simply where we are at this point. It is acknowledged
 that repo may make some things easier for OE/Layer core developers where
-who are often updating layers, etc. So, if repo works great for you, by all means keep using
+who are often modifying and updating layers. So, if repo works great for you, by all means keep using
 it. That is the beauty of OE layers -- you can put then
 together using whatever tools works best for you. Yoe is just an attempt at keeping things as
 simple as possible for product developers.
