@@ -4,6 +4,8 @@
 
 Yoe is an Embedded Linux Distribution optimized for product development.
 It is built on **Y**octo and **O**pen**E**mbedded with a focus on simplicity.
+Yoe aims to be a straightforward way to pull together various Yocto layers
+and BSPs in a production grade build system.
 
 ## Example
 
@@ -23,24 +25,35 @@ scratch on a Raspberry PI 3:
 * [Install SD card in a Raspberry PI and enjoy your new image]
 * yoe_console (fire up a serial console for the machine)
 
-## Motivation
+## Vision
 
-This build template is designed to be used for production
-build systems (used to build products), and thus
-has the following goals:
+There are many examples of build systems out there that are based on Yocto.
+There is the Poky reference distribution. Most SOC and SOM vendors provide
+a Yocto variant that supports their products (often put together with repo).
+While these all provide good ways to build demo images, we feel something
+slightly different is needed for product development. Thus, the following
+goals:
 
-1. simplicity: uses well understood things like bash and
-   git submodules.
-1. robustness: Git submodules are
-   a robust solution for production environments, and
-   error handling good. Git submodules are also very good at making
-   sure you are building exactly what was checked in, because it locks every
-   submodule down to a specific version, which is generally what you want for a production
-   build system, where the build must be absolutely repeatable.
-1. modern: generate a modern Linux root filesystem using the latest technologies
-1. broad platform support: support a range of common development platforms, system on
-   chips (SoC), and system on modules (SOM)
-1. extendable: simple to modify and add your own custom software to the system
+1. **simple**: directory layout is logical so it is easy to find things, and tooling
+   is as simple as possible. Emphasis is on logical organization, minimal magic, and good
+   tooling where it makes sense. We try to minimize uneeded indirection or abstraction
+   unless it really adds value.
+1. **robust**: easy to lock down subprojects (layers) to known versions for
+   repeatable builds using git submodules.
+1. **modern**: generate a modern Linux root filesystem using the latest technologies.
+1. **broad platform support**: support a range of common development platforms, system on
+   chips (SoC), and system on modules (SOM). You should not have to use a different
+   build system for every SOC/SOM you might choose to use in your products.
+1. **extendable**: simple to modify and add your own custom software, scripts and tooling.
+1. **host independence**: product lifecycles run for many years, so we need a solution where
+   we can build images on a number of different hosts as time marches on. We achieve this
+   through a simple and transparent docker wrapper that contains all the host dependencies
+   needed. This wrapper is invisible (the file system still lives on the host), and is
+   optional if you choose not to use it.
+1. **transparent**: we try to use industry standard tools (git, bitbake, etc) where possible
+   and not invent a lot of new tooling that needs to be learned to understand how things work.
+   As an example, much of the tooling (envsetup.sh) are simple bash functions and are easy
+   to learn from. Using Yoe will teach you about Yocto.
 
 ## Tested Machines
 
@@ -63,16 +76,16 @@ to see them.
 
 ### directories and key files
 
-* build: temporary directory where build actually takes place
-* conf: configuration files for the build
-* sources: various sources used for the build. The entries
+* _build_: temporary directory where build actually takes place
+* _conf_: configuration files for the build
+* _sources_: various sources used for the build. The entries
   in this directory are git submodules.
-* downloads: contains files that are downloaded by various
+* _downloads_: contains files that are downloaded by various
   recipes during builds.
-* tools: utility scripts
-* localconfig.sh: file created by envsetup.sh that contains
+* _tools_: utility scripts
+* _localconfig.sh_: file created by envsetup.sh that contains
   directory specific variables based on the build system location.
-* local.sh: can be used to customize MACHINE, and other variables
+* _local.sh_: can be used to customize MACHINE, and other variables
 
 ### building for another machine
 
@@ -125,4 +138,4 @@ HEAD of the specified branch:
 This build system is licensed under the MIT license which is the
 same license as oe-core, etc. See COPYING.MIT
 
-Contributions are welcome: please email cbrake@bec-systems.com
+Contributions are welcome: please file issues or open pull requests.
