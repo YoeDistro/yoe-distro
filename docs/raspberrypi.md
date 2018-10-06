@@ -1,5 +1,22 @@
 # Notes on using Yoe on the Raspberry PI
 
+## Building an image
+
+* git clone git://github.com/YoeDistro/yoe-distro.git
+* cd yoe-distro
+* . raspberrypi3-64-envsetup.sh
+* yoe_setup
+* bitbake core-image-minimal
+* [insert SD card]
+* lsblk (note sd card device, and substitute for /dev/sdX below)
+* yoe_install_wic_image /dev/sdX core-image-minimal
+* optional: configure console for serial port (see below)
+* sudo eject /dev/sdX
+* [Install SD card in a Raspberry PI and enjoy your new image]
+
+Other Raspberry Pi variants can be built by sourcing the appropriate
+envsetup file.
+
 ## Enable serial console
 
 Currently, the images default to console only on HDMI display. If you want
