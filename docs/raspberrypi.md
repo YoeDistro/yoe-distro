@@ -2,17 +2,17 @@
 
 ## Building an image
 
-* git clone git://github.com/YoeDistro/yoe-distro.git
-* cd yoe-distro
-* . raspberrypi3-64-envsetup.sh
-* yoe_setup
-* bitbake core-image-minimal
-* [insert SD card]
-* lsblk (note sd card device, and substitute for /dev/sdX below)
-* yoe_install_wic_image /dev/sdX core-image-minimal
-* optional: configure console for serial port (see below)
-* sudo eject /dev/sdX
-* [Install SD card in a Raspberry PI and enjoy your new image]
+1. `git clone git://github.com/YoeDistro/yoe-distro.git`
+1. `cd yoe-distro`
+1. `. raspberrypi3-64-envsetup.sh`
+1. `yoe_setup`
+1. `bitbake core-image-minimal`
+1. insert SD card
+1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
+1. `yoe_install_wic_image /dev/sdX core-image-minimal`
+1. optional: configure console for serial port (see below)
+1. `sudo eject /dev/sdX`
+1. Install SD card in a Raspberry PI and enjoy your new image
 
 Other Raspberry Pi variants can be built by sourcing the appropriate
 envsetup file.
