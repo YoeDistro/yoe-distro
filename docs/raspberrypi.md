@@ -12,3 +12,20 @@ boot partition of the SD card.
   * add the following to the end of the kernel cmdline: `console=ttyAMA0,115200`
 
 We would like to make this configurable in the near future.
+
+## Connecting to rPI serial console
+
+The Raspberry PI serial console is avaiable on the expansion header. A USB->serial
+cable with flying leads is a convenient way to connect to this. FTDI (as well as many
+other companies supply these cables). The below image shows how the FTDI cable is
+connected:
+
+![rPI serial console](raspberry-pi-serial-console.jpg)
+
+The relevant signals are:
+
+* FTDI Black (GND) <-> rPI Pin 6 (GND)
+* FTDI Yellow (RXD) <- rPI Pin8 (TXD)
+* FTDI Orange (TXD) -> rPI Pin10 (RXD)
+
+See the [schematics](https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/README.md) for more information.
