@@ -17,12 +17,11 @@ scratch on a Raspberry PI 3:
 * yoe_setup
 * bitbake core-image-minimal
 * [insert SD card]
-* lsblk (note sd card device)
-* yoe_partition_sd /dev/sdX
-* yoe_install_sd_boot (install MLO, u-boot, kernel)
-* yoe_install_sd_rootfs_systemd_image
+* lsblk (note sd card device, and substitute for /dev/sdX below)
+* yoe_install_wic_image /dev/sdX core-image-minimal
+* optional: [configure console for serial port](docs/raspberrypi.md)
+* sudo eject /dev/sdX
 * [Install SD card in a Raspberry PI and enjoy your new image]
-* yoe_console (fire up a serial console for the machine)
 
 ## Vision
 
