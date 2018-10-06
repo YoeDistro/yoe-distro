@@ -422,13 +422,19 @@ bitbake() {
 # Machine independent install scripts
 ###############################################################################
 
-yoe_install_sd_image() {
-  IMAGE_NAME=$1
-  SD=$2
+# write a WIC image to media (SD, USB, etc)
+yoe_install_wic_image() {
+  DRIVE=$1
+  IMAGE_NAME=$2
 
-  if [ -z $IMAGE_NAME ] || [ -z $SD ]; then
-    echo "Usage:"
+  if [ ! $DRIVE ] || [ ! $IMAGE_NAME ]; then
+    echo "Usage: yoe_install_wic_image /dev/sdX image_name"
+    echo "Warning, make sure you specify your SD card and not a workstation disk"
+    echo
+    return 1
   fi
 
-  # todo -- needs finished
+  IMAGE=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic.xz
+
+  xzcat $IMAGE | sudo dd of=$DRIVE bs=4M iflag=fullblock oflag=direct conv=fsync status=progress
 }
