@@ -46,3 +46,9 @@ The relevant signals are:
 * FTDI Orange (TXD) -> rPI Pin10 (RXD)
 
 See the [schematics](https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/README.md) for more information.
+
+## rPI Power Supply
+
+Some of the Raspberry PI products seem to be sensitive to power quality. It is recommended
+to use a supply that outputs 5.1V such as the [official supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). An inadequate supply may result in lockups or
+SD card file system corruption.
