@@ -37,13 +37,13 @@ goals:
    tooling where it makes sense. We try to minimize uneeded indirection or abstraction
    unless it really adds value.
 1. **modern**: generate a modern Linux root filesystem using the latest technologies.
-1. **broad platform support**: support a range of common development platforms, system on
+1. **broad platform support**: support a range of single board computers (SBC), system on
    chips (SoC), and system on modules (SOM). You should not have to use a different
-   build system for every SOC/SOM you might choose to use in your products.
+   build system for every SBC/SOC/SOM you might choose to use in your products.
 1. **repeatable**: easy to lock down subprojects (layers) to known versions for
      repeatable builds
 1. **extendable**: simple to modify and add your own custom software, scripts and tooling.
-   The focus is not in hiding or abstracting Yocto functionality, but rather provider simpler
+   The focus is not on hiding or abstracting Yocto functionality, but rather provider simpler
    and clearer ways to use it.
 1. **maintainable**: product lifecycles run for many years, so we need a solution where
    we can build images on a number of different hosts as time marches on. We achieve this
