@@ -16,7 +16,7 @@ We would like to make this configurable in the near future.
 ## Connecting to rPI serial console
 
 The Raspberry PI serial console is avaiable on the expansion header. A USB->serial
-cable with flying leads is a convenient way to connect to this. FTDI (as well as many
+cable with flying leads is a convenient way to connect to this. [FTDI](https://www.ftdichip.com/Products/Cables/RPi.htm) (as well as many
 other companies supply these cables). The below image shows how the FTDI cable is
 connected:
 
