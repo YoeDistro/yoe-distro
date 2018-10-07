@@ -11,3 +11,7 @@ included for some of them below.
 * [Raspberry PI](raspberrypi.md)
 * [BeagleBone -- todo]()
 * [ODroid-C2 -- todo]()
+
+## Design Choices
+
+* [Superproject Management](superproject-management.md)
