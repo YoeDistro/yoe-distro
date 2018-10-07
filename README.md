@@ -23,9 +23,11 @@ scratch on a Raspberry PI 3:
 1. `sudo eject /dev/sdX`
 1. Install SD card in a Raspberry PI and enjoy your new image
 
+[Detailed documentation](docs/index.md) is available.
+
 ## Vision
 
-There are many examples of build systems out there that are based on Yocto.
+There are many Embedded Linux distribution built on top of OpenEmbedded/Yocto.
 There is the Poky reference distribution. Most SOC and SOM vendors provide
 a Yocto variant that supports their products (often put together with repo).
 While these all provide good ways to build demo images, we feel something
@@ -57,9 +59,14 @@ goals:
 1. **minimal**: Embedded Linux images can quickly become bloated so we support technologies
    like musl libc, opkg package manager, etc. where appropriate.
 
-## Tested Machines
+## Supported Machines
 
 See the \<machine\>-envsetup.sh files for examples of machines we regularly test with.
+
+There is also [machine specific documentation](docs/index.md#machine-documentation)
+available.
+
+Additional machines can be added by including appropriate BSP layers.
 
 ## Using
 

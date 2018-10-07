@@ -1,5 +1,7 @@
 # Notes on using Yoe on the Raspberry PI
 
+[up](index.md)
+
 ## Building an image
 
 1. `git clone git://github.com/YoeDistro/yoe-distro.git`
