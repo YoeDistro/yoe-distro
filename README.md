@@ -23,7 +23,7 @@ scratch on a Raspberry PI 3:
 1. `sudo eject /dev/sdX`
 1. Install SD card in a Raspberry PI and enjoy your new image
 
-[Detailed documentation](docs/index.md) is available.
+[Detailed documentation](docs/index.md)
 
 ## Vision
 
