@@ -15,3 +15,13 @@ included for some of them below.
 ## Design Choices
 
 * [Superproject Management](superproject-management.md)
+* [Layer Management](layer-management.md)
+
+The Yoe documentation is kept with the project as simple markdown files in the docs/
+subdirectory. We do not use the Github wiki, document generators, or other more
+sophisticated methods for the following reasons:
+
+* it is obvious where to find documentation
+* the documentation for the version of Yoe you are using is always available, even
+  through long product life cycles
+* simpler for others to contibute improvements
