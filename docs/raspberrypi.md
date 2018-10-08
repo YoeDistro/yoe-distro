@@ -2,6 +2,8 @@
 
 [up](index.md)
 
+[BSP Layer documentation](https://github.com/YoeDistro/meta-raspberrypi/blob/master/docs)
+
 ## Building an image
 
 1. `git clone git://github.com/YoeDistro/yoe-distro.git`
@@ -21,12 +23,10 @@ envsetup file.
 
 ## Enable serial console
 
-The serial console for the rPI can be enabled by adding `ENABLE_UART = "1"` to
-local.conf. This is currently the default Yoe local.conf, but can be removed
-if needed.
-
-See BSP layer [documentation](../sources/meta-raspberrypi/extra-build-config.md)
-for more information.
+The serial console for the rPI3 can be enabled by adding `ENABLE_UART = "1"` to
+local.conf. This is currently done in local.conf, but has tradeoffs as described
+in the BSP layer
+[documentation](https://github.com/YoeDistro/meta-raspberrypi/blob/master/docs/extra-build-config.md).
 
 ## Connecting to rPI serial console
 
