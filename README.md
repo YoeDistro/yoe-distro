@@ -75,7 +75,7 @@ Additional machines can be added by including appropriate BSP layers.
 This is where all the magic happens. In general, this build system
 must be run in a bash shell. To set up the environment, source the following file:
 
-. ./\<machine\>-envsetup.sh
+`. ./\<machine\>-envsetup.sh`
 
 Or, you can export a MACHINE environment variable, and then source envsetup.sh.
 
@@ -98,24 +98,22 @@ to see them.
 
 ### building for another machine
 
-* export MACHINE=[my machine]
-* bitbake [recipe name]
+* `export MACHINE=[my machine]`
+* `bitbake [recipe name]`
 
-### adding a new layer
+### Layer management
 
-* Adding rocko branch of meta-altera layer to layer mix
+Adding rocko branch of meta-altera layer to layer mix:
 
-yoe_add_layer https://github.com/kraj/meta-altera rocko
+`yoe_add_layer https://github.com/kraj/meta-altera rocko`
 
-### removing a new layer
+Remove meta-altera:
 
-* Remove meta-altera
-
-yoe_remove_layer meta-altera
+`yoe_remove_layer meta-altera`
 
 ### customizing settings
 
-conf/local.conf contains settings that are commonly modified such
+`conf/local.conf` contains settings that are commonly modified such
 as parallel build options.
 
 ### starting a local feed server
@@ -124,10 +122,10 @@ Sometimes you want to install packages you build on the target system
 without building and re-installing the entire rootfs. This can be done
 using a feed server.
 
-* Workstation: yoe_feed_server (this starts a feed server on port 4000)
+* Workstation: `yoe_feed_server` (this starts a feed server on port 4000)
 * Target: modify /etc/opkg to http://[your workstation IP]:4000
-* Target: opkg update
-* Target: opkg install [package]
+* Target: `opkg update`
+* Target: `opkg install [package]`
 
 This advantage of a feed server versus scp'ing opkg files to the target
 and installing manually is that dependencies will automatically get installed.
@@ -140,11 +138,11 @@ Assuming you have a recent version of git, you can make use of the branch
 values specified in .gitmodules to update each submodule branch to the
 HEAD of the specified branch:
 
-```git submodule update --remote```
+`git submodule update --remote`
 
 ## License
 
 This build system is licensed under the MIT license which is the
 same license as oe-core, etc. See COPYING.MIT
 
-Contributions are welcome: please file issues or open pull requests.
+Contributions are welcome: please open issues or pull requests.
