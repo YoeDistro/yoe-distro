@@ -1,6 +1,6 @@
 # Notes on using Yoe on the Raspberry PI
 
-[up](index.md)
+[up](README.md)
 
 [BSP Layer documentation](https://github.com/YoeDistro/meta-raspberrypi/blob/master/docs)
 

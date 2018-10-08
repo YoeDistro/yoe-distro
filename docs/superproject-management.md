@@ -1,6 +1,6 @@
 # Git Superproject Management
 
-[up](index.md)
+[up](README.md)
 
 One controversial choice in Yoe is the use of
 Git Submodules vs Repo. Because we need to manage multiple
