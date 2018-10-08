@@ -21,16 +21,12 @@ envsetup file.
 
 ## Enable serial console
 
-Currently, the images default to console only on HDMI display. If you want
-the console on the serial port, you will need to edit two files in the
-boot partition of the SD card.
+The serial console for the rPI can be enabled by adding `ENABLE_UART = "1"` to
+local.conf. This is currently the default Yoe local.conf, but can be removed
+if needed.
 
-* config.txt
-  * add the following line to the end of the file: `enable_uart=1`
-* cmdline.txt
-  * add the following to the end of the kernel cmdline: `console=ttyAMA0,115200`
-
-We would like to make this configurable in the near future.
+See BSP layer [documentation](../sources/meta-raspberrypi/extra-build-config.md)
+for more information.
 
 ## Connecting to rPI serial console
 
