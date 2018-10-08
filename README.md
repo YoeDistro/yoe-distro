@@ -23,7 +23,7 @@ scratch on a Raspberry PI 3:
 1. `sudo eject /dev/sdX`
 1. Install SD card in a Raspberry PI and enjoy your new image
 
-[Detailed documentation](docs/index.md)
+[Detailed documentation](docs/README.md)
 
 ## Vision
 
@@ -63,7 +63,7 @@ goals:
 
 See the \<machine\>-envsetup.sh files for examples of machines we regularly test with.
 
-There is also [machine specific documentation](docs/index.md#machine-documentation)
+There is also [machine specific documentation](docs/README.md#machine-documentation)
 available.
 
 Additional machines can be added by including appropriate BSP layers.
