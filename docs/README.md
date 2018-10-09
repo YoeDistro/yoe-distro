@@ -12,6 +12,13 @@ included for some of them below.
 * [BeagleBone -- todo]()
 * [ODroid-C2 -- todo]()
 
+## Image Configuration
+
+OpenEmbedded supports a wide range of technology choices. Some of these are documented
+below.
+
+* [libc/init system](libc-init.md)
+
 ## Design Choices
 
 * [Superproject Management](superproject-management.md)

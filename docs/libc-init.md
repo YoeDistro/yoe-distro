@@ -1,4 +1,4 @@
-# Init System
+# libc and init system selection
 
 ## Systemd
 
@@ -25,11 +25,21 @@ VIRTUAL-RUNTIME_dev_manager = "busybox-mdev"
 VIRTUAL-RUNTIME_login_manager = "busybox"
 ```
 
-## Comparison of disk spaced used by init systems
+## Libc selection
 
-Systemd takes considerably more space than SysVinit. With a rPI2 build, the following
-are the rootfs sizes for core-image-minimal:
+glibc is the default libc, but musl can also be used by setting the following in
+local.conf:
 
+```
+TCLIBC = "musl"
+```
+
+## Comparison of disk spaced used
+
+* Musl + Busybox init/dev/login
+  * space used in ext4 filesystem on running system using df: 1.9MB
+  * adding sizes of files in image from buildhistory: 1.5MB
+  * number of files in image: 595
 * Busybox init/dev/login
   * space used in ext4 filesystem on running system using df: 3.5MB
   * adding sizes of files in image from buildhistory: 3.1MB
@@ -42,3 +52,7 @@ are the rootfs sizes for core-image-minimal:
   * space used in ext4 filesystem on running system using df: 33.2MB
   * adding sizes of files in image from buildhistory: 22MB
   * number of files in image: 1,806
+
+The space on disc used by a systemd image is much larger than adding the size of
+the files in the image. We're not sure why this is -- perhaps there is filesystem
+overhead for small files.
