@@ -13,7 +13,14 @@ VIRTUAL-RUNTIME_initscripts = ""
 Systemd takes considerably more space than SysVinit. With a rPI2 build, the following
 are the rootfs sizes for core-image-minimal:
 
-* SysVinit: 4.7MB
-* Systemd: 33.2MB
+* SysVinit
+  * space used in ext4 filesystem on running system using df: 4.7MB
+  * adding sizes of files in image from buildhistory: 4.3MB
+  * number of files in image: 696
+* Systemd
+  * space used in ext4 filesystem on running system using df: 33.2MB
+  * adding sizes of files in image from buildhistory: 22MB
+  * number of files in image: 1,806
 
-(the above sizes are being investigated, as they may not be accurate).
+There is a significant size cost with systemd, so in some cases it may make sense to
+use sysvinit if image size is a priority.
