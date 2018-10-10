@@ -214,11 +214,17 @@ fi # if -e ${OE_ENV_FILE}
 # UPDATE_ALL() - Make sure everything is up to date
 ###############################################################################
 yoe_update_all() {
-  git submodule update
+  CWD=`pwd`
+  cd ${OE_BASE}
+  git pull && git submodule sync && git submodule update
+  cd $CWD
 }
 
 yoe_update_all_submodules_to_master() {
+  SAVEDPWD=$PWD
+  cd $OE_BASE
   git submodule foreach "git checkout master && git pull"
+  cd $SAVEDPWD
 }
 
 ###############################################################################
@@ -234,9 +240,11 @@ yoe_clean() {
 # machine is first parameter
 ###############################################################################
 yoe_setup() {
+  SAVEDPWD=$PWD
+  cd $OE_BASE
   git submodule init
   git submodule update
-
+  cd $SAVEDPWD
 }
 
 ###############################################################################
