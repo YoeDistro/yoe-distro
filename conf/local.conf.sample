@@ -11,3 +11,6 @@
 
 # Uncomment the following to enable musl libc
 #TCLIBC = "musl"
+
+# generate the mirror tarball for SCM repos
+# BB_GENERATE_MIRROR_TARBALLS = "1"
