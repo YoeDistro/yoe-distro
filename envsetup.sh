@@ -214,7 +214,7 @@ fi # if -e ${OE_ENV_FILE}
 # UPDATE_ALL() - Make sure everything is up to date
 ###############################################################################
 yoe_update_all() {
-  CWD=`pwd`
+  CWD=$(pwd)
   cd ${OE_BASE}
   git pull && git submodule sync && git submodule update
   cd $CWD
@@ -387,7 +387,7 @@ yoe_clean_sstate() {
 }
 
 # Docker integration
-# set DOCKER_REPO to something like cbrake/oe-build
+# set DOCKER_REPO to something like yoedistro/yoe-build:stretch
 # Note, set DOCKER_REPO outside of envsetup.sh, otherwise
 # it will get set in container, which is not what you want.
 # local.sh is a good place to set DOCKER_REPO
