@@ -430,10 +430,19 @@ bitbake() {
 # Machine independent install scripts
 ###############################################################################
 
+yoe_check_install_dependencies() {
+  if ! pv -V 1>/dev/null; then
+    echo "ERROR: Please install the pv utility (http://www.ivarch.com/programs/pv.shtml)"
+    return 1
+  fi
+}
+
 # write a WIC image to media (SD, USB, etc)
-yoe_install_wic_image() {
+yoe_install_image() {
   DRIVE=$1
   IMAGE_NAME=$2
+
+  yoe_check_install_dependencies || return 1
 
   if [ ! $DRIVE ] || [ ! $IMAGE_NAME ]; then
     echo "Usage: yoe_install_wic_image /dev/sdX image_name"
