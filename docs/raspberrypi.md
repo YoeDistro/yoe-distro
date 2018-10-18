@@ -13,7 +13,7 @@
 1. `bitbake core-image-minimal`
 1. insert SD card
 1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
-1. `yoe_install_wic_image /dev/sdX core-image-minimal`
+1. `yoe_install_image /dev/sdX core-image-minimal`
 1. optional: configure console for serial port (see below)
 1. `sudo eject /dev/sdX`
 1. Install SD card in a Raspberry PI and enjoy your new image
@@ -39,9 +39,9 @@ connected:
 
 The relevant signals are:
 
-* FTDI Black (GND) <-> rPI Pin 6 (GND)
-* FTDI Yellow (RXD) <- rPI Pin8 (TXD)
-* FTDI Orange (TXD) -> rPI Pin10 (RXD)
+- FTDI Black (GND) <-> rPI Pin 6 (GND)
+- FTDI Yellow (RXD) <- rPI Pin8 (TXD)
+- FTDI Orange (TXD) -> rPI Pin10 (RXD)
 
 See the [schematics](https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/README.md) for more information.
 
