@@ -42,6 +42,10 @@ goals:
 1. **broad platform support**: support a range of single board computers (SBC), system on
    chips (SoC), and system on modules (SOM). You should not have to use a different
    build system for every SBC/SOC/SOM you might choose to use in your products.
+   Rather, one build system should easily support building images for a number of
+   different targets in one build tree. Most companies support multiple products with
+   SOCs from multiple vendors, thus the build system should be centered around the user's
+   products and software.
 1. **repeatable**: easy to lock down subprojects (layers) to known versions for
    repeatable builds
 1. **extendable**: simple to modify and add your own custom software, scripts and tooling.
