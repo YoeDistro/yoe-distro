@@ -9,7 +9,7 @@ The Yoe distribution includes support for a number of common machines. Notes are
 included for some of them below.
 
 - [Raspberry PI](raspberrypi.md)
-- [BeagleBone -- todo]()
+- [BeagleBone Black](beagleboneblack.md)
 - [ODroid-C2 -- todo]()
 
 ## Using Yoe
