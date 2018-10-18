@@ -18,7 +18,7 @@ scratch on a Raspberry PI 3:
 1. `bitbake core-image-minimal`
 1. insert SD card
 1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
-1. `yoe_install_wic_image /dev/sdX core-image-minimal`
+1. `yoe_install_image /dev/sdX core-image-minimal`
 1. optional: [configure console for serial port](docs/raspberrypi.md)
 1. `sudo eject /dev/sdX`
 1. Install SD card in a Raspberry PI and enjoy your new image
@@ -43,7 +43,7 @@ goals:
    chips (SoC), and system on modules (SOM). You should not have to use a different
    build system for every SBC/SOC/SOM you might choose to use in your products.
 1. **repeatable**: easy to lock down subprojects (layers) to known versions for
-     repeatable builds
+   repeatable builds
 1. **extendable**: simple to modify and add your own custom software, scripts and tooling.
    The focus is not on hiding or abstracting Yocto functionality, but rather provider simpler
    and clearer ways to use it.
@@ -85,21 +85,21 @@ to see them.
 
 ### directories and key files
 
-* _build_: temporary directory where build actually takes place
-* _conf_: configuration files for the build
-* _sources_: various sources used for the build. The entries
+- _build_: temporary directory where build actually takes place
+- _conf_: configuration files for the build
+- _sources_: various sources used for the build. The entries
   in this directory are git submodules.
-* _downloads_: contains files that are downloaded by various
+- _downloads_: contains files that are downloaded by various
   recipes during builds.
-* _tools_: utility scripts
-* _localconfig.sh_: file created by envsetup.sh that contains
+- _tools_: utility scripts
+- _localconfig.sh_: file created by envsetup.sh that contains
   directory specific variables based on the build system location.
-* _local.sh_: can be used to customize MACHINE, and other variables
+- _local.sh_: can be used to customize MACHINE, and other variables
 
 ### building for another machine
 
-* `export MACHINE=[my machine]`
-* `bitbake [recipe name]`
+- `export MACHINE=[my machine]`
+- `bitbake [recipe name]`
 
 ### Layer management
 
@@ -122,10 +122,10 @@ Sometimes you want to install packages you build on the target system
 without building and re-installing the entire rootfs. This can be done
 using a feed server.
 
-* Workstation: `yoe_feed_server` (this starts a feed server on port 4000)
-* Target: modify /etc/opkg to http://[your workstation IP]:4000
-* Target: `opkg update`
-* Target: `opkg install [package]`
+- Workstation: `yoe_feed_server` (this starts a feed server on port 4000)
+- Target: modify /etc/opkg to http://[your workstation IP]:4000
+- Target: `opkg update`
+- Target: `opkg install [package]`
 
 This advantage of a feed server versus scp'ing opkg files to the target
 and installing manually is that dependencies will automatically get installed.
