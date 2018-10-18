@@ -4,7 +4,7 @@
 
 [BSP Layer documentation](https://github.com/YoeDistro/meta-raspberrypi/blob/master/docs)
 
-## Building an image
+## Building/installing an image
 
 1. `git clone git://github.com/YoeDistro/yoe-distro.git`
 1. `cd yoe-distro`
