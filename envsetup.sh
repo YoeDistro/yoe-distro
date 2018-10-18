@@ -445,8 +445,8 @@ yoe_install_image() {
   yoe_check_install_dependencies || return 1
 
   if [ ! $DRIVE ] || [ ! $IMAGE_NAME ]; then
-    echo "Usage: yoe_install_wic_image /dev/sdX image_name"
-    echo "Warning, make sure you specify your SD card and not a workstation disk"
+    echo "Usage: yoe_install_image /dev/sdX image_name"
+    echo "WARNING!!!, make sure you specify your SD card and not a workstation disk"
     echo
     return 1
   fi
