@@ -62,3 +62,7 @@
 	path = sources/meta-odroid
 	url = git://github.com/YoeDistro/meta-odroid
 	branch = master
+[submodule "sources/meta-rust"]
+	path = sources/meta-rust
+	url = git://github.com/YoeDistro/meta-rust
+	branch = yoe/mut
