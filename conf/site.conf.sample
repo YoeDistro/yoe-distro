@@ -1,0 +1,20 @@
+# local.conf should only be used for settings that are unique to a
+# user or build machine. Settings that are common for the entire team
+# should be added to site.conf, which is stored in git.
+
+# Use the following to enable systemd
+DISTRO_FEATURES_append = " systemd"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+VIRTUAL-RUNTIME_initscripts = ""
+
+# Use the following to enable busybox init/dev/login
+VIRTUAL-RUNTIME_init_manager = "busybox"
+VIRTUAL-RUNTIME_dev_manager = "busybox-mdev"
+VIRTUAL-RUNTIME_login_manager = "busybox"
+
+# Use the following to enable musl libc
+TCLIBC = "musl"
+
+# configure docker container to run bitbake in
+export DOCKER_REPO=yoedistro/yoe-build:stretch
