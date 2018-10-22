@@ -92,8 +92,8 @@ cd $OE_BASE
 
 # incremement this to force recreation of config files.  This should be done
 # whenever the DISTRO, or anything major changes
-BASE_VERSION=10
-OE_ENV_FILE=localconfig.sh
+YOE_ENV_VERSION=13
+YOE_ENV_FILE=localconfig.sh
 
 # Workaround for differences between yocto bitbake and vanilla bitbake
 export BBFETCH2=True
@@ -157,41 +157,43 @@ fi
 # If an env already exists, use it, otherwise generate it
 #--------------------------------------------------------------------------
 
-if [ -e ${OE_ENV_FILE} ]; then
-  . ./${OE_ENV_FILE}
+if [ -e ${YOE_ENV_FILE} ]; then
+  . ./${YOE_ENV_FILE}
 fi
 
-if [ x"${BASE_VERSION}" != x"${SCRIPTS_BASE_VERSION}" ]; then
-  echo "BASE_VERSION mismatch, recreating ${OE_ENV_FILE}"
-  rm -f ${OE_ENV_FILE}
+if [ x"${YOE_ENV_VERSION}" != x"${YOE_ENV_BASE_VERSION}" ]; then
+  echo "YOE_ENV_VERSION mismatch, recreating ${YOE_ENV_FILE}"
+  rm -f ${YOE_ENV_FILE}
 
 elif [ x"${DISTRO_DIRNAME}" != x"${SCRIPTS_DISTRO_DIRNAME}" ]; then
-  echo "DISTRO name has changed, recreating ${OE_ENV_FILE}"
-  rm -f ${OE_ENV_FILE}
+  echo "DISTRO name has changed, recreating ${YOE_ENV_FILE}"
+  rm -f ${YOE_ENV_FILE}
 fi
 
-if [ -e ${OE_ENV_FILE} ]; then
-  . ./${OE_ENV_FILE}
+if [ -e ${YOE_ENV_FILE} ]; then
+  . ./${YOE_ENV_FILE}
 else
 
   #--------------------------------------------------------------------------
   # Specify distribution information
   #--------------------------------------------------------------------------
 
-  echo "export SCRIPTS_BASE_VERSION=${BASE_VERSION}" >${OE_ENV_FILE}
-  echo "export SCRIPTS_DISTRO_DIRNAME=\"${DISTRO_DIRNAME}\"" >>${OE_ENV_FILE}
+  echo "# This is an automatically generated file, please do not edit" >${YOE_ENV_FILE}
+  echo "export YOE_ENV_BASE_VERSION=${YOE_ENV_VERSION}" >>${YOE_ENV_FILE}
+  echo "export SCRIPTS_DISTRO_DIRNAME=\"${DISTRO_DIRNAME}\"" >>${YOE_ENV_FILE}
 
-  echo "${OE_ENV_FILE} created"
+  echo "${YOE_ENV_FILE} created"
 
   #--------------------------------------------------------------------------
   # Write out the OE bitbake configuration file.
   #--------------------------------------------------------------------------
   mkdir -p ${OE_BUILD_DIR}/conf
 
-  SITE_CONF=${OE_BUILD_DIR}/conf/site.conf
-  cat >$SITE_CONF <<_EOF
+  AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
+  cat >$AUTO_CONF <<_EOF
+# This is an automatically generated file, please do not edit.
 
-SCONF_VERSION = "1"
+ACONF_VERSION = "1"
 
 # Where to store sources
 DL_DIR = "${OE_BASE}/downloads"
@@ -206,9 +208,9 @@ TMPDIR = "${OE_BUILD_DIR}/build/tmp"
 
 _EOF
 
-  echo "${SITE_CONF} has been updated"
+  echo "${AUTO_CONF} has been updated"
 
-fi # if -e ${OE_ENV_FILE}
+fi # if -e ${YOE_ENV_FILE}
 
 ###############################################################################
 # UPDATE_ALL() - Make sure everything is up to date
