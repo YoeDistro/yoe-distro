@@ -21,6 +21,7 @@ included for some of them below.
 OpenEmbedded supports a wide range of technology choices. Some of these are documented
 below.
 
+- [Configuration Files](conf-files.md)
 - [libc/init system](libc-init.md)
 
 ## Design Choices
