@@ -1,9 +1,9 @@
 build
 downloads
 conf/auto.conf
+conf/local.conf
 conf/sanity_info
-conf/site.conf
-conf/locallocal.conf
+conf/local.conf
 pseudodone
 git_config
 subversion_config/

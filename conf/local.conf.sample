@@ -1,16 +1,26 @@
-# Uncomment the following to enable systemd
-#DISTRO_FEATURES_append = " systemd"
-#VIRTUAL-RUNTIME_init_manager = "systemd"
-#DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
-#VIRTUAL-RUNTIME_initscripts = ""
 
-# Uncomment the following to enable busybox init/dev/login
-#VIRTUAL-RUNTIME_init_manager = "busybox"
-#VIRTUAL-RUNTIME_dev_manager = "busybox-mdev"
-#VIRTUAL-RUNTIME_login_manager = "busybox"
+# this is a sample of what might go in local.conf
 
-# Uncomment the following to enable musl libc
-#TCLIBC = "musl"
+# required for Freescale stuff to build
+ACCEPT_FSL_EULA = "1"
 
-# generate the mirror tarball for SCM repos
-# BB_GENERATE_MIRROR_TARBALLS = "1"
+# required for Qualcomm stuff to build
+ACCEPT_EULA = "1"
+
+# required to build netperf
+LICENSE_FLAGS_WHITELIST = "non-commercial"
+
+# use the following to set the IP or hostname
+# for the oe_setup_feed_server function
+# if you have a decent DHCP server, then this is often
+# the same as MACHINE
+export MACHINE_IP=$MACHINE
+
+# When setting up feeds it will try to use this
+# hosts IP address to configure the server on target
+# machine, however if a different IP address is to be
+# used then set it up here
+export HOST_IP=10.10.10.10
+
+# configure docker container to run bitbake in
+export DOCKER_REPO=yoedistro/yoe-build:stretch
