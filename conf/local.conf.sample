@@ -8,19 +8,5 @@ ACCEPT_FSL_EULA = "1"
 ACCEPT_EULA = "1"
 
 # required to build netperf
-LICENSE_FLAGS_WHITELIST = "non-commercial"
+LICENSE_FLAGS_WHITELIST_append = " non-commercial_netperf "
 
-# use the following to set the IP or hostname
-# for the oe_setup_feed_server function
-# if you have a decent DHCP server, then this is often
-# the same as MACHINE
-export MACHINE_IP=$MACHINE
-
-# When setting up feeds it will try to use this
-# hosts IP address to configure the server on target
-# machine, however if a different IP address is to be
-# used then set it up here
-export HOST_IP=10.10.10.10
-
-# configure docker container to run bitbake in
-export DOCKER_REPO=yoedistro/yoe-build:stretch
