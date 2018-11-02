@@ -15,6 +15,7 @@ included for some of them below.
 ## Using Yoe
 
 - [Working with git submodules](git-submodules.md)
+- [Docker Integration](docker.md)
 
 ## Image Configuration
 

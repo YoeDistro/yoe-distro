@@ -53,9 +53,9 @@ goals:
    and clearer ways to use it.
 1. **maintainable**: product lifecycles run for many years, so we need a solution where
    we can build images on a number of different hosts as time marches on. We achieve this
-   through a simple and transparent docker wrapper that contains all the host dependencies
-   needed. This wrapper is invisible (the file system still lives on the host), and is
-   optional if you choose not to use it.
+   through a simple and transparent [docker wrapper](docs/docker.md) that contains all
+   the host dependencies needed. This wrapper is invisible (the file system still
+   lives on the host), and is optional if you choose not to use it.
 1. **transparent**: we try to use industry standard tools (git, bitbake, etc) where possible
    and not invent a lot of new tooling that needs to be learned to use the system.
    As an example, much of the tooling (envsetup.sh) are simple bash functions and are easy

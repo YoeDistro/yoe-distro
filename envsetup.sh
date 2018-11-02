@@ -390,11 +390,33 @@ yoe_clean_sstate() {
 
 # Docker integration
 # set DOCKER_REPO to something like yoedistro/yoe-build:stretch
-# Note, set DOCKER_REPO outside of envsetup.sh, otherwise
-# it will get set in container, which is not what you want.
-# local.sh is a good place to set DOCKER_REPO
+# DOCKER_REPO can be set in scripts that wrap envsetup.sh
+# set DOCKER_REPO to 'none' to disable docker
+
+if [ -z "$DOCKER_REPO" ]; then
+  echo "Setting DOCKER_REPO to yoedistro/yoe-build:stretch"
+  echo "set DOCKER_REPO to 'none' to disable docker"
+  export DOCKER_REPO=yoedistro/yoe-build:stretch
+fi
+
+check_docker() {
+  if ! docker -v >/dev/null 2>&1; then
+    echo "Error, please install docker or set DOCKER_REPO=none in environment"
+    return 1
+  fi
+
+  if ! docker images -q $DOCKER_REPO >/dev/null 2>&1; then
+    echo "Error, docker image $DOCKER_REPO not installed"
+    echo "Please install it with: docker pull $DOCKER_REPO"
+    return 1
+  fi
+
+  return 0
+}
 
 dkr() {
+  check_docker || return 1
+
   CMD="$1"
 
   if [ -z "$CMD" ]; then
@@ -421,7 +443,7 @@ dkr() {
 }
 
 bitbake() {
-  if [ -z $DOCKER_REPO ]; then
+  if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
     ${OE_BASE}/sources/bitbake/bin/bitbake $@
   else
     dkr "${OE_BASE}/sources/bitbake/bin/bitbake $@"
