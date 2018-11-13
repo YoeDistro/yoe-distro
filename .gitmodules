@@ -65,4 +65,4 @@
 [submodule "sources/meta-rust"]
 	path = sources/meta-rust
 	url = git://github.com/YoeDistro/meta-rust
-	branch = yoe/mut
+	branch = master
