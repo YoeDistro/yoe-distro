@@ -1,10 +1,5 @@
 require initramfs-image.bb
 
-PACKAGE_INSTALL += "\
-  psplash \
-  "
-
+IMAGE_FEATURES = "splash"
 
 export IMAGE_BASENAME = "initramfs-image-splash"
-
-

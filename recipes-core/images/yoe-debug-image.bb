@@ -3,7 +3,7 @@
 
 # note, the following must be set to build netperf:
 # LICENSE_FLAGS_WHITELIST = "non-commercial"
-# see conf/locallocal.conf.sample in BEC build template
+# see conf/locallocal.conf.sample in Yoe build template
 
 #	e2fsprogs \
 #	e2fsprogs-mke2fs \
@@ -12,6 +12,8 @@
 #	e2fsprogs-tune2fs \
 #
 require recipes-extended/images/core-image-full-cmdline.bb
+
+IMAGE_FEATURES += "package-management hwcodecs"
 
 IMAGE_INSTALL += "\
 	rsync \
