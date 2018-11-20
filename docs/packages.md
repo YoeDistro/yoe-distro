@@ -27,9 +27,13 @@ following procedure:
   - `opkg list` (list packages available)
   - `opkg install python3` (install python3)
 
-If the package is not built yet, simply bitbake it and rerun `yoe_feed_server`
-(required to rebuild the package index). You can then `opkg install` the package
-on the target system.
+If the package is not built yet, simply:
+
+- `bitbake <recipe for package to install>`
+- `bitbake package-index` (required to rebuild the package index)
+- on target:
+  - `opkg update`
+  - `opkg install <package>`
 
 This technique is very useful for testing new packages, or for installing packages that
 are only needed for development that you don't want to include in production images
