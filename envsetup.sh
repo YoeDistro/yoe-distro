@@ -284,7 +284,7 @@ _EOF
 yoe_feed_server() {
   SAVEDPWD=$PWD
   cd $OE_BASE
-  bitbake package-index
+  bitbake package-index || return 1
   cd build/tmp/deploy/ipk
   python3 -m http.server 8000
   cd $SAVEDPWD
