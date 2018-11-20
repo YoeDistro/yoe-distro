@@ -14,8 +14,10 @@ included for some of them below.
 
 ## Using Yoe
 
-- [Working with git submodules](git-submodules.md)
 - [Docker Integration](docker.md)
+- [Packages](packages.md) - information on installing packages from your build directory
+  in a development scenario.
+- [Working with git submodules](git-submodules.md)
 
 ## Image Configuration
 

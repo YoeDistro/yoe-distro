@@ -290,17 +290,36 @@ yoe_feed_server() {
   cd $SAVEDPWD
 }
 
+yoe_host_ip() {
+  hostname -i | cut -d' ' -f 1
+}
+
 yoe_setup_feed_server() {
+  if [ -n "$1" ]; then
+    MIP=$1
+  else
+    if [ -z "$MACHINE_IP" ]; then
+      echo
+      echo "Error: Machine IP address not given"
+      echo "Usage: yoe_setup_feed_server <machine ip>"
+      echo " or set the MACHINE_IP env variable"
+      echo
+      return 1
+    fi
+    MIP=$MACHINE_IP
+  fi
   # set TARGET_IP in local.sh
   # set HOST_IP in local.sh if different
-  if [ -n "${HOST_IP}" ]; then
+  if [ -z "${HOST_IP}" ]; then
     HOST_IP=$(hostname -i | cut -d' ' -f 1)
   fi
-  ssh root@$MACHINE_IP ls /etc/opkg/base-feeds.conf >/dev/null 2>&1
+  ssh root@$MIP ls /etc/opkg/base-feeds.conf >/dev/null 2>&1
   if [ $? -ne 0 ]; then
-    echo "opkg is not installed, can't setup feeds on  machine $MACHINE_IP"
+    echo "opkg is not installed, can't setup feeds on  machine $MIP"
   else
-    ssh root@$MACHINE_IP "sed -i -e 's|http://.*\/|http://$HOST_IP:8000/|' /etc/opkg/base-feeds.conf"
+    SERVER=http://$HOST_IP:8000
+    echo "pointing feeds to $SERVER"
+    ssh root@$MIP "sed -i -e 's|http://.*\/|${SERVER}/|' /etc/opkg/base-feeds.conf"
   fi
 }
 
@@ -395,7 +414,6 @@ yoe_clean_sstate() {
 
 if [ -z "$DOCKER_REPO" ]; then
   echo "Setting DOCKER_REPO to yoedistro/yoe-build:stretch"
-  echo "set DOCKER_REPO to 'none' to disable docker"
   export DOCKER_REPO=yoedistro/yoe-build:stretch
 fi
 
