@@ -26,6 +26,7 @@ below.
 
 - [Configuration Files](conf-files.md)
 - [libc/init system](libc-init.md)
+- [adding GCC and development tools to target system](gcc.md)
 
 ## Design Choices
 
