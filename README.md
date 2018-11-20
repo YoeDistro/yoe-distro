@@ -124,12 +124,7 @@ as parallel build options.
 
 Sometimes you want to install packages you build on the target system
 without building and re-installing the entire rootfs. This can be done
-using a feed server.
-
-- Workstation: `yoe_feed_server` (this starts a feed server on port 4000)
-- Target: modify /etc/opkg to http://[your workstation IP]:4000
-- Target: `opkg update`
-- Target: `opkg install [package]`
+using a [feed server](docs/packages.md).
 
 This advantage of a feed server versus scp'ing opkg files to the target
 and installing manually is that dependencies will automatically get installed.
