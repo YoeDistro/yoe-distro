@@ -79,7 +79,7 @@ Additional machines can be added by including appropriate BSP layers.
 This is where all the magic happens. In general, this build system
 must be run in a bash shell. To set up the environment, source the following file:
 
-`. ./\<machine\>-envsetup.sh`
+`. ./<machine>-envsetup.sh`
 
 Or, you can export a MACHINE environment variable, and then source envsetup.sh.
 
