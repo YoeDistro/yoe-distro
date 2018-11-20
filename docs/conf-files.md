@@ -13,7 +13,7 @@ project, these files include:
 - [**conf/site.conf**](../conf/site.conf): This file includes Yoe defaults and
   project specific changes that you want to store in git.
   This [file](../conf/site.conf.sample) includes samples of things you might want to add.
-- **conf/local.conf**: This file includes changes that are specified to a user to build
+- **conf/local.conf**: This file includes changes that are specific to a user or build
   machine, and are not checked into git. This [file](../conf/local.conf.sample) includes
   samples of things you might want to add.
 

@@ -1,5 +1,7 @@
+# the contents of local.conf are intended to be user or build machine specific and not
+# applicable to the broader team; therefore, it should NOT be checked into Git.
 
-# this is a sample of what might go in local.conf
+# below is a sample of what might go in local.conf
 
 # required for Freescale stuff to build
 ACCEPT_FSL_EULA = "1"
@@ -9,4 +11,3 @@ ACCEPT_EULA = "1"
 
 # required to build netperf
 LICENSE_FLAGS_WHITELIST_append = " non-commercial_netperf "
-
