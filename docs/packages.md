@@ -18,7 +18,8 @@ following procedure:
   - `IMAGE_FEATURES += "packages-management"`
 - a ssh server must be enabled in the target image:
   - `IMAGE_FEATURES += "ssh-server-dropbear"`
-- target system just be on the same network as your build computer.
+- see [yoe-simple-image](https://github.com/YoeDistro/meta-yoe/blob/master/recipes-core/images/yoe-simple-image.bb) for an example.
+- target system must be on the same network as your build computer.
 - run `yoe_setup_feed_server <target ip address>`. This configures the target to fetch packages
   from your build computer. Alternatively you can set the MACHINE_IP environment variable.
 - run `yoe_feed_server`. This starts a web server that serves packages.
