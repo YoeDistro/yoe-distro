@@ -15,10 +15,10 @@ scratch on a Raspberry PI 3:
 1. `cd yoe-distro`
 1. `. raspberrypi3-64-envsetup.sh`
 1. `yoe_setup`
-1. `bitbake core-image-base`
+1. `bitbake yoe-simple-image`
 1. insert SD card
 1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
-1. `yoe_install_image /dev/sdX core-image-base`
+1. `yoe_install_image /dev/sdX yoe-simple-image`
 1. optional: [configure console for serial port](docs/raspberrypi.md)
 1. `sudo eject /dev/sdX`
 1. Install SD card in a Raspberry PI and enjoy your new image
