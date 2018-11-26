@@ -64,7 +64,7 @@ if [ -z "${MACHINE}" ]; then
   return
 fi
 export MACHINE
-echo "setting MACHINE=$MACHINE"
+echo "Setting MACHINE=$MACHINE"
 if [ -z "${MEDIA}" ]; then
   # set the location of the automounted location for removable storage
   # newer gnome systems
