@@ -7,6 +7,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 require qt5.inc
 
 REQUIRED_DISTRO_FEATURES = "x11"
+CONFLICT_DISTRO_FEATURES = "wayland"
 
 IMAGE_FEATURES += "splash x11-base"
 
