@@ -5,11 +5,11 @@
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = git://github.com/YoeDistro/openembedded-core.git
-	branch = master
+	branch = thud
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = git://github.com/YoeDistro/meta-openembedded.git
-	branch = master
+	branch = thud
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = git://github.com/YoeDistro/meta-ti.git
@@ -29,23 +29,23 @@
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/YoeDistro/meta-qt5.git
-	branch = master
+	branch = thud
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
 	url = git://github.com/YoeDistro/meta-intel.git
-	branch = master
+	branch = thud
 [submodule "sources/meta-raspberrypi"]
 	path = sources/meta-raspberrypi
 	url = git://github.com/YoeDistro/meta-raspberrypi
-	branch = master
+	branch = thud
 [submodule "sources/meta-96boards"]
 	path = sources/meta-96boards
 	url = git://github.com/YoeDistro/meta-96boards
-	branch = master
+	branch = thud
 [submodule "sources/meta-qcom"]
 	path = sources/meta-qcom
 	url = git://github.com/YoeDistro/meta-qcom
-	branch = master
+	branch = thud
 [submodule "sources/meta-variscite-fslc"]
 	path = sources/meta-variscite-fslc
 	url = git://github.com/YoeDistro/meta-variscite-fslc.git
@@ -53,7 +53,7 @@
 [submodule "sources/meta-yoe"]
 	path = sources/meta-yoe
 	url = git://github.com/YoeDistro/meta-yoe
-	branch = master
+	branch = thud
 [submodule "sources/meta-riscv"]
 	path = sources/meta-riscv
 	url = git://github.com/YoeDistro/meta-riscv
@@ -61,7 +61,7 @@
 [submodule "sources/meta-odroid"]
 	path = sources/meta-odroid
 	url = git://github.com/YoeDistro/meta-odroid
-	branch = master
+	branch = thud
 [submodule "sources/meta-rust"]
 	path = sources/meta-rust
 	url = git://github.com/YoeDistro/meta-rust
