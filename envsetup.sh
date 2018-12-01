@@ -461,6 +461,7 @@ dkr() {
 }
 
 bitbake() {
+  ulimit -n 4096
   if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
     ${OE_BASE}/sources/bitbake/bin/bitbake $@
   else
