@@ -22,7 +22,16 @@ if [ -f local.sh ]; then
   echo "reading local settings"
   . ./local.sh
 fi
-BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/*-release | sed 's#^ID=##')
+
+if [ -e /etc/os-release ]; then
+  BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/os-release | sed 's#^ID=##')
+elif [ -e /etc/redhat-release ]; then
+  BUILDHOST_DISTRO=$(cat /etc/redhat-release | sed 's/ .*//')
+elif [ -e /etc/slackware-release ]; then
+  BUILDHOST_DISTRO=$(cat /etc/slackware-release | sed 's/ .*//')
+elif type lsb_release >/dev/null 2>&1; then
+  BUILDHOST_DISTRO=$(lsb_release -a | egrep -h 'ID:' | sed 's#.*ID:\s##')
+fi
 
 if [ "${0##*/}" = "dash" ]; then
   echo "dash shell is not supported"
