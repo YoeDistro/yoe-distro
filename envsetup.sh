@@ -19,9 +19,9 @@
 # 20111101: modify script to work with BEC build template
 #
 
-shell=${0##*/}
-if [ -n "${shell##*bash*}" ]; then
-  echo "Error: We require running Yoe in a bash shell. Other shells have not been tested."
+shell=$(ps -p "$$")
+if [ -n "${shell##*zsh*}" ] && [ -n "${shell##*bash*}" ]; then
+  echo "Error: We require running Yoe in a bash or zsh shell. Other shells have not been tested."
   return 1
 fi
 
