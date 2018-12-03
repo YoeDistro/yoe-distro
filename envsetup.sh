@@ -18,36 +18,16 @@
 # Changes by Cliff Brake
 # 20111101: modify script to work with BEC build template
 #
+
+shell=${0##*/}
+if [ -n "${shell##*bash*}" ]; then
+  echo "Error: We require running Yoe in a bash shell. Other shells have not been tested."
+  return 1
+fi
+
 if [ -f local.sh ]; then
   echo "reading local settings"
   . ./local.sh
-fi
-
-if [ -e /etc/os-release ]; then
-  BUILDHOST_DISTRO=$(egrep -h '^ID=' /etc/os-release | sed 's#^ID=##')
-elif [ -e /etc/redhat-release ]; then
-  BUILDHOST_DISTRO=$(cat /etc/redhat-release | sed 's/ .*//')
-elif [ -e /etc/slackware-release ]; then
-  BUILDHOST_DISTRO=$(cat /etc/slackware-release | sed 's/ .*//')
-elif type lsb_release >/dev/null 2>&1; then
-  BUILDHOST_DISTRO=$(lsb_release -a | egrep -h 'ID:' | sed 's#.*ID:\s##')
-fi
-
-if [ "${0##*/}" = "dash" ]; then
-  echo "dash shell is not supported"
-  return
-fi
-###############################################################################
-# Reconfigure dash on debian-like systems
-###############################################################################
-which aptitude >/dev/null 2>&1
-ret=$?
-if [ "$(readlink /bin/sh)" = "dash" -a "$ret" = "0" ]; then
-  sudo aptitude install expect pv -y
-  expect -c 'spawn sudo dpkg-reconfigure -freadline dash; send "n\n"; interact;'
-elif [ "${0##*/}" = "dash" ]; then
-  echo "dash as default shell is not supported"
-  return
 fi
 
 ###############################################################################
@@ -424,6 +404,16 @@ yoe_clean_sstate() {
 if [ -z "$DOCKER_REPO" ]; then
   echo "Setting DOCKER_REPO to yoedistro/yoe-build:stretch"
   export DOCKER_REPO=yoedistro/yoe-build:stretch
+fi
+
+# if we are building using docker, we don't really care what /bin/sh is since the Yoe docker images defaults
+# to using bash for /bin/sh. If user is building in their host system, then require that /bin/sh be bash
+if [ "$DOCKER_REPO" = "none" ]; then
+  if [ "$(readlink /bin/sh)" != "bash" ]; then
+    echo "ERROR: /bin/sh should point to bash, other shells (such as dash) have not been extensively tested"
+    echo "on Ubuntu/debian, try: sudo dpkg-reconfigure dash"
+    return 1
+  fi
 fi
 
 check_docker() {
