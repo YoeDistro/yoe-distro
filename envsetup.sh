@@ -1,24 +1,5 @@
 #!/usr/bin/env bash
 
-# Original script done by Don Darling
-# Later changes by Koen Kooi and Brijesh Singh
-
-# Revision history:
-# 20090902: download from twiki
-# 20090903: Weakly assign MACHINE and DISTRO
-# 20090904:  * Don't recreate local.conf is it already exists
-#            * Pass 'unknown' machines to OE directly
-# 20090918: Fix /bin/env location
-#           Don't pass MACHINE via env if it's not set
-#           Changed 'build' to 'bitbake' to prepare people for non-scripted usage
-#           Print bitbake command it executes
-# 20091012: Add argument to accept commit id.
-# 20091202: Fix proxy setup
-
-# Changes by Cliff Brake
-# 20111101: modify script to work with BEC build template
-#
-
 shell=$(ps -p "$$")
 if [ -n "${shell##*zsh*}" ] && [ -n "${shell##*bash*}" ]; then
   echo "Error: We require running Yoe in a bash or zsh shell. Other shells have not been tested."
