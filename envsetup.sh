@@ -397,6 +397,22 @@ if [ "$DOCKER_REPO" = "none" ]; then
   fi
 fi
 
+read_var_from_conf() {
+  VAR_NAME=$1
+  files="local.conf site.conf"
+  for conf_file in $files; do
+    value=$(cat conf/$conf_file | grep "^$VAR_NAME" | awk 'BEGIN{FS="="} {print$2}' | tr -d '"' | tr -d ' ')
+    if [ -n "$value" ]; then
+      echo $value
+      return 0
+    fi
+  done
+  return 1
+}
+
+# parse OE conf files for DL_DIR customizations (may be located outside OE)
+DL_DIR=$(read_var_from_conf 'DL_DIR')
+
 check_docker() {
   if ! docker -v >/dev/null 2>&1; then
     echo "Error, please install docker or set DOCKER_REPO=none in environment"
@@ -424,6 +440,11 @@ dkr() {
 
   SSH_AUTH_DIR=~/
 
+  unset MAP_DL_DIR
+  if [ -n "$DL_DIR" ]; then
+    MAP_DL_DIR="-v $DL_DIR:$DL_DIR"
+  fi
+
   if [ -n "$SSH_AUTH_SOCK" ]; then
     SSH_AUTH_DIR=$(readlink -f $SSH_AUTH_SOCK)
   fi
@@ -433,6 +454,7 @@ dkr() {
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
     -v /stash/downloads:/stash/downloads \
+    $MAP_DL_DIR \
     -v $SSH_AUTH_DIR:/ssh-agent \
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
