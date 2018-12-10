@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# the following can be used inside functions that return strings to display
+# messages on console
+echoerr() {
+  echo $@ >&2
+}
+
 shell=$(ps -p "$$")
 if [ -n "${shell##*zsh*}" ] && [ -n "${shell##*bash*}" ]; then
   echo "Error: We require running Yoe in a bash or zsh shell. Other shells have not been tested."
@@ -399,9 +405,13 @@ fi
 
 read_var_from_conf() {
   VAR_NAME=$1
-  files="local.conf site.conf"
+  files="conf/local.conf conf/site.conf"
   for conf_file in $files; do
-    value=$(cat conf/$conf_file | grep "^$VAR_NAME" | awk 'BEGIN{FS="="} {print$2}' | tr -d '"' | tr -d ' ')
+    if [ ! -f $conf_file ]; then
+      continue
+    fi
+
+    value=$(cat $conf_file | grep "^$VAR_NAME" | awk 'BEGIN{FS="="} {print$2}' | tr -d '"' | tr -d ' ')
     if [ -n "$value" ]; then
       echo $value
       return 0
