@@ -7,7 +7,7 @@
 # it here. It is recommended you use this method rather than softlinking
 # downloads to another directory, so that the location can be automatically
 # mapped into the docker container.
-DL_DIR = /scratch/downloads
+DL_DIR = "/scratch/downloads"
 
 # required for Freescale stuff to build
 ACCEPT_FSL_EULA = "1"
