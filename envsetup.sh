@@ -41,6 +41,7 @@ if [ -z "${MACHINE}" ]; then
 fi
 export MACHINE
 echo "Setting MACHINE=$MACHINE"
+
 if [ -z "${MEDIA}" ]; then
   # set the location of the automounted location for removable storage
   # newer gnome systems
@@ -100,8 +101,16 @@ export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV
 # Make sure Bitbake doesn't filter out the following variables from our
 # environment.
 #--------------------------------------------------------------------------
-export BB_ENV_EXTRAWHITE="MACHINE DISTRO TCLIBC TCMODE GIT_PROXY_COMMAND http_proxy ftp_proxy https_proxy all_proxy ALL_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY SDKMACHINE BB_NUMBER_THREADS OE_BASE SVS_VERSION"
+BB_ENV_EXTRAWHITE_OE="MACHINE DISTRO TCMODE TCLIBC HTTP_PROXY http_proxy \
+HTTPS_PROXY https_proxy FTP_PROXY ftp_proxy FTPS_PROXY ftps_proxy ALL_PROXY \
+all_proxy NO_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY \
+SDKMACHINE BB_NUMBER_THREADS BB_NO_NETWORK PARALLEL_MAKE GIT_PROXY_COMMAND \
+SOCKS5_PASSWD SOCKS5_USER SCREENDIR STAMPS_DIR BBPATH_EXTRA BB_SETSCENE_ENFORCE \
+OE_BASE"
 
+BB_ENV_EXTRAWHITE="$(echo $BB_ENV_EXTRAWHITE $BB_ENV_EXTRAWHITE_OE | tr ' ' '\n' | LC_ALL=C sort --unique | tr '\n' ' ')"
+
+export BB_ENV_EXTRAWHITE
 #--------------------------------------------------------------------------
 # Specify proxy information
 #--------------------------------------------------------------------------
@@ -159,14 +168,16 @@ else
   echo "export SCRIPTS_DISTRO_DIRNAME=\"${DISTRO_DIRNAME}\"" >>${YOE_ENV_FILE}
 
   echo "${YOE_ENV_FILE} created"
+fi # if -e ${YOE_ENV_FILE}
 
   #--------------------------------------------------------------------------
   # Write out the OE bitbake configuration file.
   #--------------------------------------------------------------------------
-  mkdir -p ${OE_BUILD_DIR}/conf
+mkdir -p ${OE_BUILD_DIR}/conf
 
-  AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
-  cat >$AUTO_CONF <<_EOF
+AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
+rm -f $AUTO_CONF
+cat >$AUTO_CONF <<_EOF
 # This is an automatically generated file, please do not edit.
 
 ACONF_VERSION = "1"
@@ -182,11 +193,11 @@ TMPDIR = "${OE_BUILD_DIR}/build/tmp"
 # Go through the Firewall
 #HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
 
+MACHINE ?= "$MACHINE"
 _EOF
 
-  echo "${AUTO_CONF} has been updated"
+echo "${AUTO_CONF} has been updated"
 
-fi # if -e ${YOE_ENV_FILE}
 
 ###############################################################################
 # UPDATE_ALL() - Make sure everything is up to date
@@ -368,12 +379,12 @@ yoe_console() {
 
 yoe_build_all() {
   # build images for all routinely tested platforms
-  MACHINES="beagleboard beaglebone overo wandboard-dual imx6ul-var-dart"
+  MACHINES="raspberrypi3 beaglebone"
   for m in $MACHINES; do
     echo "=========================="
     echo "Building $m ....."
     export MACHINE=$m
-    if ! bitbake systemd-image; then
+    if ! bitbake yoe-simple-image; then
       return
     fi
   done
