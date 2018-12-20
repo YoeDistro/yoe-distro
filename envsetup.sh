@@ -41,6 +41,7 @@ if [ -z "${MACHINE}" ]; then
 fi
 export MACHINE
 echo "Setting MACHINE=$MACHINE"
+
 if [ -z "${MEDIA}" ]; then
   # set the location of the automounted location for removable storage
   # newer gnome systems
@@ -167,14 +168,16 @@ else
   echo "export SCRIPTS_DISTRO_DIRNAME=\"${DISTRO_DIRNAME}\"" >>${YOE_ENV_FILE}
 
   echo "${YOE_ENV_FILE} created"
+fi # if -e ${YOE_ENV_FILE}
 
   #--------------------------------------------------------------------------
   # Write out the OE bitbake configuration file.
   #--------------------------------------------------------------------------
-  mkdir -p ${OE_BUILD_DIR}/conf
+mkdir -p ${OE_BUILD_DIR}/conf
 
-  AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
-  cat >$AUTO_CONF <<_EOF
+AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
+rm -f $AUTO_CONF
+cat >$AUTO_CONF <<_EOF
 # This is an automatically generated file, please do not edit.
 
 ACONF_VERSION = "1"
@@ -190,11 +193,11 @@ TMPDIR = "${OE_BUILD_DIR}/build/tmp"
 # Go through the Firewall
 #HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
 
+MACHINE ?= "$MACHINE"
 _EOF
 
-  echo "${AUTO_CONF} has been updated"
+echo "${AUTO_CONF} has been updated"
 
-fi # if -e ${YOE_ENV_FILE}
 
 ###############################################################################
 # UPDATE_ALL() - Make sure everything is up to date
