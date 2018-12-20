@@ -379,12 +379,12 @@ yoe_console() {
 
 yoe_build_all() {
   # build images for all routinely tested platforms
-  MACHINES="beagleboard beaglebone overo wandboard-dual imx6ul-var-dart"
+  MACHINES="raspberrypi3 beaglebone"
   for m in $MACHINES; do
     echo "=========================="
     echo "Building $m ....."
     export MACHINE=$m
-    if ! bitbake systemd-image; then
+    if ! bitbake yoe-simple-image; then
       return
     fi
   done
