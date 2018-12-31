@@ -8,4 +8,8 @@ inherit distro_features_check
 
 IMAGE_FEATURES += "ssh-server-dropbear package-management hwcodecs"
 
+IMAGE_INSTALL += "\
+    os-release \
+"
+
 export IMAGE_BASENAME = "yoe-simple-image"
