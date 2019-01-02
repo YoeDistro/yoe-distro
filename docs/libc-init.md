@@ -5,7 +5,7 @@
 ## Systemd
 
 SysVinit and Systemd are common init systems. SysVinit is the default, but Systemd can
-be enabled be adding the following to local.conf:
+be enabled be adding the following to `site.conf`:
 
 ```
 DISTRO_FEATURES_append = " systemd"
@@ -19,7 +19,7 @@ use sysvinit if image size is a priority.
 
 ## Busybox Init
 
-Busybox can also be used as an init system with the following in local.conf:
+Busybox can also be used as an init system with the following in `site.conf`:
 
 ```
 VIRTUAL-RUNTIME_init_manager = "busybox"
@@ -30,7 +30,7 @@ VIRTUAL-RUNTIME_login_manager = "busybox"
 ## Libc selection
 
 glibc is the default libc, but musl can also be used by setting the following in
-local.conf:
+`site.conf`:
 
 ```
 TCLIBC = "musl"
