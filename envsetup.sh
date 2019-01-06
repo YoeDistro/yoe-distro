@@ -517,8 +517,13 @@ yoe_install_image() {
     echo
     return 1
   fi
-
-  IMAGE=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic.xz
-
+  if [ -z $IMAGE ]; then
+    IMAGE=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic.xz
+  fi
+  if [ ! -e $IMAGE ]; then
+    echo "$IMAGE does not exist, please build the image first"
+    echo
+    return 1
+  fi
   pv -tpreb $IMAGE | xzcat | sudo dd of=$DRIVE bs=4M iflag=fullblock oflag=direct conv=fsync
 }
