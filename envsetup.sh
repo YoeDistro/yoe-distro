@@ -94,7 +94,6 @@ export OE_BASE
 # Include up-to-date bitbake in our PATH.
 #--------------------------------------------------------------------------
 export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${PATH}
-export PATH=${OE_BASE}/tools:${PATH}
 # remove duplicate entries from path
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 #--------------------------------------------------------------------------
@@ -131,12 +130,6 @@ fi
 # Set up the bitbake path to find the OpenEmbedded recipes.
 #--------------------------------------------------------------------------
 export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/openembedded-core/meta${BBPATH_EXTRA}
-
-if [ -z "$(readlink ${OE_BUILD_DIR}/tools/python)" ]; then
-  mkdir -p ${OE_BUILD_DIR}/tools
-  ln -sf /usr/bin/python2 ${OE_BUILD_DIR}/tools/python
-  ln -sf /usr/bin/python2-config ${OE_BUILD_DIR}/tools/python-config
-fi
 
 #--------------------------------------------------------------------------
 # If an env already exists, use it, otherwise generate it
