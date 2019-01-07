@@ -11,9 +11,9 @@ This distribution does not end at demo images but rather begins there.
 This following is example of building and installing a linux system from
 scratch on a Raspberry PI 3:
 
-1. `git clone git://github.com/YoeDistro/yoe-distro.git`
-1. `cd yoe-distro`
-1. `. raspberrypi3-64-envsetup.sh`
+1. `git clone --recurse-submodules -j8 -b master git://github.com/YoeDistro/yoe-distro.git yoe`
+1. `cd yoe`
+1. `. ./raspberrypi3-64-envsetup.sh`
 1. `yoe_setup`
 1. `bitbake yoe-simple-image`
 1. insert SD card
