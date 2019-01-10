@@ -12,11 +12,7 @@ pn-depends.dot
 task-depends.dot
 environment-oecore
 localconfig.sh
-image/SeedSense_update_*.img
-image/nand.jffs2
-image/nor_data.in
-image/svs_update.md5
-image/version.txt
+images
 nor/rootfs/
 alphaupdatelist.txt
 conf/toolchain.cmake
