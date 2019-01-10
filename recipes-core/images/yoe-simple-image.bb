@@ -16,12 +16,12 @@ export IMAGE_BASENAME = "yoe-simple-image"
 
 UPDATE_IMAGES_ ??= ""
 
-UPDATE_IMAGES_sama5 ?= "\
+UPDATE_IMAGES_sama5d27-som1-ek-sd ?= "\
         version.txt \
         u-boot.bin \
         BOOT.BIN \
         zImage \
-        zImage.dtb \
+        at91-sama5d27_som1_ek.dtb \
         rootfs.tar.xz \
 "
 
