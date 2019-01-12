@@ -1,1 +1,1 @@
-TCLIBC = "glibc"
+TCLIBC = "musl"
