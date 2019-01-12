@@ -1,7 +1,6 @@
 #
 # Distro Settings
 #
-DISTRO = "yoe"
 DISTRO_NAME = "Yoe Linux"
 MAINTAINER = "Yoe Distro <https://github.com/YoeDistro>"
 TARGET_VENDOR = "-yoe"
