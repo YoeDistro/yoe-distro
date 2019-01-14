@@ -3,18 +3,28 @@
 # should be added to site.conf, which is stored in git.
 
 # Use the following to enable systemd
-DISTRO_FEATURES_append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
-VIRTUAL-RUNTIME_initscripts = ""
-
-# Use the following to enable busybox init/dev/login
-VIRTUAL-RUNTIME_init_manager = "busybox"
-VIRTUAL-RUNTIME_dev_manager = "busybox-mdev"
-VIRTUAL-RUNTIME_login_manager = "busybox"
-
-# Use the following to enable musl libc
-TCLIBC = "musl"
-
+# Distro template is as follows
+#
+# "yoe-<libc>-<init-system>-<windowing-system>"
+#
+# Possible options are
+DISTRO = "yoe-glibc-busyboxinit-eglfs"
+DISTRO = "yoe-glibc-busyboxinit-wayland"
+DISTRO = "yoe-glibc-busyboxinit-x11"
+DISTRO = "yoe-glibc-systemd-eglfs"
+DISTRO = "yoe-glibc-systemd-wayland"
+DISTRO = "yoe-glibc-systemd-x11"
+DISTRO = "yoe-glibc-sysvinit-eglfs"
+DISTRO = "yoe-glibc-sysvinit-wayland"
+DISTRO = "yoe-glibc-sysvinit-x11"
+DISTRO = "yoe-musl-busyboxinit-eglfs"
+DISTRO = "yoe-musl-busyboxinit-wayland"
+DISTRO = "yoe-musl-busyboxinit-x11"
+DISTRO = "yoe-musl-systemd-eglfs"
+DISTRO = "yoe-musl-systemd-wayland"
+DISTRO = "yoe-musl-systemd-x11"
+DISTRO = "yoe-musl-sysvinit-eglfs"
+DISTRO = "yoe-musl-sysvinit-wayland"
+DISTRO = "yoe-musl-sysvinit-x11"
 # configure docker container to run bitbake in
 export DOCKER_REPO=yoedistro/yoe-build:stretch
