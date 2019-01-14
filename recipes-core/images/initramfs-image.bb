@@ -22,6 +22,7 @@ PACKAGE_INSTALL = "\
   util-linux-fsck \
   e2fsprogs-e2fsck \
   e2fsprogs-tune2fs \
+  parted \
   "
 IMAGE_FSTYPES = "${INITRAMFS_FSTYPES}"
 inherit core-image

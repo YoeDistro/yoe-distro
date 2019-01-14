@@ -4,6 +4,8 @@ require recipes-core/images/core-image-base.bb
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
+DEPENDS += "coreutils-native"
+
 inherit distro_features_check
 
 IMAGE_FEATURES += "ssh-server-dropbear package-management hwcodecs"
@@ -25,7 +27,7 @@ UPDATE_IMAGES_sama5d27-som1-ek-sd ?= "\
         rootfs.tar.xz \
 "
 
-UPDATE_IMAGES_ ?= "${UPDATE_IMAGES} update.sha512"
+UPDATE_IMAGES_ ?= "${UPDATE_IMAGES} update.sha256"
 KERNEL_IMAGE ?= "zImage-initramfs-${MACHINE}.bin"
 
 VERSION ?= "0.00.00"
@@ -44,7 +46,7 @@ do_updater_append_sama5d27-som1-ek-sd () {
         install ${DEPLOY_DIR_IMAGE}/at91-sama5d27_som1_ek.dtb at91-sama5d27_som1_ek.dtb
         install ${DEPLOY_DIR_IMAGE}/BOOT.BIN BOOT.BIN
         install ${DEPLOY_DIR_IMAGE}/u-boot.bin u-boot.bin
-        sha512sum ${UPDATE_IMAGES}  > update.sha512
+        sha256sum ${UPDATE_IMAGES}  > update.sha256
         tar -cf ${MACHINE}_${VERSION}.upd ${UPDATE_IMAGES_}
         rm -rf ${UPDATE_IMAGES_}
 }
