@@ -262,7 +262,7 @@ process_update() {
 
   # check if EMMC card has 3 partitions, if not, partition it now
   total_emmc_partitions=$(grep -c "${EMMC_DEVICE}p[0-9]" /proc/partitions)
-  if [ "$total_emmc_partitions" != "3" ]; then
+  if [ $total_emmc_partitions -ne 3 ]; then
     msg_splash "Partitioning storage, please wait ..."
     if ! partition_emmc; then
       msg_splash "EMMC Card partition failed, bad card"
