@@ -100,9 +100,9 @@ partition_sd() {
   else
     DEVICE=$1
   fi
-  umount ${DEVICE}p1 2>/dev/null
-  umount ${DEVICE}p2 2>/dev/null
-  umount ${DEVICE}p3 2>/dev/null
+  umount ${DEVICE}p1
+  umount ${DEVICE}p2
+  umount ${DEVICE}p3
 
   DEVICE_SIZE=$(parted -s $DEVICE unit mb print | grep ^Disk | cut -d" " -f 3 | sed -e "s/MB//")
   if [ "$DEVICE_SIZE" = "" ] ; then
@@ -165,9 +165,10 @@ format_emmc_data() {
 
 mount_usb() {
   mkdir -p $USB_MOUNT_POINT
-
-  if ! mount /dev/sda $USB_MOUNT_POINT 2>/dev/null; then
-    if ! mount /dev/sda1 $USB_MOUNT_POINT 2>/dev/null; then
+  mount /dev/sda $USB_MOUNT_POINT
+  if [ $? -ne 0 ]; then
+    mount /dev/sda1 $USB_MOUNT_POINT
+    if [ $? != 0 ]; then
       msg_splash "No USB disk detected"
       return 1
     fi
@@ -187,8 +188,8 @@ umount_usb() {
 
 mount_sd() {
   mkdir -p $SD_MOUNT_POINT
-
-  if ! mount $SD_BOOT_DEV $SD_MOUNT_POINT 2>/dev/null; then
+  mount $SD_BOOT_DEV $SD_MOUNT_POINT
+  if [ $? -ne 0 ]; then
     msg_splash "No SD card detected"
     return 1
   fi
@@ -209,7 +210,10 @@ mount_boot() {
   mount=$1
   device=$2
   mkdir -p $mount
-  mount $device $mount 2>/dev/null || return 1
+  mount $device $mount
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
 }
 
 mount_data() {
@@ -218,12 +222,16 @@ mount_data() {
   device=$2
   mkdir -p $mount
 
-  mount $device $mount 2>/dev/null || return 1
+  mount $device $mount
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
   mkdir -p $mount/log
 }
 
 mount_rootfs_sd() {
-  if ! mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT 2>/dev/null; then
+  mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT
+  if [ $? -ne 0 ]; then
     msg_splash "Error mount SD rootfs, please fix ..."
     speak "updater, S D file system error"
     sleep 9999d
@@ -234,7 +242,8 @@ mount_rootfs_sd() {
 }
 
 mount_rootfs_emmc() {
-  if ! mount $EMMC_ROOTFS_DEV $ROOTFS_MOUNT_POINT 2>/dev/null; then
+  mount $EMMC_ROOTFS_DEV $ROOTFS_MOUNT_POINT
+  if [ $? -ne 0 ]; then
     msg_splash "Error mount EMMC rootfs, please fix ..."
     speak "updater, E M M C file system error"
     sleep 9999d
