@@ -22,6 +22,8 @@ speak() {
   if [ "$UPDATER_SPEECH" = "1" ]; then
     msg "speak $1"
     espeak "$1"
+  else
+    msg "$1"
   fi
 }
 
@@ -83,11 +85,11 @@ initialize() {
 
   plat_init
 
-  msg "Sleeping for 3 second(s) for USB flash to settle..."
+  msg "Sleeping for 10 second(s) for USB flash to settle..."
 
   speak "updater version $VERSION"
 
-  sleep 3
+  sleep 10
 
   mkdir -p $BOOT_MOUNT_POINT
   mkdir -p $DATA_MOUNT_POINT
@@ -366,7 +368,7 @@ find_update_file() {
 update_from_usb() {
   speak "updater, found u s b disk"
   update_file=$(find_update_file $USB_MOUNT_POINT)
-  if echo $update_file | grep update; then
+  if echo $update_file | grep $PLAT; then
     msg_splash "USB update: $update_file"
     if ! process_update $USB_MOUNT_POINT/$update_file; then
       msg_splash "Failed to process update from USB"
