@@ -314,6 +314,13 @@ process_update() {
 
   umount $EMMC_BOOT_DEV
 
+
+  if [ -n "$kernel_updated" ]; then
+    msg_splash "kernel updated, rebooting ..."
+    restart
+    sleep 9999d
+  fi
+
   if [ -e $ROOTFS ]; then
     msg_splash "Updating rootfs"
     format_emmc_rootfs

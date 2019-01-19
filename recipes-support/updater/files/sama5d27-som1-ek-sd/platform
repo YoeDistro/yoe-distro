@@ -5,12 +5,12 @@ KERNEL="zImage at91-sama5d27_som1_ek.dtb"
 BOOT="BOOT.BIN u-boot.bin"
 ROOTFS="rootfs.tar.xz"
 
-EMMC_DEVICE=/dev/mmcblk1
+EMMC_DEVICE=/dev/mmcblk0
 EMMC_BOOT_DEV=${EMMC_DEVICE}p1
 EMMC_ROOTFS_DEV=${EMMC_DEVICE}p2
 EMMC_DATA_DEV=${EMMC_DEVICE}p3
 
-SD_DEVICE=/dev/mmcblk0
+SD_DEVICE=/dev/mmcblk1
 SD_BOOT_DEV=${SD_DEVICE}p1
 SD_ROOTFS_DEV=${SD_DEVICE}p2
 SD_DATA_DEV=${SD_DEVICE}p3
