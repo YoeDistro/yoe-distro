@@ -14,6 +14,9 @@ IMAGE_INSTALL += "\
     os-release \
 "
 
+IMAGE_INSTALL_append_arm = " 96boards-tools"
+IMAGE_INSTALL_append_aarch64 = " 96boards-tools"
+
 export IMAGE_BASENAME = "yoe-simple-image"
 
 UPDATE_IMAGES_ ??= ""
