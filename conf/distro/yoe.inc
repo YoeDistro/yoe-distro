@@ -81,7 +81,7 @@ INHERIT += "uninative"
 # Add /etc/build to every image
 INHERIT += "image-buildinfo"
 
-DISTRO_FEATURES_append = " largefile opengl ptest multiarch wayland pam "
+DISTRO_FEATURES_append = " largefile opengl ptest multiarch wayland pam polkit "
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
