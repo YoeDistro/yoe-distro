@@ -33,24 +33,24 @@ UPDATE_IMAGES_sama5d27-som1-ek-sd ?= "\
 UPDATE_IMAGES_ ?= "${UPDATE_IMAGES} update.sha256"
 KERNEL_IMAGE ?= "zImage-initramfs-${MACHINE}.bin"
 
-VERSION ?= "0.00.00"
+IMG_VERSION ?= "0.0.0"
 
 do_updater () {
 }
 
 do_updater_append_sama5d27-som1-ek-sd () {
-        echo "VERSION = ${VERSION}"
+        echo "IMG_VERSION = ${IMG_VERSION}"
         install -d ${TOPDIR}/images
         cd ${TOPDIR}/images
-        echo "${VERSION}" > version.txt
-        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.wic.xz ${MACHINE}_${VERSION}.wic.xz
+        echo "${IMG_VERSION}" > version.txt
+        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.wic.xz ${MACHINE}_${IMG_VERSION}.wic.xz
         install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz rootfs.tar.xz
         install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGE} zImage
         install ${DEPLOY_DIR_IMAGE}/at91-sama5d27_som1_ek.dtb at91-sama5d27_som1_ek.dtb
         install ${DEPLOY_DIR_IMAGE}/BOOT.BIN BOOT.BIN
         install ${DEPLOY_DIR_IMAGE}/u-boot.bin u-boot.bin
         sha256sum ${UPDATE_IMAGES}  > update.sha256
-        tar -cf ${MACHINE}_${VERSION}.upd ${UPDATE_IMAGES_}
+        tar -cf ${MACHINE}_${IMG_VERSION}.upd ${UPDATE_IMAGES_}
         rm -rf ${UPDATE_IMAGES_}
 }
 
