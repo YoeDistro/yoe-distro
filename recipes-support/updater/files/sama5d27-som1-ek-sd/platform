@@ -21,9 +21,9 @@ DATA_MOUNT_POINT=/data
 USB_MOUNT_POINT=/media/usb
 SD_MOUNT_POINT=/media/sd
 
-# Size in MB
-BOOT_SIZE=100
-ROOTFS_SIZE=700
+# Size in 'M' for MB, 'G' for GB
+BOOT_SIZE=100M
+ROOTFS_SIZE=700M
 
 FSTYPE=ext4
 BOOT_FSTYPE=vfat

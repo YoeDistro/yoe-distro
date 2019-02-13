@@ -106,33 +106,14 @@ partition_sd() {
   umount ${DEVICE}p2
   umount ${DEVICE}p3
 
-  DEVICE_SIZE=$(parted -s $DEVICE unit mb print | grep ^Disk | cut -d" " -f 3 | sed -e "s/MB//")
-  if [ "$DEVICE_SIZE" = "" ]; then
-    parted -s $DEVICE mklabel msdos || return 1
-    DEVICE_SIZE=$(parted -s $DEVICE unit mb print | grep ^Disk | cut -d" " -f 3 | sed -e "s/MB//")
-  fi
-
-  ROOTFS_START=$((BOOT_SIZE))
-  ROOTFS_END=$((ROOTFS_START+ROOTFS_SIZE))
-  DATAFS_SIZE=$((DEVICE_SIZE-BOOT_SIZE-ROOTFS_SIZE))
-  DATAFS_START=$((ROOTFS_END))
-  DATAFS_END=$((DATAFS_START+DATAFS_SIZE-4))
-
-  echo "DEVICE_SIZE: $DEVICE_SIZE"
-  echo "ROOTFS_SIZE: $ROOTFS_SIZE"
-  echo "ROOTFS_START: $ROOTFS_START"
-  echo "ROOTFS_END: $ROOTFS_END"
-  echo "DATAFS_SIZE: $DATAFS_SIZE"
-  echo "DATAFS_START: $DATAFS_START"
-  echo "DATAFS_END: $DATAFS_END"
-
   dd if=/dev/zero of=$DEVICE bs=512 count=2 || return 1
-  parted -s $DEVICE mklabel msdos || return 1
-  parted -s $DEVICE mkpart primary 0% $BOOT_SIZE || return 1
-  parted -s $DEVICE set 1 boot on || return 1
-  parted -s $DEVICE mkpart primary $ROOTFS_START $ROOTFS_END || return 1
-  parted -s $DEVICE mkpart primary $DATAFS_START $DATAFS_END || return 1
-
+  # Three primary partitions: one FAT bootable part (boot), second for rootfs and the rest is in third(data)
+  sfdisk $DEVICE << EOF
+  ,${BOOT_SIZE},6,*
+  ,${ROOTFS_SIZE}
+  ;
+EOF
+  sfdisk -V -l $DEVICE
   echo "partitioning $DEVICE done"
   return 0
 }

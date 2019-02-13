@@ -19,10 +19,10 @@ PACKAGE_INSTALL = "\
   mtd-utils-ubifs \
   e2fsprogs \
   e2fsprogs-mke2fs \
-  util-linux-fsck \
   e2fsprogs-e2fsck \
   e2fsprogs-tune2fs \
-  parted \
+  util-linux-fsck \
+  util-linux-sfdisk \
   "
 IMAGE_FSTYPES = "${INITRAMFS_FSTYPES}"
 inherit core-image
@@ -31,4 +31,3 @@ IMAGE_DEVICE_TABLES = "files/device_table-minimal.txt"
 IMAGE_ROOTFS_SIZE = "8192"
 IMAGE_ROOTFS_EXTRA_SPACE = "0"
 BAD_RECOMMENDATIONS += "busybox-syslog"
-
