@@ -6,15 +6,15 @@ VERSION=20
 
 SPLASH_DIR="/mnt/.splash"
 
-EMMC_ROOTFS_MOUNT=/media/rootfs
-EMMC_BOOT_MOUNT=/media/boot
-EMMC_DATA_MOUNT=/media/data
+EMMC_ROOTFS_MOUNT=$ROOTFS_MOUNT_POINT
+EMMC_BOOT_MOUNT=$BOOT_MOUNT_POINT
+EMMC_DATA_MOUNT=$DATA_MOUNT_POINT
 EMMC_BOOT_MOUNT_IN_ROOTFS=$EMMC_ROOTFS_MOUNT$EMMC_BOOT_MOUNT
 EMMC_DATA_MOUNT_IN_ROOTFS=$EMMC_ROOTFS_MOUNT$EMMC_DATA_MOUNT
 
-SD_ROOTFS_MOUNT=/media/rootfs
-SD_BOOT_MOUNT=/media/boot
-SD_DATA_MOUNT=/media/data
+SD_ROOTFS_MOUNT=$ROOTFS_MOUNT_POINT
+SD_BOOT_MOUNT=$BOOT_MOUNT_POINT
+SD_DATA_MOUNT=$DATA_MOUNT_POINT
 SD_BOOT_MOUNT_IN_ROOTFS=$SD_ROOTFS_MOUNT$SD_BOOT_MOUNT
 SD_DATA_MOUNT_IN_ROOTFS=$SD_ROOTFS_MOUNT$SD_DATA_MOUNT
 
@@ -107,7 +107,7 @@ partition_sd() {
   umount ${DEVICE}p3
 
   DEVICE_SIZE=$(parted -s $DEVICE unit mb print | grep ^Disk | cut -d" " -f 3 | sed -e "s/MB//")
-  if [ "$DEVICE_SIZE" = "" ] ; then
+  if [ "$DEVICE_SIZE" = "" ]; then
     parted -s $DEVICE mklabel msdos || return 1
     DEVICE_SIZE=$(parted -s $DEVICE unit mb print | grep ^Disk | cut -d" " -f 3 | sed -e "s/MB//")
   fi
@@ -133,7 +133,7 @@ partition_sd() {
   parted -s $DEVICE mkpart primary $ROOTFS_START $ROOTFS_END || return 1
   parted -s $DEVICE mkpart primary $DATAFS_START $DATAFS_END || return 1
 
-  echo "partition done"
+  echo "partitioning $DEVICE done"
   return 0
 }
 
@@ -232,6 +232,7 @@ mount_data() {
 }
 
 mount_rootfs_sd() {
+  mkdir -p $ROOTFS_MOUNT_POINT
   mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT
   if [ $? -ne 0 ]; then
     msg_splash "Error mount SD rootfs, please fix ..."
@@ -239,21 +240,26 @@ mount_rootfs_sd() {
     sleep 9999d
   fi
 
-  mkdir -p $SD_BOOT_MOUNT_IN_ROOTFS
-  mount --move /boot $SD_BOOT_MOUNT_IN_ROOTFS
+  mkdir -p $SD_BOOT_MOUNT_IN_ROOTFS $SD_DATA_MOUNT_IN_ROOTFS
+  mount_data $SD_DATA_MOUNT $SD_DATA_DEV
+  mount_data $SD_BOOT_MOUNT $SD_BOOT_DEV
+  mount --move $SD_BOOT_MOUNT $SD_BOOT_MOUNT_IN_ROOTFS
+  mount --move $SD_DATA_MOUNT $SD_DATA_MOUNT_IN_ROOTFS
 }
 
 mount_rootfs_emmc() {
+  mkdir -p $ROOTFS_MOUNT_POINT
   mount $EMMC_ROOTFS_DEV $ROOTFS_MOUNT_POINT
   if [ $? -ne 0 ]; then
     msg_splash "Error mount EMMC rootfs, please fix ..."
     speak "updater, E M M C file system error"
     sleep 9999d
   fi
+  mkdir -p $EMMC_BOOT_MOUNT_IN_ROOTFS $EMMC_DATA_MOUNT_IN_ROOTFS
   mount_data $EMMC_DATA_MOUNT $EMMC_DATA_DEV
-
-  mkdir -p $EMMC_BOOT_MOUNT_IN_ROOTFS
-  mount --move /boot $EMMC_BOOT_MOUNT_IN_ROOTFS
+  mount_data $EMMC_BOOT_MOUNT $EMMC_BOOT_DEV
+  mount --move $EMMC_BOOT_MOUNT $EMMC_BOOT_MOUNT_IN_ROOTFS
+  mount --move $EMMC_DATA_MOUNT $EMMC_DATA_MOUNT_IN_ROOTFS
 }
 
 mount_rootfs_nand() {
@@ -272,7 +278,8 @@ process_update() {
   fi
 
   # check if EMMC card has 3 partitions, if not, partition it now
-  total_emmc_partitions=$(grep -c "${EMMC_DEVICE}p[0-9]" /proc/partitions)
+  total_emmc_partitions=$(fdisk -l ${EMMC_DEVICE} | grep ^${EMMC_DEVICE}p  | wc -l)
+  msg_splash "Found $total_emmc_partitions partitions on ${EMMC_DEVICE}"
   if [ $total_emmc_partitions -ne 3 ]; then
     msg_splash "Partitioning storage, please wait ..."
     if ! partition_emmc; then
@@ -336,6 +343,11 @@ process_update() {
     umount $EMMC_ROOTFS_MOUNT
     msg_splash "rootfs update complete"
   fi
+  # find if data partition is not formatted
+  fs_type=$(blkid -o value -s TYPE $EMMC_DATA_DEV)
+  if [ -z "$fs_type" ] ; then
+    format_emmc_data
+  fi
 
   return 0
 }
@@ -366,9 +378,9 @@ find_update_file() {
 }
 
 update_from_usb() {
-  speak "updater, found u s b disk"
   update_file=$(find_update_file $USB_MOUNT_POINT)
   if echo $update_file | grep $PLAT; then
+    speak "updater, found u s b disk"
     msg_splash "USB update: $update_file"
     if ! process_update $USB_MOUNT_POINT/$update_file; then
       msg_splash "Failed to process update from USB"
@@ -384,9 +396,9 @@ update_from_usb() {
 }
 
 update_from_sd() {
-  speak "update found on S D card"
   update_file=$(find_update_file $SD_MOUNT_POINT)
   if echo $update_file | grep $PLAT; then
+    speak "update found on S D card"
     msg_splash "SD update: $update_file"
     if ! process_update $SD_MOUNT_POINT/$update_file; then
       msg_splash "Failed to process update from SD"
@@ -400,25 +412,35 @@ update_from_sd() {
 }
 
 update_from_data() {
-  speak "update found on data partition"
-  mount_data $DATA_MOUNT_POINT $EMMC_DATA_DEV
+  update_file=$(find_update_file $DATA_MOUNT_POINT)
+  if echo $update_file | grep $PLAT; then
+    speak "update found on data partition"
+    msg_splash "Updating from Data partition: $update_file"
+    if ! process_update $DATA_MOUNT_POINT/$update_file; then
+      msg_splash "Failed to process update from data partition"
+      speak "updater, failed to process update from data partition"
+      return 1
+    else
+      msg_splash "Update from Data partition complete"
+      return 0
+    fi
+  fi
   return 0
 }
 
 update() {
   # update precedence usb, SD, data partition
-  msg "checking usb ..."
+  msg "checking usb for update ..."
   if ! (mount_usb && update_from_usb); then
-    msg "checking sd ..."
+    msg "checking sd for update ..."
     if ! (mount_sd && update_from_sd); then
-      msg "checking data ..."
-      update_from_data
+      msg "checking data partition for update ..."
+      mount_data $DATA_MOUNT_POINT $EMMC_DATA_DEV && update_from_data
     fi
   fi
 }
 
 boot() {
-  mkdir -p $ROOTFS_MOUNT_POINT
 
   if [ -e $EMMC_BOOT_DEV ]; then
     msg_splash "Booting from EMMC ..."
@@ -433,9 +455,7 @@ boot() {
   umount_usb
   umount_sd
 
-  msg_splash "Moving filesystems into rootfs..."
-  mkdir -p $ROOTFS_MOUNT_POINT/media/data
-  mount --move /data $ROOTFS_MOUNT_POINT/media/data
+  msg_splash "Moving system mounts into rootfs..."
   mount --move /dev $ROOTFS_MOUNT_POINT/dev
   mount --move /proc $ROOTFS_MOUNT_POINT/proc
   mount --move /sys $ROOTFS_MOUNT_POINT/sys
