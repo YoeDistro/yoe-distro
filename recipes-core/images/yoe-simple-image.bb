@@ -29,6 +29,8 @@ UPDATE_IMAGES_sama5d27-som1-ek-sd ?= "\
         at91-sama5d27_som1_ek.dtb \
         rootfs.tar.xz \
 "
+# We use updater to handle disk/SD management, therefore remove 96boards-tools
+IMAGE_INSTALL_remove_sama5d27-som1-ek-sd = "96boards-tools"
 
 UPDATE_IMAGES_ ?= "${UPDATE_IMAGES} update.sha256"
 KERNEL_IMAGE ?= "zImage-initramfs-${MACHINE}.bin"
