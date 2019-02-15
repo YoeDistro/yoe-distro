@@ -11,6 +11,16 @@ This distribution does not end at demo images but rather begins there.
 This following is example of building and installing a linux system from
 scratch on a Raspberry PI 3:
 
+## Install Pre-requisites
+
+Install `docker` on host distribution
+
+- debian-like systems - `sudo apt install docker`
+- RPM based systems - `sudo dnf install docker`
+- Archlinux based systems - `sudo pacman -S docker`
+
+## Workspace Setup
+
 1. `git clone --recurse-submodules -j8 -b master git://github.com/YoeDistro/yoe-distro.git yoe`
 1. `cd yoe`
 1. `. ./raspberrypi3-64-envsetup.sh`
