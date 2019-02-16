@@ -163,9 +163,9 @@ else
   echo "${YOE_ENV_FILE} created"
 fi # if -e ${YOE_ENV_FILE}
 
-  #--------------------------------------------------------------------------
-  # Write out the OE bitbake configuration file.
-  #--------------------------------------------------------------------------
+#--------------------------------------------------------------------------
+# Write out the OE bitbake configuration file.
+#--------------------------------------------------------------------------
 mkdir -p ${OE_BUILD_DIR}/conf
 
 AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
@@ -190,7 +190,6 @@ MACHINE ?= "$MACHINE"
 _EOF
 
 echo "${AUTO_CONF} has been updated"
-
 
 ###############################################################################
 # UPDATE_ALL() - Make sure everything is up to date
@@ -415,7 +414,7 @@ read_var_from_conf() {
       continue
     fi
 
-    value=$(cat $conf_file | grep "^$VAR_NAME" | awk 'BEGIN{FS="="} {print$2}' | tr -d '"' | tr -d ' ')
+    value=$(cat $conf_file | grep "^$VAR_NAME" | awk 'BEGIN{FS="="} {print$2}' | tr -d '"' | tr -d ' ' | tail -1)
     if [ -n "$value" ]; then
       echo $value
       return 0
