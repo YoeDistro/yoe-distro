@@ -484,6 +484,10 @@ bitbake() {
   fi
 }
 
+yoe_get_image_version() {
+  echo $(read_var_from_conf 'IMG_VERSION')
+}
+
 ###############################################################################
 # Machine independent install scripts
 ###############################################################################
