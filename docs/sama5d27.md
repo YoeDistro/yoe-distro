@@ -50,14 +50,23 @@ not have a SD card slot. To bootstrap such a system, we can:
 
 This process has been automated and described in more detail below:
 
-- build the target image first as described above
-- `yoe_sam_build_bootstrap_tools` (this builds SAM-BA and a special version of the
-  at91bootstrap that can be used to load the bootloaders.
-- `yoe_sam_load_uboot_via_samba` (this loads at91bootstrap and u-boot over a UART. Note,
-  you must stop u-boot from launching a kernel, because there is no kernel to launch.)
-- `yoe_sam_install_bootstrap_files <USB disk mount point>` (this script copies the kernel
-  and update file to a USB disk for installation)
-- load a kernel from USB: `usb reset;fatls usb 0:1;fatload usb 0:1 0x21000000 at91-sama5d27_som1_ek.dtb;fatload usb 0:1 0x22000000 zImage;bootz 0x22000000 - 0x21000000`
+1. build the target image first as described above
+1. `yoe_sam_build_bootstrap_tools` (this builds SAM-BA and a special version of the
+   at91bootstrap that can be used to load the bootloaders.
+1. connect the development board USB (J10) to your workstation
+1. make sure your linux user has access to serial ports (add to serial, uucp, or whatever group is used for serial ports)
+1. make sure screen is installed (used for a serial terminal program)
+1. power on the dev board and verify it is outputting ROMboot on the serial terminal: `screen /dev/ttyACM0 115200`
+1. stop the serial terminal program (SAM-BA now needs to use the serial port): `Ctrl-A k`
+1. `yoe_sam_load_uboot_via_samba` (this loads at91bootstrap and u-boot over a UART. Note,
+   you must stop u-boot from launching a kernel, because there is no kernel to launch.)
+1. you should now be sitting at a u-boot prompt
+1. insert a USB flash disk into your workstation
+1. `yoe_sam_install_bootstrap_files <USB disk mount point>` (this script copies the kernel
+   and update file to a USB disk for installation)
+1. insert USB flash disk into the development board host USB port
+1. insert a blank SD card into the full size SD slot
+1. from u-boot, load a kernel from USB: `usb reset;fatls usb 0:1;fatload usb 0:1 0x21000000 at91-sama5d27_som1_ek.dtb;fatload usb 0:1 0x22000000 zImage;bootz 0x22000000 - 0x21000000`
 
 At this point the kernel will boot, run the updater from an initramfs bundled with the kernel.
 The updater will inialize a SD/eMMC device, and program the system from the \*.upd file on the
