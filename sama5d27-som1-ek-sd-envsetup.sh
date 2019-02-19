@@ -1,6 +1,6 @@
 export MACHINE=sama5d27-som1-ek-sd
 
-. envsetup.sh
+. ./envsetup.sh
 
 yoe_sam_build_bootstrap_tools() {
   bitbake sam-ba
