@@ -32,9 +32,6 @@ QT5BASE = "\
 	qtdeclarative-plugins \
 "
 QTWEBKIT ??= "\
-	qtquick1 \
-	qtquick1-qmlplugins \
-	qtquick1-plugins \
 	qtwebkit \
 	qtwebkit-qmlplugins \
 "
