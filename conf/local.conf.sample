@@ -15,6 +15,11 @@ ACCEPT_FSL_EULA = "1"
 # required for Qualcomm stuff to build
 ACCEPT_EULA = "1"
 
+# The two lines below enable the Gtk UI frontend for qemu
+# default is VNC
+PACKAGECONFIG_append_pn-qemu-native = " gtk+"
+PACKAGECONFIG_append_pn-nativesdk-qemu = " gtk+"
+
 # components whose licensing have commercial distribution impact
 #
 # required to build netperf
@@ -22,7 +27,7 @@ LICENSE_FLAGS_WHITELIST_append = " non-commercial_netperf "
 # chromium
 LICENSE_FLAGS_WHITELIST_append = " commercial_ffmpeg commercial_x264 "
 # vlc
-LICENSE_FLAGS_WHITELIST_append = " commercial_mpeg2dec "
+LICENSE_FLAGS_WHITELIST_append = " commercial_mpeg2dec commercial_vlc "
 # mpd
 LICENSE_FLAGS_WHITELIST_append = " commercial_mpg123 "
 # libmad
