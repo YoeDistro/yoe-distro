@@ -1,7 +1,7 @@
 [submodule "sources/bitbake"]
 	path = sources/bitbake
 	url = git://github.com/YoeDistro/bitbake.git
-	branch = master
+	branch = 1.40
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = git://github.com/YoeDistro/openembedded-core.git
@@ -13,7 +13,7 @@
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = git://github.com/YoeDistro/meta-ti.git
-	branch = master
+	branch = thud
 [submodule "sources/meta-browser"]
 	path = sources/meta-browser
 	url = git://github.com/YoeDistro/meta-browser.git
@@ -21,11 +21,11 @@
 [submodule "sources/meta-freescale"]
 	path = sources/meta-freescale
 	url = git://github.com/YoeDistro/meta-freescale
-	branch = master
+	branch = thud
 [submodule "sources/meta-freescale-3rdparty"]
 	path = sources/meta-freescale-3rdparty
 	url = git://github.com/YoeDistro/meta-freescale-3rdparty.git
-	branch = master
+	branch = thud
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/YoeDistro/meta-qt5.git
