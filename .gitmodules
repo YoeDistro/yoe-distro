@@ -2,71 +2,89 @@
 	path = sources/bitbake
 	url = https://github.com/YoeDistro/bitbake
 	branch = master
+	shallow = true
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = https://github.com/YoeDistro/openembedded-core
 	branch = master
+	shallow = true
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = https://github.com/YoeDistro/meta-openembedded
 	branch = master
+	shallow = true
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = https://github.com/YoeDistro/meta-ti
 	branch = master
+	shallow = true
 [submodule "sources/meta-browser"]
 	path = sources/meta-browser
 	url = https://github.com/YoeDistro/meta-browser
 	branch = master
+	shallow = true
 [submodule "sources/meta-freescale"]
 	path = sources/meta-freescale
 	url = https://github.com/YoeDistro/meta-freescale
 	branch = master
+	shallow = true
 [submodule "sources/meta-freescale-3rdparty"]
 	path = sources/meta-freescale-3rdparty
 	url = https://github.com/YoeDistro/meta-freescale-3rdparty
 	branch = master
+	shallow = true
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/YoeDistro/meta-qt5
 	branch = master
+	shallow = true
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
 	url = https://github.com/YoeDistro/meta-intel
 	branch = master
+	shallow = true
 [submodule "sources/meta-raspberrypi"]
 	path = sources/meta-raspberrypi
 	url = https://github.com/YoeDistro/meta-raspberrypi
 	branch = master
+	shallow = true
 [submodule "sources/meta-96boards"]
 	path = sources/meta-96boards
 	url = https://github.com/YoeDistro/meta-96boards
 	branch = master
+	shallow = true
 [submodule "sources/meta-qcom"]
 	path = sources/meta-qcom
 	url = https://github.com/YoeDistro/meta-qcom
 	branch = master
+	shallow = true
 [submodule "sources/meta-variscite-fslc"]
 	path = sources/meta-variscite-fslc
 	url = https://github.com/YoeDistro/meta-variscite-fslc
 	branch = thud
+	shallow = true
 [submodule "sources/meta-yoe"]
 	path = sources/meta-yoe
 	url = https://github.com/YoeDistro/meta-yoe
 	branch = master
+	shallow = true
 [submodule "sources/meta-riscv"]
 	path = sources/meta-riscv
 	url = https://github.com/YoeDistro/meta-riscv
 	branch = master
+	shallow = true
 [submodule "sources/meta-odroid"]
 	path = sources/meta-odroid
 	url = https://github.com/YoeDistro/meta-odroid
 	branch = master
+	shallow = true
 [submodule "sources/meta-rust"]
 	path = sources/meta-rust
 	url = https://github.com/YoeDistro/meta-rust
 	branch = master
+	shallow = true
 [submodule "sources/meta-atmel"]
 	path = sources/meta-atmel
 	url = https://github.com/YoeDistro/meta-atmel
 	branch = yoe/master
+	shallow = true
