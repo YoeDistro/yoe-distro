@@ -102,7 +102,9 @@ to see them.
 - _build_: temporary directory where build actually takes place
 - _conf_: configuration files for the build
 - _sources_: various sources used for the build. The entries
-  in this directory are git submodules.
+  in this directory are git submodules. Note, by default, submodules
+  are shallow clones. If you need the the full git history of a submodule,
+  then run `git fetch --unshallow` in the submodule directory.
 - _downloads_: contains files that are downloaded by various
   recipes during builds.
 - _tools_: utility scripts
