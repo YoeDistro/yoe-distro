@@ -471,7 +471,7 @@ dkr() {
     -v $SSH_AUTH_DIR:/ssh-agent \
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
-    --user $UID:$GID \
+    --user $(id -u):$(id -g) \
     ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $CMD $2 $3 $4 $5 $6 $7 $8"
 }
 
