@@ -46,7 +46,7 @@
 [submodule "sources/meta-raspberrypi"]
 	path = sources/meta-raspberrypi
 	url = https://github.com/YoeDistro/meta-raspberrypi
-	branch = yoe/mut
+	branch = master
 	shallow = true
 [submodule "sources/meta-96boards"]
 	path = sources/meta-96boards
@@ -81,7 +81,7 @@
 [submodule "sources/meta-rust"]
 	path = sources/meta-rust
 	url = https://github.com/YoeDistro/meta-rust
-	branch = yoe/mut
+	branch = master
 	shallow = true
 [submodule "sources/meta-atmel"]
 	path = sources/meta-atmel
