@@ -86,11 +86,7 @@ initialize() {
 
   plat_init
 
-  msg "Sleeping for 10 second(s) for USB flash to settle..."
-
   speak "updater version $VERSION"
-
-  sleep 10
 
   mkdir -p $BOOT_MOUNT_POINT
   mkdir -p $DATA_MOUNT_POINT
@@ -343,7 +339,7 @@ find_update_file() {
   extensions="upd img"
   update=""
   for ext in $extensions; do
-    update=$(echo $(ls ${PLAT}*.${ext} -v -r 2>/dev/null) | sed "s/update.${ext}//" | sed "s/${ext}.*/${ext}/" | sed "s/^\s*//")
+    update=$(echo $(ls ${UPDATE_FILE_NAME}*.${ext} -v -r 2>/dev/null) | sed "s/update.${ext}//" | sed "s/${ext}.*/${ext}/" | sed "s/^\s*//")
     if [ -n "${update}" ]; then
       echo $update
       break
@@ -360,7 +356,7 @@ find_update_file() {
 
 update_from_usb() {
   update_file=$(find_update_file $USB_MOUNT_POINT)
-  if echo $update_file | grep $PLAT; then
+  if [ "$update_file" != "" ]; then
     speak "updater, found u s b disk"
     msg_splash "USB update: $update_file"
     if ! process_update $USB_MOUNT_POINT/$update_file; then
@@ -378,7 +374,7 @@ update_from_usb() {
 
 update_from_sd() {
   update_file=$(find_update_file $SD_MOUNT_POINT)
-  if echo $update_file | grep $PLAT; then
+  if [ "$update_file" != "" ]; then
     speak "update found on S D card"
     msg_splash "SD update: $update_file"
     if ! process_update $SD_MOUNT_POINT/$update_file; then
@@ -394,7 +390,7 @@ update_from_sd() {
 
 update_from_data() {
   update_file=$(find_update_file $DATA_MOUNT_POINT)
-  if echo $update_file | grep $PLAT; then
+  if [ "$update_file" != "" ]; then
     speak "update found on data partition"
     msg_splash "Updating from Data partition: $update_file"
     if ! process_update $DATA_MOUNT_POINT/$update_file; then
@@ -411,6 +407,8 @@ update_from_data() {
 
 update() {
   # update precedence usb, SD, data partition
+  msg "Sleeping for ${USB_DETECTION_DELAY} second(s) for USB flash to settle..."
+  sleep ${USB_DETECTION_DELAY}
   msg "checking usb for update ..."
   if ! (mount_usb && update_from_usb); then
     msg "checking sd for update ..."
