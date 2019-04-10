@@ -37,6 +37,8 @@ KERNEL_IMAGE ?= "zImage-initramfs-${MACHINE}.bin"
 
 IMG_VERSION ?= "0.0.0"
 
+UPDATE_IMAGE_NAME ?= "${MACHINE}"
+
 do_updater () {
 }
 
@@ -52,7 +54,7 @@ do_updater_append_sama5d27-som1-ek-sd () {
         install ${DEPLOY_DIR_IMAGE}/BOOT.BIN BOOT.BIN
         install ${DEPLOY_DIR_IMAGE}/u-boot.bin u-boot.bin
         sha256sum ${UPDATE_IMAGES}  > update.sha256
-        tar -cf ${MACHINE}_${IMG_VERSION}.upd ${UPDATE_IMAGES_}
+        tar -cf ${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd ${UPDATE_IMAGES_}
         rm -rf ${UPDATE_IMAGES_}
 }
 
