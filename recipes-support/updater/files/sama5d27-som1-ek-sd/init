@@ -53,8 +53,9 @@ start_splash() {
     splash_enabled=1
     # set up psplash
     mkdir -p "$SPLASH_DIR"
-    mount tmpfs -t tmpfs $SPLASH_DIR -o,size=40k 2>&1 > /dev/console
-    TMPDIR=$SPLASH_DIR psplash& 2>&1 > /dev/console
+    mount tmpfs -t tmpfs $SPLASH_DIR -o,size=40k 2>&1 >/dev/console
+    TMPDIR=$SPLASH_DIR psplash &
+    2>&1 >/dev/console
     sleep 1
   fi
 }
@@ -108,7 +109,7 @@ partition_sd() {
 
   dd if=/dev/zero of=$DEVICE bs=512 count=2 || return 1
   # Three primary partitions: one FAT bootable part (boot), second for rootfs and the rest is in third(data)
-  sfdisk $DEVICE << EOF
+  sfdisk $DEVICE <<EOF
   ,${BOOT_SIZE},6,*
   ,${ROOTFS_SIZE}
   ;
@@ -127,7 +128,7 @@ format_sd_rootfs() {
 }
 
 format_sd_data() {
-  mkfs.${FSTYPE} -O 64bit  -L "DATA" -F $SD_DATA_DEV || return 1
+  mkfs.${FSTYPE} -O 64bit -L "DATA" -F $SD_DATA_DEV || return 1
 }
 
 partition_emmc() {
@@ -139,11 +140,11 @@ format_emmc_boot() {
 }
 
 format_emmc_rootfs() {
-  mkfs.${FSTYPE} -O 64bit  -L "ROOT" -F $EMMC_ROOTFS_DEV || return 1
+  mkfs.${FSTYPE} -O 64bit -L "ROOT" -F $EMMC_ROOTFS_DEV || return 1
 }
 
 format_emmc_data() {
-  mkfs.${FSTYPE}  -O 64bit -L "DATA" -F $EMMC_DATA_DEV || return 1
+  mkfs.${FSTYPE} -O 64bit -L "DATA" -F $EMMC_DATA_DEV || return 1
 }
 
 mount_usb() {
@@ -244,7 +245,7 @@ mount_rootfs_emmc() {
 }
 
 mount_rootfs_nand() {
-    msg_splash "Boot from NAND not implemented ..."
+  msg_splash "Boot from NAND not implemented ..."
 }
 
 process_update() {
@@ -259,7 +260,7 @@ process_update() {
   fi
 
   # check if EMMC card has 3 partitions, if not, partition it now
-  total_emmc_partitions=$(fdisk -l ${EMMC_DEVICE} | grep ^${EMMC_DEVICE}p  | wc -l)
+  total_emmc_partitions=$(fdisk -l ${EMMC_DEVICE} | grep ^${EMMC_DEVICE}p | wc -l)
   msg_splash "Found $total_emmc_partitions partitions on ${EMMC_DEVICE}"
   if [ $total_emmc_partitions -ne 3 ]; then
     msg_splash "Partitioning storage, please wait ..."
@@ -304,7 +305,6 @@ process_update() {
 
   umount $EMMC_BOOT_DEV
 
-
   if [ -n "$kernel_updated" ]; then
     msg_splash "kernel updated, rebooting ..."
     restart
@@ -326,7 +326,7 @@ process_update() {
   fi
   # find if data partition is not formatted
   fs_type=$(blkid -o value -s TYPE $EMMC_DATA_DEV)
-  if [ -z "$fs_type" ] ; then
+  if [ -z "$fs_type" ]; then
     format_emmc_data
   fi
 
