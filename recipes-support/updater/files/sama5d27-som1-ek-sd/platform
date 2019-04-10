@@ -2,7 +2,7 @@ TITLE="SAM SOM"
 PLAT="sama5d27-som1-ek-sd"
 UPDATE_FILE_NAME="sama5d27"
 
-USB_DETECTION_DELAY=10
+USB_DETECTION_DELAY=4
 
 KERNEL="zImage at91-sama5d27_som1_ek.dtb"
 BOOT="BOOT.BIN u-boot.bin"
