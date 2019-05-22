@@ -1,6 +1,5 @@
 [Match]
-Name=eth*
-Name=en*
+Name=eth* en*
 
 [Network]
 DHCP=v4
