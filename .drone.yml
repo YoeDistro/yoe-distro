@@ -1,9 +1,9 @@
-# test 9
+# test 10
 kind: pipeline
 name: default
 
 steps:
   - name: ls
-    image: yoedistro/yoe-buid:stretch
+    image: yoedistro/yoe-buid
     commands:
       - ls -l
