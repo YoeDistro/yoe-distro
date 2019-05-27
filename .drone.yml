@@ -1,9 +1,9 @@
-# test 8
+# test 9
 kind: pipeline
 name: default
 
 steps:
   - name: ls
-    image: alpine
+    image: yoedistro/yoe-buid:stretc
     commands:
       - ls -l
