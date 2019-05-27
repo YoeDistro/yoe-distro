@@ -6,10 +6,12 @@ echoerr() {
   echo $@ >&2
 }
 
-shell=$(ps -p "$$")
-if [ -n "${shell##*zsh*}" ] && [ -n "${shell##*bash*}" ]; then
-  echo "Error: We require running Yoe in a bash or zsh shell. Other shells have not been tested."
-  return 1
+if [ -z ${YOE_SKIP_SHELL_TEST} ]; then
+  shell=$(ps -p "$$")
+  if [ -n "${shell##*zsh*}" ] && [ -n "${shell##*bash*}" ]; then
+    echo "Error: We require running Yoe in a bash or zsh shell. Other shells have not been tested."
+    return 1
+  fi
 fi
 
 if [ -f local.sh ]; then
