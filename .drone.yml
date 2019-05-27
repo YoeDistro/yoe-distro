@@ -4,6 +4,6 @@ name: default
 
 steps:
   - name: ls
-    image: yoedistro/yoe-buid:stretc
+    image: yoedistro/yoe-buid:stretch
     commands:
       - ls -l
