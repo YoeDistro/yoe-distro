@@ -3,7 +3,10 @@ kind: pipeline
 name: default
 
 steps:
-  - name: ls
+  - name: bake rPI3-64 image
     image: yoedistro/yoe-build:stretch
+    environment:
+      YOE_SKIP_SHELL_TEST: true
+      DOCKER_REPO: none
     commands:
-      - ls -l
+      - /bin/sh -c "source ./raspberrypi3-64-envsetup.sh; bitbake yoe-simple-image"
