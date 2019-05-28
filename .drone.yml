@@ -2,11 +2,38 @@
 kind: pipeline
 name: default
 
+# TODO, move most of this to a drone plugin
+# Env vars:
+#   - DRONE_YOE_REPO (can we get this from drone env??)
+#   - DRONE_YOE_REPO_BRANCH (can we get this from drone env??)
+#   - DRONE_YOE_DOCKER_IMAGE
+#   - DRONE_YOE_CACHE_DIR
+#   - DRONE_YOE_IMAGE
+#   - DRONE_YOE_ENVSETUP
+
+clone:
+  depth: 50
+
 steps:
-  - name: bake rPI3-64 image
+  - name: build
     image: yoedistro/yoe-build:stretch
+    volumes:
+      - name: drone-cache
+        path: /scratch/drone-cache
     environment:
       YOE_SKIP_SHELL_TEST: true
       DOCKER_REPO: none
     commands:
+      - cd /scratch/drone-cache
+      - pwd
+      - "[ -e yoe-distro ] || git clone https://github.com/YoeDistro/yoe-distro.git"
+      - cd yoe-distro
+      - git checkout feature-drone
+      - git pull
+      - git submodule update --recursive --init
       - /bin/sh -c "source ./raspberrypi3-64-envsetup.sh; bitbake yoe-simple-image"
+
+volumes:
+  - name: drone-cache
+    host:
+      path: /scratch/drone-cache
