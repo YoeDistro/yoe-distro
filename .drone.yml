@@ -1,4 +1,3 @@
-# test 12
 kind: pipeline
 name: default
 
@@ -26,9 +25,10 @@ steps:
     commands:
       - cd /scratch/drone-cache
       - pwd
-      - "[ -e yoe-distro ] || git clone https://github.com/YoeDistro/yoe-distro.git"
-      - cd yoe-distro
-      - git checkout feature-drone
+      - export CACHE_DIR=${DRONE_REPO_NAMESPACE}-${DRONE_REPO_NAME}-${DRONE_REPO_BRANCH}
+      - "[ -e yoe-distro ] || git clone ${DRONE_GIT_HTTP_URL} ${CACHE_DIR}"
+      - cd ${CACHE_DIR}
+      - git checkout ${DRONE_REPO_BRANCH}
       - git pull
       - git submodule update --recursive --init
       - /bin/sh -c "source ./raspberrypi3-64-envsetup.sh; bitbake yoe-simple-image"
@@ -37,3 +37,6 @@ volumes:
   - name: drone-cache
     host:
       path: /scratch/drone-cache
+
+node:
+  instance: oe
