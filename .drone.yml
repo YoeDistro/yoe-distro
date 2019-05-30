@@ -39,4 +39,4 @@ volumes:
       path: /scratch/drone-cache
 
 node:
-  instance: oe
+  oe: true
