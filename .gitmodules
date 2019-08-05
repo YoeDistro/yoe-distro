@@ -72,5 +72,5 @@
 	branch = yoe/master
 [submodule "sources/meta-clang"]
 	path = sources/meta-clang
-	url = https://github.com/kraj/meta-clang
+	url = https://github.com/YoeDistro/meta-clang
 	branch = master
