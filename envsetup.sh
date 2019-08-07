@@ -527,3 +527,21 @@ yoe_install_image() {
   pv -tpreb $WICIMG | xzcat | sudo dd of=$DRIVE bs=4M iflag=fullblock oflag=direct conv=fsync
   unset WICIMG
 }
+
+# this function populates env variables to be used with the .drone.yml file
+# drone exec does not populate these, so this is a way we can still run
+# drone exec for testing a pipeline. Note, this currently only works with
+# http URLs
+yoe_drone_exec() {
+  export DRONE_GIT_HTTP_URL=$(git config --get remote.origin.url)
+  export DRONE_REPO=$(echo ${DRONE_GIT_HTTP_URL} | awk -F ":" '{ print $2 }')
+  export DRONE_REPO_NAME=$(basename $DRONE_REPO)
+  export DRONE_REPO_NAMESPACE=$(basename $(dirname $DRONE_REPO))
+  export DRONE_REPO_BRANCH=$(git branch | grep \* | cut -d ' ' -f2)
+
+  echo "DRONE_GIT_HTTP_URL: ${DRONE_GIT_HTTP_URL}"
+  echo "DRONE_REPO_NAME: ${DRONE_REPO_NAME}"
+  echo "DRONE_REPO_NAMESPACE: ${DRONE_REPO_NAMESPACE}"
+  echo "DRONE_REPO_BRANCH: ${DRONE_REPO_BRANCH}"
+  drone exec --trusted
+}
