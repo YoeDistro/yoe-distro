@@ -6,7 +6,7 @@ MAINTAINER = "Yoe Distro <https://github.com/YoeDistro>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version keep it up with Yocto release
-DISTRO_VERSION = "2.6"
+DISTRO_VERSION = "3.0"
 DISTRO_CODENAME = "master"
 SDK_VERSION := "${DISTRO_VERSION}"
 
