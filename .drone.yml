@@ -3,8 +3,6 @@ name: default
 
 # TODO, move most of this to a drone plugin
 # Env vars:
-#   - DRONE_YOE_REPO (can we get this from drone env??)
-#   - DRONE_YOE_REPO_BRANCH (can we get this from drone env??)
 #   - DRONE_YOE_DOCKER_IMAGE
 #   - DRONE_YOE_CACHE_DIR
 #   - DRONE_YOE_IMAGE
@@ -34,6 +32,10 @@ steps:
       - git pull
       - git submodule update --recursive --init
       - /bin/sh -c "source ./raspberrypi3-64-envsetup.sh; bitbake yoe-simple-image"
+    when:
+      branch:
+        - master
+        - feature-drone
 
 volumes:
   - name: drone-cache
