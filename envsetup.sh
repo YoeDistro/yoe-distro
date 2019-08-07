@@ -517,7 +517,7 @@ yoe_install_image() {
   fi
   WICIMG="$IMAGE"
   if [ -z $WICIMG ]; then
-    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic
+    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic.xz
   fi
   if [ ! -e $WICIMG ]; then
     echo "$WICIMG does not exist, please build the image first"
