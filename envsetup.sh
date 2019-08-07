@@ -387,13 +387,13 @@ yoe_clean_sstate() {
 }
 
 # Docker integration
-# set DOCKER_REPO to something like yoedistro/yoe-build:stretch
+# set DOCKER_REPO to something like yoedistro/yoe-build:buster
 # DOCKER_REPO can be set in scripts that wrap envsetup.sh
 # set DOCKER_REPO to 'none' to disable docker
 
 if [ -z "$DOCKER_REPO" ]; then
-  echo "Setting DOCKER_REPO to yoedistro/yoe-build:stretch"
-  export DOCKER_REPO=yoedistro/yoe-build:stretch
+  echo "Setting DOCKER_REPO to yoedistro/yoe-build:buster"
+  export DOCKER_REPO=yoedistro/yoe-build:buster
 fi
 
 # if we are building using docker, we don't really care what /bin/sh is since the Yoe docker images defaults
@@ -493,8 +493,12 @@ yoe_get_image_version() {
 ###############################################################################
 
 yoe_check_install_dependencies() {
-  if ! pv -V 1>/dev/null; then
-    echo "ERROR: Please install the pv utility (http://www.ivarch.com/programs/pv.shtml)"
+  if ! command -v bmaptool >& /dev/null; then
+    echo "bmaptool not installed"
+    echo "Install bmap-tools package on build host"
+    echo "debian-like - sudo apt install bmap-tools"
+    echo "Fedora like rpm-based - sudo dnf install bmap-tools"
+    echo "archlinux - yay bmap-tools"
     return 1
   fi
 }
@@ -503,7 +507,6 @@ yoe_check_install_dependencies() {
 yoe_install_image() {
   DRIVE=$1
   IMAGE_NAME=$2
-
   yoe_check_install_dependencies || return 1
 
   if [ ! $DRIVE ] || [ ! $IMAGE_NAME ]; then
@@ -514,7 +517,7 @@ yoe_install_image() {
   fi
   WICIMG="$IMAGE"
   if [ -z $WICIMG ]; then
-    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic.xz
+    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic
   fi
   if [ ! -e $WICIMG ]; then
     echo "$WICIMG does not exist, please build the image first"
@@ -522,6 +525,12 @@ yoe_install_image() {
     unset WICIMG
     return 1
   fi
-  pv -tpreb $WICIMG | xzcat | sudo dd of=$DRIVE bs=4M iflag=fullblock oflag=direct conv=fsync
+  bmaptool copy ${WICIMG} ${DRIVE}
+  if [ $? != 0 ]; then
+    echo "Please make sure\n"
+    echo "1. disk is inserted and discovered as ${DRIVE}"
+    echo "2. run 'sudo chmod 666 ${DRIVE}'"
+    echo "3. re-run yoe_install_image command"
+  fi
   unset WICIMG
 }
