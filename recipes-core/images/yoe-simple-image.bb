@@ -40,6 +40,7 @@ IMG_VERSION ?= "0.0.0"
 UPDATE_IMAGE_NAME ?= "${MACHINE}"
 
 do_updater () {
+    :
 }
 
 do_updater_append_sama5d27-som1-ek-sd () {
