@@ -11,3 +11,4 @@ steps:
     commands:
       - ls
       - pwd
+      - echo $DRONE_WORKSPACE
