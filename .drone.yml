@@ -29,4 +29,8 @@ steps:
       - git submodule update --recursive --init
       - echo "export DOCKER_REPO=none" > local.sh
       - echo "export LANG=en_US.UTF-8" >> local.sh
-      - /bin/bash -c ". ./raspberrypi3-64-envsetup.sh && bitbake yoe-simple-image"
+      - cp conf/local.conf.sample conf/local.conf
+      - echo 'IMAGE_CLASSES += "testimage testsdk"' >> conf/local.conf
+      - echo 'INHERIT += "report-error"' >> conf/local.conf
+      - echo 'TESTIMAGE_AUTO_qemuall = "1"' >> conf/local.conf
+      - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
