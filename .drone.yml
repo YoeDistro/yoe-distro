@@ -19,19 +19,19 @@ trigger:
 
 steps:
   - name: build
-    environment:
-      DOCKER_REPO=none
-      LANG=en_US.UTF-8
-      SSTATE_CACHE_DIR=/scratch/sstate-cache
     commands:
+      - export DOCKER_REPO=none
+      - export LANG=en_US.UTF-8
+      - export SSTATE_CACHE_DIR=/scratch/sstate-cache
       - echo "build number $DRONE_BUILD_NUMBER"
       - echo "sstate cache dir = $SSTATE_CACHE_DIR"
       - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
       - git submodule update --recursive --init
-      - echo "export DOCKER_REPO=none" > local.sh
-      - echo "export LANG=en_US.UTF-8" >> local.sh
+      - echo export DOCKER_REPO=none > local.sh
+      - echo export LANG=en_US.UTF-8 >> local.sh
+      - echo export SSTATE_CACHE_DIR=/scratch/sstate-cache >> local.sh
       - cp conf/local.conf.sample conf/local.conf
-      - echo SSTATE_DIR = \"/scratch/sstate-cache\" >> conf/local.conf
+      - echo SSTATE_DIR = \"$SSTATE_CACHE_DIR\" >> conf/local.conf
       - echo TMPDIR = \"/scratch/tmp-$DRONE_BUILD_NUMBER\" >> conf/local.conf
       - echo IMAGE_CLASSES += \"testimage testsdk\" >> conf/local.conf
       - echo INHERIT += \"report-error rm_work\" >> conf/local.conf
