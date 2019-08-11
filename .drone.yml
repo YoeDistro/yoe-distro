@@ -8,7 +8,7 @@ environment:
 
 platform:
   os: linux
-  arch: arm64
+#  arch: arm64
 
 clone:
   disable: false
@@ -36,5 +36,5 @@ steps:
       - echo INHERIT += \"report-error rm_work\" >> conf/local.conf
       #- echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
       - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
-      - /bin/bash -c "yoe_clean_sstate"
+      - /bin/bash -c ". ./qemux86-64-envsetup.sh && yoe_clean_sstate"
       - rm -rf /scratch/tmp-$DRONE_BUILD_NUMBER
