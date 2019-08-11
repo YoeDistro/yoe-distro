@@ -1,0 +1,71 @@
+kind: pipeline
+type: exec
+name: arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+clone:
+  disable: false
+
+trigger:
+  branch:
+    - master
+    - feature-drone-exec-runner
+  event:
+    - push
+    - pull_request
+
+steps:
+  - name: build
+    commands:
+      - export DOCKER_REPO=none
+      - export LANG=en_US.UTF-8
+      - export SSTATE_CACHE_DIR=/scratch/sstate-cache
+      - echo "Started build# $DRONE_BUILD_NUMBER"
+      - echo "sstate cache dir = $SSTATE_CACHE_DIR"
+      - echo "building $DRONE_GIT_HTTP_URL, branch $DRONE_SOURCE_BRANCH"
+      - git submodule update --recursive --init
+      - echo export DOCKER_REPO=none > local.sh
+      - echo export LANG=en_US.UTF-8 >> local.sh
+      - echo export SSTATE_CACHE_DIR=/scratch/sstate-cache >> local.sh
+      - cp conf/local.conf.sample conf/local.conf
+      - echo SSTATE_DIR = \"$SSTATE_CACHE_DIR\" >> conf/local.conf
+      - echo TMPDIR = \"/scratch/tmp-$DRONE_BUILD_NUMBER\" >> conf/local.conf
+      - echo IMAGE_CLASSES += \"testimage testsdk\" >> conf/local.conf
+      - echo INHERIT += \"report-error rm_work\" >> conf/local.conf
+      #- echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
+      - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
+      - /bin/bash -c ". ./qemux86-64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
+---
+kind: pipeline
+type: exec
+name: cleanup
+
+platform:
+  os: linux
+  arch: arm64
+
+clone:
+  disable: true
+
+trigger:
+  branch:
+    - master
+    - feature-drone-exec-runner
+  event:
+    - push
+    - pull_request
+  status:
+    - success
+    - failure
+
+steps:
+- name: clean
+  commands:
+    - echo "Deleting tmpdir for build# $DRONE_BUILD_NUMBER"
+    - rm -rf /scratch/tmp-$DRONE_BUILD_NUMBER
+
+depends_on:
+- arm64
