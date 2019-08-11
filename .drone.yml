@@ -11,7 +11,7 @@ platform:
   arch: arm64
 
 clone:
-  disable: true
+  disable: false
 
 trigger:
   branch:
