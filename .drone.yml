@@ -38,10 +38,9 @@ steps:
       #- echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
       - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
       - /bin/bash -c ". ./qemux86-64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
-      - rm -rf /scratch/tmp-$DRONE_BUILD_NUMBER
 ---
 kind: pipeline
-name: any
+name: clean and notify
 
 clone:
   disable: true
@@ -52,6 +51,14 @@ steps:
   settings:
     room: general
     webhook: https://app.slack.com/client/T9X5US1K3
+
+  trigger:
+    status:
+    - success
+    - failure
+
+  commands:
+    - rm -rf /scratch/tmp-$DRONE_BUILD_NUMBER
 
 depends_on:
 - arm64
