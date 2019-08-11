@@ -4,14 +4,15 @@ name: default
 
 environment:
   DOCKER_REPO=none
+  LANG=en_US.UTF-8
+
 platform:
   os: linux
   arch: arm64
 
 steps:
-  - name: test
+  - name: build
     commands:
-      - ls
       - pwd
       - echo $DRONE_WORKSPACE
       - echo $DRONE_COMMIT_SHA
