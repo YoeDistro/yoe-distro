@@ -15,7 +15,6 @@ steps:
       - pwd
       - echo $DRONE_WORKSPACE
       - echo $DRONE_COMMIT_SHA
-      - echo $(ps -p "$$")
       - cd /scratch/drone-cache
       - pwd
       - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
@@ -28,5 +27,4 @@ steps:
       - git checkout $DRONE_COMMIT_SHA
       - git submodule update --recursive --init
       - echo "export DOCKER_REPO=none" > local.sh
-      - . ./raspberrypi3-64-envsetup.sh
-      - bitbake yoe-simple-image
+      - /bin/bash -c ". ./raspberrypi3-64-envsetup.sh && bitbake yoe-simple-image"
