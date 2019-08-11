@@ -11,7 +11,7 @@ platform:
   arch: arm64
 
 steps:
-  - name: clone
+  - name: checkout
     commands:
       - pwd
       - echo $DRONE_WORKSPACE
@@ -28,7 +28,7 @@ steps:
       - git checkout $DRONE_COMMIT_SHA
       - git submodule update --recursive --init
 
-  - name: setup
+  - name: Env setup
     commands:
       - echo "export DOCKER_REPO=none" > local.sh
       - echo "export LANG=en_US.UTF-8" >> local.sh
