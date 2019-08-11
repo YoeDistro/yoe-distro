@@ -2,11 +2,6 @@ kind: pipeline
 type: exec
 name: arm64
 
-environment:
-  DOCKER_REPO=none
-  LANG=en_US.UTF-8
-  SSTATE_CACHE_DIR=/scratch/sstate-cache
-
 platform:
   os: linux
   arch: arm64
@@ -24,6 +19,10 @@ trigger:
 
 steps:
   - name: build
+    environment:
+      DOCKER_REPO=none
+      LANG=en_US.UTF-8
+      SSTATE_CACHE_DIR=/scratch/sstate-cache
     commands:
       - echo "build number $DRONE_BUILD_NUMBER"
       - echo "sstate cache dir = $SSTATE_CACHE_DIR"
