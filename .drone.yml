@@ -32,5 +32,5 @@ steps:
       - cp conf/local.conf.sample conf/local.conf
       - echo 'IMAGE_CLASSES += "testimage testsdk"' >> conf/local.conf
       - echo 'INHERIT += "report-error"' >> conf/local.conf
-      - echo 'TESTIMAGE_AUTO_qemuall = "1"' >> conf/local.conf
+      #- echo 'TESTIMAGE_AUTO_qemuall = "1"' >> conf/local.conf
       - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
