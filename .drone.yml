@@ -43,6 +43,7 @@ steps:
 kind: pipeline
 type: exec
 name: amd64
+disable: true
 
 environment:
   DOCKER_REPO=none
