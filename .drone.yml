@@ -48,8 +48,8 @@ steps:
       - cp conf/local.conf.sample conf/local.conf
       - echo SSTATE_DIR = \"/scratch/sstate-cache\" >> conf/local.conf
       - echo TMPDIR = \"/scratch/tmp-$DRONE_BUILD_NUMBER\" >> conf/local.conf
-      - echo IMAGE_CLASSES += \"testimage testsdk\"' >> conf/local.conf
-      - echo INHERIT += \"report-error rm_work\"' >> conf/local.conf
+      - echo IMAGE_CLASSES += \"testimage testsdk\" >> conf/local.conf
+      - echo INHERIT += \"report-error rm_work\" >> conf/local.conf
       #- echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
  
   - name: build
