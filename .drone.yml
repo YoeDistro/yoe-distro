@@ -2,8 +2,7 @@ kind: pipeline
 type: exec
 name: default
 
-environment:
-  DRONE_WORKSPACE=/home/yocto/drone.io
+environment: DRONE_WORKSPACE=/home/yocto/drone.io
 platform:
   os: linux
   arch: arm64
@@ -14,3 +13,4 @@ steps:
       - ls
       - pwd
       - echo $DRONE_WORKSPACE
+      - echo $DRONE_COMMIT_SHA
