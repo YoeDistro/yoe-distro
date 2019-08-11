@@ -40,23 +40,17 @@ steps:
       - /bin/bash -c ". ./qemux86-64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
 ---
 kind: pipeline
-name: clean and notify
+name: clean workspace
 
 clone:
   disable: true
 
 steps:
-- name: notify
-  image: plugins/slack
-  settings:
-    room: general
-    webhook: https://app.slack.com/client/T9X5US1K3
-
+- name: cleanup
   trigger:
     status:
     - success
     - failure
-
   commands:
     - rm -rf /scratch/tmp-$DRONE_BUILD_NUMBER
 
