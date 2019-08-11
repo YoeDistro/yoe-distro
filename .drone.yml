@@ -26,7 +26,7 @@ steps:
   - name: build
     commands:
       - echo "build number $DRONE_BUILD_NUMBER"
-      - echo "sstate cache dir = $${SSTATE_CACHE_DIR}
+      - echo "sstate cache dir = $${SSTATE_CACHE_DIR}"
       - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
       - git submodule update --recursive --init
       - echo "export DOCKER_REPO=none" > local.sh
