@@ -10,14 +10,12 @@ platform:
   os: linux
   arch: arm64
 
+clone:
+  disable: true
+
 steps:
-  - name: checkout
+  - name: clone
     commands:
-      - pwd
-      - echo $DRONE_WORKSPACE
-      - echo $DRONE_COMMIT_SHA
-      - cd /scratch/drone-cache
-      - pwd
       - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
       - export CACHE_DIR="$${DRONE_REPO_NAMESPACE}-$${DRONE_REPO_NAME}-$${DRONE_REPO_BRANCH}"
       - echo "CACHE_DIR $${CACHE_DIR}"
@@ -30,6 +28,11 @@ steps:
 
   - name: Env setup
     commands:
+      - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
+      - export CACHE_DIR="$${DRONE_REPO_NAMESPACE}-$${DRONE_REPO_NAME}-$${DRONE_REPO_BRANCH}"
+      - echo "CACHE_DIR $${CACHE_DIR}"
+      - "[ -e $${CACHE_DIR} ] || git clone $${DRONE_GIT_HTTP_URL} $${CACHE_DIR}"
+      - cd $${CACHE_DIR}
       - echo "export DOCKER_REPO=none" > local.sh
       - echo "export LANG=en_US.UTF-8" >> local.sh
       - cp conf/local.conf.sample conf/local.conf
@@ -39,8 +42,18 @@ steps:
  
   - name: build
     commands:
+      - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
+      - export CACHE_DIR="$${DRONE_REPO_NAMESPACE}-$${DRONE_REPO_NAME}-$${DRONE_REPO_BRANCH}"
+      - echo "CACHE_DIR $${CACHE_DIR}"
+      - "[ -e $${CACHE_DIR} ] || git clone $${DRONE_GIT_HTTP_URL} $${CACHE_DIR}"
+      - cd $${CACHE_DIR}
       - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
 
   - name: sstate clean
     commands:
-      - yoe_clean_sstate
+      - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
+      - export CACHE_DIR="$${DRONE_REPO_NAMESPACE}-$${DRONE_REPO_NAME}-$${DRONE_REPO_BRANCH}"
+      - echo "CACHE_DIR $${CACHE_DIR}"
+      - "[ -e $${CACHE_DIR} ] || git clone $${DRONE_GIT_HTTP_URL} $${CACHE_DIR}"
+      - cd $${CACHE_DIR}
+      - /bin/bash -c ". ./qemux86-64-envsetup.sh && yoe_clean_sstate"
