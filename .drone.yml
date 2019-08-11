@@ -2,7 +2,8 @@ kind: pipeline
 type: exec
 name: default
 
-environment: DRONE_WORKSPACE=/home/yocto/drone.io
+environment:
+  DOCKER_REPO=none
 platform:
   os: linux
   arch: arm64
@@ -14,3 +15,15 @@ steps:
       - pwd
       - echo $DRONE_WORKSPACE
       - echo $DRONE_COMMIT_SHA
+      - cd /scratch/drone-cache
+      - pwd
+      - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
+      - export CACHE_DIR="$${DRONE_REPO_NAMESPACE}-$${DRONE_REPO_NAME}-$${DRONE_REPO_BRANCH}"
+      - echo "CACHE_DIR $${CACHE_DIR}"
+      - "[ -e $${CACHE_DIR} ] || git clone $${DRONE_GIT_HTTP_URL} $${CACHE_DIR}"
+      - cd $${CACHE_DIR}
+      - git checkout $${DRONE_REPO_BRANCH}
+      - git pull
+      - git submodule update --recursive --init
+      - echo "export DOCKER_REPO=none" > local.sh
+      - /bin/sh -c "source ./raspberrypi3-64-envsetup.sh; bitbake yoe-simple-image"
