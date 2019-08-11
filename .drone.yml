@@ -5,7 +5,7 @@ name: default
 platform:
   os: linux
   arch: arm64
-  DRONE_WORKSPACE=/home/yocto/drone.io
+  DRONE_WORKSPACE: /home/yocto/drone.io
 
 steps:
   - name: test
