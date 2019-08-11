@@ -13,12 +13,15 @@ platform:
 clone:
   disable: true
 
-steps:
-   when:
-      branch:
-        - master
-        - feature-drone-exec-runner
+trigger:
+  branch:
+    - master
+    - feature-drone-exec-runner
+  event:
+    - push
+    - pull_request
 
+steps:
   - name: clone
     commands:
       - cd /scratch/drone-cache
