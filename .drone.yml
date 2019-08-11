@@ -15,6 +15,7 @@ steps:
       - pwd
       - echo $DRONE_WORKSPACE
       - echo $DRONE_COMMIT_SHA
+      - echo $(ps -p "$$")
       - cd /scratch/drone-cache
       - pwd
       - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
