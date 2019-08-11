@@ -31,7 +31,8 @@ steps:
       - git checkout $${DRONE_REPO_BRANCH}
       - git pull
       - git submodule update --recursive --init
-      - /bin/sh -c "source ./raspberrypi3-64-envsetup.sh; bitbake yoe-simple-image"
+      - . ./raspberrypi3-64-envsetup.sh
+      - bitbake yoe-simple-image
     when:
       branch:
         - master
