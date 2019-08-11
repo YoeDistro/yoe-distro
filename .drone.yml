@@ -5,6 +5,7 @@ name: arm64
 environment:
   DOCKER_REPO=none
   LANG=en_US.UTF-8
+  SSTATE_CACHE_DIR=/scratch/sstate-cache
 
 platform:
   os: linux
@@ -25,6 +26,7 @@ steps:
   - name: build
     commands:
       - echo "build number $DRONE_BUILD_NUMBER"
+      - echo "sstate cache dir = $${SSTATE_CACHE_DIR}
       - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
       - git submodule update --recursive --init
       - echo "export DOCKER_REPO=none" > local.sh
@@ -36,7 +38,7 @@ steps:
       - echo INHERIT += \"report-error rm_work\" >> conf/local.conf
       #- echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
       - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
-      - /bin/bash -c ". ./qemux86-64-envsetup.sh && yoe_clean_sstate"
+      - /bin/bash -c ". ./qemux86-64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
       - rm -rf /scratch/tmp-$DRONE_BUILD_NUMBER
 ---
 kind: pipeline
