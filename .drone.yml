@@ -22,8 +22,8 @@ steps:
       - echo "CACHE_DIR $${CACHE_DIR}"
       - "[ -e $${CACHE_DIR} ] || git clone $${DRONE_GIT_HTTP_URL} $${CACHE_DIR}"
       - cd $${CACHE_DIR}
-      - git checkout $${DRONE_COMMIT_SHA}
       - git pull
+      - git checkout $DRONE_COMMIT_SHA
       - git submodule update --recursive --init
       - echo "export DOCKER_REPO=none" > local.sh
       - /bin/sh -c "source ./raspberrypi3-64-envsetup.sh; bitbake yoe-simple-image"
