@@ -43,6 +43,10 @@ kind: pipeline
 type: exec
 name: cleanup
 
+platform:
+  os: linux
+  arch: arm64
+
 clone:
   disable: true
 
