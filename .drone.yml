@@ -46,6 +46,14 @@ name: cleanup
 clone:
   disable: true
 
+trigger:
+  branch:
+    - master
+    - feature-drone-exec-runner
+  event:
+    - push
+    - pull_request
+
 steps:
 - name: clean
   trigger:
