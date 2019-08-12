@@ -23,9 +23,9 @@ steps:
       - export DOCKER_REPO=none
       - export LANG=en_US.UTF-8
       - export SSTATE_CACHE_DIR=/scratch/sstate-cache
-      - echo "build number $DRONE_BUILD_NUMBER"
+      - echo "Started build# $DRONE_BUILD_NUMBER"
       - echo "sstate cache dir = $SSTATE_CACHE_DIR"
-      - echo "building $${DRONE_GIT_HTTP_URL}, branch $${DRONE_REPO_BRANCH}"
+      - echo "building $DRONE_GIT_HTTP_URL, branch $DRONE_SOURCE_BRANCH"
       - git submodule update --recursive --init
       - echo export DOCKER_REPO=none > local.sh
       - echo export LANG=en_US.UTF-8 >> local.sh
@@ -36,9 +36,8 @@ steps:
       - echo IMAGE_CLASSES += \"testimage testsdk\" >> conf/local.conf
       - echo INHERIT += \"report-error rm_work\" >> conf/local.conf
       #- echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
-      - mkdir -p /scratch/tmp-$DRONE_BUILD_NUMBER
-      #- /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
-      #- /bin/bash -c ". ./qemux86-64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
+      - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
+      - /bin/bash -c ". ./qemux86-64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
 ---
 kind: pipeline
 type: exec
@@ -65,7 +64,7 @@ trigger:
 steps:
 - name: clean
   commands:
-    - echo "build number $DRONE_BUILD_NUMBER"
+    - echo "Deleting tmpdir for build# $DRONE_BUILD_NUMBER"
     - rm -rf /scratch/tmp-$DRONE_BUILD_NUMBER
 
 depends_on:
