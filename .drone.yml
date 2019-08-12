@@ -40,13 +40,14 @@ steps:
       - /bin/bash -c ". ./qemux86-64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
 ---
 kind: pipeline
-name: clean workspace
+type: exec
+name: cleanup
 
 clone:
   disable: true
 
 steps:
-- name: cleanup
+- name: clean
   trigger:
     status:
     - success
