@@ -1,5 +1,7 @@
 <img src="docs/yoe.png?raw=true" width="150">
 
+[![Build Status](https://drone.yoedistro.org/api/badges/YoeDistro/yoe-distro/status.svg)](https://drone.yoedistro.org/YoeDistro/yoe-distro)
+
 # Yoe Embedded Linux Distribution
 
 Yoe is an Embedded Linux Distribution optimized for product development.
