@@ -423,9 +423,6 @@ read_var_from_conf() {
   return 1
 }
 
-# parse OE conf files for DL_DIR customizations (may be located outside OE)
-DL_DIR=$(read_var_from_conf 'DL_DIR')
-
 check_docker() {
   if ! docker -v >/dev/null 2>&1; then
     echo "Error, please install docker or set DOCKER_REPO=none in environment"
@@ -452,6 +449,9 @@ dkr() {
   fi
 
   SSH_AUTH_DIR=~/
+
+  # parse OE conf files for DL_DIR customizations (may be located outside OE)
+  DL_DIR=$(read_var_from_conf 'DL_DIR')
 
   unset MAP_DL_DIR
   if [ -n "$DL_DIR" ]; then
