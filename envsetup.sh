@@ -176,7 +176,7 @@ cat >$AUTO_CONF <<_EOF
 ACONF_VERSION = "1"
 
 # Where to store sources
-DL_DIR = "${OE_BASE}/downloads"
+DL_DIR ?= "${OE_BASE}/downloads"
 
 # Where to save shared state
 SSTATE_DIR = "${OE_BUILD_DIR}/build/sstate-cache"
@@ -493,7 +493,7 @@ yoe_get_image_version() {
 ###############################################################################
 
 yoe_check_install_dependencies() {
-  if ! command -v bmaptool >& /dev/null; then
+  if ! command -v bmaptool >&/dev/null; then
     echo "bmaptool not installed"
     echo "Install bmap-tools package on build host"
     echo "debian-like - sudo apt install bmap-tools"
