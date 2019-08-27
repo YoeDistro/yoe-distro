@@ -166,7 +166,7 @@ else
 ACONF_VERSION = "1"
 
 # Where to store sources
-DL_DIR = "${OE_BASE}/downloads"
+DL_DIR ?= "${OE_BASE}/downloads"
 
 # Where to save shared state
 SSTATE_DIR = "${OE_BUILD_DIR}/build/sstate-cache"
