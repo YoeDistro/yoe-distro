@@ -2,16 +2,17 @@
 # Distro Settings
 #
 DISTRO_NAME = "Yoe Linux"
-MAINTAINER = "Yoe Distro <https://github.com/YoeDistro>"
+MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version keep it up with Yocto release
 DISTRO_VERSION = "3.0"
-DISTRO_CODENAME = "master"
+DISTRO_CODENAME = "zeus"
 SDK_VERSION := "${DISTRO_VERSION}"
 
-SDK_NAME = "${DISTRO}-${TCLIBC}-${SDKMACHINE}-${IMAGE_BASENAME}-${TUNE_PKGARCH}-${MACHINE}"
-SDKPATH = "/opt/${DISTRO}/${SDK_VERSION}"
+SDK_NAME = "yoe-${SDKMACHINE}-${IMAGE_BASENAME}-${TUNE_PKGARCH}-${MACHINE}"
+SDKPATH = "/opt/yoe/${SDK_VERSION}"
+SDKEXTPATH = "~/yoe_sdk/${DISTRO_VERSION}"
 
 DISTRO_VERSION[vardepsexclude] = "DATE"
 SDK_VERSION[vardepsexclude] = "DATE"
