@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 DEPENDS += "coreutils-native"
 
-inherit distro_features_check
+inherit features_check
 
 IMAGE_FEATURES += "ssh-server-dropbear package-management hwcodecs"
 
