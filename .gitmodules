@@ -41,7 +41,7 @@
 [submodule "sources/meta-96boards"]
 	path = sources/meta-96boards
 	url = https://github.com/YoeDistro/meta-96boards
-	branch = master
+	branch = zeus
 [submodule "sources/meta-qcom"]
 	path = sources/meta-qcom
 	url = https://github.com/YoeDistro/meta-qcom
