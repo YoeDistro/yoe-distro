@@ -69,7 +69,7 @@
 [submodule "sources/meta-atmel"]
 	path = sources/meta-atmel
 	url = https://github.com/YoeDistro/meta-atmel
-	branch = master
+	branch = zeus
 [submodule "sources/meta-altera"]
 	path = sources/meta-altera
 	url = https://github.com/YoeDistro/meta-altera
