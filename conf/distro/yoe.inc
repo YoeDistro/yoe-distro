@@ -91,6 +91,8 @@ DISTRO_FEATURES_append = " largefile opengl ptest multiarch wayland pam polkit "
 #PREFERRED_PROVIDER_nativesdk-pkgconfig = "nativesdk-pkgconf"
 
 PREFERRED_PROVIDER_virtual/libgl ??= "mesa"
+PREFERRED_PROVIDER_virtual/libgl-native ?= "mesa-native"
+PREFERRED_PROVIDER_libgl-native = "mesa-native"
 PREFERRED_PROVIDER_virtual/psplash ??= "psplash"
 PREFERRED_PROVIDER_psplash-support ??= "psplash"
 PREFERRED_PROVIDER_jpeg ??= "libjpeg-turbo"
@@ -101,3 +103,16 @@ PREFERRED_PROVIDER_u-boot-fw-utils ??= "u-boot-fw-utils"
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).
 MACHINE_KERNEL_PR = "0"
+
+INHERIT += "blacklist"
+PNBLACKLIST[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
+PNBLACKLIST[smartrefrigerator] = "Needs porting to QT > 5.6"
+PNBLACKLIST[qmlbrowser] = "Needs porting to QT > 5.6"
+PNBLACKLIST[minehunt] = "Needs porting to QT > 5.6"
+PNBLACKLIST[homeautomation] = "Needs porting to QT > 5.6"
+PNBLACKLIST[samegame] = "Needs porting to QT > 5.6"
+PNBLACKLIST[applicationlauncher] = "Needs porting to QT > 5.6"
+PNBLACKLIST[spacetouch] = "Needs porting to libplanes 1.0"
+PNBLACKLIST[qtviewplanes] = "Needs porting to libplanes 1.0"
+PNBLACKLIST[egt-thermostat] = "Needs porting to egt 0.8.2+"
+
