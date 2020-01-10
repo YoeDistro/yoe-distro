@@ -45,6 +45,10 @@ TCLIBCAPPEND = ""
 
 BUILDHISTORY_COMMIT ?= "1"
 
+# Do not use verbose logs for cmake, this reduces build logs significantly, for recipes
+# e.g. qtwebkit from 163M down to < 1M
+CMAKE_VERBOSE ?= ""
+
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).
 MACHINE_KERNEL_PR ??= "0"
