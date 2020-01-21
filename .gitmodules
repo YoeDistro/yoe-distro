@@ -78,3 +78,7 @@
 	path = sources/meta-altera
 	url = https://github.com/YoeDistro/meta-altera
 	branch = master
+[submodule "sources/meta-python2"]
+	path = sources/meta-python2
+	url = https://github.com/YoeDistro/meta-python2
+	branch = master
