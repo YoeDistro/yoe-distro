@@ -1,9 +1,25 @@
 #!/usr/bin/env bash
-
 # the following can be used inside functions that return strings to display
 # messages on console
 echoerr() {
   echo $@ >&2
+}
+
+read_var_from_conf() {
+  VAR_NAME=$1
+  files="conf/local.conf conf/site.conf"
+  for conf_file in $files; do
+    if [ ! -f $conf_file ]; then
+      continue
+    fi
+
+    value=$(cat $conf_file | grep "^$VAR_NAME" | awk 'BEGIN{FS="="} {print$2}' | tr -d '"' | tr -d ' ' | tail -1)
+    if [ -n "$value" ]; then
+      echo $value
+      return 0
+    fi
+  done
+  return 1
 }
 
 shell=$(ps -p "$$")
@@ -82,11 +98,37 @@ export OE_DEPLOY_DIR=${OE_BASE}/build/tmp/deploy/images/${MACHINE}
 # Specify the root directory for your OpenEmbedded development
 #--------------------------------------------------------------------------
 OE_BUILD_DIR=${OE_BASE}
-OE_BUILD_TMPDIR="${OE_BUILD_DIR}/build/tmp"
+
+CUSTOM_DL_DIR=$(read_var_from_conf 'DL_DIR')
+CUSTOM_TMPDIR=$(read_var_from_conf 'TMPDIR')
+CUSTOM_SSTATE_DIR=$(read_var_from_conf 'SSTATE_DIR')
+
+if [ -n "$CUSTOM_TMPDIR" ]; then
+  OE_BUILD_TMPDIR="${CUSTOM_TMPDIR}"
+else
+  OE_BUILD_TMPDIR="${OE_BUILD_DIR}/build/tmp"
+fi
+
+if [ -n "$CUSTOM_SSTATE_DIR" ]; then
+  OE_SSTATE_DIR="${CUSTOM_SSTATE_DIR}"
+else
+  OE_SSTATE_DIR="${OE_BUILD_DIR}/build/sstate-cache"
+fi
+
+if [ -n "$CUSTOM_DL_DIR" ]; then
+  OE_DL_DIR="${CUSTOM_DL_DIR}"
+else
+  OE_DL_DIR="${OE_BUILD_DIR}/downloads"
+fi
+
 OE_SOURCE_DIR=${OE_BASE}/sources
 
 export BUILDDIR=${OE_BUILD_DIR}
+
 mkdir -p ${OE_BUILD_DIR}
+mkdir -p ${OE_BUILD_TMPDIR}
+mkdir -p ${OE_DL_DIR}
+mkdir -p ${OE_SSTATE_DIR}
 mkdir -p ${OE_SOURCE_DIR}
 export OE_BASE
 
@@ -176,12 +218,12 @@ cat >$AUTO_CONF <<_EOF
 ACONF_VERSION = "1"
 
 # Where to store sources
-DL_DIR ?= "${OE_BASE}/downloads"
+DL_DIR = "${OE_DL_DIR}"
 
 # Where to save shared state
-SSTATE_DIR = "${OE_BUILD_DIR}/build/sstate-cache"
+SSTATE_DIR = "${OE_SSTATE_DIR}"
 
-TMPDIR = "${OE_BUILD_DIR}/build/tmp"
+TMPDIR = "${OE_BUILD_TMPDIR}"
 
 # Go through the Firewall
 #HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
@@ -406,23 +448,6 @@ if [ "$DOCKER_REPO" = "none" ]; then
   fi
 fi
 
-read_var_from_conf() {
-  VAR_NAME=$1
-  files="conf/local.conf conf/site.conf"
-  for conf_file in $files; do
-    if [ ! -f $conf_file ]; then
-      continue
-    fi
-
-    value=$(cat $conf_file | grep "^$VAR_NAME" | awk 'BEGIN{FS="="} {print$2}' | tr -d '"' | tr -d ' ' | tail -1)
-    if [ -n "$value" ]; then
-      echo $value
-      return 0
-    fi
-  done
-  return 1
-}
-
 check_docker() {
   if ! docker -v >/dev/null 2>&1; then
     echo "Error, please install docker or set DOCKER_REPO=none in environment"
@@ -450,12 +475,17 @@ dkr() {
 
   SSH_AUTH_DIR=~/
 
-  # parse OE conf files for DL_DIR customizations (may be located outside OE)
-  DL_DIR=$(read_var_from_conf 'DL_DIR')
-
   unset MAP_DL_DIR
-  if [ -n "$DL_DIR" ]; then
-    MAP_DL_DIR="-v $DL_DIR:$DL_DIR"
+  unset MAP_TMPDIR
+  unset MAP_SSTATE_DIR
+  if [ -n "$CUSTOM_DL_DIR" ]; then
+    MAP_DL_DIR="-v $CUSTOM_DL_DIR:$CUSTOM_DL_DIR"
+  fi
+  if [ -n "$CUSTOM_TMPDIR" ]; then
+    MAP_TMPDIR="-v $CUSTOM_TMPDIR:$CUSTOM_TMPDIR"
+  fi
+  if [ -n "$CUSTOM_SSTATE_DIR" ]; then
+    MAP_SSTATE_DIR="-v $CUSTOM_SSTATE_DIR:$CUSTOM_SSTATE_DIR"
   fi
 
   if [ -n "$SSH_AUTH_SOCK" ]; then
@@ -466,8 +496,9 @@ dkr() {
     -v $(pwd):$(pwd) \
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
-    -v /stash/downloads:/stash/downloads \
     $MAP_DL_DIR \
+    $MAP_SSTATE_DIR \
+    $MAP_TMPDIR \
     -v $SSH_AUTH_DIR:/ssh-agent \
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
