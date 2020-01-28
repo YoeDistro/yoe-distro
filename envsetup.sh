@@ -515,6 +515,15 @@ bitbake() {
   fi
 }
 
+devtool() {
+  ulimit -n 4096
+  if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
+    ${OE_BASE}/sources/openembedded-core/scripts/devtool $@
+  else
+    dkr "${OE_BASE}/sources/openembedded-core/scripts/devtool $@"
+  fi
+}
+
 yoe_get_image_version() {
   echo $(read_var_from_conf 'IMG_VERSION')
 }
