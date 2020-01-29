@@ -467,12 +467,17 @@ dkr() {
   check_docker || return 1
 
   CMD="$1"
-  PSEUDOTTY=""
 
   if [ -z "$CMD" ]; then
     echo "setting dkr action to shell"
     CMD="/bin/bash"
-    PSEUDOTTY="--tty"
+  else
+    shift
+  fi
+  if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
+    PSEUDO_TTY=""
+  else
+    PSEUDO_TTY="-t"
   fi
 
   SSH_AUTH_DIR=~/
@@ -480,21 +485,15 @@ dkr() {
   unset MAP_DL_DIR
   unset MAP_TMPDIR
   unset MAP_SSTATE_DIR
-  if [ -n "$CUSTOM_DL_DIR" ]; then
-    MAP_DL_DIR="-v $CUSTOM_DL_DIR:$CUSTOM_DL_DIR"
-  fi
-  if [ -n "$CUSTOM_TMPDIR" ]; then
-    MAP_TMPDIR="-v $CUSTOM_TMPDIR:$CUSTOM_TMPDIR"
-  fi
-  if [ -n "$CUSTOM_SSTATE_DIR" ]; then
-    MAP_SSTATE_DIR="-v $CUSTOM_SSTATE_DIR:$CUSTOM_SSTATE_DIR"
-  fi
+  MAP_TMPDIR="-v $(readlink -f $OE_BUILD_TMPDIR):$(readlink -f $OE_BUILD_TMPDIR)"
+  MAP_DL_DIR="-v $(readlink -f $OE_DL_DIR):$(readlink -f $OE_DL_DIR)"
+  MAP_SSTATE_DIR="-v $(readlink -f $OE_SSTATE_DIR):$(readlink -f $OE_SSTATE_DIR)"
 
   if [ -n "$SSH_AUTH_SOCK" ]; then
     SSH_AUTH_DIR=$(readlink -f $SSH_AUTH_SOCK)
   fi
 
-  docker run --rm -i ${PSEUDOTTY} --log-driver=none -a stdin -a stdout -a stderr \
+  docker run --rm -i $PSEUDO_TTY \
     -v $(pwd):$(pwd) \
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
@@ -504,8 +503,9 @@ dkr() {
     -v $SSH_AUTH_DIR:/ssh-agent \
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
+    -w ${OE_BASE} \
     --user $(id -u):$(id -g) \
-    ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $CMD $2 $3 $4 $5 $6 $7 $8"
+    ${DOCKER_REPO} /bin/bash -c ". envsetup.sh && $CMD $@"
 }
 
 bitbake() {
