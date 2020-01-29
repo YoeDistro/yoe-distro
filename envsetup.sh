@@ -474,6 +474,12 @@ dkr() {
   else
     shift
   fi
+  if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
+    PSEUDO_TTY=""
+  else
+    PSEUDO_TTY="-t"
+  fi
+
   SSH_AUTH_DIR=~/
 
   unset MAP_DL_DIR
@@ -487,7 +493,7 @@ dkr() {
     SSH_AUTH_DIR=$(readlink -f $SSH_AUTH_SOCK)
   fi
 
-  docker run --rm -it \
+  docker run --rm -i $PSEUDO_TTY \
     -v $(pwd):$(pwd) \
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \

@@ -18,3 +18,10 @@
 
 # configure docker container to run bitbake in
 #export DOCKER_REPO=yoedistro/yoe-build:buster
+
+# Flag to control docker launch with pseudo-tty
+# when output is piped or redirected to files then
+# then docker should be launched without tty
+# otherwise it will emit all control characters into
+# redirected log files, default is 'yes'
+#export DOCKER_PSEUDO_TTY=no
