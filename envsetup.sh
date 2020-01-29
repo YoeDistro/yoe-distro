@@ -471,8 +471,9 @@ dkr() {
   if [ -z "$CMD" ]; then
     echo "setting dkr action to shell"
     CMD="/bin/bash"
+  else
+    shift
   fi
-
   SSH_AUTH_DIR=~/
 
   unset MAP_DL_DIR
@@ -502,8 +503,9 @@ dkr() {
     -v $SSH_AUTH_DIR:/ssh-agent \
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
+    -w ${OE_BASE} \
     --user $(id -u):$(id -g) \
-    ${DOCKER_REPO} /bin/bash -c "cd $(pwd) && . envsetup.sh && $CMD $2 $3 $4 $5 $6 $7 $8"
+    ${DOCKER_REPO} /bin/bash -c ". envsetup.sh && $CMD $@"
 }
 
 bitbake() {
