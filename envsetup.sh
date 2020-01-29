@@ -467,12 +467,10 @@ dkr() {
   check_docker || return 1
 
   CMD="$1"
-  PSEUDOTTY=""
 
   if [ -z "$CMD" ]; then
     echo "setting dkr action to shell"
     CMD="/bin/bash"
-    PSEUDOTTY="--tty"
   fi
 
   SSH_AUTH_DIR=~/
@@ -494,7 +492,7 @@ dkr() {
     SSH_AUTH_DIR=$(readlink -f $SSH_AUTH_SOCK)
   fi
 
-  docker run --rm -i ${PSEUDOTTY} --log-driver=none -a stdin -a stdout -a stderr \
+  docker run --rm -it \
     -v $(pwd):$(pwd) \
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
