@@ -479,15 +479,9 @@ dkr() {
   unset MAP_DL_DIR
   unset MAP_TMPDIR
   unset MAP_SSTATE_DIR
-  if [ -n "$CUSTOM_DL_DIR" ]; then
-    MAP_DL_DIR="-v $CUSTOM_DL_DIR:$CUSTOM_DL_DIR"
-  fi
-  if [ -n "$CUSTOM_TMPDIR" ]; then
-    MAP_TMPDIR="-v $CUSTOM_TMPDIR:$CUSTOM_TMPDIR"
-  fi
-  if [ -n "$CUSTOM_SSTATE_DIR" ]; then
-    MAP_SSTATE_DIR="-v $CUSTOM_SSTATE_DIR:$CUSTOM_SSTATE_DIR"
-  fi
+  MAP_TMPDIR="-v $(readlink -f $OE_BUILD_TMPDIR):$(readlink -f $OE_BUILD_TMPDIR)"
+  MAP_DL_DIR="-v $(readlink -f $OE_DL_DIR):$(readlink -f $OE_DL_DIR)"
+  MAP_SSTATE_DIR="-v $(readlink -f $OE_SSTATE_DIR):$(readlink -f $OE_SSTATE_DIR)"
 
   if [ -n "$SSH_AUTH_SOCK" ]; then
     SSH_AUTH_DIR=$(readlink -f $SSH_AUTH_SOCK)
