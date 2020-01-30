@@ -466,12 +466,11 @@ check_docker() {
 dkr() {
   check_docker || return 1
 
-  CMD="$1"
-
-  if [ -z "$CMD" ]; then
+  if [ -z "$1" ]; then
     echo "setting dkr action to shell"
     CMD="/bin/bash"
   else
+    CMD=". ${OE_BASE}/envsetup.sh && $1"
     shift
   fi
   if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
@@ -494,7 +493,7 @@ dkr() {
   fi
 
   docker run --rm -i $PSEUDO_TTY \
-    -v $(pwd):$(pwd) \
+    -v ${OE_BASE}:${OE_BASE} \
     -v ~/.ssh:/home/build/.ssh \
     -v ~/.gitconfig:/home/build/.gitconfig \
     $MAP_DL_DIR \
@@ -505,7 +504,7 @@ dkr() {
     -e MACHINE=$MACHINE \
     -w ${OE_BASE} \
     --user $(id -u):$(id -g) \
-    ${DOCKER_REPO} /bin/bash -c ". envsetup.sh && $CMD $@"
+    ${DOCKER_REPO} /bin/bash -c "$CMD $@"
 }
 
 bitbake() {
