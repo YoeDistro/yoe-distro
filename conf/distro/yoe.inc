@@ -104,6 +104,12 @@ PREFERRED_PROVIDER_jpeg-native ??= "libjpeg-turbo-native"
 PREFERRED_PROVIDER_grub-efi-native ??= "grub-efi-native"
 PREFERRED_PROVIDER_u-boot-fw-utils ??= "u-boot-fw-utils"
 
+# Pin versions, some BSP layers are housing older versions and have higher BBFILE_PRIORITY
+# as a result DEFAULT_PREFERENCE = "-1" does not help either so pin it here
+PREFERRED_VERSION_swig = "3.0.12"
+PREFERRED_VERSION_swig-native = "3.0.12"
+PREFERRED_VERSION_swig-nativesdk = "3.0.12"
+
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).
 MACHINE_KERNEL_PR = "0"
