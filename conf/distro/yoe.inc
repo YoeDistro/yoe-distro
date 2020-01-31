@@ -83,7 +83,7 @@ require conf/distro/include/no-static-libs.inc
 require conf/distro/include/yocto-uninative.inc
 require conf/distro/include/security_flags.inc
 
-INHERIT += "uninative"
+INHERIT += "${@bb.utils.contains('BUILD_ARCH', 'ppc64le', '', 'uninative', d)}"
 
 # Add /etc/build to every image
 INHERIT += "image-buildinfo"
