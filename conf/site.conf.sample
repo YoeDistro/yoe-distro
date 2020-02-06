@@ -3,29 +3,29 @@
 # should be added to site.conf, which is stored in git.
 
 # Use the following to enable systemd
-# Distro template is as follows
+# Distro profile template is as follows
 #
 # "yoe-<libc>-<init-system>-<windowing-system>"
 #
 # Possible options are
-DISTRO = "yoe-glibc-busyboxinit-eglfs"
-DISTRO = "yoe-glibc-busyboxinit-wayland"
-DISTRO = "yoe-glibc-busyboxinit-x11"
-DISTRO = "yoe-glibc-systemd-eglfs"
-DISTRO = "yoe-glibc-systemd-wayland"
-DISTRO = "yoe-glibc-systemd-x11"
-DISTRO = "yoe-glibc-sysvinit-eglfs"
-DISTRO = "yoe-glibc-sysvinit-wayland"
-DISTRO = "yoe-glibc-sysvinit-x11"
-DISTRO = "yoe-musl-busyboxinit-eglfs"
-DISTRO = "yoe-musl-busyboxinit-wayland"
-DISTRO = "yoe-musl-busyboxinit-x11"
-DISTRO = "yoe-musl-systemd-eglfs"
-DISTRO = "yoe-musl-systemd-wayland"
-DISTRO = "yoe-musl-systemd-x11"
-DISTRO = "yoe-musl-sysvinit-eglfs"
-DISTRO = "yoe-musl-sysvinit-wayland"
-DISTRO = "yoe-musl-sysvinit-x11"
+YOE_PROFILE = "yoe-glibc-busyboxinit-eglfs"
+YOE_PROFILE = "yoe-glibc-busyboxinit-wayland"
+YOE_PROFILE = "yoe-glibc-busyboxinit-x11"
+YOE_PROFILE = "yoe-glibc-systemd-eglfs"
+YOE_PROFILE = "yoe-glibc-systemd-wayland"
+YOE_PROFILE = "yoe-glibc-systemd-x11"
+YOE_PROFILE = "yoe-glibc-sysvinit-eglfs"
+YOE_PROFILE = "yoe-glibc-sysvinit-wayland"
+YOE_PROFILE = "yoe-glibc-sysvinit-x11"
+YOE_PROFILE = "yoe-musl-busyboxinit-eglfs"
+YOE_PROFILE = "yoe-musl-busyboxinit-wayland"
+YOE_PROFILE = "yoe-musl-busyboxinit-x11"
+YOE_PROFILE = "yoe-musl-systemd-eglfs"
+YOE_PROFILE = "yoe-musl-systemd-wayland"
+YOE_PROFILE = "yoe-musl-systemd-x11"
+YOE_PROFILE = "yoe-musl-sysvinit-eglfs"
+YOE_PROFILE = "yoe-musl-sysvinit-wayland"
+YOE_PROFILE = "yoe-musl-sysvinit-x11"
 # configure docker container to run bitbake in
 export DOCKER_REPO=yoedistro/yoe-build:buster
 
