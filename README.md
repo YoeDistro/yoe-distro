@@ -21,6 +21,11 @@ Install `docker` on host distribution
 - RPM based systems - `sudo dnf install docker`
 - Archlinux based systems - `sudo pacman -S docker`
 
+Install nftable version of iptables on host distribution
+this is needed for VNC port forwarding to work on docker
+
+- Archlinux based sytems - `sudo pacman -S iptables-nft`
+
 ## Workspace Setup
 
 1. `git clone --recurse-submodules -j8 -b master git://github.com/YoeDistro/yoe-distro.git yoe`
