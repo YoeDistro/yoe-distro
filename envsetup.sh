@@ -478,6 +478,11 @@ dkr() {
   else
     PSEUDO_TTY="-t"
   fi
+  if [ -z "$DOCKER_FORWARD_VNC" ]; then
+    VNC_PORT=""
+  else
+    VNC_PORT="-p 5900:5900"
+  fi
 
   SSH_AUTH_DIR=~/
 
@@ -504,6 +509,7 @@ dkr() {
     -e MACHINE=$MACHINE \
     -w ${OE_BASE} \
     --user $(id -u):$(id -g) \
+    $VNC_PORT \
     ${DOCKER_REPO} /bin/bash -c "$CMD $@"
 }
 
