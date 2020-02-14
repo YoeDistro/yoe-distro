@@ -1,4 +1,4 @@
-<img src="docs/yoe.png?raw=true" width="150">
+<img src="docs/yoe-logo.png?raw=true" width="180">
 
 [![Build Status](https://drone.yoedistro.org/api/badges/YoeDistro/yoe-distro/status.svg)](https://drone.yoedistro.org/YoeDistro/yoe-distro)
 
