@@ -48,6 +48,8 @@ LICENSE_FLAGS_WHITELIST_append = " commercial_mpv "
 LICENSE_FLAGS_WHITELIST_append = " commercial_faad2 "
 # gstreamer ugly plugins
 LICENSE_FLAGS_WHITELIST_append = " commercial_gstreamer1.0-plugins-ugly "
+# sox tools
+LICENSE_FLAGS_WHITELIST_append = " commercial_sox "
 #
 # For full debugging image uncomment following
 #
