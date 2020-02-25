@@ -102,7 +102,8 @@ PREFERRED_PROVIDER_psplash-support ??= "psplash"
 PREFERRED_PROVIDER_jpeg ??= "libjpeg-turbo"
 PREFERRED_PROVIDER_jpeg-native ??= "libjpeg-turbo-native"
 PREFERRED_PROVIDER_grub-efi-native ??= "grub-efi-native"
-PREFERRED_PROVIDER_u-boot-fw-utils ??= "u-boot-fw-utils"
+PREFERRED_PROVIDER_u-boot-fw-utils ??= "libubootenv"
+PREFERRED_PROVIDER_u-boot ??= "u-boot"
 
 # Pin versions, some BSP layers are housing older versions and have higher BBFILE_PRIORITY
 # as a result DEFAULT_PREFERENCE = "-1" does not help either so pin it here
