@@ -33,9 +33,10 @@ steps:
       - echo SSTATE_DIR = \"$SSTATE_CACHE_DIR\" >> conf/local.conf
       - echo IMAGE_CLASSES += \"testimage testsdk\" >> conf/local.conf
       - echo INHERIT += \"report-error rm_work\" >> conf/local.conf
-      #- echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
-      - /bin/bash -c ". ./qemux86-64-envsetup.sh && bitbake yoe-simple-image"
-      - /bin/bash -c ". ./qemux86-64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
+#      - echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
+      - /bin/bash -c ". ./qemuarm64-envsetup.sh && bitbake yoe-debug-image"
+      - /bin/bash -c ". ./qemuarm64-envsetup.sh && resulttool report build/tmp"
+      - /bin/bash -c ". ./qemuarm64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
 ---
 kind: pipeline
 type: exec
