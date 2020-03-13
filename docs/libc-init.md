@@ -2,39 +2,10 @@
 
 [up](README.md)
 
-## Systemd
+## Selection
 
-SysVinit and Systemd are common init systems. SysVinit is the default, but Systemd can
-be enabled be adding the following to `site.conf`:
-
-```
-DISTRO_FEATURES_append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
-VIRTUAL-RUNTIME_initscripts = ""
-```
-
-There is a significant size cost with systemd, so in some cases it may make sense to
-use sysvinit if image size is a priority.
-
-## Busybox Init
-
-Busybox can also be used as an init system with the following in `site.conf`:
-
-```
-VIRTUAL-RUNTIME_init_manager = "busybox"
-VIRTUAL-RUNTIME_dev_manager = "busybox-mdev"
-VIRTUAL-RUNTIME_login_manager = "busybox"
-```
-
-## Libc selection
-
-glibc is the default libc, but musl can also be used by setting the following in
-`site.conf`:
-
-```
-TCLIBC = "musl"
-```
+Selection of the libc and init system can be done be selecting a
+[Yoe Profile](yoe-profile.md).
 
 ## Comparison of disk spaced used
 
@@ -56,5 +27,5 @@ TCLIBC = "musl"
   - number of files in image: 1,806
 
 The space on disc used by a systemd image is much larger than adding the size of
-the files in the image. We're not sure why this is -- perhaps there is filesystem
-overhead for small files.
+the files in the image. We're not sure why this is -- perhaps there is
+filesystem overhead for small files.
