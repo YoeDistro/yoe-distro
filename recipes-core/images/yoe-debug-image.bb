@@ -14,7 +14,7 @@
 require recipes-extended/images/core-image-full-cmdline.bb
 require updater.inc
 
-IMAGE_FEATURES += "package-management hwcodecs ptest-pkgs tools-debug tools-profile"
+IMAGE_FEATURES += "package-management hwcodecs ptest-pkgs dbg-pkgs tools-debug tools-profile"
 
 IMAGE_INSTALL += "\
 	rsync \
