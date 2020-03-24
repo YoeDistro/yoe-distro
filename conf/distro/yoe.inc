@@ -58,9 +58,15 @@ BB_DANGLINGAPPENDS_WARNONLY = "1"
 
 # Poky goodness
 # QA check settings - a little stricter than the OE-Core defaults
-WARN_TO_ERROR_QA = "already-stripped compile-host-path install-host-path \
-                    installed-vs-shipped ldflags pn-overrides rpaths staticdev \
-                    unknown-configure-option useless-rpaths"
+
+WARN_TO_ERROR_QA = "ldflags useless-rpaths rpaths staticdev libdir xorg-driver-abi \
+            textrel already-stripped incompatible-license files-invalid \
+            installed-vs-shipped compile-host-path install-host-path \
+            pn-overrides infodir build-deps src-uri-bad \
+            unknown-configure-option symlink-to-sysroot multilib \
+            invalid-packageconfig host-user-contaminated uppercase-pn patch-fuzz \
+            mime mime-xdg \
+            "
 WARN_QA_remove = "${WARN_TO_ERROR_QA}"
 ERROR_QA_append = " ${WARN_TO_ERROR_QA}"
 #ERROR_QA_remove  = "split-strip"
