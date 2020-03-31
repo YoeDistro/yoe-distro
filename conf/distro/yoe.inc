@@ -138,6 +138,9 @@ PREFERRED_VERSION_swig-nativesdk = "3.0.12"
 # other BSP layers fail bitbake parsing (ti).
 MACHINE_KERNEL_PR = "0"
 
+# Enable u-boot for RPI
+RPI_USE_U_BOOT = "1"
+
 INHERIT += "blacklist"
 PNBLACKLIST[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
 PNBLACKLIST[smartrefrigerator] = "Needs porting to QT > 5.6"
