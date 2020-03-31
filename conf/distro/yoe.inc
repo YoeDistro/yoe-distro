@@ -88,6 +88,8 @@ ERROR_QA_append = " ${WARN_TO_ERROR_QA}"
 # image-prelink sometimes disabled due to issues with IFUNC symbol relocation
 USER_CLASSES ?= "buildstats buildhistory buildstats-summary image-mklibs image-prelink"
 
+IMAGE_CLASSES += "testimage testsdk"
+
 require conf/distro/include/no-static-libs.inc
 require conf/distro/include/yocto-uninative.inc
 require conf/distro/include/security_flags.inc
@@ -114,6 +116,20 @@ PREFERRED_PROVIDER_grub-efi-native ??= "grub-efi-native"
 PREFERRED_PROVIDER_u-boot-fw-utils ??= "libubootenv"
 PREFERRED_PROVIDER_u-boot ??= "u-boot"
 
+# This helps in using imx specific provider when building for imx platforms, otherwise
+# it uses the oe-core versions
+IMX_DEFAULT_BOOTLOADER ??= "u-boot"
+PREFERRED_PROVIDER_u-boot-tools-native ??= "${IMX_DEFAULT_BOOTLOADER}-tools-native"
+PREDERRED_PROVIDED_nativesdk-u-boot-tools ??= "${IMX_DEFAULT_BOOTLOADER}-tools-native"
+PREFERRED_PROVIDER_u-boot-mkimage-native ??= "${IMX_DEFAULT_BOOTLOADER}-tools-native"
+PREFERRED_PROVIDER_nativesdk-u-boot-mkimage ??= "nativesdk-${IMX_DEFAULT_BOOTLOADER}-tools"
+
+# wpe backend selection, wpebackend-fdo, wpebackend-mesa, wpebackend-rdk
+#
+PREFERRED_RPROVIDER_virtual/wpebackend = "${WPEBACKEND}"
+WPEBACKEND_rpi ?= "${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', 'wpebackend-fdo', ' wpebackend-rdk', d)}"
+WPEBACKEND = "wpebackend-rdk"
+
 # Pin versions, some BSP layers are housing older versions and have higher BBFILE_PRIORITY
 # as a result DEFAULT_PREFERENCE = "-1" does not help either so pin it here
 PREFERRED_VERSION_swig = "3.0.12"
@@ -123,6 +139,12 @@ PREFERRED_VERSION_swig-nativesdk = "3.0.12"
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).
 MACHINE_KERNEL_PR = "0"
+
+# Enable u-boot for RPI
+RPI_USE_U_BOOT = "1"
+
+# swupdate initramfs init system
+SWUPDATE_INIT = "tiny"
 
 INHERIT += "blacklist"
 PNBLACKLIST[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
