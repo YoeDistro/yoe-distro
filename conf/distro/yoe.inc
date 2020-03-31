@@ -114,6 +114,14 @@ PREFERRED_PROVIDER_grub-efi-native ??= "grub-efi-native"
 PREFERRED_PROVIDER_u-boot-fw-utils ??= "libubootenv"
 PREFERRED_PROVIDER_u-boot ??= "u-boot"
 
+# This helps in using imx specific provider when building for imx platforms, otherwise
+# it uses the oe-core versions
+IMX_DEFAULT_BOOTLOADER ??= "u-boot"
+PREFERRED_PROVIDER_u-boot-tools-native ??= "${IMX_DEFAULT_BOOTLOADER}-tools-native"
+PREDERRED_PROVIDED_nativesdk-u-boot-tools ??= "${IMX_DEFAULT_BOOTLOADER}-tools-native"
+PREFERRED_PROVIDER_u-boot-mkimage-native ??= "${IMX_DEFAULT_BOOTLOADER}-tools-native"
+PREFERRED_PROVIDER_nativesdk-u-boot-mkimage ??= "nativesdk-${IMX_DEFAULT_BOOTLOADER}-tools"
+
 # Pin versions, some BSP layers are housing older versions and have higher BBFILE_PRIORITY
 # as a result DEFAULT_PREFERENCE = "-1" does not help either so pin it here
 PREFERRED_VERSION_swig = "3.0.12"
