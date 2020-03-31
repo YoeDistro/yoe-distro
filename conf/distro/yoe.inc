@@ -88,6 +88,8 @@ ERROR_QA_append = " ${WARN_TO_ERROR_QA}"
 # image-prelink sometimes disabled due to issues with IFUNC symbol relocation
 USER_CLASSES ?= "buildstats buildhistory buildstats-summary image-mklibs image-prelink"
 
+IMAGE_CLASSES += "testimage testsdk"
+
 require conf/distro/include/no-static-libs.inc
 require conf/distro/include/yocto-uninative.inc
 require conf/distro/include/security_flags.inc
