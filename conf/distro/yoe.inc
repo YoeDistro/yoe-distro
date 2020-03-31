@@ -158,3 +158,5 @@ PNBLACKLIST[spacetouch] = "Needs porting to libplanes 1.0"
 PNBLACKLIST[qtviewplanes] = "Needs porting to libplanes 1.0"
 PNBLACKLIST[egt-thermostat] = "Needs porting to egt 0.8.2+"
 
+# mask out the old webkitgtk recipes from meta-webkit
+BBMASK .= "recipes-browser/webkitgtk/webkitgtk"
