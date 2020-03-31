@@ -122,6 +122,12 @@ PREDERRED_PROVIDED_nativesdk-u-boot-tools ??= "${IMX_DEFAULT_BOOTLOADER}-tools-n
 PREFERRED_PROVIDER_u-boot-mkimage-native ??= "${IMX_DEFAULT_BOOTLOADER}-tools-native"
 PREFERRED_PROVIDER_nativesdk-u-boot-mkimage ??= "nativesdk-${IMX_DEFAULT_BOOTLOADER}-tools"
 
+# wpe backend selection, wpebackend-fdo, wpebackend-mesa, wpebackend-rdk
+#
+PREFERRED_RPROVIDER_virtual/wpebackend = "${WPEBACKEND}"
+WPEBACKEND_rpi ?= "${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', 'wpebackend-fdo', ' wpebackend-rdk', d)}"
+WPEBACKEND = "wpebackend-rdk"
+
 # Pin versions, some BSP layers are housing older versions and have higher BBFILE_PRIORITY
 # as a result DEFAULT_PREFERENCE = "-1" does not help either so pin it here
 PREFERRED_VERSION_swig = "3.0.12"
