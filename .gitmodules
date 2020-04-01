@@ -14,10 +14,6 @@
 	path = sources/meta-ti
 	url = https://github.com/YoeDistro/meta-ti
 	branch = master
-[submodule "sources/meta-browser"]
-	path = sources/meta-browser
-	url = https://github.com/YoeDistro/meta-browser
-	branch = master
 [submodule "sources/meta-freescale"]
 	path = sources/meta-freescale
 	url = https://github.com/YoeDistro/meta-freescale
