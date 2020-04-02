@@ -1,0 +1,16 @@
+rootfs=`mount | grep "on / type" | cut -d':' -f 2 | cut -d' ' -f 1`
+
+if [ $rootfs == '/dev/mmcblk1p2' ];then
+	selection="-e stable,copy2"
+else
+	selection="-e stable,copy1"
+fi
+
+state=`fw_printenv ustate | cut -f 2 -d'='`
+if [ $state == 1 ];then
+	SWUPDATE_SURICATTA_ARGS="-c 2"
+else
+	SWUPDATE_SURICATTA_ARGS=" "
+fi
+
+SWUPDATE_ARGS="-H beaglebone:1.0 ${selection} -f /etc/swupdate.cfg"

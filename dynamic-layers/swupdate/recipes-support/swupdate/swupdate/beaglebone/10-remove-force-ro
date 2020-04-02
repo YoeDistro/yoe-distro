@@ -1,0 +1,2 @@
+# be sure that we can change U-Boot ENV (not needed with swupdate >2019.11)
+echo 0 > /sys/block/mmcblk1boot1/force_ro

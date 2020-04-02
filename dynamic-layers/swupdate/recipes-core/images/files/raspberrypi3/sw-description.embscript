@@ -1,0 +1,145 @@
+software =
+{
+	version = "0.1.0";
+
+	raspberrypi3 = {
+
+		embedded-script ="
+--[[
+	SWUpdate Embedded Script Example
+	Copyright (C) 2017, Stefano Babic
+	Description:
+	This is just an example how to integrate an embedded script in sw-description
+	The script is first parsed, be sure to escape double quotes
+	and use double quotes just when they are strictly required.
+	The script simply reads from a GPIO, and returns false if this GPIO
+	is set. That means:
+	GPIO(x)=0 ==> SWUpdate installs the SWU
+	GPIO(x)=1 ==> SWUpdate stops returning an error
+]]
+-- Include swupdate library to use TRACE / ERROR
+require (\"swupdate\")
+
+INPUT = 1
+OUTPUT = 0
+
+--[[
+	Some functions are simply retrieved from LUA examples
+	see book 'Programming in Lua' or some snipset from internet.
+]]
+
+function file_exists(filename)
+	local file=io.open(filename,'r')
+	if file~=nil then io.close(file) return true else return false end
+end
+
+function writeToFile (filename, data)
+	local file=io.open(filename, 'w')
+	file:write(data)
+	file:close()
+end
+
+function readFromFile (filename)
+	if file_exists(filename) then
+		local file=io.open(filename, 'r')
+		local data = file:read(1)
+		file:close()
+		return data
+	else
+		return \"\"
+	end
+end
+
+function pinMode(pin, mode)
+	local gpio_path = '/sys/class/gpio/'
+	local gpio_direction = gpio_path..'gpio'..pin..'/direction'
+	local gpio_export = gpio_path..'export'
+
+	if not file_exists(gpio_direction) then
+		writeToFile(gpio_export,pin)
+	end
+
+	if mode==INPUT then
+		writeToFile(gpio_direction, 'in')
+	else
+		writeToFile(gpio_direction, 'out')
+	end
+end
+
+function digitalRead(pin)
+	value = readFromFile('/sys/class/gpio/gpio'..pin..'/value')
+	return tonumber(value)
+end
+
+function allowInstall(image)
+
+	-- Completely unuseful, but it is to show how to get values from image
+
+	for k,l in pairs(image) do
+		swupdate.trace(\"image[\" .. tostring(k) .. \"] = \" .. tostring(l))
+	end
+
+	-- Read GPIO21, that means pin 40 on the Header
+	pinMode(21,INPUT)
+	val=digitalRead(21)
+	if (val == 0) then
+		swupdate.trace(\"Updated allowed: go on !\")
+		return true, image
+	else
+		swupdate.trace(\"Updated forbidden: STOP !\")
+		return false, image
+	end
+end ";
+
+		hardware-compatibility: [ "1.0"];
+		stable : {
+			copy1 : {
+				images: (
+					{
+						filename = "core-image-full-cmdline-raspberrypi3.ext4.gz";
+						type = "raw";
+						compressed = true;
+						device = "/dev/mmcblk0p2";
+						hook = "allowInstall";
+					}
+				);
+				scripts: (
+					{
+						filename = "emmcsetup.lua";
+						type = "lua";
+					}
+				);
+				uboot: (
+					{
+						name = "rpipart";
+						value = "2";
+					}
+				);
+
+			};
+			copy2 : {
+				images: (
+					{
+						filename = "core-image-full-cmdline-raspberrypi3.ext4.gz";
+						type = "raw";
+						compressed = true;
+						device = "/dev/mmcblk0p3";
+						hook = "allowInstall";
+					}
+				);
+				scripts: (
+					{
+						filename = "emmcsetup.lua";
+						type = "lua";
+					}
+				);
+				uboot: (
+					{
+						name = "rpipart";
+						value = "3";
+					}
+				);
+			};
+		};
+	}
+}
