@@ -129,7 +129,7 @@ PREFERRED_PROVIDER_nativesdk-u-boot-mkimage ??= "nativesdk-${IMX_DEFAULT_BOOTLOA
 PREFERRED_PROVIDER_virtual/wpebackend ??= "wpebackend-fdo"
 
 # Disable qt in wpe
-PACKAGECONFIG_remove = "qtwpe"
+PACKAGECONFIG_remove_pn-wpewebkit = "qtwpe"
 
 # Pin versions, some BSP layers are housing older versions and have higher BBFILE_PRIORITY
 # as a result DEFAULT_PREFERENCE = "-1" does not help either so pin it here
