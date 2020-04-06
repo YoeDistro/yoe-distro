@@ -3,8 +3,11 @@
 [up](README.md)
 
 Git submodules are used in this project to manage the various OE layers for
-reasons described in [this document](superproject-management.md). There are a
-few issues that are commonly encountered.
+reasons described in [this document](superproject-management.md). See this
+[article](https://www.atlassian.com/git/tutorials/git-submodule) for an
+introduction to Git submodules.
+
+There are a few issues that are commonly encountered decsribed below.
 
 ## Modifying Submodules
 
@@ -15,7 +18,9 @@ forget to do this, you may get an error when pushing and then if you run
 `git branch`, you'll discover you are on the _(no branch)_ branch. To recover
 from this situation, check out the branch you want to work on and then run
 `git reflog`. This command will list recent commits which you can then
-cherry-pick to your working branch.
+cherry-pick to your working branch. See this
+[article](http://bec-systems.com/site/696/git-submodules-what-to-do-when-you-commit-to-no-branch)
+for more information.
 
 ## Submodule merge conflicts
 
