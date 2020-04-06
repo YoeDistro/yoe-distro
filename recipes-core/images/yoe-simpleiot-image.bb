@@ -12,6 +12,7 @@ IMAGE_FEATURES += "ssh-server-dropbear"
 
 IMAGE_INSTALL += "\
     os-release \
+    simpleiot \
 "
 export IMAGE_BASENAME = "yoe-simpleiot-image"
 
