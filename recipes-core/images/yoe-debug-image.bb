@@ -11,8 +11,7 @@
 #	e2fsprogs-e2fsck \
 #	e2fsprogs-tune2fs \
 #
-require recipes-extended/images/core-image-full-cmdline.bb
-require updater.inc
+require yoe-simple-image.bb
 
 IMAGE_FEATURES += "package-management hwcodecs ptest-pkgs dbg-pkgs tools-debug tools-profile"
 
