@@ -15,4 +15,4 @@ IMAGE_INSTALL += "\
 "
 export IMAGE_BASENAME = "yoe-simpleiot-image"
 
-BAD_RECOMMENDATIONS += "eudev-hwdb"
+BAD_RECOMMENDATIONS += "eudev-hwdb udev-hwdb"

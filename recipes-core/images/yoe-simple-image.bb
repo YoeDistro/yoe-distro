@@ -19,4 +19,4 @@ IMAGE_INSTALL_append_aarch64 = " 96boards-tools"
 
 export IMAGE_BASENAME = "yoe-simple-image"
 
-BAD_RECOMMENDATIONS += "eudev-hwdb"
+BAD_RECOMMENDATIONS += "eudev-hwdb udev-hwdb"
