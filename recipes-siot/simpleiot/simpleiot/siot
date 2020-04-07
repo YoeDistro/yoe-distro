@@ -1,0 +1,34 @@
+#!/bin/sh
+
+PIDFILE=/var/run/siot.pid
+DESC="Simple IOT Framework App"
+DATADIR=/data/siot
+
+check_dbs () {
+  echo "Add Database checks"
+}
+
+mkdir -p $DATADIR
+
+case "$1" in
+  start)
+        echo -n "Starting $DESC"
+         check_dbs
+        start-stop-daemon -S -m -p $PIDFILE -b -x /usr/bin/siot
+        ;;
+  stop)
+        echo -n "Stopping $DESC"
+        start-stop-daemon -K -p $PIDFILE --retry 5
+        ;;
+  restart)
+  echo -n "Restarting $DESC"
+        start-stop-daemon -K -p $PIDFILE --retry 5
+        start-stop-daemon -S -m -p $PIDFILE -b -x /usr/bin/siot
+        ;;
+  *)
+        echo "Usage: $N {start|stop|restart}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
