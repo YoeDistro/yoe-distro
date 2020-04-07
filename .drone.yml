@@ -11,7 +11,7 @@ clone:
 
 trigger:
   branch:
-    - master
+    - dunfell
   event:
     - push
     - pull_request
