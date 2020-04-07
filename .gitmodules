@@ -1,15 +1,15 @@
 [submodule "sources/bitbake"]
 	path = sources/bitbake
 	url = https://github.com/YoeDistro/bitbake
-	branch = master
+	branch = 1.46
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = https://github.com/YoeDistro/openembedded-core
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = https://github.com/YoeDistro/meta-openembedded
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-ti"]
 	path = sources/meta-ti
 	url = https://github.com/YoeDistro/meta-ti
@@ -25,7 +25,7 @@
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/YoeDistro/meta-qt5
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
 	url = https://github.com/YoeDistro/meta-intel
@@ -33,7 +33,7 @@
 [submodule "sources/meta-raspberrypi"]
 	path = sources/meta-raspberrypi
 	url = https://github.com/YoeDistro/meta-raspberrypi
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-96boards"]
 	path = sources/meta-96boards
 	url = https://github.com/YoeDistro/meta-96boards
