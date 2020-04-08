@@ -11,7 +11,7 @@ DEPENDS = "go-native elm-native"
 
 inherit update-rc.d goarch
 
-SRCREV = "9aa0cf5116eb5f770f7e6a2a2f2e624398a72234"
+SRCREV = "b59b133e376c284d13e995a0ff2c114eb287b717"
 PV = "1.0+git${SRCPV}"
 
 SRC_URI = "git://github.com/simpleiot/simpleiot \

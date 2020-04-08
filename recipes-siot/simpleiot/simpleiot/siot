@@ -14,7 +14,7 @@ case "$1" in
   start)
         echo -n "Starting $DESC"
         check_dbs
-        start-stop-daemon -S -m -p $PIDFILE -b -x /usr/bin/env SIOT_PORT=80 /usr/bin/siot
+        start-stop-daemon -S -m -p $PIDFILE -b -x /usr/bin/env SIOT_PORT=80 /usr/bin/siot -- -syslog
         ;;
   stop)
         echo -n "Stopping $DESC"
@@ -23,7 +23,7 @@ case "$1" in
   restart)
   echo -n "Restarting $DESC"
         start-stop-daemon -K -p $PIDFILE --retry 5
-        start-stop-daemon -S -m -p $PIDFILE -b -x /usr/bin/siot
+        start-stop-daemon -S -m -p $PIDFILE -b -x /usr/bin/env SIOT_PORT=80 /usr/bin/siot -- -syslog
         ;;
   *)
         echo "Usage: $N {start|stop|restart}" >&2
