@@ -26,6 +26,7 @@ INITSCRIPT_PARAMS = "start 99 5 . stop 20 6 ."
 
 do_configure() {
     export GOPATH=${GOPATH}
+    export GOFLAGS="-modcacherw"
     go install github.com/benbjohnson/genesis/...
 }
 
@@ -33,6 +34,7 @@ do_compile() {
     export GOPATH=${GOPATH}
     export GOARCH=${TARGET_GOARCH}
     export PATH=${GOPATH}/bin:$PATH
+    export GOFLAGS="-modcacherw"
     source ./envsetup.sh
     # FIXME: get elm cache in ~/.elm moved to work-shared
     rm -rf frontend/elm-stuff
