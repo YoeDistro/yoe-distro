@@ -150,6 +150,9 @@ DISABLE_SPLASH = "1"
 # swupdate initramfs init system
 SWUPDATE_INIT = "tiny"
 
+# we want to have boot + rootfs ( that can grow )
+WKS_FILE_beaglebone = "sdimage-bootpart.wks"
+
 INHERIT += "blacklist"
 PNBLACKLIST[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
 PNBLACKLIST[smartrefrigerator] = "Needs porting to QT > 5.6"
