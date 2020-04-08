@@ -13,8 +13,8 @@ mkdir -p $DATADIR
 case "$1" in
   start)
         echo -n "Starting $DESC"
-         check_dbs
-        start-stop-daemon -S -m -p $PIDFILE -b -x /usr/bin/siot
+        check_dbs
+        start-stop-daemon -S -m -p $PIDFILE -b -x /usr/bin/env SIOT_PORT=80 /usr/bin/siot
         ;;
   stop)
         echo -n "Stopping $DESC"
