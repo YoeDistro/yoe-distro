@@ -11,10 +11,12 @@ DEPENDS = "go-native elm-native"
 
 inherit update-rc.d goarch
 
-SRCREV = "b59b133e376c284d13e995a0ff2c114eb287b717"
+SRCREV = "c48c5592d3182603754379219c7bdf4baa000ea3"
 PV = "1.0+git${SRCPV}"
 
-SRC_URI = "git://github.com/simpleiot/simpleiot \
+BRANCH ?= "master"
+
+SRC_URI = "git://github.com/simpleiot/simpleiot;branch=${BRANCH} \
            file://siot \
            "
 S = "${WORKDIR}/git"
@@ -48,6 +50,3 @@ do_install() {
 }
 
 INSANE_SKIP_${PN} += "ldflags"
-
-COMPATIBLE_HOST_mipsarch = "null"
-
