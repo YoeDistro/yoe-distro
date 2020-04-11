@@ -35,3 +35,6 @@ QTWEBKIT ??= "\
 	qtwebkit \
 	qtwebkit-qmlplugins \
 "
+REQUIRED_DISTRO_FEATURES = "opengl"
+IMAGE_FEATURES +=  "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11-base', '', d)}"
+
