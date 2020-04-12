@@ -18,6 +18,7 @@ IMAGE_FEATURES += "package-management hwcodecs ptest-pkgs dbg-pkgs tools-debug t
 IMAGE_INSTALL += "\
 	rsync \
 	devmem2 \
+	htop \
 	evtest \
 	netperf \
 	gdbserver \

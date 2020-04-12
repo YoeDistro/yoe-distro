@@ -35,3 +35,14 @@ QTWEBKIT ??= "\
 	qtwebkit \
 	qtwebkit-qmlplugins \
 "
+REQUIRED_DISTRO_FEATURES = "opengl"
+
+X11BASE = "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11-base', '', d)}"
+IMAGE_FEATURES += "${@bb.utils.contains('DISTRO_FEATURES', 'wayland x11', '', '${X11BASE}', d)}"
+
+CORE_IMAGE_BASE_INSTALL += " \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston weston-init weston-examples qtwayland-plugins', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'wayland x11', 'weston-xwayland', '', d)} \
+  ${QT5APPS} \
+  ${QT5BASE} \
+"
