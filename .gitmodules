@@ -29,7 +29,7 @@
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
 	url = https://github.com/YoeDistro/meta-intel
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-raspberrypi"]
 	path = sources/meta-raspberrypi
 	url = https://github.com/YoeDistro/meta-raspberrypi
@@ -57,7 +57,7 @@
 [submodule "sources/meta-odroid"]
 	path = sources/meta-odroid
 	url = https://github.com/YoeDistro/meta-odroid
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-rust"]
 	path = sources/meta-rust
 	url = https://github.com/YoeDistro/meta-rust
@@ -65,7 +65,7 @@
 [submodule "sources/meta-atmel"]
 	path = sources/meta-atmel
 	url = https://github.com/YoeDistro/meta-atmel
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-clang"]
 	path = sources/meta-clang
 	url = https://github.com/YoeDistro/meta-clang
