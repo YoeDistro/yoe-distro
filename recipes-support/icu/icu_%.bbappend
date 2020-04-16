@@ -1,2 +1,4 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${BPN}:"
 
+PARALLEL_MAKE = ""
+
