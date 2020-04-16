@@ -7,10 +7,15 @@ space on github. These layers are synced every two hours with upstream since the
 global namespace is kept intact, there are no conflicts. We reserve namespaces
 for local branches
 
-- `yoe/<topic>` - Distro Specific branch, needed when we have to do distro
-  speicific fixes which are not upstreamable, this is rare situation, secondly,
-  we create additional layers e.g. yoe/mut ( mut stands for "Master-Under-Test)
-  branches which are used for regular CI builds.
+- `yoe/<topic>` - Distro Specific branch, created for yoe release we support this
+  has speicific fixes which are not
+
+  - upstreamable, this is rare situation
+  - Required for yoe and are in flight for upstream inclusion - Submissions
+    from yoe community
+
+  we also create additional integration branches e.g. `yoe/<branch>-next` which
+  are used for regular CI builds.
 
 - `<user>/<topic>` - This namespace is reserved for developers, these are also
   short lived branches primarily used for development which are deleted after
