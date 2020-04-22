@@ -13,7 +13,7 @@
 #
 require yoe-simple-image.bb
 
-IMAGE_FEATURES += "package-management hwcodecs ptest-pkgs dbg-pkgs tools-debug tools-profile"
+IMAGE_FEATURES += "package-management hwcodecs ptest-pkgs tools-debug tools-profile"
 
 IMAGE_INSTALL += "\
 	rsync \
