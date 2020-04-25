@@ -33,6 +33,10 @@ steps:
       - echo SSTATE_DIR = \"$SSTATE_CACHE_DIR\" >> conf/local.conf
       - echo IMAGE_CLASSES += \"testimage testsdk\" >> conf/local.conf
       - echo INHERIT += \"report-error rm_work\" >> conf/local.conf
+      - echo ERR_REPORT_SERVER = \"errors.yoctoproject.org\" >> conf/local.conf
+      - echo ERR_REPORT_PORT = \"80\" >> conf/local.conf
+      - echo ERR_REPORT_USERNAME = \"Drone Autobuilder\" >> conf/local.conf
+      - echo ERR_REPORT_EMAIL = \"info@yoedistro.org\" >> conf/local.conf
 #      - echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
       - /bin/bash -c ". ./qemuarm64-envsetup.sh && bitbake yoe-debug-image"
       - /bin/bash -c ". ./qemuarm64-envsetup.sh && resulttool report build/tmp"
