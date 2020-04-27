@@ -164,6 +164,9 @@ PNBLACKLIST[applicationlauncher] = "Needs porting to QT > 5.6"
 PNBLACKLIST[spacetouch] = "Needs porting to libplanes 1.0"
 PNBLACKLIST[qtviewplanes] = "Needs porting to libplanes 1.0"
 PNBLACKLIST[egt-thermostat] = "Needs porting to egt 0.8.2+"
-
-# mask out the old webkitgtk recipes from meta-webkit
-BBMASK .= "recipes-browser/webkitgtk/webkitgtk"
+PNBLACKLIST[bigbuckbunny-1080p] = "big and doesn't really need to be tested so much"
+PNBLACKLIST[bigbuckbunny-480p] = "big and doesn't really need to be tested so much"
+PNBLACKLIST[bigbuckbunny-720p] = "big and doesn't really need to be tested so much"
+PNBLACKLIST[tearsofsteel-1080p] = "big and doesn't really need to be tested so much"
+RDEPENDS_packagegroup-meta-multimedia_remove_pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
+PNBLACKLIST[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
