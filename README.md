@@ -28,7 +28,7 @@ port forwarding to work on docker
 
 ## Workspace Setup
 
-1. `git clone --recurse-submodules -j8 -b master git://github.com/YoeDistro/yoe-distro.git yoe`
+1. `git clone --recurse-submodules -j8 -b dunfell git://github.com/YoeDistro/yoe-distro.git yoe`
 1. `cd yoe`
 1. `. ./raspberrypi3-64-envsetup.sh`
 1. `yoe_setup`
