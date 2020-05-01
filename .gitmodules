@@ -17,11 +17,11 @@
 [submodule "sources/meta-freescale"]
 	path = sources/meta-freescale
 	url = https://github.com/YoeDistro/meta-freescale
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-freescale-3rdparty"]
 	path = sources/meta-freescale-3rdparty
 	url = https://github.com/YoeDistro/meta-freescale-3rdparty
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-qt5"]
 	path = sources/meta-qt5
 	url = https://github.com/YoeDistro/meta-qt5
@@ -41,7 +41,7 @@
 [submodule "sources/meta-qcom"]
 	path = sources/meta-qcom
 	url = https://github.com/YoeDistro/meta-qcom
-	branch = master
+	branch = dunfell
 [submodule "sources/meta-variscite-fslc"]
 	path = sources/meta-variscite-fslc
 	url = https://github.com/YoeDistro/meta-variscite-fslc
