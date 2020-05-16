@@ -13,8 +13,6 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
  util/list-product-information | 2 +-
  4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/airmar/airmar.php b/airmar/airmar.php
-index ccd4b4d..46ed49d 100755
 --- a/airmar/airmar.php
 +++ b/airmar/airmar.php
 @@ -1,4 +1,4 @@
@@ -23,11 +21,9 @@ index ccd4b4d..46ed49d 100755
  <?php
  if (!is_array($argv))
  {
-diff --git a/n2kd/n2kd_monitor b/n2kd/n2kd_monitor
-index f8cfd42..4cb4766 100755
 --- a/n2kd/n2kd_monitor
 +++ b/n2kd/n2kd_monitor
-@@ -233,7 +233,7 @@ for (;;)
+@@ -238,7 +238,7 @@ for (;;)
          open STDIN, '/dev/null' or die "Can't read /dev/null: $!";
          open STDOUT, '>>', $MONITOR_LOGFILE or die "Can't write to $MONITOR_LOGFILE $!";
          open STDERR, '>&STDOUT' or die "Can't dup stdout: $!";
@@ -36,26 +32,3 @@ index f8cfd42..4cb4766 100755
        }
        if (!$monitor)
        {
-diff --git a/send-message/format-message b/send-message/format-message
-index 590a815..2d91185 100755
---- a/send-message/format-message
-+++ b/send-message/format-message
-@@ -1,4 +1,4 @@
--#!/usr/bin/php5
-+#!/usr/bin/env php
- <?
- #
- # Format a particular N2K command
-diff --git a/util/list-product-information b/util/list-product-information
-index d958ae4..a54a0f2 100755
---- a/util/list-product-information
-+++ b/util/list-product-information
-@@ -1,4 +1,4 @@
--#!/usr/bin/php5
-+#!/usr/bin/env php
- <?php
- #
- # A very limited script engine that sends and receives CAN messages.
--- 
-2.17.0
-
