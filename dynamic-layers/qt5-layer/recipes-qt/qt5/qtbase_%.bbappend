@@ -4,3 +4,4 @@ QT_CONFIG_FLAGS += "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', '-qpa way
                                          bb.utils.contains('DISTRO_FEATURES', 'x11', '', \
                                                           '-qpa eglfs', d), d)}"
 
+PACKAGECONFIG_append = " libinput eglfs examples linuxfb tslib"
