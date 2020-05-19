@@ -10,9 +10,11 @@ SRC_URI = "git://github.com/canboat/canboat.git;branch=${SRCBRANCH} \
            file://0001-Do-not-use-root-user-group-during-install.patch \
            file://0001-Define-ANALYZEREXEC.patch \
            file://0001-use-php-instead-of-php5.patch \
+           file://0001-Avoid-multiple-definitions-of-StringBuffer-sbNew.patch \
           "
 SRCBRANCH = "master"
-SRCREV = "93b2ebfb334d7a9750b6947d3a4af9b091be2432"
+
+SRCREV = "b8923b45570c21feff89de4eff6007ed5408e1b7"
 
 S = "${WORKDIR}/git"
 
