@@ -35,6 +35,9 @@ QTWEBKIT ??= "\
 	qtwebkit \
 	qtwebkit-qmlplugins \
 "
+
+inherit features_check
+
 REQUIRED_DISTRO_FEATURES = "opengl"
 
 X11BASE = "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11-base', '', d)}"
