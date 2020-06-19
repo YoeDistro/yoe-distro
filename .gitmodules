@@ -82,3 +82,7 @@
 	path = sources/meta-arm
 	url = git://github.com/yoedistro/meta-arm
 	branch = master
+[submodule "sources/meta-elm-binary"]
+	path = sources/meta-elm-binary
+	url = git://github.com/yoedistro/meta-elm-binary
+	branch = master
