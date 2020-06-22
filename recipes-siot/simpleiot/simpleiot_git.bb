@@ -7,11 +7,11 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57"
 SECTION = "apps"
 
-DEPENDS = "go-native elm-binary-native"
+DEPENDS = "go-native elm-binary-native nodejs-native"
 
 inherit update-rc.d goarch
 
-SRCREV = "c48c5592d3182603754379219c7bdf4baa000ea3"
+SRCREV = "398160f5d1c343b123ce52e5fd1e7a977c2a431b"
 PV = "1.0+git${SRCPV}"
 
 BRANCH ?= "master"
@@ -37,7 +37,7 @@ do_compile() {
     export GOARCH=${TARGET_GOARCH}
     export PATH=${GOPATH}/bin:$PATH
     export GOFLAGS="-modcacherw"
-    source ./envsetup.sh
+    . ${S}/envsetup.sh
     # FIXME: get elm cache in ~/.elm moved to work-shared
     rm -rf frontend/elm-stuff
     siot_setup
