@@ -11,8 +11,8 @@ DEPENDS = "go-native elm-binary-native nodejs-native"
 
 inherit update-rc.d goarch
 
-SRCREV = "398160f5d1c343b123ce52e5fd1e7a977c2a431b"
-PV = "1.0+git${SRCPV}"
+SRCREV = "98fdb1f2c0bc9c303692ad1c092ba48146e77b08"
+PV = "0.0.5+git${SRCPV}"
 
 BRANCH ?= "master"
 
