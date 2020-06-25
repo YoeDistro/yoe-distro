@@ -23,6 +23,9 @@ S = "${WORKDIR}/git"
 
 GOPATH = "${TMPDIR}/work-shared/go"
 
+CGO_ENABLED_x86-64 = "0"
+export CGO_ENABLED
+
 INITSCRIPT_NAME = "siot"
 INITSCRIPT_PARAMS = "start 99 5 . stop 20 6 ."
 
