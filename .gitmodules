@@ -94,3 +94,7 @@
 	path = sources/meta-xilinx
 	url = https://github.com/Xilinx/meta-xilinx
 	branch = master
+[submodule "sources/meta-xilinx-tools"]
+	path = sources/meta-xilinx-tools
+	url = https://github.com/Xilinx/meta-xilinx-tools
+	branch = master
