@@ -98,3 +98,7 @@
 	path = sources/meta-xilinx-tools
 	url = https://github.com/Xilinx/meta-xilinx-tools
 	branch = master
+[submodule "sources/meta-petalinux"]
+	path = sources/meta-petalinux
+	url = https://github.com/Xilinx/meta-petalinux
+	branch = master
