@@ -90,3 +90,7 @@
 	path = sources/meta-rockchip
 	url = git://git.yoctoproject.org/meta-rockchip
 	branch = dunfell
+[submodule "sources/meta-xilinx"]
+	path = sources/meta-xilinx
+	url = https://github.com/Xilinx/meta-xilinx
+	branch = master
