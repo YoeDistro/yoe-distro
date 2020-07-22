@@ -10,7 +10,7 @@ included for some of them below.
 
 - [Raspberry PI](raspberrypi.md)
 - [BeagleBone Black](beagleboneblack.md)
-- [ODroid-C2 -- todo]()
+- [ODROID](odroid.md)
 
 ## Using Yoe
 
