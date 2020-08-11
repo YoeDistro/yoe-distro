@@ -70,10 +70,6 @@
 	path = sources/meta-altera
 	url = https://github.com/YoeDistro/meta-altera
 	branch = master
-[submodule "sources/meta-webkit"]
-	path = sources/meta-webkit
-	url = git://github.com/yoedistro/meta-webkit
-	branch = master
 [submodule "sources/meta-arm"]
 	path = sources/meta-arm
 	url = git://github.com/yoedistro/meta-arm
