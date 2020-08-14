@@ -13,5 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update glibc to 2.32 and binutils 2.35 major versions
 - Systemd upgaded to 246
 - Musl upgraded to 1.2.1
-- Go upgraded to 1.14.6
+- Go upgraded to 1.14.7
 - Several packages fixed to work with -fno-common ( gcc10 defaults )
+- RPI kernel defaults to 5.4 instead of 4.19
+- Yocto 5.4 kernel upgraded to 5.4.57
+- imx kernel update to 5.4.56
