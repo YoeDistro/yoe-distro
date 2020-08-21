@@ -167,9 +167,16 @@ specified branch:
 
 `git submodule update --remote`
 
+### Support and Contributing
+
+Pull requests are welcome.
+
+For support or to discuss this project, use one of the following options:
+
+- [Yoe community forum](https://community.tmpdir.org/c/yoe-distro/6)
+- Open a github issue
+
 ## License
 
 This build system is licensed under the MIT license which is the same license as
 oe-core, etc. See COPYING.MIT
-
-Contributions are welcome: please open issues or pull requests.
