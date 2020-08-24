@@ -18,3 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - RPI kernel defaults to 5.4 instead of 4.19
 - Yocto 5.4 kernel upgraded to 5.4.57
 - imx kernel update to 5.4.56
+- Clang update to 11.0.0-rc2
+- Clang SDKs are now relocatable
+- Switch linux to 5.8 for kernel UAPI
+- GCC updated to 10.2.0
