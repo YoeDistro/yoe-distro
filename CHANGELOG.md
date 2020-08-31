@@ -22,3 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Clang SDKs are now relocatable
 - Switch linux to 5.8 for kernel UAPI
 - GCC updated to 10.2.0
+- SWitch gcc to use -fno-common ( upstream default )
+- Use upstream master branch for RISCV-32
+- Fix RPI X11 builds with Userland graphics
+- Update Vivante driver to 6.4.0.p2.0 based release
+- Add 5.4 android common kernel for meta-arm
