@@ -1,0 +1,2 @@
+echo "Dummy init"
+echo "Please create machine specific init file"

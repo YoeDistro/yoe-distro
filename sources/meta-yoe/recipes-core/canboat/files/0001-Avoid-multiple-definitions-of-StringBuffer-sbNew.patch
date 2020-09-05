@@ -1,0 +1,46 @@
+From 25799167153e8359c4814beb5a130ddb86ca9644 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Sat, 16 May 2020 08:39:21 -0700
+Subject: [PATCH] Avoid multiple definitions of StringBuffer sbNew
+
+This helps build with gcc10+
+
+multiple definition of `sbNew'; /tmp/cc7KbBAf.o:(.bss+0x0): first defined here
+collect2: error: ld returned 1 exit status
+make[1]: *** [Makefile:28: ../rel/linux-x86_64/actisense-serial] Error 1
+
+Upstream-Status: Submitted [https://github.com/canboat/canboat/pull/193]
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ common/common.h | 2 +-
+ n2kd/main.c     | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/common/common.h b/common/common.h
+index 0d72f86..ad4ee7c 100644
+--- a/common/common.h
++++ b/common/common.h
+@@ -107,7 +107,7 @@ enum Base64Encoding
+   BASE64_AIS
+ };
+ 
+-StringBuffer sbNew;
++extern StringBuffer sbNew;
+ 
+ void  sbAppendEncodeHex(StringBuffer *sb, const void *data, size_t len, char separator);                     // binary to hex
+ void  sbAppendEncodeBase64(StringBuffer *sb, const uint8_t *data, size_t len, enum Base64Encoding encoding); // binary to Base64
+diff --git a/n2kd/main.c b/n2kd/main.c
+index 4fa618f..cd48028 100644
+--- a/n2kd/main.c
++++ b/n2kd/main.c
+@@ -49,6 +49,7 @@ bool     rateLimit;
+ 
+ uint32_t protocol = 1;
+ int      debug    = 0;
++StringBuffer sbNew;
+ 
+ #define SENSOR_TIMEOUT (120)       /* Timeout when PGN messages expire (no longer retransmitted) */
+ #define AIS_TIMEOUT (3600)         /* AIS messages expiration is much longer */
+-- 
+2.26.2
+

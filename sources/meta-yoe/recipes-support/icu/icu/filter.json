@@ -1,0 +1,30 @@
+{
+    "strategy": "additive",
+    "collationUCAData": "implicithan",
+    "featureFilters": {
+        "brkitr_rules": "include",
+        "brkitr_dictionaries": "include",
+        "brkitr_tree": "include",
+        "coll_ucadata": "include",
+        "coll_tree": "include",
+        "misc": "include",
+        "curr_tree": "include",
+        "lang_tree": "include",
+        "region_tree": "include",
+        "rbnf_tree": "include",
+        "zone_tree": "include",
+        "unit_tree": "include",
+        "cnvalias": "include",
+        "locales_tree": "include",
+        "unames": "include",
+        "ulayout": "include"
+    },
+    "localeFilter": {
+        "filterType": "locale",
+        "includeChildren": false,
+        "whitelist": [
+            "en_US"
+        ]
+    }
+}
+
