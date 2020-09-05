@@ -1,0 +1,55 @@
+software =
+{
+	version = "0.1.0";
+
+	raspberrypi3 = {
+		hardware-compatibility: [ "1.0"];
+		stable : {
+			copy1 : {
+				images: (
+					{
+						filename = "yoe-debug-image-raspberrypi3.ext4.gz";
+						type = "raw";
+						compressed = true;
+						device = "/dev/mmcblk0p2";
+					}
+				);
+				scripts: (
+					{
+						filename = "emmcsetup.lua";
+						type = "lua";
+					}
+				);
+                                uboot: (
+                                        {
+                                        	name = "rpipart";
+                                  		value = "2";
+                                        }
+				);
+
+			};
+			copy2 : {
+				images: (
+					{
+						filename = "yoe-debug-image-raspberrypi3.ext4.gz";
+						type = "raw";
+						compressed = true;
+						device = "/dev/mmcblk0p3";
+					}
+				);
+				scripts: (
+					{
+						filename = "emmcsetup.lua";
+						type = "lua";
+					}
+				);
+                                uboot: (
+                                        {
+                                        	name = "rpipart";
+                                  		value = "3";
+                                        }
+				);
+			};
+		};
+	}
+}

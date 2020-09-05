@@ -1,0 +1,38 @@
+From e8cd233a2194fdf94e0b18a32264ed1f8cf952f8 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Sun, 20 May 2018 20:50:50 -0700
+Subject: [PATCH] Define ANALYZEREXEC
+
+This is an alias to ANALYZER which can be
+overridden from env if needed ( e.g. during
+cross compile)
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ analyzer/Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/analyzer/Makefile b/analyzer/Makefile
+index d5a9fb5..fd55463 100644
+--- a/analyzer/Makefile
++++ b/analyzer/Makefile
+@@ -20,6 +20,7 @@
+ PLATFORM=$(shell uname | tr '[A-Z]' '[a-z]')-$(shell uname -m)
+ TARGETDIR=../rel/$(PLATFORM)
+ ANALYZER=$(TARGETDIR)/analyzer
++ANALYZEREXEC?=$(ANALYZER)
+ TARGETS=$(ANALYZER)
+ XMLFILE=pgns.xml
+ JSONFILE=pgns.json
+@@ -30,7 +31,7 @@ $(ANALYZER): analyzer.c pgn.c analyzer.h pgn.h ../common/common.c ../common/comm
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $(ANALYZER) -I../common pgn.c analyzer.c ../common/common.c $(LDLIBS$(LDLIBS-$(@)))
+ 
+ json: $(ANALYZER) pgns2json.xslt
+-	$(ANALYZER) -explain-xml >$(XMLFILE) && xsltproc pgns2json.xslt $(XMLFILE) >$(JSONFILE)
++	$(ANALYZEREXEC) -explain-xml >$(XMLFILE) && xsltproc pgns2json.xslt $(XMLFILE) >$(JSONFILE)
+ 
+ clean:
+ 	-rm -f $(TARGETS) *.elf *.gdb
+-- 
+2.17.0
+
