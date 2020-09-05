@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-## [3.1.1-alpha] - 2020-08-11
+## [3.1.2] - 2020-09-05
 
 - Dropped meta-webkit from default distro layers
 - Go compiler upgraded to 1.14.7
@@ -24,3 +24,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update rust to 1.46
 - Various build fixes for arm trusted-firmware-a
 - Update bind to 9.11.22, libubootenv to v0.3
+- Move meta-yoe to main yoedistro repo
