@@ -27,3 +27,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix RPI X11 builds with Userland graphics
 - Update Vivante driver to 6.4.0.p2.0 based release
 - Add 5.4 android common kernel for meta-arm
+- Add tune files for cortexa73-cortexa35/ARMv8-2a
+- Fix meta-openembedded test images e.g. meta-oe-ptest-image
+- Use glibc master for RISCV32
+- Move kea/dhcpcd from meta-openembedded to opemebedded-core
+- Fix QT5 recipes with clang-11
+- Move meta-yoe into yoedistro repo
