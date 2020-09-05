@@ -1,0 +1,13 @@
+# short-description: Create SD card image
+# long-description: Creates a partitioned SD card image.
+
+# Boot env partition
+part --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --align 1024 --fixed-size 100
+
+# Main Rootfs partition (1G)
+part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --fixed-size 1024 --align 4
+
+# User data partition (16M)
+part /data --ondisk mmcblk --fstype=ext4 --label data --fixed-size 16 --align 4096
+
+bootloader --ptable msdos

@@ -1,0 +1,38 @@
+TITLE="SAM SOM"
+PLAT="sama5d27-som1-ek-sd"
+UPDATE_FILE_NAME="sama5d27"
+
+USB_DETECTION_DELAY=4
+
+KERNEL="zImage at91-sama5d27_som1_ek.dtb"
+BOOT="BOOT.BIN u-boot.bin"
+ROOTFS="rootfs.tar.xz"
+
+EMMC_DEVICE=/dev/mmcblk0
+EMMC_BOOT_DEV=${EMMC_DEVICE}p1
+EMMC_ROOTFS_DEV=${EMMC_DEVICE}p2
+EMMC_DATA_DEV=${EMMC_DEVICE}p3
+
+SD_DEVICE=/dev/mmcblk1
+SD_BOOT_DEV=${SD_DEVICE}p1
+SD_ROOTFS_DEV=${SD_DEVICE}p2
+SD_DATA_DEV=${SD_DEVICE}p3
+
+BOOT_MOUNT_POINT=/boot
+ROOTFS_MOUNT_POINT=/root
+DATA_MOUNT_POINT=/data
+USB_MOUNT_POINT=/media/usb
+SD_MOUNT_POINT=/media/sd
+
+# Size in 'M' for MB, 'G' for GB
+BOOT_SIZE=100M
+ROOTFS_SIZE=700M
+
+FSTYPE=ext4
+BOOT_FSTYPE=vfat
+
+UPDATER_SPEECH=0
+
+plat_init() {
+  msg "Running $PLAT initializations ..."
+}

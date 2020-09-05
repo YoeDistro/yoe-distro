@@ -1,0 +1,34 @@
+From 85987c659762939241e4bdd4223e63eb5997b181 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Sun, 20 May 2018 16:22:29 -0700
+Subject: [PATCH] use php instead of php5
+
+OE ships php5 as php
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ airmar/airmar.php             | 2 +-
+ n2kd/n2kd_monitor             | 2 +-
+ send-message/format-message   | 2 +-
+ util/list-product-information | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+--- a/airmar/airmar.php
++++ b/airmar/airmar.php
+@@ -1,4 +1,4 @@
+-#!/usr/bin/php5
++#!/usr/bin/env php
+ <?php
+ if (!is_array($argv))
+ {
+--- a/n2kd/n2kd_monitor
++++ b/n2kd/n2kd_monitor
+@@ -238,7 +238,7 @@ for (;;)
+         open STDIN, '/dev/null' or die "Can't read /dev/null: $!";
+         open STDOUT, '>>', $MONITOR_LOGFILE or die "Can't write to $MONITOR_LOGFILE $!";
+         open STDERR, '>&STDOUT' or die "Can't dup stdout: $!";
+-        exec 'php5', '/usr/local/bin/n2k.php', '-monitor';
++        exec 'php', '/usr/bin/n2k.php', '-monitor';
+       }
+       if (!$monitor)
+       {
