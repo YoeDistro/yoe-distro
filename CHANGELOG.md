@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-## [3.2.0-alpha] - 2020-08-10
+## [3.2.0-alpha] - 2020-09-05
 
 - Dropped meta-webkit from default distro layers
 - Update glibc to 2.32 and binutils 2.35 major versions
