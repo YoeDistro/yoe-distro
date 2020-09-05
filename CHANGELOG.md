@@ -18,5 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Vivante Driver updated to 6.4.0.p2.0
 - linux-intel updated to 5.4.57
 - RPI machines switched to use 5.4 kernel
-- Linux yocto updated to v5.4.58
-- Update glibc SRC_URI for RISCV-32
+- Linux yocto updated to v5.4.61
+- RISCV32 uses upstream master for glibc
+- linux-fslc updated to v5.4.61
+- Update rust to 1.46
+- Various build fixes for arm trusted-firmware-a
+- Update bind to 9.11.22, libubootenv to v0.3
