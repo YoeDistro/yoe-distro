@@ -1,0 +1,9 @@
+[Match]
+Name=wl*
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+RouteMetric=20
+ClientIdentifier=mac

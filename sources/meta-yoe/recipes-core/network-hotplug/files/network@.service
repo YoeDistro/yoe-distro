@@ -1,0 +1,11 @@
+# currently, the BindTo is not working
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/ifup -f %i
+StandardOutput=syslog+console
+
+[Unit]
+BindsTo=%i.device
+
