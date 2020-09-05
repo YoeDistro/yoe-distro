@@ -42,10 +42,6 @@
 	path = sources/meta-qcom
 	url = https://github.com/YoeDistro/meta-qcom
 	branch = dunfell
-[submodule "sources/meta-yoe"]
-	path = sources/meta-yoe
-	url = https://github.com/YoeDistro/meta-yoe
-	branch = master
 [submodule "sources/meta-riscv"]
 	path = sources/meta-riscv
 	url = https://github.com/YoeDistro/meta-riscv
