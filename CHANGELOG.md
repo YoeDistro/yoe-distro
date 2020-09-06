@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Update go compiler to 1.15
+- Improve error and cleanup handing in cooker
+- Update linux-fslc to v5.4.62
+- Various recipe version upgrades
+- Remove help2man from early build depenencies
+
 ## [3.2.0-alpha] - 2020-09-05
 
 - Dropped meta-webkit from default distro layers
