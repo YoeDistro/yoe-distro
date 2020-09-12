@@ -9,9 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Update go compiler to 1.15
 - Improve error and cleanup handing in cooker
-- Update linux-fslc to v5.4.62
+- Update linux-fslc to v5.4.64
 - Various recipe version upgrades
 - Remove help2man from early build depenencies
+- Update linux-altera-lts 5.4.54 and u-boot-socfpga to 2020.04
+- Various recipe version upgrades in meta-openembedded
+- Update linux-intel to 5.4.59
+- ARMv8 tune cleanups
+- Add RISCV32 support for musl
 
 ## [3.2.0-alpha] - 2020-09-05
 
