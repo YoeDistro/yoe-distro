@@ -49,3 +49,5 @@ CORE_IMAGE_BASE_INSTALL += " \
   ${QT5APPS} \
   ${QT5BASE} \
 "
+# Ptest needs more RAM ( > 256M ) on QEMU
+QB_MEM = "-m 1024"
