@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Update altera kernel to 5.4.54, uboot to 2020.04
+- Update linux-fscl to 5.4.62
+- Netsnmp,json-c and LUA CVE fixes
+- linux-yocto upgrade to 5.4.61
+ 
 ## [3.1.2] - 2020-09-05
 
 - Dropped meta-webkit from default distro layers
