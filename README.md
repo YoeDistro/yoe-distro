@@ -1,6 +1,6 @@
 <img src="docs/yoe-logo.png?raw=true" width="180">
 
-[![Build Status](https://drone.yoedistro.org/api/badges/YoeDistro/yoe-distro/status.svg)](https://drone.yoedistro.org/YoeDistro/yoe-distro)
+![Yoe Distro CI](https://github.com/YoeDistro/yoe-distro/workflows/Yoe%20Distro%20CI/badge.svg?branch=master)
 
 # Yoe Embedded Linux Distribution
 
