@@ -7,10 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+
+## [3.1.3] - 2020-09-17
+
 - Update altera kernel to 5.4.54, uboot to 2020.04
-- Update linux-fscl to 5.4.62
+- Update linux-fscl to 5.4.65
 - Netsnmp,json-c and LUA CVE fixes
 - linux-yocto upgrade to 5.4.61
+- qcom kernel updated to 5.7.19
+- Fixed cve-check tool for multiconfig, add progress bar
+- Security fixes for libxml2,cmake,gnutls,libx11,qemu
+- Use uninative 2.9 supports glibc 2.32 on host
  
 ## [3.1.2] - 2020-09-05
 
