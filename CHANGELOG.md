@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Update go compiler to 1.15
 - Improve error and cleanup handing in cooker
-- Update linux-fslc to v5.4.64
+- Update linux-fslc to v5.4.66
 - Various recipe version upgrades
 - Remove help2man from early build depenencies
 - Update linux-altera-lts 5.4.54 and u-boot-socfpga to 2020.04
@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update linux-intel to 5.4.59
 - ARMv8 tune cleanups
 - Add RISCV32 support for musl
+- Documentation converted to sphinx
+- python3-pyqt5 updated to 5.15.1
+- QTWebengine bison 3.7 fix, and sanbox freeze fixed
+- Fix mutter launch with vc4graphics on raspberrypi
+- linux-yocto updated to v5.8.9, v5.4.65
+- go updated to 1.15.2
 
 ## [3.2.0-alpha] - 2020-09-05
 

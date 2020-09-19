@@ -41,7 +41,6 @@ jobs:
           echo TOOLCHAIN = \"clang\" >> conf/local.conf
           /bin/bash -c "sed -i -e 's/PACKAGE_FEED_URI.*$//' conf/site.conf"
           /bin/bash -c "sed -i -e 's/SDK_UPDATE_URL.*$//' conf/site.conf"
-          /bin/bash -c "sed -i -e 's/backend=fbdev-backend.so.*$//' sources/openembedded-core/meta/recipes-graphics/wayland/weston-init/qemuall/weston.ini"
       - name: Build Image
         run: |
           /bin/bash -c ". ./qemuarm64-envsetup.sh && bitbake yoe-qt5-image"
