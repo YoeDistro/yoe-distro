@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-- Update go compiler to 1.15
+## [3.2.0-beta] - 2020-09-23
+
+- Update go compiler to 1.15.2
 - Improve error and cleanup handing in cooker
 - Update linux-fslc to v5.4.66
 - Various recipe version upgrades
@@ -22,7 +24,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - QTWebengine bison 3.7 fix, and sanbox freeze fixed
 - Fix mutter launch with vc4graphics on raspberrypi
 - linux-yocto updated to v5.8.9, v5.4.65
-- go updated to 1.15.2
+- Add support for sama7g5ek-sd in meta-atmel
+- Clang updated to 11.0.0 RC3
+- Various Recipe upgrades
 
 ## [3.2.0-alpha] - 2020-09-05
 
