@@ -1,6 +1,6 @@
 <img src="docs/yoe-logo.png?raw=true" width="180">
 
-![Yoe Distro CI](https://github.com/YoeDistro/yoe-distro/workflows/Yoe%20Distro%20CI/badge.svg?branch=dunfell)
+[![Yoe Distro CI](https://github.com/YoeDistro/yoe-distro/workflows/Yoe%20Distro%20CI/badge.svg?branch=dunfell)](https://github.com/YoeDistro/yoe-distro/actions?query=workflow%3AYoe%20Distro%20CI+branch%3Adunfell)
 
 # Yoe Embedded Linux Distribution
 
