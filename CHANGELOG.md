@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Remove freedesktop.org urls
+- Add sama7g5ek-sd support
+- Update linux-fslc-imx to v5.4.67
+- Update iwd to 1.9.x
+- Pin glibc version for riscv-32
+- Update linux-ti-staging to 5.4.66
+- build-appliance-image uses dunfell now
 
 ## [3.1.3] - 2020-09-17
 
