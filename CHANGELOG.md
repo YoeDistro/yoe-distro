@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Handle backslash support in file:// URIs
+- Switch arm-bsp to 5.4 based kernel
+- Bump components for sama7g5ek-sd
+- Create symlinks with cross compile tuples for clang
+- Update FSL EULA  to LA_OPT_NXP_Software_License v11 February 2020
+- Fix asound.conf for cubox-i
+- Update linux-ti-staging to 5.4.66
+- Update linux-altera to 5.7
+- systemd upgraded v246.2 -> v246.6
+- Fix perf on arm/musl
+- mesa updated 20.1.6 -> 20.1.8
+- Fix ptest-runner to detatch tty correctly
+- Use modcacherw always for go modules
+- Fix clang/musl SDK
+- Improve cve-check to detect applied CVEs
+- Add ESDK_MANIFEST_EXCLUDES for eSDK to filter conf/ dir
+
 ## [3.2.0-beta] - 2020-09-23
 
 - Update go compiler to 1.15.2
