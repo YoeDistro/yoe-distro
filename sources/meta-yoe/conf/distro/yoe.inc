@@ -6,7 +6,7 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version keep it up with Yocto release
-DISTRO_VERSION = "3.2.0-alpha"
+DISTRO_VERSION = "3.2.0-beta"
 DISTRO_CODENAME = "beltex"
 SDK_VERSION := "${DISTRO_VERSION}"
 
