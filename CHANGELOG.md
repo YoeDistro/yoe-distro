@@ -7,16 +7,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [3.1.3] - 2020-10-08
+
 - Remove freedesktop.org urls
 - Add sama7g5ek-sd support
-- Update linux-fslc-imx to v5.4.67
+- Update linux-fslc-imx and linux-fslc to v5.4.70
 - Update iwd to 1.9.x
 - Pin glibc version for riscv-32
 - Update linux-ti-staging to 5.4.66
 - build-appliance-image uses dunfell now
-
-## [3.1.3] - 2020-09-17
-
+- Add kernel-cache source for rpi kernel
+- Update linux-intel to v5.4.68 and linux-intel-rt to v5.4.66
+- Fix u-boot-boundary bootscripts
+- optee-os fixed to build with gcc-10
+- bump component revisions for sama7g5ek-sd machine
+- u-boot-socfpga updated to v2020.04 and add v2020.07
+- Fix wic option --extra-space and add --offset
+- Improve wic error messages on invalid offset
 - Update altera kernel to 5.4.54, uboot to 2020.04
 - Update linux-fscl to 5.4.65
 - Netsnmp,json-c and LUA CVE fixes
