@@ -7,13 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Migrate documentation to use sphinx
 - Handle backslash support in file:// URIs
 - Switch arm-bsp to 5.4 based kernel
 - Bump components for sama7g5ek-sd
 - Create symlinks with cross compile tuples for clang
 - Update FSL EULA  to LA_OPT_NXP_Software_License v11 February 2020
 - Fix asound.conf for cubox-i
-- Update linux-ti-staging to 5.4.66
+- Update linux-ti-staging to 5.4.69
+- Update linux-fslc-imx/linux-fslc to v5.4.70
 - Update linux-altera to 5.7
 - systemd upgraded v246.2 -> v246.6
 - Fix perf on arm/musl
@@ -23,6 +25,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix clang/musl SDK
 - Improve cve-check to detect applied CVEs
 - Add ESDK_MANIFEST_EXCLUDES for eSDK to filter conf/ dir
+- Fix zephyr support for arm BSPs
+- Update clang to 11.0.0-RC6
+- Update intel-mediasdk to 20.3.0
+- Update linux-intel to v5.4.68
+- Start using yocto kernel tooling for linux-raspberrypi
+- Update RPI firmware to  20190114-1+rpt8
+- Update linux-raspberrypi to 5.4.69
+- Enable LTP builds on riscv32/musl
+- Support ARMv8.2a tunes
+- Add faster 34Kf-64tlb Qemu machines
+- Update linux-yocto v5.8.13/v5.4.69
 
 ## [3.2.0-beta] - 2020-09-23
 
