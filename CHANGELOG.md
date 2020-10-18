@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [3.2.0-rc.1] - 2020-10-18
+
 - Migrate documentation to use sphinx
 - Handle backslash support in file:// URIs
 - Switch arm-bsp to 5.4 based kernel
@@ -15,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update FSL EULA  to LA_OPT_NXP_Software_License v11 February 2020
 - Fix asound.conf for cubox-i
 - Update linux-ti-staging to 5.4.69
-- Update linux-fslc-imx/linux-fslc to v5.4.70
+- Update linux-fslc-imx/linux-fslc to v5.4.71
 - Update linux-altera to 5.7
 - systemd upgraded v246.2 -> v246.6
 - Fix perf on arm/musl
@@ -36,6 +38,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Support ARMv8.2a tunes
 - Add faster 34Kf-64tlb Qemu machines
 - Update linux-yocto v5.8.13/v5.4.69
+- Add ttarget RISCV64/RISCV32 builds for clang
 
 ## [3.2.0-beta] - 2020-09-23
 
