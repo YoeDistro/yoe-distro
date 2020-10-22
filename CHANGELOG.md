@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Update linux-yocto/5.4 to v5.4.69
+- Bump minimum required python version to 3.5
+- Update lttng to 2.11.6
+- Bump linux-fslc to v5.4.71
+- Support tc358743 on Nitrogen8mm SOM
+- At91bootstrap bumped to v3.10.0
+- Add WILC apps to microchip-headless-image
+- Add support for SRC_URI containing spaces in url
+
 ## [3.1.3] - 2020-10-08
 
 - Remove freedesktop.org urls
