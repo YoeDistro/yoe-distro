@@ -58,7 +58,7 @@ IMAGE_INSTALL_append_armv7a = " cpuburn-arm "
 IMAGE_INSTALL_append_armv7ve = " cpuburn-arm "
 IMAGE_INSTALL_append_aarch64 = " cpuburn-arm "
 
-IMAGE_INSTALL_remove_riscv32_libc-musl = "strace"
+IMAGE_INSTALL_remove_riscv32 = "strace"
 
 export IMAGE_BASENAME = "yoe-debug-image"
 

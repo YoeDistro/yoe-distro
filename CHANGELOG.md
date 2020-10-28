@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Fix yoe-debug-image for riscv32
+- Add sama7g5ek-emmc machine
+- Fix using clang-tidy
+- Misc Python updates
+- Fix userland package
+
 ## [3.2.0-rc.1] - 2020-10-18
 
 - Migrate documentation to use sphinx
