@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - At91bootstrap bumped to v3.10.0
 - Add WILC apps to microchip-headless-image
 - Add support for SRC_URI containing spaces in url
+- Update timezone data to 2020b
+- Add sama7g5ek-emmc machine
+- Remove compiler arguments from CLANG_TIDY_EXE
 
 ## [3.1.3] - 2020-10-08
 
