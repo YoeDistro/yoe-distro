@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [3.2.0] - 2020-11-04
+
 - Fix yoe-debug-image for riscv32
 - Add sama7g5ek-emmc machine
 - Fix using clang-tidy
