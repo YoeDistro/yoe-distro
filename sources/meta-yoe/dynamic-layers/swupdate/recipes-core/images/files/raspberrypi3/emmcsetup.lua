@@ -30,7 +30,7 @@ function preinst()
 	ret = file_exists("/dev/mmcblk0")
 
 	if (ret == false) then
-		return false, "Cannot find eMMC"
+		return false, "Cannot fine eMMC"
 	end
 
 	cmdexec("/usr/sbin/sfdisk -d " .. eMMC .. "> /tmp/dumppartitions")
@@ -79,7 +79,7 @@ function preinst()
 end
 
 function postinst()
-	local out = "Post install script called"
+	local out = "Post installed script called"
 
 	return true, out
 end

@@ -8,7 +8,7 @@ software =
 			copy1 : {
 				images: (
 					{
-						filename = "yoe-debug-image-raspberrypi3.ext4.gz";
+						filename = "core-image-full-cmdline-raspberrypi3.ext4.gz";
 						type = "raw";
 						compressed = true;
 						device = "/dev/mmcblk0p2";
@@ -31,7 +31,7 @@ software =
 			copy2 : {
 				images: (
 					{
-						filename = "yoe-debug-image-raspberrypi3.ext4.gz";
+						filename = "core-image-full-cmdline-raspberrypi3.ext4.gz";
 						type = "raw";
 						compressed = true;
 						device = "/dev/mmcblk0p3";
