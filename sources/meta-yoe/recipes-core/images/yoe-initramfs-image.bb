@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 # Do not pollute the initrd image with rootfs features
 IMAGE_FEATURES = ""
 
-export IMAGE_BASENAME = "initramfs-image"
+export IMAGE_BASENAME = "yoe-initramfs-image"
 IMAGE_LINGUAS = ""
 
 PACKAGE_INSTALL = "\
