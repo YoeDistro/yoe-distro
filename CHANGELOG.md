@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update linux-yocto/5.4 to v5.4.69
 - Bump minimum required python version to 3.5
 - Update lttng to 2.11.6
-- Bump linux-fslc to v5.4.71
+- Bump linux-fslc to v5.4.74
 - Support tc358743 on Nitrogen8mm SOM
 - At91bootstrap bumped to v3.10.0
 - Add WILC apps to microchip-headless-image
@@ -18,6 +18,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update timezone data to 2020b
 - Add sama7g5ek-emmc machine
 - Remove compiler arguments from CLANG_TIDY_EXE
+- Add fetcher support for master to main branchname transition in git
+- Fix qt5-creator build and upgrade to 4.13.1
+- Update linux-raspberrrypi to 5.4.72
+- Update linux-ti-staging to 5.4.72
+- Build ashmem and binder drivers for raspberrypi
+- Update gstreamer1.0 to 1.16.3
+- Mitigate the Straight-line Speculation attack in gcc
+- Fix parsing of slim encoded tzdata in glib-2.0
 
 ## [3.1.3] - 2020-10-08
 
