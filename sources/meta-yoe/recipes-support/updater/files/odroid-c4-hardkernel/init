@@ -254,6 +254,7 @@ process_update() {
   else
     msg_splash "FAILURE !"
   fi
+  /bin/sh
   while [ 1 ]; do
     echo "Remove update media from USB and reboot the system !"
     sleep 90

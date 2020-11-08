@@ -1,0 +1,26 @@
+software =
+{
+	version = "0.1.0";
+
+	odroid-c4-hardkernel = {
+		hardware-compatibility: [ "1.0"];
+		stable : {
+			copy : {
+				images: (
+					{
+						filename = "yoe-simple-image-odroid-c4-hardkernel.ext4.gz";
+						type = "raw";
+						compressed = true;
+						device = "/dev/mmcblk0p2";
+					}
+				);
+				scripts: (
+					{
+						filename = "emmcsetup.lua";
+						type = "lua";
+					}
+				);
+			};
+		};
+	}
+}
