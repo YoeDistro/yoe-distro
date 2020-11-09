@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Add new UBOOT_CONFIG to support ATF on QSPI boot for altera SOCs
+- Fix gstreamer1.0 builds on iMX SOCs
+- Upgrade hardkernel uboot to lates 2015 release and kernel to 4.9.236
+- Use DTB Overlay on Odroid-C4
+- Fix QT builds with clang and on 32bit arches with 64bit time_t e.g. riscv32
+- Fix Qtwebkit build with python 3.9
+- Update linux-ti-staging to 5.4.74
+- Fix gstreamer1.0-omx build with 1.18 gstreamer upgrade
+
 ## [3.2.0] - 2020-11-04
 
 - Fix yoe-debug-image for riscv32
