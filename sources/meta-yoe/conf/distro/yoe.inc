@@ -176,5 +176,7 @@ PNBLACKLIST[bigbuckbunny-1080p] = "big and doesn't really need to be tested so m
 PNBLACKLIST[bigbuckbunny-480p] = "big and doesn't really need to be tested so much"
 PNBLACKLIST[bigbuckbunny-720p] = "big and doesn't really need to be tested so much"
 PNBLACKLIST[tearsofsteel-1080p] = "big and doesn't really need to be tested so much"
+
 RDEPENDS_packagegroup-meta-multimedia_remove_pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
-PNBLACKLIST[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
+RDEPENDS_packagegroup-meta-oe-fortran-packages_remove_pn-packagegroup-meta-oe = "lapack octave"
+
