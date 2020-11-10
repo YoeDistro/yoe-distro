@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -x
 VERSION=20
 
 . ./platform
@@ -273,7 +273,7 @@ find_update_file() {
   extensions="swu"
   update=""
   for ext in $extensions; do
-    update=$(echo $(ls ${UPDATE_FILE_NAME}*.${ext} -v -r 2>/dev/null) | sed "s/update.${ext}//" | sed "s/${ext}.*/${ext}/" | sed "s/^\s*//")
+    update=$(echo $(ls ${UPDATE_FILE_NAME}*.${ext} -v -r 2>/dev/null))
     if [ -n "${update}" ]; then
       echo $update
       break

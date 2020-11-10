@@ -1,6 +1,6 @@
 TITLE="ODROID C4"
-PLAT="odroid-c4"
-UPDATE_FILE_NAME="yoe-swupdate-image-odroid-c4-hardkernel"
+PLAT="odroid-c4-hardkernel"
+UPDATE_FILE_NAME="yoe-swupdate-image-${PLAT}"
 
 USB_DETECTION_DELAY=4
 
@@ -35,4 +35,6 @@ UPDATER_SPEECH=0
 
 plat_init() {
   msg "Running $PLAT initializations ..."
+  cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
 }
+
