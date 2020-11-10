@@ -99,7 +99,7 @@ end ";
 						filename = "yoe-simple-image-odroid-c4-hardkernel.ext4.xz";
 						type = "raw";
 						compressed = true;
-						device = "/dev/mmcblk0p2";
+						device = "/dev/mmcblk1p2";
 						hook = "allowInstall";
 					}
 				);

@@ -26,8 +26,8 @@ function preinst()
 
 	local log = os.tmpname()
 
-	local eMMC = "/dev/mmcblk0"
-	ret = file_exists("/dev/mmcblk0")
+	local eMMC = "/dev/mmcblk1"
+	ret = file_exists("/dev/mmcblk1")
 
 	if (ret == false) then
 		return false, "Cannot fine eMMC"
