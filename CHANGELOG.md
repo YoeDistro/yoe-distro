@@ -14,8 +14,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix QT builds with clang and on 32bit arches with 64bit time_t e.g. riscv32
 - Fix Qtwebkit build with python 3.9
 - Update linux-ti-staging to 5.4.74
+- Update linux-fslc to v5.4.75
+- Install vpu fw for mx8qm/mx8qxp based machines
 - Fix gstreamer1.0-omx build with 1.18 gstreamer upgrade
 - Add harknott (3.3) compatiblity to riscv layer
+- Add swupdate support for odroid-c4
 
 ## [3.2.0] - 2020-11-04
 
