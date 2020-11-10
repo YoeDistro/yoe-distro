@@ -258,7 +258,7 @@ process_update() {
   while [ 1 ]; do
     echo "Remove update media from USB and reboot the system !"
     sleep 90
-    /sbin/reboot
+    /sbin/reboot -f
   done
   return 0
 }
