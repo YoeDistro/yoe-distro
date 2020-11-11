@@ -1,44 +1,36 @@
-function os.capture(cmd)
+function os.capture(cmd, raw)
 	local f = assert(io.popen(cmd, 'r'))
 	local s = assert(f:read('*a'))
 	f:close()
+	if (raw) then return s end
+	s = string.gsub(s, '^%s+', '')
+	s = string.gsub(s, '%s+$', '')
+	s = string.gsub(s, '[\n\r]+', ' ')
 	return s
 end
 
-function file_exists(name)
-	local f=io.open(name,"r")
-	if f~=nil then io.close(f) return true else return false end
-end
-
-function cmdexec(cmd)
-	local ret, s, status = os.execute(cmd)
-	if (status ~= 0) then
-		return false, cmd .. " return with error"
-	end
-
-	return true,""
-end
 
 function preinst()
-	local out = "Pre insaller script called"
-	local s1
-	local ret
+	partitions = "# partition table of /dev/mmcblk0\n"..
+		"unit: sectors\n\n"..
+		"/dev/mmcblk0p1 : start=       16, size=  7812528, Id=83\n" ..
+		"/dev/mmcblk0p2 : start=  7812544, size=  7293504, Id=83\n" ..
+		"/dev/mmcblk0p3 : start=        0, size=        0, Id= 0\n" ..
+		"/dev/mmcblk0p4 : start=        0, size=        0, Id= 0\n"
 
-	local log = os.tmpname()
+	f = io.output("/tmp/partitions")
+	f:write(partitions)
+	f:close()
 
-	local eMMC = "/dev/mmcblk1"
-	ret = file_exists("/dev/mmcblk1")
-
-	if (ret == false) then
-		return false, "Cannot fine eMMC"
-	end
-
+	local out = os.capture("/usr/sbin/sfdisk /dev/mmcblk0 < /tmp/partitions", 1)
+	local mkfs1 = os.capture("/sbin/mkfs.ext3 /dev/mmcblk0p2", 1)
+	out = out .. mkfs1
 
 	return true, out
 end
 
 function postinst()
-	local out = "Post installer script called"
+	local out = "Post installed script called"
 
 	return true, out
 end
