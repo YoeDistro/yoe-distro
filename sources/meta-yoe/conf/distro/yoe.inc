@@ -178,5 +178,6 @@ PNBLACKLIST[bigbuckbunny-720p] = "big and doesn't really need to be tested so mu
 PNBLACKLIST[tearsofsteel-1080p] = "big and doesn't really need to be tested so much"
 
 RDEPENDS_packagegroup-meta-multimedia_remove_pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
-RDEPENDS_packagegroup-meta-oe-fortran-packages_remove_pn-packagegroup-meta-oe = "lapack octave"
+RDEPENDS_packagegroup-meta-oe-fortran-packages_remove_pn-packagegroup-meta-oe = "lapack octave suitesparse"
+RDEPENDS_packagegroup-meta-python3_remove_pn-packagegroup-meta-python = "python3-cvxopt"
 
