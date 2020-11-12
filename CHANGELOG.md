@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [3.3.0-alpha] - 2020-11-11
+
 - Add new UBOOT_CONFIG to support ATF on QSPI boot for altera SOCs
 - Fix gstreamer1.0 builds on iMX SOCs
 - Upgrade hardkernel uboot to lates 2015 release and kernel to 4.9.236
@@ -19,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix gstreamer1.0-omx build with 1.18 gstreamer upgrade
 - Add harknott (3.3) compatiblity to riscv layer
 - Add swupdate support for odroid-c4
+- Add Updater support for odroid-c4
 
 ## [3.2.0] - 2020-11-04
 
