@@ -40,10 +40,11 @@ UPDATE_IMAGES = "version.txt ${BOOTLOADER_ARTEFACTS} ${KERNEL_ARTEFACTS} ${ROOTF
 
 do_updater_append() {
         echo "IMG_VERSION = ${IMG_VERSION}"
-        install -d ${TOPDIR}/images
-        cd ${TOPDIR}/images
+        install -d ${TOPDIR}/deploy
+        cd ${TOPDIR}/deploy
         echo "${IMG_VERSION}" > version.txt
-        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.wic.xz ${MACHINE}_${IMG_VERSION}.wic.xz
+        install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.xz ${MACHINE}_${IMG_VERSION}.wic.xz
+        install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.bmap ${MACHINE}_${IMG_VERSION}.wic.bmap
         install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz ${ROOTFS_ARTEFACTS}
         for f in ${KERNEL_ARTEFACTS} ${BOOTLOADER_ARTEFACTS}
         do

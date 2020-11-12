@@ -9,8 +9,8 @@ UPDATE_IMAGES_sama5d27-som1-ek-sd ?= "\
 
 do_updater_append_sama5d27-som1-ek-sd () {
         echo "IMG_VERSION = ${IMG_VERSION}"
-        install -d ${TOPDIR}/images
-        cd ${TOPDIR}/images
+        install -d ${TOPDIR}/deploy
+        cd ${TOPDIR}/deploy
         echo "${IMG_VERSION}" > version.txt
         install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.wic.xz ${MACHINE}_${IMG_VERSION}.wic.xz
         install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz rootfs.tar.xz
