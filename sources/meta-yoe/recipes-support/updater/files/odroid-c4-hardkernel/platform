@@ -1,19 +1,61 @@
 TITLE="ODROID C4"
-PLAT="odroid-c4"
-UPDATE_FILE_NAME="yoe-swupdate-image-odroid-c4-hardkernel"
+PLAT="odroid-c4-hardkernel"
+UPDATE_FILE_NAME="${PLAT}"
 
 USB_DETECTION_DELAY=4
 
-KERNEL="Image.gz-initramfs-odroid-c4-hardkernel.bin meson64_odroidc4.dtb"
-BOOT="u-boot-odroid-c4-hardkernel.bin"
-ROOTFS="yoe-simple-image-odroid-c4-hardkernel.ext4.gz"
+KERNEL="\
+    Image.gz \
+    meson64_odroidc4.dtb \
+    amlogic/overlays/odroidc4/ads7846.dtbo \
+    amlogic/overlays/odroidc4/can0.dtbo \
+    amlogic/overlays/odroidc4/esp8089.dtbo \
+    amlogic/overlays/odroidc4/fanspeed-full.dtbo \
+    amlogic/overlays/odroidc4/hifishield2.dtbo \
+    amlogic/overlays/odroidc4/hifishield.dtbo \
+    amlogic/overlays/odroidc4/hktft32.dtbo \
+    amlogic/overlays/odroidc4/hktft35.dtbo \
+    amlogic/overlays/odroidc4/i2c0.dtbo \
+    amlogic/overlays/odroidc4/i2c1.dtbo \
+    amlogic/overlays/odroidc4/lineout.dtbo \
+    amlogic/overlays/odroidc4/onewire.dtbo \
+    amlogic/overlays/odroidc4/pcf8563.dtbo \
+    amlogic/overlays/odroidc4/pwm_ab.dtbo \
+    amlogic/overlays/odroidc4/pwm_a-pwmfan.dtbo \
+    amlogic/overlays/odroidc4/pwm_b-backlight.dtbo \
+    amlogic/overlays/odroidc4/pwm_cd.dtbo \
+    amlogic/overlays/odroidc4/pwm_ef.dtbo \
+    amlogic/overlays/odroidc4/sdio.dtbo \
+    amlogic/overlays/odroidc4/spi0.dtbo \
+    amlogic/overlays/odroidc4/sx865x-i2c1.dtbo \
+    amlogic/overlays/odroidc4/uart0.dtbo \
+    amlogic/overlays/odroidc4/uart1.dtbo \
+    amlogic/overlays/odroidc4/uart2.dtbo \
+"
 
-EMMC_DEVICE=/dev/mmcblk1
+BOOT="\
+    u-boot.bin \
+    boot.ini \
+    config.ini \
+"
+
+ROOTFS="rootfs.tar.xz"
+
+# Can have "emmc" or "sd", this is the install target media
+STORAGE="sd"
+
+EMMC_DEVICE=/dev/mmcblk0
+SD_DEVICE=/dev/mmcblk1
+INSTALL_DEVICE=${SD_DEVICE}
+
+INSTALL_BOOT_DEV=${INSTALL_DEVICE}p1
+INSTALL_ROOTFS_DEV=${INSTALL_DEVICE}p2
+INSTALL_DATA_DEV=${INSTALL_DEVICE}p3
+
 EMMC_BOOT_DEV=${EMMC_DEVICE}p1
 EMMC_ROOTFS_DEV=${EMMC_DEVICE}p2
 EMMC_DATA_DEV=${EMMC_DEVICE}p3
 
-SD_DEVICE=/dev/mmcblk0
 SD_BOOT_DEV=${SD_DEVICE}p1
 SD_ROOTFS_DEV=${SD_DEVICE}p2
 SD_DATA_DEV=${SD_DEVICE}p3
@@ -26,7 +68,7 @@ SD_MOUNT_POINT=/media/sd
 
 # Size in 'M' for MB, 'G' for GB
 BOOT_SIZE=100M
-ROOTFS_SIZE=700M
+ROOTFS_SIZE=1G
 
 FSTYPE=ext4
 BOOT_FSTYPE=vfat
@@ -35,4 +77,6 @@ UPDATER_SPEECH=0
 
 plat_init() {
   msg "Running $PLAT initializations ..."
+  cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
 }
+

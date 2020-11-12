@@ -12,7 +12,7 @@ pn-depends.dot
 task-depends.dot
 environment-oecore
 localconfig.sh
-images
+deploy
 nor/rootfs/
 alphaupdatelist.txt
 conf/toolchain.cmake

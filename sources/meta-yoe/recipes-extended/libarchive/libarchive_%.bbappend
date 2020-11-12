@@ -1,3 +1,2 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-#PACKAGECONFIG_append = " zstd"
+PACKAGECONFIG_remove_class-target = "libxml2"

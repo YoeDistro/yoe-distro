@@ -30,4 +30,4 @@ inherit core-image
 IMAGE_DEVICE_TABLES = "files/device_table-minimal.txt"
 IMAGE_ROOTFS_SIZE = "8192"
 IMAGE_ROOTFS_EXTRA_SPACE = "0"
-BAD_RECOMMENDATIONS += "busybox-syslog"
+BAD_RECOMMENDATIONS += "busybox-syslog busybox-udhcpc"

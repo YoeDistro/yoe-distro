@@ -6,6 +6,12 @@ VERSION=20
 
 SPLASH_DIR="/mnt/.splash"
 
+INSTALL_ROOTFS_MOUNT=$ROOTFS_MOUNT_POINT
+INSTALL_BOOT_MOUNT=$BOOT_MOUNT_POINT
+INSTALL_DATA_MOUNT=$DATA_MOUNT_POINT
+INSTALL_BOOT_MOUNT_IN_ROOTFS=$INSTALL_ROOTFS_MOUNT$INSTALL_BOOT_MOUNT
+INSTALL_DATA_MOUNT_IN_ROOTFS=$INSTALL_ROOTFS_MOUNT$INSTALL_DATA_MOUNT
+
 EMMC_ROOTFS_MOUNT=$ROOTFS_MOUNT_POINT
 EMMC_BOOT_MOUNT=$BOOT_MOUNT_POINT
 EMMC_DATA_MOUNT=$DATA_MOUNT_POINT
@@ -209,6 +215,15 @@ mount_data() {
   mkdir -p $mount/log
 }
 
+umount_data() {
+  if mount | grep data; then
+    umount $DATA_MOUNT_POINT
+  fi
+
+  return 0
+}
+
+
 mount_rootfs_sd() {
   mkdir -p $ROOTFS_MOUNT_POINT
   mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT
@@ -245,21 +260,90 @@ mount_rootfs_nand() {
 }
 
 process_update() {
-  msg_splash " "
-  msg_splash "Starting Software Update"
-  msg_splash "------------------------"
-  swupdate -i "$1" -v
-  if [ $? -eq 0 ];then
-    msg_splash "SUCCESS !"
-  else
-    msg_splash "FAILURE !"
+  if ! tar -xvf $1; then
+    msg_splash "Failed to extract update file"
+    return 1
   fi
-  /bin/sh
-  while [ 1 ]; do
-    echo "Remove update media from USB and reboot the system !"
-    sleep 90
-    /sbin/reboot
+
+  if ! sha256sum -c update.sha256; then
+    msg_splash "error in update file"
+    return 1
+  fi
+
+  # check if EMMC card has 3 partitions, if not, partition it now
+  total_install_partitions=$(fdisk -l ${INSTALL_DEVICE} | grep ^${INSTALL_DEVICE}p | wc -l)
+  msg_splash "Found $total_install_partitions partitions on ${INSTALL_DEVICE}"
+  if [ $total_install_partitions -ne 3 ]; then
+    msg_splash "Partitioning storage, please wait ..."
+    if ! partition_${STORAGE}; then
+      msg_splash "Partitioning ${STORAGE} failed, bad media"
+      sleep 9999d
+    fi
+  fi
+
+  if ! mount_boot $INSTALL_BOOT_MOUNT $INSTALL_BOOT_DEV; then
+    msg_splash "Formatting BOOT partition"
+    format_${STORAGE}_boot
+    if ! mount_boot $INSTALL_BOOT_MOUNT $INSTALL_BOOT_DEV; then
+      msg_splash "Failed to mount BOOT partition"
+      return 1
+    fi
+  fi
+
+  for f in $BOOT; do
+    if [ -e $f ]; then
+      if ! diff $f $INSTALL_BOOT_MOUNT/$f; then
+        msg_splash "Updating bootloader asset ... $f"
+        cp $f $INSTALL_BOOT_MOUNT
+        if [ "$f" = "u-boot.bin" ]; then
+          dd if=$INSTALL_BOOT_MOUNT/$f of=$INSTALL_DEVICE bs=512 seek=1
+        fi
+        bootloader_updated=1
+      fi
+    fi
   done
+
+  if [ -n "$bootloader_updated" ]; then
+    msg_splash "bootloader updated"
+  fi
+
+  for f in $KERNEL; do
+    if [ -e $f ]; then
+      if ! diff $f $INSTALL_BOOT_MOUNT/$f; then
+        msg_splash "Updating kernel assets ..."
+        cp $f $INSTALL_BOOT_MOUNT
+        kernel_updated=1
+      fi
+    fi
+  done
+
+  umount $INSTALL_BOOT_DEV
+
+  if [ -n "$kernel_updated" ]; then
+    msg_splash "kernel updated, rebooting ..."
+    restart
+    sleep 9999d
+  fi
+
+  if [ -e $ROOTFS ]; then
+    msg_splash "Updating rootfs"
+    format_${STORAGE}_rootfs
+    mkdir -p $INSTALL_ROOTFS_MOUNT
+    if ! mount $INSTALL_ROOTFS_DEV $INSTALL_ROOTFS_MOUNT; then
+      msg_splash "Failed to mount rootfs"
+      return 1
+    fi
+
+    tar xf ${ROOTFS} -C $INSTALL_ROOTFS_MOUNT
+    umount $INSTALL_ROOTFS_MOUNT
+    msg_splash "rootfs update complete"
+  fi
+  # find if data partition is not formatted
+  fs_type=$(blkid -o value -s TYPE $INSTALL_DATA_DEV)
+  if [ -z "$fs_type" ]; then
+    format_${STORAGE}_data
+  fi
+
   return 0
 }
 
@@ -270,7 +354,7 @@ process_update() {
 find_update_file() {
   DIR=$1
   cd $DIR
-  extensions="swu"
+  extensions="upd img"
   update=""
   for ext in $extensions; do
     update=$(echo $(ls ${UPDATE_FILE_NAME}*.${ext} -v -r 2>/dev/null) | sed "s/update.${ext}//" | sed "s/${ext}.*/${ext}/" | sed "s/^\s*//")
@@ -320,6 +404,8 @@ update_from_sd() {
       return 0
     fi
   fi
+
+  return 1
 }
 
 update_from_data() {
@@ -336,7 +422,7 @@ update_from_data() {
       return 0
     fi
   fi
-  return 0
+  return 1
 }
 
 update() {
@@ -348,12 +434,15 @@ update() {
     msg "checking sd for update ..."
     if ! (mount_sd && update_from_sd); then
       msg "checking data partition for update ..."
-      mount_data $DATA_MOUNT_POINT $EMMC_DATA_DEV && update_from_data
+      mount_data $DATA_MOUNT_POINT $INSTALL_DATA_DEV && update_from_data
     fi
   fi
 }
 
 boot() {
+  umount_usb
+  umount_sd
+  umount_data
 
   if [ -e $EMMC_BOOT_DEV ]; then
     msg_splash "Booting from EMMC ..."
@@ -364,9 +453,6 @@ boot() {
     speak "booting system from S D"
     mount_rootfs_sd
   fi
-
-  umount_usb
-  umount_sd
 
   msg_splash "Moving system mounts into rootfs..."
   mount --move /dev $ROOTFS_MOUNT_POINT/dev
