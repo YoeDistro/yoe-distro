@@ -41,11 +41,13 @@ BOOT="\
 
 ROOTFS="rootfs.tar.xz"
 
-# Can have "emmc" or "sd", this is the install target media
-STORAGE="sd"
-
 EMMC_DEVICE=/dev/mmcblk0
 SD_DEVICE=/dev/mmcblk1
+
+# Can have "emmc" or "sd", this is the install target media
+STORAGE="sd"
+# Install location is EMMC_DEVICE if STORAGE is 'emmc' and
+# SD_DEVICE if STORAGE is 'sd'
 INSTALL_DEVICE=${SD_DEVICE}
 
 INSTALL_BOOT_DEV=${INSTALL_DEVICE}p1

@@ -1,0 +1,29 @@
+From 08abd9d1fc3e2d7d92f819009c609dd9c369a545 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Fri, 13 Nov 2020 11:50:39 -0800
+Subject: [PATCH] ti/mmc: Load kernel and fdt from FAT parition
+
+Default is to use /boot directory on rootfs partition, but in some
+scenarios, it makes sense to keep kernel on primary partition. Atleast
+it helps with yoe updater mechanism
+
+Upstream-Status: Inappropriate [Distro-Specific]
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ include/environment/ti/mmc.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/include/environment/ti/mmc.h
++++ b/include/environment/ti/mmc.h
+@@ -23,8 +23,8 @@
+ 	"importbootenv=echo Importing environment from mmc${mmcdev} ...; " \
+ 		"env import -t ${loadaddr} ${filesize}\0" \
+ 	"loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}\0" \
+-	"loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}\0" \
+-	"loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}\0" \
++	"loadimage=fatload mmc ${mmcdev} ${loadaddr} ${bootfile}\0" \
++	"loadfdt=fatload mmc ${mmcdev} ${fdtaddr} ${fdtfile}\0" \
+ 	"envboot=mmc dev ${mmcdev}; " \
+ 		"if mmc rescan; then " \
+ 			"echo SD/MMC found on device ${mmcdev};" \

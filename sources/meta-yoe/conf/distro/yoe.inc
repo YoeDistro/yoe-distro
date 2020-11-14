@@ -150,9 +150,6 @@ DISABLE_SPLASH = "1"
 # swupdate initramfs init system
 SWUPDATE_INIT = "tiny"
 
-# we want to have boot + rootfs ( that can grow )
-WKS_FILE_beaglebone = "sdimage-bootpart.wks"
-
 # Use 1GB DRAM for QEMU machines, helps in running tests
 QB_MEM = "-m 1024"
 

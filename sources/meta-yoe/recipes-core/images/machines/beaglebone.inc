@@ -1,40 +1,26 @@
 KERNEL_IMAGE = "${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin"
 
+IMAGE_INSTALL_remove = "kernel-image-${KERNEL_IMAGETYPE} \
+                        kernel-image-image kernel-image \
+                        kernel-devicetree \
+                        "
+IMAGE_BOOT_FILES = "${BOOTLOADER_ARTEFACTS} ${KERNEL_ARTEFACTS}"
+
 KERNEL_ARTEFACTS = "\
     ${KERNEL_IMAGETYPE} \
-    meson64_odroidc4.dtb \
-    ads7846.dtbo \
-    can0.dtbo \
-    esp8089.dtbo \
-    fanspeed-full.dtbo \
-    hifishield2.dtbo \
-    hifishield.dtbo \
-    hktft32.dtbo \
-    hktft35.dtbo \
-    i2c0.dtbo \
-    i2c1.dtbo \
-    lineout.dtbo \
-    onewire.dtbo \
-    pcf8563.dtbo \
-    pwm_ab.dtbo \
-    pwm_a-pwmfan.dtbo \
-    pwm_b-backlight.dtbo \
-    pwm_cd.dtbo \
-    pwm_ef.dtbo \
-    sdio.dtbo \
-    spi0.dtbo \
-    sx865x-i2c1.dtbo \
-    uart0.dtbo \
-    uart1.dtbo \
-    uart2.dtbo \
+    am335x-bone.dtb \
+    am335x-boneblack-wireless.dtb \
+    am335x-boneblack.dtb \
+    am335x-boneblue.dtb \
+    am335x-bonegreen-wireless.dtb \
+    am335x-bonegreen.dtb \
     "
 
 ROOTFS_ARTEFACTS = "rootfs.tar.xz"
 
 BOOTLOADER_ARTEFACTS = "\
-    u-boot.bin \
-    boot.ini \
-    config.ini \
+    ${SPL_BINARY} \
+    u-boot.${UBOOT_SUFFIX} \
     "
 UPDATE_IMAGES = "version.txt ${BOOTLOADER_ARTEFACTS} ${KERNEL_ARTEFACTS} ${ROOTFS_ARTEFACTS}"
 
@@ -57,3 +43,4 @@ do_updater() {
         tar -cf ${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd ${UPDATE_IMAGES_}
         rm -rf ${UPDATE_IMAGES_}
 }
+

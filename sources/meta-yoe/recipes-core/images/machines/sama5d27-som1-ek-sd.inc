@@ -1,4 +1,4 @@
-UPDATE_IMAGES_sama5d27-som1-ek-sd ?= "\
+UPDATE_IMAGES ?= "\
         version.txt \
         u-boot.bin \
         BOOT.BIN \
@@ -7,7 +7,7 @@ UPDATE_IMAGES_sama5d27-som1-ek-sd ?= "\
         rootfs.tar.xz \
 "
 
-do_updater_append_sama5d27-som1-ek-sd () {
+do_updater () {
         echo "IMG_VERSION = ${IMG_VERSION}"
         install -d ${TOPDIR}/deploy
         cd ${TOPDIR}/deploy
