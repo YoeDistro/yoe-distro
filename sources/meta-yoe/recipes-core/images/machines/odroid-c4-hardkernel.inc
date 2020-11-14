@@ -38,7 +38,7 @@ BOOTLOADER_ARTEFACTS = "\
     "
 UPDATE_IMAGES = "version.txt ${BOOTLOADER_ARTEFACTS} ${KERNEL_ARTEFACTS} ${ROOTFS_ARTEFACTS}"
 
-do_updater_append() {
+do_updater() {
         echo "IMG_VERSION = ${IMG_VERSION}"
         install -d ${TOPDIR}/deploy
         cd ${TOPDIR}/deploy
