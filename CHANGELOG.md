@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Updater support added for beaglebone
+- Add yoe-install-image for factory install
+- Fix LTO builds with clang
+- Fix Perf on IMX platforms
+- Update intel-microcode to 20201112
+
 ## [3.3.0-alpha] - 2020-11-11
 
 - Add new UBOOT_CONFIG to support ATF on QSPI boot for altera SOCs
