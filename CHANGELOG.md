@@ -7,11 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-- Updater support added for beaglebone
+- Updater support added for beaglebone and raspberrypi4-64
 - Add yoe-install-image for factory install
+- Use kernel+initramfs always for non-qemu machines
 - Fix LTO builds with clang
 - Fix Perf on IMX platforms
 - Update intel-microcode to 20201112
+- mchp-wireless-firmware: bump to 15.4.1
+- Clang updated to 11.0.1
+- Fix Numpy runtime issue when build with clang
+- Update ODROID-N2 to use u-boot 2020.10 
+- Many packages fixed to build for RISCV32
+- Update linux-yocto to v5.4.75 v5.8.18
+- Enable Qemu Usermode on RISCV32
 
 ## [3.3.0-alpha] - 2020-11-11
 
