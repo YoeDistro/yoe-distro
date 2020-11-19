@@ -18,4 +18,4 @@ do_install() {
     mknod -m 622 ${D}/dev/console c 5 1
 }
 
-FILES_${PN} += "/init /platform /dev /usr/share/pw"
+FILES_${PN} += "/init /platform /dev ${datadir}"

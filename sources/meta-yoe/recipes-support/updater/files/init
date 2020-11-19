@@ -1,2 +1,99 @@
-echo "Dummy init"
-echo "Please create machine specific init file"
+#!/bin/sh
+
+. ./platform
+
+VERSION=20
+
+cmdline() {
+  value=" $(cat /proc/cmdline) "
+  value="${value##* ${1}=}"
+  value="${value%% *}"
+  [ "${value}" != "" ] && echo "${value}"
+}
+
+mount_rootfs() {
+  rootfspart=$(findfs $(cmdline root))
+  while [ ! -e $rootfspart ]; do
+    continue
+  done
+  mount -o rw $rootfspart $ROOTFS_MOUNT_POINT
+}
+
+speak() {
+  if [ "$UPDATER_SPEECH" = "1" ]; then
+    msg "speak $1"
+    espeak "$1"
+  else
+    msg "$1"
+  fi
+}
+
+msg() {
+  echo "$@" >/dev/console
+}
+
+# Prints information
+msg_splash() {
+  msg $1
+
+  if [ "$splash_enabled" = 1 ]; then
+    progress=$2
+
+    if [ "$progress" = "" ]; then
+      progress="0"
+    fi
+
+    TMPDIR=$SPLASH_DIR psplash-write "MSG $1"
+    TMPDIR=$SPLASH_DIR psplash-write "PROGRESS $progress"
+    usleep 500000
+  fi
+}
+
+start_splash() {
+  if [ -e /usr/bin/psplash ]; then
+    splash_enabled=1
+    # set up psplash
+    mkdir -p "$SPLASH_DIR"
+    mount tmpfs -t tmpfs $SPLASH_DIR -o,size=40k 2>&1 >/dev/console
+    TMPDIR=$SPLASH_DIR psplash &
+    2>&1 >/dev/console
+    sleep 1
+  fi
+}
+
+initialize() {
+  msg "============================================================"
+  msg "Launching $TITLE v$VERSION"
+  mkdir -p /dev
+  mkdir -p /sys
+  mkdir -p /proc
+
+  mount -t devtmpfs none /dev
+  mount -t sysfs sysfs /sys
+  mount -t proc proc /proc
+
+  start_splash
+
+  msg_splash "$TITLE v${VERSION}"
+
+  plat_init
+
+  speak "launching $TITLE version $VERSION"
+
+  mkdir -p $BOOT_MOUNT_POINT
+  mkdir -p $DATA_MOUNT_POINT
+  mkdir -p $ROOTFS_MOUNT_POINT
+  mount_rootfs
+}
+
+boot() {
+  msg_splash "Moving system mounts into rootfs..."
+  mount -n --move /dev $ROOTFS_MOUNT_POINT/dev
+  mount -n --move /proc $ROOTFS_MOUNT_POINT/proc
+  mount -n --move /sys $ROOTFS_MOUNT_POINT/sys
+  cd $ROOTFS_MOUNT_POINT
+  exec switch_root -c /dev/console $ROOTFS_MOUNT_POINT /sbin/init 5
+}
+
+initialize
+boot

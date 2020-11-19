@@ -1,2 +1,10 @@
-echo "Dummy platform file"
-echo "Please create machine specific platform file"
+TITLE="Yoe Pre-init"
+
+ROOTFS_MOUNT_POINT=/root    
+BOOT_MOUNT_POINT=/boot
+DATA_MOUNT_POINT=/data
+SPLASH_DIR="/mnt/.splash"
+
+plat_init() {
+  :
+}
