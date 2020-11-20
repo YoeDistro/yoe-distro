@@ -586,3 +586,35 @@ yoe_install_image() {
   fi
   unset WICIMG
 }
+
+# install default installer image
+yoe_install() {
+  DRIVE=$1
+  IMG_VERSION=$(yoe_get_image_version)
+  yoe_check_install_dependencies || return 1
+
+  if [ ! $DRIVE ] || [ ! $IMAGE_NAME ]; then
+    echo "Usage: yoe_install_image /dev/sdX"
+    echo "WARNING!!!, make sure you specify your SD card and not a workstation disk"
+    echo
+    return 1
+  fi
+  WICIMG="$IMAGE"
+  if [ -z $WICIMG ]; then
+    WICIMG=${OE_BASE}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
+  fi
+  if [ ! -e $WICIMG ]; then
+    echo "$WICIMG does not exist, please build the image first"
+    echo
+    unset WICIMG
+    return 1
+  fi
+  bmaptool copy ${WICIMG} ${DRIVE}
+  if [ $? != 0 ]; then
+    echo "Please make sure\n"
+    echo "1. disk is inserted and discovered as ${DRIVE}"
+    echo "2. run 'sudo chmod 666 ${DRIVE}'"
+    echo "3. re-run yoe_install_image command"
+  fi
+  unset WICIMG
+}
