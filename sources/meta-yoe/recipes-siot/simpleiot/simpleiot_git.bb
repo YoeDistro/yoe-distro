@@ -9,15 +9,14 @@ SECTION = "apps"
 
 DEPENDS = "go-native elm-binary-native nodejs-native"
 
-inherit update-rc.d goarch
+inherit systemd update-rc.d goarch
 
-SRCREV = "v0.0.14"
-PV = "0.0.14+git${SRCPV}"
+SRCREV = "2f327859786887904fef86da29a86cb590ae8c2b"
+PV = "0.0.14"
 
 BRANCH ?= "master"
 
 SRC_URI = "git://github.com/simpleiot/simpleiot;branch=${BRANCH} \
-           file://siot \
            "
 S = "${WORKDIR}/git"
 
@@ -49,7 +48,14 @@ do_compile() {
 
 do_install() {
     install -D -m 0755 ${S}/siot ${D}${bindir}/siot
-    install -D -m 0755 ${WORKDIR}/siot ${D}${sysconfdir}/init.d/siot
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+        install -D -m 0644 ${S}/contrib/siot.service ${D}${systemd_unitdir}/system/siot.service
+    else
+        install -D -m 0755 ${S}/contrib/siot.init ${D}${sysconfdir}/init.d/siot
+    fi
 }
 
+SYSTEMD_SERVICE_${PN} = "siot.service"
+
 INSANE_SKIP_${PN} += "ldflags"
+
