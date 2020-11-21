@@ -21,8 +21,6 @@ PACKAGE_INSTALL = "\
   e2fsprogs-mke2fs \
   e2fsprogs-e2fsck \
   e2fsprogs-tune2fs \
-  util-linux-fsck \
-  util-linux-sfdisk \
   "
 IMAGE_FSTYPES = "${INITRAMFS_FSTYPES}"
 inherit core-image
