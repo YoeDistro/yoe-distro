@@ -25,6 +25,7 @@ USB_MOUNT_POINT=/media/usb
 SD_MOUNT_POINT=/media/sd
 
 # Size in 'M' for MB, 'G' for GB
+RESERVED_SIZE=2M
 BOOT_SIZE=100M
 ROOTFS_SIZE=700M
 

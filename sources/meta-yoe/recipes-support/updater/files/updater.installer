@@ -110,10 +110,15 @@ partition_sd() {
   umount ${DEVICE}p3
 
   # Delete existing partition tables
-  dd if=/dev/zero of=$DEVICE bs=512 count=16
+  dd if=/dev/zero of=$DEVICE bs=512 count=2
   # Three primary partitions: one FAT bootable part (boot),
   # second for rootfs and the rest is in third(data)
-  sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk $DEVICE
+  sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS | fdisk $DEVICE
+n      # add new partition
+p      # Partition type
+4      # partition number
+       # default - first sector
++${RESERVED_SIZE} # partition size
 n      # add new partition
 p      # Partition type
 1      # partition number
@@ -140,6 +145,8 @@ t      # change partition type
 83     # Linux filesystem
 a      # toggle a bootable flag
 1      # partition number
+d      # delete temp partition 4
+4      # partition number
 w      # write partition table and exit
 FDISK_CMDS
   partprobe
