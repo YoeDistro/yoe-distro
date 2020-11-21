@@ -20,6 +20,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Many packages fixed to build for RISCV32
 - Update linux-yocto to v5.4.75 v5.8.18
 - Enable Qemu Usermode on RISCV32
+- Update linux-altera to 5.4.64
+- Update linux-fslc to v5.4.78
+- Disable LTO for qtbase
 
 ## [3.3.0-alpha] - 2020-11-11
 
