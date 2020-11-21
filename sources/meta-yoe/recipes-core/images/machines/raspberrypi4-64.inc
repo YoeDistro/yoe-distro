@@ -93,8 +93,8 @@ do_updater() {
         done
 
         sha256sum ${UPDATE_IMAGES}  > update.sha256
-        tar -cf ${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd ${UPDATE_IMAGES_}
-        mv ${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd ${TOPDIR}/deploy
+        rm -rf ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
+        ls ${UPDATE_IMAGES_} | cpio -ov -H newc > ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
         install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.xz ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
         install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.bmap ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.bmap
         rm -rf ${TOPDIR}/deploy/${MACHINE}

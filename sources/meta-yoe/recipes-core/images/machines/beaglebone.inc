@@ -40,7 +40,8 @@ do_updater() {
         rm ${KERNEL_IMAGETYPE}
         install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGE} ${KERNEL_IMAGETYPE}
         sha256sum ${UPDATE_IMAGES}  > update.sha256
-        tar -cf ${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd ${UPDATE_IMAGES_}
+        rm -rf ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
+        ls ${UPDATE_IMAGES_} | cpio -ov -H newc > ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
         rm -rf ${UPDATE_IMAGES_}
 }
 

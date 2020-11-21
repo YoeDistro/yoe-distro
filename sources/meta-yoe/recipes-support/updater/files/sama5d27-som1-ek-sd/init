@@ -245,7 +245,7 @@ mount_rootfs_nand() {
 }
 
 process_update() {
-  if ! tar -xvf $1; then
+  if ! cpio -id < $1; then
     msg_splash "Failed to extract update file"
     return 1
   fi
