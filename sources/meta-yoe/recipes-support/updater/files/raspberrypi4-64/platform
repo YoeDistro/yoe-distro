@@ -104,3 +104,7 @@ plat_init() {
   msg "Running $PLAT initializations ..."
   cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
 }
+
+plat_bootloader_quirks() {
+  :
+}

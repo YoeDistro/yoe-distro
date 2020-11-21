@@ -82,3 +82,14 @@ plat_init() {
   cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
 }
 
+plat_bootloader_quirks() {
+  f=u-boot.bin
+  if [ -e $f ]; then
+    if ! diff $f $INSTALL_BOOT_MOUNT/$f; then
+      msg_splash "Updating bootloader asset ... $f"
+      cp $f $INSTALL_BOOT_MOUNT
+      dd if=$INSTALL_BOOT_MOUNT/$f of=$INSTALL_DEVICE bs=512 seek=1
+      bootloader_updated=1
+    fi
+  fi
+}
