@@ -1,0 +1,30 @@
+From 49456d2fd11c4b556de3ebdfde4273d358c7d0b0 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Thu, 19 Nov 2020 18:57:52 -0800
+Subject: [PATCH] enables larger kernel images
+
+The default is 8MiB which is increased to 16 MiB for 32bit case
+
+Upstream-Status: Inappropriate [Yoe Specific]
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ include/configs/rpi.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/configs/rpi.h b/include/configs/rpi.h
+index 834f1cd236..80fbc50b21 100644
+--- a/include/configs/rpi.h
++++ b/include/configs/rpi.h
+@@ -59,6 +59,8 @@
+ 
+ #ifdef CONFIG_ARM64
+ #define CONFIG_SYS_BOOTM_LEN		SZ_64M
++#else
++#define CONFIG_SYS_BOOTM_LEN		SZ_16M
+ #endif
+ 
+ /* Devices */
+-- 
+2.29.2
+

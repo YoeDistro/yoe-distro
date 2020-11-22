@@ -2,6 +2,13 @@ KERNEL_IMAGE = "${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin"
 
 KERNEL_ARTEFACTS = "\
     ${KERNEL_IMAGETYPE} \
+    bcm2708-rpi-b.dtb \
+    bcm2708-rpi-cm.dtb \
+    bcm2708-rpi-zero-w.dtb \
+    bcm2709-rpi-2-b.dtb \
+    bcm2710-rpi-3-b-plus.dtb \
+    bcm2710-rpi-3-b.dtb \
+    bcm2710-rpi-cm3.dtb \
     bcm2711-rpi-4-b.dtb \
 "
 DTBOFILES = "\
@@ -39,11 +46,10 @@ ROOTFS_ARTEFACTS = "rootfs.tar.xz"
 
 BOOTLOADER_ARTEFACTS = "\
     boot.scr \
-    kernel8.img \
+    kernel7.img \
     "
 BOOTFILES = "\
     bootcode.bin \
-    bootfiles-20201002.stamp \
     cmdline.txt \
     config.txt \
     fixup4cd.dat \
@@ -74,7 +80,7 @@ do_updater() {
         # rootfs
         install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz ${ROOTFS_ARTEFACTS}
         # bootloader
-        install ${DEPLOY_DIR_IMAGE}/u-boot.bin kernel8.img
+        install ${DEPLOY_DIR_IMAGE}/u-boot.bin kernel7.img
         install ${DEPLOY_DIR_IMAGE}/boot.scr boot.scr
         for f in ${BOOTFILES}
         do

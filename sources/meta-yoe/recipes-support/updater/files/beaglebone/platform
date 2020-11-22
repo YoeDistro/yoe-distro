@@ -50,6 +50,7 @@ USB_MOUNT_POINT=/media/usb
 SD_MOUNT_POINT=/media/sd
 
 # Size in 'M' for MB, 'G' for GB
+RESERVED_SIZE=2M
 BOOT_SIZE=100M
 ROOTFS_SIZE=1G
 
@@ -61,4 +62,8 @@ UPDATER_SPEECH=0
 plat_init() {
   msg "Running $PLAT initializations ..."
   cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
+}
+
+plat_bootloader_quirks() {
+  :
 }

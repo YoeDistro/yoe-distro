@@ -184,7 +184,7 @@ update_rootfs() {
 
 process_update() {
   UPDATE_FILE=$1
-  if ! tar -C /tmp -xf $UPDATE_FILE; then
+  if ! cpio -id < $UPDATE_FILE; then
     msg_splash "Failed to extract update image"
     return 1
   fi
