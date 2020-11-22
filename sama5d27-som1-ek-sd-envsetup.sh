@@ -122,5 +122,5 @@ yoe_sam_install_bootstrap_files() {
 
   cp ${OE_DEPLOY_DIR}/zImage-initramfs-${MACHINE}.bin $1/zImage
   cp ${OE_DEPLOY_DIR}/at91-sama5d27_som1_ek.dtb $1
-  cp ${OE_BASE}/images/${MACHINE}_${IMG_VERSION}.upd $1
+  cp ${OE_BASE}/deploy/${MACHINE}_${IMG_VERSION}.upd $1
 }
