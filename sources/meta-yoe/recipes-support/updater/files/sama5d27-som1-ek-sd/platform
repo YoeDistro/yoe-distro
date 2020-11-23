@@ -1,19 +1,30 @@
 TITLE="SAM SOM"
 PLAT="sama5d27-som1-ek-sd"
-UPDATE_FILE_NAME="sama5d27"
+UPDATE_FILE_NAME="${PLAT}"
 
 USB_DETECTION_DELAY=4
 
 KERNEL="zImage at91-sama5d27_som1_ek.dtb"
-BOOT="BOOT.BIN u-boot.bin"
+BOOT="BOOT.BIN u-boot.bin uboot.env"
 ROOTFS="rootfs.tar.xz"
 
 EMMC_DEVICE=/dev/mmcblk0
+SD_DEVICE=/dev/mmcblk1
+
+# Can have "emmc" or "sd", this is the install target media
+STORAGE="sd"
+# Install location is EMMC_DEVICE if STORAGE is 'emmc' and
+# SD_DEVICE if STORAGE is 'sd'
+INSTALL_DEVICE=${SD_DEVICE}
+
+INSTALL_BOOT_DEV=${INSTALL_DEVICE}p1
+INSTALL_ROOTFS_DEV=${INSTALL_DEVICE}p2
+INSTALL_DATA_DEV=${INSTALL_DEVICE}p3
+
 EMMC_BOOT_DEV=${EMMC_DEVICE}p1
 EMMC_ROOTFS_DEV=${EMMC_DEVICE}p2
 EMMC_DATA_DEV=${EMMC_DEVICE}p3
 
-SD_DEVICE=/dev/mmcblk1
 SD_BOOT_DEV=${SD_DEVICE}p1
 SD_ROOTFS_DEV=${SD_DEVICE}p2
 SD_DATA_DEV=${SD_DEVICE}p3
@@ -35,5 +46,8 @@ BOOT_FSTYPE=vfat
 UPDATER_SPEECH=0
 
 plat_init() {
-  msg "Running $PLAT initializations ..."
+  :
+}
+plat_bootloader_quirks() {
+  :
 }
