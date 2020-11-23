@@ -75,6 +75,7 @@ do_updater() {
         echo "IMG_VERSION = ${IMG_VERSION}"
         rm -rf ${TOPDIR}/deploy/${MACHINE}
         install -d ${TOPDIR}/deploy/${MACHINE}
+        OLDPWD="$PWD"
         cd ${TOPDIR}/deploy/${MACHINE}
         echo "${IMG_VERSION}" > version.txt
         # rootfs
@@ -103,5 +104,6 @@ do_updater() {
         ls ${UPDATE_IMAGES_} | cpio -ov -H newc > ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
         install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.xz ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
         install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.bmap ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.bmap
+        cd ${OLDPWD}
         rm -rf ${TOPDIR}/deploy/${MACHINE}
 }
