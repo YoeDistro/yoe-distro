@@ -7,10 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [3.1.4] - 2020-10-25
+
 - Update linux-yocto/5.4 to v5.4.69
 - Bump minimum required python version to 3.5
 - Update lttng to 2.11.6
-- Bump linux-fslc to v5.4.75
+- Bump linux-fslc and linux-fslc-imx to v5.4.78
 - Support tc358743 on Nitrogen8mm SOM
 - At91bootstrap bumped to v3.10.0
 - Add WILC apps to microchip-headless-image
@@ -26,7 +28,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update gstreamer1.0 to 1.16.3
 - Mitigate the Straight-line Speculation attack in gcc
 - Fix parsing of slim encoded tzdata in glib-2.0
-- 
+- Update linux altera to 5.4.64
+- Update intel-microcode to 20201118
+- Update wireshark to 3.2.7
+- Fix u-boot-ti-staging_2020.01 to build on hosts with gcc10
+- Various security fixes
+
 ## [3.1.3] - 2020-10-08
 
 - Remove freedesktop.org urls
