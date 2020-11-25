@@ -3,8 +3,7 @@ UPDATE_IMAGES ?= "\
         u-boot.bin \
         uboot.env \
         BOOT.BIN \
-        zImage \
-        at91-sama5d27_som1_ek.dtb \
+        sama5d27_som1_ek.itb \
         rootfs.tar.xz \
 "
 
@@ -15,8 +14,8 @@ do_updater () {
         cd ${TOPDIR}/deploy/${MACHINE}
         echo "${IMG_VERSION}" > version.txt
         install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz rootfs.tar.xz
-        install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGE} zImage
-        install ${DEPLOY_DIR_IMAGE}/at91-sama5d27_som1_ek.dtb at91-sama5d27_som1_ek.dtb
+        #install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGE} zImage
+        install ${DEPLOY_DIR_IMAGE}/sama5d27_som1_ek.itb sama5d27_som1_ek.itb
         install ${DEPLOY_DIR_IMAGE}/BOOT.BIN BOOT.BIN
         install ${DEPLOY_DIR_IMAGE}/u-boot.bin u-boot.bin
         install ${DEPLOY_DIR_IMAGE}/uboot.env uboot.env
