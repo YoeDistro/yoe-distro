@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [3.3.0-beta] - 2020-11-24
+
 - Updater support added for beaglebone, rpi4-64, rpi3, and sama5d27
 - Add yoe-install-image for factory install
 - Use kernel+initramfs always for non-qemu machines
@@ -22,9 +24,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update linux-yocto to v5.4.75 v5.8.18
 - Enable Qemu Usermode on RISCV32
 - Update linux-altera to 5.4.64
-- Update linux-fslc to v5.4.79
+- Update linux-fslc to v5.4.80
 - Disable LTO for qtbase
 - Various package version upgrades
+- Update golang to 1.15.5
+- Update linux-yocto to latest 5.4.78
+- Fix world builds for RISCV-32
 
 ## [3.3.0-alpha] - 2020-11-11
 
