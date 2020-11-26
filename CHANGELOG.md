@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Make meta-python dependency optional for meta-raspberrypi
+- Upgrade raspberrypi-firmware and linux-raspberrypi to 5.4.79
+- Fix zsh support in envsetup
+- Fix install conflicts between canutils and can-utils recipes
+- Refactor cdrkit and extend to build native version
+
 ## [3.3.0-beta] - 2020-11-24
 
 - Updater support added for beaglebone, rpi4-64, rpi3, and sama5d27
