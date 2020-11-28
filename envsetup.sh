@@ -490,16 +490,16 @@ dkr() {
   unset MAP_TMPDIR
   unset MAP_SSTATE_DIR
   unset MAP_GITCONFIG
-  MAP_TMPDIR="-v $(readlink -f $OE_BUILD_TMPDIR):$(readlink -f $OE_BUILD_TMPDIR)"
-  MAP_DL_DIR="-v $(readlink -f $OE_DL_DIR):$(readlink -f $OE_DL_DIR)"
-  MAP_SSTATE_DIR="-v $(readlink -f $OE_SSTATE_DIR):$(readlink -f $OE_SSTATE_DIR)"
+  MAP_TMPDIR="--volume=$(readlink -f $OE_BUILD_TMPDIR):$(readlink -f $OE_BUILD_TMPDIR)"
+  MAP_DL_DIR="--volume=$(readlink -f $OE_DL_DIR):$(readlink -f $OE_DL_DIR)"
+  MAP_SSTATE_DIR="--volume=$(readlink -f $OE_SSTATE_DIR):$(readlink -f $OE_SSTATE_DIR)"
 
   if [ -n "$SSH_AUTH_SOCK" ]; then
     SSH_AUTH_DIR=$(readlink -f $SSH_AUTH_SOCK)
   fi
 
   if [ -e ~/.gitconfig ]; then
-    MAP_GITCONFIG="-v $HOME/.gitconfig:/home/build/.gitconfig"
+    MAP_GITCONFIG="--volume=$HOME/.gitconfig:/home/build/.gitconfig"
   fi
 
   docker run --rm -i $PSEUDO_TTY \
