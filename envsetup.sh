@@ -28,6 +28,8 @@ if [ -n "${shell##*zsh*}" ] && [ -n "${shell##*bash*}" ]; then
   return 1
 fi
 
+DOCKER="docker"
+
 if [ -f local.sh ]; then
   echo "reading local settings"
   . ./local.sh
@@ -147,7 +149,7 @@ HTTPS_PROXY https_proxy FTP_PROXY ftp_proxy FTPS_PROXY ftps_proxy ALL_PROXY \
 all_proxy NO_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY \
 SDKMACHINE BB_NUMBER_THREADS BB_NO_NETWORK PARALLEL_MAKE GIT_PROXY_COMMAND \
 SOCKS5_PASSWD SOCKS5_USER SCREENDIR STAMPS_DIR BBPATH_EXTRA BB_SETSCENE_ENFORCE \
-OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE"
+OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE DOCKER"
 
 BB_ENV_EXTRAWHITE="$(echo $BB_ENV_EXTRAWHITE $BB_ENV_EXTRAWHITE_OE | tr ' ' '\n' | LC_ALL=C sort --unique | tr '\n' ' ')"
 
@@ -449,12 +451,12 @@ if [ "$DOCKER_REPO" = "none" ]; then
 fi
 
 check_docker() {
-  if ! docker -v >/dev/null 2>&1; then
+  if ! $DOCKER -v >/dev/null 2>&1; then
     echo "Error, please install docker or set DOCKER_REPO=none in environment"
     return 1
   fi
 
-  if ! docker images -q $DOCKER_REPO >/dev/null 2>&1; then
+  if ! $DOCKER images -q $DOCKER_REPO >/dev/null 2>&1; then
     echo "Error, docker image $DOCKER_REPO not installed"
     echo "Please install it with: docker pull $DOCKER_REPO"
     return 1
@@ -502,7 +504,20 @@ dkr() {
     MAP_GITCONFIG="--volume=$HOME/.gitconfig:/home/build/.gitconfig"
   fi
 
-  docker run --rm -i $PSEUDO_TTY \
+  GGID=$(id -g)
+  UUID=$(id -u)
+  UID_ARGS=""
+  if [ "$DOCKER" = "podman"]; then
+      # Running with namespace and overlay-fs labelling enabled introduces a
+      # significant delay in podman startup when the build directory contains
+      # giga-bytes of data, so for now, disable default namespacing and provide
+      # our own.
+      # Running without namespace mapping as non-root
+      # https://github.com/containers/podman/issues/2180
+      UID_ARGS="--privileged --uidmap $UUID:0:1 --uidmap 0:1:$UUID --gidmap $GGID:0:1 --gidmap 0:1:$GGID"
+  fi
+
+  $DOCKER run --rm -i $PSEUDO_TTY \
     -v ${OE_BASE}:${OE_BASE} \
     -v ~/.ssh:/home/build/.ssh \
     $MAP_GITCONFIG \
@@ -513,7 +528,7 @@ dkr() {
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
     -w ${OE_BASE} \
-    --user $(id -u):$(id -g) \
+    $UID_ARGS --user=$UUID:$GGID \
     $VNC_PORT \
     ${DOCKER_REPO} /bin/bash -c "$CMD $@"
 }
