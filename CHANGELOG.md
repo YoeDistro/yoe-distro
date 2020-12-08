@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- linux-at91 updated to linux4sam-2020.10-rc5
+- Update egt to 1.1-rc
+- Update linux-fslc-imx and linux-fslc to v5.4.81
+- u-boot-toradex updated to 2020.07
+- Update RB5 board support
+- provide module.lds for out of tree builds in v5.10+
+
 ## [3.1.4] - 2020-10-25
 
 - Update linux-yocto/5.4 to v5.4.69
