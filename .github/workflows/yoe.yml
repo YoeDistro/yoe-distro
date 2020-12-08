@@ -18,10 +18,11 @@ jobs:
     timeout-minutes: 720
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.2
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
           submodules: recursive
+          #path: '${{ github.event.pull_request.head.sha }}'
       - name: Setup
         run: |
           export DOCKER_REPO=none
