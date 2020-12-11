@@ -6,7 +6,7 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version keep it up with Yocto release
-DISTRO_VERSION = "3.3.0-alpha"
+DISTRO_VERSION = "3.3.0-beta"
 DISTRO_CODENAME = "cheviot"
 SDK_VERSION := "${DISTRO_VERSION}"
 
@@ -177,4 +177,3 @@ PNBLACKLIST[tearsofsteel-1080p] = "big and doesn't really need to be tested so m
 RDEPENDS_packagegroup-meta-multimedia_remove_pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
 RDEPENDS_packagegroup-meta-oe-fortran-packages_remove_pn-packagegroup-meta-oe = "lapack octave suitesparse"
 RDEPENDS_packagegroup-meta-python3_remove_pn-packagegroup-meta-python = "python3-cvxopt"
-

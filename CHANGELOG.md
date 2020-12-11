@@ -14,11 +14,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactor cdrkit and extend to build native version
 - Update linux-at91 to linux4sam-2020.10-rc5
 - Bump egt to 1.1-rc
-- Bump linux-fslc and linux-fslc-imx to v5.4.81
+- Bump linux-fslc and linux-fslc-imx to v5.4.82
 - Update u-boot-toradex to 2020.07
 - Fix RB5 board support
 - linux-raspberrypi use linux-yocto tooling
 - Fix X11 and wayland image builds with userland graphics
+- Use relative symlinks for anything pulled from PREMIRRORS in fetchers
+- Sam-ba is upgraded to 3.3.1
+- u-boot-at91 updated to linux4sam-2020.10
+- Added firmware for BCM43456
+- linux-ti-staging updated to 5.4.78
+- Assorted package version updates and reprodubility improvements
 
 ## [3.3.0-beta] - 2020-11-24
 
