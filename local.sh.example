@@ -25,3 +25,7 @@
 # otherwise it will emit all control characters into
 # redirected log files, default is 'yes'
 #export DOCKER_PSEUDO_TTY=no
+
+# By default docker is used if DOCKER_REPO is set to a value different than
+# none. If you prefer to use podman instead of docker, un-comment this line
+#export DOCKER="podman"
