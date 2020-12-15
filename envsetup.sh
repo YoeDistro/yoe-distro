@@ -472,7 +472,7 @@ dkr() {
     echo "setting dkr action to shell"
     CMD="/bin/bash"
   else
-    CMD=". ${OE_BASE}/envsetup.sh && $1"
+    CMD=". ${OE_BASE}/envsetup.sh && $@"
     shift
   fi
   if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
@@ -530,7 +530,7 @@ dkr() {
     -w ${OE_BASE} \
     $UID_ARGS --user=$UUID:$GGID \
     $VNC_PORT \
-    ${DOCKER_REPO} /bin/bash -c "$CMD $@"
+    ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
 
 bitbake() {
