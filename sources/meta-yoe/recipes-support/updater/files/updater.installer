@@ -110,7 +110,7 @@ partition_sd() {
   umount ${DEVICE}p3
 
   # Delete existing partition tables
-  dd if=/dev/zero of=$DEVICE bs=512 count=2
+  dd if=/dev/zero of=$DEVICE bs=512 count=2 conv=fsync
   # Three primary partitions: one FAT bootable part (boot),
   # second for rootfs and the rest is in third(data)
   sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS | fdisk $DEVICE
@@ -149,7 +149,7 @@ d      # delete temp partition 4
 4      # partition number
 w      # write partition table and exit
 FDISK_CMDS
-  partprobe
+  partprobe $DEVICE
   fdisk -l $DEVICE
   echo "partitioning $DEVICE done"
   return 0
@@ -185,15 +185,12 @@ format_emmc_data() {
 
 mount_usb() {
   mkdir -p $USB_MOUNT_POINT
-  mount /dev/sda $USB_MOUNT_POINT
-  if [ $? -ne 0 ]; then
-    mount /dev/sda1 $USB_MOUNT_POINT
-    if [ $? != 0 ]; then
-      msg_splash "No USB disk detected"
+  if ! mount /dev/sda $USB_MOUNT_POINT; then
+    if ! mount /dev/sda1 $USB_MOUNT_POINT; then
+      msg_splash "No USB Installer disk detected"
       return 1
     fi
   fi
-
   msg_splash "USB disk mounted"
   return 0
 }
@@ -202,18 +199,15 @@ umount_usb() {
   if mount | grep usb; then
     umount $USB_MOUNT_POINT
   fi
-
   return 0
 }
 
 mount_sd() {
   mkdir -p $SD_MOUNT_POINT
-  mount $SD_BOOT_DEV $SD_MOUNT_POINT
-  if [ $? -ne 0 ]; then
+  if ! mount $SD_BOOT_DEV $SD_MOUNT_POINT; then
     msg_splash "No SD card detected"
     return 1
   fi
-
   msg_splash "SD card mounted"
   return 0
 }
@@ -230,9 +224,11 @@ mount_boot() {
   mount=$1
   device=$2
   mkdir -p $mount
-  mount $device $mount
-  if [ $? -ne 0 ]; then
-    return 1
+  if ! mount $device $mount; then
+    fsck -y $device
+    if ! mount $device $mount; then
+      return 1
+    fi
   fi
 }
 
@@ -241,10 +237,11 @@ mount_data() {
   mount=$1
   device=$2
   mkdir -p $mount
-
-  mount $device $mount
-  if [ $? -ne 0 ]; then
-    return 1
+  if ! mount $device $mount; then
+    fsck -y $device
+    if ! mount $device $mount; then
+      return 1
+    fi
   fi
   mkdir -p $mount/log
 }
@@ -253,38 +250,41 @@ umount_data() {
   if mount | grep data; then
     umount $DATA_MOUNT_POINT
   fi
-
   return 0
 }
 
-
 mount_rootfs_sd() {
   mkdir -p $ROOTFS_MOUNT_POINT
-  mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT
-  if [ $? -ne 0 ]; then
-    msg_splash "Error mount SD rootfs, please fix ..."
-    speak "updater, S D file system error"
-    sleep 9999d
+  if ! mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT; then
+    fsck -y $SD_ROOTFS_DEV
+    if ! mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT; then
+      msg_splash "Error mount SD rootfs, please fix ..."
+      speak "updater, S D file system error"
+      sleep 9999d
+    fi
   fi
 
   mkdir -p $SD_BOOT_MOUNT_IN_ROOTFS $SD_DATA_MOUNT_IN_ROOTFS
+  mount_boot $SD_BOOT_MOUNT $SD_BOOT_DEV
   mount_data $SD_DATA_MOUNT $SD_DATA_DEV
-  mount_data $SD_BOOT_MOUNT $SD_BOOT_DEV
   mount --move $SD_BOOT_MOUNT $SD_BOOT_MOUNT_IN_ROOTFS
   mount --move $SD_DATA_MOUNT $SD_DATA_MOUNT_IN_ROOTFS
 }
 
 mount_rootfs_emmc() {
   mkdir -p $ROOTFS_MOUNT_POINT
-  mount $EMMC_ROOTFS_DEV $ROOTFS_MOUNT_POINT
-  if [ $? -ne 0 ]; then
-    msg_splash "Error mount EMMC rootfs, please fix ..."
-    speak "updater, E M M C file system error"
-    sleep 9999d
+  if ! mount $EMMC_ROOTFS_DEV $ROOTFS_MOUNT_POINT; then
+    fsck -y $EMMC_ROOTFS_DEV
+    if ! mount $EMMC_ROOTFS_DEV $ROOTFS_MOUNT_POINT; then
+      msg_splash "Error mount EMMC rootfs, please fix ..."
+      speak "updater, E M M C file system error"
+      sleep 9999d
+    fi
   fi
+
   mkdir -p $EMMC_BOOT_MOUNT_IN_ROOTFS $EMMC_DATA_MOUNT_IN_ROOTFS
+  mount_boot $EMMC_BOOT_MOUNT $EMMC_BOOT_DEV
   mount_data $EMMC_DATA_MOUNT $EMMC_DATA_DEV
-  mount_data $EMMC_BOOT_MOUNT $EMMC_BOOT_DEV
   mount --move $EMMC_BOOT_MOUNT $EMMC_BOOT_MOUNT_IN_ROOTFS
   mount --move $EMMC_DATA_MOUNT $EMMC_DATA_MOUNT_IN_ROOTFS
 }
