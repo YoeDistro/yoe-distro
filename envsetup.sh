@@ -507,7 +507,7 @@ dkr() {
   GGID=$(id -g)
   UUID=$(id -u)
   UID_ARGS=""
-  if [ "$DOCKER" = "podman"]; then
+  if [ "$DOCKER" = "podman" ]; then
       # Running with namespace and overlay-fs labelling enabled introduces a
       # significant delay in podman startup when the build directory contains
       # giga-bytes of data, so for now, disable default namespacing and provide
