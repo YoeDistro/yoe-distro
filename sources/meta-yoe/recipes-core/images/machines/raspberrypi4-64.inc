@@ -43,7 +43,6 @@ BOOTLOADER_ARTEFACTS = "\
     "
 BOOTFILES = "\
     bootcode.bin \
-    bootfiles-20201002.stamp \
     cmdline.txt \
     config.txt \
     fixup4cd.dat \
