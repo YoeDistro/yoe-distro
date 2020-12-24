@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use util-linux provided fsck/fdisk in Yoe updater/installer
 - Update go to 1.15.6 and disable internal linker for native apps
 - Switch pulseaudion to use meson build system
+- Update rust to 1.47
 
 ## [3.3.0-beta] - 2020-11-24
 
