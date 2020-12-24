@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactor cdrkit and extend to build native version
 - Update linux-at91 to linux4sam-2020.10-rc5
 - Bump egt to 1.1-rc
-- Bump linux-fslc and linux-fslc-imx to v5.4.82
+- Bump linux-fslc to v5.10.2 and linux-fslc-imx to v5.4.85
 - Update u-boot-toradex to 2020.07
 - Fix RB5 board support
 - linux-raspberrypi use linux-yocto tooling
@@ -29,6 +29,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Make busyboxinit work as an alternative to sysvinit
 - Use util-linux provided fsck/fdisk in Yoe updater/installer
 - Update go to 1.15.6 and disable internal linker for native apps
+- Switch pulseaudion to use meson build system
+- Update rust to 1.47
 
 ## [3.3.0-beta] - 2020-11-24
 
