@@ -24,13 +24,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - u-boot-at91 updated to linux4sam-2020.10
 - Added firmware for BCM43456
 - linux-ti-staging updated to 5.4.78
-- Update linux yocto to v5.4.80:wq
+- Update linux yocto to v5.4.83
 - Assorted package version updates and reprodubility improvements
 - Make busyboxinit work as an alternative to sysvinit
 - Use util-linux provided fsck/fdisk in Yoe updater/installer
 - Update go to 1.15.6 and disable internal linker for native apps
 - Switch pulseaudion to use meson build system
 - Update rust to 1.47
+- Update clang to 11.0.1-rc2
 
 ## [3.3.0-beta] - 2020-11-24
 
