@@ -30,8 +30,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use util-linux provided fsck/fdisk in Yoe updater/installer
 - Update go to 1.15.6 and disable internal linker for native apps
 - Switch pulseaudion to use meson build system
-- Update rust to 1.47
+- Update rust to 1.47 and enable separate build directory when using cargo
 - Update clang to 11.0.1-rc2
+- Update to qemu 5.2.0
+- Add linux-intel-rt recipe for 5.10
+- Switch odroid machine defaults to use 5.10 kernel
+- Drop odroid-c2 from u-boot-hardkernel
+- Upgrade XFCE to 4.16.0
+- Assorted recipe upgrades
 
 ## [3.3.0-beta] - 2020-11-24
 
