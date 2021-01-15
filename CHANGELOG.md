@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactor cdrkit and extend to build native version
 - Update linux-at91 to linux4sam-2020.10-rc5
 - Bump egt to 1.1-rc
-- Bump linux-fslc to v5.10.2 and linux-fslc-imx to v5.4.85
+- Bump linux-fslc to v5.10.6 and linux-fslc-imx to v5.4.88
 - Update u-boot-toradex to 2020.07
 - Fix RB5 board support
 - linux-raspberrypi use linux-yocto tooling
@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - u-boot-at91 updated to linux4sam-2020.10
 - Added firmware for BCM43456
 - linux-ti-staging updated to 5.4.78
-- Update linux yocto to v5.4.83
+- Update linux yocto to v5.4.87 and v5.10.4
 - Assorted package version updates and reprodubility improvements
 - Make busyboxinit work as an alternative to sysvinit
 - Use util-linux provided fsck/fdisk in Yoe updater/installer
@@ -33,11 +33,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update rust to 1.47 and enable separate build directory when using cargo
 - Update clang to 11.0.1-rc2
 - Update to qemu 5.2.0
-- Add linux-intel-rt recipe for 5.10
+- Add linux-intel-rt recipe for 5.10 and switch it as default kernel
 - Switch odroid machine defaults to use 5.10 kernel
 - Drop odroid-c2 from u-boot-hardkernel
 - Upgrade XFCE to 4.16.0
 - Assorted recipe upgrades
+- Drop several old algorithms in OpenSSL
+- Add finer packaging of sudo/iproute2/procps/net-tools
+- Upgrade binutils to 2.35.1
+- Upgrade mesa to 20.3.2
+- Fix meson to work in nativesdk environment
 
 ## [3.3.0-beta] - 2020-11-24
 
