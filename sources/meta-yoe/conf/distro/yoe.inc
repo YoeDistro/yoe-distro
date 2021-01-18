@@ -5,8 +5,8 @@ DISTRO_NAME = "Yoe Linux"
 MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
-# Distro version keep it up with Yocto release
-DISTRO_VERSION = "3.3.0-beta"
+# Distro version is YYYY.MM
+DISTRO_VERSION = "2021.01-beta"
 DISTRO_CODENAME = "cheviot"
 SDK_VERSION := "${DISTRO_VERSION}"
 
