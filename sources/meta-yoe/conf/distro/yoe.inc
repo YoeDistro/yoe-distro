@@ -6,7 +6,7 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2021.01-beta"
+DISTRO_VERSION = "2021.01"
 DISTRO_CODENAME = "cheviot"
 SDK_VERSION := "${DISTRO_VERSION}"
 
