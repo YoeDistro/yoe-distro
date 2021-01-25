@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [2021.01] - 2021-01-25
+
 - Make meta-python dependency optional for meta-raspberrypi
 - Upgrade raspberrypi-firmware and linux-raspberrypi to 5.4.79
 - Fix zsh support in envsetup
@@ -43,6 +45,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade binutils to 2.35.1
 - Upgrade mesa to 20.3.2
 - Fix meson to work in nativesdk environment
+- Add LFS support in bitbake fetcher
+- Update Freescale EULA to v17
+- Add new board i.MX DXL EVK
+- Add i.MX 6ULZ EVK board
+- Update gstreamer to 1.18.3
+- Update bash to 5.1
+- Fix ccache usecases, disable for native recipes
+- Add support for VHD/VHDX rootfs in runqemu
+- Upgrade linux-raspberrypi to v5.4.83
 
 ## [3.3.0-beta] - 2020-11-24
 
