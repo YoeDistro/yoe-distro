@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update go to 1.15.6 and disable internal linker for native apps
 - Switch pulseaudion to use meson build system
 - Update rust to 1.47 and enable separate build directory when using cargo
-- Update clang to 11.0.1-rc2
+- Update clang to 11.1.0-rc2
 - Update to qemu 5.2.0
 - Add linux-intel-rt recipe for 5.10 and switch it as default kernel
 - Switch odroid machine defaults to use 5.10 kernel
@@ -54,6 +54,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix ccache usecases, disable for native recipes
 - Add support for VHD/VHDX rootfs in runqemu
 - Upgrade linux-raspberrypi to v5.4.83
+- Upgrade musl to 1.2.2
+- Upgrade timezone data to 2021a
+- Upgrade mariadb to 10.5.8
 
 ## [3.3.0-beta] - 2020-11-24
 
