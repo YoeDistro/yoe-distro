@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Upgrade autotools to 2.71
+- Disable sanitizer builds in compiler-rt
+- linux-fslc updated to v5.10.12, linux-fslc-imx updated to v5.4.94
+- Fix qtwayland for mx6 and mx7 machines
+- Enable DRI swrast driver for NXP BSPs
+- Weston updated to 9.0.0
+- Update linux-intel-rt to v5.10.4-rt22 and linux-intel/5.10 to v5.10.8
+- Do not pin gcc for odroid-c4-hardkernel
+- Upgrade binutils to 2.36
+- Upgrade glibc to 2.33
+- Update clang to 11.1.0
+- Fix recipes to work with autotools 2.71, binutils 2.36
+- Add 5.10 recipe for linux-raspberrypi and make it default
+- Add overlays for pi 400 and cm4
+- Fix compile issues in LTP, linux-yocto-5.10 for RISCV32
+- Upgrade rust to 1.49.0
+- Upgrade linux-yocto to v5.10.12 and v5.4.94
+- Upgrade glslang to 11.1.0 and fix shaderc
+- Detect code changes in submodules while using externalsrc
+- Upgrade cmake to 3.19.3
+- Various recipe version upgrades
+
 ## [2021.01] - 2021-01-25
 
 - Make meta-python dependency optional for meta-raspberrypi
