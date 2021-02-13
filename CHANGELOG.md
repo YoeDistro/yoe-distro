@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Upgrade autotools to 2.71
 - Disable sanitizer builds in compiler-rt
-- linux-fslc updated to v5.10.12, linux-fslc-imx updated to v5.4.94
+- linux-fslc updated to v5.10.15, linux-fslc-imx updated to v5.4.97
 - Fix qtwayland for mx6 and mx7 machines
 - Enable DRI swrast driver for NXP BSPs
 - Weston updated to 9.0.0
@@ -28,6 +28,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Detect code changes in submodules while using externalsrc
 - Upgrade cmake to 3.19.3
 - Various recipe version upgrades
+- Use bitbake 1.49.1
+- Fix riscv32 u-boot, tcf-agent, and rust builds
+- Use rust 1.49.x
+- Update linux-ti-staging and u-boot to latest
+- Fix glibc for faccessat2 seccomp filters
+- Fix security flags and compiler opt level
+- Upgrade u-boot to 2021.01
+- Fix pseudo to handle faccessat
+- Add recipe for libclc
 
 ## [2021.01] - 2021-01-25
 
