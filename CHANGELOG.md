@@ -45,6 +45,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update musl to latest master
 - Fix various recipes for deterministic builds
 - Various recipe version upgrades
+- Add missing 'or-later' GPL license mappings
+- Fix glibc multilib headers
+- Use uboot 2021 release on odroid machines
+- Fix bitbake providers processing
 
 ## [2021.01] - 2021-01-25
 
