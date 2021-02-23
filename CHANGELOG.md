@@ -23,12 +23,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add overlays for pi 400 and cm4
 - Fix compile issues in LTP, linux-yocto-5.10 for RISCV32
 - Upgrade rust to 1.49.0
-- Upgrade linux-yocto to v5.10.12 and v5.4.94
+- Upgrade linux-yocto to v5.10.16 and v5.4.98
 - Upgrade glslang to 11.1.0 and fix shaderc
 - Detect code changes in submodules while using externalsrc
 - Upgrade cmake to 3.19.3
 - Various recipe version upgrades
-- Use bitbake 1.49.1
+- Use bitbake 1.49.2 and add support for BB_DEFAULT_UMASK
 - Fix riscv32 u-boot, tcf-agent, and rust builds
 - Use rust 1.49.x
 - Update linux-ti-staging and u-boot to latest
@@ -37,6 +37,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade u-boot to 2021.01
 - Fix pseudo to handle faccessat
 - Add recipe for libclc
+- Merge llvm-common into clang
+- Update linux-altera-lts_5.4 to 5.4.84
+- Drop support for GCC 9.2 arm toolchain
+- Pseudo fixes for glibc 2.33
+- Update go to 1.15.8
+- Update musl to latest master
+- Fix various recipes for deterministic builds
+- Various recipe version upgrades
+- Add missing 'or-later' GPL license mappings
+- Fix glibc multilib headers
+- Use uboot 2021 release on odroid machines
+- Fix bitbake providers processing
 
 ## [2021.01] - 2021-01-25
 
