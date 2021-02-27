@@ -7,17 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [2021.02] - 2021-01-26
+
 - Upgrade autotools to 2.71
 - Disable sanitizer builds in compiler-rt
-- linux-fslc updated to v5.10.15, linux-fslc-imx updated to v5.4.97
+- linux-fslc updated to v5.10.18, linux-fslc-imx updated to v5.4.100
 - Fix qtwayland for mx6 and mx7 machines
 - Enable DRI swrast driver for NXP BSPs
 - Weston updated to 9.0.0
-- Update linux-intel-rt to v5.10.4-rt22 and linux-intel/5.10 to v5.10.8
+- Update linux-intel-rt to v5.10.12 and linux-intel/5.10 to v5.10.14
 - Do not pin gcc for odroid-c4-hardkernel
-- Upgrade binutils to 2.36
+- Upgrade binutils to 2.36.1
 - Upgrade glibc to 2.33
-- Update clang to 11.1.0
+- Update clang and llvm to 11.1.0
+- Update to go 1.16 release
+- Update busybox to 1.33
+- Update python3 to 3.9.2
 - Fix recipes to work with autotools 2.71, binutils 2.36
 - Add 5.10 recipe for linux-raspberrypi and make it default
 - Add overlays for pi 400 and cm4
@@ -49,6 +54,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix glibc multilib headers
 - Use uboot 2021 release on odroid machines
 - Fix bitbake providers processing
+- Fixes for powerpc64 architecture in Core
+- Enable gdbserver for riscv architecture
 
 ## [2021.01] - 2021-01-25
 
