@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+- Fix SRCREV for linux-altera-lts-5.4
+- Compile musl on riscv64 when using meta-clang
+- Update clang to 12.0.0-RC2
+- Add recipe for spirv-llvm-translator
+- Add opencv_4.4.0.imx recipe
+- Bump linux-boundary to 5.4 2.3.0
+- Fix qtwebkit build with riscv64
+- QTbase fixes for build with gcc 11
+- Fix sdcard_image-rpi to work with latest dosfstools
+- Add adafruit python3 modules for raspberrypi
+- Fix rust compiler and libstd-rs to work on riscv64/riscv32
+- Disable CPU ISA level requirement check in glibc
+- Add PSEUDO_IGNORE_PATHS foor SDK and image types
+- Version upgrades for several recipes
+
 ## [2021.02] - 2021-01-26
 
 - Upgrade autotools to 2.71
