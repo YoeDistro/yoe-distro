@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## Next
 
 - Fix SRCREV for linux-altera-lts-5.4
 - Compile musl on riscv64 when using meta-clang
@@ -13,13 +13,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add recipe for spirv-llvm-translator
 - Add opencv_4.4.0.imx recipe
 - Bump linux-boundary to 5.4 2.3.0
+- Bump linux-fslc to v5.10.20 and linux-fslc-imx to v5.4.102
+- Update linux-ti-mainline to v5.11
 - Fix qtwebkit build with riscv64
-- QTbase fixes for build with gcc 11
+- QTbase fixes for build with GCC 11
+- Fix recipes in meta-openembedded to work with GCC 11
 - Fix sdcard_image-rpi to work with latest dosfstools
 - Add adafruit python3 modules for raspberrypi
 - Fix rust compiler and libstd-rs to work on riscv64/riscv32
 - Disable CPU ISA level requirement check in glibc
 - Add PSEUDO_IGNORE_PATHS foor SDK and image types
+- Fix musl and busybox for RISCV32
+- Fix systemd-container recipe
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-01-26
