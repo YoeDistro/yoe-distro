@@ -40,6 +40,8 @@ jobs:
           echo ERR_REPORT_USERNAME = \"Drone Autobuilder\" >> conf/local.conf
           echo ERR_REPORT_EMAIL = \"info@yoedistro.org\" >> conf/local.conf
           echo TOOLCHAIN = \"clang\" >> conf/local.conf
+          echo BB_NUMBER_THREADS = \"16\" >> conf/local.conf
+          echo PARALLEL_MAKE = \"-j 32\" >> conf/local.conf
           /bin/bash -c "sed -i -e 's/PACKAGE_FEED_URI.*$//' conf/site.conf"
           /bin/bash -c "sed -i -e 's/SDK_UPDATE_URL.*$//' conf/site.conf"
       - name: Build Image
