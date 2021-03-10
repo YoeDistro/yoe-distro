@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Next
 
+- Add Tinkerboad support
 - Fix SRCREV for linux-altera-lts-5.4
 - Compile musl on riscv64 when using meta-clang
 - Update clang to 12.0.0-RC2
