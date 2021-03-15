@@ -1,4 +1,4 @@
-# Yoe base starter image
+# Yoe starter image
 
 require recipes-core/images/core-image-base.bb
 require updater.inc

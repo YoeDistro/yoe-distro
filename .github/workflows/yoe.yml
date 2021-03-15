@@ -49,6 +49,7 @@ jobs:
           /bin/bash -c ". ./qemuarm64-envsetup.sh && bitbake yoe-qt5-image"
       - name: Test Image
         run: |
+          export DISPLAY=":0"
           echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
           /bin/bash -c ". ./qemuarm64-envsetup.sh && bitbake yoe-sdk-image"
       - name: Prepare results

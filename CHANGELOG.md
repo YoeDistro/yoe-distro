@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Next
 
 - Add Tinkerboad support
+- Add Azure Storage fetcher implementation
+- Add qemuppc64 machine
+- Move qemuriscv32 machine as core machine
 - Fix SRCREV for linux-altera-lts-5.4
 - Compile musl on riscv64 when using meta-clang
 - Update clang to 12.0.0-RC2
@@ -15,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add opencv_4.4.0.imx recipe
 - Bump linux-boundary to 5.4 2.3.0
 - Bump linux-fslc to v5.10.20 and linux-fslc-imx to v5.4.102
-- Upgrade linux-yocto to v5.10.19 and v5.4.101
+- Upgrade linux-yocto to v5.10.21 and v5.4.103
 - Update linux-ti-mainline to v5.11
 - Fix qtwebkit build with riscv64
 - QTbase fixes for build with GCC 11
@@ -27,6 +30,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add PSEUDO_IGNORE_PATHS foor SDK and image types
 - Fix musl and busybox for RISCV32
 - Fix systemd-container recipe
+- Update Clang to 12.0.0 RC3
+- Prevent fetching git hook during do_configure for ceres-solver
+- Fix meta-qt5 recipes to compile with GCC 11 and RISCV fixes
+- Fix a regression in glibc w.r.t. _SC_LEVEL1_ICACHE_LINESIZE
+- Add QB_GRAPHICS option to runqemu tool
+- Add options to turn --enable-poison-system-directories fatal in GCC
+- Reduce linker memory usage while building webkitgtk when using BFD linker
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-01-26
