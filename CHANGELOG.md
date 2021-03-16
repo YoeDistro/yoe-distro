@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add Tinkerboad support
 - Add Azure Storage fetcher implementation
 - Add qemuppc64 machine
+- Add REQUIRED_VERSION to bitbake
+- Update go to 1.16.2 and remove go-dep
+- Let linunwind on musl use libucontext
 - Move qemuriscv32 machine as core machine
 - Fix SRCREV for linux-altera-lts-5.4
 - Compile musl on riscv64 when using meta-clang
@@ -37,6 +40,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add QB_GRAPHICS option to runqemu tool
 - Add options to turn --enable-poison-system-directories fatal in GCC
 - Reduce linker memory usage while building webkitgtk when using BFD linker
+- Fix several recipes for ppc64le
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-01-26
