@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add recipe for spirv-llvm-translator
 - Add opencv_4.4.0.imx recipe
 - Bump linux-boundary to 5.4 2.3.0
-- Bump linux-fslc to v5.10.20 and linux-fslc-imx to v5.4.102
+- Bump linux-fslc to v5.10.22 and linux-fslc-imx to v5.4.105
 - Upgrade linux-yocto to v5.10.21 and v5.4.103
 - Update linux-ti-mainline to v5.11
 - Fix qtwebkit build with riscv64
@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add QB_GRAPHICS option to runqemu tool
 - Add options to turn --enable-poison-system-directories fatal in GCC
 - Reduce linker memory usage while building webkitgtk when using BFD linker
+- Assorted XFCE package upgrades
 - Fix several recipes for ppc64le
 - Version upgrades for several recipes
 
