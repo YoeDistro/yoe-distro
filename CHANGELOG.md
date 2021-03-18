@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Reduce linker memory usage while building webkitgtk when using BFD linker
 - Assorted XFCE package upgrades
 - Fix several recipes for ppc64le
+- Add imx-boot-container class to provide boot container for iMX
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-01-26
