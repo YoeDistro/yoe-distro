@@ -20,8 +20,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add recipe for spirv-llvm-translator
 - Add opencv_4.4.0.imx recipe
 - Bump linux-boundary to 5.4 2.3.0
-- Bump linux-fslc to v5.10.22 and linux-fslc-imx to v5.4.105
-- Upgrade linux-yocto to v5.10.21 and v5.4.103
+- Bump linux-fslc to v5.10.24 and linux-fslc-imx to v5.4.106
+- Upgrade linux-yocto to v5.10.23 and v5.4.105
 - Update linux-ti-mainline to v5.11
 - Fix qtwebkit build with riscv64
 - QTbase fixes for build with GCC 11
@@ -43,6 +43,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Assorted XFCE package upgrades
 - Fix several recipes for ppc64le
 - Add imx-boot-container class to provide boot container for iMX
+- Drop gatesgarth from compatible releases for layers
+- Fix webkitgtk/JSC stack size on musl, add option to compile for size
+- Update vulkan packages to 1.2.170.0
+- Detect code changes in submodules when using externalsrc
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-01-26
