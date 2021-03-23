@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add Azure Storage fetcher implementation
 - Add qemuppc64 machine
 - Add REQUIRED_VERSION to bitbake
+- Add NanoPi-M4 machine in rockchip soc layer
 - Update go to 1.16.2 and remove go-dep
 - Let linunwind on musl use libucontext
 - Move qemuriscv32 machine as core machine
@@ -20,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add recipe for spirv-llvm-translator
 - Add opencv_4.4.0.imx recipe
 - Bump linux-boundary to 5.4 2.3.0
-- Bump linux-fslc to v5.10.24 and linux-fslc-imx to v5.4.106
+- Bump linux-fslc to v5.10.25 and linux-fslc-imx to v5.4.107
 - Upgrade linux-yocto to v5.10.23 and v5.4.105
 - Update linux-ti-mainline to v5.11
 - Fix qtwebkit build with riscv64
@@ -47,6 +48,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix webkitgtk/JSC stack size on musl, add option to compile for size
 - Update vulkan packages to 1.2.170.0
 - Detect code changes in submodules when using externalsrc
+- Fix bitbake documentation
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-01-26
