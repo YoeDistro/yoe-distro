@@ -51,6 +51,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix bitbake documentation
 - Update openSSH to 8.5p1
 - Update gstreamer to 1.18.4
+- Fix CPU tune file for rpi0w
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-01-26
