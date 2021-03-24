@@ -49,6 +49,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update vulkan packages to 1.2.170.0
 - Detect code changes in submodules when using externalsrc
 - Fix bitbake documentation
+- Update openSSH to 8.5p1
+- Update gstreamer to 1.18.4
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-01-26
