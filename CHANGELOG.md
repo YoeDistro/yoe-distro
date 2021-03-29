@@ -55,6 +55,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update gstreamer to 1.18.4
 - Fix CPU tune file for rpi0w
 - Fix compiler-rt for armv6/rpi0w
+- Update rust to 1.51.1
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-02-26
