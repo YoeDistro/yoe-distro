@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Next]
+
+- Upgrade linux-ti-staging kernel to 5.4.106
+
 ## [2021.03] - 2021-03-26
 
 - Add Tinkerboad support
