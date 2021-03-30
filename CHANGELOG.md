@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Next]
 
 - Upgrade linux-ti-staging kernel to 5.4.106
+- Add new IMX8 machine imx8mp-ddr4-evk imx8mp-lpddr4-evk
+- Upgrade hardkernel linux and u-boot to latest
+- Fix linux-hardkernel build with GCC 11
+- Disable qtwebkit and capnproto for RISCV32
+- Update nodejs to 12.21.0
+- Various recipe version upgrades
 
 ## [2021.03] - 2021-03-26
 
