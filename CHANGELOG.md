@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Disable qtwebkit and capnproto for RISCV32
 - Update nodejs to 12.21.0
 - Various recipe version upgrades
+- Fix sstate reuse regression while building clang-native
 
 ## [2021.03] - 2021-03-26
 
