@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix native/host configuration in gobject-introspection
 - Upgrade git to 2.31.1
 - Add PR service support in eSDK
+- Swich ODROID-C4 to use cortex-a55 tunes
+- Do not mark recipes commercial when the depndencies are commercial but not the package itself
+- Make bpftool reproducable
 
 ## [2021.03] - 2021-03-26
 
