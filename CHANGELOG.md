@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update nodejs to 12.21.0
 - Various recipe version upgrades
 - Fix sstate reuse regression while building clang-native
+- Fix native/host configuration in gobject-introspection
+- Upgrade git to 2.31.1
+- Add PR service support in eSDK
 
 ## [2021.03] - 2021-03-26
 
