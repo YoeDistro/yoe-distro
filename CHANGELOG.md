@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Next]
+
+- Upgrade linux-ti-staging kernel to 5.4.106
+- Add new IMX8 machine imx8mp-ddr4-evk imx8mp-lpddr4-evk
+- Upgrade hardkernel linux and u-boot to latest
+- Fix linux-hardkernel build with GCC 11
+- Disable qtwebkit and capnproto for RISCV32
+- Update nodejs to 12.21.0
+- Various recipe version upgrades
+- Fix sstate reuse regression while building clang-native
+- Fix native/host configuration in gobject-introspection
+- Upgrade git to 2.31.1
+- Add PR service support in eSDK
+- Swich ODROID-C4 to use cortex-a55 tunes
+- Do not mark recipes commercial when the depndencies are commercial but not the package itself
+- Make bpftool reproducable
+
 ## [2021.03] - 2021-03-26
 
 - Add Tinkerboad support
