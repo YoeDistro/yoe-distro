@@ -9,11 +9,10 @@ require updater.inc
 
 IMAGE_FEATURES += "ssh-server-dropbear package-management hwcodecs"
 
-IMAGE_INSTALL = "\
-    packagegroup-core-boot \
+IMAGE_INSTALL += "\
     os-release \
-    ${CORE_IMAGE_EXTRA_INSTALL} \
 "
+
 IMAGE_INSTALL_append_arm = " 96boards-tools"
 IMAGE_INSTALL_append_aarch64 = " 96boards-tools"
 
