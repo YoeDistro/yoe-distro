@@ -110,7 +110,8 @@ partition_sd() {
   umount ${DEVICE}p3
 
   # Delete existing partition tables
-  dd if=/dev/zero of=$DEVICE bs=512 count=2 conv=fsync
+  dd if=/dev/zero of=$DEVICE bs=1 count=512 conv=fsync conv=notrunc
+  sync
   # Three primary partitions: one FAT bootable part (boot),
   # second for rootfs and the rest is in third(data)
   sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS | fdisk $DEVICE
