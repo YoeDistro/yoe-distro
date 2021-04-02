@@ -153,6 +153,12 @@ FDISK_CMDS
   partprobe $DEVICE
   fdisk -l $DEVICE
   echo "partitioning $DEVICE done"
+  echo "Formatting boot partition"
+  format_${STORAGE}_boot
+  echo "Formatting rootfs partition"
+  format_${STORAGE}_rootfs
+  echo "Formatting data partition"
+  format_${STORAGE}_data
   return 0
 }
 
@@ -331,7 +337,7 @@ process_update() {
     if [ -e $f ]; then
       if ! diff $f $INSTALL_BOOT_MOUNT/$f 2>/dev/null; then
         msg_splash "Updating bootloader asset ... $f"
-        cp -f $f $INSTALL_BOOT_MOUNT/$f
+        install -Dm 0644 $f $INSTALL_BOOT_MOUNT/$f
         bootloader_updated=1
       fi
     fi
@@ -346,7 +352,7 @@ process_update() {
       if ! diff $f $INSTALL_BOOT_MOUNT/$f 2>/dev/null; then
         msg_splash "Updating kernel asset ... $f"
         mkdir -p `dirname $INSTALL_BOOT_MOUNT/$f`
-        cp -f $f $INSTALL_BOOT_MOUNT/$f
+        install -Dm 0644 $f $INSTALL_BOOT_MOUNT/$f
         kernel_updated=1
       fi
     fi
