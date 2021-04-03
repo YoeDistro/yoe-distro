@@ -36,19 +36,7 @@ QTWEBKIT ??= "\
 	qtwebkit-qmlplugins \
 "
 
-inherit features_check
-
-REQUIRED_DISTRO_FEATURES = "opengl"
-
-X11BASE = "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11-base', '', d)}"
-IMAGE_FEATURES += "${@bb.utils.contains('DISTRO_FEATURES', 'wayland x11', '', '${X11BASE}', d)} \
-                   ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston', '', d)} \
-                  "
-
 CORE_IMAGE_BASE_INSTALL += " \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'wayland x11', 'weston-xwayland', '', d)} \
   ${QT5APPS} \
   ${QT5BASE} \
 "
-# Ptest needs more RAM ( > 256M ) on QEMU
-QB_MEM = "-m 1024"

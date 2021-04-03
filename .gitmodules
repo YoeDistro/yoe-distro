@@ -62,10 +62,6 @@
 	path = sources/meta-clang
 	url = https://github.com/YoeDistro/meta-clang
 	branch = master
-[submodule "sources/meta-altera"]
-	path = sources/meta-altera
-	url = https://github.com/YoeDistro/meta-altera
-	branch = master
 [submodule "sources/meta-arm"]
 	path = sources/meta-arm
 	url = git://github.com/yoedistro/meta-arm

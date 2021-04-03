@@ -46,7 +46,7 @@ DTBOFILES = "\
 ROOTFS_ARTEFACTS = "rootfs.tar.xz"
 
 BOOTLOADER_ARTEFACTS = "\
-    kernel8.img \
+    kernel7l.img \
     "
 # uncomment when using u-boot
 #BOOTLOADER_ARTEFACTS += "boot.scr"

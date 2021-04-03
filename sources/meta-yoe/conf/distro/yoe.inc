@@ -153,7 +153,7 @@ PREFERRED_VERSION_gstreamer1.0-rtsp-server = "1.18.%"
 MACHINE_KERNEL_PR = "0"
 
 # Enable u-boot for RPI
-RPI_USE_U_BOOT = "1"
+#RPI_USE_U_BOOT = "1"
 
 # Disable rpi raimbow screen
 DISABLE_SPLASH = "1"

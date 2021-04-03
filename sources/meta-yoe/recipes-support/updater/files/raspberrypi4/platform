@@ -1,20 +1,14 @@
-TITLE="RPI 3"
-PLAT="raspberrypi3"
+TITLE="RPI 4 32-BIT"
+PLAT="raspberrypi4"
 UPDATE_FILE_NAME="${PLAT}"
 
 USB_DETECTION_DELAY=4
 
-# Add zImage when using u-boot to KERNEL
 KERNEL="\
-    bcm2708-rpi-b.dtb \
-    bcm2708-rpi-cm.dtb \
-    bcm2708-rpi-zero-w.dtb \
-    bcm2709-rpi-2-b.dtb \
-    bcm2710-rpi-3-b-plus.dtb \
-    bcm2710-rpi-3-b.dtb \
-    bcm2710-rpi-cm3.dtb \
+    bcm2711-rpi-400.dtb \
     bcm2711-rpi-4-b.dtb \
-    kernel7.img \
+    bcm2711-rpi-cm4.dtb \
+    kernel7l.img \
     overlays/mcp2515-can1.dtbo \
     overlays/hifiberry-dac.dtbo \
     overlays/hifiberry-digi.dtbo \
@@ -49,30 +43,30 @@ KERNEL="\
     overlays/pitft35-resistive.dtbo \
     overlays/overlay_map.dtb \
     overlays/iqaudio-dac.dtbo \
-"
+    "
 
 BOOT="\
     bootcode.bin \
     cmdline.txt \
     config.txt \
-    fixup4cd.dat \
+    fixup.dat \
     fixup4.dat \
+    fixup4cd.dat \
     fixup4db.dat \
     fixup4x.dat \
     fixup_cd.dat \
-    fixup.dat \
     fixup_db.dat \
     fixup_x.dat \
+    start.elf \
+    start4.elf \
     start4cd.elf \
     start4db.elf \
-    start4.elf \
     start4x.elf \
     start_cd.elf \
     start_db.elf \
-    start.elf \
     start_x.elf \
 "
-# Add boot.scr to BOOT when using u-boot
+# Add boot.scr to BOOT above when using u-boot
 
 ROOTFS="rootfs.tar.xz"
 
