@@ -1,0 +1,117 @@
+TITLE="RPI 4 32-BIT"
+PLAT="raspberrypi4"
+UPDATE_FILE_NAME="${PLAT}"
+
+USB_DETECTION_DELAY=4
+
+KERNEL="\
+    bcm2711-rpi-400.dtb \
+    bcm2711-rpi-4-b.dtb \
+    bcm2711-rpi-cm4.dtb \
+    kernel7l.img \
+    overlays/mcp2515-can1.dtbo \
+    overlays/hifiberry-dac.dtbo \
+    overlays/hifiberry-digi.dtbo \
+    overlays/hifiberry-dacplus.dtbo \
+    overlays/pitft28-capacitive.dtbo \
+    overlays/gpio-ir.dtbo \
+    overlays/iqaudio-dacplus.dtbo \
+    overlays/justboom-digi.dtbo \
+    overlays/justboom-dac.dtbo \
+    overlays/vc4-kms-dsi-7inch.dtbo \
+    overlays/mcp2515-can0.dtbo \
+    overlays/i2c-rtc.dtbo \
+    overlays/miniuart-bt.dtbo \
+    overlays/at86rf233.dtbo \
+    overlays/pitft22.dtbo \
+    overlays/imx219.dtbo \
+    overlays/vc4-fkms-v3d.dtbo \
+    overlays/justboom-both.dtbo \
+    overlays/disable-bt.dtbo \
+    overlays/w1-gpio.dtbo \
+    overlays/rpi-ft5406.dtbo \
+    overlays/dwc2.dtbo \
+    overlays/pitft28-resistive.dtbo \
+    overlays/hifiberry-amp.dtbo \
+    overlays/vc4-kms-v3d.dtbo \
+    overlays/w1-gpio-pullup.dtbo \
+    overlays/vc4-kms-v3d-pi4.dtbo \
+    overlays/gpio-key.dtbo \
+    overlays/gpio-ir-tx.dtbo \
+    overlays/pps-gpio.dtbo \
+    overlays/rpi-poe.dtbo \
+    overlays/pitft35-resistive.dtbo \
+    overlays/overlay_map.dtb \
+    overlays/iqaudio-dac.dtbo \
+    "
+
+BOOT="\
+    bootcode.bin \
+    cmdline.txt \
+    config.txt \
+    fixup.dat \
+    fixup4.dat \
+    fixup4cd.dat \
+    fixup4db.dat \
+    fixup4x.dat \
+    fixup_cd.dat \
+    fixup_db.dat \
+    fixup_x.dat \
+    start.elf \
+    start4.elf \
+    start4cd.elf \
+    start4db.elf \
+    start4x.elf \
+    start_cd.elf \
+    start_db.elf \
+    start_x.elf \
+"
+# Add boot.scr to BOOT above when using u-boot
+
+ROOTFS="rootfs.tar.xz"
+
+EMMC_DEVICE=/dev/mmcblk1
+SD_DEVICE=/dev/mmcblk0
+
+# Can have "emmc" or "sd", this is the install target media
+STORAGE="sd"
+# Install location is EMMC_DEVICE if STORAGE is 'emmc' and
+# SD_DEVICE if STORAGE is 'sd'
+INSTALL_DEVICE=${SD_DEVICE}
+
+INSTALL_BOOT_DEV=${INSTALL_DEVICE}p1
+INSTALL_ROOTFS_DEV=${INSTALL_DEVICE}p2
+INSTALL_DATA_DEV=${INSTALL_DEVICE}p3
+
+EMMC_BOOT_DEV=${EMMC_DEVICE}p1
+EMMC_ROOTFS_DEV=${EMMC_DEVICE}p2
+EMMC_DATA_DEV=${EMMC_DEVICE}p3
+
+SD_BOOT_DEV=${SD_DEVICE}p1
+SD_ROOTFS_DEV=${SD_DEVICE}p2
+SD_DATA_DEV=${SD_DEVICE}p3
+
+BOOT_MOUNT_POINT=/boot
+ROOTFS_MOUNT_POINT=/root
+DATA_MOUNT_POINT=/data
+USB_MOUNT_POINT=/media/usb
+SD_MOUNT_POINT=/media/sd
+
+# Size in 'M' for MB, 'G' for GB
+RESERVED_SIZE=2M
+BOOT_SIZE=100M
+ROOTFS_SIZE=2G
+
+FSTYPE=ext4
+BOOT_FSTYPE=vfat
+
+UPDATER_SPEECH=0
+
+plat_init() {
+  msg "Running $PLAT initializations ..."
+  cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
+}
+
+plat_bootloader_quirks() {
+  :
+}
