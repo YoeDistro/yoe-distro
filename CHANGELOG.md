@@ -21,6 +21,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Swich ODROID-C4 to use cortex-a55 tunes
 - Do not mark recipes commercial when the depndencies are commercial but not the package itself
 - Make bpftool reproducable
+- Update clang to 12.0.0-RC4
+- Introduce support for armv8-4a arch
+- Update linux-intel to 5.10.25 and v5.4.102
+- Fix gcc 11 patch for odroid-c4-hardkernel kernel
+- Add updater support for 32bit pi4
+- Disable using u-boot for RPI images
+- Always format disk after partitioning, avoids directory corruption
+- Re-organize images to re-use common pieces
+- Remove dosfstools to favor busybox mkfs.vfat applet in initramfs image
+- Remove meta-altera BSP layer
 
 ## [2021.03] - 2021-03-26
 
