@@ -140,9 +140,9 @@ PREFERRED_VERSION_nativesdk-swig = "3.0.12"
 # meta-atmel has 1.7.4
 PREFERRED_VERSION_cjson = "1.7.14"
 # meta-ti has 1.8.9.1
-PREFERRED_VERSION_doxygen = "1.8.20"
-PREFERRED_VERSION_doxygen-native = "1.8.20"
-PREFERRED_VERSION_nativesdk-doxygen = "1.8.20"
+PREFERRED_VERSION_doxygen = "1.9%"
+PREFERRED_VERSION_doxygen-native = "1.9%"
+PREFERRED_VERSION_nativesdk-doxygen = "1.9%"
 # meta-freescale has 1.16.x
 PREFERRED_VERSION_gstreamer1.0-libav = "1.18.%"
 PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.18.%"
