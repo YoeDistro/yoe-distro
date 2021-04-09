@@ -19,9 +19,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade git to 2.31.1
 - Add PR service support in eSDK
 - Swich ODROID-C4 to use cortex-a55 tunes
+- Fix and cleanup ODROID-N2 support
 - Do not mark recipes commercial when the depndencies are commercial but not the package itself
 - Make bpftool reproducable
-- Update clang to 12.0.0-RC4
+- Update clang to 12.0.0-RC5 and do not use LLD to build nativesdk-clang
 - Introduce support for armv8-4a arch
 - Update linux-intel to 5.10.25 and v5.4.102
 - Fix gcc 11 patch for odroid-c4-hardkernel kernel
@@ -31,6 +32,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Re-organize images to re-use common pieces
 - Remove dosfstools to favor busybox mkfs.vfat applet in initramfs image
 - Remove meta-altera BSP layer
+- Fix huge wifi delay on imx6qdl-variscite-som
+- Update linux-raspberrypi to 5.10.25
+- Fix mesa-gl build regression on RPI
+- Cleanup duplicate bbappends in meta-rockchip
+- Add a knob for OpenMP threads in bitbake configuration
+- Fix creation and generate new perl-rdepends.txt
+- Upgade ptest-runner to 2.4.1
+- Update mesa to 21.0.1
+- Adjust for swrast being dropped from DRI drivers in mesa
 
 ## [2021.03] - 2021-03-26
 
