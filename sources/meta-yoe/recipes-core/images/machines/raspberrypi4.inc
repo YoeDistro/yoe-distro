@@ -84,10 +84,10 @@ do_updater() {
         # rootfs
         install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz ${ROOTFS_ARTEFACTS}
         # uncomment when using uboot
-        #install ${DEPLOY_DIR_IMAGE}/u-boot.bin kernel8.img
+        #install ${DEPLOY_DIR_IMAGE}/u-boot.bin kernel7l.img
         #install ${DEPLOY_DIR_IMAGE}/boot.scr boot.scr
         # use when not using uboot ( note that it should be kernel with initramfs )
-        install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGE} kernel8.img
+        install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGE} kernel7l.img
         for f in ${BOOTFILES}
         do
             install ${DEPLOY_DIR_IMAGE}/bootfiles/$f $f
