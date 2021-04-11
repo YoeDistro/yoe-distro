@@ -41,6 +41,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgade ptest-runner to 2.4.1
 - Update mesa to 21.0.1
 - Adjust for swrast being dropped from DRI drivers in mesa
+- Fix sbsa-acs with clang
+- Add support for 8DXLite EVK with DDR3  
 
 ## [2021.03] - 2021-03-26
 
@@ -254,7 +256,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update FSL EULA  to LA_OPT_NXP_Software_License v11 February 2020
 - Fix asound.conf for cubox-i
 - Update linux-ti-staging to 5.4.69
-- Update linux-fslc-imx/linux-fslc to v5.4.71
+- Update linux-fslc-imx/linux-fslc to v5.4.110 and v5.10.28
 - Update linux-altera to 5.7
 - systemd upgraded v246.2 -> v246.6
 - Fix perf on arm/musl
@@ -276,6 +278,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add faster 34Kf-64tlb Qemu machines
 - Update linux-yocto v5.8.13/v5.4.69
 - Add ttarget RISCV64/RISCV32 builds for clang
+- Fix GCC11 patch for odroid-c4-hardkernel kernel
+- Common cleanups for meta-odroid layer
 
 ## [3.2.0-beta] - 2020-09-23
 
