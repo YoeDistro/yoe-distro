@@ -256,7 +256,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update FSL EULA  to LA_OPT_NXP_Software_License v11 February 2020
 - Fix asound.conf for cubox-i
 - Update linux-ti-staging to 5.4.69
-- Update linux-fslc-imx/linux-fslc to v5.4.110 and v5.10.28
+- Update linux-fslc-imx/linux-fslc to v5.4.111 and v5.10.29
 - Update linux-altera to 5.7
 - systemd upgraded v246.2 -> v246.6
 - Fix perf on arm/musl
@@ -280,6 +280,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add ttarget RISCV64/RISCV32 builds for clang
 - Fix GCC11 patch for odroid-c4-hardkernel kernel
 - Common cleanups for meta-odroid layer
+- Use XFCE for desktop on X11 kiosk image
 
 ## [3.2.0-beta] - 2020-09-23
 
