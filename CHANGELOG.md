@@ -280,6 +280,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add ttarget RISCV64/RISCV32 builds for clang
 - Fix GCC11 patch for odroid-c4-hardkernel kernel
 - Common cleanups for meta-odroid layer
+- Use XFCE for desktop on X11 kiosk image
 
 ## [3.2.0-beta] - 2020-09-23
 
