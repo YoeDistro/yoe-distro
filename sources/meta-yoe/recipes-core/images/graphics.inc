@@ -16,3 +16,5 @@ CORE_IMAGE_BASE_INSTALL += " \
   ${X11ONLYPKGS} \
   gstreamer1.0-libav \
 "
+
+SYSTEMD_DEFAULT_TARGET = "graphical.target"
