@@ -60,7 +60,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add recipe for spirv-llvm-translator
 - Add opencv_4.4.0.imx recipe
 - Bump linux-boundary to 5.4 2.3.0
-- Bump linux-fslc to v5.10.25 and linux-fslc-imx to v5.4.107
+- Bump linux-fslc to v5.10.30 and linux-fslc-imx to v5.4.112
+- Drop 4.19 linux-fslc-lts
 - Upgrade linux-yocto to v5.10.25 and v5.4.107
 - Update openSSL to 1.1.1k
 - Fix libtool race running autoheader before autoconf
@@ -95,6 +96,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix CPU tune file for rpi0w
 - Fix compiler-rt for armv6/rpi0w
 - Update rust to 1.51.1
+- Fix PEP8 double aggressive warnings and errors in python scripts
+- Make space for using IMX_DEFAULT_BOOTLOADER in meta-freescale-3rdparty machines
+- Fix xorg and weston to adopt to mesa 21.x changes
+- Improve bitbake documentation, add information on REQUIRED_VERSION
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-02-26
