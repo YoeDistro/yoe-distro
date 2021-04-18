@@ -42,7 +42,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update mesa to 21.0.1
 - Adjust for swrast being dropped from DRI drivers in mesa
 - Fix sbsa-acs with clang
-- Add support for 8DXLite EVK with DDR3  
+- Upgade syslog-ng to 3.31.2 and fix debug build
+- Bump python to 3.9.4
+- Update ICU to 69.1
+- Upgrade go to 1.16.3
+- Fix sysvinit-inittab getty launch on virtual consoles
+- Upgrade ell to 0.39
+- Upgrade webkitgtk to 2.30.6, wpebackend-fdo to 1.8.2, epiphany to 3.38.3
+- Upgrade valgrind to 3.17.0 and fix valgrind ptests for DWARF-5/GCC11
+- Update GCC to 10.3.0
+- Fix glibc-src package name
+- Fix DEBUG_PREFIX_MAP for gcc-runtime/libstdc++
+- glib-2.0 upgraded to 2.68.0
+- External src now detects  code changes in submodules
+- Add support for 8DXLite EVK with DDR3
 
 ## [2021.03] - 2021-03-26
 
