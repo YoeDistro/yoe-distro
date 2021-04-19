@@ -9,7 +9,13 @@ require updater.inc
 
 IMAGE_FEATURES += "ssh-server-dropbear package-management hwcodecs"
 
-IMAGE_INSTALL += "\
+IMAGE_INSTALL = "\
+    packagegroup-core-boot \
+    packagegroup-base-wifi \
+    packagegroup-base-zeroconf \
+    packagegroup-distro-base \
+    packagegroup-machine-base \
+    packagegroup-base-ipv6 \
     os-release \
 "
 

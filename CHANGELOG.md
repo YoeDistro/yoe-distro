@@ -42,7 +42,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update mesa to 21.0.1
 - Adjust for swrast being dropped from DRI drivers in mesa
 - Fix sbsa-acs with clang
-- Add support for 8DXLite EVK with DDR3  
+- Upgade syslog-ng to 3.31.2 and fix debug build
+- Bump python to 3.9.4
+- Update ICU to 69.1
+- Upgrade go to 1.16.3
+- Fix sysvinit-inittab getty launch on virtual consoles
+- Upgrade ell to 0.39
+- Upgrade webkitgtk to 2.30.6, wpebackend-fdo to 1.8.2, epiphany to 3.38.3
+- Upgrade valgrind to 3.17.0 and fix valgrind ptests for DWARF-5/GCC11
+- Update GCC to 10.3.0
+- Fix glibc-src package name
+- Fix DEBUG_PREFIX_MAP for gcc-runtime/libstdc++
+- glib-2.0 upgraded to 2.68.0
+- External src now detects  code changes in submodules
+- Add support for 8DXLite EVK with DDR3
 
 ## [2021.03] - 2021-03-26
 
@@ -60,7 +73,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add recipe for spirv-llvm-translator
 - Add opencv_4.4.0.imx recipe
 - Bump linux-boundary to 5.4 2.3.0
-- Bump linux-fslc to v5.10.25 and linux-fslc-imx to v5.4.107
+- Bump linux-fslc to v5.10.30 and linux-fslc-imx to v5.4.112
+- Drop 4.19 linux-fslc-lts
 - Upgrade linux-yocto to v5.10.25 and v5.4.107
 - Update openSSL to 1.1.1k
 - Fix libtool race running autoheader before autoconf
@@ -95,6 +109,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix CPU tune file for rpi0w
 - Fix compiler-rt for armv6/rpi0w
 - Update rust to 1.51.1
+- Fix PEP8 double aggressive warnings and errors in python scripts
+- Make space for using IMX_DEFAULT_BOOTLOADER in meta-freescale-3rdparty machines
+- Fix xorg and weston to adopt to mesa 21.x changes
+- Improve bitbake documentation, add information on REQUIRED_VERSION
 - Version upgrades for several recipes
 
 ## [2021.02] - 2021-02-26
