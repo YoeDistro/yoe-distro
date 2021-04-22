@@ -56,6 +56,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - glib-2.0 upgraded to 2.68.0
 - External src now detects  code changes in submodules
 - Add support for 8DXLite EVK with DDR3
+- Cleanup Xorg recipes and patches for FSL boards
+- Update linux-fslc to v5.10.31 and linux-fslc-imx to v5.4.113
+- Update nodejs to 14.x LTS release
+- Move libmicrohttpd to OE-Core
+- Update PHP to 7.4.16
+- Update linux-yocto kernels to v5.4.112 and v5.10.30
+- Fix openssl dependencies in ca-certificate
+- Use openssl as defualt SSL/TLS implementation where possible
+- Add standalone xwayland and use it in weston images
+- Add debuginfod distro feature
 
 ## [2021.03] - 2021-03-26
 
