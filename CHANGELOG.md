@@ -57,7 +57,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - External src now detects  code changes in submodules
 - Add support for 8DXLite EVK with DDR3
 - Cleanup Xorg recipes and patches for FSL boards
-- Update linux-fslc to v5.10.31 and linux-fslc-imx to v5.4.113
+- Update linux-fslc to v5.10.32 and linux-fslc-imx to v5.4.114
 - Update nodejs to 14.x LTS release
 - Move libmicrohttpd to OE-Core
 - Update PHP to 7.4.16
@@ -66,6 +66,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use openssl as defualt SSL/TLS implementation where possible
 - Add standalone xwayland and use it in weston images
 - Add debuginfod distro feature
+- Add --fetchdir parameter to layerindex-fetch
+- Upgrade LLVM to 12.0.0
+- Update musl to latest
+- Upgrade openssh 8.5p1 -> 8.6p1
 
 ## [2021.03] - 2021-03-26
 
