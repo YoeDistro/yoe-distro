@@ -86,7 +86,7 @@ ERROR_QA_append = " ${WARN_TO_ERROR_QA}"
 # NOTE: if listing mklibs & prelink both, then make sure mklibs is before prelink
 # NOTE: mklibs also needs to be explicitly enabled for a given image, see local.conf.extended
 # image-prelink sometimes disabled due to issues with IFUNC symbol relocation
-USER_CLASSES ?= "buildstats buildhistory buildstats-summary image-mklibs image-prelink"
+USER_CLASSES ?= "buildhistory buildstats buildstats-summary image-mklibs image-prelink"
 
 IMAGE_CLASSES += "testimage testsdk"
 
