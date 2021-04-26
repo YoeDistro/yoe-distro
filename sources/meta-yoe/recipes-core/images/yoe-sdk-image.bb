@@ -9,5 +9,10 @@ IMAGE_INSTALL += "packagegroup-go-sdk-target packagegroup-core-buildessential"
 IMAGE_INSTALL_remove_riscv32 = "packagegroup-go-sdk-target"
 
 export IMAGE_BASENAME = "yoe-sdk-image"
-# ptest needs a lot of memory
-QB_MEM = "-m 1024"
+# some ptests need a lot of memory
+# We can see random failures e.g. scp test failure
+# NOTE: test_scp_file (scp.ScpTest)
+# ...
+# scp: /tmp/test_scp_file: No space left on device
+
+QB_MEM = "-m ${@bb.utils.contains('DISTRO_FEATURES', 'ptest', '2048', '1024', d)}"
