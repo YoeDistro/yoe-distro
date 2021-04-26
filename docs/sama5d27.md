@@ -43,39 +43,35 @@ as shown in the photo above.
 used to bootstrap a system over a UART or USB Client port and program fuses. It
 is possible to bootstrap a system completely over SAM-BA with no flash/eMMC/SD
 memory programmed. This is useful for systems that perhaps have a eMMC flash
-installed, but do not have a SD card slot. To bootstrap such a system, we can:
+installed, but do not have a SD card slot. Initially we used a procedure to load
+AT91Bootstrap/U-boot into RAM and then jump to them, but that was not reliable,
+so it seems the next best option is to load these pieces directly into flash.
+The following connection can be used:
 
-- Load both the AT91Bootstrap and u-boot over a UART or USBClient port, and then
-  boot into u-boot using SAM-BA.
-- From u-boot, we can load a kernel from a USB flash device, or from a TFTP
-  server over the network.
-- The kernel can mount a root file system on a USB disk, or use the Yoe updater
-  to initialize and program a SD/eMMC device.
+- UART (slow)
+- USB Client
+- JTAG (J-32 Debug Probe from Segger/Microchip)
 
-This process has been automated and described in more detail below:
+eMMC can be flashed directly from SAM-BA/JTAG using the commands. Note, a serial
+connection is required initially to set up the JTAG connection.
 
-1. build the target image first as described above
-1. `yoe_sam_build_bootstrap_tools` (this builds SAM-BA and a special version of
-   the at91bootstrap that can be used to load the bootloaders.
-1. connect the development board USB (J10) to your workstation
-1. make sure your linux user has access to serial ports (add to serial, uucp, or
-   whatever group is used for serial ports)
-1. make sure screen is installed (used for a serial terminal program)
-1. power on the dev board and verify it is outputting ROMboot on the serial
-   terminal: `screen /dev/ttyACM0 115200`
-1. stop the serial terminal program (SAM-BA now needs to use the serial port):
-   `Ctrl-A k`
-1. `yoe_sam_load_uboot_via_samba` (this loads at91bootstrap and u-boot over a
-   UART. Note, you must stop u-boot from launching a kernel, because there is no
-   kernel to launch.)
-1. you should now be sitting at a u-boot prompt
-1. insert a USB flash disk into your workstation
-1. `yoe_sam_install_bootstrap_files <USB disk mount point>` (this script copies
-   the kernel and update file to a USB disk for installation)
-1. insert USB flash disk into the development board host USB port
-1. insert a blank SD card into the full size SD slot
-1. from u-boot, load a kernel from USB:
-   `usb reset;fatls usb 0:1;fatload usb 0:1 0x21000000 at91-sama5d27_som1_ek.dtb;fatload usb 0:1 0x22000000 zImage;bootz 0x22000000 - 0x21000000`
+- connect UART
+- setup JTAG
+  - `sam-mba -p serial:ttyUSB0 -x setup-jtag.qml`
+- create a disk image including the two bootloaders (can use part of a Yocto WIC
+  image)
+- program the bootloaders into eMMC
+  - `sam-ba -p j-link --board sama5d2-xplained --applet sdmmc:0:1:: -c write:bootstrap-part.img`
+
+Once u-boot has loaded, you can load the kernel from USB or TFTP/Network and
+then install the rest of the system using the Yoe updater.
+
+- from USB:
+  - `usb reset;fatls usb 0:1;fatload usb 0:1 0x21000000 at91-sama5d27_som1_ek.dtb;fatload usb 0:1 0x22000000 zImage;bootz 0x22000000 - 0x21000000`
+- from network/TFTP:
+  - `dhcp 0x21000000 <tftp server IP address>:at91-sama5d27_som1_ek.dtb`
+  - `dhcp 0x22000000 <tftp server IP address>:zImage`
+  - `bootz 0x22000000 - 0x21000000`
 
 At this point the kernel will boot, run the updater from an initramfs bundled
 with the kernel. The updater will inialize a SD/eMMC device, and program the
@@ -84,8 +80,43 @@ system from the \*.upd file on the USB disk.
 See the [Yoe Updater Documentation](updater.md) for more information on how the
 updater works.
 
-You can also load a kernel from a TFTP server:
+### setup-jtag.qml file
 
-- `dhcp 0x21000000 <tftp server IP address>:at91-sama5d27_som1_ek.dtb`
-- `dhcp 0x22000000 <tftp server IP address>:zImage`
-- `bootz 0x22000000 - 0x21000000`
+```
+import SAMBA 3.5
+import SAMBA.Connection.Serial 3.5
+import SAMBA.Device.SAMA5D2 3.5
+SerialConnection {
+	port: "ttyUSB0"
+	//port: "COM85"
+	baudRate: 115200
+	device: SAMA5D2Xplained {
+		/* override part of default config */
+		config {
+			/* use first boot partition */
+			sdmmc {
+				partition: 0
+			}
+		}
+	}
+
+	onConnectionOpened: {
+		// initialize SD/MMC applet
+		//initializeApplet("sdmmc")
+		// write file
+		//applet.write(0, "at91bootstrap.bin", true)
+		// initialize boot config applet
+		initializeApplet("bootconfig")
+		// Use BUREG0 as boot configuration word
+		applet.writeBootCfg(BootCfg.BSCR,
+		  BSCR.fromText("VALID,BUREG0"))
+
+		// Enable external boot only on SDMMC0
+		applet.writeBootCfg(BootCfg.BUREG0,
+			BCW.fromText("EXT_MEM_BOOT,UART1_IOSET1,JTAG_IOSET1," +
+				"SDMMC0,SDMMC1_DISABLED,NFC_DISABLED," +
+				"SPI1_DISABLED,SPI0_DISABLED," +
+				"QSPI1_DISABLED,QSPI0_DISABLED"))
+	}
+}
+```
