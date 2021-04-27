@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Next]
+## [2021.04] - 2021-04-27
 
 - Upgrade linux-ti-staging kernel to 5.4.106
 - Add new IMX8 machine imx8mp-ddr4-evk imx8mp-lpddr4-evk
@@ -70,13 +70,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade LLVM to 12.0.0
 - Update musl to latest
 - Upgrade openssh 8.5p1 -> 8.6p1
-- Add support for ARMv5 in rust
+- Add support for ARMv5/ARMv4 in rust
 - Fix yocto-check-layer script to work on multi layer repositories
 - Override package default opts (-O2) with distro default opts for unzip/lz4
 - Cleanups build dir before running configure for packages using cmake
 - Do not export custom CLANG_TIDY variable
 - Clean up meta-openembedded repositories for Yocto compatibility
 - Move libseccomp to Core layer and enable it by default in DISTRO_FEATURES
+- Fix nativesdk-clang build
+- Update FSL EULA to v22
+- Adjust recipes which were moved to OE-core
+- Enable LTO linker plugin with binutils nm/ar/ranlib
 
 ## [2021.03] - 2021-03-26
 
