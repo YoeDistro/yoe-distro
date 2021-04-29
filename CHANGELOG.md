@@ -81,6 +81,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update FSL EULA to v22
 - Adjust recipes which were moved to OE-core
 - Enable LTO linker plugin with binutils nm/ar/ranlib
+- Fix qtwebengine with GCC 11
+- Update qt5-creator to 4.14.2 and fix build with Clang 12
 
 ## [2021.03] - 2021-03-26
 
