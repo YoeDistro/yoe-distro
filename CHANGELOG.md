@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Next]
+## [2021.04] - 2021-04-27
 
 - Upgrade linux-ti-staging kernel to 5.4.106
 - Add new IMX8 machine imx8mp-ddr4-evk imx8mp-lpddr4-evk
@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove dosfstools to favor busybox mkfs.vfat applet in initramfs image
 - Remove meta-altera BSP layer
 - Fix huge wifi delay on imx6qdl-variscite-som
-- Update linux-raspberrypi to 5.10.25
+- Update linux-raspberrypi to 5.10.31
 - Fix mesa-gl build regression on RPI
 - Cleanup duplicate bbappends in meta-rockchip
 - Add a knob for OpenMP threads in bitbake configuration
@@ -56,6 +56,33 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - glib-2.0 upgraded to 2.68.0
 - External src now detects  code changes in submodules
 - Add support for 8DXLite EVK with DDR3
+- Cleanup Xorg recipes and patches for FSL boards
+- Update linux-fslc to v5.10.32 and linux-fslc-imx to v5.4.114
+- Update nodejs to 14.x LTS release
+- Move libmicrohttpd to OE-Core
+- Update PHP to 7.4.16
+- Update linux-yocto kernels to v5.4.112 and v5.10.30
+- Fix openssl dependencies in ca-certificate
+- Use openssl as defualt SSL/TLS implementation where possible
+- Add standalone xwayland and use it in weston images
+- Add debuginfod distro feature
+- Add --fetchdir parameter to layerindex-fetch
+- Upgrade LLVM to 12.0.0
+- Update musl to latest
+- Upgrade openssh 8.5p1 -> 8.6p1
+- Add support for ARMv5/ARMv4 in rust
+- Fix yocto-check-layer script to work on multi layer repositories
+- Override package default opts (-O2) with distro default opts for unzip/lz4
+- Cleanups build dir before running configure for packages using cmake
+- Do not export custom CLANG_TIDY variable
+- Clean up meta-openembedded repositories for Yocto compatibility
+- Move libseccomp to Core layer and enable it by default in DISTRO_FEATURES
+- Fix nativesdk-clang build
+- Update FSL EULA to v22
+- Adjust recipes which were moved to OE-core
+- Enable LTO linker plugin with binutils nm/ar/ranlib
+- Fix qtwebengine with GCC 11
+- Update qt5-creator to 4.14.2 and fix build with Clang 12
 
 ## [2021.03] - 2021-03-26
 

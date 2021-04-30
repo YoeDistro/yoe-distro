@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2021.03"
-DISTRO_CODENAME = "edilbay"
+DISTRO_VERSION = "2021.04"
+DISTRO_CODENAME = "forystufé"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
@@ -86,7 +86,7 @@ ERROR_QA_append = " ${WARN_TO_ERROR_QA}"
 # NOTE: if listing mklibs & prelink both, then make sure mklibs is before prelink
 # NOTE: mklibs also needs to be explicitly enabled for a given image, see local.conf.extended
 # image-prelink sometimes disabled due to issues with IFUNC symbol relocation
-USER_CLASSES ?= "buildstats buildhistory buildstats-summary image-mklibs image-prelink"
+USER_CLASSES ?= "buildhistory buildstats buildstats-summary image-mklibs image-prelink"
 
 IMAGE_CLASSES += "testimage testsdk"
 
@@ -99,7 +99,7 @@ INHERIT += "${@bb.utils.contains('BUILD_ARCH', 'ppc64le', '', 'uninative', d)}"
 # Add /etc/build to every image
 INHERIT += "image-buildinfo"
 
-DISTRO_FEATURES_append = " largefile opengl multiarch wayland pam polkit "
+DISTRO_FEATURES_append = " largefile opengl multiarch wayland pam polkit vulkan"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
