@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Next]
+
+- Fix xwayland dependency for weston in meta-freescale
+
 ## [2021.04] - 2021-04-27
 
 - Upgrade linux-ti-staging kernel to 5.4.106
