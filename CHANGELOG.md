@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Enable -Wdate-time to detect use of DATE TIME macros
 - Enable long options for enabled applets in busybox
 - Improve ptests for libpam and bash and valgrind
+- Switch clang to use Dwarf-5 by default like GCC 11
+- use 0x80008000 as the UBOOT_ENTRYPOINT for mx6ul, mx6ull and mx6ulz
 
 ## [2021.04] - 2021-04-27
 
