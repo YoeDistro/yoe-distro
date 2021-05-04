@@ -8,6 +8,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Next]
 
 - Fix xwayland dependency for weston in meta-freescale
+- Add progress handler for S3 copy
+- Upgrade imx firmware to 8.10.1
+- Fix recipes for building with -ffile-prefix-map
+- Upgrade to GCC 11.1.0
+- Upgrade GDB to 10.2
+- Fix patchelf note section alignment issues in uninative
+- Upgrade mesa to 21.0.3
+- Improve reproducibility for libjpeg-turbo
+- Enable -Wdate-time to detect use of DATE TIME macros
+- Enable long options for enabled applets in busybox
+- Improve ptests for libpam and bash and valgrind
 
 ## [2021.04] - 2021-04-27
 
