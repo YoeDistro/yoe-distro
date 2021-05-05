@@ -20,5 +20,3 @@ PACKAGE_INSTALL = "\
 "
 
 IMAGE_INSTALL_remove = " kernel-devicetree kernel-image-${KERNEL_IMAGETYPE}"
-
-KERNEL_IMAGE = "${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin"
