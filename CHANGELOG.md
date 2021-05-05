@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Next]
+
+- Fix xwayland dependency for weston in meta-freescale
+- Add progress handler for S3 copy
+- Upgrade imx firmware to 8.10.1
+- Fix recipes for building with -ffile-prefix-map
+- Upgrade to GCC 11.1.0
+- Upgrade GDB to 10.2
+- Fix patchelf note section alignment issues in uninative
+- Upgrade mesa to 21.0.3
+- Improve reproducibility for libjpeg-turbo
+- Enable -Wdate-time to detect use of DATE TIME macros
+- Enable long options for enabled applets in busybox
+- Improve ptests for libpam and bash and valgrind
+- Switch clang to use Dwarf-5 by default like GCC 11
+- use 0x80008000 as the UBOOT_ENTRYPOINT for mx6ul, mx6ull and mx6ulz
+
 ## [2021.04] - 2021-04-27
 
 - Upgrade linux-ti-staging kernel to 5.4.106

@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2021.04"
-DISTRO_CODENAME = "forystufé"
+DISTRO_VERSION = "2021.05"
+DISTRO_CODENAME = "elliottdale"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
