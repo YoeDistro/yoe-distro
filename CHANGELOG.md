@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Next]
 
+- Add RISCV based BeagleV as supported board
 - Fix xwayland dependency for weston in meta-freescale
 - Add progress handler for S3 copy
 - Upgrade imx firmware to 8.10.1
@@ -27,6 +28,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix reproducibility for busybox
 - Update linux-yocto trains to v5.4.116 and v5.10.34
 - Fix kernel configs for qemuriscv32 to support only 1GB physical mem
+- Fix SVN fetcher's parsing revision of SVN repos with redirects
+- Update external-arm-toolchains to latest
+- Add src files to nativesdk rust
+- Use bb.utils.rename() instead of os.rename() in scripts
+- Bump minimum required bitbake version to 1.51
+- gdk-pixbuf updated to 2.42.6, glib-2.0 to 2.68.1, strate to 5.12
 
 ## [2021.04] - 2021-04-27
 
