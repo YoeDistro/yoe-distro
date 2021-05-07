@@ -134,9 +134,9 @@ PACKAGECONFIG_remove_pn-wpewebkit = "qtwpe"
 # Pin versions, some BSP layers are housing older versions and have higher BBFILE_PRIORITY
 # as a result DEFAULT_PREFERENCE = "-1" does not help either so pin it here
 # meta-atmel has 3.0.8
-PREFERRED_VERSION_swig = "3.0.12"
-PREFERRED_VERSION_swig-native = "3.0.12"
-PREFERRED_VERSION_nativesdk-swig = "3.0.12"
+PREFERRED_VERSION_swig = "4%"
+PREFERRED_VERSION_swig-native = "4%"
+PREFERRED_VERSION_nativesdk-swig = "4%"
 # meta-atmel has 1.7.4
 PREFERRED_VERSION_cjson = "1.7.14"
 # meta-ti has 1.8.9.1
