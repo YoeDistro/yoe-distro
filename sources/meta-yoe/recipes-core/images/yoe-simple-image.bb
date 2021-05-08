@@ -21,6 +21,7 @@ IMAGE_INSTALL = "\
 
 IMAGE_INSTALL_append_arm = " 96boards-tools"
 IMAGE_INSTALL_append_aarch64 = " 96boards-tools"
+IMAGE_INSTALL_append_beaglev-starlight-jh7100 = " 96boards-tools"
 
 export IMAGE_BASENAME = "yoe-simple-image"
 
