@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Bump minimum required bitbake version to 1.51
 - gdk-pixbuf updated to 2.42.6, glib-2.0 to 2.68.1, strate to 5.12
 - Upgrade webkitgtk to 2.32.0
+- Fix qtwebengine to build with gcc11 and upgrade to use chromium-87
 - Various recipe version upgrades
 
 ## [2021.04] - 2021-04-27
