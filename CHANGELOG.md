@@ -37,6 +37,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - gdk-pixbuf updated to 2.42.6, glib-2.0 to 2.68.1, strate to 5.12
 - Upgrade webkitgtk to 2.32.0
 - Fix qtwebengine to build with gcc11 and upgrade to use chromium-87
+- arm/trusted-firmware-m is updated to 1.3.0
+- Upgrade XFCE components - xfce4-panel, xfce4-clipman-plugin,
+  xfce4-systemload-plugin
+- Fix CVE checks in QEMU, openssh, logrotate, jquery
+- Upgrade busybox to 1.33.1
 - Various recipe version upgrades
 
 ## [2021.04] - 2021-04-27
