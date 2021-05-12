@@ -18,10 +18,7 @@ IMAGE_INSTALL = "\
     packagegroup-base-ipv6 \
     os-release \
 "
-
-IMAGE_INSTALL_append_arm = " 96boards-tools"
-IMAGE_INSTALL_append_aarch64 = " 96boards-tools"
-IMAGE_INSTALL_append_beaglev-starlight-jh7100 = " 96boards-tools"
+IMAGE_INSTALL_append = "${@bb.utils.contains('INITRAMFS_IMAGE_BUNDLE', '1', '', ' 96boards-tools', d)}"
 
 export IMAGE_BASENAME = "yoe-simple-image"
 

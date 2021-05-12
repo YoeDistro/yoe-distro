@@ -1,3 +1,6 @@
+# We use updater to handle disk/SD management, therefore remove 96boards-tools
+IMAGE_INSTALL_remove = "96boards-tools"
+
 UPDATE_IMAGES ?= "\
         version.txt \
         u-boot.bin \
