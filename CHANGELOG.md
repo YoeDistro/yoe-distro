@@ -42,6 +42,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   xfce4-systemload-plugin
 - Fix CVE checks in QEMU, openssh, logrotate, jquery
 - Upgrade busybox to 1.33.1
+- Fix recipes to build with new definitions of SIGSTKSZ in glibc trunk
+- Fix trusted-firmware-a for rockchip using GCC11/Clang12
+- Backport DWARF-5 support for gold linker
+- Update btrfs-tools to 5.12, ffmpeg to 4.4 and epiphany to 40.1
+- Enable RISCV64 port for baremetal sample application helloworld
+- Enhance yoe-sdk-image to include tools to build kernel on-device
 - Various recipe version upgrades
 
 ## [2021.04] - 2021-04-27
