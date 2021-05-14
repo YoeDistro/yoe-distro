@@ -57,5 +57,5 @@ do_install() {
 
 SYSTEMD_SERVICE_${PN} = "siot.service"
 
-INSANE_SKIP_${PN} += "ldflags"
+INSANE_SKIP_${PN} += "ldflags already-stripped"
 

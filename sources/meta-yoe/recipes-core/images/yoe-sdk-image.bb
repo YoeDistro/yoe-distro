@@ -8,6 +8,8 @@ IMAGE_FEATURES += "tools-sdk dev-pkgs"
 IMAGE_INSTALL += "\
     packagegroup-go-sdk-target \
     packagegroup-core-buildessential \
+    u-boot-tools-mkimage \
+    u-boot-tools-mkenvimage \
     git \
     bc \
 "
