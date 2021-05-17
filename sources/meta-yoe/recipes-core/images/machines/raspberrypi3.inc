@@ -1,3 +1,6 @@
+# We use updater to handle disk/SD management, therefore remove 96boards-tools
+IMAGE_INSTALL_remove = "96boards-tools"
+
 KERNEL_IMAGE = "${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin"
 
 # Add ${KERNEL_IMAGETYPE} to KERNEL_ARTEFACTS if using u-boot

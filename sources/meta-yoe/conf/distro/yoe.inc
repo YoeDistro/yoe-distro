@@ -164,11 +164,6 @@ SWUPDATE_INIT = "tiny"
 # Use 1GB DRAM for QEMU machines, helps in running tests
 QB_MEM = "-m 1024"
 
-# Enable SMP in QEMU, helps in running tests a bit quicker
-QB_NRCPUS ?= "2"
-QB_CPU_append = " -smp ${QB_NRCPUS}"
-QB_CPU_KVM_append = " -smp ${QB_NRCPUS}"
-
 INHERIT += "blacklist"
 PNBLACKLIST[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
 PNBLACKLIST[smartrefrigerator] = "Needs porting to QT > 5.6"

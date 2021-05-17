@@ -2,9 +2,6 @@ DEPENDS += "coreutils-native"
 
 UPDATE_IMAGES_ ??= ""
 
-# We use updater to handle disk/SD management, therefore remove 96boards-tools
-IMAGE_INSTALL_remove = "96boards-tools"
-
 UPDATE_IMAGES_ ?= "${UPDATE_IMAGES} update.sha256"
 KERNEL_IMAGE ?= "zImage-initramfs-${MACHINE}.bin"
 
