@@ -23,8 +23,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Improve ptests for libpam and bash and valgrind
 - Switch clang to use Dwarf-5 by default like GCC 11
 - use 0x80008000 as the UBOOT_ENTRYPOINT for mx6ul, mx6ull and mx6ulz
-- Update linux-fslc-imx to v5.4.118 and linux-fslc-lts to v5.10.36
-- Add linux-fslc 5.12.3
+- Update linux-fslc-imx to v5.4.119 and linux-fslc-lts to v5.10.37
+- Add linux-fslc 5.12.4
 - Enable serial and usbhost machine features for NanoPi-M4
 - Bump linux-ti-mainline to 5.12
 - Fix reproducibility for busybox
@@ -53,6 +53,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update meson to 0.58.0
 - Upgrade python to 3.9.5
 - use 4 cores in qemu guests
+- Update some of gnome components to facilitate 0.40.x release series
+- Update bluez and wifi firmwares for RPI to rpt8 and rpt11 respectively
+- Upgrade qemu to 6.0.0
+- Handle sstate manifest 'corruption' issue
 - Various recipe version upgrades
 
 ## [2021.04] - 2021-04-27
