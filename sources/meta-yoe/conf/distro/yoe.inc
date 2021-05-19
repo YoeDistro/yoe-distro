@@ -80,13 +80,10 @@ ERROR_QA_append = " ${WARN_TO_ERROR_QA}"
 # enable extra features. Some available options which can be included in this variable
 # are:
 #   - 'buildstats' collect build statistics
-#   - 'image-mklibs' to reduce shared library files size for an image
 #   - 'image-prelink' in order to prelink the filesystem image
 #   - 'image-swab' to perform host system intrusion detection
-# NOTE: if listing mklibs & prelink both, then make sure mklibs is before prelink
-# NOTE: mklibs also needs to be explicitly enabled for a given image, see local.conf.extended
 # image-prelink sometimes disabled due to issues with IFUNC symbol relocation
-USER_CLASSES ?= "buildhistory buildstats buildstats-summary image-mklibs image-prelink"
+USER_CLASSES ?= "buildhistory buildstats buildstats-summary image-prelink"
 
 IMAGE_CLASSES += "testimage testsdk"
 
@@ -94,7 +91,7 @@ require conf/distro/include/no-static-libs.inc
 require conf/distro/include/yocto-uninative.inc
 require conf/distro/include/security_flags.inc
 
-INHERIT += "${@bb.utils.contains('BUILD_ARCH', 'ppc64le', '', 'uninative', d)}"
+#INHERIT += "${@bb.utils.contains('BUILD_ARCH', 'ppc64le', '', 'uninative', d)}"
 
 # Add /etc/build to every image
 INHERIT += "image-buildinfo"
