@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Enable serial and usbhost machine features for NanoPi-M4
 - Bump linux-ti-mainline to 5.12
 - Fix reproducibility for busybox
-- Update linux-yocto trains to v5.4.116 and v5.10.34
+- Update linux-yocto trains to v5.4.119 and v5.10.37
 - Fix kernel configs for qemuriscv32 to support only 1GB physical mem
 - Fix SVN fetcher's parsing revision of SVN repos with redirects
 - Update external-arm-toolchains to latest
@@ -57,6 +57,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update bluez and wifi firmwares for RPI to rpt8 and rpt11 respectively
 - Upgrade qemu to 6.0.0
 - Handle sstate manifest 'corruption' issue
+- Remove mklibs feature and support from core
+- Fix default gcc search paths for musl configs and relocatable SDK fix
+- CVE fixes in several packages
 - Various recipe version upgrades
 
 ## [2021.04] - 2021-04-27
