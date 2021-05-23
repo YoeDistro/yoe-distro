@@ -60,6 +60,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove mklibs feature and support from core
 - Fix default gcc search paths for musl configs and relocatable SDK fix
 - CVE fixes in several packages
+- Add compiler-rt-sanitizers, clang based sanitizers
+- Upgrade uninative to 3.2 (gcc11 support)
+- Fix `__NR_fstatat` syscall name for riscv/musl
+- Upgrade U-Boot to 2021.04
 - Various recipe version upgrades
 
 ## [2021.04] - 2021-04-27
