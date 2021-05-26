@@ -23,12 +23,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Improve ptests for libpam and bash and valgrind
 - Switch clang to use Dwarf-5 by default like GCC 11
 - use 0x80008000 as the UBOOT_ENTRYPOINT for mx6ul, mx6ull and mx6ulz
-- Update linux-fslc-imx to v5.4.119 and linux-fslc-lts to v5.10.37
-- Add linux-fslc 5.12.4
+- Update linux-fslc-imx to v5.4.121 and linux-fslc-lts to v5.10.39
+- Add linux-fslc 5.12.6
 - Enable serial and usbhost machine features for NanoPi-M4
 - Bump linux-ti-mainline to 5.12
 - Fix reproducibility for busybox
-- Update linux-yocto trains to v5.4.119 and v5.10.37
+- Update linux-yocto trains to v5.4.119 and v5.10.38
 - Fix kernel configs for qemuriscv32 to support only 1GB physical mem
 - Fix SVN fetcher's parsing revision of SVN repos with redirects
 - Update external-arm-toolchains to latest
@@ -64,6 +64,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade uninative to 3.2 (gcc11 support)
 - Fix `__NR_fstatat` syscall name for riscv/musl
 - Upgrade U-Boot to 2021.04
+- Fix clang static analyzer viewer for missing python module
+- Update arm trusted-firmare-a to version 2.5
+- Update gcc11 to latest on upstream GCC 11 release branch
+- Update glibc to 2.33.1
+- Enable memory tagging in glibc on aarch64
+- Update systemd to 248.3
+- Allow using gold linker with gcc-cross-canadian in SDK 
 - Various recipe version upgrades
 
 ## [2021.04] - 2021-04-27
