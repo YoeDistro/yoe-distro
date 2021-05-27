@@ -23,8 +23,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Improve ptests for libpam and bash and valgrind
 - Switch clang to use Dwarf-5 by default like GCC 11
 - use 0x80008000 as the UBOOT_ENTRYPOINT for mx6ul, mx6ull and mx6ulz
-- Update linux-fslc-imx to v5.4.121 and linux-fslc-lts to v5.10.39
-- Add linux-fslc 5.12.6
+- Update linux-fslc-imx to v5.4.122 and linux-fslc-lts to v5.10.40
+- Add linux-fslc 5.12.7
 - Enable serial and usbhost machine features for NanoPi-M4
 - Bump linux-ti-mainline to 5.12
 - Fix reproducibility for busybox
