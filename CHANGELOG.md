@@ -17,7 +17,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37, xorgproto - 2021.4.99.1
   - grpc - 1.38.0, libstemmer - 2.1.0, mpich - 3.4.2, gupnp - 1.2.6, thunar - 4.16.8
-  - libx11 - 1.7.1, linux-intel-dev - 5.12.0
+  - libx11 - 1.7.1, linux-intel-dev - 5.12.0, python3-setuptools - 57.0.0
+  - linux-yocto/5.4 - v5.4.123, linux-yocto/5.10 - v5.10.41
   - Various python recipe version bumps
 - New recipes
   - qperf, evemu-tools
