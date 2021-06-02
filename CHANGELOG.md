@@ -5,7 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [2021.05] - 2021-05-31]
+## [NEXT]
+
+- Update beagleV quickstart documentation
+- Switch libuncontext to use meson
+- Add support for erofs filesystems
+- Fix mongodb, mariadb, vk-gl-cts, ovmf to build on musl/clang combination
+- Fix dhcp-relay to build for musl
+- Fix dovecot, heaptrack
+- Recipe Upgrades
+  - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
+  - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37, xorgproto - 2021.4.99.1
+  - grpc - 1.38.0, libstemmer - 2.1.0, mpich - 3.4.2, gupnp - 1.2.6, thunar - 4.16.8
+  - libx11 - 1.7.1, linux-intel-dev - 5.12.0, python3-setuptools - 57.0.0
+  - linux-yocto/5.4 - v5.4.123, linux-yocto/5.10 - v5.10.41
+  - Various python recipe version bumps
+- New recipes
+  - qperf, evemu-tools
+
+## [2021.05] - 2021-05-31
 
 - Add RISCV based BeagleV as supported board
 - Add support for linux-starfive-dev kernel
