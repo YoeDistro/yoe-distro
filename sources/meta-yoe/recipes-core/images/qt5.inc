@@ -36,7 +36,7 @@ QTWEBKIT ??= "\
 	qtwebkit-qmlplugins \
 "
 
-CORE_IMAGE_BASE_INSTALL += " \
+CORE_IMAGE_EXTRA_INSTALL += " \
   ${QT5APPS} \
   ${QT5BASE} \
 "
