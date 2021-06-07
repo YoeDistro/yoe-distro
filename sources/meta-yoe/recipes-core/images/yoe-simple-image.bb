@@ -17,6 +17,7 @@ IMAGE_INSTALL = "\
     packagegroup-machine-base \
     packagegroup-base-ipv6 \
     os-release \
+    ${CORE_IMAGE_EXTRA_INSTALL} \
 "
 IMAGE_INSTALL_append = "${@bb.utils.contains('INITRAMFS_IMAGE_BUNDLE', '1', '', ' 96boards-tools', d)}"
 
