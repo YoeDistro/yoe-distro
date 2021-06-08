@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Various packages fixed for set but unused clang warning
 - Remove clutter, Cogl, and mx and its use from Core recipes 
 - Fix 96-boards tool to resize disks with GPT
+- Use linux-starfive-dev kernel for beagleV
+- Use u-boot device tree for OpenSBI fix SD card boot freeze on beagleV
+- Use GPT again for beagleV wic image
+- Fix wrong type for mutex in boost
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -26,6 +30,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libx11 - 1.7.1, linux-intel-dev - 5.12.0, python3-setuptools - 57.0.0
   - linux-yocto/5.4 - v5.4.123, linux-yocto/5.10 - v5.10.41
   - opensaf - 5.21.06, fio - 3.27, gensio - 2.2.7, glog - 0.5.0
+  - linux-fslc-imx - v5.4.124, linux-fslc-lts - v5.10.42, linux-fslc - v5.12.9
+  - at-spi2-core - 2.40.2
   - Various python recipe version bumps
 - New recipes
   - qperf, evemu-tools
