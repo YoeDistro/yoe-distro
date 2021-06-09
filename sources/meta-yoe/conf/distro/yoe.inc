@@ -59,20 +59,27 @@ MACHINE_KERNEL_PR ??= "0"
 # accound for some layers which have bbappends for layers we dont include
 BB_DANGLINGAPPENDS_WARNONLY = "1"
 
-# Poky goodness
-# QA check settings - a little stricter than the OE-Core defaults
+# Use clang as default compiler
+TOOLCHAIN ?= "clang"
 
-WARN_TO_ERROR_QA = "ldflags useless-rpaths rpaths staticdev libdir xorg-driver-abi \
-            textrel already-stripped incompatible-license files-invalid \
-            installed-vs-shipped compile-host-path install-host-path \
-            pn-overrides infodir build-deps src-uri-bad \
-            unknown-configure-option symlink-to-sysroot multilib \
+# Build clang into SDK as well
+CLANGSDK = "1"
+
+# Use compile-rt/libcxx/libunwind as default runtime libraries
+RUNTIME = "llvm"
+
+# QA check settings - a little stricter than the OE-Core defaults
+WARN_TO_ERROR_QA ?= "\
+            libdir xorg-driver-abi \
+            textrel incompatible-license files-invalid \
+            infodir build-deps src-uri-bad symlink-to-sysroot multilib \
             invalid-packageconfig host-user-contaminated uppercase-pn patch-fuzz \
-            mime mime-xdg \
+            mime mime-xdg unlisted-pkg-lics unhandled-features-check \
+            missing-update-alternatives native-last \
             "
+
 WARN_QA_remove = "${WARN_TO_ERROR_QA}"
 ERROR_QA_append = " ${WARN_TO_ERROR_QA}"
-#ERROR_QA_remove  = "split-strip"
 #
 # Additional image features
 #

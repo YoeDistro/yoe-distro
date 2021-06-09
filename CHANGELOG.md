@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use u-boot device tree for OpenSBI fix SD card boot freeze on beagleV
 - Use GPT again for beagleV wic image
 - Fix wrong type for mutex in boost
+- Upgrade clang to trunk/13.0 release
+- Add recipes for native libcxx and compiler-rt
+- Switch default compiler to clang and c/c++ runtime to llvm
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
