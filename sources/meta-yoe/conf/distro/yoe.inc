@@ -59,6 +59,15 @@ MACHINE_KERNEL_PR ??= "0"
 # accound for some layers which have bbappends for layers we dont include
 BB_DANGLINGAPPENDS_WARNONLY = "1"
 
+# Use clang as default compiler
+TOOLCHAIN ?= "clang"
+
+# Build clang into SDK as well
+CLANGSDK = "1"
+
+# Use compile-rt/libcxx/libunwind as default runtime libraries
+RUNTIME = "llvm"
+
 # Poky goodness
 # QA check settings - a little stricter than the OE-Core defaults
 
