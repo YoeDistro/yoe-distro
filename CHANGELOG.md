@@ -24,6 +24,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade clang to trunk/13.0 release
 - Add recipes for native libcxx and compiler-rt
 - Switch default compiler to clang and c/c++ runtime to llvm
+- Do not force libgcc libunwind in rv32 and rv64 when using clang
+- Add WM8960 soundcard support to RPI
+- Remove deprecated linux-4-17 option from dbus-broker
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -33,11 +36,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libx11 - 1.7.1, linux-intel-dev - 5.12.0, python3-setuptools - 57.0.0
   - linux-yocto/5.4 - v5.4.123, linux-yocto/5.10 - v5.10.41
   - opensaf - 5.21.06, fio - 3.27, gensio - 2.2.7, glog - 0.5.0
-  - linux-fslc-imx - v5.4.124, linux-fslc-lts - v5.10.42, linux-fslc - v5.12.9
-  - at-spi2-core - 2.40.2
+  - linux-fslc-imx - v5.4.125, linux-fslc-lts - v5.10.43, linux-fslc - v5.12.10
+  - u-boot-fslc - v2021.07-rc4, at-spi2-core - 2.40.2
+  - intel-microcode - 20210608, iozone3 - 492, pipewire - 0.3.30
+  - modemmanager - 1.16.6, yelp - 40.2, gvfs - 1.48.1, libsigc++-2.0 - 2.10.7
+  - libmediaart-2.0 - 1.9.5
   - Various python recipe version bumps
+  - Various gnome recipe version bumps
 - New recipes
-  - qperf, evemu-tools
+  - qperf, evemu-tools, zsync-curl
 
 ## [2021.05] - 2021-05-31
 
