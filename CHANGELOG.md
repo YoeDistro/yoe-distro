@@ -27,6 +27,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Do not force libgcc libunwind in rv32 and rv64 when using clang
 - Add WM8960 soundcard support to RPI
 - Remove deprecated linux-4-17 option from dbus-broker
+- Fix klibc build with clang/compiler-rt
+- Fix ffmpeg build on riscv32
+- Add ppc64 SDK machine
+- Re-add armv4 architecture support
+- Add zsync conversions to image_types
+- Package sysext in systemd-extra-utils
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -34,13 +40,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - grpc - 1.38.0, libstemmer - 2.1.0, mpich - 3.4.2, gupnp - 1.2.6
   - thunar - 4.16.8, icewm - 2.3.4, dbus-broker - 29, nftables - 0.9.9
   - libx11 - 1.7.1, linux-intel-dev - 5.12.0, python3-setuptools - 57.0.0
-  - linux-yocto/5.4 - v5.4.123, linux-yocto/5.10 - v5.10.41
+  - linux-yocto/5.4 - v5.4.123, linux-yocto/5.10 - v5.10.42
   - opensaf - 5.21.06, fio - 3.27, gensio - 2.2.7, glog - 0.5.0
   - linux-fslc-imx - v5.4.125, linux-fslc-lts - v5.10.43, linux-fslc - v5.12.10
   - u-boot-fslc - v2021.07-rc4, at-spi2-core - 2.40.2
   - intel-microcode - 20210608, iozone3 - 492, pipewire - 0.3.30
   - modemmanager - 1.16.6, yelp - 40.2, gvfs - 1.48.1, libsigc++-2.0 - 2.10.7
-  - libmediaart-2.0 - 1.9.5
+  - libmediaart-2.0 - 1.9.5, toybox - 0.8.5, protobuf - 3.17.3
+  - abseil-cpp - 20210324.2, speedtest-cli - 2.1.3, rasdaemon - 0.6.7
+  - p11-kit - 0.23.24, vala - 0.52.4, epiphany - 40.2, diffoscope - 177
+  - opkg - 0.4.5
   - Various python recipe version bumps
   - Various gnome recipe version bumps
 - New recipes
