@@ -33,6 +33,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Re-add armv4 architecture support
 - Add zsync conversions to image_types
 - Package sysext in systemd-extra-utils
+- Cleanup odroid-hardkernel recipes
+- Fix overrides for IMAGE_FSTYPES in initramfs-debug-image generation
+- Fix kernel do_sizecheck compare function
+- Use 4 cores for qemuriscv32/qemuriscv64 emualation
+- Move glibc ldso provider from musl to gcompat
+- Backport fixes for ARC GCC
+- Use Apache-2.0 implementation for `__stack_chk_fail`
+- Fix libjpeg-turbo build on neon-less ARM
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -49,11 +57,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libmediaart-2.0 - 1.9.5, toybox - 0.8.5, protobuf - 3.17.3
   - abseil-cpp - 20210324.2, speedtest-cli - 2.1.3, rasdaemon - 0.6.7
   - p11-kit - 0.23.24, vala - 0.52.4, epiphany - 40.2, diffoscope - 177
-  - opkg - 0.4.5
+  - opkg - 0.4.5, git - 2.32.0, dtc - 1.6.1, go - 1.16.5, less - 590
+  - ethtool - 5.12, gnutls - 3.7.2, liburcu - 0.13.0
   - Various python recipe version bumps
   - Various gnome recipe version bumps
 - New recipes
-  - qperf, evemu-tools, zsync-curl
+  - qperf, evemu-tools, zsync-curl, gcompat
 
 ## [2021.05] - 2021-05-31
 
