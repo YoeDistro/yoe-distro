@@ -47,6 +47,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add ARC support to GDB
 - Enable debuginfod on cross GDB
 - Fix pkg-config for cross-canadian builds
+- Fix rocksdb on riscv32, mips, and armv6+
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -72,7 +73,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - meson - 0.58.1, ell - 0.41, m4 - 1.4.19, nettle - 3.7.3, grub - 2.06
   - glib-2.0 - 2.68.3, erofs-utils - 1.3, gptfdisk - 1.0.8, connman - 1.40
   - libwpe - 1.10.1, sudo - 1.9.7p1, wpebackend-fdo - 1.10.0, rng-tools - 6.13
-  - libnss-mdns - 0.15.1, libksba - 1.6.0
+  - libnss-mdns - 0.15.1, libksba - 1.6.0, rsyslog - 8.2106.0, nano - 5.8
+  - rsnapshot - 1.4.4, mg - 20210609, googletest - 1.11.0
+  - fsverity-utils - 1.4, ctags - 5.9.20210613.0, mosquitto - 2.0.11
+  - evince - 40.2, fuse3 - 3.10.4
   - Various python recipe version bumps
   - Various gnome recipe version bumps
 - New recipes
