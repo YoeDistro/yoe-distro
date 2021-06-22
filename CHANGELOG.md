@@ -41,6 +41,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Backport fixes for ARC GCC
 - Use Apache-2.0 implementation for `__stack_chk_fail`
 - Fix libjpeg-turbo build on neon-less ARM
+- Fix mariadb, mongodb, flashrom builds when using clang/musl
+- Add rock64 machine in meta-rockchip
+- Make rpi-cmdline machine specific
+- Add ARC support to GDB
+- Enable debuginfod on cross GDB
+- Fix pkg-config for cross-canadian builds
+- Fix rocksdb on riscv32, mips, and armv6+
+- Make granular packageconfigs for czmq
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -48,9 +56,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - grpc - 1.38.0, libstemmer - 2.1.0, mpich - 3.4.2, gupnp - 1.2.6
   - thunar - 4.16.8, icewm - 2.3.4, dbus-broker - 29, nftables - 0.9.9
   - libx11 - 1.7.1, linux-intel-dev - 5.12.0, python3-setuptools - 57.0.0
-  - linux-yocto/5.4 - v5.4.123, linux-yocto/5.10 - v5.10.42
+  - linux-yocto/5.4 - v5.4.125, linux-yocto/5.10 - v5.10.43
   - opensaf - 5.21.06, fio - 3.27, gensio - 2.2.7, glog - 0.5.0
-  - linux-fslc-imx - v5.4.125, linux-fslc-lts - v5.10.43, linux-fslc - v5.12.10
+  - linux-fslc-imx - v5.4.126, linux-fslc-lts - v5.10.44, linux-fslc - v5.12.11
   - u-boot-fslc - v2021.07-rc4, at-spi2-core - 2.40.2
   - intel-microcode - 20210608, iozone3 - 492, pipewire - 0.3.30
   - modemmanager - 1.16.6, yelp - 40.2, gvfs - 1.48.1, libsigc++-2.0 - 2.10.7
@@ -58,7 +66,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - abseil-cpp - 20210324.2, speedtest-cli - 2.1.3, rasdaemon - 0.6.7
   - p11-kit - 0.23.24, vala - 0.52.4, epiphany - 40.2, diffoscope - 177
   - opkg - 0.4.5, git - 2.32.0, dtc - 1.6.1, go - 1.16.5, less - 590
-  - ethtool - 5.12, gnutls - 3.7.2, liburcu - 0.13.0
+  - ethtool - 5.12, gnutls - 3.7.2, liburcu - 0.13.0, rocksdb - 6.20.3
+  - c-ares - 1.17.1, nodejs - 14.17.1, libpfm4 - 4.11.0
+  - nfs-utils - 2.5.4, createrepo-c - 0.17.3, enchant2 - 2.3.0
+  - blktrace - 1.3.0, alsa - 1.2.5.1, libpcap - 1.10.1, util-linux - 2.37
+  - libX11 - 1.7.2, mpg123 - 1.28.0, xorgproto - 2021.4.99.2, apt - 2.2.4
+  - meson - 0.58.1, ell - 0.41, m4 - 1.4.19, nettle - 3.7.3, grub - 2.06
+  - glib-2.0 - 2.68.3, erofs-utils - 1.3, gptfdisk - 1.0.8, connman - 1.40
+  - libwpe - 1.10.1, sudo - 1.9.7p1, wpebackend-fdo - 1.10.0, rng-tools - 6.13
+  - libnss-mdns - 0.15.1, libksba - 1.6.0, rsyslog - 8.2106.0, nano - 5.8
+  - rsnapshot - 1.4.4, mg - 20210609, googletest - 1.11.0
+  - fsverity-utils - 1.4, ctags - 5.9.20210613.0, mosquitto - 2.0.11
+  - evince - 40.2, fuse3 - 3.10.4, libzip - 1.8.0, iwd - 1.15
   - Various python recipe version bumps
   - Various gnome recipe version bumps
 - New recipes

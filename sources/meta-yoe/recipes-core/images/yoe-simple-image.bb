@@ -21,6 +21,8 @@ IMAGE_INSTALL = "\
 "
 IMAGE_INSTALL_append = "${@bb.utils.contains('INITRAMFS_IMAGE_BUNDLE', '1', '', ' 96boards-tools', d)}"
 
+IMAGE_INSTALL_append_libc-musl = " gcompat"
+
 export IMAGE_BASENAME = "yoe-simple-image"
 
 BAD_RECOMMENDATIONS += "eudev-hwdb udev-hwdb libmodule-build-perl"
