@@ -77,7 +77,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libnss-mdns - 0.15.1, libksba - 1.6.0, rsyslog - 8.2106.0, nano - 5.8
   - rsnapshot - 1.4.4, mg - 20210609, googletest - 1.11.0
   - fsverity-utils - 1.4, ctags - 5.9.20210613.0, mosquitto - 2.0.11
-  - evince - 40.2, fuse3 - 3.10.4, libzip - 1.8.0
+  - evince - 40.2, fuse3 - 3.10.4, libzip - 1.8.0, iwd - 1.15
   - Various python recipe version bumps
   - Various gnome recipe version bumps
 - New recipes
