@@ -57,6 +57,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Improve ARC support in toolchain components
 - Fix Glibc Aarch64 MTE support
 - Enhance devtool to rebase override-only patches as well
+- Fix libpfm4 on aarch64
+- Fix mpich and libc-bench to respect ldflags
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -92,11 +94,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libcap - 1.2.3, libcap - 2.51, vte - 0.64.2, sqlite3 - 3.36.0
   - mtools - 4.0.31, libxi - 1.7.99.2, libpcre - 8.45, libdnf - 0.63.1
   - dejagnu - 1.6.3, bluez5 - 5.59, bind - 9.16.18, dnf - 4.8.0
-  - bash - 5.1.8, cmake - 3.20.4
+  - bash - 5.1.8, cmake - 3.20.4, monit - 5.28.0, sshfs-fuse - 3.7.2
+  - libtinyxml2 - 9.0.0
   - Various python recipe version bumps
   - Various gnome recipe version bumps
 - New recipes
-  - qperf, evemu-tools, zsync-curl, gcompat
+  - qperf, evemu-tools, zsync-curl, gcompat, gatord
 
 ## [2021.05] - 2021-05-31
 
