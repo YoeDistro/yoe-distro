@@ -49,6 +49,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix pkg-config for cross-canadian builds
 - Fix rocksdb on riscv32, mips, and armv6+
 - Make granular packageconfigs for czmq
+- Add native build for net-snmp
+- Add missing dbus dependency
+- Fix QTbase for rk3399 wayland and eglfs builds
+- Add second qmp port to qemurunner
+- Enable multilib for do_populate_sdk
+- Improve ARC support in toolchain components
+- Fix Glibc Aarch64 MTE support
+- Enhance devtool to rebase override-only patches as well
+- Fix libpfm4 on aarch64
+- Fix mpich and libc-bench to respect ldflags
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -77,11 +87,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libnss-mdns - 0.15.1, libksba - 1.6.0, rsyslog - 8.2106.0, nano - 5.8
   - rsnapshot - 1.4.4, mg - 20210609, googletest - 1.11.0
   - fsverity-utils - 1.4, ctags - 5.9.20210613.0, mosquitto - 2.0.11
-  - evince - 40.2, fuse3 - 3.10.4, libzip - 1.8.0, iwd - 1.15
+  - evince - 40.2, fuse3 - 3.10.4, libzip - 1.8.0, iwd - 1.15, satyr - 0.38
+  - libconfig - 1.7.3, grpc - 1.38.1, fwts - 21.06.00, function2 - 4.2.0
+  - ctags - 5.9.20210620.0, snort - 2.9.18, openvpn - 2.5.3, qwt-qt5 - 6.1.5
+  - mesa - 21.1.3, libxcrypt - 4.4.23, libva - 2.12.0, libhandy - 1.2.3
+  - libcap - 1.2.3, libcap - 2.51, vte - 0.64.2, sqlite3 - 3.36.0
+  - mtools - 4.0.31, libxi - 1.7.99.2, libpcre - 8.45, libdnf - 0.63.1
+  - dejagnu - 1.6.3, bluez5 - 5.59, bind - 9.16.18, dnf - 4.8.0
+  - bash - 5.1.8, cmake - 3.20.4, monit - 5.28.0, sshfs-fuse - 3.7.2
+  - libtinyxml2 - 9.0.0
   - Various python recipe version bumps
   - Various gnome recipe version bumps
 - New recipes
-  - qperf, evemu-tools, zsync-curl, gcompat
+  - qperf, evemu-tools, zsync-curl, gcompat, gatord
 
 ## [2021.05] - 2021-05-31
 
