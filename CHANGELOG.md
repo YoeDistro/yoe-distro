@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [NEXT]
+## [2021.06] - 2021-06-30
 
 - Update beagleV quickstart documentation
 - Switch libuncontext to use meson
@@ -59,6 +59,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Enhance devtool to rebase override-only patches as well
 - Fix libpfm4 on aarch64
 - Fix mpich and libc-bench to respect ldflags
+- Add RISC-V support to ldconfig-native
+- Fix SRC_URI for cantarell-fonts and libgudev
+- Fix errors about read-only sstate mirrors
+- Fix ntpdate to wait for subprocesses
 - Recipe Upgrades
   - Curl - 7.77.0, kmod - 29, linux-firmware - 20210511, libxcrypt - 4.4.22
   - iproute2 - 5.12.0, libepoxy - 1.5.8, libpcre2 - 10.37
@@ -95,7 +99,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - mtools - 4.0.31, libxi - 1.7.99.2, libpcre - 8.45, libdnf - 0.63.1
   - dejagnu - 1.6.3, bluez5 - 5.59, bind - 9.16.18, dnf - 4.8.0
   - bash - 5.1.8, cmake - 3.20.4, monit - 5.28.0, sshfs-fuse - 3.7.2
-  - libtinyxml2 - 9.0.0
+  - libtinyxml2 - 9.0.0, iputils - 20210202, shaderc - 2021.1
+  - glslang - 11.5.0, spirv-tools - 2021.2
   - Various python recipe version bumps
   - Various gnome recipe version bumps
 - New recipes
