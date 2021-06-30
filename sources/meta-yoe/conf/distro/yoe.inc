@@ -6,7 +6,7 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2021.06-rc.1"
+DISTRO_VERSION = "2021.06"
 DISTRO_CODENAME = "galician"
 SDK_VERSION := "${DISTRO_VERSION}"
 
