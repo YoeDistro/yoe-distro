@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [NEXT]
 
+- Check for wayland distro feature before enabling egl in qtwayland
+- Introduce armv8r64 compiler flags in arch-armv8r64
+- Fix openssh key generation
+- Fix pulseaudio build on non-neon ARM CPUs
+- Add error diagnostics for generating multiconfig eSDKs
+- Upgrde python3 to 3.9.6
+- Fix race condition in building bash
+- Fix race in sstate/staging directory creation
+- Recipe Upgrades
+  - python3-importlib-metadata - 4.6.0, libffi - 3.4.2
+  - xf86-input-libinput - 1.1.0, stress-ng - 0.12.11, libglu - 9.0.2
+  - gpgme - 1.16.0, cmake - 3.20.5
+
 ## [2021.06] - 2021-06-30
 
 - Update beagleV quickstart documentation
