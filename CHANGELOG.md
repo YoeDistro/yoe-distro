@@ -15,10 +15,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrde python3 to 3.9.6
 - Fix race condition in building bash
 - Fix race in sstate/staging directory creation
+- Fix multilib enabled clang builds
+- Use GNUInstallDirs in portaudio-v19 to fix ppc64 builds
+- Disable JIT in sysdig for ppc64
+- Fix vboxguestdrivers build with kernel 5.13
+- Fix samba dependency on pidl
+- Fix bats when multilib is enabled
+- Fix testsuites for util-linux
+- Allow controlling zoneinfo binary format in tzdata
+- Fix test races in multiprocesslauch and dwarfsrcfiles
+- Add ARC support to dhcpcd
+- Assorted python package/recipe version upgrades
 - Recipe Upgrades
   - python3-importlib-metadata - 4.6.0, libffi - 3.4.2
   - xf86-input-libinput - 1.1.0, stress-ng - 0.12.11, libglu - 9.0.2
-  - gpgme - 1.16.0, cmake - 3.20.5
+  - gpgme - 1.16.0, cmake - 3.20.5, intel-mediasdk - 21.2.3, gmmlib - 21.2.1
+  - libva-intel - 2.12.0, babl - 0.1.88, dlt-daemon - 2.18.7
+  - ctags - 5.9.20210627.0, can-utils - 2021.06.0, suitesparse - 5.10.1
+  - redis - 6.2.4, mpd - 0.22.9, pango - 1.48.7, mesa - 21.1.4
+  - libdrm - 2.4.107, texinfo - 6.8, rt-tests - 2.1, man-pages - 5.12
+  - linux-yocto - 5.13, linux-libc-headers - 5.13, linux-yocto/5.4 - v5.4.129
+  - linux-yocto/5.10 - v5.10.47
+- New Recipes
+  - ospray, openvkl, ispc, libyang
 
 ## [2021.06] - 2021-06-30
 
