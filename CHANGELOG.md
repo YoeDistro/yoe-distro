@@ -45,6 +45,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add workaround to fix hang on boost-build-native
 - Fix build failures in glibc-testsuite
 - Drop adding RRECOMMENDS for license packages
+- Upgrade and port libseccomp for RISCV32
+- Fix install race in python3
+- Fix signature of close_range() in util-linux
 - Recipe Upgrades
   - python3-importlib-metadata - 4.6.0, libffi - 3.4.2
   - xf86-input-libinput - 1.1.0, stress-ng - 0.12.11, libglu - 9.0.2
@@ -60,7 +63,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libgusb - 0.3.7, ristretto - 0.11.0, networkmanager - 1.32.2, cmark - 0.30.0
   - pipewire - 0-3.31, blueman - 2.2.1, mariadb - 10.5.11, 
   - linux-ti-mainline - 5.13, at-spi2-core - 2.40.3, vulkan - 1.2.182
-  - gnome-desktop-testing - 2021.1
+  - gnome-desktop-testing - 2021.1, xwayland - 21.1.2, webkitgtk - 2.32.2
+  - stress-ng - 0.12.12, ruby - 3.0.2, mtools - 4.0.32, mpg123 - 1.28.2
+  - libgit2 - 1.1.1, iproute2 - 5.13.0, harfbuzz - 2.8.2, gtk+3 - 3.24.30
+  - ethtool - 5.13, createrepo-c - 0.17.4, bluez5 - 5.60, libmodulemd - 2.13.0
+  - xserver-xorg - 1.20.12, llvm - 12.0.1
 - New Recipes
   - ospray, openvkl, ispc, libyang, oidn
 
