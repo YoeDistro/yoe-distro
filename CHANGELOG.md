@@ -48,6 +48,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade and port libseccomp for RISCV32
 - Fix install race in python3
 - Fix signature of close_range() in util-linux
+- Add support for s3:// scheme in SOURCE_MIRROR_URL
+- Support mounting swap via labels in busybox
 - Recipe Upgrades
   - python3-importlib-metadata - 4.6.0, libffi - 3.4.2
   - xf86-input-libinput - 1.1.0, stress-ng - 0.12.11, libglu - 9.0.2
@@ -67,7 +69,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - stress-ng - 0.12.12, ruby - 3.0.2, mtools - 4.0.32, mpg123 - 1.28.2
   - libgit2 - 1.1.1, iproute2 - 5.13.0, harfbuzz - 2.8.2, gtk+3 - 3.24.30
   - ethtool - 5.13, createrepo-c - 0.17.4, bluez5 - 5.60, libmodulemd - 2.13.0
-  - xserver-xorg - 1.20.12, llvm - 12.0.1
+  - xserver-xorg - 1.20.12, llvm - 12.0.1, cups - 2.3.3op2, mesa - 21.1.5
 - New Recipes
   - ospray, openvkl, ispc, libyang, oidn
 
