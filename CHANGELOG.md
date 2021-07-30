@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [NEXT]
+## [2021.07] 2021-07-30
 
 - Check for wayland distro feature before enabling egl in qtwayland
 - Introduce armv8r64 compiler flags in arch-armv8r64
@@ -50,6 +50,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix signature of close_range() in util-linux
 - Add support for s3:// scheme in SOURCE_MIRROR_URL
 - Support mounting swap via labels in busybox
+- Fix early parsing errors preventing zombie bitbake
+- Build native versions of libcxx and compiler-rt
+- Fix build issues with freedom-u540 BSP support
+- Add systemd unit for netperf
+- Add convert-overrides.py script for new overrride syntax conversion
+- Include pzstd in zstd build
+- Add MAINTAINERS.md file
+- Fix glew Makefile race
+- Set UBOOT_MACHINE for mips/mips64 qemu in u-boot_2021.07 recipe
+- Fix Fix v3d & vc4 dmabuf import in mesa
 - Recipe Upgrades
   - python3-importlib-metadata - 4.6.0, libffi - 3.4.2
   - xf86-input-libinput - 1.1.0, stress-ng - 0.12.11, libglu - 9.0.2
@@ -58,8 +68,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - ctags - 5.9.20210627.0, can-utils - 2021.06.0, suitesparse - 5.10.1
   - redis - 6.2.4, mpd - 0.22.9, pango - 1.48.7, mesa - 21.1.4
   - libdrm - 2.4.107, texinfo - 6.8, rt-tests - 2.1, man-pages - 5.12
-  - linux-yocto - 5.13.3, linux-libc-headers - 5.13, linux-yocto/5.4 - v5.4.129
-  - linux-yocto/5.10 - v5.10.47, logcheck - 1.3.23, strongswan - 5.9.3
+  - linux-yocto - 5.13.4, linux-libc-headers - 5.13, linux-yocto/5.4 - v5.4.134
+  - linux-yocto/5.10 - v5.10.52, logcheck - 1.3.23, strongswan - 5.9.3
   - xscreensaver - 6.01, opencl-clhpp - 2.0.15, firewalld - 0.9.4
   - audit - 3.0.2, fftw - 3.3.9, keepalived - 2.2.2, poppler - 21.07.0
   - libgusb - 0.3.7, ristretto - 0.11.0, networkmanager - 1.32.2, cmark - 0.30.0
@@ -70,9 +80,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libgit2 - 1.1.1, iproute2 - 5.13.0, harfbuzz - 2.8.2, gtk+3 - 3.24.30
   - ethtool - 5.13, createrepo-c - 0.17.4, bluez5 - 5.60, libmodulemd - 2.13.0
   - xserver-xorg - 1.20.12, llvm - 12.0.1, cups - 2.3.3op2, mesa - 21.1.5
-  - btrfs-tools - 5.13
+  - btrfs-tools - 5.13, onevpl-intel-gpu - 21.3.0, qt5-creator - 4.15.2
+  - libencode-perl - 3.11, libdbd-sqlite-perl - 1.68, libcurses-perl - 1.38
+  - vboxguestdrivers - 6.1.24, libmbim - 1.26.0, gensio - 2.2.8, php - 7.4.21
+  - networkmanager - 1.32.4, bats - 1.4.1, libtest-warnings-perl - 0.031
+  - live555 - 20210720, postfix - 3.6.2, wireshark - 3.4.7, nghttp2 - 1.44.0
+  - libtalloc - 2.3.3, libnet-dns-perl - 1.32, ctags - 5.9.20210718.0
+  - cmark - 0.30.1, gnome-desktop3 - 3.38.8, gnome-backgrounds - 3.38.0
+  - evince - 40.4, fluidsynth - 2.2.2, jack - 1.19.19, mtd-utils - 2.1.3
+  - cmake - 3.21.0, libuv - 1.42.0, systemd - 249.1, llvm - 12.0.1
+  - binutils - 2.37, 
 - New Recipes
-  - ospray, openvkl, ispc, libyang, oidn
+  - ospray, openvkl, ispc, libyang, oidn, mbw, lmdb
 
 ## [2021.06] - 2021-06-30
 
