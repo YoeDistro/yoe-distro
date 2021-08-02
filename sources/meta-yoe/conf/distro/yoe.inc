@@ -78,8 +78,8 @@ WARN_TO_ERROR_QA ?= "\
             missing-update-alternatives native-last \
             "
 
-WARN_QA_remove = "${WARN_TO_ERROR_QA}"
-ERROR_QA_append = " ${WARN_TO_ERROR_QA}"
+WARN_QA:remove = "${WARN_TO_ERROR_QA}"
+ERROR_QA:append = " ${WARN_TO_ERROR_QA}"
 #
 # Additional image features
 #
@@ -103,7 +103,7 @@ INHERIT += "${@bb.utils.contains('BUILD_ARCH', 'ppc64le', '', 'uninative', d)}"
 # Add /etc/build to every image
 INHERIT += "image-buildinfo"
 
-DISTRO_FEATURES_append = " largefile opengl multiarch wayland pam polkit vulkan"
+DISTRO_FEATURES:append = " largefile opengl multiarch wayland pam polkit vulkan"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
@@ -133,7 +133,7 @@ PREFERRED_PROVIDER_nativesdk-u-boot-mkimage ??= "nativesdk-${IMX_DEFAULT_BOOTLOA
 PREFERRED_PROVIDER_virtual/wpebackend ??= "wpebackend-fdo"
 
 # Disable qt in wpe
-PACKAGECONFIG_remove_pn-wpewebkit = "qtwpe"
+PACKAGECONFIG:remove:pn-wpewebkit = "qtwpe"
 
 # Pin versions, some BSP layers are housing older versions and have higher BBFILE_PRIORITY
 # as a result DEFAULT_PREFERENCE = "-1" does not help either so pin it here
@@ -184,6 +184,6 @@ PNBLACKLIST[bigbuckbunny-480p] = "big and doesn't really need to be tested so mu
 PNBLACKLIST[bigbuckbunny-720p] = "big and doesn't really need to be tested so much"
 PNBLACKLIST[tearsofsteel-1080p] = "big and doesn't really need to be tested so much"
 
-RDEPENDS_packagegroup-meta-multimedia_remove_pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
-RDEPENDS_packagegroup-meta-oe-fortran-packages_remove_pn-packagegroup-meta-oe = "lapack octave suitesparse"
-RDEPENDS_packagegroup-meta-python3_remove_pn-packagegroup-meta-python = "python3-cvxopt"
+RDEPENDS:packagegroup-meta-multimedia:remove:pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
+RDEPENDS:packagegroup-meta-oe-fortran-packages:remove:pn-packagegroup-meta-oe = "lapack octave suitesparse"
+RDEPENDS:packagegroup-meta-python3:remove:pn-packagegroup-meta-python = "python3-cvxopt"

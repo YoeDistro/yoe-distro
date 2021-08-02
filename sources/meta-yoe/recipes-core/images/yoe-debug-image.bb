@@ -54,11 +54,11 @@ IMAGE_INSTALL += "\
 	python3-pyserial \
 	"
 
-IMAGE_INSTALL_append_armv7a = " cpuburn-arm "
-IMAGE_INSTALL_append_armv7ve = " cpuburn-arm "
-IMAGE_INSTALL_append_aarch64 = " cpuburn-arm "
+IMAGE_INSTALL:append:armv7a = " cpuburn-arm "
+IMAGE_INSTALL:append:armv7ve = " cpuburn-arm "
+IMAGE_INSTALL:append:aarch64 = " cpuburn-arm "
 
-IMAGE_INSTALL_remove_riscv32 = "strace"
+IMAGE_INSTALL:remove:riscv32 = "strace"
 
 export IMAGE_BASENAME = "yoe-debug-image"
 

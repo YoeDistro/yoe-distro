@@ -1,2 +1,2 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-PACKAGECONFIG_remove_class-target = "libxml2"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+PACKAGECONFIG:remove:class-target = "libxml2"

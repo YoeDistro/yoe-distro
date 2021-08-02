@@ -19,4 +19,4 @@ PACKAGE_INSTALL = "\
     ${MACHINE_HWCODECS} \
 "
 
-IMAGE_INSTALL_remove = " kernel-devicetree kernel-image-${KERNEL_IMAGETYPE}"
+IMAGE_INSTALL:remove = " kernel-devicetree kernel-image-${KERNEL_IMAGETYPE}"

@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-PACKAGECONFIG_remove = "gnutls"
-PACKAGECONFIG_append = " openssl"
+PACKAGECONFIG:remove = "gnutls"
+PACKAGECONFIG:append = " openssl"

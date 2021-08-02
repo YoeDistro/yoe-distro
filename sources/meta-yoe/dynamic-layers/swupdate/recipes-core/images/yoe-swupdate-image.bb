@@ -22,7 +22,7 @@ IMAGE_DEPENDS = "yoe-simple-image"
 
 # images and files that will be included in the .swu image
 SWUPDATE_IMAGES = "yoe-simple-image"
-SWUPDATE_IMAGES_append_odroid-c4-hardkernel = " \
+SWUPDATE_IMAGES:append_odroid-c4-hardkernel = " \
     Image.gz-initramfs \
     u-boot \
     boot \

@@ -1,3 +1,3 @@
-DISTRO_FEATURES_append = " wayland"
+DISTRO_FEATURES:append = " wayland"
 
-PACKAGECONFIG_append_pn-cog_rpi = " drm"
+PACKAGECONFIG:append:pn-cog_rpi = " drm"

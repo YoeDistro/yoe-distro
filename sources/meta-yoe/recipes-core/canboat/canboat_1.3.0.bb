@@ -21,7 +21,7 @@ S = "${WORKDIR}/git"
 PREFIX ?= "${root_prefix}"
 #PREFIX_class-native = "${prefix}"
 
-EXTRA_OEMAKE_append_class-target = " ANALYZEREXEC=analyzer "
+EXTRA_OEMAKE:append:class-target = " ANALYZEREXEC=analyzer "
 
 do_compile() {
     oe_runmake
@@ -31,7 +31,7 @@ do_install() {
 
 }
 
-RDEPENDS_${PN}_append_class-target = " php-cli perl"
+RDEPENDS:${PN}:append:class-target = " php-cli perl"
 
 BBCLASSEXTEND = "native nativesdk"
 

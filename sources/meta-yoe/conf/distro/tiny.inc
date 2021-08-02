@@ -1,1 +1,1 @@
-DISTRO_FEATURES_remove = "pam"
+DISTRO_FEATURES:remove = "pam"

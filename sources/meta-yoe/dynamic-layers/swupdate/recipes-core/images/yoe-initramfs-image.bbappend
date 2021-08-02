@@ -1,6 +1,6 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-PACKAGE_INSTALL_append = "\
+PACKAGE_INSTALL:append = "\
   libconfig \
   swupdate \
 "
