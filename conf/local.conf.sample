@@ -17,8 +17,8 @@ ACCEPT_EULA = "1"
 
 # The two lines below enable the Gtk UI frontend for qemu
 # default is VNC
-#PACKAGECONFIG_append_pn-qemu-native = " gtk+"
-#PACKAGECONFIG_append_pn-nativesdk-qemu = " gtk+"
+#PACKAGECONFIG:append:pn-qemu-native = " gtk+"
+#PACKAGECONFIG:append:pn-nativesdk-qemu = " gtk+"
 
 # components whose licensing have commercial distribution impact
 #
@@ -53,11 +53,11 @@ LICENSE_FLAGS_WHITELIST:append = " commercial_sox "
 #
 # For full debugging image uncomment following
 #
-#EXTRA_IMAGE_FEATURES_append = " tools-debug dbg-pkgs"
+#EXTRA_IMAGE_FEATURES:append = " tools-debug dbg-pkgs"
 #
 # For native development on device uncomment following
 #
-#EXTRA_IMAGE_FEATURES_append = " tools-sdk dev-pkgs"
+#EXTRA_IMAGE_FEATURES:append = " tools-sdk dev-pkgs"
 #
 # CONF_VERSION is increased each time build/conf/ changes incompatibly and is used to
 # track the version of this file when it was generated. This can safely be ignored if
