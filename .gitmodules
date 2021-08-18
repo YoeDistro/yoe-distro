@@ -57,7 +57,7 @@
 [submodule "sources/meta-atmel"]
 	path = sources/meta-atmel
 	url = https://github.com/YoeDistro/meta-atmel
-	branch = master
+	branch = yoe/master
 [submodule "sources/meta-clang"]
 	path = sources/meta-clang
 	url = https://github.com/YoeDistro/meta-clang
