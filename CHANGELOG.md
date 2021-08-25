@@ -5,6 +5,73 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [NEXT]
+
+- Update to bitbake 1.51.1
+- Switch to using new override syntax
+- Add read-only mode to prserver
+- Require python 3.6.0 mininum for bitbake
+- Add yocto 3.4 ( honister ) to compatible releases
+- Move architecture tune files to arch specific directories
+- Upgrade clang to 13.x release
+- Make shared library builds of grpc optional
+- Drop all custom patches from c-ares and update to 1.17.2
+- Delete bootchart recipe
+- Link mpich with static libgcc
+- Use GNUInstallDirs in cereal and boost-url
+- Rename takao-fonts to match other ttf font recipe naming conventions
+- Remove unneeded dependency on takao-fonts in uim
+- Add flags to enable adbd services in android-tools
+- Add selinux as packageconfig knob in networkmanager and augeas
+- Add ptest support for jemalloc
+- Move opus-tools to meta-multimedia and upgrade to 0.2
+- Update SRC_URI for bigbuckbunny-1080p
+- Add missing runtime dependencies for mycroft
+- Fix image_types_sparse corruption
+- Fix fvwm interpreter runtime paths in python/perl script during build
+- Drop uclibc remnants from recipes e.g. lua
+- Disable building apitrace/libhugetlbfs with glibc 2.34, need porting
+- Fix evtest output timestamps
+- Fix multiple recipes to build with glibc 2.34 e.g. ntp, autofs, fuse etc.
+- Fix qtwebengine build with glibc 2.34
+- Add compatibility for non-systemd builds of pi-bluetooth
+- Remove connection caching in PR Service
+- add tune support for all Arm Cortex-M processors
+- Fix SDK relocation symlink
+- Use different keys to sign kernel-fitimage and configuration
+- Package extlinux.conf separately in u-boot
+- Enable RISCV32 for baremetal-helloworld
+- Fix reproducibility issues with LTO
+- cve-check update link to NVD website for CVE details
+- Use BFD linker in systemd-boot ( gold segfaults )
+- Upgrade glibc to 2.34 and fix metadata and recipes to build with it
+- Assorted list of python module version updates
+- Recipe Upgrades
+  - mariadb - 10.6.4, libencode-perl - 3.12, sedutil - 1.15.1.01
+  - opensc - 0.22.0, live555 - 20210809, libqmi - 1.30.0, vsftpd - 3.0.5
+  - ctags - 5.9.20210815.0, netplan - 0.103, icewm - 2.7.0, udisks2 - 2.9.3
+  - networkmanager - 1.32.8, network-manager-applet - 1.24.0
+  - fltk - 1.3.7, gpsd - 3.23, fetchmail - 6.4.21, catch2 - 2.13.7
+  - audit - 3.0.5, iwd - 1.16, vorbis-tools - 1.4.2, thrift - 0.14.2
+  - xwd - 1.0.8, valijson - 0.5, poppler - 21.08.0, monit - 5.28.1
+  - libqmi - 1.28.8, libblockdev - 2.26, apache - 2.4.48, mongodb - 4.4.7
+  - raspberrypi-tools, raspberrypi-firmware, userland
+  - linux-raspberrypi - 5.10.52, rust - 1.54.0, rng-tools - 6.14
+  - re2c - 2.2, enchant - 2.3.1, diffoscope - 181, boost - 1.77.0
+  - webkitgtk - 2.32.3, libwebp - 1.2.1, wireless-regdb - 2021.07.14
+  - linux-firmware - 20210818, xserver-xorg - 1.20.13, libxft - 2.3.4
+  - libxfont2 - 2.0.5, libinput - 1.18.1, mesa - 21.2.1, pango - 1.48.9
+  - libepoxy - 1.5.9, libjpeg-turbo - 2.1.1, libgudev - 237, epiphany - 40,3
+  - sudo - 1.9.7p2, stress-ng - 0.13.00, libidn2 - 2.3.2, acpica - 20210730
+  - squashfs-tools - 4.5, pkgconf - 1.8.0, patchelf - 0.13, mtools - 4.0.35
+  - log4cplus - 2.0.7, libedit - 20210714-3.1, help2man - 1.48.4
+  - e2fsprogs - 1.46.4, linux-yocto - v5.13.9, linux-yocto/5.10 - v5.10.57
+  - libconvert-asn1-perl - 0.31, ell - 0.42, strace - 5.13, cmake - 3.21.1
+  - util-linux - 2.37.1, iputils - 20210722, shadow - 4.9, bind - 9.16.19
+  - i2c-tools - 4.3, gcc - 11.2, curl - 7.78.0
+- New recipes
+  - bmon, libconfuse, ttf-ipa, jemalloc
+
 ## [2021.07] 2021-07-30
 
 - Check for wayland distro feature before enabling egl in qtwayland
