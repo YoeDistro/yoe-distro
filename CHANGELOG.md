@@ -45,6 +45,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - cve-check update link to NVD website for CVE details
 - Use BFD linker in systemd-boot ( gold segfaults )
 - Upgrade glibc to 2.34 and fix metadata and recipes to build with it
+- More granular packaging for gpsd docs
+- Extend libkcapi to build natively as well
+- Use vc4-kms-v3d device-tree on rpi4 machines to boot into graphics
 - Assorted list of python module version updates
 - Recipe Upgrades
   - mariadb - 10.6.4, libencode-perl - 3.12, sedutil - 1.15.1.01
@@ -56,7 +59,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - xwd - 1.0.8, valijson - 0.5, poppler - 21.08.0, monit - 5.28.1
   - libqmi - 1.28.8, libblockdev - 2.26, apache - 2.4.48, mongodb - 4.4.7
   - raspberrypi-tools, raspberrypi-firmware, userland
-  - linux-raspberrypi - 5.10.52, rust - 1.54.0, rng-tools - 6.14
+  - linux-raspberrypi - 5.10.59, rust - 1.54.0, rng-tools - 6.14
   - re2c - 2.2, enchant - 2.3.1, diffoscope - 181, boost - 1.77.0
   - webkitgtk - 2.32.3, libwebp - 1.2.1, wireless-regdb - 2021.07.14
   - linux-firmware - 20210818, xserver-xorg - 1.20.13, libxft - 2.3.4
@@ -68,7 +71,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - e2fsprogs - 1.46.4, linux-yocto - v5.13.9, linux-yocto/5.10 - v5.10.57
   - libconvert-asn1-perl - 0.31, ell - 0.42, strace - 5.13, cmake - 3.21.1
   - util-linux - 2.37.1, iputils - 20210722, shadow - 4.9, bind - 9.16.19
-  - i2c-tools - 4.3, gcc - 11.2, curl - 7.78.0
+  - i2c-tools - 4.3, gcc - 11.2, curl - 7.78.0, libio-socket-ssl-perl - 2.072
+  - 
 - New recipes
   - bmon, libconfuse, ttf-ipa, jemalloc
 
