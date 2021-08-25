@@ -8,8 +8,8 @@ SRC_URI = " \
            file://network.rules \
           "
 
-FILES_${PN} = "${sysconfdir}/udev/rules.d/* ${base_libdir}/systemd/system/*"
-RDEPENDS_${PN} = "udev"
+FILES:${PN} = "${sysconfdir}/udev/rules.d/* ${base_libdir}/systemd/system/*"
+RDEPENDS:${PN} = "udev"
 
 do_install() {
     install -d ${D}${base_libdir}/systemd/system/basic.target.wants

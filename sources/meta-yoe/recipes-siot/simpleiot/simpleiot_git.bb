@@ -22,7 +22,7 @@ S = "${WORKDIR}/git"
 
 GOPATH = "${TMPDIR}/work-shared/go"
 
-CGO_ENABLED_x86-64 = "0"
+CGO_ENABLED:x86-64 = "0"
 export CGO_ENABLED
 
 INITSCRIPT_NAME = "siot"
@@ -55,7 +55,7 @@ do_install() {
     fi
 }
 
-SYSTEMD_SERVICE_${PN} = "siot.service"
+SYSTEMD_SERVICE:${PN} = "siot.service"
 
-INSANE_SKIP_${PN} += "ldflags already-stripped"
+INSANE_SKIP:${PN} += "ldflags already-stripped"
 

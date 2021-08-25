@@ -1,9 +1,9 @@
 # We use updater to handle disk/SD management, therefore remove 96boards-tools
-IMAGE_INSTALL_remove = "96boards-tools"
+IMAGE_INSTALL:remove = "96boards-tools"
 
 KERNEL_IMAGE = "${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin"
 
-IMAGE_INSTALL_remove = "kernel-image-${KERNEL_IMAGETYPE} \
+IMAGE_INSTALL:remove = "kernel-image-${KERNEL_IMAGETYPE} \
                         kernel-image-image kernel-image \
                         kernel-devicetree \
                         "

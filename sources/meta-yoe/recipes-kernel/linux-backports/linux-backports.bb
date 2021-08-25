@@ -29,7 +29,7 @@ inherit module
 
 MAKE_TARGETS = "modules"
 
-FILES_${PN} += "${nonarch_base_libdir}/udev \
+FILES:${PN} += "${nonarch_base_libdir}/udev \
                 ${sysconfdir}/udev \
 		${nonarch_base_libdir} \
                "
