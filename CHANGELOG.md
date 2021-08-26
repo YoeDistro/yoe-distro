@@ -48,6 +48,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - More granular packaging for gpsd docs
 - Extend libkcapi to build natively as well
 - Use vc4-kms-v3d device-tree on rpi4 machines to boot into graphics
+- Drop target flex/bison from build dependencies in binutils
+- Fix pseudo to work with glibc 2.34 systems
 - Assorted list of python module version updates
 - Recipe Upgrades
   - mariadb - 10.6.4, libencode-perl - 3.12, sedutil - 1.15.1.01
@@ -69,10 +71,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - squashfs-tools - 4.5, pkgconf - 1.8.0, patchelf - 0.13, mtools - 4.0.35
   - log4cplus - 2.0.7, libedit - 20210714-3.1, help2man - 1.48.4
   - e2fsprogs - 1.46.4, linux-yocto - v5.13.9, linux-yocto/5.10 - v5.10.57
-  - libconvert-asn1-perl - 0.31, ell - 0.42, strace - 5.13, cmake - 3.21.1
+  - libconvert-asn1-perl - 0.31, ell - 0.43, strace - 5.13, cmake - 3.21.1
   - util-linux - 2.37.1, iputils - 20210722, shadow - 4.9, bind - 9.16.19
   - i2c-tools - 4.3, gcc - 11.2, curl - 7.78.0, libio-socket-ssl-perl - 2.072
-  - 
+  - linuxptp - 3.1.1, harfbuzz - 2.9.0, bind - 9.16.20, json-glib - 1.6.4
+  - gi-docgen - 2021.7, libnsl2 - 2.0.0, vala - 0.52.5, openssh - 8.7p1
+  - git - 2.33.0, ccache - 4.4, util-linux - 2.37.2, glib-2.0 - 2.68.4
+  - gnu-efi - 3.0.14, openssl - 1.1.1l, bluez - 5.61
 - New recipes
   - bmon, libconfuse, ttf-ipa, jemalloc
 
