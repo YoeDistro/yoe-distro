@@ -55,7 +55,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - mariadb - 10.6.4, libencode-perl - 3.12, sedutil - 1.15.1.01
   - opensc - 0.22.0, live555 - 20210809, libqmi - 1.30.0, vsftpd - 3.0.5
   - ctags - 5.9.20210815.0, netplan - 0.103, icewm - 2.7.0, udisks2 - 2.9.3
-  - networkmanager - 1.32.8, network-manager-applet - 1.24.0
+  - networkmanager - 1.32.10, network-manager-applet - 1.24.0
   - fltk - 1.3.7, gpsd - 3.23, fetchmail - 6.4.21, catch2 - 2.13.7
   - audit - 3.0.5, iwd - 1.16, vorbis-tools - 1.4.2, thrift - 0.14.2
   - xwd - 1.0.8, valijson - 0.5, poppler - 21.08.0, monit - 5.28.1
@@ -70,16 +70,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - sudo - 1.9.7p2, stress-ng - 0.13.00, libidn2 - 2.3.2, acpica - 20210730
   - squashfs-tools - 4.5, pkgconf - 1.8.0, patchelf - 0.13, mtools - 4.0.35
   - log4cplus - 2.0.7, libedit - 20210714-3.1, help2man - 1.48.4
-  - e2fsprogs - 1.46.4, linux-yocto - v5.13.9, linux-yocto/5.10 - v5.10.57
+  - e2fsprogs - 1.46.4, linux-yocto - v5.13.12, linux-yocto/5.10 - v5.10.60
   - libconvert-asn1-perl - 0.31, ell - 0.43, strace - 5.13, cmake - 3.21.1
   - util-linux - 2.37.1, iputils - 20210722, shadow - 4.9, bind - 9.16.19
   - i2c-tools - 4.3, gcc - 11.2, curl - 7.78.0, libio-socket-ssl-perl - 2.072
   - linuxptp - 3.1.1, harfbuzz - 2.9.0, bind - 9.16.20, json-glib - 1.6.4
   - gi-docgen - 2021.7, libnsl2 - 2.0.0, vala - 0.52.5, openssh - 8.7p1
   - git - 2.33.0, ccache - 4.4, util-linux - 2.37.2, glib-2.0 - 2.68.4
-  - gnu-efi - 3.0.14, openssl - 1.1.1l, bluez - 5.61
+  - gnu-efi - 3.0.14, openssl - 1.1.1l, bluez - 5.61, libbpf - 0.4.0
+  - xmlsec1 - 1.2.32, sedutil - 1.20.0, live555 - 20210824, iwd - 1.17
+  - gensio - 2.2.9, doxygen - 1.9.2, can-utils - 2021.08.0
+  - xfsprogs - 5.13.0, busybox - 1.34.0
 - New recipes
   - bmon, libconfuse, ttf-ipa, jemalloc
+- Removed recipes
+  - libnss-nisplus
 
 ## [2021.07] 2021-07-30
 
