@@ -50,6 +50,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use vc4-kms-v3d device-tree on rpi4 machines to boot into graphics
 - Drop target flex/bison from build dependencies in binutils
 - Fix pseudo to work with glibc 2.34 systems
+- Move odroid kernel to use linux-yocto 5.13
+- Fix metacity for out of tree builds
 - Assorted list of python module version updates
 - Recipe Upgrades
   - mariadb - 10.6.4, libencode-perl - 3.12, sedutil - 1.15.1.01
@@ -80,9 +82,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - gnu-efi - 3.0.14, openssl - 1.1.1l, bluez - 5.61, libbpf - 0.4.0
   - xmlsec1 - 1.2.32, sedutil - 1.20.0, live555 - 20210824, iwd - 1.17
   - gensio - 2.2.9, doxygen - 1.9.2, can-utils - 2021.08.0
-  - xfsprogs - 5.13.0, busybox - 1.34.0
+  - xfsprogs - 5.13.0, busybox - 1.34.0, rdma-core - 36.0
+  - xf86-input-tslib - 1.1.1
 - New recipes
-  - bmon, libconfuse, ttf-ipa, jemalloc
+  - bmon, libconfuse, ttf-ipa, jemalloc, python3-pkcs11
+  - python3-cached-property
 - Removed recipes
   - libnss-nisplus
 
