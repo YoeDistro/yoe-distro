@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [NEXT]
+## [2021.08] 2021-09-02
 
 - Update to bitbake 1.51.1
 - Switch to using new override syntax
@@ -52,6 +52,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix pseudo to work with glibc 2.34 systems
 - Move odroid kernel to use linux-yocto 5.13
 - Fix metacity for out of tree builds
+- Migrate odroid-c4 to mainline kernel
+- Re-enable apitrace recipe for glibc >= 2.34
+- Update BSD licenses to be specific in recipes e.g. BSD -> BSD-3-Clause
+- Add RDP packageconfig to weston
+- Stop using ext2simg in image_types_sparse
+- Stop using "virtual/" in RPROVIDES and RDEPENDS
 - Assorted list of python module version updates
 - Recipe Upgrades
   - mariadb - 10.6.4, libencode-perl - 3.12, sedutil - 1.15.1.01
@@ -83,10 +89,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - xmlsec1 - 1.2.32, sedutil - 1.20.0, live555 - 20210824, iwd - 1.17
   - gensio - 2.2.9, doxygen - 1.9.2, can-utils - 2021.08.0
   - xfsprogs - 5.13.0, busybox - 1.34.0, rdma-core - 36.0
-  - xf86-input-tslib - 1.1.1
+  - xf86-input-tslib - 1.1.1, pipewire - 0.3.34, nftables - 1.0.0
+  - uninative - 3.4
 - New recipes
   - bmon, libconfuse, ttf-ipa, jemalloc, python3-pkcs11
-  - python3-cached-property
+  - python3-cached-property, bluealsa
 - Removed recipes
   - libnss-nisplus
 
