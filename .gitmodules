@@ -50,10 +50,6 @@
 	path = sources/meta-odroid
 	url = https://github.com/YoeDistro/meta-odroid
 	branch = master
-[submodule "sources/meta-rust"]
-	path = sources/meta-rust
-	url = https://github.com/YoeDistro/meta-rust
-	branch = master
 [submodule "sources/meta-atmel"]
 	path = sources/meta-atmel
 	url = https://github.com/YoeDistro/meta-atmel
