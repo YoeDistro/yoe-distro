@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2021.08] 2021-09-02
 
 - Update to bitbake 1.51.1
+- Remove meta-rust layer as rust is in Core now
 - Switch to using new override syntax
 - Add read-only mode to prserver
 - Require python 3.6.0 mininum for bitbake
