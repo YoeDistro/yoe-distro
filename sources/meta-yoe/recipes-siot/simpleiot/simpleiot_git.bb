@@ -11,8 +11,8 @@ DEPENDS = "go-native elm-binary-native nodejs-native"
 
 inherit systemd update-rc.d goarch
 
-SRCREV = "152036af2e162751d76d440377a3b24372991343"
-PV = "0.0.29+git${SRCPV}"
+SRCREV = "34dfc2519bf1750198212ca3fd7b57979720d3ea"
+PV = "0.0.33+git${SRCPV}"
 
 BRANCH ?= "master"
 
@@ -58,4 +58,3 @@ do_install() {
 SYSTEMD_SERVICE:${PN} = "siot.service"
 
 INSANE_SKIP:${PN} += "ldflags already-stripped"
-
