@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Set precise BSD linceses in recipes in OE-Core
 
 - Recipe Updates
+  - simpleiot - 0.0.33
 
 - New recipes
   - python3-pytest-subtests, python3-kivy
