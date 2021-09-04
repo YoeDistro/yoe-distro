@@ -508,13 +508,13 @@ dkr() {
   UUID=$(id -u)
   UID_ARGS=""
   if [ "$DOCKER" = "podman" ]; then
-      # Running with namespace and overlay-fs labelling enabled introduces a
-      # significant delay in podman startup when the build directory contains
-      # giga-bytes of data, so for now, disable default namespacing and provide
-      # our own.
-      # Running without namespace mapping as non-root
-      # https://github.com/containers/podman/issues/2180
-      UID_ARGS="--privileged --uidmap $UUID:0:1 --uidmap 0:1:$UUID --gidmap $GGID:0:1 --gidmap 0:1:$GGID"
+    # Running with namespace and overlay-fs labelling enabled introduces a
+    # significant delay in podman startup when the build directory contains
+    # giga-bytes of data, so for now, disable default namespacing and provide
+    # our own.
+    # Running without namespace mapping as non-root
+    # https://github.com/containers/podman/issues/2180
+    UID_ARGS="--privileged --uidmap $UUID:0:1 --uidmap 0:1:$UUID --gidmap $GGID:0:1 --gidmap 0:1:$GGID"
   fi
 
   $DOCKER run --rm -i $PSEUDO_TTY \
@@ -575,10 +575,11 @@ yoe_install_image() {
   DRIVE=$1
   IMAGE_NAME=$2
 
-  if [ "$IMAGE_NAME" = "" ]; then
+  if [ -n "$IMAGE_NAME" ]; then
+    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic.xz
+  else
     echo "no image specified -- installing default installer image ..."
-    IMG_VERSION=$(yoe_get_image_version)
-    IMAGE=${OE_BASE}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
+    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/yoe-installer-image-${MACHINE}.wic.xz
   fi
 
   yoe_check_install_dependencies || return 1
@@ -589,10 +590,7 @@ yoe_install_image() {
     echo
     return 1
   fi
-  WICIMG="$IMAGE"
-  if [ -z "$WICIMG" ]; then
-    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic.xz
-  fi
+
   if [ ! -e "$WICIMG" ]; then
     echo "$WICIMG does not exist, please build the image first"
     echo
@@ -603,6 +601,7 @@ yoe_install_image() {
     printf "Please make sure\n"
     echo "1. disk is inserted and discovered as ${DRIVE}"
     echo "2. run 'sudo chmod 666 ${DRIVE}'"
+    echo "3. disk is not mounted: umount ${DRIVE}*"
     echo "3. re-run yoe_install_image command"
   fi
   unset WICIMG
