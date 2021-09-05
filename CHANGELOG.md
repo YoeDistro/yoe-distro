@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Add initial support to generate SBOMs
 - Set precise BSD linceses in recipes in OE-Core
-
+- Let updater machine files be defined in layers outside meta-yoe
+- Fix bpftrace build with clang 13
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7
 
