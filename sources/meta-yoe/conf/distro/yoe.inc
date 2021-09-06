@@ -142,7 +142,7 @@ PREFERRED_VERSION_swig = "4%"
 PREFERRED_VERSION_swig-native = "4%"
 PREFERRED_VERSION_nativesdk-swig = "4%"
 # meta-atmel has 1.7.4
-PREFERRED_VERSION_cjson = "1.7.14"
+PREFERRED_VERSION_cjson = "1.7.1%"
 # meta-ti has 1.8.9.1
 PREFERRED_VERSION_doxygen = "1.9%"
 PREFERRED_VERSION_doxygen-native = "1.9%"
