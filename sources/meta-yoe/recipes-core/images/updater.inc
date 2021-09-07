@@ -21,4 +21,4 @@ do_updater[depends] += "virtual/kernel:do_deploy"
 do_updater[nostamp] = "1"
 
 # Define this file for each machine in machine/ subdir
-include machines/${MACHINE}.inc
+include recipes-core/images/machines/${MACHINE}.inc
