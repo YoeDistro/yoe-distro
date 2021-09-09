@@ -602,7 +602,7 @@ yoe_install_image() {
     echo "1. disk is inserted and discovered as ${DRIVE}"
     echo "2. run 'sudo chmod 666 ${DRIVE}'"
     echo "3. disk is not mounted: umount ${DRIVE}*"
-    echo "3. re-run yoe_install_image command"
+    echo "4. re-run yoe_install_image command"
   fi
   unset WICIMG
 }
