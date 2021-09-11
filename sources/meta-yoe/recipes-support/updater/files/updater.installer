@@ -97,6 +97,24 @@ initialize() {
   mkdir -p $DATA_MOUNT_POINT
 }
 
+resize_sd() {
+  echo "Resizing data partition started ..." || return 1
+  if [ -z "$1" ]; then
+    DEVICE=$SD_DEVICE
+  else
+    DEVICE=$1
+  fi
+  sync
+  umount ${DEVICE}p3
+  PART_SIZE=$(cat "/sys/block/${DEVICE}p3/size")
+  # only continue if partition size is 1MB
+  if [ $PART_SIZE -gt 2048 ]; then
+    return 0
+  fi
+  echo "- +" | sfdisk -N 3 ${DEVICE}
+  resize2fs ${DEVICE}p3
+}
+
 partition_sd() {
   echo "Partitioning started ..." || return 1
   if [ -z "$1" ]; then
@@ -176,6 +194,10 @@ format_sd_data() {
 
 partition_emmc() {
   partition_sd $EMMC_DEVICE
+}
+
+resize_emmc() {
+  resize_sd $EMMC_DEVICE
 }
 
 format_emmc_boot() {
@@ -484,6 +506,10 @@ boot() {
   umount_usb
   umount_sd
   umount_data
+  if ! resize_${STORAGE}; then
+    msg_splash "Resizing ${STORAGE} failed, bad media"
+    sleep 9999d
+  fi
 
   if [ -e $EMMC_BOOT_DEV ]; then
     msg_splash "Booting from EMMC ..."
