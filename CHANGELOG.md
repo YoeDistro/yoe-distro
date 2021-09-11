@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [NEXT]
 
+- Implement data partition resize feature in yoe updater
 - Add initial support to generate SBOMs
 - Set precise BSD linceses in recipes in OE-Core
 - Let updater machine files be defined in layers outside meta-yoe
