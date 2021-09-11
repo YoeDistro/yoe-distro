@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit core-image
 require updater.inc
 
-IMAGE_FEATURES += "ssh-server-dropbear package-management hwcodecs"
+IMAGE_FEATURES += "ssh-server-openssh package-management hwcodecs"
 
 IMAGE_INSTALL = "\
     packagegroup-core-boot \

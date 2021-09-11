@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [NEXT]
 
+- Implement data partition resize feature in yoe updater
 - Add initial support to generate SBOMs
 - Set precise BSD linceses in recipes in OE-Core
 - Let updater machine files be defined in layers outside meta-yoe
@@ -14,15 +15,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Avod task graph corruption when trying to avoid deadlocks in runqueue
 - Drop obsolete oe_machinstall function utility
 - Update simpleIOT to v0.0.34
+- Fix fcntl in pseudo with glibc 2.34
+- Add selinux packageconfig for tar,findutils,coreutils
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
   - uhubctl - 2.4.0, nlohmann-json - 3.10.2, monit - 5.29.0
   - libwebsockets - 4.2.2, cjson - 1.7.15, wireshark - 3.4.8
   - gsl - 2.7, xf86-video-nouveau - 1.0.17, ctags - 5.9.20210905
-  - avro-c - 1.10.2
+  - avro-c - 1.10.2, ntopng - 5.0, ndpi - 4.0, redis - 6.2.5
+  - libjcat - 0.1.8, libeigen - 3.4.0, libbytesize - 2.6, dash - 0.5.11.5
+  - crash - 7.3.0, spdlog - 1.9.2, fmt - 8.0.1, msgpack-c - 4.0.0
+  - poppler - 21.09.0, poppler-data - 0.4.11, lockfile-progs - 0.1.19
+  - libqmi - 1.30.2, dfu-util - 0.11, cppzmq - 4.8.0, mosquitto - 2.0.12
+  - fuse3 - 3.10.5, lttng - 2.13.0, 
 - New recipes
   - python3-pytest-subtests, python3-kivy
+- Removed recipes
+  - assimp
 
 ## [2021.08] 2021-09-02
 

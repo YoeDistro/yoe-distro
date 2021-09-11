@@ -19,3 +19,6 @@ do_install() {
 }
 
 FILES:${PN} += "/init /platform /dev ${datadir}"
+
+RDEPENDS:${PN} += "e2fsprogs-resize2fs util-linux-sfdisk"
+
