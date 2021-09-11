@@ -11,11 +11,11 @@ export IMAGE_BASENAME = "yoe-installer-image"
 IMAGE_FSTYPES = "wic.bmap wic.xz"
 
 # Do not pollute the installer image with full image features
-IMAGE_FEATURES = "ssh-server-dropbear hwcodecs debug-tweaks"
+IMAGE_FEATURES = "ssh-server-openssh hwcodecs debug-tweaks"
 
 PACKAGE_INSTALL = "\
     packagegroup-core-boot \
-    packagegroup-core-ssh-dropbear \
+    packagegroup-core-ssh-openssh \
     ${MACHINE_HWCODECS} \
 "
 
