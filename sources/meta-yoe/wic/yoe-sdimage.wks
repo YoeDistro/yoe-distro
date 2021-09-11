@@ -7,7 +7,7 @@ part --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --al
 # Main Rootfs partition (1G)
 part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --fixed-size 1024 --align 4
 
-# User data partition (16M)
-part /data --ondisk mmcblk --fstype=ext4 --label data --fixed-size 16 --align 4096
+# User data partition (1M)
+part /data --ondisk mmcblk --fstype=ext4 --label data --fixed-size 1 --align 4096
 
 bootloader --ptable msdos
