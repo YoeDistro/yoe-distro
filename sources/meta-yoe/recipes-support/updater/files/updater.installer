@@ -104,9 +104,8 @@ resize_sd() {
   else
     DEVICE=$1
   fi
-  sync
-  umount ${DEVICE}p3
-  PART_SIZE=$(cat "/sys/block/${DEVICE}p3/size")
+  DEVICE_NAME=$(basename ${DEVICE})
+  PART_SIZE=$(cat "/sys/class/block/${DEVICE_NAME}p3/size")
   # only continue if partition size is 1MB
   if [ $PART_SIZE -gt 2048 ]; then
     return 0
