@@ -98,7 +98,7 @@ initialize() {
 }
 
 resize_sd() {
-  echo "Resizing data partition started ..." || return 1
+  echo "Checking data partition size ..." || return 1
   if [ -z "$1" ]; then
     DEVICE=$SD_DEVICE
   else
@@ -111,6 +111,7 @@ resize_sd() {
   if [ $PART_SIZE -gt 2048 ]; then
     return 0
   fi
+  echo "Resizing data partition ..." || return 1
   echo "- +" | sfdisk -N 3 ${DEVICE}
   resize2fs ${DEVICE}p3
 }
