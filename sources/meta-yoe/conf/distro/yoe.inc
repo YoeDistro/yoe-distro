@@ -120,6 +120,8 @@ PREFERRED_PROVIDER_grub-efi-native ??= "grub-efi-native"
 PREFERRED_PROVIDER_u-boot-fw-utils ??= "libubootenv"
 PREFERRED_PROVIDER_u-boot ??= "u-boot"
 
+PREFERRED_RPROVIDER_ssh ??= "openssh"
+
 # This helps in using imx specific provider when building for imx platforms, otherwise
 # it uses the oe-core versions
 IMX_DEFAULT_BOOTLOADER ??= "u-boot"
