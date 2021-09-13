@@ -17,6 +17,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update simpleIOT to v0.0.34
 - Fix fcntl in pseudo with glibc 2.34
 - Add selinux packageconfig for tar,findutils,coreutils
+- Allow upstream for local hash equivalence server in bitbake
+- Make externalsrc work with reproducible_build
+- Ensure XZ_THREADS doesn't change sstate checksums
+- Add packageconfig for wheel-group in systemd
+- Avoid problems with recipes using SRCPV when fetching sstate
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
@@ -28,7 +33,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - crash - 7.3.0, spdlog - 1.9.2, fmt - 8.0.1, msgpack-c - 4.0.0
   - poppler - 21.09.0, poppler-data - 0.4.11, lockfile-progs - 0.1.19
   - libqmi - 1.30.2, dfu-util - 0.11, cppzmq - 4.8.0, mosquitto - 2.0.12
-  - fuse3 - 3.10.5, lttng - 2.13.0, 
+  - fuse3 - 3.10.5, lttng - 2.13.0, linux-yocto/5.10 - 5.10.63
+  - linux-yocto/5.13 - 5.13.15
 - New recipes
   - python3-pytest-subtests, python3-kivy
 - Removed recipes
