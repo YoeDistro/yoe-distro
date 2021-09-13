@@ -481,6 +481,7 @@ update_from_data() {
       speak "updater, failed to process update from data partition"
       return 1
     else
+      rm -rf $DATA_MOUNT_POINT/$update_file
       msg_splash "Update from Data partition complete"
       return 0
     fi
