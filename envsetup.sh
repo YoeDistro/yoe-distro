@@ -314,7 +314,14 @@ yoe_feed_server() {
 }
 
 yoe_host_ip() {
-  hostname -i | cut -d' ' -f 1
+  ADAPTERS="eth0 eth1 enp39s0"
+  for a in $ADAPTERS; do
+    ip=$(ip addr show dev "${a}" 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+    if [ -n "$ip" ]; then
+      echo "$ip"
+      return
+    fi
+  done
 }
 
 yoe_setup_feed_server() {
@@ -334,15 +341,15 @@ yoe_setup_feed_server() {
   # set TARGET_IP in local.sh
   # set HOST_IP in local.sh if different
   if [ -z "${HOST_IP}" ]; then
-    HOST_IP=$(hostname -i | cut -d' ' -f 1)
+    HOST_IP=$(yoe_host_ip)
   fi
-  ssh root@$MIP ls /etc/opkg/base-feeds.conf >/dev/null 2>&1
+  ssh "root@$MIP" ls /etc/opkg/base-feeds.conf >/dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "opkg is not installed, can't setup feeds on  machine $MIP"
   else
     SERVER=http://$HOST_IP:8000
     echo "pointing feeds to $SERVER"
-    ssh root@$MIP "sed -i -e 's|http://.*\/|${SERVER}/|' /etc/opkg/base-feeds.conf"
+    ssh "root@$MIP" "sed -i -e 's|http://.*\/|${SERVER}/|' /etc/opkg/base-feeds.conf"
   fi
 }
 
