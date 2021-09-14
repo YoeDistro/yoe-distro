@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # the following can be used inside functions that return strings to display
 # messages on console
+# this file should be sourced (.), not run as a script
 echoerr() {
   echo $@ >&2
 }
