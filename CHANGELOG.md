@@ -34,9 +34,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - poppler - 21.09.0, poppler-data - 0.4.11, lockfile-progs - 0.1.19
   - libqmi - 1.30.2, dfu-util - 0.11, cppzmq - 4.8.0, mosquitto - 2.0.12
   - fuse3 - 3.10.5, lttng - 2.13.0, linux-yocto/5.10 - 5.10.63
-  - linux-yocto/5.13 - 5.13.15
+  - linux-yocto/5.13 - 5.13.15, libxmlb - 0.3.2, dnf-plugin-tui - 1.3
 - New recipes
-  - python3-pytest-subtests, python3-kivy
+  - python3-pytest-subtests, python3-kivy, pahole
 - Removed recipes
   - assimp
 
