@@ -22,6 +22,11 @@ Install `docker` on host distribution
 - RPM based systems - `sudo dnf install docker`
 - Archlinux based systems - `sudo pacman -S docker`
 
+Add yourself to the `docker` group:
+
+- `sudo gpasswd -a $USER docker`
+- log out and log back in
+
 Install nftable version of iptables on host distribution this is needed for VNC
 port forwarding to work on docker
 
