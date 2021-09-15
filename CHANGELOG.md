@@ -35,6 +35,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - libqmi - 1.30.2, dfu-util - 0.11, cppzmq - 4.8.0, mosquitto - 2.0.12
   - fuse3 - 3.10.5, lttng - 2.13.0, linux-yocto/5.10 - 5.10.63
   - linux-yocto/5.13 - 5.13.15, libxmlb - 0.3.2, dnf-plugin-tui - 1.3
+  - zchunk - 1.1.16, xterm - 368, unbound - 1.13.2, dnsmasq - 2.86
+  - postgresql - 13.4, libbpf - 0.5.0, ndisc6 - 1.0.5
+  - clang - 13.0.0-rc3
 - New recipes
   - python3-pytest-subtests, python3-kivy, pahole
 - Removed recipes
