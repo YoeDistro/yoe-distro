@@ -1,4 +1,5 @@
 UPDATER_SPEECH=1
+UPDATER_CAN_PARTITION=1
 
 plat_init() {
   # turn on Audio amp
