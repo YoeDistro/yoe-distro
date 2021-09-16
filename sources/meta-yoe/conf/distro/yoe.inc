@@ -103,7 +103,7 @@ INHERIT += "${@bb.utils.contains('BUILD_ARCH', 'ppc64le', '', 'uninative', d)}"
 # Add /etc/build to every image
 INHERIT += "image-buildinfo"
 
-DISTRO_FEATURES:append = " largefile opengl multiarch wayland pam polkit vulkan"
+DISTRO_FEATURES:append = " largefile opengl multiarch wayland pam vulkan"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"

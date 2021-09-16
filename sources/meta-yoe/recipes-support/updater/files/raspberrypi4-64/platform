@@ -106,6 +106,7 @@ FSTYPE=ext4
 BOOT_FSTYPE=vfat
 
 UPDATER_SPEECH=0
+UPDATER_CAN_PARTITION=0
 
 plat_init() {
   msg "Running $PLAT initializations ..."

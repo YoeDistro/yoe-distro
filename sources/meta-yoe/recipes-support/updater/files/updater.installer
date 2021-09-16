@@ -336,7 +336,7 @@ process_update() {
   # check if EMMC card has 3 partitions, if not, partition it now
   total_install_partitions=$(fdisk -l ${INSTALL_DEVICE} | grep ^${INSTALL_DEVICE}p | wc -l)
   msg_splash "Found $total_install_partitions partitions on ${INSTALL_DEVICE}"
-  if [ $total_install_partitions -ne 3 ]; then
+  if [ $total_install_partitions -ne 3 -a ${UPDATER_CAN_PARTITION} -eq 1 ]; then
     msg_splash "Partitioning storage, please wait ..."
     if ! partition_${STORAGE}; then
       msg_splash "Partitioning ${STORAGE} failed, bad media"
