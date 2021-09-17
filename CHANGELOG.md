@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Ensure XZ_THREADS doesn't change sstate checksums
 - Add packageconfig for wheel-group in systemd
 - Avoid problems with recipes using SRCPV when fetching sstate
+- Enable ftps in wget fetcher
+- Add tpm2 packageconfig to systemd
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
