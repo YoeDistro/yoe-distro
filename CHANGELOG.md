@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Implement data partition resize feature in yoe updater
 - Add initial support to generate SBOMs
-- Set precise BSD linceses in recipes in OE-Core
+- Set precise BSD linceses in recipes in OE-Core and meta-openembedded
 - Let updater machine files be defined in layers outside meta-yoe
 - Fix bpftrace build with clang 13
 - Avod task graph corruption when trying to avoid deadlocks in runqueue
@@ -27,6 +27,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Prepare bitbake for python 3.10 compatibility
 - Enable lima with rock64
 - Change one of licenses from expat to MIT in ffmpeg
+- Fix qtwayland build with clang
+- Fix missing pkgconfig inherit in QT5 recipes
+- Use uuid instead of hard-coding root device for rockchip devices
+- Remove obsolete intltool-native dependency from recipes
+-  Add missing pkgconfig inherit in oe-core
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
@@ -42,7 +47,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - linux-yocto/5.13 - 5.13.15, libxmlb - 0.3.2, dnf-plugin-tui - 1.3
   - zchunk - 1.1.16, xterm - 368, unbound - 1.13.2, dnsmasq - 2.86
   - postgresql - 13.4, libbpf - 0.5.0, ndisc6 - 1.0.5
-  - clang - 13.0.0-rc3, linux-raspberrypi - 5.10.63
+  - clang - 13.0.0-rc3, linux-raspberrypi - 5.10.63, libgcrypt - 1.9.4
+  - 
 - New recipes
   - python3-pytest-subtests, python3-kivy, pahole
 - Removed recipes

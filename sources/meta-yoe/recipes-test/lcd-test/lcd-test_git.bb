@@ -11,5 +11,5 @@ SRC_URI = "git://github.com/cbrake/lcd-test.git;branch=master;protocol=git"
 
 S = "${WORKDIR}/git"
 
-inherit cmake
+inherit cmake pkgconfig
 
