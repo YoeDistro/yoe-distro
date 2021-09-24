@@ -31,7 +31,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix missing pkgconfig inherit in QT5 recipes
 - Use uuid instead of hard-coding root device for rockchip devices
 - Remove obsolete intltool-native dependency from recipes
--  Add missing pkgconfig inherit in oe-core
+- Add missing pkgconfig inherit in oe-core
+- Remove useless class from meta class, reduces amount of sstate needed
+- Ensure task checksums reflect site files
+- Delete dead entries from site files for Orbit2 and libidl
+- Delete site file extentions from meta-openembedded layers
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
