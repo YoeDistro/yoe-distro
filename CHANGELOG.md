@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix vboxguestdrivers build on kernel 5.14+
 - Let user specify target for vk-gl-cts
 - Switch linux-yocto defaults to 5.14 kernel
+- Use 5.14 as default kernel for odroid
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
