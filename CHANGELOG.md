@@ -31,11 +31,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix missing pkgconfig inherit in QT5 recipes
 - Use uuid instead of hard-coding root device for rockchip devices
 - Remove obsolete intltool-native dependency from recipes
-- Add missing pkgconfig inherit in oe-core
+- Add missing pkgconfig inherit in oe-core and meta-openembedded
 - Remove useless class from meta class, reduces amount of sstate needed
 - Ensure task checksums reflect site files
 - Delete dead entries from site files for Orbit2 and libidl
 - Delete site file extentions from meta-openembedded layers
+- Fix vboxguestdrivers build on kernel 5.14+
+- Let user specify target for vk-gl-cts
+- Switch linux-yocto defaults to 5.14 kernel
+- Use 5.14 as default kernel for odroid
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
@@ -52,7 +56,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - zchunk - 1.1.16, xterm - 368, unbound - 1.13.2, dnsmasq - 2.86
   - postgresql - 13.4, libbpf - 0.5.0, ndisc6 - 1.0.5
   - clang - 13.0.0-rc3, linux-raspberrypi - 5.10.63, libgcrypt - 1.9.4
-  - 
+  - span-lite - 0.10.1, protobuf - 3.18.0, fio - 3.28, apache2 - 2.4.49
+  - nghttp2 - 1.45.1, samba - 4.14.7, gd - 2.3.3, poco - 1.11.0
+  - cppzmq - 4.8.1, byacc - 20210808, systemtap - 4.5-latest
+  - libc-headers - 5.14
 - New recipes
   - python3-pytest-subtests, python3-kivy, pahole
 - Removed recipes
