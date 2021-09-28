@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use 5.14 as default kernel for odroid
 - Allow shutdown/database flush of pseudo server at task exit helps builds
   using containers for build machines
+- Fix clang SDK builds when using llvm runtime
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
@@ -61,9 +62,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - span-lite - 0.10.1, protobuf - 3.18.0, fio - 3.28, apache2 - 2.4.49
   - nghttp2 - 1.45.1, samba - 4.14.7, gd - 2.3.3, poco - 1.11.0
   - cppzmq - 4.8.1, byacc - 20210808, systemtap - 4.5-latest
-  - libc-headers - 5.14
+  - libc-headers - 5.14, valijson - 0.6, sassc - 3.6.2, sanlock - 3.8.4
+  - libsass - 3.6.5, snort - 2.9.18.1, smcroute - 2.5.3
+  - unionfs-fuse - 2.2
 - New recipes
-  - python3-pytest-subtests, python3-kivy, pahole
+  - python3-pytest-subtests, python3-kivy, pahole, smarty
+  - libjs-jquery-icheck
 - Removed recipes
   - assimp
 
