@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [NEXT]
+## [2021.09] 2021-09-30
 
 - Implement data partition resize feature in yoe updater
 - Add initial support to generate SBOMs
@@ -43,6 +43,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Allow shutdown/database flush of pseudo server at task exit helps builds
   using containers for build machines
 - Fix clang SDK builds when using llvm runtime
+- Fix openCV dnn with protobuf-3.18
 - Assorted python module updates
 - Recipe Updates
   - simpleiot - 0.0.33, go - 1.16.7, unclutter-xfixes - 1.6
@@ -64,10 +65,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - cppzmq - 4.8.1, byacc - 20210808, systemtap - 4.5-latest
   - libc-headers - 5.14, valijson - 0.6, sassc - 3.6.2, sanlock - 3.8.4
   - libsass - 3.6.5, snort - 2.9.18.1, smcroute - 2.5.3
-  - unionfs-fuse - 2.2
+  - unionfs-fuse - 2.2, libqb - 2.0.3
 - New recipes
   - python3-pytest-subtests, python3-kivy, pahole, smarty
-  - libjs-jquery-icheck
+  - libjs-jquery-icheck, chipsec
 - Removed recipes
   - assimp
 
