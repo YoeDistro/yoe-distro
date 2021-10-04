@@ -8,9 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [NEXT]
 
 - Update vc-intrinsics to latest
+- Fix gattlib with latest pkgconfig changes and upgrade recipe
+- Fix multiple build determinism reproducibility issues in oe-core
+- Add Unified Kernel Image option for bootimg-efi wic image
+- Drop broken pyc files in python3 package
 - Recipe Updates
   - gpsd - 3.23.1, cmark - 0.30.2, cifs-utils - 6.14
   - phpmyadmin - 5.1.1, intel-graphics-compiler - 1.0.8708
+  - strace - 5.14
 
 ## [2021.09] 2021-09-30
 
