@@ -18,14 +18,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Enable system instance of pipewire-media-session in pipewire
 - Avoid sysroot race issues when multilib is enabled
 - Fix no longer valid URLs in oeqa manual
+- Replace http with https for URLs in bitbake
+- Improve npm fetcher to support archives missing directory mode
+- Drop libcidn package from glibc
 - Recipe Updates
   - gpsd - 3.23.1, cmark - 0.30.2, cifs-utils - 6.14
   - phpmyadmin - 5.1.1, intel-graphics-compiler - 1.0.8744
   - strace - 5.14, intel-compute-runtime - 21.37.20939
   - linux-yocto - v5.14.9,v5.10.70,v5.14.8
-  - bdwgc - 8.0.6
+  - bdwgc - 8.0.6, samba - 4.14.8
 - New recipes
-  - gn, lv-drivers, lvgl
+  - gn, lv-drivers, lvgl, python3-posix-ipc
+- Removed recipes
+  - chipsec
 
 ## [2021.09] 2021-09-30
 
