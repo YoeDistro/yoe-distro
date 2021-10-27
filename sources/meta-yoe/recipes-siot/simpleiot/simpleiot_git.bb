@@ -43,6 +43,10 @@ do_compile() {
     # FIXME: get elm cache in ~/.elm moved to work-shared
     rm -rf frontend/elm-stuff
     siot_setup
+    # the following is to work around a race condition
+    # where the first time you run npx elm, you get an error:
+    # elm: Text file busy
+    (cd frontend && npx elm || true)
     siot_build
 }
 
