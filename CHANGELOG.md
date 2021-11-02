@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [NEXT]
+## [2021.10] 2021-11-01
 
 - Update vc-intrinsics to latest
 - Fix gattlib with latest pkgconfig changes and upgrade recipe
@@ -21,14 +21,70 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Replace http with https for URLs in bitbake
 - Improve npm fetcher to support archives missing directory mode
 - Drop libcidn package from glibc
+- Add fcntl64 wrapper to pseudo
+- Default to xz compresison for archiver
+- Add explicit branch= in recipes in oe-core
+- Fix simpleIOT build race and update to 0.0.37
+- Add support for big endian 64-bit PowerPC to rust
+- Fix librsvg on rv32
+- Disable seccomp on systemd/mips32
+- disable LLD usage in clang
+- Drop libcidn package from glibc
+- Update python recipes
 - Recipe Updates
   - gpsd - 3.23.1, cmark - 0.30.2, cifs-utils - 6.14
   - phpmyadmin - 5.1.1, intel-graphics-compiler - 1.0.8744
   - strace - 5.14, intel-compute-runtime - 21.37.20939
-  - linux-yocto - v5.14.9,v5.10.70,v5.14.8
-  - bdwgc - 8.0.6, samba - 4.14.8
+  - linux-yocto - v5.10.75,v5.14.14
+  - linux-raspberrypi - 5.10.76, raspberrypi-firmware - 20211007
+  - hiredis - 1.0.2, redis-plus-plus - 1.3.2, atftp - 0.7.5
+  - links - 2.25, autofs - 5.1.8, mozjs - 91.2.0, cryptsetup - 2.4.1
+  - waffle - 1.7.0, asciidoc - 10.0.0, tzdata - 2021e
+  - ncurses - 6.3, vte - 0.66.0, libcap - 2.60, diffoscope - 188
+  - wpebackend-fdo - 1.12.0, webkitgtk - 2.34.1, mpg123 - 1.29.2
+  - libinput - 1.19.2, gi-docgen - 2021.8, msmtp - 1.8.18
+  - python3-setuptools - 58.3.0, createrepo-c - 0.17.7
+  - bdwgc - 8.0.6, samba - 4.14.8, intel-mediasdk - 21.3.5
+  - intel-media-driver - 21.3.5, libva - 2.13.0, gmmlib - 21.3.1
+  - leptonica - 1.82.0, u-boot - 2021.10, lttng-tools - 2.13.1
+  - libdnf - 0.65.0, file - 5.41, dnf - 4.10.0, dhcpcd - 9.4.1
+  - vboxguestdrivers - 6.1.28, rust - 1.56.0, librsvg - 2.52.2
+  - mesa - 21.2.4, gnupg - 2.3.3, libsoup-2.4 - 2.74.0, libmd - 1.0.4
+  - libcap - 2.59, libatomic-ops - 7.6.12, iso-codes - 4.7.0
+  - fribidi - 1.0.11, libwpe - 1.12.0, mpg123 - 1.29.0
+  - wireless-regdb - 2021.08.28, linux-firmware - 20210919
+  - libinput - 1.19.1, pango - 1.48.10, harfbuzz - 3.0.0
+  - libdazzle - 3.42.0, json-glib - 1.6.6, sudo - 1.9.8p2
+  - gsettings-desktop-schemas - 41.0, gobject-introspection - 1.70.0
+  - msmtp - 1.8.17, libarchive - 3.5.2, asciidoc - 9.1.1
+  - acpica - 20210930, vala - 0.54.2, librepo - 1.14.2
+  - libedit - 20210910-3.1, libcomps - 0.1.18, ccache - 4.4.2
+  - btrfs-tools - 5.14.2, sysvinit - 3.00, openssh - 8.8p1
+  - ofono - 1.33, git - 2.33.1, cmake - 3.21.3, bison - 3.8.2
+  - libxcrypt - 4.4.26, libgit2 - 1.3.0, curl - 7.79.1
+  - ca-certificates - 20211016, liberation-fonts - 2.1.5
+  - libva - 2.13.0, libgit2 - 1.3.0, curl - 7.79.1
+  - liberation-fonts - 2.1.5, valgrind - 3.18.1, meson - 0.59.2
+  - systemd - 249.5, ovmf - 202108, bluez5 - 5.62
+  - lighttpd - 1.4.60, ghostscript - 9.55.0, kea - 2.0.0
+  - libjitterentropy - 3.3.0, lua - 5.4.3, rpm - 4.17.0
+  - qemu - 6.1.0, gnupg - 2.3.2, pinentry - 1.2.0
+  - spirv-tools - 2021.3, glslang - 11.6.0, shaderc - 2021.2
+  - inetutils - 2.2, lsof - 4.94.0, libpam - 1.5.2, rt-tests - 2.2
+  - libgit2  - 1.2.0, libssh2 - 1.10.0, libhandy - 1.4.0
+  - iproute2 - 5.14.0, gzip - 1.11, harfbuzz - 2.9.1
+  - vulkan - 1.2.191, help2man - 1.48.5, wayland-protocols - 1.23
+  - python3 - 3.10, ethtool - 5.14, xf86-input-libinput - 1.2.0
+  - libinput - 1.19.0, acpid - 2.0.33, ell - 0.44, go - 1.16.8
+  - libseccomp - 2.5.2, gstreamer1.0 - 1.18.5, busybox - 1.34.1
+  - 41.0, openssl - 3.0.0, glib-2.0 - 2.70.0, libexif - 0.6.23
+  - wget - 1.21.2, coreutils - 9.0, itstool - 2.0.7
+  - epiphany - 41.0, libsolv - 0.7.20, libxi - 1.8
+  - libxkbcommon - 1.3.1, xkeyboard-config - 2.34, xorgproto - 2021.5
+  - man-pages - 5.13, at-spi2-core - 2.42.0
 - New recipes
-  - gn, lv-drivers, lvgl, python3-posix-ipc
+  - gn, lv-drivers, lvgl, python3-posix-ipc, libxcvt
+  - libjs-jquery-globalize, libjs-jquery-cookie
 - Removed recipes
   - chipsec
 
