@@ -8,7 +8,7 @@ SRCREV = "354a1f6780c7c7490cda53489cd27527bee84eb6"
 PV = "git${SRCPV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/cbrake/fs-stress-test.git;branch=master;protocol=git"
+SRC_URI = "git://github.com/cbrake/fs-stress-test.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 
