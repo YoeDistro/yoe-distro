@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [NEXT]
+
+- Use https protocol in github SRC_URI
+- Use branch setting in git uris explicitly
+- Update clang to latest on 13.x release branch
+- Fix recipes to not install /var/log /var/run during build time
+  but create them at runtime
+- Fix mdns on musl
+- Fix Gnome recipes in meta-gnome
+- Update musl to tip of trunk which has qsort_r now
+- Add a new build QA check to check for empty folders
+- Assorted recipe upgrades
+- New recipes
+  - ntpsec, mozjs-78, gtk4, python3-imgtool
+
 ## [2021.10] 2021-11-01
 
 - Update vc-intrinsics to latest
