@@ -16,7 +16,7 @@ PV = "0.0.37"
 
 BRANCH ?= "master"
 
-SRC_URI = "git://github.com/simpleiot/simpleiot;branch=${BRANCH} \
+SRC_URI = "git://github.com/simpleiot/simpleiot;branch=${BRANCH};protocol=https \
            "
 S = "${WORKDIR}/git"
 
