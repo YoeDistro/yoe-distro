@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix Gnome recipes in meta-gnome
 - Update musl to tip of trunk which has qsort_r now
 - Add a new build QA check to check for empty folders
+- Fix recipes e.g. mctp, sdbus to compile against 5.15 kernel headers
+- Update gdb to 11.1
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool
