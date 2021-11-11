@@ -18,9 +18,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add a new build QA check to check for empty folders
 - Fix recipes e.g. mctp, sdbus to compile against 5.15 kernel headers
 - Update gdb to 11.1
+- Show warnings for append/prepend/remove operators combined with +=/.=
+- Specify protoc explicitly when building protobuf-c, helps cross compile
+- Use https protocols for github SRC_URIs in meta-raspberrypi
+- Introduce Linux 5.15 based linux-libc-headers
+- Fix recipes to work with 5.15 headers e.g. ppp
+- Update linux-yocto
+  v5.10.78, v5.15.1, v5.14.17
+- Drop using lnr in favor of ln -rs in recipes
+- Fix wic image generation by reverting to using os.rename
+- Add uninative mirror on kernel.org
+- Build target qemu on musl targets as well
+- improve SDK's wrapper to make Wraps work in meson
+- Use wayland distro feature for native builds
 - Assorted recipe upgrades
 - New recipes
-  - ntpsec, mozjs-78, gtk4, python3-imgtool
+  - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
+  - python3-pytz-deprecation-shim
 
 ## [2021.10] 2021-11-01
 
