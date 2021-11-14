@@ -31,6 +31,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Build target qemu on musl targets as well
 - improve SDK's wrapper to make Wraps work in meson
 - Use wayland distro feature for native builds
+- Fix task-depends.dot for multiconfig targets
+- Adjust recipes using meson to work with meson 0.60+
+- Upgrade linux-raspberrypi to 5.10.78
+- Add Pi Zero 2 Wifi 64bit yocto machine in meta-raspberrypi
+- Upgrade php to 8.x
+- Upgrade linux-staging-ti to 5.10.65
+- Drop compatibility mappings and dbus dependency in core packagegroups
+- Support read-only rootfs in QEMU machines
+- Refresh PREMIRRORS/MIRRORS settings in metadata, some of them were stale
+- Update rust to 1.56.1
+- Update patch status, many of them are submitted upstream
+- Use https:// instead of git:// for github.com SRC_URIs in meta-qt5
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
