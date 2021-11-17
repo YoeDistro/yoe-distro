@@ -43,10 +43,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update rust to 1.56.1
 - Update patch status, many of them are submitted upstream
 - Use https:// instead of git:// for github.com SRC_URIs in meta-qt5
+- Fix github SRC_URIs to have explicit branch names
+- Use usermode qemu to run minilua during php8 build
+- Change the default cipher to AES-256-GCM for openvpn server configurations
+- Fix rust runtime library and librsvg on riscv32/musl
+- Add sanity check for allarch packagegroups
+- Fix missing installation of cups sysv init scripts
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
-  - python3-pytz-deprecation-shim
+  - python3-pytz-deprecation-shim, python3-aiosignal, python3-frozenlist
+  - python3-charset-normalizer, python3-cchardet, python3-email-validator
 
 ## [2021.10] 2021-11-01
 
