@@ -53,6 +53,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove introspection as this is not valid meson 0.60+ option
 - Fix missing installation of cups sysv init scripts
 - Upgrade and fix freerdp 2.3.0 -> 2.4.1
+- Fix mozjs on centos7 build hosts
+- Add Wi-Fi/BT drivers for CM4 and Pi 400 to Raspberrypi4 machine configs
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
