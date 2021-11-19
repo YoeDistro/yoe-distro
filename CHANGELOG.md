@@ -48,7 +48,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Change the default cipher to AES-256-GCM for openvpn server configurations
 - Fix rust runtime library and librsvg on riscv32/musl
 - Add sanity check for allarch packagegroups
+- Use bullseye branch for linux-firmware-rpidistro package
+- Set precise BSD license for meta-openembedded recipes
+- Remove introspection as this is not valid meson 0.60+ option
 - Fix missing installation of cups sysv init scripts
+- Upgrade and fix freerdp 2.3.0 -> 2.4.1
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
