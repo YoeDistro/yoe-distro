@@ -5,7 +5,7 @@
 part --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --align 1024 --fixed-size 100
 
 # Main Rootfs partition (2G)
-part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --fixed-size 2048 --align 1024
+part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --fixed-size 4096 --align 1024
 
 # User data partition (1M)
 part /data --ondisk mmcblk --fstype=ext4 --label data --fixed-size 1 --align 4096
