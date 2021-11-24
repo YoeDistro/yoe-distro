@@ -33,7 +33,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use wayland distro feature for native builds
 - Fix task-depends.dot for multiconfig targets
 - Adjust recipes using meson to work with meson 0.60+
-- Upgrade linux-raspberrypi to 5.10.78
+- Upgrade linux-raspberrypi to 5.10.81
+- Fix parselogs regular expressions for 5.10 kernel
 - Add Pi Zero 2 Wifi 64bit yocto machine in meta-raspberrypi
 - Upgrade php to 8.x
 - Upgrade linux-staging-ti to 5.10.65
@@ -55,6 +56,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade and fix freerdp 2.3.0 -> 2.4.1
 - Fix mozjs on centos7 build hosts
 - Add Wi-Fi/BT drivers for CM4 and Pi 400 to Raspberrypi4 machine configs
+- Upgrade mesa to 21.3.0
+- Fix OEQA warnings for append operators combined with +=
+- Improve rust support in meson based builds
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
