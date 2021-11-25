@@ -32,6 +32,8 @@ port forwarding to work on docker
 
 - Archlinux based sytems - `sudo pacman -S iptables-nft`
 
+- On host systems with 8G RAM or less it will be necessary to ensure a swap file of 8G.
+
 ## Workspace Setup
 
 1. `git clone --recurse-submodules -j8 -b master git://github.com/YoeDistro/yoe-distro.git yoe`
