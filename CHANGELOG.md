@@ -63,6 +63,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Support rootdev identified by partition label in wic
 - Do not use CET on i586 and c3 tunes
 - Switch TI SOCs to use PVR graphics
+- Fix PVR drivers to work with 5.10+ kernel
+- Add ar wrapper for determinism for native/cross recipes
+- Add needed sysroot dependencies for repo fetcher
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
