@@ -1,0 +1,28 @@
+From 3a0a4847961fa152dd88321c6d67279fbbc366a7 Mon Sep 17 00:00:00 2001
+From: Paul Barker <paul.barker@sancloud.com>
+Date: Wed, 27 Oct 2021 10:34:32 +0100
+Subject: [PATCH] Fix driver config for 5.10 kernel
+
+See https://github.com/openpvrsgx-devgroup/linux_openpvrsgx/issues/3.
+
+Ref: BSP-66
+Signed-off-by: Paul Barker <paul.barker@sancloud.com>
+---
+ eurasia_km/eurasiacon/build/linux2/config/core.mk | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/eurasia_km/eurasiacon/build/linux2/config/core.mk b/eurasia_km/eurasiacon/build/linux2/config/core.mk
+index 3f279263afea..18d515aaaaa1 100644
+--- a/eurasia_km/eurasiacon/build/linux2/config/core.mk
++++ b/eurasia_km/eurasiacon/build/linux2/config/core.mk
+@@ -590,6 +590,7 @@ ifneq ($(BUFFERCLASS_MODULE),)
+ $(eval $(call BothConfigMake,BUFFERCLASS_MODULE,$(BUFFERCLASS_MODULE)))
+ endif
+ 
++PVR_LINUX_MEM_AREA_USE_VMAP = 1
+ ifneq ($(strip $(KERNELDIR)),)
+ PVR_LINUX_MEM_AREA_POOL_MAX_PAGES ?= 0
+ ifneq ($(PVR_LINUX_MEM_AREA_POOL_MAX_PAGES),0)
+-- 
+2.31.1
+
