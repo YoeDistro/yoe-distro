@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Introduce Linux 5.15 based linux-libc-headers
 - Fix recipes to work with 5.15 headers e.g. ppp
 - Update linux-yocto
-  v5.10.78, v5.15.1, v5.14.17
+  v5.10.79, v5.15.2, v5.14.18
 - Drop using lnr in favor of ln -rs in recipes
 - Fix wic image generation by reverting to using os.rename
 - Add uninative mirror on kernel.org
@@ -59,11 +59,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade mesa to 21.3.0
 - Fix OEQA warnings for append operators combined with +=
 - Improve rust support in meson based builds
+- Upgrade go to 1.16.10
+- Support rootdev identified by partition label in wic
+- Do not use CET on i586 and c3 tunes
+- Switch TI SOCs to use PVR graphics
+- Fix PVR drivers to work with 5.10+ kernel
+- Add ar wrapper for determinism for native/cross recipes
+- Add needed sysroot dependencies for repo fetcher
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
   - python3-pytz-deprecation-shim, python3-aiosignal, python3-frozenlist
   - python3-charset-normalizer, python3-cchardet, python3-email-validator
+  - python3-gcovr
 
 ## [2021.10] 2021-11-01
 
