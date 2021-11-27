@@ -1,0 +1,44 @@
+From 7288496d08108b8b6514f9fb20c575fd42f8027e Mon Sep 17 00:00:00 2001
+From: Gowtham Tammana <g-tammana@ti.com>
+Date: Mon, 6 Jul 2020 12:47:23 -0500
+Subject: [PATCH] eglfs: Force 888 format only on env flag
+
+[ChangeLog][Platform Specific Changes][eglfs] In the case of elgfs
+platform the surface format is being forced to RGB888 format which
+conflicts if a different default format is specified in the json config
+file. Force the surface format to be of RGB888 only when the environment
+flag QT_QPA_EGLFS_FORCE888 is set.
+set.
+
+Upstream-Status: Pending
+
+Change-Id: Id63f11eed2f41b322a95e103860888694ccd44db
+---
+ .../eglfs_kms_support/qeglfskmsintegration.cpp        | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/plugins/platforms/eglfs/deviceintegration/eglfs_kms_support/qeglfskmsintegration.cpp b/src/plugins/platforms/eglfs/deviceintegration/eglfs_kms_support/qeglfskmsintegration.cpp
+index 06bc272050..41f2265208 100644
+--- a/src/plugins/platforms/eglfs/deviceintegration/eglfs_kms_support/qeglfskmsintegration.cpp
++++ b/src/plugins/platforms/eglfs/deviceintegration/eglfs_kms_support/qeglfskmsintegration.cpp
+@@ -102,9 +102,14 @@ QSurfaceFormat QEglFSKmsIntegration::surfaceFormatFor(const QSurfaceFormat &inpu
+     QSurfaceFormat format(inputFormat);
+     format.setRenderableType(QSurfaceFormat::OpenGLES);
+     format.setSwapBehavior(QSurfaceFormat::DoubleBuffer);
+-    format.setRedBufferSize(8);
+-    format.setGreenBufferSize(8);
+-    format.setBlueBufferSize(8);
++
++    static const bool force888 = qEnvironmentVariableIntValue("QT_QPA_EGLFS_FORCE888");
++    if (force888) {
++        format.setRedBufferSize(8);
++        format.setGreenBufferSize(8);
++        format.setBlueBufferSize(8);
++    }
++
+     return format;
+ }
+
+--
+2.17.1
+
