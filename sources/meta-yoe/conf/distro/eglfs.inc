@@ -6,4 +6,4 @@ DISABLE_VC4GRAPHICS = "1"
 # Use rdk backend for eglfs
 PREFERRED_PROVIDER_virtual/wpebackend = "wpebackend-rdk"
 
-PACKAGECONFIG:pn-wpebackend-rdk_rpi = "rpi"
+PACKAGECONFIG:pn-wpebackend-rdk:rpi = "rpi"
