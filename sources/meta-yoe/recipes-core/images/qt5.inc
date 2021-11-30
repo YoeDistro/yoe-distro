@@ -30,6 +30,7 @@ QT5BASE = "\
 	qtdeclarative \
 	qtdeclarative-qmlplugins \
 	qtdeclarative-plugins \
+        ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-plugins', '', d)} \
 "
 QTWEBKIT ??= "\
 	qtwebkit \
