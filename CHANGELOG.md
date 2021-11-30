@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [NEXT]
+## [2021.11] 2021-12-01
 
 - Use https protocol in github SRC_URI
 - Use branch setting in git uris explicitly
@@ -66,6 +66,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix PVR drivers to work with 5.10+ kernel
 - Add ar wrapper for determinism for native/cross recipes
 - Add needed sysroot dependencies for repo fetcher
+- Fix launching weston without keyboard and mouse on BBB and RPI
+- Update Go to 1.17 release
 - Assorted recipe upgrades
 - New recipes
   - ntpsec, mozjs-78, gtk4, python3-imgtool, fwupd, fwupd-efi
