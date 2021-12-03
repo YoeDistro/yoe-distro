@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [NEXT]
 
+- Fix qtwayland vulkan build on GLES2
+- Upgrade libcamera to latest
+- Assorted recipe upgrades
+- New recipes
+
 ## [2021.11] 2021-12-01
 
 - Use https protocol in github SRC_URI
