@@ -15,6 +15,7 @@ IMAGE_INSTALL += "\
 "
 
 IMAGE_INSTALL:remove:riscv32 = "packagegroup-go-sdk-target"
+IMAGE_INSTALL:remove:powerpc = "packagegroup-go-sdk-target"
 
 export IMAGE_BASENAME = "yoe-sdk-image"
 # some ptests need a lot of memory
