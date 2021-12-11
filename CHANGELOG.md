@@ -9,7 +9,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fix qtwayland vulkan build on GLES2
 - Upgrade libcamera to latest
+- Add new recipe for 2.6 version trusted-firmware-a
+- Use GCC runtime on ppc32 and armv5 when using clang compiler
+- Support building clang based compilers on OE build hosts
+- Upgrade RPI kernel (linux-raspberrypi) to 5.10.83
+- Upgrade WebKit to 2.34.2
+- Upgrade linux-yocto - linux-yocto/5.15 - v5.15.6
+  linux-yocto/5.10 - v5.10.82
+  linux-yocto/5.14 - v5.14.21
+- Upgrade mesa to 21.3.1 and fix build for RPI0W and vulkan
+- Upgrade Go to 1.17.4
+- Upgrade rust to 1.57.0
+- Upgrade opkg to 0.5.0
+- Remove crypto for the default cortex-a72 tune
+- Add redirectauth parameter to wget fetcher
+- Ensure dumpsig output is deterministic in siggen
 - Assorted recipe upgrades
+- Removed recipes
+  - rustfmt
 - New recipes
 
 ## [2021.11] 2021-12-01
