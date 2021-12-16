@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [NEXT]
+## [Draft]
 
 - Fix qtwayland vulkan build on GLES2
 - Upgrade libcamera to latest
@@ -24,6 +24,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove crypto for the default cortex-a72 tune
 - Add redirectauth parameter to wget fetcher
 - Ensure dumpsig output is deterministic in siggen
+- Improve lockfile handling race in bitbake runqueue
+- Update clang to 13.0.1 RC1
+- Use 5.15 kernel for linux-ti-mainline
+- Improve lttng-tools ptests determinism
+- Let mesa provide virtual/libgles3
+- Fix kmscube build on OpenGL ES 3
 - Assorted recipe upgrades
 - Removed recipes
   - rustfmt
