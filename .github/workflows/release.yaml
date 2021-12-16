@@ -40,8 +40,8 @@ jobs:
           /bin/bash -c "sed -i -e 's/SDK_UPDATE_URL.*$//' conf/site.conf"
       - name: Build Images
         run: |
-          /bin/bash -c ". ./beaglebone-envsetup.sh && bitbake yoe-simpleiot-image"
-          /bin/bash -c ". ./raspberrypi4-64-envsetup.sh && bitbake yoe-simpleiot-image"
+          /bin/bash -c ". ./beaglebone-envsetup.sh && bitbake yoe-sdk-image"
+          /bin/bash -c ". ./raspberrypi4-64-envsetup.sh && bitbake yoe-sdk-image"
       - name: version
         run: echo "::set-output name=version::$(cat sources/meta-yoe/conf/distro/yoe.inc | grep 'DISTRO_VERSION =' | cut -d' ' -f 3)"
         id: version
