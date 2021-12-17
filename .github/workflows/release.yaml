@@ -71,6 +71,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./deploy/deploy/raspberrypi4-64_0.0.1.wic.xz
+          asset_path: ./deploy/raspberrypi4-64_0.0.1.wic.xz
           asset_name: raspberrypi4-64_0.0.1.wic.xz
           asset_content_type: application/xz
