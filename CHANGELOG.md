@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2021.12-rc.1] 2021-12-17
+## [2021.12] - 2021-12-17
 ### Changed
 - Fix qtwayland vulkan build on GLES2
 - Upgrade libcamera to latest
@@ -40,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed recipes
   - rustfmt
 
-## [2021.11] 2021-12-01
+## [2021.11] - 2021-12-01
 
 - Use https protocol in github SRC_URI
 - Use branch setting in git uris explicitly
@@ -110,7 +110,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - python3-charset-normalizer, python3-cchardet, python3-email-validator
   - python3-gcovr
 
-## [2021.10] 2021-11-01
+## [2021.10] - 2021-11-01
 
 - Update vc-intrinsics to latest
 - Fix gattlib with latest pkgconfig changes and upgrade recipe
@@ -193,7 +193,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed recipes
   - chipsec
 
-## [2021.09] 2021-09-30
+## [2021.09] - 2021-09-30
 
 - Implement data partition resize feature in yoe updater
 - Add initial support to generate SBOMs
@@ -260,7 +260,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed recipes
   - assimp
 
-## [2021.08] 2021-09-02
+## [2021.08] - 2021-09-02
 
 - Update to bitbake 1.51.1
 - Remove meta-rust layer as rust is in Core now
@@ -353,7 +353,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed recipes
   - libnss-nisplus
 
-## [2021.07] 2021-07-30
+## [2021.07] - 2021-07-30
 
 - Check for wayland distro feature before enabling egl in qtwayland
 - Introduce armv8r64 compiler flags in arch-armv8r64
