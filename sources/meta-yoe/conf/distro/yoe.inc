@@ -6,7 +6,7 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2021.12-rc.1"
+DISTRO_VERSION = "2021.12"
 DISTRO_CODENAME = "masai"
 SDK_VERSION := "${DISTRO_VERSION}"
 
