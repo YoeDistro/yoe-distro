@@ -56,21 +56,39 @@ jobs:
           body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - name: upload beaglebone artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - name: Upload artifacts
+        uses: actions/github-script@v3
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./deploy/beaglebone_0.0.1.wic.xz
-          asset_name: beaglebone_0.0.1.wic.xz
-          asset_content_type: application/xz
-      - name: upload raspberrypi4-64 artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./deploy/raspberrypi4-64_0.0.1.wic.xz
-          asset_name: raspberrypi4-64_0.0.1.wic.xz
-          asset_content_type: application/xz
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const path = require('path');
+            const fs = require('fs');
+            const release_id = '${{ needs.create_release.outputs.id }}';
+            for (let file of await fs.readdirSync('./deploy')) {
+              console.log('uploadReleaseAsset', file);
+              await github.repos.uploadReleaseAsset({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                release_id: release_id,
+                name: file,
+                data: await fs.readFileSync(`./${file}`)
+              });
+            }
+#      - name: upload beaglebone artifact
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ github.token }}
+#        with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }}
+#          asset_path: ./deploy/beaglebone_0.0.1.wic.xz
+#          asset_name: beaglebone_0.0.1.wic.xz
+#          asset_content_type: application/xz
+#      - name: upload raspberrypi4-64 artifact
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ github.token }}
+#        with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }}
+#          asset_path: ./deploy/raspberrypi4-64_0.0.1.wic.xz
+#          asset_name: raspberrypi4-64_0.0.1.wic.xz
+#          asset_content_type: application/xz
