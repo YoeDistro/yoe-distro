@@ -1,12 +1,11 @@
 # Changelog
-
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Draft]
-
+## [Unreleased]
+### Changed
 - Fix qtwayland vulkan build on GLES2
 - Upgrade libcamera to latest
 - Add new recipe for 2.6 version trusted-firmware-a
@@ -31,9 +30,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Let mesa provide virtual/libgles3
 - Fix kmscube build on OpenGL ES 3
 - Assorted recipe upgrades
+
+### Added
+- New recipes
+
+### Removed
 - Removed recipes
   - rustfmt
-- New recipes
 
 ## [2021.11] 2021-12-01
 
