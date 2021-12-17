@@ -47,8 +47,6 @@ jobs:
         id: ver
       - name: Release Notes
         uses: CSchoel/release-notes-from-changelog@v1
-        with:
-          version: ${{ github.ref }}
       - name: Show Release Notes
         run: |
           cat RELEASE.md
