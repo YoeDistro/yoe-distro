@@ -45,8 +45,12 @@ jobs:
       - name: version
         run: echo "::set-output name=version::$(printf ' - ' && cat sources/meta-yoe/conf/distro/yoe.inc | grep 'DISTRO_CODENAME =' | cut -d' ' -f 3 )"
         id: version
-      - name: release
+      - name: Release Notes
         uses: CSchoel/release-notes-from-changelog@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Create Release
         uses: actions/create-release@v1
 #        id: create_release
         with:
