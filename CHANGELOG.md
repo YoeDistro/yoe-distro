@@ -979,3 +979,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move kea/dhcpcd from meta-openembedded to opemebedded-core
 - Fix QT5 recipes with clang-11
 - Move meta-yoe into yoedistro repo
+
+
+[Unreleased]: https://github.com/YoeDistro/yoe-distro/compare/2021.12...HEAD
+[2021.12]: https://github.com/YoeDistro/yoe-distro/compare/2021.11...2021.12
+[2021.11]: https://github.com/YoeDistro/yoe-distro/compare/2021.10...2021.11
+[2021.10]: https://github.com/YoeDistro/yoe-distro/compare/2021.09...2021.10
+[2021.09]: https://github.com/YoeDistro/yoe-distro/compare/2021.08...2021.09
+[2021.08]: https://github.com/YoeDistro/yoe-distro/compare/2021.07...2021.08
+[2021.07]: https://github.com/YoeDistro/yoe-distro/compare/2021.06...2021.07
+[2021.06]: https://github.com/YoeDistro/yoe-distro/compare/2021.05...2021.06
+[2021.05]: https://github.com/YoeDistro/yoe-distro/compare/2021.04...2021.05
+[2021.04]: https://github.com/YoeDistro/yoe-distro/compare/2021.03...2021.04
+[2021.03]: https://github.com/YoeDistro/yoe-distro/compare/2021.02...2021.03
+[2021.02]: https://github.com/YoeDistro/yoe-distro/compare/2021.01...2021.02
+[2021.01]: https://github.com/YoeDistro/yoe-distro/compare/3.3.0-beta...2021.01
+[3.3.0-beta]: https://github.com/YoeDistro/yoe-distro/compare/3.3.0-alpha...3.3.0-beta
+[3.3.0-alpha]: https://github.com/YoeDistro/yoe-distro/compare/3.2.0...3.3.0-alpha
+[3.2.0]: https://github.com/YoeDistro/yoe-distro/compare/3.2.0-rc.1...3.2.0
+[3.2.0-rc.1]: https://github.com/YoeDistro/yoe-distro/compare/3.2.0-beta...3.2.0-rc.1
+[3.2.0-beta]: https://github.com/YoeDistro/yoe-distro/compare/3.2.0-alpha...3.2.0-beta
+[3.2.0-alpha]: https://github.com/YoeDistro/yoe-distro/releases/tag/3.2.0-alpha
