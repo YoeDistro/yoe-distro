@@ -15,11 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support building clang based compilers on OE build hosts
 - Upgrade RPI kernel (linux-raspberrypi) to 5.10.83
 - Upgrade WebKit to 2.34.2
-- Upgrade linux-yocto - linux-yocto/5.15 - v5.15.6
-  linux-yocto/5.10 - v5.10.82
+- Upgrade linux-yocto - linux-yocto/5.15 - v5.15.10
+  linux-yocto/5.10 - v5.10.87
   linux-yocto/5.14 - v5.14.21
 - Upgrade mesa to 21.3.1 and fix build for RPI0W and vulkan
-- Upgrade Go to 1.17.4
+- Upgrade Go to 1.17.5
 - Upgrade rust to 1.57.0
 - Upgrade opkg to 0.5.0
 - Remove crypto for the default cortex-a72 tune
@@ -31,10 +31,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve lttng-tools ptests determinism
 - Let mesa provide virtual/libgles3
 - Fix kmscube build on OpenGL ES 3
+- Update and enhance netdata 1.32.1
+- Update php to 8.1
+- Update openSSL to 3.0.1
+- Fix oe-stylize script to address new override syntax
+- Update QEMU to 6.2 and add selinux PACKAGECONFIG
+- drop OLDEST_KERNEL reference in qemu-usermode
+- Cleanup tzdata recipe
+- Add Inactive-Upstream to Upstream-Status
 - Assorted recipe upgrades
 
 ### Added
-- New recipes
+- Added recipes
+  - gutenprint, usbip-tools, pycups
 
 ### Removed
 - Removed recipes
