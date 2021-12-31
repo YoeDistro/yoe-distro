@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - drop OLDEST_KERNEL reference in qemu-usermode
 - Cleanup tzdata recipe
 - Add Inactive-Upstream to Upstream-Status
+- Update clang to latest 13.x branch
 - Assorted recipe upgrades
 
 ### Added
