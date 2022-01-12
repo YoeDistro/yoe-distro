@@ -231,6 +231,9 @@ TMPDIR = "${OE_BUILD_TMPDIR}"
 # Go through the Firewall
 #HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
 
+#Skip the internet connection check
+CONNECTIVITY_CHECK_URIS = ""
+
 MACHINE ?= "$MACHINE"
 _EOF
 
