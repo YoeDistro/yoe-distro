@@ -28,6 +28,9 @@ export CGO_ENABLED
 INITSCRIPT_NAME = "siot"
 INITSCRIPT_PARAMS = "start 99 5 . stop 20 6 ."
 
+do_configure[network] = "1"
+do_compile[network] = "1"
+
 do_configure() {
     export GOPATH=${GOPATH}
     export GOFLAGS="-modcacherw"
