@@ -87,10 +87,8 @@ ERROR_QA:append = " ${WARN_TO_ERROR_QA}"
 # enable extra features. Some available options which can be included in this variable
 # are:
 #   - 'buildstats' collect build statistics
-#   - 'image-prelink' in order to prelink the filesystem image
 #   - 'image-swab' to perform host system intrusion detection
-# image-prelink sometimes disabled due to issues with IFUNC symbol relocation
-USER_CLASSES ?= "buildhistory buildstats buildstats-summary image-prelink"
+USER_CLASSES ?= "buildhistory buildstats buildstats-summary"
 
 IMAGE_CLASSES += "testimage testsdk"
 
