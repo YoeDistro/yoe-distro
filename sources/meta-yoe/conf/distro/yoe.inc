@@ -147,10 +147,10 @@ PREFERRED_VERSION_cjson = "1.7.1%"
 PREFERRED_VERSION_doxygen = "1.9%"
 PREFERRED_VERSION_doxygen-native = "1.9%"
 PREFERRED_VERSION_nativesdk-doxygen = "1.9%"
-# meta-freescale has 1.16.x
-PREFERRED_VERSION_gstreamer1.0-libav = "1.18.%"
-PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.18.%"
-PREFERRED_VERSION_gstreamer1.0-rtsp-server = "1.18.%"
+# meta-freescale has 1.18.x
+PREFERRED_VERSION_gstreamer1.0-libav = "1.20.%"
+PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.20.%"
+PREFERRED_VERSION_gstreamer1.0-rtsp-server = "1.20.%"
 
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).
