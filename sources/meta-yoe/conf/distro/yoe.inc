@@ -37,7 +37,7 @@ https://.*/.*    http://downloads.yoctoproject.org/mirror/sources/ \n"
 # Allow reusing DL_DIR from the current build as a mirror for other builds.
 BB_GENERATE_MIRROR_TARBALLS = "1"
 
-PRSERV_HOST = "localhost:0"
+PRSERV_HOST ?= "localhost:0"
 TCLIBCAPPEND = ""
 
 BUILDHISTORY_COMMIT ?= "1"
