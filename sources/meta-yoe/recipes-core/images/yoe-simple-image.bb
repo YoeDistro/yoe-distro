@@ -26,3 +26,18 @@ IMAGE_INSTALL:append:libc-musl = " gcompat"
 export IMAGE_BASENAME = "yoe-simple-image"
 
 BAD_RECOMMENDATIONS += "eudev-hwdb udev-hwdb libmodule-build-perl"
+
+# How to add password/user to image
+#inherit extrausers
+
+#IMAGE_FEATURES:remove = "debug-tweaks"
+
+#EXTRA_USERS_PARAMS += "\
+#    useradd scribbledeedoo; \
+#    usermod -p '$(openssl passwd -6 MajorPie5)' scribbledeedoo; \
+#    usermod -a -G adm scribbledeedoo; \
+#    usermod -a -G video scribbledeedoo; \
+#    usermod -a -G audio scribbledeedoo; \
+#    usermod -a -G systemd-journal scribbledeedoo; \
+#"
+#
