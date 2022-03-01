@@ -4,7 +4,70 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2022.02] - 2022-02-28
+### Changed
+- Upgrade simpleiot to 0.0.42
+- Enable network during compile/configure step of simpleiot
+- Build kernel with initramfs for sifive/unmatched
+- Use renamed terms for variables for inclusive language changes
+  - BB_ENV_PASSTHROUGH_ADDITIONS
+  - LICENSE_FLAGS_ACCEPTED
+  - SKIP_RECIPE
+  - CVE_CHECK_IGNORE
+  - LICENSE_EXCLUSION
+- Use yocto URL for testing CONNECTIVITY_CHECK_URIS
+- Switch to kirkstone ( yocto 3.5 ) codename across layers
+- Only allow network access in do_fetch tasks
+- Cleanup use of distutils in oe-core, replace with setuptools
+- linux-yocto updated to v5.10.99, v5.15.22
+- Update busybox to 1.35 release
+- Enable threading in perl
+- Update various gnome recipes to 41.1 release
+- Upgrade strace to 5.16
+- Switch raspberrypi4-64 to cortexa72 tune
+- Upgrade ffmpeg to 5.0
+- Upgrade meson to 0.61.1 and fix packages to build with this version
+- Update PHP to 8.1.3
+- Upgrade gstreamer to 1.20.0
+- Use arm BSPs to use linux-yocto 5.15
+- Update clang to 14.0.0-rc1
+- Use LLVM binutils by default e.g. nm, strip, objcopy, objdump etc.
+- Set precise BSD license in various recipes
+- Upgrade glibc to 2.35
+- Upgrade binutils to 2.38 release
+- Upgrade gdb to 11.2
+- Upgrade go to 1.17.7
+- Upgrade musl to tip of master/f8bdc3048216f41eaaf655524fa286cfb1184a70
+- Upgrade weston to 10.0.0
+- Disable sse4.1 and sse4.2 in openCV on x86
+- Upgrade linux-firmware to 20220209
+- Bump bitbake version to 1.53.1
+- Use 5.15 as default kernel for RPI machines
+- Add support for gtkmm4
+- Disable optimizations for libvorbis,x264,dcadec,graphviz on mips to avoid clang bug
+- Migrate many python recipes to use wheels packaging format
+- Upgrade ruby to 3.1.1
+- Move distutils bbclasses to meta-python
+
+### Added
+- Add example to generate username/password in image and local.conf
+- Add recipe for python3-gammu, duktape, python3-picamera, seatd
+  googlebenchmark, python3-pytest-xdist, python3-pytest-xdist
+  python3-pytest-qt
+- Introduce cortexa73-crypto tune
+- Add the support for the Neoverse N2 core
+- Add tune include for armv8.5a
+- Add setuptoools Rust plugin
+- Add class for PyO3 cross-compilation
+- Add crate fetcher in bitbake
+- Add recipe for 5.15 LTS linux-raspberrypi kernel
+
+### Removed
+- Prelinker support
+- Drop the redundant cortexa72-crc tune
+- Remove recipes for mailx, libjs-jquery, python3-anyjson, python3-nose
+- Remove libsegfault and catchsegv
+- Remove bogus CMAKE_LDFLAGS_FLAGS definition from cmake toolchain file
 
 ## [2021.12] - 2021-12-17
 ### Changed
