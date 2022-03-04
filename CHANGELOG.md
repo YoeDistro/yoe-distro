@@ -4,6 +4,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Changed
+- Update clang to 14.0.0-rc2
+- Fix python module recipes to support PEP-517 packaging
+- Update nodejs to 16.14.0 LTS
+- Fix gyp to work with python 3.10+
+- Upgrade linux-raspberrypi 5.15 to 5.15.25
+- Update SRC_URIs for brcm firmware
+- Show warning for obsolete license usage
+- Improve deterministic builds for perl, quilt, and cups
+- Upgrade SQlite3 to 3.38.0
+- Replace non-SPDX license identifiers in OE-core
+- Use SPDX license identifiers in recipetool
+- Enable networking in all icecc tasks
+- Rework INCOMPATIBLE_LICENSE wildcard and variable handling
+
+### Added
+- Add poetry_core helper class for supporting poetry for python packages
+- Add snapshot checksums for powerpc64le hosts
+- Add support to build on FIPS enabled build hosts
+- New recipes
+  - hstr, python3-qface, python3-path, python3-antlr4-runtime
+  - python3-crc32c
+
+### Removed
+
 ## [2022.02] - 2022-02-28
 ### Changed
 - Upgrade simpleiot to 0.0.42
