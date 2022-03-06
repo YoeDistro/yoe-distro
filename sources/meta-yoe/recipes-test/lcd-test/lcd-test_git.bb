@@ -11,5 +11,7 @@ SRC_URI = "git://github.com/cbrake/lcd-test.git;branch=master;protocol=git"
 
 S = "${WORKDIR}/git"
 
-inherit cmake pkgconfig
+inherit cmake pkgconfig features_check
+
+ANY_OF_DISTRO_FEATURES = "${GTK2DISTROFEATURES}"
 
