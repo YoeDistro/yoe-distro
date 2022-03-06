@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix python module recipes to support PEP-517 packaging
 - Update nodejs to 16.14.0 LTS
 - Fix gyp to work with python 3.10+
-- Upgrade linux-raspberrypi 5.15 to 5.15.25
+- Upgrade linux-raspberrypi 5.15 to 5.15.26
 - Update linux-yocto to v5.10.103, v5.15.26
 - Update SRC_URIs for brcm firmware in meta-riscv
 - Show warning for obsolete license usage
@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Drop opt-1 and opt-2 pyc files in native python to reduce number of files
 - Fix build race in binutils/assembler docs
 - Improve eSDK layer path assumptions to support more layouts
+- Enable systemtap for RISCV64
 
 ### Added
 - Add poetry_core helper class for supporting poetry for python packages
