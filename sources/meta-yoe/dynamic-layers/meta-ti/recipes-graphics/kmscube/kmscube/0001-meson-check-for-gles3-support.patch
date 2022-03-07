@@ -1,0 +1,50 @@
+From 8625d5eda3d7d3e9f7e4d40de8a5105ac14319ce Mon Sep 17 00:00:00 2001
+From: Gowtham Tammana <g-tammana@ti.com>
+Date: Mon, 28 Sep 2020 21:15:52 -0500
+Subject: [PATCH] meson: check for gles3 support
+
+Some cores don't support gles3, so compile gles3 targets
+conditionally.
+
+Upstream-Status: Pending
+
+Signed-off-by: Gowtham Tammana <g-tammana@ti.com>
+---
+ meson.build | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index df9c315..2a48710 100644
+--- a/meson.build
++++ b/meson.build
+@@ -91,12 +91,20 @@ else
+   message('Building without gstreamer support')
+ endif
+ 
+-executable('kmscube', sources, dependencies : dep_common, install : true)
++# GLES3 check
++gles3_h = false
++if dep_gles2.found()
++  gles3_h = cc.has_header('GLES3/gl3.h', dependencies: dep_gles2)
++endif
+ 
++executable('kmscube', sources, dependencies : dep_common, install : true)
+ 
+-executable('texturator', files(
+-	'common.c',
+-	'drm-legacy.c',
+-	'drm-common.c',
+-	'texturator.c',
+-), dependencies : dep_common, install : true)
++if gles3_h
++  message('Building with GLES3 support')
++  executable('texturator', files(
++    'common.c',
++    'drm-legacy.c',
++    'drm-common.c',
++    'texturator.c',
++  ), dependencies : dep_common, install : true)
++endif
+-- 
+2.35.1
+
