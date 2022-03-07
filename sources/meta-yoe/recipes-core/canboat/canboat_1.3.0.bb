@@ -1,6 +1,6 @@
 SUMMARY = "CANBOAT"
 SECTION = "base"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 
 DEPENDS += "libxslt-native canboat-native"
 

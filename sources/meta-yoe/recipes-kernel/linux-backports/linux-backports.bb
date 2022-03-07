@@ -4,7 +4,7 @@
 DESCRIPTION = "Linux Backports"
 HOMEPAGE = "https://backports.wiki.kernel.org"
 SECTION = "kernel/modules"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 SRCREV = "694b78f1533eb72c638c83754e0567630a93f456"
