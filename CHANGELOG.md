@@ -28,6 +28,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix build race in binutils/assembler docs
 - Improve eSDK layer path assumptions to support more layouts
 - Enable systemtap for RISCV64
+- Use SPDX license naming convention in meta-clang, meta-odroid, meta-riscv
+- Enable riscv64 builds for bcc,libbpf
+- Remove depenendency for virtual/libgl where possible, use virtual/egl
+- Fix recipes to build without X11 in distro features
+- Improve PYPA_WHEEL detection for wheel packaging and cleanup pip_install_wheel
+- Upgrade go to 1.17.8
+- Upgrade rust to 1.59.0
+- Update cmake to 3.22.3
+- Add AGPL-3.0 wildcard to expand_wildcard_licenses
 
 ### Added
 - Add poetry_core helper class for supporting poetry for python packages
