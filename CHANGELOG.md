@@ -7,10 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Update clang to 14.0.0-rc2
+- Enable llvm runtime for ppc32
 - Fix python module recipes to support PEP-517 packaging
 - Update nodejs to 16.14.0 LTS
 - Fix gyp to work with python 3.10+
-- Upgrade linux-raspberrypi 5.15 to 5.15.26
+- Upgrade linux-raspberrypi 5.15 to 5.15.27
 - Update linux-yocto to v5.10.103, v5.15.26
 - Update SRC_URIs for brcm firmware in meta-riscv
 - Show warning for obsolete license usage
@@ -37,6 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade rust to 1.59.0
 - Update cmake to 3.22.3
 - Add AGPL-3.0 wildcard to expand_wildcard_licenses
+- Upgrade QT5 to v5.15.3-lts-lgpl
+- Improve pip_install_wheel to not need PIP_INSTALL_DIST_PATH and PYPA_WHEEL
 
 ### Added
 - Add poetry_core helper class for supporting poetry for python packages
