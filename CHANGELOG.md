@@ -41,6 +41,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add AGPL-3.0 wildcard to expand_wildcard_licenses
 - Upgrade QT5 to v5.15.3-lts-lgpl
 - Improve pip_install_wheel to not need PIP_INSTALL_DIST_PATH and PYPA_WHEEL
+- Bitbake fixes for toaster support
+- Fix several recipes for ppc64 builds
+- Upgrade gstreamer to 1.20.1
+- Fix global ppc/ppc64 sitefiles for musl and glibc differences
 
 ### Added
 - Add poetry_core helper class for supporting poetry for python packages

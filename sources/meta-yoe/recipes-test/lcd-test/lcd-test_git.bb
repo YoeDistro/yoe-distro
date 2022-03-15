@@ -7,7 +7,7 @@ SRCREV = "ff22957e1b836863e4fbd57437a2a518e87d0ef5"
 
 DEPENDS = "gtk+"
 
-SRC_URI = "git://github.com/cbrake/lcd-test.git;branch=master;protocol=git"
+SRC_URI = "git://github.com/cbrake/lcd-test.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 
