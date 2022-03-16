@@ -45,6 +45,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix several recipes for ppc64 builds
 - Upgrade gstreamer to 1.20.1
 - Fix global ppc/ppc64 sitefiles for musl and glibc differences
+- Bump bitbake to 2.0.0
+- Fix more recipes to use branch and protocol parameters in github SRC_URI
+- Move petry python packaging infrastructure from meta-python to core layer
+- Fix qemuppc64 recipes and booting with 5.15 kernel
 
 ### Added
 - Add poetry_core helper class for supporting poetry for python packages
@@ -56,6 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - python3-crc32c, gosu, 
 
 ### Removed
+- Drop AVAILABLE_LICENSES variable
 
 ## [2022.02] - 2022-02-28
 ### Changed
