@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix python module recipes to support PEP-517 packaging
 - Update nodejs to 16.14.0 LTS
 - Fix gyp to work with python 3.10+
-- Upgrade linux-raspberrypi 5.15 to 5.15.27
+- Upgrade linux-raspberrypi 5.15 to 5.15.28
 - Update linux-yocto to v5.10.103, v5.15.26
 - Update SRC_URIs for brcm firmware in meta-riscv
 - Show warning for obsolete license usage
@@ -49,12 +49,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix more recipes to use branch and protocol parameters in github SRC_URI
 - Move petry python packaging infrastructure from meta-python to core layer
 - Fix qemuppc64 recipes and booting with 5.15 kernel
+- Adjust recipes for renaming flit_core -> python_flit_core
+- Fix rust packages to build for riscv32 and musl
+- Update systemd to 250.4
 
 ### Added
 - Add poetry_core helper class for supporting poetry for python packages
 - Add snapshot checksums for powerpc64le hosts
 - Add support to build on FIPS enabled build hosts
 - Added setuptools3_legacy bbclass to keep pre PEP-517 behavior
+- Add nativesdk support to cargo and rust compiler tools
 - New recipes
   - hstr, python3-qface, python3-path, python3-antlr4-runtime
   - python3-crc32c, gosu, 
