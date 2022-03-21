@@ -50,7 +50,7 @@ CMAKE_VERBOSE ?= ""
 # other BSP layers fail bitbake parsing (ti).
 MACHINE_KERNEL_PR ??= "0"
 
-# accound for some layers which have bbappends for layers we dont include
+# account for some layers which have bbappends for layers we dont include
 BB_DANGLINGAPPENDS_WARNONLY = "1"
 
 # Use clang as default compiler
@@ -135,12 +135,6 @@ PACKAGECONFIG:remove:pn-wpewebkit = "qtwpe"
 PREFERRED_VERSION_swig = "4%"
 PREFERRED_VERSION_swig-native = "4%"
 PREFERRED_VERSION_nativesdk-swig = "4%"
-# meta-atmel has 1.7.4
-PREFERRED_VERSION_cjson = "1.7.1%"
-# meta-ti has 1.8.9.1
-PREFERRED_VERSION_doxygen = "1.9%"
-PREFERRED_VERSION_doxygen-native = "1.9%"
-PREFERRED_VERSION_nativesdk-doxygen = "1.9%"
 # meta-freescale has 1.18.x
 PREFERRED_VERSION_gstreamer1.0-libav = "1.20.%"
 PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.20.%"

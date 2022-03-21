@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Update clang to 14.0.0-rc4
+- Fix multilib support in clang based toolchain
 - Enable llvm runtime for ppc32
 - Disable altivec intructions when using clang on qemuppc
 - Fix python module recipes to support PEP-517 packaging
