@@ -8,13 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Update clang to 14.0.0-rc4
 - Fix multilib support in clang based toolchain
+- Improve llvm-config detection logic in cross builds
 - Enable llvm runtime for ppc32
 - Disable altivec intructions when using clang on qemuppc
 - Fix python module recipes to support PEP-517 packaging
 - Update nodejs to 16.14.0 LTS
 - Fix gyp to work with python 3.10+
-- Upgrade linux-raspberrypi 5.15 to 5.15.28
-- Update linux-yocto to v5.10.103, v5.15.26
+- Upgrade linux-raspberrypi 5.15 to 5.15.30
+- Bump riscv linux-mainline to 5.17
+- Update linux-yocto to v5.10.107, v5.15.30
 - Update SRC_URIs for brcm firmware in meta-riscv
 - Show warning for obsolete license usage
 - Improve deterministic builds for perl, quilt, and cups
@@ -53,6 +55,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adjust recipes for renaming flit_core -> python_flit_core
 - Fix rust packages to build for riscv32 and musl
 - Update systemd to 250.4
+- Fix several recipes to build when LIBDIR != lib by default, fixes ppc64
+- Convert virtual/libgl to virtual/egl dependencies where possible
+- Upgrade libtool to 2.4.7, needed few recipes to re-generate macros
 
 ### Added
 - Add poetry_core helper class for supporting poetry for python packages
@@ -60,12 +65,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add support to build on FIPS enabled build hosts
 - Added setuptools3_legacy bbclass to keep pre PEP-517 behavior
 - Add nativesdk support to cargo and rust compiler tools
+- Add Dockerfile in bitbake repo for building PR service
 - New recipes
   - hstr, python3-qface, python3-path, python3-antlr4-runtime
   - python3-crc32c, gosu, 
 
 ### Removed
 - Drop AVAILABLE_LICENSES variable
+- Remove the available_licenses() function from license.bbclass
 
 ## [2022.02] - 2022-02-28
 ### Changed
