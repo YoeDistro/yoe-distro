@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
-- Update clang to 14.0.0-rc4
+- Update clang to 14.0.0
 - Fix multilib support in clang based toolchain
 - Improve llvm-config detection logic in cross builds
 - Enable llvm runtime for ppc32
@@ -58,6 +58,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix several recipes to build when LIBDIR != lib by default, fixes ppc64
 - Convert virtual/libgl to virtual/egl dependencies where possible
 - Upgrade libtool to 2.4.7, needed few recipes to re-generate macros
+- Update musl to latest master
+- Fix rust toolchain for SDK environment
 
 ### Added
 - Add poetry_core helper class for supporting poetry for python packages
@@ -66,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added setuptools3_legacy bbclass to keep pre PEP-517 behavior
 - Add nativesdk support to cargo and rust compiler tools
 - Add Dockerfile in bitbake repo for building PR service
+- Add MOUNT_COPYBIND_AVOID_OVERLAYFS env var to skip OverlayFS
 - New recipes
   - hstr, python3-qface, python3-path, python3-antlr4-runtime
   - python3-crc32c, gosu, 
