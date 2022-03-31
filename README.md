@@ -182,7 +182,7 @@ Pull requests are welcome.
 For support or to discuss this project, use one of the following options:
 
 - [Yoe community forum](https://community.tmpdir.org/c/yoe-distro/6)
-- Open a github issue
+- [Open a github issue](https://github.com/YoeDistro/yoe-distro/issues/new)
 
 ## License
 
