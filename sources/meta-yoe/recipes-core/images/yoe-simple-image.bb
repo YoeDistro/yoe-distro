@@ -19,7 +19,6 @@ IMAGE_INSTALL = "\
     os-release \
     ${CORE_IMAGE_EXTRA_INSTALL} \
 "
-IMAGE_INSTALL:append = "${@bb.utils.contains('INITRAMFS_IMAGE_BUNDLE', '1', '', ' 96boards-tools', d)}"
 
 IMAGE_INSTALL:append:libc-musl = " gcompat"
 
