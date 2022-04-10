@@ -6,10 +6,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
+- Use clang for python3 compilation and many other recipes
+- Use internal version fo ffmpeg for omxplayer
+- Update linux-rapberrypi to 5.15.32
+- Add ability to specify CPUs to add to the isolcpus list for rpi-cmdline
+- Upgrade uninative to 3.6 with gcc 12 support
+- Upgrade linux-yocto/5.15 to v5.15.32, linux-yocto/5.10 to v5.10.109
+- Fix gcc thread sanitizer against glibc 2.34
+- Update python3 to 3.10.4
+- Update tzdata to 2022a
+- Fix specific version handling for ipk and deb package types
+- Upgrade gtk4 to 4.6.2
+- Various python module recipe upgrades
+- Gnome and XFCE recipe upgrades
 
 ### Added
+- Add recipes for OpenThread
+- Add recipes for idevicerestore, libadwaita
+- Add support for nezha-allwinner-d1 machine
+- Add os-release-initrd package
 
 ### Removed
+- Drop meta-96boards layer, its unused
 
 ## [2022.03] - 2022-03-30
 ### Changed
