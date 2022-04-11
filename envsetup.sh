@@ -138,7 +138,7 @@ export OE_BASE
 #--------------------------------------------------------------------------
 # Include up-to-date bitbake in our PATH.
 #--------------------------------------------------------------------------
-export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${PATH}
+export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${OE_BUILD_TMPDIR}/sysroots/`uname -m`/usr/bin:${PATH}
 # remove duplicate entries from path
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 #--------------------------------------------------------------------------
@@ -569,12 +569,16 @@ yoe_get_image_version() {
 
 yoe_check_install_dependencies() {
   if ! command -v bmaptool >&/dev/null; then
-    echo "bmaptool not installed"
-    echo "Install bmap-tools package on build host"
-    echo "debian-like - sudo apt install bmap-tools"
-    echo "Fedora like rpm-based - sudo dnf install bmap-tools"
-    echo "archlinux - yay bmap-tools"
-    return 1
+    # build own copy of native tools
+    bitbake build-sysroots
+    if ! command -v bmaptool >&/dev/null; then
+      echo "bmaptool not installed"
+      echo "Install bmap-tools package on build host"
+      echo "debian-like - sudo apt install bmap-tools"
+      echo "Fedora like rpm-based - sudo dnf install bmap-tools"
+      echo "archlinux - yay bmap-tools"
+      return 1
+    fi
   fi
 }
 
