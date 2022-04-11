@@ -11,8 +11,8 @@ DEPENDS = "go-native elm-binary-native nodejs-native"
 
 inherit systemd update-rc.d goarch
 
-SRCREV = "6116d04171cfeb8a5f4d6ed22e3a581c02e6aed9"
-PV = "0.0.42"
+SRCREV = "bdafe3f61d8688861916a2d388ebf38cbc748df8"
+PV = "0.0.44"
 
 BRANCH ?= "master"
 

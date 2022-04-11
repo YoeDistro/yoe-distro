@@ -34,10 +34,6 @@
 	path = sources/meta-raspberrypi
 	url = https://github.com/YoeDistro/meta-raspberrypi
 	branch = master
-[submodule "sources/meta-96boards"]
-	path = sources/meta-96boards
-	url = https://github.com/YoeDistro/meta-96boards
-	branch = yoe/master
 [submodule "sources/meta-qcom"]
 	path = sources/meta-qcom
 	url = https://github.com/YoeDistro/meta-qcom
