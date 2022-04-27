@@ -274,7 +274,11 @@ mount_data() {
       return 1
     fi
   fi
-  mkdir -p $mount/log
+  mkdir -p $mount/log $mount/usr $mount/work $mount/home $mount/var
+  mount -t overlay overlay -o lowerdir=/usr,upperdir=/data/usr,workdir=/data/work /usr
+  mount -t overlay overlay -o lowerdir=/home,upperdir=/data/home,workdir=/data/work /home
+  mount -t overlay overlay -o lowerdir=/var,upperdir=/data/var,workdir=/data/var /var
+  mount -t overlay overlay -o lowerdir=/etc,upperdir=/data/etc,workdir=/data/var /etc
 }
 
 umount_data() {
