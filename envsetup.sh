@@ -439,13 +439,13 @@ yoe_clean_sstate() {
 }
 
 # Docker integration
-# set DOCKER_REPO to something like yoedistro/yoe-build:buster
+# set DOCKER_REPO to something like yoedistro/yoe-build:bullseye
 # DOCKER_REPO can be set in scripts that wrap envsetup.sh
 # set DOCKER_REPO to 'none' to disable docker
 
 if [ -z "$DOCKER_REPO" ]; then
-  echo "Setting DOCKER_REPO to yoedistro/yoe-build:buster"
-  export DOCKER_REPO=yoedistro/yoe-build:buster
+  echo "Setting DOCKER_REPO to yoedistro/yoe-build:bullseye"
+  export DOCKER_REPO=yoedistro/yoe-build:bullseye
 fi
 
 # if we are building using docker, we don't really care what /bin/sh is since the Yoe docker images defaults

@@ -54,6 +54,13 @@ msg_splash() {
   fi
 }
 
+rescue_shell() {
+  msg "$@"
+  msg "Something went wrong. Dropping you to a shell."
+  busybox --install -s
+  exec /bin/sh
+}
+
 start_splash() {
   if [ -e /usr/bin/psplash ]; then
     splash_enabled=1
@@ -76,13 +83,11 @@ restart() {
 initialize() {
   msg "============================================================"
   msg "Updater version $VERSION"
-  mkdir -p /dev
-  mkdir -p /sys
-  mkdir -p /proc
+  mkdir -p /dev /sys /proc
 
   mount -t devtmpfs none /dev
-  mount -t sysfs sysfs /sys
-  mount -t proc proc /proc
+  mount -t sysfs none /sys
+  mount -t proc none /proc
 
   start_splash
 
@@ -274,7 +279,15 @@ mount_data() {
       return 1
     fi
   fi
-  mkdir -p $mount/log
+}
+
+mount_overlay() {
+  mkdir -p /mnt/data/upper /mnt/data/work /mnt/data/persistent
+  mount -t overlay -o ro,lowerdir=/mnt/data/persistent:/mnt/rootfs,upperdir=/mnt/data/upper,workdir=/mnt/data/work overlay /mnt/rootfs
+}
+
+umount_overlay() {
+  umount $dir
 }
 
 umount_data() {
@@ -285,39 +298,35 @@ umount_data() {
 }
 
 mount_rootfs_sd() {
-  mkdir -p $ROOTFS_MOUNT_POINT
-  if ! mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT; then
+  mkdir -p /mnt/rootfs /mnt/data /mnt/boot
+  if ! mount $SD_ROOTFS_DEV /mnt/rootfs; then
     fsck -y $SD_ROOTFS_DEV
-    if ! mount $SD_ROOTFS_DEV $ROOTFS_MOUNT_POINT; then
+    if ! mount $SD_ROOTFS_DEV /mnt/rootfs; then
       msg_splash "Error mount SD rootfs, please fix ..."
       speak "updater, S D file system error"
       sleep 9999d
     fi
   fi
 
-  mkdir -p $SD_BOOT_MOUNT_IN_ROOTFS $SD_DATA_MOUNT_IN_ROOTFS
-  mount_boot $SD_BOOT_MOUNT $SD_BOOT_DEV
-  mount_data $SD_DATA_MOUNT $SD_DATA_DEV
-  mount --move $SD_BOOT_MOUNT $SD_BOOT_MOUNT_IN_ROOTFS
-  mount --move $SD_DATA_MOUNT $SD_DATA_MOUNT_IN_ROOTFS
+  mount_boot /mnt/boot $SD_BOOT_DEV
+  mount_data /mnt/data $SD_DATA_DEV
+  mount_overlay
 }
 
 mount_rootfs_emmc() {
-  mkdir -p $ROOTFS_MOUNT_POINT
-  if ! mount $EMMC_ROOTFS_DEV $ROOTFS_MOUNT_POINT; then
+  mkdir -p /mnt/rootfs /mnt/data /mnt/boot
+  if ! mount $EMMC_ROOTFS_DEV /mnt/rootfs; then
     fsck -y $EMMC_ROOTFS_DEV
-    if ! mount $EMMC_ROOTFS_DEV $ROOTFS_MOUNT_POINT; then
+    if ! mount $EMMC_ROOTFS_DEV /mnt/rootfs; then
       msg_splash "Error mount EMMC rootfs, please fix ..."
       speak "updater, E M M C file system error"
       sleep 9999d
     fi
   fi
 
-  mkdir -p $EMMC_BOOT_MOUNT_IN_ROOTFS $EMMC_DATA_MOUNT_IN_ROOTFS
-  mount_boot $EMMC_BOOT_MOUNT $EMMC_BOOT_DEV
-  mount_data $EMMC_DATA_MOUNT $EMMC_DATA_DEV
-  mount --move $EMMC_BOOT_MOUNT $EMMC_BOOT_MOUNT_IN_ROOTFS
-  mount --move $EMMC_DATA_MOUNT $EMMC_DATA_MOUNT_IN_ROOTFS
+  mount_boot /mnt/boot $EMMC_BOOT_DEV
+  mount_data /mnt/data $EMMC_DATA_DEV
+  mount_overlay
 }
 
 mount_rootfs_nand() {
@@ -474,16 +483,16 @@ update_from_sd() {
 }
 
 update_from_data() {
-  update_file=$(find_update_file $DATA_MOUNT_POINT)
+  update_file=$(find_update_file $DATA_MOUNT_POINT/upper/data)
   if [ "$update_file" != "" ]; then
     speak "update found on data partition"
     msg_splash "Updating from Data partition: $update_file"
-    if ! process_update $DATA_MOUNT_POINT/$update_file; then
+    if ! process_update $DATA_MOUNT_POINT/upper/data/$update_file; then
       msg_splash "Failed to process update from data partition"
       speak "updater, failed to process update from data partition"
       return 1
     else
-      rm -rf $DATA_MOUNT_POINT/$update_file
+      rm -rf $DATA_MOUNT_POINT/upper/data/$update_file
       msg_splash "Update from Data partition complete"
       return 0
     fi
@@ -525,14 +534,18 @@ boot() {
   fi
 
   msg_splash "Moving system mounts into rootfs..."
-  mount --move /dev $ROOTFS_MOUNT_POINT/dev
-  mount --move /proc $ROOTFS_MOUNT_POINT/proc
-  mount --move /sys $ROOTFS_MOUNT_POINT/sys
+  #mount --move /dev /mnt/rootfs/dev
+  #mount --move /proc /mnt/rootfs/proc
+  #mount --move /sys /mnt/rootfs/sys
+  umount /proc
+  umount /sys
+  umount /dev
 
   msg_splash "switching to main filesystem"
   msg_splash 50
 
-  exec switch_root -c /dev/console $ROOTFS_MOUNT_POINT /sbin/init 5
+  #exec switch_root -c /dev/console /mnt/rootfs /sbin/init
+  exec switch_root /mnt/rootfs /sbin/init
 }
 
 initialize
