@@ -8,10 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Use clang for python3 compilation and many other recipes
 - Use internal version fo ffmpeg for omxplayer
-- Update linux-rapberrypi to 5.15.32
+- Update linux-rapberrypi to 5.15.34
 - Add ability to specify CPUs to add to the isolcpus list for rpi-cmdline
 - Upgrade uninative to 3.6 with gcc 12 support
-- Upgrade linux-yocto/5.15 to v5.15.32, linux-yocto/5.10 to v5.10.109
+- Upgrade linux-yocto/5.15 to v5.15.36, linux-yocto/5.10 to v5.10.112
 - Fix gcc thread sanitizer against glibc 2.34
 - Update python3 to 3.10.4
 - Update tzdata to 2022a
@@ -19,15 +19,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade gtk4 to 4.6.2
 - Various python module recipe upgrades
 - Gnome and XFCE recipe upgrades
+- Enable usrmerge feature distro wide
+- Switch default docker build to use bullseye/debian-11
+- Enable overlayfs to mount r/w parition on rootfs
+- Bump simpleiot to 0.0.45
+- Enable persistent logs across reboots
+- Build own bmaptool-native and remove depending on build host for it
+- Assorted recipe major version upgrade
+- Allow auto detection of the correct graphics options in runqemu
+- Use https with github for SRC_URIs in meta-riscv
+- Fix several recipes to compile with GCC-12
+- Upgrade Go compiler to 1.18
+- Upgrade OpenSSH to 9.0p1
+- Fix nativsdk builds for LLVM runtime
+- Fix several recipes to buils on ppc/ppc64 with clang
+- Fix several recipes to build properly with usrmerge distro feature
+- Upgrade GCC to 11.3 release
+- Fix several recipes to build with out X11
+- Upgrade glibc to latest bugfixes on 2.35 release
+- Upgrade rust compiler to 1.60
+- Upgrade Clang to 14.0.3
+- Enable xz compression in kmod
+- Switch linux-raspberrypi to have compressed kernel modules
 
 ### Added
 - Add recipes for OpenThread
-- Add recipes for idevicerestore, libadwaita
+- Add recipes for idevicerestore, libadwaita, frr
 - Add support for nezha-allwinner-d1 machine
 - Add os-release-initrd package
+- add UBOOT_ENTRYPOINT to match LOADADDR in linux-raspberrypi
+- Add MCP3008 ADC overlay for RPI machines
+- Add tune include for armv8.4a
+- Add tunes for rv64 without compressed instructions
+- Introduce git intercept script due to fakeroot issues in devshell
+- Add recipe for musl-locales
 
 ### Removed
 - Drop meta-96boards layer, its unused
+- Remove recipes for rpi-hwup-image and rpi-basic-image
+- Drop GOBUILDMODE
+- Remove invalid GLIBC_EXTRA_OECONF for ppc32
 
 ## [2022.03] - 2022-03-30
 ### Changed
