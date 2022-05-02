@@ -1,6 +1,2 @@
-# enable busybox for init
-DISTRO_FEATURES_BACKFILL_CONSIDERED:append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "busybox"
-VIRTUAL-RUNTIME_initscripts = "initscripts"
-VIRTUAL-RUNTIME_keymaps = "keymaps"
-VIRTUAL-RUNTIME_login_manager = "busybox"
+# enable busybox for init and mdev for device manager
+INIT_MANAGER = "mdev-busybox"
