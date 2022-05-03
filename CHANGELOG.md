@@ -1,10 +1,13 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
 ### Changed
 
 ### Added
@@ -12,7 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ## [2022.04] - 2022-05-01
+
 ### Changed
+
 - Use clang for python3 compilation and many other recipes
 - Use internal version fo ffmpeg for omxplayer
 - Update linux-rapberrypi to 5.15.34
@@ -50,6 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Switch linux-raspberrypi to have compressed kernel modules
 
 ### Added
+
 - Add recipes for OpenThread
 - Add recipes for idevicerestore, libadwaita, frr
 - Add support for nezha-allwinner-d1 machine
@@ -62,13 +68,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add recipe for musl-locales
 
 ### Removed
+
 - Drop meta-96boards layer, its unused
 - Remove recipes for rpi-hwup-image and rpi-basic-image
 - Drop GOBUILDMODE
 - Remove invalid GLIBC_EXTRA_OECONF for ppc32
 
 ## [2022.03] - 2022-03-30
+
 ### Changed
+
 - Update clang to 14.0.0
 - Fix multilib support in clang based toolchain
 - Improve llvm-config detection logic in cross builds
@@ -127,6 +136,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add GLES3/GL headers to SGX DDK
 
 ### Added
+
 - Add poetry_core helper class for supporting poetry for python packages
 - Add snapshot checksums for powerpc64le hosts
 - Add support to build on FIPS enabled build hosts
@@ -136,14 +146,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add MOUNT_COPYBIND_AVOID_OVERLAYFS env var to skip OverlayFS
 - New recipes
   - hstr, python3-qface, python3-path, python3-antlr4-runtime
-  - python3-crc32c, gosu, 
+  - python3-crc32c, gosu,
 
 ### Removed
+
 - Drop AVAILABLE_LICENSES variable
 - Remove the available_licenses() function from license.bbclass
 
 ## [2022.02] - 2022-02-28
+
 ### Changed
+
 - Upgrade simpleiot to 0.0.42
 - Enable network during compile/configure step of simpleiot
 - Build kernel with initramfs for sifive/unmatched
@@ -182,16 +195,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump bitbake version to 1.53.1
 - Use 5.15 as default kernel for RPI machines
 - Add support for gtkmm4
-- Disable optimizations for libvorbis,x264,dcadec,graphviz on mips to avoid clang bug
+- Disable optimizations for libvorbis,x264,dcadec,graphviz on mips to avoid
+  clang bug
 - Migrate many python recipes to use wheels packaging format
 - Upgrade ruby to 3.1.1
 - Move distutils bbclasses to meta-python
 
 ### Added
+
 - Add example to generate username/password in image and local.conf
 - Add recipe for python3-gammu, duktape, python3-picamera, seatd
-  googlebenchmark, python3-pytest-xdist, python3-pytest-xdist
-  python3-pytest-qt
+  googlebenchmark, python3-pytest-xdist, python3-pytest-xdist python3-pytest-qt
 - Introduce cortexa73-crypto tune
 - Add the support for the Neoverse N2 core
 - Add tune include for armv8.5a
@@ -201,6 +215,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add recipe for 5.15 LTS linux-raspberrypi kernel
 
 ### Removed
+
 - Prelinker support
 - Drop the redundant cortexa72-crc tune
 - Remove recipes for mailx, libjs-jquery, python3-anyjson, python3-nose
@@ -208,7 +223,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove bogus CMAKE_LDFLAGS_FLAGS definition from cmake toolchain file
 
 ## [2021.12] - 2021-12-17
+
 ### Changed
+
 - Fix qtwayland vulkan build on GLES2
 - Upgrade libcamera to latest
 - Add new recipe for 2.6 version trusted-firmware-a
@@ -216,8 +233,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support building clang based compilers on OE build hosts
 - Upgrade RPI kernel (linux-raspberrypi) to 5.10.83
 - Upgrade WebKit to 2.34.2
-- Upgrade linux-yocto - linux-yocto/5.15 - v5.15.10
-  linux-yocto/5.10 - v5.10.87
+- Upgrade linux-yocto - linux-yocto/5.15 - v5.15.10 linux-yocto/5.10 - v5.10.87
   linux-yocto/5.14 - v5.14.21
 - Upgrade mesa to 21.3.1 and fix build for RPI0W and vulkan
 - Upgrade Go to 1.17.5
@@ -244,10 +260,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Assorted recipe upgrades
 
 ### Added
+
 - Added recipes
   - gutenprint, usbip-tools, pycups
 
 ### Removed
+
 - Removed recipes
   - rustfmt
 
@@ -256,8 +274,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use https protocol in github SRC_URI
 - Use branch setting in git uris explicitly
 - Update clang to latest on 13.x release branch
-- Fix recipes to not install /var/log /var/run during build time
-  but create them at runtime
+- Fix recipes to not install /var/log /var/run during build time but create them
+  at runtime
 - Fix mdns on musl
 - Fix Gnome recipes in meta-gnome
 - Update musl to tip of trunk which has qsort_r now
@@ -269,8 +287,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use https protocols for github SRC_URIs in meta-raspberrypi
 - Introduce Linux 5.15 based linux-libc-headers
 - Fix recipes to work with 5.15 headers e.g. ppp
-- Update linux-yocto
-  v5.10.79, v5.15.2, v5.14.18
+- Update linux-yocto v5.10.79, v5.15.2, v5.14.18
 - Drop using lnr in favor of ln -rs in recipes
 - Fix wic image generation by reverting to using os.rename
 - Add uninative mirror on kernel.org
@@ -387,7 +404,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - qemu - 6.1.0, gnupg - 2.3.2, pinentry - 1.2.0
   - spirv-tools - 2021.3, glslang - 11.6.0, shaderc - 2021.2
   - inetutils - 2.2, lsof - 4.94.0, libpam - 1.5.2, rt-tests - 2.2
-  - libgit2  - 1.2.0, libssh2 - 1.10.0, libhandy - 1.4.0
+  - libgit2 - 1.2.0, libssh2 - 1.10.0, libhandy - 1.4.0
   - iproute2 - 5.14.0, gzip - 1.11, harfbuzz - 2.9.1
   - vulkan - 1.2.191, help2man - 1.48.5, wayland-protocols - 1.23
   - python3 - 3.10, ethtool - 5.14, xf86-input-libinput - 1.2.0
@@ -439,8 +456,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Let user specify target for vk-gl-cts
 - Switch linux-yocto defaults to 5.14 kernel
 - Use 5.14 as default kernel for odroid
-- Allow shutdown/database flush of pseudo server at task exit helps builds
-  using containers for build machines
+- Allow shutdown/database flush of pseudo server at task exit helps builds using
+  containers for build machines
 - Fix clang SDK builds when using llvm runtime
 - Fix openCV dnn with protobuf-3.18
 - Assorted python module updates
@@ -632,7 +649,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - xscreensaver - 6.01, opencl-clhpp - 2.0.15, firewalld - 0.9.4
   - audit - 3.0.2, fftw - 3.3.9, keepalived - 2.2.2, poppler - 21.07.0
   - libgusb - 0.3.7, ristretto - 0.11.0, networkmanager - 1.32.2, cmark - 0.30.0
-  - pipewire - 0-3.31, blueman - 2.2.1, mariadb - 10.5.11, 
+  - pipewire - 0-3.31, blueman - 2.2.1, mariadb - 10.5.11,
   - linux-ti-mainline - 5.13, at-spi2-core - 2.40.3, vulkan - 1.2.182
   - gnome-desktop-testing - 2021.1, xwayland - 21.1.2, webkitgtk - 2.32.2
   - stress-ng - 0.12.12, ruby - 3.0.2, mtools - 4.0.32, mpg123 - 1.28.2
@@ -648,7 +665,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - cmark - 0.30.1, gnome-desktop3 - 3.38.8, gnome-backgrounds - 3.38.0
   - evince - 40.4, fluidsynth - 2.2.2, jack - 1.19.19, mtd-utils - 2.1.3
   - cmake - 3.21.0, libuv - 1.42.0, systemd - 249.1, llvm - 12.0.1
-  - binutils - 2.37, 
+  - binutils - 2.37,
 - New Recipes
   - ospray, openvkl, ispc, libyang, oidn, mbw, lmdb
 
@@ -662,7 +679,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix dovecot, heaptrack
 - Fix libgpiod ptests
 - Various packages fixed for set but unused clang warning
-- Remove clutter, Cogl, and mx and its use from Core recipes 
+- Remove clutter, Cogl, and mx and its use from Core recipes
 - Fix 96-boards tool to resize disks with GPT
 - Use linux-starfive-dev kernel for beagleV
 - Use u-boot device tree for OpenSBI fix SD card boot freeze on beagleV
@@ -818,7 +835,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update glibc to 2.33.1
 - Enable memory tagging in glibc on aarch64
 - Update systemd to 248.3
-- Allow using gold linker with gcc-cross-canadian in SDK 
+- Allow using gold linker with gcc-cross-canadian in SDK
 - Various recipe version upgrades
 
 ## [2021.04] - 2021-04-27
@@ -836,7 +853,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add PR service support in eSDK
 - Swich ODROID-C4 to use cortex-a55 tunes
 - Fix and cleanup ODROID-N2 support
-- Do not mark recipes commercial when the depndencies are commercial but not the package itself
+- Do not mark recipes commercial when the depndencies are commercial but not the
+  package itself
 - Make bpftool reproducable
 - Update clang to 12.0.0-RC5 and do not use LLD to build nativesdk-clang
 - Introduce support for armv8-4a arch
@@ -870,7 +888,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix glibc-src package name
 - Fix DEBUG_PREFIX_MAP for gcc-runtime/libstdc++
 - glib-2.0 upgraded to 2.68.0
-- External src now detects  code changes in submodules
+- External src now detects code changes in submodules
 - Add support for 8DXLite EVK with DDR3
 - Cleanup Xorg recipes and patches for FSL boards
 - Update linux-fslc to v5.10.32 and linux-fslc-imx to v5.4.114
@@ -935,7 +953,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Clang to 12.0.0 RC3
 - Prevent fetching git hook during do_configure for ceres-solver
 - Fix meta-qt5 recipes to compile with GCC 11 and RISCV fixes
-- Fix a regression in glibc w.r.t. _SC_LEVEL1_ICACHE_LINESIZE
+- Fix a regression in glibc w.r.t. \_SC_LEVEL1_ICACHE_LINESIZE
 - Add QB_GRAPHICS option to runqemu tool
 - Add options to turn --enable-poison-system-directories fatal in GCC
 - Reduce linker memory usage while building webkitgtk when using BFD linker
@@ -953,7 +971,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix compiler-rt for armv6/rpi0w
 - Update rust to 1.51.1
 - Fix PEP8 double aggressive warnings and errors in python scripts
-- Make space for using IMX_DEFAULT_BOOTLOADER in meta-freescale-3rdparty machines
+- Make space for using IMX_DEFAULT_BOOTLOADER in meta-freescale-3rdparty
+  machines
 - Fix xorg and weston to adopt to mesa 21.x changes
 - Improve bitbake documentation, add information on REQUIRED_VERSION
 - Version upgrades for several recipes
@@ -1114,7 +1133,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Switch arm-bsp to 5.4 based kernel
 - Bump components for sama7g5ek-sd
 - Create symlinks with cross compile tuples for clang
-- Update FSL EULA  to LA_OPT_NXP_Software_License v11 February 2020
+- Update FSL EULA to LA_OPT_NXP_Software_License v11 February 2020
 - Fix asound.conf for cubox-i
 - Update linux-ti-staging to 5.4.69
 - Update linux-fslc-imx/linux-fslc to v5.4.111 and v5.10.29
@@ -1132,7 +1151,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update intel-mediasdk to 20.3.0
 - Update linux-intel to v5.4.68
 - Start using yocto kernel tooling for linux-raspberrypi
-- Update RPI firmware to  20190114-1+rpt8
+- Update RPI firmware to 20190114-1+rpt8
 - Update linux-raspberrypi to 5.4.69
 - Enable LTP builds on riscv32/musl
 - Support ARMv8.2a tunes
@@ -1191,8 +1210,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix QT5 recipes with clang-11
 - Move meta-yoe into yoedistro repo
 
-
-[Unreleased]: https://github.com/YoeDistro/yoe-distro/compare/2021.12...HEAD
+[unreleased]: https://github.com/YoeDistro/yoe-distro/compare/2021.12...HEAD
 [2021.12]: https://github.com/YoeDistro/yoe-distro/compare/2021.11...2021.12
 [2021.11]: https://github.com/YoeDistro/yoe-distro/compare/2021.10...2021.11
 [2021.10]: https://github.com/YoeDistro/yoe-distro/compare/2021.09...2021.10
@@ -1205,9 +1223,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [2021.03]: https://github.com/YoeDistro/yoe-distro/compare/2021.02...2021.03
 [2021.02]: https://github.com/YoeDistro/yoe-distro/compare/2021.01...2021.02
 [2021.01]: https://github.com/YoeDistro/yoe-distro/compare/3.3.0-beta...2021.01
-[3.3.0-beta]: https://github.com/YoeDistro/yoe-distro/compare/3.3.0-alpha...3.3.0-beta
-[3.3.0-alpha]: https://github.com/YoeDistro/yoe-distro/compare/3.2.0...3.3.0-alpha
+[3.3.0-beta]:
+  https://github.com/YoeDistro/yoe-distro/compare/3.3.0-alpha...3.3.0-beta
+[3.3.0-alpha]:
+  https://github.com/YoeDistro/yoe-distro/compare/3.2.0...3.3.0-alpha
 [3.2.0]: https://github.com/YoeDistro/yoe-distro/compare/3.2.0-rc.1...3.2.0
-[3.2.0-rc.1]: https://github.com/YoeDistro/yoe-distro/compare/3.2.0-beta...3.2.0-rc.1
-[3.2.0-beta]: https://github.com/YoeDistro/yoe-distro/compare/3.2.0-alpha...3.2.0-beta
+[3.2.0-rc.1]:
+  https://github.com/YoeDistro/yoe-distro/compare/3.2.0-beta...3.2.0-rc.1
+[3.2.0-beta]:
+  https://github.com/YoeDistro/yoe-distro/compare/3.2.0-alpha...3.2.0-beta
 [3.2.0-alpha]: https://github.com/YoeDistro/yoe-distro/releases/tag/3.2.0-alpha
