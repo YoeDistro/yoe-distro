@@ -12,6 +12,10 @@ and this project adheres to
 
 ### Added
 
+- enable updater support for raspberrypi2 machine
+- meta-raspberrypi now supports enabling 1-wire bus on GPIO4 with
+  `ENABLE_W1 = "1"` in `local.conf`
+
 ### Removed
 
 ## [2022.04] - 2022-05-01
