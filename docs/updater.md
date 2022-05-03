@@ -41,6 +41,15 @@ system can completely initialize itself as long as a kernel can boot.
   - any platform specific setup that needs done
 - Switch root from initramfs to main rootfs
 
+## Adding updater support for a new machine
+
+You generally need to do two things to add updater support for you machine:
+
+1. modify the image recipes to generate update files, initramfs, etc. See
+   examples in `sources/meta-yoe/recipes-core/images/machines/`
+2. configure the updater for your machine. See examples in
+   `sources/meta-yoe/recipes-support/updater/files/`
+
 ## Rationale for single image system
 
 Most update systems focus on an A/B update system where you ping/pong between
