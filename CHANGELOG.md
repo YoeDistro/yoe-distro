@@ -10,13 +10,21 @@ and this project adheres to
 
 ### Changed
 
+- Update meta-ti recipes to SDK 08.02.00.005
+- Let the user drive the update interval for CVE database
+
 ### Added
 
-- enable updater support for raspberrypi2 machine
-- meta-raspberrypi now supports enabling 1-wire bus on GPIO4 with
+- Enable updater support for raspberrypi2 machine
+- `meta-raspberrypi` now supports enabling 1-wire bus on GPIO4 with
   `ENABLE_W1 = "1"` in `local.conf`
+- Add meta-python to meta=gnome layer dependencies
+- Add recipe for cpulimit
 
 ### Removed
+
+- Remove meta-networking dependency on meta-python by re-arranging
+  recipe locations
 
 ## [2022.04] - 2022-05-01
 
