@@ -12,6 +12,15 @@ and this project adheres to
 
 - Update meta-ti recipes to SDK 08.02.00.005
 - Let the user drive the update interval for CVE database
+- Correctly handle file names containing colons in bitbake
+- Fix firmware autoloading for rpi by creating
+  brcmfmac43455-sdio.raspberrypi,4-model-b.bin symlink
+- Update qemu to 7.0.0
+= Upgrade musl to tip of trunk
+- Upgrade 250.5
+- Use arm-versatile-926ejs KMACHINE for qemuarmv5
+- Make git intercept global
+- Various recipe version bumps
 
 ### Added
 
@@ -19,12 +28,14 @@ and this project adheres to
 - `meta-raspberrypi` now supports enabling 1-wire bus on GPIO4 with
   `ENABLE_W1 = "1"` in `local.conf`
 - Add meta-python to meta=gnome layer dependencies
-- Add recipe for cpulimit
+- Add recipe for cpulimit, openzfs, ulog2, libcoap
 
 ### Removed
 
 - Remove meta-networking dependency on meta-python by re-arranging
   recipe locations
+- Drop GPL-3.0 license from libgcrypt
+- Remove uclibc remnants from DISTRO_FEATURES
 
 ## [2022.04] - 2022-05-01
 
