@@ -15,7 +15,7 @@ system can completely initialize itself as long as a kernel can boot.
 - update u-boot, kernel, dtb, etc.
 - init/updater located in kernel initramfs
 - most systems will have 3 partitions
-  - `boot`: contains bootloaders, kernel+initramfs+init/udpater
+  - `boot`: contains bootloaders, kernel+initramfs+init/updater
   - `rootfs`: root file system that is re-written during update
   - `data`: data that is preserved between updates
 - Initializes disk partitions
