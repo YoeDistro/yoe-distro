@@ -20,6 +20,9 @@ and this project adheres to
 - Upgrade 250.5
 - Use arm-versatile-926ejs KMACHINE for qemuarmv5
 - Make git intercept global
+- Upgrade GCC to 12.1
+- Add openssh-sftp-server to openssh RDEPENDS
+- Upgrade linux-firmware to 20220509
 - Various recipe version bumps
 
 ### Added
