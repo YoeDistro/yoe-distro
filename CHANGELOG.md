@@ -23,6 +23,10 @@ and this project adheres to
 - Upgrade GCC to 12.1
 - Add openssh-sftp-server to openssh RDEPENDS
 - Upgrade linux-firmware to 20220509
+- Upgrade linux-raspberrypi to 5.15.38
+- Various native recipes fixed to bulld with GCC 12
+- Upgrade GDB to 12.1
+- Build bash to use proper getcwd() on musl
 - Various recipe version bumps
 
 ### Added
@@ -31,7 +35,12 @@ and this project adheres to
 - `meta-raspberrypi` now supports enabling 1-wire bus on GPIO4 with
   `ENABLE_W1 = "1"` in `local.conf`
 - Add meta-python to meta=gnome layer dependencies
-- Add recipe for cpulimit, openzfs, ulog2, libcoap
+- Add recipe for cpulimit, openzfs, ulog2, libcoap, btrfsmaintenance
+  python3-web3, python3-lru-dict, python3-eth-account, python3-eth-abi
+  python3-parsimonious, python3-eth-rlp, python3-rlp, python3-hexbytes
+  python3-eth-keyfile, python3-eth-keys, python3-eth-utils
+  python3-eth-typing, python3-eth-hash, python3-decouple
+  python3-cytoolz, python3-toolz
 
 ### Removed
 
