@@ -32,7 +32,8 @@ port forwarding to work on docker
 
 - Archlinux based sytems - `sudo pacman -S iptables-nft`
 
-- On host systems with 8G RAM or less it will be necessary to ensure a swap file of 8G.
+- On host systems with 8G RAM or less it will be necessary to ensure a swap file
+  of 8G.
 
 ## Workspace Setup
 
@@ -43,7 +44,9 @@ port forwarding to work on docker
 1. `bitbake yoe-simple-image`
 1. insert SD card
 1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
-1. `yoe_install_image /dev/sdX yoe-simple-image`
+1. `yoe_install_image /dev/sdX yoe-simple-image` (Note,
+   [Etcher](https://www.balena.io/etcher/) can also be used to write images to
+   SD cards).
 1. optional: [configure console for serial port](docs/raspberrypi.md)
 1. `sudo eject /dev/sdX`
 1. Install SD card in a Raspberry PI and enjoy your new image
