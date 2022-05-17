@@ -8,14 +8,16 @@
 
 ## Building/installing an image
 
-1. `git clone git://github.com/YoeDistro/yoe-distro.git`
+1. `git clone https://github.com/YoeDistro/yoe-distro.git`
 1. `cd yoe-distro`
 1. `. beaglebone-envsetup.sh`
 1. `yoe_setup`
 1. `bitbake yoe-simple-image`
 1. insert SD card
 1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
-1. `yoe_install_image /dev/sdX`
+1. `yoe_install_image /dev/sdX yoe-simple-image` (Note,
+   [Etcher](https://www.balena.io/etcher/) can also be used to write images to
+   SD cards).
 1. `cp deploy/beaglebone_0.0.1.upd /run/media/<SD card boot partition/`
 1. `sudo eject /dev/sdX`
 1. connect serial console (instructions below)

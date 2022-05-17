@@ -12,14 +12,16 @@ Microchip also provides a
 
 ## Building/installing an image
 
-1. `git clone git://github.com/YoeDistro/yoe-distro.git`
+1. `git clone https://github.com/YoeDistro/yoe-distro.git`
 1. `cd yoe-distro`
 1. `. sama5d27-som1-ek-sd-envsetup.sh`
 1. `yoe_setup`
 1. `bitbake yoe-simple-image`
 1. insert full size SD card (this image will not boot from the micro-sd slot)
 1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
-1. `yoe_install_image /dev/sdX yoe-simple-image`
+1. `yoe_install_image /dev/sdX yoe-simple-image` (Note,
+   [Etcher](https://www.balena.io/etcher/) can also be used to write images to
+   SD cards).
 1. `sudo eject /dev/sdX`
 1. Install SD card in development board and apply power via one of the micro-USB
    connectors.
