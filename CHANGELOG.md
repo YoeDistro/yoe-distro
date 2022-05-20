@@ -27,6 +27,10 @@ and this project adheres to
 - Various native recipes fixed to bulld with GCC 12
 - Upgrade GDB to 12.1
 - Build bash to use proper getcwd() on musl
+- Fixes for meta-qt5/meta-intel build failures seen with GCC-12
+- Enable using private fonts in wxwidgets
+- Fix rare sysroot corruption issue during staging
+- Add fspassno parameter to partition in wic
 - Various recipe version bumps
 
 ### Added
@@ -40,7 +44,7 @@ and this project adheres to
   python3-parsimonious, python3-eth-rlp, python3-rlp, python3-hexbytes
   python3-eth-keyfile, python3-eth-keys, python3-eth-utils
   python3-eth-typing, python3-eth-hash, python3-decouple
-  python3-cytoolz, python3-toolz
+  python3-cytoolz, python3-toolz, python3-inotify
 
 ### Removed
 
@@ -48,6 +52,7 @@ and this project adheres to
   recipe locations
 - Drop GPL-3.0 license from libgcrypt
 - Remove uclibc remnants from DISTRO_FEATURES
+- Removed recipes: speedtest-cli
 
 ## [2022.04] - 2022-05-01
 
