@@ -31,6 +31,18 @@ and this project adheres to
 - Enable using private fonts in wxwidgets
 - Fix rare sysroot corruption issue during staging
 - Add fspassno parameter to partition in wic
+- Fix osc fetcher to support quering latest revision
+- Update clang to 14.0.4
+- Update mariadb to 10.7.4
+- Move lzop from core to meta-oe
+- Upgrade QT5 to latest 5.15.4 and fix with musl
+- Disable lzo support by default in various recipes
+- Fix native builds to use right linker paths in go bbclass
+- Update linux-yocto to v5.10.114, v5.15.38
+- Upgrade gstreamer to 1.20.2
+- Upgrade go to 1.18.2
+- Upgrade setuptools to 62.3.1
+- Upgrade curl to 7.83.1
 - Various recipe version bumps
 
 ### Added
@@ -39,12 +51,16 @@ and this project adheres to
 - `meta-raspberrypi` now supports enabling 1-wire bus on GPIO4 with
   `ENABLE_W1 = "1"` in `local.conf`
 - Add meta-python to meta=gnome layer dependencies
+- Add support for building python recipes which use hatchling
 - Add recipe for cpulimit, openzfs, ulog2, libcoap, btrfsmaintenance
   python3-web3, python3-lru-dict, python3-eth-account, python3-eth-abi
   python3-parsimonious, python3-eth-rlp, python3-rlp, python3-hexbytes
   python3-eth-keyfile, python3-eth-keys, python3-eth-utils
   python3-eth-typing, python3-eth-hash, python3-decouple
-  python3-cytoolz, python3-toolz, python3-inotify
+  python3-cytoolz, python3-toolz, python3-inotify, nodejs-oe-cache-native
+  overlayfs-progs, overlayfs-tools, python3-uinput, xfstests
+  python3-editables, python3-hatchling, python3-pathspec
+  python3-setuptools-scm-git-archive
 
 ### Removed
 
@@ -53,6 +69,7 @@ and this project adheres to
 - Drop GPL-3.0 license from libgcrypt
 - Remove uclibc remnants from DISTRO_FEATURES
 - Removed recipes: speedtest-cli
+- Remove libsrvg rv32 patch
 
 ## [2022.04] - 2022-05-01
 
