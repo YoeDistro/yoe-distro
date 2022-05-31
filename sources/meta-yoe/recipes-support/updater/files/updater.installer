@@ -240,12 +240,14 @@ umount_usb() {
 
 mount_sd() {
   mkdir -p $SD_MOUNT_POINT
-  if ! mount $SD_BOOT_DEV $SD_MOUNT_POINT; then
+  test -e $SD_BOOT_DEV && mount $SD_BOOT_DEV $SD_MOUNT_POINT 2>/dev/null
+  if [ $? -eq 0 ]; then
+    msg_splash "SD card mounted"
+    return 0
+  else
     msg_splash "No SD card detected"
     return 1
   fi
-  msg_splash "SD card mounted"
-  return 0
 }
 
 umount_sd() {
@@ -260,11 +262,15 @@ mount_boot() {
   mount=$1
   device=$2
   mkdir -p $mount
-  if ! mount $device $mount; then
-    fsck -y $device
+  if [ -e $device ]; then
     if ! mount $device $mount; then
-      return 1
+      fsck -y $device
+      if ! mount $device $mount; then
+        return 1
+      fi
     fi
+  else
+    return 1
   fi
 }
 
@@ -273,11 +279,15 @@ mount_data() {
   mount=$1
   device=$2
   mkdir -p $mount
-  if ! mount $device $mount; then
-    fsck -y $device
+  if [ -e $device ]; then
     if ! mount $device $mount; then
-      return 1
+      fsck -y $device
+      if ! mount $device $mount; then
+        return 1
+      fi
     fi
+  else
+    return 1
   fi
 }
 
