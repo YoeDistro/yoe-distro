@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- Bump bitbake to 2.0.1
+- Build clang_rt.profile compiler-rt library when possible
+- Use nftables instead of iptables by default in networkmanager
+- Bump riscv linux-mainline to 5.18
+- Update perl to 5.36.0
+- Update systemd to 251.2
+- Add zstd dependencies in gcc recipes
+- Set RebootWatchdogSec to 60s as watchdog in systemd
+- Major version upgrades for multiple recipes
+
+### Added
+
+- Added recipes
+  libavtp, libtomcrypt, flite
+
+### Removed
+
 ## [2022.05] - 2022-05-31
 
 ### Changed
