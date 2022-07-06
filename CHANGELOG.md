@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2022.06] - 2022-07-04
 
 ### Changed
 
@@ -19,11 +19,30 @@ and this project adheres to
 - Add zstd dependencies in gcc recipes
 - Set RebootWatchdogSec to 60s as watchdog in systemd
 - Major version upgrades for multiple recipes
+- Compile ptests with parallelism, disable packages where it fails
+- Fix networkmanager build when ppp is enabled
+- Upgrade PHP to 8.1.7
+- Switch polkit back to mozjs from duktape
+- Upgrade strace to 5.18
+- Upgrade alsa recipes to 1.2.7.1
+- Upgrade major versions of assorted recipes
+- Upgrade go to 1.18.3
+- Upgrade mesa to 22.1.2
+- Fix udev-extraconf lvm automount
+- Upgrade python to 3.10.5
+- Add support for Ignored CVEs in cve-check
+- Enable xwayland in weston init
+- Enable gnu-efi for riscv64
+- Add SDK support to image-buildinfo
+- Fix systemd to build without utmp support
+- Upgrade linux-yocto to v5.10.119, v5.15.44
+- Enable MDIO bus config in linux-yocto
 
 ### Added
 
 - Added recipes
   libavtp, libtomcrypt, flite
+- Add QB_KERNEL_CMDLINE to runqemu
 
 ### Removed
 
