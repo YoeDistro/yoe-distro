@@ -10,7 +10,27 @@ and this project adheres to
 
 ### Changed
 
+- Update clang to 14.0.6
+- Fix compiler-rt build for ARMv5
+- Fix native and nativesdk builds for armhf targets
+- Fix absolute interpreter paths in php, libdbi-perl, libparse-yapp-perl
+  libdev-checklib-perl
+- Update mariadb to 10.8.3
+- Update qtwebengine to v5.15.10-lts and use chromium-87
+- Update reference kernels linux-yocto/v5.10.123 v5.15.48
+- Update gstreamer to 1.20.3
+- Add selftest for shebang overflow
+- Upgrade openssl to 3.0.4
+- Fix multiple recipes for too long shebang
+- Filter build paths on statically linked go arches
+- Fix reproducibility issues in perf, gperf
+- Fix recipes to build with kernel 5.19+
+
 ### Added
+
+- Added recipes: libspiro
+- Add support for visionfive board in meta-riscv
+- Add QA check for shebangs
 
 ### Removed
 
