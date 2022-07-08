@@ -25,6 +25,9 @@ and this project adheres to
 - Filter build paths on statically linked go arches
 - Fix reproducibility issues in perf, gperf
 - Fix recipes to build with kernel 5.19+
+- Update wayland to 1.21.0
+- Upgrade rust to 1.62.0
+- Add ptests for curl
 
 ### Added
 
