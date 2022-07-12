@@ -17,7 +17,7 @@ and this project adheres to
   libdev-checklib-perl
 - Update mariadb to 10.8.3
 - Update qtwebengine to v5.15.10-lts and use chromium-87
-- Update reference kernels linux-yocto/v5.10.123 v5.15.48
+- Update reference kernels linux-yocto/v5.10.128 v5.15.52
 - Update gstreamer to 1.20.3
 - Add selftest for shebang overflow
 - Upgrade openssl to 3.0.4
@@ -28,6 +28,9 @@ and this project adheres to
 - Update wayland to 1.21.0
 - Upgrade rust to 1.62.0
 - Add ptests for curl
+- Switch glmark2 build system to use meson
+- Distribute sample-config-files with openvpn
+- Remove logs from ltp installs, disable -mfpmath=sse on x86
 
 ### Added
 
