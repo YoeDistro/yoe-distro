@@ -17,7 +17,7 @@ and this project adheres to
   libdev-checklib-perl
 - Update mariadb to 10.8.3
 - Update qtwebengine to v5.15.10-lts and use chromium-87
-- Update reference kernels linux-yocto/v5.10.128 v5.15.52
+- Update reference kernels linux-yocto/v5.10.130 v5.15.54
 - Update gstreamer to 1.20.3
 - Add selftest for shebang overflow
 - Upgrade openssl to 3.0.4
@@ -31,14 +31,27 @@ and this project adheres to
 - Switch glmark2 build system to use meson
 - Distribute sample-config-files with openvpn
 - Remove logs from ltp installs, disable -mfpmath=sse on x86
+- Fix kernel source handling when not using externalsrc
+- Use the python3 ThreadPoolExecutor instead of the OE ThreadedPool
+- Fix missing MLPREFIX in debug mappings in gcc runtime
+- Use picobuild in python_pep517 class
+- Backport a fix for gcc bug 105039
+- Upgrade glibc to latest 2.35 branch and binutils to 2.38 branch tip
+- Add PACKAGECONFIG for capstone in ruby recipe
+- Fix gcc-runtime build when using gold linker
 
 ### Added
 
-- Added recipes: libspiro
+- Added recipes: libspiro, python3-picobuild
 - Add support for visionfive board in meta-riscv
 - Add QA check for shebangs
+- Add buildpaths to WARN_QA by default
+- Introduce UBOOT_MKIMAGE_KERNEL_TYPE
 
 ### Removed
+
+- Remove obsolete PEP517_BUILD_API
+- Remove the ThreadedPool implementation in oe/utils
 
 ## [2022.06] - 2022-07-04
 
