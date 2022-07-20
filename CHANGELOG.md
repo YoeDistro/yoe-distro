@@ -39,10 +39,16 @@ and this project adheres to
 - Upgrade glibc to latest 2.35 branch and binutils to 2.38 branch tip
 - Add PACKAGECONFIG for capstone in ruby recipe
 - Fix gcc-runtime build when using gold linker
+- Fix bunch of recipes to remove buildpath QA warnings
+- Upgrade python3-picobuild to 0.2 fixes build of some of the
+  python_setuptools_build_meta inheriting recipes
+- Add many unrelated/patched CVEs to ignore list in meta-oe
+- Disable cache for g-ir-scanner in gobject-introspection-data class
 
 ### Added
 
-- Added recipes: libspiro, python3-picobuild
+- Added recipes: libspiro, python3-picobuild, python3-oslash
+  python3-jsonrpcclient
 - Add support for visionfive board in meta-riscv
 - Add QA check for shebangs
 - Add buildpaths to WARN_QA by default
