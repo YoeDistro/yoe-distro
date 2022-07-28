@@ -44,20 +44,28 @@ and this project adheres to
   python_setuptools_build_meta inheriting recipes
 - Add many unrelated/patched CVEs to ignore list in meta-oe
 - Disable cache for g-ir-scanner in gobject-introspection-data class
+- Fix newlib and baremetal toolchain builds when using gcc-12
+- Update go to 1.18.4
+- Update u-boot to 2022.07
+- Update meson to 0.63.0
+- Fix rust SDK generation
 
 ### Added
 
 - Added recipes: libspiro, python3-picobuild, python3-oslash
-  python3-jsonrpcclient
+  python3-jsonrpcclient, python3-aiodns, python3-pycares
 - Add support for visionfive board in meta-riscv
 - Add QA check for shebangs
 - Add buildpaths to WARN_QA by default
 - Introduce UBOOT_MKIMAGE_KERNEL_TYPE
+- Add cpu/io pressure regulation to bitbake runqueue
 
 ### Removed
 
 - Remove obsolete PEP517_BUILD_API
 - Remove the ThreadedPool implementation in oe/utils
+- Remove recipe for xf86-input-keyboard
+- Remove historical movement of libz.so to /lib
 
 ## [2022.06] - 2022-07-04
 
