@@ -17,7 +17,8 @@ and this project adheres to
   libdev-checklib-perl
 - Update mariadb to 10.8.3
 - Update qtwebengine to v5.15.10-lts and use chromium-87
-- Update reference kernels linux-yocto/v5.10.130 v5.15.54
+- Update reference kernels linux-yocto/v5.10.134 v5.15.58
+- Add recipe for linux-yocto 5.19
 - Update gstreamer to 1.20.3
 - Add selftest for shebang overflow
 - Upgrade openssl to 3.0.4
@@ -49,11 +50,23 @@ and this project adheres to
 - Update u-boot to 2022.07
 - Update meson to 0.63.0
 - Fix rust SDK generation
+- Fix sanitizers build with glibc 2.36
+- Fix several recipes for mount.h conflict in glibc 2.36
+- Fix supplier field in create-spdx
+- Use tools from cross-binutils in wic operations
+- Fix LTP build with ld-is-gold in DISTRO_FEATURES
+- Rework rust recipes to facilitate nativesdk builds
+- Fix glibc builds with DEBUG_BUILD turned on
+- Override LIC_FILES_CHKSUM for starfive_v2021.04 u-boot
+- Update linux-raspberrypi to 5.15.56
+- Backport patch to fix CYW43455 and various CVEs for bluez-firmware-rpidistro
+- Fix the buildpaths issue in several recipes
 
 ### Added
 
 - Added recipes: libspiro, python3-picobuild, python3-oslash
   python3-jsonrpcclient, python3-aiodns, python3-pycares
+  waylandpp, python-requests-unixsocket, sshpass
 - Add support for visionfive board in meta-riscv
 - Add QA check for shebangs
 - Add buildpaths to WARN_QA by default
@@ -66,6 +79,7 @@ and this project adheres to
 - Remove the ThreadedPool implementation in oe/utils
 - Remove recipe for xf86-input-keyboard
 - Remove historical movement of libz.so to /lib
+- Remove CMAKE_ASM_FLAGS variable in toolchain file
 
 ## [2022.06] - 2022-07-04
 
