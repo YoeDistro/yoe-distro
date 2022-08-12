@@ -17,7 +17,7 @@ and this project adheres to
   libdev-checklib-perl
 - Update mariadb to 10.8.3
 - Update qtwebengine to v5.15.10-lts and use chromium-87
-- Update reference kernels linux-yocto/v5.10.134 v5.15.58
+- Update reference kernels linux-yocto/v5.10.134 v5.15.59
 - Add recipe for linux-yocto 5.19
 - Update gstreamer to 1.20.3
 - Add selftest for shebang overflow
@@ -46,7 +46,7 @@ and this project adheres to
 - Add many unrelated/patched CVEs to ignore list in meta-oe
 - Disable cache for g-ir-scanner in gobject-introspection-data class
 - Fix newlib and baremetal toolchain builds when using gcc-12
-- Update go to 1.18.4
+- Update go to 1.19
 - Update u-boot to 2022.07
 - Update meson to 0.63.0
 - Fix rust SDK generation
@@ -61,6 +61,10 @@ and this project adheres to
 - Update linux-raspberrypi to 5.15.56
 - Backport patch to fix CYW43455 and various CVEs for bluez-firmware-rpidistro
 - Fix the buildpaths issue in several recipes
+- Fix insufficent entropy in sigtask file names
+- Fix many packages for configure tests failing with clang-15
+- Add fixes for packages to build with glibc 2.36
+- Address linux 5.19 fails in multiple recipes
 
 ### Added
 
@@ -80,6 +84,7 @@ and this project adheres to
 - Remove recipe for xf86-input-keyboard
 - Remove historical movement of libz.so to /lib
 - Remove CMAKE_ASM_FLAGS variable in toolchain file
+- Drop v5.10 reference linux-yocto kernel recipes
 
 ## [2022.06] - 2022-07-04
 
