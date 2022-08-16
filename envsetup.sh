@@ -138,7 +138,7 @@ export OE_BASE
 #--------------------------------------------------------------------------
 # Include up-to-date bitbake in our PATH.
 #--------------------------------------------------------------------------
-export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${OE_BUILD_TMPDIR}/sysroots/`uname -m`/usr/bin:${PATH}
+export PATH=${OE_SOURCE_DIR}/poky/scripts:${OE_SOURCE_DIR}/poky/bitbake/bin:${OE_BUILD_TMPDIR}/sysroots/`uname -m`/usr/bin:${PATH}
 # remove duplicate entries from path
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 #--------------------------------------------------------------------------
@@ -174,7 +174,7 @@ fi
 #--------------------------------------------------------------------------
 # Set up the bitbake path to find the OpenEmbedded recipes.
 #--------------------------------------------------------------------------
-export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/openembedded-core/meta${BBPATH_EXTRA}
+export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/poky/meta${BBPATH_EXTRA}
 
 #--------------------------------------------------------------------------
 # If an env already exists, use it, otherwise generate it
@@ -435,7 +435,7 @@ yoe_build_all() {
 }
 
 yoe_clean_sstate() {
-  $OE_BASE/sources/openembedded-core/scripts/sstate-cache-management.sh -d -y --cache-dir=$OE_BASE/build/sstate-cache
+  $OE_BASE/sources/poky/scripts/sstate-cache-management.sh -d -y --cache-dir=$OE_BASE/build/sstate-cache
 }
 
 # Docker integration
@@ -544,18 +544,18 @@ dkr() {
 bitbake() {
   ulimit -n 4096
   if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
-    ${OE_BASE}/sources/bitbake/bin/bitbake $@
+    ${OE_BASE}/sources/poky/bitbake/bin/bitbake $@
   else
-    dkr "${OE_BASE}/sources/bitbake/bin/bitbake $@"
+    dkr "${OE_BASE}/sources/poky/bitbake/bin/bitbake $@"
   fi
 }
 
 devtool() {
   ulimit -n 4096
   if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
-    ${OE_BASE}/sources/openembedded-core/scripts/devtool $@
+    ${OE_BASE}/sources/poky/scripts/devtool $@
   else
-    dkr "${OE_BASE}/sources/openembedded-core/scripts/devtool $@"
+    dkr "${OE_BASE}/sources/poky/scripts/devtool $@"
   fi
 }
 
