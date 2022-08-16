@@ -65,6 +65,12 @@ and this project adheres to
 - Fix many packages for configure tests failing with clang-15
 - Add fixes for packages to build with glibc 2.36
 - Address linux 5.19 fails in multiple recipes
+- Add memory pressure regulation in runqemu
+- Update OPTEE to 3.18
+- Specify -ffile-compilation-dir to omit absolute file paths in debug info
+- Remove-libtool inherits from recipe namespace
+- Update rust to 3.62.1
+- Upgrade glibc to 2.36
 
 ### Added
 
@@ -76,6 +82,8 @@ and this project adheres to
 - Add buildpaths to WARN_QA by default
 - Introduce UBOOT_MKIMAGE_KERNEL_TYPE
 - Add cpu/io pressure regulation to bitbake runqueue
+- Implement recipe and global classes in bitbake
+- add Andeas RISCV ae350-ax45mp machine support
 
 ### Removed
 
@@ -85,6 +93,7 @@ and this project adheres to
 - Remove historical movement of libz.so to /lib
 - Remove CMAKE_ASM_FLAGS variable in toolchain file
 - Drop v5.10 reference linux-yocto kernel recipes
+- Remove largefile distro feature
 
 ## [2022.06] - 2022-07-04
 
