@@ -58,4 +58,4 @@ jobs:
           /bin/bash -c ". ./qemuarm64-envsetup.sh && resulttool report build/tmp/log/oeqa"
       - name: Clean shared state
         run: |
-          /bin/bash -c ". ./qemuarm64-envsetup.sh && ./sources/openembedded-core/scripts/sstate-cache-management.sh -d -y"
+          /bin/bash -c ". ./qemuarm64-envsetup.sh && ./sources/poky/scripts/sstate-cache-management.sh -d -y"
