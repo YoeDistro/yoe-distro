@@ -20,8 +20,8 @@ files include:
   add.
 
 The above configuration files are included into the build by the
-[bitbake.conf](https://github.com/YoeDistro/openembedded-core/blob/master/meta/conf/bitbake.conf#L744)
-file in the OpenEmbedded Core layer.
+[bitbake.conf](https://github.com/YoeDistro/poky/blob/master/meta/conf/bitbake.conf#L744)
+file in the OE Core layer provided by poky.
 
 For a full list of variables available in the OpenEmbedded build system, see the
 [Variables Glossary](https://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#ref-variables-glos).
