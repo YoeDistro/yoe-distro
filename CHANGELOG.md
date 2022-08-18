@@ -71,6 +71,9 @@ and this project adheres to
 - Remove-libtool inherits from recipe namespace
 - Update rust to 3.62.1
 - Upgrade glibc to 2.36
+- Resolve relative prefix-map filenames and symlinks in GCC
+- Prepare several recipes to build with upcoming clang-15
+- Switch debug source handling to use prefix map
 
 ### Added
 
