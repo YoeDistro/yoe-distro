@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unrelease
+
+### Changed
+
+- Switch to poky for providing core layer and bitbake
+- Fix fluentbit builds on 32bit machines without 64bit atomics
+- Upgrade binutils to 2.39 release
+- Clean sourced from workspace after devtool finish
+- Update python3-setuptools to 65.x
+- Add support for config snippet includes to ssh and sshd
+- Address recipes with -Wimplicit-function-declaration as error in 
+  pedantic-errors with clang 15
+- Update optee to 3.18
+- Update musl to tip of trunk
+- Fix klibc with 5.19 kernel headers
+
+### Added
+
+### Removed
+
 ## [2022.07] - 2022-08-19
 
 ### Changed
