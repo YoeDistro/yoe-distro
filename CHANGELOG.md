@@ -21,8 +21,18 @@ and this project adheres to
 - Update optee to 3.18
 - Update musl to tip of trunk
 - Fix klibc with 5.19 kernel headers
+- Fix RWX permission error in optee
+- Update pipewire to v0.3.56
+- Update u-boot and kernel recipe for starfive
+- Upgrade gcc to 12.2.0
+- Updated linux-yocto to v5.15.62, v5.19.3
+- Fix rng-tools to drop wrong dependencies which delayed boot
+- Fix several recipes for musl builds missing -D_GNU_SOURCE
+- Several fixes for clang-15 found errors
 
 ### Added
+
+- Add recipe for mdio-tools
 
 ### Removed
 
