@@ -15,10 +15,10 @@ ACCEPT_FSL_EULA = "1"
 # required for Qualcomm stuff to build
 ACCEPT_EULA = "1"
 
-# The two lines below enable the Gtk UI frontend for qemu
+# The two lines below enable SDL frontend for qemu
 # default is VNC
-#PACKAGECONFIG:append:pn-qemu-native = " gtk+"
-#PACKAGECONFIG:append:pn-nativesdk-qemu = " gtk+"
+PACKAGECONFIG:append:pn-qemu-native = " sdl"
+PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
 
 # components whose licensing have commercial distribution impact
 #
