@@ -29,12 +29,24 @@ and this project adheres to
 - Fix rng-tools to drop wrong dependencies which delayed boot
 - Fix several recipes for musl builds missing -D_GNU_SOURCE
 - Several fixes for clang-15 found errors
+- Enable SDL backend for host QEMU to allow UI option along with vnc
+- Disable O2 in systemd when using clang for now
+- Do not use llvm-strip system-wide for now due to bugs
+- Enable installing libc++.so as linker script
+- Fix libgcrypt ptests and install
+- Update glibc to have mount.h conflicts solved on 2.36 release branch
+- Fix several recipes to compile with clang-15 on musl
 
 ### Added
 
-- Add recipe for mdio-tools
+- Add recipe for mdio-tools, usbmuxd, libusbmuxd, libimobiledevice,
+  libplist, gst-editing-services, uutils-coreutils, python3-asgiref
+- Added clang-native class to build native compoennts with clang
+- Add test for debuginfod
 
 ### Removed
+
+- Drop has-elf-tls option from rust-target-config
 
 ## [2022.07] - 2022-08-19
 
