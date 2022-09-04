@@ -64,4 +64,5 @@
 	branch = master
 [submodule "sources/meta-variscite-bsp"]
 	path = sources/meta-variscite-bsp
-	url = https://github.com/cbrake/meta-variscite-bsp
+	url = https://github.com/yoedistro/meta-variscite-bsp
+	branch = cbrake/yoe/master
