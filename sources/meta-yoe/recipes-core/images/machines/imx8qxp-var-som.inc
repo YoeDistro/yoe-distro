@@ -78,40 +78,4 @@ BOOTFILES = "\
 UPDATE_IMAGES = "version.txt ${BOOTFILES} ${BOOTLOADER_ARTEFACTS} ${KERNEL_ARTEFACTS} ${DTBOFILES} ${ROOTFS_ARTEFACTS}"
 
 do_updater() {
-        echo "IMG_VERSION = ${IMG_VERSION}"
-        rm -rf ${TOPDIR}/deploy/${MACHINE}
-        install -d ${TOPDIR}/deploy/${MACHINE}
-        OLDPWD="$PWD"
-        cd ${TOPDIR}/deploy/${MACHINE}
-        echo "${IMG_VERSION}" > version.txt
-        # rootfs
-        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz ${ROOTFS_ARTEFACTS}
-        # uncomment when using uboot
-        #install ${DEPLOY_DIR_IMAGE}/u-boot.bin kernel8.img
-        #install ${DEPLOY_DIR_IMAGE}/boot.scr boot.scr
-        # use when not using uboot ( note that it should be kernel with initramfs )
-        install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGE} kernel8.img
-        for f in ${BOOTFILES}
-        do
-            install ${DEPLOY_DIR_IMAGE}/bootfiles/$f $f
-        done
-        # kernel
-        for f in ${KERNEL_ARTEFACTS}
-        do
-            install ${DEPLOY_DIR_IMAGE}/$f `basename $f`
-        done
-        # Match kernel image with wic
-        install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGE} ${KERNEL_IMAGETYPE}
-        for f in ${DTBOFILES}
-        do
-            install -D ${DEPLOY_DIR_IMAGE}/`basename $f` $f
-        done
-
-        sha256sum ${UPDATE_IMAGES}  > update.sha256
-        rm -rf ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
-        ls ${UPDATE_IMAGES_} | cpio -ov -H newc > ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
-        install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.xz ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
-        install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.bmap ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.bmap
-        cd ${OLDPWD}
-        rm -rf ${TOPDIR}/deploy/${MACHINE}
 }
