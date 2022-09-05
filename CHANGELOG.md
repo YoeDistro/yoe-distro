@@ -6,6 +6,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Changed
+
+- Move clang-native.bbclass to classes/ folder to unbreak other layers
+- Fix function used in AC_CHECK_LIB multiple recipes, do not use 'main'
+- Fix type mismatches in multiple packages found with clang-15
+- Add missing headers for function prototypes in many packages
+- Fix buildpaths issues in several more recipes
+- Pass -D_GNU_SOURCE to packages needing gnu extentions on musl
+- Always set CC and LD for the kernel build
+- Fix i686 toolchain relocation issues in gcc-multilib-config
+- Fix npm to use https rather than http fetcher
+- Fix rust crossbeam-utils for arches without atomics
+- Update rust to 1.63.0 and fix build on musl
+- Rework llvm handling in mesa
+- Add llvm-config wrapper to improve flags handling
+- Fix many recipes to build with clang-15
+- Define wayland packageconfig for opengl-es-cts,vulkan-cts
+- Major version upgrade for assorted recipes
+
+### Added
+
+- New recipes
+  - libconfig-tiny-perl
+- Add layer setup tool in OE-Core
+- Add documentation for numa machine feature
+
+### Removed
+
+- Remove ypbind-mt on musl
+- Remove unifex recipe
+- Drop capstone support in ruby
+
 ## [2022.08] - 2022-08-31
 
 ### Changed
