@@ -1,7 +1,7 @@
 # Copyright (C) 2022 Cliff Brake <cbrake@bec-systems.com>
 # Released under the MIT license (see COPYING.MIT for the terms)
 
-SUMMARY = "LVGL Demo Application"
+SUMMARY = "LVGL Demo Application (FB)"
 HOMEPAGE = "https://github.com/lvgl/lv_port_linux_frame_buffer"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
