@@ -26,6 +26,11 @@ and this project adheres to
 - Fix many recipes to build with clang-15
 - Define wayland packageconfig for opengl-es-cts,vulkan-cts
 - Major version upgrade for assorted recipes
+- Upgrade bpftrace to 0.16.0
+- Add rpidistro VLC and ffmpeg build
+- Update K & R stype functions in autoconf
+- Avoid bad checksum race issues in wget fetcher
+- Add no-dns-fallback packageconfig to systemd
 
 ### Added
 
