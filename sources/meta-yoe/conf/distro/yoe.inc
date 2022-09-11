@@ -60,6 +60,7 @@ TOOLCHAIN ?= "clang"
 CLANGSDK = "1"
 
 # Use compile-rt/libcxx/libunwind as default runtime libraries
+TC_CXX_RUNTIME ?= "llvm"
 RUNTIME ?= "llvm"
 
 # QA check settings - a little stricter than the OE-Core defaults
