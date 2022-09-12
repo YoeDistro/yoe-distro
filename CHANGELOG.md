@@ -31,6 +31,12 @@ and this project adheres to
 - Update K & R stype functions in autoconf
 - Avoid bad checksum race issues in wget fetcher
 - Add no-dns-fallback packageconfig to systemd
+- Upgrade major version of clang compiler from 14.0.6 to 15.0.0
+- Use gcc to build openssh and webkitgtk for now
+- Move python3-lxml from meta-python -> core
+- Update raspberrypi-firmware to 20220830 snapshot
+- Fix target rust with LLVM runtime
+- Do not package gprofng.rc in binutils-cross-canadian
 
 ### Added
 
