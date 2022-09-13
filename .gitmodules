@@ -62,3 +62,7 @@
 	path = sources/poky
 	url = https://github.com/yoedistro/poky
 	branch = master
+[submodule "sources/meta-variscite-bsp"]
+	path = sources/meta-variscite-bsp
+	url = https://github.com/YoeDistro/meta-variscite-bsp.git
+	branch = yoe/master
