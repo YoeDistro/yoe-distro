@@ -37,6 +37,10 @@ and this project adheres to
 - Update raspberrypi-firmware to 20220830 snapshot
 - Fix target rust with LLVM runtime
 - Do not package gprofng.rc in binutils-cross-canadian
+- Address sox intermittent build issue
+- Fix wireless on Raspberry Pi 4
+- Prefer += instead of :append operator in several recipes in core
+- Fix weston and gstreamer-plugins-base imx recipes to build with clang
 
 ### Added
 
