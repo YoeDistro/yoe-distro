@@ -41,6 +41,10 @@ and this project adheres to
 - Fix wireless on Raspberry Pi 4
 - Prefer += instead of :append operator in several recipes in core
 - Fix weston and gstreamer-plugins-base imx recipes to build with clang
+- Fix llvm-objdump crash seen on aarch64/musl golang compiler
+- Fix xserver builds on IMX8
+- Limit rpidistro-vlc,rpidistro-ffmpeg to rpi machines only
+- Fix bunch of CVEs, refer to commits for details
 
 ### Added
 
