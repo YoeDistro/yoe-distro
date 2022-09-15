@@ -45,6 +45,7 @@ and this project adheres to
 - Fix xserver builds on IMX8
 - Limit rpidistro-vlc,rpidistro-ffmpeg to rpi machines only
 - Fix bunch of CVEs, refer to commits for details
+- Update mozjs-91 91.13.0 and fix build with python 3.11
 
 ### Added
 
@@ -52,12 +53,15 @@ and this project adheres to
   - libconfig-tiny-perl
 - Add layer setup tool in OE-Core
 - Add documentation for numa machine feature
+- Add support for a ARMv8 machine supporting multiple Raspberry Pi boards
+- Add yoe-ptest-image target for ptests
 
 ### Removed
 
 - Remove ypbind-mt on musl
 - Remove unifex recipe
 - Drop capstone support in ruby
+- Remove mozjs-78 recipe
 
 ## [2022.08] - 2022-08-31
 
