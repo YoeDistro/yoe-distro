@@ -46,6 +46,10 @@ and this project adheres to
 - Limit rpidistro-vlc,rpidistro-ffmpeg to rpi machines only
 - Fix bunch of CVEs, refer to commits for details
 - Update mozjs-91 91.13.0 and fix build with python 3.11
+- Update clang to latest on 15.x release
+- Fix buildpaths warning on more recipes e.g. exiv2, fltk
+- Ubreak opensbi dependencies being added to u-boot for non-riscv
+  machines
 
 ### Added
 
@@ -62,6 +66,7 @@ and this project adheres to
 - Remove unifex recipe
 - Drop capstone support in ruby
 - Remove mozjs-78 recipe
+- Drop sqlite2 recipe
 
 ## [2022.08] - 2022-08-31
 
