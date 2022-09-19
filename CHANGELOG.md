@@ -50,6 +50,9 @@ and this project adheres to
 - Fix buildpaths warning on more recipes e.g. exiv2, fltk
 - Ubreak opensbi dependencies being added to u-boot for non-riscv
   machines
+- Enable ZSTD as default compression backend for opkg for yoe
+- Enable clang for more applications which were marked non clangable
+  Notable recipes e.g. u-boot, python3
 
 ### Added
 
