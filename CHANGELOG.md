@@ -53,6 +53,8 @@ and this project adheres to
 - Enable ZSTD as default compression backend for opkg for yoe
 - Enable clang for more applications which were marked non clangable
   Notable recipes e.g. u-boot, python3
+- Update simpleIOT to 0.5.0 release
+- Fix compiler-rt-sanitizers builds on non-x86 builds
 
 ### Added
 
