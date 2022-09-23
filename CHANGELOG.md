@@ -61,6 +61,7 @@ and this project adheres to
 - Upgrade mesa to 22.2.0
 - Mark simpleIOT builds on riscv32 incompatible since golang support does
   not exist yet
+- Fix recipes in meta-arm to build with clang-15
 
 ### Added
 
