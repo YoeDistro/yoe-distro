@@ -56,6 +56,11 @@ and this project adheres to
 - Update simpleIOT to 0.5.0 release
 - Fix compiler-rt-sanitizers builds on non-x86 builds
 - Fix Yoe graphical images with musl to work on IMX8 devices
+- Fixes for logger debug() calls
+- Fix gcompat on aarch64
+- Upgrade mesa to 22.2.0
+- Mark simpleIOT builds on riscv32 incompatible since golang support does
+  not exist yet
 
 ### Added
 
@@ -104,11 +109,6 @@ and this project adheres to
 - Fix libgcrypt ptests and install
 - Update glibc to have mount.h conflicts solved on 2.36 release branch
 - Fix several recipes to compile with clang-15 on musl
-- Fixes for logger debug() calls
-- Fix gcompat on aarch64
-- Upgrade mesa to 22.2.0
-- Mark simpleIOT builds on riscv32 incompatible since golang support does
-  not exist yet
 
 ### Added
 
