@@ -55,6 +55,7 @@ and this project adheres to
   Notable recipes e.g. u-boot, python3
 - Update simpleIOT to 0.5.0 release
 - Fix compiler-rt-sanitizers builds on non-x86 builds
+- Fix Yoe graphical images with musl to work on IMX8 devices
 
 ### Added
 
@@ -92,7 +93,7 @@ and this project adheres to
 - Update pipewire to v0.3.56
 - Update u-boot and kernel recipe for starfive
 - Upgrade gcc to 12.2.0
-- Updated linux-yocto to v5.15.62, v5.19.3
+- Updated linux-yocto to v5.15.68, v5.19.9
 - Fix rng-tools to drop wrong dependencies which delayed boot
 - Fix several recipes for musl builds missing -D_GNU_SOURCE
 - Several fixes for clang-15 found errors
@@ -103,6 +104,9 @@ and this project adheres to
 - Fix libgcrypt ptests and install
 - Update glibc to have mount.h conflicts solved on 2.36 release branch
 - Fix several recipes to compile with clang-15 on musl
+- Fixes for logger debug() calls
+- Fix gcompat on aarch64
+- Upgrade mesa to 22.2.0
 
 ### Added
 
@@ -110,6 +114,8 @@ and this project adheres to
   libplist, gst-editing-services, uutils-coreutils, python3-asgiref
 - Added clang-native class to build native compoennts with clang
 - Add test for debuginfod
+- Add devmem 128-bit support in busybox
+- Add tune-neoversen2 based on armv9a
 
 ### Removed
 
