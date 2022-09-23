@@ -105,6 +105,8 @@ and this project adheres to
 - Update glibc to have mount.h conflicts solved on 2.36 release branch
 - Fix several recipes to compile with clang-15 on musl
 - Fixes for logger debug() calls
+- Fix gcompat on aarch64
+- Upgrade mesa to 22.2.0
 
 ### Added
 
