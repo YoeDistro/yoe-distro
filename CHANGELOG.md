@@ -107,6 +107,8 @@ and this project adheres to
 - Fixes for logger debug() calls
 - Fix gcompat on aarch64
 - Upgrade mesa to 22.2.0
+- Mark simpleIOT builds on riscv32 incompatible since golang support does
+  not exist yet
 
 ### Added
 
