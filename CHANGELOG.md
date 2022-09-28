@@ -62,6 +62,7 @@ and this project adheres to
 - Mark simpleIOT builds on riscv32 incompatible since golang support does
   not exist yet
 - Fix recipes in meta-arm to build with clang-15
+- Update clang to 15.0.2
 
 ### Added
 
