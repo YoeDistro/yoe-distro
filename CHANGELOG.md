@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [2022.09] - 2022-09-30
 
 ### Changed
 
@@ -63,6 +63,10 @@ and this project adheres to
   not exist yet
 - Fix recipes in meta-arm to build with clang-15
 - Update clang to 15.0.2
+- Logic in gtk-icon-cache class fixed for GTK4
+- Update tzdata to 2022d
+- Update rpm to 4.18.0-release
+- Fix weston imx version packageconfig appending syntax error
 
 ### Added
 
@@ -72,6 +76,7 @@ and this project adheres to
 - Add documentation for numa machine feature
 - Add support for a ARMv8 machine supporting multiple Raspberry Pi boards
 - Add yoe-ptest-image target for ptests
+- Add enable_loopback_networking() function in bitbake utilities
 
 ### Removed
 
