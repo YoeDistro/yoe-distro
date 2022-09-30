@@ -25,6 +25,9 @@ PACKAGE_INSTALL = "\
   util-linux-fdisk \
   "
 IMAGE_FSTYPES = "${INITRAMFS_FSTYPES}"
+# Check conf/site.conf where there is IMAGE_FSTYPES:append
+# if that value changes make the change here as well
+IMAGE_FSTYPES:remove = "wic.* wic.xz wic.bmap tar.xz"
 inherit core-image
 
 IMAGE_DEVICE_TABLES = "files/device_table-minimal.txt"
