@@ -10,9 +10,24 @@ and this project adheres to
 
 ### Changed
 
+- Bump LAYERSERIES_COMPAT to langdate ( yocto 4.1 )
+- Enforce using libgcc for fmt package for float128 support
+- Allow creating src-pkgs when using clang compiler globally
+- Update clang to 15.0.2 release tag
+- linux-starfive-dev bumped to 6.0.0
+- Tweak libcamera to build for Raspberry Pi
+- Build u-boot-starfive outside source tree
+- Improve manuals with reference to familiar tasks
+- Assorted package version upgrades
+
 ### Added
 
+- Add ptest support for bpftrace
+- Add new recipe - rpi-libcamera-apps
+
 ### Removed
+
+- Remove -ffile-compilation-dir from global clang options
 
 ## [2022.09] - 2022-09-30
 
