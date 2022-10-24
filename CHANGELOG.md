@@ -19,14 +19,19 @@ and this project adheres to
 - Build u-boot-starfive outside source tree
 - Improve manuals with reference to familiar tasks
 - Assorted package version upgrades
+- Update clang to  15.0.3
+- Fix bpftrace on RISCV64
+- Fix linux-hardkernel 4.9 with GCC 12
+- Update documentation for oe-core
 
 ### Added
 
 - Add ptest support for bpftrace
-- Add new recipe - rpi-libcamera-apps
+- Add new recipe - rpi-libcamera-apps, python3-pytest-json-report
+  Perfetto, md4c
 
 ### Removed
-
+- Removed recipes: onboard
 - Remove -ffile-compilation-dir from global clang options
 
 ## [2022.09] - 2022-09-30
