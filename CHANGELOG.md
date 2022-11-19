@@ -6,6 +6,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Changed
+
+- Upgrade clang to 15.0.4
+- Upgrade Nodejs to 16.18.1
+- Fix libpcre dependent packages build e.g. ettercap
+- Upgrade various python package versions
+- Add opengl to REQUIRED_DISTRO_FEATURES for various packages
+- Fix several packages build with python 11
+- Enable ipv6 support in nginx
+- Add build support to build golang compiler on ppc64le
+- Add savedefconfig task in u-boot
+- Upgrade openssl to 3.0.7
+- Upgrade rust to 1.65.0
+- Upgrade weston to 11.0.0
+- Add libsoup-3.0 dependency to webkitgtk
+- Upgrade systemd to 251.8
+- Fix uboot on ae350-ax45mp
+
+### Added
+
+- Added recipes - gtk-vnc, libglvnd, python3-brotli, minio
+  jwt-cpp, spice-gtk, 
+- Add libc testsuite for musl
+- Add 7-Zip support in conversion types for image_types
+- Add crate in own-mirrors
+
+### Removed
+
+- Removed recipes - sip3
+
 ## [2022.10] - 2022-10-30
 
 ### Changed
