@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [2022.11] - 2022-11-30
 
 ### Changed
 
@@ -25,11 +25,13 @@ and this project adheres to
 - Add libsoup-3.0 dependency to webkitgtk
 - Upgrade systemd to 251.8
 - Fix uboot on ae350-ax45mp
+- Enable glvnd support in mesa
+- Add selinux PACKAGECONFIG to several recipes in core
 
 ### Added
 
 - Added recipes - gtk-vnc, libglvnd, python3-brotli, minio
-  jwt-cpp, spice-gtk, 
+  jwt-cpp, spice-gtk, python3-kmod, python3-aioserial
 - Add libc testsuite for musl
 - Add 7-Zip support in conversion types for image_types
 - Add crate in own-mirrors
