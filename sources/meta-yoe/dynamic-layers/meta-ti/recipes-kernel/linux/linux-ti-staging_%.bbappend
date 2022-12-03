@@ -11,3 +11,4 @@ KERNEL_CONFIG_FRAGMENTS += "${WORKDIR}/wireguard.cfg \
                             ${WORKDIR}/extra.cfg \
                             ${WORKDIR}/overlayfs.cfg \
                            "
+ERROR_QA:remove = "patch-fuzz"
