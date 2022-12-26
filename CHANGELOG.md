@@ -6,6 +6,43 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2022.12] - TBA
+
+## Changed
+
+- Update clang to 15.0.6 and fix build for 32bit LFS64 systems
+- Fix compiler and binutils tools options for kernel and u-boot
+- Add protocol= explicitly to github SRC_URI for linux-odroid
+- Add opengl to REQUIRED_DISTRO_FEATURES in recipes from meta-oe
+- Add ipv6 in PACKAGECONFIG to libwebsockets
+- Rename gcr to gcr-3 to accomodate gtk4 and dependencies
+- Move GTK4 support to core from meta-oe/meta-gnome layers
+- Improve reproduciblity patch in go compiler
+- Avoid host contamination in go cross SDK compiler
+- Update minimum python version needed to 3.8 on build hosts
+- Fix several recipes for lfs64 support
+- Ports gtk3+ to use meson
+- Update rust compiler to 1.66.0
+- Conevert bitbake to use argparse
+- add -DUSE_X11 Flag to qtbase to work with latest mesa
+- Use python3targetconfig in recipes to use right python for target
+- Fix waf-samba to use target python3-config
+- Fix openCV build with ffmpeg 5.1+
+
+## Added
+
+- New recipes - xdg-desktop-portal-wlr, basu, gnome-software,
+  xdg-desktop-portal, editorconfig, python3-rapidjson, tuna,
+  sip, python3-uefi-firmware, python3-linux-procfs, python3-schedutils,
+  gcr-4, python3-watchdogdev
+- Add time64.conf to enable 64bit time_t on 32bit glibc systems
+
+## Removed
+ 
+- Drop OEBasic siggen from sstate signature
+- Remove RRECOMMENDS to rng-tools for sshd package
+- Remove SERIAL_CONSOLE variable
+
 ## [2022.11] - 2022-11-30
 
 ### Changed
