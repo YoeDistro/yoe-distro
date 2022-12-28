@@ -28,13 +28,18 @@ and this project adheres to
 - Use python3targetconfig in recipes to use right python for target
 - Fix waf-samba to use target python3-config
 - Fix openCV build with ffmpeg 5.1+
+- Update qemu to 7.2.0
+- Update cmake to 3.25.1
+- Use rm from HOSTTOOLS in rm_work explicitly
+- Update wireplumber to 0.4.13 and use dbus defaults
 
 ## Added
 
 - New recipes - xdg-desktop-portal-wlr, basu, gnome-software,
   xdg-desktop-portal, editorconfig, python3-rapidjson, tuna,
   sip, python3-uefi-firmware, python3-linux-procfs, python3-schedutils,
-  gcr-4, python3-watchdogdev
+  gcr-4, python3-watchdogdev, appstream, libtraceevent, libtracefs,
+  flatpak, flatpak-xdg-utils, libslirp
 - Add time64.conf to enable 64bit time_t on 32bit glibc systems
 
 ## Removed
