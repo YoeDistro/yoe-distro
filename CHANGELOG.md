@@ -32,6 +32,10 @@ and this project adheres to
 - Update cmake to 3.25.1
 - Use rm from HOSTTOOLS in rm_work explicitly
 - Update wireplumber to 0.4.13 and use dbus defaults
+- Update XFCE recipes to 4.18.0 release
+- Update python to 3.11.1
+- Add rust to SDK toolchain language selection
+- Update systemd to 252.4
 
 ## Added
 
