@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2022.12] - TBA
+## [2022.12] - 2022-12-31
 
 ## Changed
 
@@ -36,6 +36,10 @@ and this project adheres to
 - Update python to 3.11.1
 - Add rust to SDK toolchain language selection
 - Update systemd to 252.4
+- Fix several recipes to work with LFS64 functions removal from musl
+- Update several gnome recipes to latest
+- Update go compiler to 1.19.4
+- Fix rust recipes to work with musl without LFS64 functions
 
 ## Added
 
@@ -45,6 +49,7 @@ and this project adheres to
   gcr-4, python3-watchdogdev, appstream, libtraceevent, libtracefs,
   flatpak, flatpak-xdg-utils, libslirp
 - Add time64.conf to enable 64bit time_t on 32bit glibc systems
+- Add x86-64-v3 tunes (AVX, AVX2, BMI1, BMI2, F16C, FMA, LZCNT, MOVBE, XSAVE)
 
 ## Removed
  
