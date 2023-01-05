@@ -6,9 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.01] - TBA
+
+### Changed
+
+- Switch to using 'mickledore' for LAYERSERIES_COMPAT
+- Fix clang recipes to work without LFS64 functions
+- Use gcc to compile pixman on aarch64
+- Fix several recipes for 64bit time_t on 32bit arches
+- Update musl to latest tip ( drops LFS64 interfaces )
+
+### Added
+### Removed
+
 ## [2022.12] - 2022-12-31
 
-## Changed
+### Changed
 
 - Update clang to 15.0.6 and fix build for 32bit LFS64 systems
 - Fix compiler and binutils tools options for kernel and u-boot
@@ -41,7 +54,7 @@ and this project adheres to
 - Update go compiler to 1.19.4
 - Fix rust recipes to work with musl without LFS64 functions
 
-## Added
+### Added
 
 - New recipes - xdg-desktop-portal-wlr, basu, gnome-software,
   xdg-desktop-portal, editorconfig, python3-rapidjson, tuna,
@@ -51,7 +64,7 @@ and this project adheres to
 - Add time64.conf to enable 64bit time_t on 32bit glibc systems
 - Add x86-64-v3 tunes (AVX, AVX2, BMI1, BMI2, F16C, FMA, LZCNT, MOVBE, XSAVE)
 
-## Removed
+### Removed
  
 - Drop OEBasic siggen from sstate signature
 - Remove RRECOMMENDS to rng-tools for sshd package
