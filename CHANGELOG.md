@@ -9,6 +9,13 @@ and this project adheres to
 ## [2023.01] - TBA
 
 ### Changed
+
+- Switch to using 'mickledore' for LAYERSERIES_COMPAT
+- Fix clang recipes to work without LFS64 functions
+- Use gcc to compile pixman on aarch64
+- Fix several recipes for 64bit time_t on 32bit arches
+- Update musl to latest tip ( drops LFS64 interfaces )
+
 ### Added
 ### Removed
 
