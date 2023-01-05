@@ -15,8 +15,11 @@ and this project adheres to
 - Use gcc to compile pixman on aarch64
 - Fix several recipes for 64bit time_t on 32bit arches
 - Update musl to latest tip ( drops LFS64 interfaces )
+- Use binutils objcopy in BSP linux kernel builds
+- Use gcc for all u-boot forks
 
 ### Added
+
 ### Removed
 
 ## [2022.12] - 2022-12-31
