@@ -17,10 +17,24 @@ and this project adheres to
 - Update musl to latest tip ( drops LFS64 interfaces )
 - Use binutils objcopy in BSP linux kernel builds
 - Use gcc for all u-boot forks
-
+- Upgrade usbguard to 1.1.2
+- Switch qemux86-64 to x86-64-v3 tune
+- Include "c" in IMAGE_LINGUAS for glibc
+- Upgrade ruby for 3.2.0
+- Upgrade curl to 7.87.0
+- Switch ostree to use fuse3
+- Fix QT5 builds with 64bit time_t
+- Update concurrencykit to latest to support RISCV
+- Update nezha (rv64 board) support
 ### Added
 
+- Added recipes - xdg-desktop-portal-gtk, eog
+  libdecor
+- Add GLIBC_64BIT_TIME_FLAGS on ppc/x86
+
 ### Removed
+
+- Removed recipes - boost-url, python3-strict-rfc3339
 
 ## [2022.12] - 2022-12-31
 
