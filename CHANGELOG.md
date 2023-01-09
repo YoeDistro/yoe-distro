@@ -23,11 +23,14 @@ and this project adheres to
 - Upgrade ruby for 3.2.0
 - Upgrade curl to 7.87.0
 - Switch ostree to use fuse3
-
+- Fix QT5 builds with 64bit time_t
+- Update concurrencykit to latest to support RISCV
+- Update nezha (rv64 board) support
 ### Added
 
-- Added recipes - xdg-desktop-portal-gtk
--  Add GLIBC_64BIT_TIME_FLAGS on ppc/x86
+- Added recipes - xdg-desktop-portal-gtk, eog
+  libdecor
+- Add GLIBC_64BIT_TIME_FLAGS on ppc/x86
 
 ### Removed
 
