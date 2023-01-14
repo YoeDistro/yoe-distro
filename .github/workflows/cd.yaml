@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 720
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           submodules: recursive
@@ -44,7 +44,7 @@ jobs:
           /bin/bash -c ". ./beaglebone-envsetup.sh && bitbake yoe-qt5-image"
           /bin/bash -c ". ./raspberrypi4-64-envsetup.sh && bitbake yoe-qt5-image"
       - name: ver
-        run: echo "::set-output name=ver::$(printf ' - ' && cat sources/meta-yoe/conf/distro/yoe.inc | grep 'DISTRO_CODENAME =' | cut -d' ' -f 3 )"
+        run: echo "ver=$(printf ' - ' && cat sources/meta-yoe/conf/distro/yoe.inc | grep 'DISTRO_CODENAME =' | cut -d' ' -f 3 )" >> $GITHUB_OUTPUT
         id: ver
       - name: Release Notes
         uses: CSchoel/release-notes-from-changelog@v1
