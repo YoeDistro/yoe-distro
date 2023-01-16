@@ -42,6 +42,7 @@ and this project adheres to
 - Add webp packageconfig knob for libtiff
 - Upgrade rust to 1.66.1
 - Improve reproducibility in clang build
+- Apply C++17 portability fixes in several recipes
 
 ### Added
 
