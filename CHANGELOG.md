@@ -26,15 +26,35 @@ and this project adheres to
 - Fix QT5 builds with 64bit time_t
 - Update concurrencykit to latest to support RISCV
 - Update nezha (rv64 board) support
+- Fix EGT recipe to work with clang in meta-atmel
+- Improve sstate reuse of llvm-project-sources
+- Fix meta-freescale BSP recipes to work with clang compiler
+- Fix various python modules to migrate from picobuild to python3-build
+- Fix freedom-u540 opensbi dependency loop in meta-riscv
+- Improve shutdown handling and lockfile handling in bitbake at exit
+- Set ac_cv_sys_file_offset_bits=64 for musl builds globally, enables
+  64-bit off_t on autotool based packages
+- Unify rust patches into rust-source.inc
+- Update linux-yocto kernels to v5.15.80 and v6.1.3
+- Add libgcc to uninative-tarball
+- Fix several recipes to work with powerpc32 architecture
+- Bump linux-libc-headers to 6.1
+- Add webp packageconfig knob for libtiff
+- Upgrade rust to 1.66.1
+- Improve reproducibility in clang build
+
 ### Added
 
 - Added recipes - xdg-desktop-portal-gtk, eog
-  libdecor
+  libdecor, biodbc, python3-build, python3-pyproject-hooks
+  python3-reedsolo
 - Add GLIBC_64BIT_TIME_FLAGS on ppc/x86
+- Introduce v6.1 reference linux-yocto kernel recipes
 
 ### Removed
 
-- Removed recipes - boost-url, python3-strict-rfc3339
+- Removed recipes - boost-url, python3-strict-rfc3339, python3-picobuild
+  
 
 ## [2022.12] - 2022-12-31
 
