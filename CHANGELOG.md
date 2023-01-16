@@ -40,6 +40,8 @@ and this project adheres to
 - Fix several recipes to work with powerpc32 architecture
 - Bump linux-libc-headers to 6.1
 - Add webp packageconfig knob for libtiff
+- Upgrade rust to 1.66.1
+- Improve reproducibility in clang build
 
 ### Added
 
