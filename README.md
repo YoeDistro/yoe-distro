@@ -9,7 +9,7 @@ Yoe is an Embedded Linux Distribution optimized for product development. It is
 built on **Y**octo and **O**pen**E**mbedded with a focus on simplicity. This
 distribution does not end at demo images but rather begins there.
 
-## Example 
+## Example 👀
 
 This following is example of building and installing a linux system from scratch
 on a Raspberry PI 3:
