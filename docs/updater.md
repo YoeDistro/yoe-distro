@@ -1,4 +1,4 @@
-# Yoe Init/Updater
+# Yoe Init/Updater 🚀
 
 ## Requirements
 
