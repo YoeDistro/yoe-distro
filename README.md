@@ -3,18 +3,18 @@
 [![Yoe Distro CI](https://github.com/YoeDistro/yoe-distro/workflows/Yoe%20Distro%20CI/badge.svg?branch=master)](https://github.com/YoeDistro/yoe-distro/actions/workflows/yoe.yml?query=workflow%3AYoe+branch%3Amaster)
 [![](https://tokei.rs/b1/github/YoeDistro/yoe-distro?category=code)](https://github.com/XAMPPRocky/tokei)
 
-# Yoe Embedded Linux Distribution
+# Yoe Embedded Linux Distribution  🐑
 
 Yoe is an Embedded Linux Distribution optimized for product development. It is
 built on **Y**octo and **O**pen**E**mbedded with a focus on simplicity. This
 distribution does not end at demo images but rather begins there.
 
-## Example
+## Example 👀
 
 This following is example of building and installing a linux system from scratch
 on a Raspberry PI 3:
 
-## Install Pre-requisites
+## Install Pre-requisites 💻
 
 Install `docker` on host distribution
 
@@ -35,7 +35,7 @@ port forwarding to work on docker
 - On host systems with 8G RAM or less it will be necessary to ensure a swap file
   of 8G.
 
-## Workspace Setup
+## Workspace Setup 👷
 
 1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
 1. `cd yoe`
@@ -53,7 +53,7 @@ port forwarding to work on docker
 
 [Detailed documentation](docs/README.md)
 
-## Vision
+## Vision 🔭 
 
 There are many Embedded Linux distribution built on top of OpenEmbedded/Yocto.
 There is the Poky reference distribution. Most SOC and SOM vendors provide a
@@ -104,7 +104,7 @@ available.
 
 Additional machines can be added by including appropriate BSP layers.
 
-## Using
+## Using ⚙️
 
 ### envsetup.sh
 
@@ -184,8 +184,9 @@ Pull requests are welcome.
 
 For support or to discuss this project, use one of the following options:
 
-- [Yoe community forum](https://community.tmpdir.org/c/yoe-distro/6)
-- [Open a github issue](https://github.com/YoeDistro/yoe-distro/issues/new)
+- [Yoe community forum](https://community.tmpdir.org/c/yoe-distro/6) 💬 
+- [Open a github issue](https://github.com/YoeDistro/yoe-distro/issues/new) #️⃣
+- [Yoe Videos](https://www.youtube.com/@yoedistro)  🎬
 
 ## License
 
