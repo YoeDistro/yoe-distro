@@ -35,7 +35,7 @@ and this project adheres to
 - Set ac_cv_sys_file_offset_bits=64 for musl builds globally, enables
   64-bit off_t on autotool based packages
 - Unify rust patches into rust-source.inc
-- Update linux-yocto kernels to v5.15.80 and v6.1.3
+- Update linux-yocto kernels to v5.15.87 and v6.1.5
 - Add libgcc to uninative-tarball
 - Fix several recipes to work with powerpc32 architecture
 - Bump linux-libc-headers to 6.1
@@ -43,14 +43,17 @@ and this project adheres to
 - Upgrade rust to 1.66.1
 - Improve reproducibility in clang build
 - Apply C++17 portability fixes in several recipes
+- Fix C++11(Alignof) issues in several packages
 - Update clang to 15.0.7
 - Update bcc to 0.26.0
+- Fix create-spdx handling for clang
 
 ### Added
 
 - Added recipes - xdg-desktop-portal-gtk, eog
   libdecor, biodbc, python3-build, python3-pyproject-hooks
-  python3-reedsolo
+  python3-reedsolo, lvgl-demo-fb, nv-codec-headers, webp-pixbuf-loader
+  gnome-chess
 - Add GLIBC_64BIT_TIME_FLAGS on ppc/x86
 - Introduce v6.1 reference linux-yocto kernel recipes
 
