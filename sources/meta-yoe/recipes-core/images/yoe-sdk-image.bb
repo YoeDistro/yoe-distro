@@ -10,8 +10,16 @@ IMAGE_INSTALL += "\
     packagegroup-core-buildessential \
     u-boot-tools-mkimage \
     u-boot-tools-mkenvimage \
-    git \
     bc \
+    flex \
+    bison \
+    git \
+    jansson \
+    texinfo \
+    perl-module-encode perl-module-encode-encoding perl-module-locale perl-module-integer \
+    perl-module-if perl-module-unicode-normalize perl-module-base perl-module-feature \
+    perl-module-perlio \
+    perl-module-utf8 \
 "
 
 IMAGE_INSTALL:remove:riscv32 = "packagegroup-go-sdk-target"

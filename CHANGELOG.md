@@ -47,6 +47,11 @@ and this project adheres to
 - Update clang to 15.0.7
 - Update bcc to 0.26.0
 - Fix create-spdx handling for clang
+- Fix several recipes to work with upcoming GCC 13 compiler
+- Fix Upstream-Status format of several patches
+- Use 6.1 kernel for Qemu machines
+- Upgrade binutils to 2.40
+- Upgrade u-boot to 2023.01
 
 ### Added
 
@@ -60,7 +65,7 @@ and this project adheres to
 ### Removed
 
 - Removed recipes - boost-url, python3-strict-rfc3339, python3-picobuild
-  
+- Remove package_tar.bbclass from classes-global
 
 ## [2022.12] - 2022-12-31
 
