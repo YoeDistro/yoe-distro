@@ -1,7 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "file://rc.pvr.service \
-            file://0001-gbm.pc-Bump-version-to-21.1.1.patch \
             file://0001-Add-GL-and-GLES3-headers.patch \
            "
 
