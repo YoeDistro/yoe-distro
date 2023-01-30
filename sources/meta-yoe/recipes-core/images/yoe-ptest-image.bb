@@ -22,8 +22,9 @@ IMAGE_ROOTFS_EXTRA_SPACE = "1124288"
 # ptests need more memory than standard to avoid the OOM killer
 # also lttng-tools needs /tmp that has at least 2G
 QB_MEM = "-m 4096"
-# Max memory supported by qemu on rv32 is 2G
+# Max memory supported by qemu on rv32/mips is 2G
 QB_MEM:qemuriscv32 = "-m 2048"
+QB_MEM:qemumips = "-m 2048"
 
 # Sadly at the moment the full set of ptests is not robust enough and sporadically fails in random places
 PTEST_EXPECT_FAILURE = "1"
