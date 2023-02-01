@@ -10,11 +10,24 @@ and this project adheres to
 
 ### Changed
 
+- Update busybox to 1.36, disable SHA accelarators for 32bit x86
+- Bundle libc++abi archive into static libc++.a, improves static linking
+- Bump kernel to linux-yocto 6.1 for odroid devices
+- Add ptest support for python3-pillow
+- Fix several recipes to build with upcoming GCC13 release
+- Upgrade mongodb to 4.4.18 and fix build with ccache enabled
+- Fix recipes to use target python config for target during cross compile
+- Pass MAXLINELENGTH to scons invocation, helps with large cmdline lengths
+- Upgrade rust to 1.67.0
 
 ### Added
 
+- New recipes
+  - python3-pycups
 
 ### Removed
+
+- Remove rock-pi-4 MACHINE
 
 ## [2023.01] - 2023-01-30
 
