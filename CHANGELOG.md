@@ -19,11 +19,15 @@ and this project adheres to
 - Fix recipes to use target python config for target during cross compile
 - Pass MAXLINELENGTH to scons invocation, helps with large cmdline lengths
 - Upgrade rust to 1.67.0
+- Upgrade linux-raspberrypi to 5.15.90
+- Add ptest support to gnuTLS
+- Upgrade linux-yocto/5.15 to v5.15.91, linux-yocto/6.1 to v6.1.9
+- Fix Yoe Updater to use correct boot device after upgrade
 
 ### Added
 
 - New recipes
-  - python3-pycups
+  - python3-pycups, extract-cert, rtkit, system-config-printer
 
 ### Removed
 
