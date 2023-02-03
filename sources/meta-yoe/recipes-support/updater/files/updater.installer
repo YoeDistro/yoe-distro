@@ -292,7 +292,7 @@ mount_data() {
 }
 
 mount_overlay() {
-  mkdir -p /mnt/data/upper /mnt/data/work /mnt/data/persistent
+  mkdir -p /mnt/data/upper /mnt/data/upper/data /mnt/data/work /mnt/data/persistent
   mount -t overlay -o ro,lowerdir=/mnt/data/persistent:/mnt/rootfs,upperdir=/mnt/data/upper,workdir=/mnt/data/work overlay /mnt/rootfs
 }
 
@@ -533,14 +533,17 @@ boot() {
     sleep 9999d
   fi
 
-  if [ -e $EMMC_BOOT_DEV ]; then
+  if [ "$INSTALL_BOOT_DEV" = "$EMMC_BOOT_DEV" ]; then
     msg_splash "Booting from EMMC ..."
     speak "booting system from E M M C"
     mount_rootfs_emmc
-  else
+  elif [ "$INSTALL_BOOT_DEV" = "$SD_BOOT_DEV" ]; then
     msg_splash "Booting from SD ..."
     speak "booting system from S D"
     mount_rootfs_sd
+  else
+    msg_splash "No bootable device found"
+    sleep 9999d
   fi
 
   msg_splash "Moving system mounts into rootfs..."
