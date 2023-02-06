@@ -23,11 +23,15 @@ and this project adheres to
 - Add ptest support to gnuTLS
 - Upgrade linux-yocto/5.15 to v5.15.91, linux-yocto/6.1 to v6.1.9
 - Fix Yoe Updater to use correct boot device after upgrade
+- Upgrade glibc to 2.37
+- Fix several recipes to work with upcoming gcc 13 release
+- Improve on target locale generation
 
 ### Added
 
 - New recipes
   - python3-pycups, extract-cert, rtkit, system-config-printer
+- Add initial support for loongarch64 architecture
 
 ### Removed
 
