@@ -26,16 +26,24 @@ and this project adheres to
 - Upgrade glibc to 2.37
 - Fix several recipes to work with upcoming gcc 13 release
 - Improve on target locale generation
+- Fix clang recipe for multilib build
+- Enable PIC for static archives with clang runtime libs
+- Fix several recipes to build with clang-16/c++17
+- Add ptest for minicoredumper
+- add PACKAGECONFIG for video-codecs in mesa
 
 ### Added
 
 - New recipes
   - python3-pycups, extract-cert, rtkit, system-config-printer
+    rpi-eeprom
 - Add initial support for loongarch64 architecture
 
 ### Removed
 
 - Remove rock-pi-4 MACHINE
+- Removed recipes
+  - crda
 
 ## [2023.01] - 2023-01-30
 
