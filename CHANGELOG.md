@@ -30,13 +30,15 @@ and this project adheres to
 - Enable PIC for static archives with clang runtime libs
 - Fix several recipes to build with clang-16/c++17
 - Add ptest for minicoredumper
-- add PACKAGECONFIG for video-codecs in mesa
+- Add PACKAGECONFIG for video-codecs in mesa
+- Provide missing tools during cross compiling openmp
+- Sync dtc tree with kernel for nezha/riscv
 
 ### Added
 
 - New recipes
   - python3-pycups, extract-cert, rtkit, system-config-printer
-    rpi-eeprom
+    rpi-eeprom, libdeflate
 - Add initial support for loongarch64 architecture
 
 ### Removed
