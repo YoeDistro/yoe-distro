@@ -33,19 +33,23 @@ and this project adheres to
 - Add PACKAGECONFIG for video-codecs in mesa
 - Provide missing tools during cross compiling openmp
 - Sync dtc tree with kernel for nezha/riscv
+- Add a PACKAGECONFIG for arm_neon in graphene
+- Upgrade gstreamer1.0 to 1.22.0
+- Update go compiler to 1.20
 
 ### Added
 
 - New recipes
   - python3-pycups, extract-cert, rtkit, system-config-printer
-    rpi-eeprom, libdeflate
+    rpi-eeprom, libdeflate, python-daemon
 - Add initial support for loongarch64 architecture
 
 ### Removed
 
 - Remove rock-pi-4 MACHINE
+- Remove image SPDX and index from deploydir
 - Removed recipes
-  - crda
+  - crda, linux-yocto-5.19
 
 ## [2023.01] - 2023-01-30
 
