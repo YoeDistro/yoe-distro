@@ -36,6 +36,7 @@ and this project adheres to
 - Add a PACKAGECONFIG for arm_neon in graphene
 - Upgrade gstreamer1.0 to 1.22.0
 - Update go compiler to 1.20
+- Fix wireless on model 3B and Zero W
 
 ### Added
 
