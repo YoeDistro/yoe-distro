@@ -162,7 +162,7 @@ QB_MEM = "-m 1024"
 
 # Use zstd compression instead of xz default in opkg
 # See https://lists.openembedded.org/g/openembedded-core/message/170650?p=%2C%2C%2C20%2C0%2C0%2C0%3A%3Acreated%2C0%2Copkg%2C20%2C2%2C0%2C93654146
-OPKGBUILDCMD = 'opkg-build -Z zstd -a "${XZ_DEFAULTS}"'
+OPKGBUILDCMD = 'opkg-build -Z zstd -a "--threads=${ZSTD_THREADS}"'
 
 # Use gcc for perf temporarily, until oe-core gets it
 TOOLCHAIN:pn-perf = "gcc"
