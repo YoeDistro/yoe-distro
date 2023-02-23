@@ -18,7 +18,7 @@ and this project adheres to
 - Upgrade mongodb to 4.4.18 and fix build with ccache enabled
 - Fix recipes to use target python config for target during cross compile
 - Pass MAXLINELENGTH to scons invocation, helps with large cmdline lengths
-- Upgrade rust to 1.67.0
+- Upgrade rust to 1.67.1
 - Upgrade linux-raspberrypi to 5.15.90
 - Add ptest support to gnuTLS
 - Upgrade linux-yocto/5.15 to v5.15.91, linux-yocto/6.1 to v6.1.9
@@ -35,20 +35,29 @@ and this project adheres to
 - Sync dtc tree with kernel for nezha/riscv
 - Add a PACKAGECONFIG for arm_neon in graphene
 - Upgrade gstreamer1.0 to 1.22.0
-- Update go compiler to 1.20
+- Update go compiler to 1.20.1
 - Fix wireless on model 3B and Zero W
+- Use LLVM_ENABLE_RUNTIMES to build llvm runtime libs
+- Speedup nodejs native compilation by not during cross builds
+- Improve idle thread exception handling in bitbake
+- Do not use xz parallelism options with zstd
+- Enable systemd-time-wait-sync.service when timesycd is enabled
 
 ### Added
 
 - New recipes
   - python3-pycups, extract-cert, rtkit, system-config-printer
-    rpi-eeprom, libdeflate, python-daemon
+    rpi-eeprom, libdeflate, python-daemon, smemstat, linux-serial-test
+    libgpiod v2.0-rc2, python3-gpiod,
 - Add initial support for loongarch64 architecture
+- Add artifact signing infrastructure class ( signing.bbclass )
 
 ### Removed
 
 - Remove rock-pi-4 MACHINE
 - Remove image SPDX and index from deploydir
+- Remove clang-offload-wrapper from clang, gone in clang 16 as well
+- Remove glib site cached values
 - Removed recipes
   - crda, linux-yocto-5.19
 
