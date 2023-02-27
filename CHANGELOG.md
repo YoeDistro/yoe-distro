@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2023.02] - TBD
+## [2023.02] - 2023-02-28
 
 ### Changed
 
@@ -42,15 +42,23 @@ and this project adheres to
 - Improve idle thread exception handling in bitbake
 - Do not use xz parallelism options with zstd
 - Enable systemd-time-wait-sync.service when timesycd is enabled
+- Improve build-appliance-image target
+- Upgrade Upgrade to 13.1
+- Fix QEMU build with 6.2 kernel headers
+- Fix ffmpeg build with vulkan
+- Improve resulttool reporting
+- Upgrade musl to latest tip of trunk
+- Fix Upstream-Status for several patches
 
 ### Added
 
 - New recipes
   - python3-pycups, extract-cert, rtkit, system-config-printer
     rpi-eeprom, libdeflate, python-daemon, smemstat, linux-serial-test
-    libgpiod v2.0-rc2, python3-gpiod,
+    libgpiod v2.0-rc2, python3-gpiod, plocate
 - Add initial support for loongarch64 architecture
 - Add artifact signing infrastructure class ( signing.bbclass )
+- Add weston kiosk shell
 
 ### Removed
 
