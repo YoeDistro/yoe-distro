@@ -38,10 +38,6 @@
 	path = sources/meta-odroid
 	url = https://github.com/YoeDistro/meta-odroid
 	branch = master
-[submodule "sources/meta-atmel"]
-	path = sources/meta-atmel
-	url = https://github.com/YoeDistro/meta-atmel
-	branch = master
 [submodule "sources/meta-clang"]
 	path = sources/meta-clang
 	url = https://github.com/YoeDistro/meta-clang
