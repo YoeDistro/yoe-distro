@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${BPN}:"
 
-PACKAGECONFIG:append = " networkd resolved "
+PACKAGECONFIG:append = " networkd resolved coredump"
 
 NETWORKING_SCRIPTS:qemuall = ""
 NETWORKING_SCRIPTS ?= "file://wired.network \
