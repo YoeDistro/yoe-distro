@@ -1,0 +1,5 @@
+INHERIT += "report-error"
+ERR_REPORT_SERVER = "errors.yoctoproject.org"
+ERR_REPORT_PORT = "80"
+ERR_REPORT_USERNAME = "Khem Raj"
+ERR_REPORT_EMAIL = "khem@yoedistro.org"
