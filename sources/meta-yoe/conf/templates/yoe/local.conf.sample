@@ -6,6 +6,8 @@ CONF_VERSION = "2"
 #SDK_UPDATE_URL ??= "http://10.0.0.13:8000"
 #SSTATE_MIRRORS = "file://.* http://10.0.0.13:8000/sstate-cache/PATH"
 
-export DOCKER_REPO=yoedistro/yoe-build:bullseye
+DL_DIR = "${OE_BASE}/downloads"
+SSTATE_DIR = "${OE_BASE}/build/sstate-cache"
+TMPDIR = "${OE_BASE}/build/tmp"
 
-require ${OEROOT}/../meta-yoe/conf/projects/${PROJECT}/config.conf
+require ${OE_BASE}/sources/meta-yoe/conf/projects/${PROJECT}/config.conf

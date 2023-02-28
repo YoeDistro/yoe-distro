@@ -84,7 +84,7 @@ export OE_DEPLOY_DIR=${OE_BASE}/build/tmp/deploy/images/${MACHINE}
 #--------------------------------------------------------------------------
 # Specify the root directory for your OpenEmbedded development
 #--------------------------------------------------------------------------
-OE_BUILD_DIR=${OE_BASE}
+OE_BUILD_DIR=${OE_BASE}/build
 
 OE_SOURCE_DIR=${OE_BASE}/sources
 
@@ -126,11 +126,6 @@ if [ "x$PROXYHOST" != "x" ]; then
   config_svn_proxy
   config_git_proxy
 fi
-
-#--------------------------------------------------------------------------
-# Set up the bitbake path to find the OpenEmbedded recipes.
-#--------------------------------------------------------------------------
-export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/poky/meta${BBPATH_EXTRA}
 
 #--------------------------------------------------------------------------
 # If an env already exists, use it, otherwise generate it
