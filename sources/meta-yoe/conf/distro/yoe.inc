@@ -164,6 +164,17 @@ QB_MEM = "-m 1024"
 # See https://lists.openembedded.org/g/openembedded-core/message/170650?p=%2C%2C%2C20%2C0%2C0%2C0%3A%3Acreated%2C0%2Copkg%2C20%2C2%2C0%2C93654146
 OPKGBUILDCMD = 'opkg-build -Z zstd -a "--threads=${ZSTD_THREADS}"'
 
+# The two lines below enable SDL frontend for qemu
+# default is VNC
+PACKAGECONFIG:append:pn-qemu-native = " sdl"
+PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
+
+# Dont package kernel into image
+RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""
+
+# Enable persistent logs across reboots
+VOLATILE_LOG_DIR = "no"
+
 # Use gcc for perf temporarily, until oe-core gets it
 TOOLCHAIN:pn-perf = "gcc"
 
