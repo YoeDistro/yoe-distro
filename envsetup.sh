@@ -367,7 +367,7 @@ yoe_remove_layer() {
 yoe_console() {
   # requires serial->usb device be mapped to /dev/ttyUSB_<machine name>
   # see http://bec-systems.com/site/1004/perisistent-device-names-usb-serial-ports
-  screen /dev/ttyUSB_${MACHINE} 115200
+  tio /dev/ttyUSB_${MACHINE} 115200
 }
 
 yoe_build_all() {
