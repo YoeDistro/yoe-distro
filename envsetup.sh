@@ -46,21 +46,6 @@ fi
 # <machine>-envsetup.sh -> envsetup.sh
 # and it will automatically set MACHINE variable
 
-arg0=$0
-test -n "$BASH" && arg0=$BASH_SOURCE[0]
-
-scriptname="${arg0##*/}"
-mach=${scriptname%-*}
-if [ -n "${mach}" -a "${mach}" != "${scriptname}" ]; then
-  MACHINE=${mach}
-fi
-if [ -z "${MACHINE}" ]; then
-  echo "MACHINE must be set before sourcing this script"
-  return
-fi
-export MACHINE
-echo "Setting MACHINE=$MACHINE"
-
 if [ -z "${MEDIA}" ]; then
   # set the location of the automounted location for removable storage
   # newer gnome systems
@@ -84,15 +69,14 @@ PROXYHOST=""
 ###############################################################################
 OE_BASE=$(/bin/readlink -f $(dirname '${0}'))
 
+export TEMPLATECONF="$OE_BASE/sources/meta-yoe/conf/templates/yoe"
+
 cd $OE_BASE
 
 # incremement this to force recreation of config files.  This should be done
 # whenever the DISTRO, or anything major changes
 YOE_ENV_VERSION=13
 YOE_ENV_FILE=localconfig.sh
-
-# Workaround for differences between yocto bitbake and vanilla bitbake
-export BBFETCH2=True
 
 export DISTRO_DIRNAME=$(echo $DISTRO | sed 's#[.-]#_#g')
 export OE_DEPLOY_DIR=${OE_BASE}/build/tmp/deploy/images/${MACHINE}
@@ -102,37 +86,9 @@ export OE_DEPLOY_DIR=${OE_BASE}/build/tmp/deploy/images/${MACHINE}
 #--------------------------------------------------------------------------
 OE_BUILD_DIR=${OE_BASE}
 
-CUSTOM_DL_DIR=$(read_var_from_conf 'DL_DIR')
-CUSTOM_TMPDIR=$(read_var_from_conf 'TMPDIR')
-CUSTOM_SSTATE_DIR=$(read_var_from_conf 'SSTATE_DIR')
-
-if [ -n "$CUSTOM_TMPDIR" ]; then
-  OE_BUILD_TMPDIR="${CUSTOM_TMPDIR}"
-else
-  OE_BUILD_TMPDIR="${OE_BUILD_DIR}/build/tmp"
-fi
-
-if [ -n "$CUSTOM_SSTATE_DIR" ]; then
-  OE_SSTATE_DIR="${CUSTOM_SSTATE_DIR}"
-else
-  OE_SSTATE_DIR="${OE_BUILD_DIR}/build/sstate-cache"
-fi
-
-if [ -n "$CUSTOM_DL_DIR" ]; then
-  OE_DL_DIR="${CUSTOM_DL_DIR}"
-else
-  OE_DL_DIR="${OE_BUILD_DIR}/downloads"
-fi
-
 OE_SOURCE_DIR=${OE_BASE}/sources
 
-export BUILDDIR=${OE_BUILD_DIR}
-
 mkdir -p ${OE_BUILD_DIR}
-mkdir -p ${OE_BUILD_TMPDIR}
-mkdir -p ${OE_DL_DIR}
-mkdir -p ${OE_SSTATE_DIR}
-mkdir -p ${OE_SOURCE_DIR}
 export OE_BASE
 
 #--------------------------------------------------------------------------
@@ -150,7 +106,7 @@ HTTPS_PROXY https_proxy FTP_PROXY ftp_proxy FTPS_PROXY ftps_proxy ALL_PROXY \
 all_proxy NO_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY \
 SDKMACHINE BB_NUMBER_THREADS BB_NO_NETWORK PARALLEL_MAKE GIT_PROXY_COMMAND \
 SOCKS5_PASSWD SOCKS5_USER SCREENDIR STAMPS_DIR BBPATH_EXTRA BB_SETSCENE_ENFORCE \
-OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE DOCKER"
+OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE DOCKER PROJECT"
 
 BB_ENV_PASSTHROUGH_ADDITIONS="$(echo $BB_ENV_PASSTHROUGH_ADDITIONS $BB_ENV_PASSTHROUGH_ADDITIONS_OE | tr ' ' '\n' | LC_ALL=C sort --unique | tr '\n' ' ')"
 
@@ -208,33 +164,26 @@ else
   echo "${YOE_ENV_FILE} created"
 fi # if -e ${YOE_ENV_FILE}
 
-#--------------------------------------------------------------------------
-# Write out the OE bitbake configuration file.
-#--------------------------------------------------------------------------
-mkdir -p ${OE_BUILD_DIR}/conf
 
-AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
-rm -f $AUTO_CONF
-cat >$AUTO_CONF <<_EOF
-# This is an automatically generated file, please do not edit.
+if [ -n "$1" ]; then
+    BUILDDIR=$(realpath "$1")
+else
+    BUILDDIR=$OE_BUILD_DIR
+fi
 
-ACONF_VERSION = "1"
+# List supported projects
+yoe_get_projects() {
+    (
+    cd $OE_BASE/sources/meta-yoe/conf/projects
+    for f in *; do
+        if [ -e $f/config.conf ]; then
+            echo $f
+        fi
+    done
+    )
+}
 
-# Where to store sources
-DL_DIR = "${OE_DL_DIR}"
-
-# Where to save shared state
-SSTATE_DIR = "${OE_SSTATE_DIR}"
-
-TMPDIR = "${OE_BUILD_TMPDIR}"
-
-# Go through the Firewall
-#HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
-
-MACHINE ?= "$MACHINE"
-_EOF
-
-echo "${AUTO_CONF} has been updated"
+. $OE_BASE/sources/poky/oe-init-build-env "$BUILDDIR"
 
 ###############################################################################
 # UPDATE_ALL() - Make sure everything is up to date
