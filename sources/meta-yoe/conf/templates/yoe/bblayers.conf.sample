@@ -1,0 +1,4 @@
+PROJECT ?= "qemuriscv64"
+
+OEROOT = "##OEROOT##"
+require ##OEROOT##/../meta-yoe/conf/projects/${PROJECT}/layers.conf

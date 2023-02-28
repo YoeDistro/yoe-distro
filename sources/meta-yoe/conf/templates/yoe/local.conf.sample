@@ -1,0 +1,11 @@
+CONF_VERSION = "2"
+
+# Define a feedserver template to be part of rootfs
+#PACKAGE_FEED_URIS ??= "http://10.0.0.13:8000"
+# eSDK update mechanism for end-users
+#SDK_UPDATE_URL ??= "http://10.0.0.13:8000"
+#SSTATE_MIRRORS = "file://.* http://10.0.0.13:8000/sstate-cache/PATH"
+
+export DOCKER_REPO=yoedistro/yoe-build:bullseye
+
+require ${OEROOT}/../meta-yoe/conf/projects/${PROJECT}/config.conf
