@@ -345,8 +345,8 @@ yoe_add_layer() {
   fi
   git submodule add -b $br -f $1 sources/$n
   git submodule init sources/$n
-  bitbake-layers add-layer sources/$n && sed -i -e "s|$OE_BASE|\${TOPDIR}|" conf/bblayers.conf
-  echo "please commit with - git add conf/bblayers.conf && git commit -s -m'Added module $n'"
+  echo "1. please add it to meta-yoe/conf/projects/$PROJECT/layers.conf
+        2. git commit -s -m'Add module $n' sources/meta-yoe/conf/projects/$PROJECT/layers.conf sources/$n .gitmodules"
 }
 
 yoe_remove_layer() {
@@ -359,7 +359,8 @@ yoe_remove_layer() {
   bitbake-layers remove-layer $1
   git submodule deinit -f $m
   git rm -r -f $m
-  echo "please commit with - git add conf/bblayers.conf && git commit -s -m'Added module $n'"
+  echo "1. please remove it from meta-yoe/conf/projects/$PROJECT/layers.conf 
+        2. commit with - git commit -m'Remove module $m' .gitmodule sources/$m"
   rm -rf .git/modules/$m
   #rm -rf $m
 }
