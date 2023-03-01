@@ -34,6 +34,18 @@ read_var_from_conf() {
   return 1
 }
 
+usage() {
+  echo
+  echo "Usage:"
+  echo ". $arg0 <project>"
+  echo
+  echo "Please specify one of the following projects"
+  echo
+  yoe_get_projects
+  echo
+  return 0
+}
+
 shell=$(ps -p "$$")
 if [ -n "${shell##*zsh*}" ] && [ -n "${shell##*bash*}" ]; then
   echo "Error: We require running Yoe in a bash or zsh shell. Other shells have not been tested."
@@ -82,19 +94,28 @@ OE_BASE=$(/bin/readlink -f $(dirname $arg0))
 
 cd $OE_BASE
 
-if [ $# -eq 0 ]; then
-  echo
-  echo "Usage:"
-  echo ". $arg0 <project>"
-  echo
-  echo "Please specify one of the following projects"
-  echo
-  yoe_get_projects
-  echo
-  return 0
+if [ $# -eq 0 -a -z $PROJECT ]; then
+  usage
 fi
 
-PROJECT=$1
+if [ $# -gt 0 ]; then
+  PROJECT=$1
+fi
+
+projects="`yoe_get_projects | tr '\n' ' '`"
+
+echo "$projects" | grep -q "\<$PROJECT\>" >&2
+
+if [ $? != 0 ]; then
+  echo
+  echo "'$PROJECT' is not yet a supported project"
+  echo "Please unset PROJECT environment variable or set it to a supported project"
+  usage
+  unset PROJECT
+  unset MACHINE
+  return 1
+fi
+
 export PROJECT
 echo "Setting PROJECT=$PROJECT"
 
