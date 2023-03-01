@@ -50,14 +50,33 @@ arg0=$0
 test -n "$BASH" && arg0=$BASH_SOURCE[0]
 
 scriptname="${arg0##*/}"
-mach=${scriptname%-*}
-if [ -n "${mach}" -a "${mach}" != "${scriptname}" ]; then
-  MACHINE=${mach}
+proj=${scriptname%-*}
+if [ -n "${proj}" -a "${proj}" != "${scriptname}" ]; then
+  PROJECT=${proj}
 fi
-if [ -z "${MACHINE}" ]; then
-  echo "MACHINE must be set before sourcing this script"
+if [ -z "${PROJECT}" ]; then
+  echo "PROJECT must be set before sourcing this script"
   return
 fi
+export PROJECT
+echo "Setting PROJECT=$PROJECT"
+
+case "$PROJECT" in
+  "rpi4-64")
+    MACHINE=raspberrypi4-64
+    ;;
+  "odroid-c4")
+    MACHINE=odroid-c4-hardkernel
+    ;;
+  "rockpi-4b")
+    MACHINE=rockpi-4-b
+    ;;
+  "var-som-imx8qm")
+    MACHINE=imx8qm-var-som
+    ;;
+  *)
+    MACHINE=$PROJECT
+esac
 export MACHINE
 echo "Setting MACHINE=$MACHINE"
 
@@ -150,7 +169,7 @@ HTTPS_PROXY https_proxy FTP_PROXY ftp_proxy FTPS_PROXY ftps_proxy ALL_PROXY \
 all_proxy NO_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY \
 SDKMACHINE BB_NUMBER_THREADS BB_NO_NETWORK PARALLEL_MAKE GIT_PROXY_COMMAND \
 SOCKS5_PASSWD SOCKS5_USER SCREENDIR STAMPS_DIR BBPATH_EXTRA BB_SETSCENE_ENFORCE \
-OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE DOCKER"
+OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE DOCKER PROJECT"
 
 BB_ENV_PASSTHROUGH_ADDITIONS="$(echo $BB_ENV_PASSTHROUGH_ADDITIONS $BB_ENV_PASSTHROUGH_ADDITIONS_OE | tr ' ' '\n' | LC_ALL=C sort --unique | tr '\n' ' ')"
 
