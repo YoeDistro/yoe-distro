@@ -564,6 +564,7 @@ dkr() {
     -v $SSH_AUTH_DIR:/ssh-agent \
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
+    -e PROJECT=$PROJECT \
     -w ${OE_BASE} \
     $UID_ARGS --user=$UUID:$GGID \
     $VNC_PORT \
