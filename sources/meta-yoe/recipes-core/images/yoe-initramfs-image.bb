@@ -7,6 +7,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 # Do not pollute the initrd image with rootfs features
 IMAGE_FEATURES = ""
 
+# Clear image depends on some machines e.g. riscv opensbi is in EXTRA_IMAGEDEPENDS
+# which can cause dependency loops
+EXTRA_IMAGEDEPENDS = ""
+
 export IMAGE_BASENAME = "yoe-initramfs-image"
 IMAGE_LINGUAS = ""
 
