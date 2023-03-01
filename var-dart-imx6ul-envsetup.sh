@@ -1,7 +1,4 @@
-export PROJECT=var-dart-imx6ul
-export MACHINE=imx6ul-var-dart
-
-. ./envsetup.sh
+. ./envsetup.sh var-dart-imx6ul
 
 function oe_partition_sd_mx6() {
   # this requires sfdisk >= 2.26

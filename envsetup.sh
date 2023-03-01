@@ -6,6 +6,17 @@ echoerr() {
   echo $@ >&2
 }
 
+# List supported projects
+yoe_get_projects() {
+    (
+    cd $OE_BASE/sources/meta-yoe/conf/projects
+    for f in *; do
+        if [ -e $f/config.conf ]; then
+            echo $f
+        fi
+    done
+    )
+}
 read_var_from_conf() {
   VAR_NAME=$1
   files="conf/local.conf conf/site.conf"
@@ -46,18 +57,44 @@ fi
 # <machine>-envsetup.sh -> envsetup.sh
 # and it will automatically set MACHINE variable
 
-arg0=$0
-test -n "$BASH" && arg0=$BASH_SOURCE[0]
+if [ -n "$BASH" ]; then
+    arg0=$BASH_SOURCE[0]
+elif [ -n "$ZSH_NAME" ]; then
+    arg0=$0
+else
+    arg0="$(pwd)/envsetup.sh"
+    if [ ! -e "$arg0" ]; then
+        echo "Error: $arg0 doesn't exist!" >&2
+        echo "Please source this script in same directory where $arg0 lives" >&2
+        exit 1
+    fi
+fi
 
-scriptname="${arg0##*/}"
-proj=${scriptname%-*}
-if [ -n "${proj}" -a "${proj}" != "${scriptname}" ]; then
-  PROJECT=${proj}
+if [ -z "$ZSH_NAME" ] && [ "$0" = "$arg0" ]; then
+    echo "Error: This script needs to be sourced. Please run as '. $arg0'" >&2
+    exit 1
 fi
-if [ -z "${PROJECT}" ]; then
-  echo "PROJECT must be set before sourcing this script"
-  return
+
+###############################################################################
+# OE_BASE    - The root directory for all OE sources and development.
+###############################################################################
+OE_BASE=$(/bin/readlink -f $(dirname $arg0))
+
+cd $OE_BASE
+
+if [ $# -eq 0 ]; then
+  echo
+  echo "Usage:"
+  echo ". $arg0 <project>"
+  echo
+  echo "Please specify one of the following projects"
+  echo
+  yoe_get_projects
+  echo
+  return 0
 fi
+
+PROJECT=$1
 export PROJECT
 echo "Setting PROJECT=$PROJECT"
 
@@ -106,13 +143,6 @@ fi
 #PROXYHOST=wwwgate.ti.com
 #PROXYPORT=80
 PROXYHOST=""
-
-###############################################################################
-# OE_BASE    - The root directory for all OE sources and development.
-###############################################################################
-OE_BASE=$(/bin/readlink -f $(dirname '${0}'))
-
-cd $OE_BASE
 
 # incremement this to force recreation of config files.  This should be done
 # whenever the DISTRO, or anything major changes
@@ -649,14 +679,3 @@ yoe_install_image() {
   unset WICIMG
 }
 
-# List supported projects
-yoe_get_projects() {
-    (
-    cd $OE_BASE/sources/meta-yoe/conf/projects
-    for f in *; do
-        if [ -e $f/config.conf ]; then
-            echo $f
-        fi
-    done
-    )
-}
