@@ -71,7 +71,7 @@ case "$PROJECT" in
   "rockpi-4b")
     MACHINE=rockpi-4-b
     ;;
-  "var-som-imx8qm")
+  "var-som-mx8")
     MACHINE=imx8qm-var-som
     ;;
   *)
