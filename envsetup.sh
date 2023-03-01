@@ -77,6 +77,9 @@ case "$PROJECT" in
   "nezha-d1")
     MACHINE=nezha-allwinner-d1
     ;;
+  "unleashed")
+    MACHINE=freedom-u540
+    ;;
   *)
     MACHINE=$PROJECT
 esac
