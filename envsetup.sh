@@ -539,7 +539,7 @@ dkr() {
     echo "setting dkr action to shell"
     CMD="/bin/bash"
   else
-    CMD=". ${OE_BASE}/envsetup.sh && $@"
+    CMD=". ${OE_BASE}/envsetup.sh $PROJECT && $@"
     shift
   fi
   if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
