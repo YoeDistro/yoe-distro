@@ -80,6 +80,9 @@ case "$PROJECT" in
   "unleashed")
     MACHINE=freedom-u540
     ;;
+  "var-dart-imx6ul")
+    MACHINE=imx6ul-var-dart
+    ;;
   *)
     MACHINE=$PROJECT
 esac
