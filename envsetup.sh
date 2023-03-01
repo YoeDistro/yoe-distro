@@ -648,3 +648,15 @@ yoe_install_image() {
   fi
   unset WICIMG
 }
+
+# List supported projects
+yoe_get_projects() {
+    (
+    cd $OE_BASE/sources/meta-yoe/conf/projects
+    for f in *; do
+        if [ -e $f/config.conf ]; then
+            echo $f
+        fi
+    done
+    )
+}
