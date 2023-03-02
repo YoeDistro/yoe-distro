@@ -10,7 +10,7 @@
 
 1. `git clone https://github.com/YoeDistro/yoe-distro.git`
 1. `cd yoe-distro`
-1. `. beaglebone-envsetup.sh`
+1. `. ./envsetup.sh beaglebone`
 1. `yoe_setup`
 1. `bitbake yoe-simple-image`
 1. insert SD card
