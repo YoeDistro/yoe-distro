@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.03] - TBD
+
+### Changed
+
+- Upgrade raspberrypi kernel to 5.15.92
+- Upgrade linux-yocto to v6.1.14
+- Upgrade openSBI to 1.2 and fix cyclic dependency for fitImage based boards
+- Create machine-id with "uninitialized" text
+- Upgrade simpleIOT to 0.9.0 release
+
+### Added
+
+- Add kernel specific KERNEL_OBJDUMP variable
+- Add VOLATILE_TMP_DIR variable
+
+### Removed
+
 ## [2023.02] - 2023-02-28
 
 ### Changed
