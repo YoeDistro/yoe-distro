@@ -6,6 +6,17 @@ echoerr() {
   echo $@ >&2
 }
 
+# List supported projects
+yoe_get_projects() {
+    (
+    cd $OE_BASE/sources/meta-yoe/conf/projects
+    for f in *; do
+        if [ -e $f/config.conf ]; then
+            echo $f
+        fi
+    done
+    )
+}
 read_var_from_conf() {
   VAR_NAME=$1
   files="conf/local.conf conf/site.conf"
@@ -21,6 +32,18 @@ read_var_from_conf() {
     fi
   done
   return 1
+}
+
+usage() {
+  echo
+  echo "Usage:"
+  echo ". $arg0 <project>"
+  echo
+  echo "Please specify one of the following projects"
+  echo
+  yoe_get_projects
+  echo
+  return 0
 }
 
 shell=$(ps -p "$$")
@@ -46,18 +69,81 @@ fi
 # <machine>-envsetup.sh -> envsetup.sh
 # and it will automatically set MACHINE variable
 
-arg0=$0
-test -n "$BASH" && arg0=$BASH_SOURCE[0]
+if [ -n "$BASH" ]; then
+    arg0=$BASH_SOURCE[0]
+elif [ -n "$ZSH_NAME" ]; then
+    arg0=$0
+else
+    arg0="$(pwd)/envsetup.sh"
+    if [ ! -e "$arg0" ]; then
+        echo "Error: $arg0 doesn't exist!" >&2
+        echo "Please source this script in same directory where $arg0 lives" >&2
+        exit 1
+    fi
+fi
 
-scriptname="${arg0##*/}"
-mach=${scriptname%-*}
-if [ -n "${mach}" -a "${mach}" != "${scriptname}" ]; then
-  MACHINE=${mach}
+if [ -z "$ZSH_NAME" ] && [ "$0" = "$arg0" ]; then
+    echo "Error: This script needs to be sourced. Please run as '. $arg0'" >&2
+    exit 1
 fi
-if [ -z "${MACHINE}" ]; then
-  echo "MACHINE must be set before sourcing this script"
-  return
+
+###############################################################################
+# OE_BASE    - The root directory for all OE sources and development.
+###############################################################################
+OE_BASE=$(/bin/readlink -f $(dirname $arg0))
+
+cd $OE_BASE
+
+if [ $# -eq 0 -a -z $PROJECT ]; then
+  usage
 fi
+
+if [ $# -gt 0 ]; then
+  PROJECT=$1
+fi
+
+projects="`yoe_get_projects | tr '\n' ' '`"
+
+echo "$projects" | grep -q "\<$PROJECT\>" >&2
+
+if [ $? != 0 ]; then
+  echo
+  echo "'$PROJECT' is not yet a supported project"
+  echo "Please unset PROJECT environment variable or set it to a supported project"
+  usage
+  unset PROJECT
+  unset MACHINE
+  return 1
+fi
+
+export PROJECT
+echo "Setting PROJECT=$PROJECT"
+
+case "$PROJECT" in
+  "rpi4-64")
+    MACHINE=raspberrypi4-64
+    ;;
+  "odroid-c4")
+    MACHINE=odroid-c4-hardkernel
+    ;;
+  "rockpi-4b")
+    MACHINE=rockpi-4-b
+    ;;
+  "var-som-mx8")
+    MACHINE=imx8qm-var-som
+    ;;
+  "nezha-d1")
+    MACHINE=nezha-allwinner-d1
+    ;;
+  "unleashed")
+    MACHINE=freedom-u540
+    ;;
+  "var-dart-imx6ul")
+    MACHINE=imx6ul-var-dart
+    ;;
+  *)
+    MACHINE=$PROJECT
+esac
 export MACHINE
 echo "Setting MACHINE=$MACHINE"
 
@@ -78,13 +164,6 @@ fi
 #PROXYHOST=wwwgate.ti.com
 #PROXYPORT=80
 PROXYHOST=""
-
-###############################################################################
-# OE_BASE    - The root directory for all OE sources and development.
-###############################################################################
-OE_BASE=$(/bin/readlink -f $(dirname '${0}'))
-
-cd $OE_BASE
 
 # incremement this to force recreation of config files.  This should be done
 # whenever the DISTRO, or anything major changes
@@ -150,7 +229,7 @@ HTTPS_PROXY https_proxy FTP_PROXY ftp_proxy FTPS_PROXY ftps_proxy ALL_PROXY \
 all_proxy NO_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY \
 SDKMACHINE BB_NUMBER_THREADS BB_NO_NETWORK PARALLEL_MAKE GIT_PROXY_COMMAND \
 SOCKS5_PASSWD SOCKS5_USER SCREENDIR STAMPS_DIR BBPATH_EXTRA BB_SETSCENE_ENFORCE \
-OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE DOCKER"
+OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE DOCKER PROJECT"
 
 BB_ENV_PASSTHROUGH_ADDITIONS="$(echo $BB_ENV_PASSTHROUGH_ADDITIONS $BB_ENV_PASSTHROUGH_ADDITIONS_OE | tr ' ' '\n' | LC_ALL=C sort --unique | tr '\n' ' ')"
 
@@ -396,8 +475,8 @@ yoe_add_layer() {
   fi
   git submodule add -b $br -f $1 sources/$n
   git submodule init sources/$n
-  bitbake-layers add-layer sources/$n && sed -i -e "s|$OE_BASE|\${TOPDIR}|" conf/bblayers.conf
-  echo "please commit with - git add conf/bblayers.conf && git commit -s -m'Added module $n'"
+  echo "Add it from project layers.conf files in sources/meta-yoe/conf/projects"
+  echo "please commit with - git commit -s -m'Add module $n'"
 }
 
 yoe_remove_layer() {
@@ -410,7 +489,8 @@ yoe_remove_layer() {
   bitbake-layers remove-layer $1
   git submodule deinit -f $m
   git rm -r -f $m
-  echo "please commit with - git add conf/bblayers.conf && git commit -s -m'Added module $n'"
+  echo "Remove it from project layers.conf files in sources/meta-yoe/conf/projects"
+  echo "please commit with - git commit -s -m'Remove module $n'"
   rm -rf .git/modules/$m
   #rm -rf $m
 }
@@ -480,7 +560,7 @@ dkr() {
     echo "setting dkr action to shell"
     CMD="/bin/bash"
   else
-    CMD=". ${OE_BASE}/envsetup.sh && $@"
+    CMD=". ${OE_BASE}/envsetup.sh $PROJECT && $@"
     shift
   fi
   if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
@@ -535,6 +615,7 @@ dkr() {
     -v $SSH_AUTH_DIR:/ssh-agent \
     -e SSH_AUTH_SOCK=/ssh-agent \
     -e MACHINE=$MACHINE \
+    -e PROJECT=$PROJECT \
     -w ${OE_BASE} \
     $UID_ARGS --user=$UUID:$GGID \
     $VNC_PORT \
@@ -618,3 +699,4 @@ yoe_install_image() {
   fi
   unset WICIMG
 }
+

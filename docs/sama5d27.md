@@ -14,7 +14,7 @@ Microchip also provides a
 
 1. `git clone https://github.com/YoeDistro/yoe-distro.git`
 1. `cd yoe-distro`
-1. `. sama5d27-som1-ek-sd-envsetup.sh`
+1. `. ./envsetup.sh sama5d27-som1-ek-sd`
 1. `yoe_setup`
 1. `bitbake yoe-simple-image`
 1. insert full size SD card (this image will not boot from the micro-sd slot)

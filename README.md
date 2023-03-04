@@ -39,7 +39,7 @@ port forwarding to work on docker
 
 1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
 1. `cd yoe`
-1. `. ./raspberrypi3-64-envsetup.sh`
+1. `. ./envsetup.sh rpi4-64`
 1. `yoe_setup`
 1. `bitbake yoe-simple-image`
 1. insert SD card
@@ -95,7 +95,7 @@ different is needed for product development. Thus, the following goals:
 
 ## Supported Machines
 
-See the \<machine\>-envsetup.sh files for examples of machines we regularly test
+See the output of `./envsetup.sh` for examples of projects we regularly test
 with.
 
 There is also
@@ -111,9 +111,9 @@ Additional machines can be added by including appropriate BSP layers.
 This is where all the magic happens. In general, this build system must be run
 in a bash shell. To set up the environment, source the following file:
 
-`. ./<machine>-envsetup.sh`
+`. ./envsetup.sh <project>`
 
-Or, you can export a MACHINE environment variable, and then source envsetup.sh.
+Or, you can export a PROJECT environment variable, and then source envsetup.sh.
 
 This file will create a bunch of functions in the environment prefixed with
 yoe\_ that can be executed. Type yoe\_ <tab><tab> to see them.

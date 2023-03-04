@@ -9,6 +9,8 @@ require updater.inc
 
 IMAGE_FEATURES += "ssh-server-openssh package-management hwcodecs"
 
+IMAGE_FEATURES += "debug-tweaks"
+
 IMAGE_INSTALL = "\
     packagegroup-core-boot \
     packagegroup-base-wifi \

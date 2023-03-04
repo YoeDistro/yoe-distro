@@ -8,7 +8,7 @@
 
 1. `git clone https://github.com/YoeDistro/yoe-distro.git`
 1. `cd yoe-distro`
-1. `. raspberrypi3-64-envsetup.sh`
+1. `. ./envsetup.sh rpi4-64`
 1. `yoe_setup`
 1. `bitbake yoe-simple-image`
 1. insert SD card
