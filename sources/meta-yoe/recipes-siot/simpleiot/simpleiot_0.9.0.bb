@@ -41,6 +41,8 @@ do_compile() {
     export GOARCH=${TARGET_GOARCH}
     export PATH=${GOPATH}/bin:$PATH
     export GOFLAGS="-modcacherw"
+    export CXX="${BUILD_CXX}"
+    export CXXFLAGS="${BUILD_CXXFLAGS}"
     . ${S}/envsetup.sh
     # FIXME: get elm cache in ~/.elm moved to work-shared
     rm -rf frontend/elm-stuff
