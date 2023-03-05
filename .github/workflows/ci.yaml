@@ -42,6 +42,7 @@ jobs:
           echo TOOLCHAIN = \"clang\" >> conf/local.conf
           echo BB_NUMBER_THREADS = \"16\" >> conf/local.conf
           echo PARALLEL_MAKE = \"-j 32\" >> conf/local.conf
+          echo ZSTD_THREADS = \"8\" >> conf/local.conf
           echo XZ_THREADS = \"8\" >> conf/local.conf
           echo XZ_MEMLIMIT = \"20%\" >> conf/local.conf
           /bin/bash -c "sed -i -e 's/PACKAGE_FEED_URI.*$//' conf/site.conf"
