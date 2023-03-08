@@ -15,13 +15,23 @@ and this project adheres to
 - Upgrade openSBI to 1.2 and fix cyclic dependency for fitImage based boards
 - Create machine-id with "uninitialized" text
 - Upgrade simpleIOT to 0.9.0 release
+- Refresh fixes for android-tools
+- Upgrade linux-hardkernel to 4.9.337
+- Upgrade nodejs to 18.14.2
+- Enable mesa-demos build with userland graphics drivers on rpi
+- Enable kms plugin for visionfive2
+- Fix gdb intermittent build issue
+- Allow overwrite of QB_CPU for qemux86
 
 ### Added
 
 - Add kernel specific KERNEL_OBJDUMP variable
 - Add VOLATILE_TMP_DIR variable
+- Add support for visionfive2 board
 
 ### Removed
+
+- Removed recipes - quagga
 
 ## [2023.02] - 2023-02-28
 
