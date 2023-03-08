@@ -136,13 +136,6 @@ PACKAGECONFIG:remove:pn-wpewebkit = "qtwpe"
 PREFERRED_VERSION_swig = "4%"
 PREFERRED_VERSION_swig-native = "4%"
 PREFERRED_VERSION_nativesdk-swig = "4%"
-# meta-freescale has 1.20.0 too so make a choice
-PREFERRED_VERSION_gstreamer1.0-libav = "1.22.0"
-PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.22.0"
-PREFERRED_VERSION_gstreamer1.0-plugins-bad = "1.22.0"
-PREFERRED_VERSION_gstreamer1.0-plugins-good = "1.22.0"
-PREFERRED_VERSION_gstreamer1.0-plugins-base = "1.22.0"
-PREFERRED_VERSION_gstreamer1.0-rtsp-server = "1.22.0"
 
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).
