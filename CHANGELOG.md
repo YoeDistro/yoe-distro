@@ -22,12 +22,19 @@ and this project adheres to
 - Enable kms plugin for visionfive2
 - Fix gdb intermittent build issue
 - Allow overwrite of QB_CPU for qemux86
+- Add PROVIDES and RPROVIDES for virtual/opencl-icd
+- Enable --enable-new-dtags in binutils for DT_RUNPATH
+- Add missing binutils dependency in glibc
+- Yoe updater now supports tmpfs as well as persistent overlays
+- Add yoe-installer-image to create SD card installer for eMMC
+- Switch to using ext4.xz for rootfs in updater
 
 ### Added
 
 - Add kernel specific KERNEL_OBJDUMP variable
 - Add VOLATILE_TMP_DIR variable
 - Add support for visionfive2 board
+- Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d
 
 ### Removed
 
