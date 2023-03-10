@@ -34,7 +34,7 @@ DTBO_ARTEFACTS = "\
     amlogic/overlays/odroidc4/uart2.dtbo \
     "
 
-ROOTFS_ARTEFACTS = "rootfs.tar.xz"
+ROOTFS_ARTEFACTS = "rootfs.ext4.xz"
 
 BOOTLOADER_ARTEFACTS = "\
     u-boot.bin \
@@ -50,7 +50,7 @@ do_updater() {
         OLDPWD="$PWD"
         cd ${TOPDIR}/deploy/${MACHINE}
         echo "${IMG_VERSION}" > version.txt
-        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz ${ROOTFS_ARTEFACTS}
+        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.ext4.xz ${ROOTFS_ARTEFACTS}
         for f in ${KERNEL_ARTEFACTS} ${BOOTLOADER_ARTEFACTS}
         do
             install ${DEPLOY_DIR_IMAGE}/$f $f
