@@ -14,7 +14,6 @@ do_updater () {
 }
 
 addtask updater after do_image_complete before do_build
-do_updater[depends] += "${@bb.utils.contains('IMAGE_CLASSES', 'qemuboot', '', 'yoe-installer-image:do_image_complete' ,d)}"
 do_updater[depends] += "${PN}:do_image_complete"
 do_updater[depends] += "virtual/kernel:do_deploy"
 # We want to build updater everytime we build image

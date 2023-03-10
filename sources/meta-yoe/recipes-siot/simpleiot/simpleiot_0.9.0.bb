@@ -11,7 +11,7 @@ DEPENDS = "go-native elm-binary-native nodejs-native"
 
 inherit systemd update-rc.d goarch
 
-SRCREV = "cbd19256e302476de1c963760a70b27ac8acafa1"
+SRCREV = "833f8e325c992f47ad2823774333f2f88becf952"
 
 BRANCH ?= "master"
 
@@ -41,8 +41,6 @@ do_compile() {
     export GOARCH=${TARGET_GOARCH}
     export PATH=${GOPATH}/bin:$PATH
     export GOFLAGS="-modcacherw"
-    export CXX="${BUILD_CXX}"
-    export CXXFLAGS="${BUILD_CXXFLAGS}"
     . ${S}/envsetup.sh
     # FIXME: get elm cache in ~/.elm moved to work-shared
     rm -rf frontend/elm-stuff

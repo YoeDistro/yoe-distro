@@ -46,7 +46,7 @@ DTBOFILES = "\
     overlays/iqaudio-dac.dtbo \
     "
 
-ROOTFS_ARTEFACTS = "rootfs.tar.xz"
+ROOTFS_ARTEFACTS = "rootfs.ext4.xz"
 
 BOOTLOADER_ARTEFACTS = "\
     kernel8.img \
@@ -85,7 +85,7 @@ do_updater() {
         cd ${TOPDIR}/deploy/${MACHINE}
         echo "${IMG_VERSION}" > version.txt
         # rootfs
-        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz ${ROOTFS_ARTEFACTS}
+        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.ext4.xz ${ROOTFS_ARTEFACTS}
         # uncomment when using uboot
         #install ${DEPLOY_DIR_IMAGE}/u-boot.bin kernel8.img
         #install ${DEPLOY_DIR_IMAGE}/boot.scr boot.scr
@@ -110,8 +110,7 @@ do_updater() {
         sha256sum ${UPDATE_IMAGES}  > update.sha256
         rm -rf ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
         ls ${UPDATE_IMAGES_} | cpio -ov -H newc > ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
-        install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.xz ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
-        install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.bmap ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.bmap
+        install ${TOPDIR}/deploy/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd ${DEPLOY_DIR_IMAGE}/${UPDATE_IMAGE_NAME}_${IMG_VERSION}.upd
         cd ${OLDPWD}
         rm -rf ${TOPDIR}/deploy/${MACHINE}
 }
