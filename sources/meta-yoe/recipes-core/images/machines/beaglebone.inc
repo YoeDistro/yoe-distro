@@ -19,7 +19,7 @@ KERNEL_ARTEFACTS = "\
     am335x-bonegreen.dtb \
     "
 
-ROOTFS_ARTEFACTS = "rootfs.tar.xz"
+ROOTFS_ARTEFACTS = "rootfs.ext4.xz"
 
 BOOTLOADER_ARTEFACTS = "\
     ${SPL_BINARY} \
@@ -34,7 +34,7 @@ do_updater() {
         OLDPWD="$PWD"
         cd ${TOPDIR}/deploy/${MACHINE}
         echo "${IMG_VERSION}" > version.txt
-        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz ${ROOTFS_ARTEFACTS}
+        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.ext4.xz ${ROOTFS_ARTEFACTS}
         for f in ${KERNEL_ARTEFACTS} ${BOOTLOADER_ARTEFACTS}
         do
             install ${DEPLOY_DIR_IMAGE}/$f $f
