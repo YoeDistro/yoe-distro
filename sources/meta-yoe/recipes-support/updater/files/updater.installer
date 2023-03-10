@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=20
+VERSION=20.5
 
 . ./platform
 
@@ -23,6 +23,14 @@ SD_BOOT_MOUNT=$BOOT_MOUNT_POINT
 SD_DATA_MOUNT=$DATA_MOUNT_POINT
 SD_BOOT_MOUNT_IN_ROOTFS=$SD_ROOTFS_MOUNT$SD_BOOT_MOUNT
 SD_DATA_MOUNT_IN_ROOTFS=$SD_ROOTFS_MOUNT$SD_DATA_MOUNT
+
+# Linux filesystem is 0x83 and FAT is 0xc see
+# https://tldp.org/HOWTO/Partition-Mass-Storage-Definitions-Naming-HOWTO/x190.html
+if [ "$BOOT_FSTYPE" = "ext4" ]; then
+  BOOTPART_TYPE=83
+else
+  BOOTPART_TYPE=c
+fi
 
 speak() {
   if [ "$UPDATER_SPEECH" = "1" ]; then
@@ -160,7 +168,7 @@ p      # Partition type
        # default - last sector
 t      # change partition type
 1      # partition number
-c      # FAT32 (LBA) filesystem
+${BOOTPART_TYPE} # boot partition filesystem
 t      # change partition type
 2      # partition number
 83     # Linux filesystem
@@ -186,7 +194,11 @@ FDISK_CMDS
 }
 
 format_sd_boot() {
+if [ "$BOOT_FSTYPE" = "ext4" ]; then
+  mkfs.${BOOT_FSTYPE} -O 64bit -L "BOOT" -F $SD_BOOT_DEV || return 1
+else
   mkfs.${BOOT_FSTYPE} -I -n "BOOT" $SD_BOOT_DEV || return 1
+fi
 }
 
 format_sd_rootfs() {
@@ -206,7 +218,11 @@ resize_emmc() {
 }
 
 format_emmc_boot() {
+if [ "$BOOT_FSTYPE" = "ext4" ]; then
+  mkfs.${BOOT_FSTYPE} -O 64bit -L "BOOT" -F $EMMC_BOOT_DEV || return 1
+else
   mkfs.${BOOT_FSTYPE} -I -n "BOOT" $EMMC_BOOT_DEV || return 1
+fi
 }
 
 format_emmc_rootfs() {
@@ -291,9 +307,17 @@ mount_data() {
   fi
 }
 
-mount_overlay() {
-  mkdir -p /mnt/data/upper /mnt/data/upper/data /mnt/data/work /mnt/data/persistent
-  mount -t overlay -o ro,lowerdir=/mnt/data/persistent:/mnt/rootfs,upperdir=/mnt/data/upper,workdir=/mnt/data/work overlay /mnt/rootfs
+mount_overlay_data() {
+  mkdir -p /mnt/data/upper /mnt/data/upper/data /mnt/data/work /mnt/data/persistent /mnt/overlay
+  mount -t overlay -o ro,lowerdir=/mnt/data/persistent:/mnt/rootfs,upperdir=/mnt/data/upper,workdir=/mnt/data/work overlay /mnt/overlay
+}
+
+mount_overlay_tmpfs() {
+  TMPUPPER=/mnt/tmpupper
+  mkdir $TMPUPPER
+  mount -t tmpfs tmpupper $TMPUPPER
+  mkdir -p $TMPUPPER/upper $TMPUPPER/work /mnt/data/persistent /mnt/overlay
+  mount -t overlay -o ro,lowerdir=/mnt/data/persistent:/mnt/rootfs,upperdir=$TMPUPPER/upper,workdir=$TMPUPPER/work overlay /mnt/overlay
 }
 
 umount_overlay() {
@@ -314,13 +338,20 @@ mount_rootfs_sd() {
     if ! mount $SD_ROOTFS_DEV /mnt/rootfs; then
       msg_splash "Error mount SD rootfs, please fix ..."
       speak "updater, S D file system error"
-      sleep 9999d
+      rescue_shell
     fi
   fi
 
-  mount_boot /mnt/boot $SD_BOOT_DEV
+  #mount_boot /mnt/boot $SD_BOOT_DEV
   mount_data /mnt/data $SD_DATA_DEV
-  mount_overlay
+  if [ "$OVERLAY_TYPE" = "persistent" ]; then
+    msg_splash "Mounting filesystem overlay on data partition"
+    mount_overlay_data
+  else
+    msg_splash "Mounting filesystem overlay on tmpfs"
+    mount_overlay_tmpfs
+  fi
+  mount -n --move /mnt/data /mnt/overlay/data
 }
 
 mount_rootfs_emmc() {
@@ -330,13 +361,14 @@ mount_rootfs_emmc() {
     if ! mount $EMMC_ROOTFS_DEV /mnt/rootfs; then
       msg_splash "Error mount EMMC rootfs, please fix ..."
       speak "updater, E M M C file system error"
-      sleep 9999d
+      rescue_shell
     fi
   fi
 
-  mount_boot /mnt/boot $EMMC_BOOT_DEV
+  #mount_boot /mnt/boot $EMMC_BOOT_DEV
   mount_data /mnt/data $EMMC_DATA_DEV
-  mount_overlay
+  mount_overlay_tmpfs
+  mount -n --move /mnt/data /mnt/overlay/data
 }
 
 mount_rootfs_nand() {
@@ -355,13 +387,13 @@ process_update() {
   fi
 
   # check if EMMC card has 3 partitions, if not, partition it now
-  total_install_partitions=$(fdisk -l ${INSTALL_DEVICE} | grep ^${INSTALL_DEVICE}p | wc -l)
+  total_install_partitions=$(cat /proc/partitions | grep `basename $INSTALL_DEVICE`p | wc -l)
   msg_splash "Found $total_install_partitions partitions on ${INSTALL_DEVICE}"
   if [ $total_install_partitions -ne 3 -a ${UPDATER_CAN_PARTITION} -eq 1 ]; then
     msg_splash "Partitioning storage, please wait ..."
     if ! partition_${STORAGE}; then
       msg_splash "Partitioning ${STORAGE} failed, bad media"
-      sleep 9999d
+      rescue_shell
     fi
   fi
 
@@ -378,7 +410,7 @@ process_update() {
 
   for f in $BOOT; do
     if [ -e $f ]; then
-      if ! diff $f $INSTALL_BOOT_MOUNT/$f 2>/dev/null; then
+      if ! diff $f $INSTALL_BOOT_MOUNT/$f 2>&1 >/dev/null; then
         msg_splash "Updating bootloader asset ... $f"
         install -Dm 0644 $f $INSTALL_BOOT_MOUNT/$f
         bootloader_updated=1
@@ -392,7 +424,7 @@ process_update() {
 
   for f in $KERNEL; do
     if [ -e $f ]; then
-      if ! diff $f $INSTALL_BOOT_MOUNT/$f 2>/dev/null; then
+      if ! diff $f $INSTALL_BOOT_MOUNT/$f 2>&1 >/dev/null; then
         msg_splash "Updating kernel asset ... $f"
         mkdir -p `dirname $INSTALL_BOOT_MOUNT/$f`
         install -Dm 0644 $f $INSTALL_BOOT_MOUNT/$f
@@ -406,20 +438,17 @@ process_update() {
   if [ -n "$kernel_updated" ]; then
     msg_splash "kernel updated, rebooting ..."
     restart
-    sleep 9999d
+    rescue_shell
   fi
 
   if [ -e $ROOTFS ]; then
     msg_splash "Updating rootfs"
-    format_${STORAGE}_rootfs
-    mkdir -p $INSTALL_ROOTFS_MOUNT
-    if ! mount $INSTALL_ROOTFS_DEV $INSTALL_ROOTFS_MOUNT; then
-      msg_splash "Failed to mount rootfs"
+    if [ ! -e $INSTALL_ROOTFS_DEV ]; then
+      msg_splash "Failed to find rootfs device"
       return 1
     fi
 
-    tar xf ${ROOTFS} -C $INSTALL_ROOTFS_MOUNT
-    umount $INSTALL_ROOTFS_MOUNT
+    xzcat ${ROOTFS} | dd of=$INSTALL_ROOTFS_DEV bs=1M
     msg_splash "rootfs update complete"
   fi
   # find if data partition is not formatted
@@ -493,16 +522,16 @@ update_from_sd() {
 }
 
 update_from_data() {
-  update_file=$(find_update_file $DATA_MOUNT_POINT/upper/data)
+  update_file=$(find_update_file $DATA_MOUNT_POINT)
   if [ "$update_file" != "" ]; then
     speak "update found on data partition"
     msg_splash "Updating from Data partition: $update_file"
-    if ! process_update $DATA_MOUNT_POINT/upper/data/$update_file; then
+    if ! process_update $DATA_MOUNT_POINT/$update_file; then
       msg_splash "Failed to process update from data partition"
       speak "updater, failed to process update from data partition"
       return 1
     else
-      rm -rf $DATA_MOUNT_POINT/upper/data/$update_file
+      rm -rf $DATA_MOUNT_POINT/$update_file
       msg_splash "Update from Data partition complete"
       return 0
     fi
@@ -523,6 +552,11 @@ update() {
     fi
   fi
 }
+create_persistent_bind_dir() {
+  for d in ${PERSISTENT_BINDS}; do
+    mkdir -p /mnt/overlay/data/persistent/$d
+  done
+}
 
 boot() {
   umount_usb
@@ -530,7 +564,7 @@ boot() {
   umount_data
   if ! resize_${STORAGE}; then
     msg_splash "Resizing ${STORAGE} failed, bad media"
-    sleep 9999d
+    rescue_shell
   fi
 
   if [ "$INSTALL_BOOT_DEV" = "$EMMC_BOOT_DEV" ]; then
@@ -543,22 +577,16 @@ boot() {
     mount_rootfs_sd
   else
     msg_splash "No bootable device found"
-    sleep 9999d
+    rescue_shell
   fi
 
-  msg_splash "Moving system mounts into rootfs..."
-  #mount --move /dev /mnt/rootfs/dev
-  #mount --move /proc /mnt/rootfs/proc
-  #mount --move /sys /mnt/rootfs/sys
-  umount /proc
-  umount /sys
-  umount /dev
-
+  msg_splash "Creating volatile bind dirs in data partition ..."
+  create_persistent_bind_dir
   msg_splash "switching to main filesystem"
   msg_splash 50
 
-  #exec switch_root -c /dev/console /mnt/rootfs /sbin/init
-  exec switch_root /mnt/rootfs /sbin/init
+#  exec switch_root -c /dev/console /mnt/overlay /sbin/init
+  exec switch_root /mnt/overlay /sbin/init
 }
 
 initialize
