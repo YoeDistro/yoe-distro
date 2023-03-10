@@ -386,10 +386,7 @@ process_update() {
     return 1
   fi
 
-  # check if EMMC card has 3 partitions, if not, partition it now
-  total_install_partitions=$(cat /proc/partitions | grep `basename $INSTALL_DEVICE`p | wc -l)
-  msg_splash "Found $total_install_partitions partitions on ${INSTALL_DEVICE}"
-  if [ $total_install_partitions -ne 3 -a ${UPDATER_CAN_PARTITION} -eq 1 ]; then
+  if [ "$YOE_UPDATER_MODE" = "factory" ]; then
     msg_splash "Partitioning storage, please wait ..."
     if ! partition_${STORAGE}; then
       msg_splash "Partitioning ${STORAGE} failed, bad media"
@@ -435,7 +432,7 @@ process_update() {
 
   umount $INSTALL_BOOT_DEV
 
-  if [ -n "$kernel_updated" ]; then
+  if [ -n "$kernel_updated" -a "$YOE_UPDATER_MODE" != "factory" ]; then
     msg_splash "kernel updated, rebooting ..."
     restart
     rescue_shell
@@ -455,6 +452,12 @@ process_update() {
   fs_type=$(blkid -o value -s TYPE $INSTALL_DATA_DEV)
   if [ -z "$fs_type" ]; then
     format_${STORAGE}_data
+  fi
+
+  if [ "$YOE_UPDATER_MODE" = "factory" ]; then
+      msg_splash "Factory Install Complete. Please remove install media and reboot"
+      # Wait for eternity
+      tail -f /dev/null
   fi
 
   return 0
@@ -490,6 +493,7 @@ update_from_usb() {
   if [ "$update_file" != "" ]; then
     speak "updater, found u s b disk"
     msg_splash "USB update: $update_file"
+    . $USB_MOUNT_POINT/yoe-updater.env
     if ! process_update $USB_MOUNT_POINT/$update_file; then
       msg_splash "Failed to process update from USB"
       speak "updater, failed to process update from u s b"
@@ -508,6 +512,7 @@ update_from_sd() {
   if [ "$update_file" != "" ]; then
     speak "update found on S D card"
     msg_splash "SD update: $update_file"
+    . $SD_MOUNT_POINT/yoe-updater.env
     if ! process_update $SD_MOUNT_POINT/$update_file; then
       msg_splash "Failed to process update from SD"
       speak "updater, failed to process update from s d card"
