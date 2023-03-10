@@ -51,7 +51,7 @@ DTBOFILES = "\
     overlays/iqaudio-dac.dtbo \
     "
 
-ROOTFS_ARTEFACTS = "rootfs.tar.xz"
+ROOTFS_ARTEFACTS = "rootfs.ext4.xz"
 
 # Add boot.scr to BOOTLOADER_ARTEFACTS if using u-boot
 BOOTLOADER_ARTEFACTS = "\
@@ -88,7 +88,7 @@ do_updater() {
         cd ${TOPDIR}/deploy/${MACHINE}
         echo "${IMG_VERSION}" > version.txt
         # rootfs
-        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.xz ${ROOTFS_ARTEFACTS}
+        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.ext4.xz ${ROOTFS_ARTEFACTS}
         # bootloader ( if using u-boot
         #install ${DEPLOY_DIR_IMAGE}/u-boot.bin kernel7.img
         #install ${DEPLOY_DIR_IMAGE}/boot.scr boot.scr
