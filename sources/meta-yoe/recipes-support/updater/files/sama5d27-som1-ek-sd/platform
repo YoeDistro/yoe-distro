@@ -6,7 +6,7 @@ USB_DETECTION_DELAY=4
 
 KERNEL="sama5d27_som1_ek.itb"
 BOOT="BOOT.BIN u-boot.bin uboot.env"
-ROOTFS="rootfs.tar.xz"
+ROOTFS="rootfs.ext4.xz"
 
 EMMC_DEVICE=/dev/mmcblk0
 SD_DEVICE=/dev/mmcblk1
@@ -15,7 +15,11 @@ SD_DEVICE=/dev/mmcblk1
 STORAGE="emmc"
 # Install location is EMMC_DEVICE if STORAGE is 'emmc' and
 # SD_DEVICE if STORAGE is 'sd'
-INSTALL_DEVICE=${EMMC_DEVICE}
+if [ "$STORAGE" = "emmc" ]; then
+  INSTALL_DEVICE=${EMMC_DEVICE}
+else
+  INSTALL_DEVICE=${SD_DEVICE}
+fi
 
 INSTALL_BOOT_DEV=${INSTALL_DEVICE}p1
 INSTALL_ROOTFS_DEV=${INSTALL_DEVICE}p2
@@ -45,6 +49,11 @@ BOOT_FSTYPE=vfat
 
 UPDATER_SPEECH=0
 UPDATER_CAN_PARTITION=1
+# OVERLAY_TYPE is one of 'tmpfs' or 'persistent'
+OVERLAY_TYPE=persistent
+# Space separated list of dirs to create in /data
+# which is used by volatile-binds during main rootfs boot
+PERSISTENT_BINDS=""
 
 plat_init() {
   :
