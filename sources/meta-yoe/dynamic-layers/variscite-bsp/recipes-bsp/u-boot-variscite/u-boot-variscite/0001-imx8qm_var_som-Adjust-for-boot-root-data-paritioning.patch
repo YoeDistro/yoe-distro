@@ -1,0 +1,34 @@
+From ae4bb4e192786f1f25ffa5cdb1cc67dd40987175 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Tue, 14 Mar 2023 21:22:03 -0700
+Subject: [PATCH] imx8qm_var_som: Adjust for boot/root/data paritioning scheme
+
+Yoe Distro uses separate parition for boot and rootfs, therefore adjust
+it here in bootloader environment.
+
+Upstream-Status: Inappropriate [Yoe Specific]
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ include/configs/imx8qm_var_som.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/include/configs/imx8qm_var_som.h
++++ b/include/configs/imx8qm_var_som.h
+@@ -93,7 +93,7 @@
+ 	CONFIG_MFG_ENV_SETTINGS \
+ 	M4_BOOT_ENV \
+ 	AHAB_ENV \
+-	"bootdir=/boot\0" \
++	"bootdir=\0" \
+ 	"script=boot.scr\0" \
+ 	"image=Image.gz\0" \
+ 	"panel=VAR-WVGA-LCD\0" \
+@@ -126,7 +126,7 @@
+ 		"bootaux ${m41_addr} 1;\0" \
+ 	"optargs=setenv bootargs ${bootargs} ${kernelargs};\0" \
+ 	"mmcargs=setenv bootargs console=${console},${baudrate} earlycon som_wifi=${som_wifi} " \
+-		"root=/dev/mmcblk${mmcblk}p${mmcpart} rootfstype=ext4 rootwait rw\0 " \
++		"root=/dev/mmcblk${mmcblk}p2 rootfstype=ext4 rootwait rw\0 " \
+ 	"loadbootscript=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}/${script};\0" \
+ 	"bootscript=echo Running bootscript from mmc ...; " \
+ 		"source\0" \
