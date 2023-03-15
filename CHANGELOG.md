@@ -41,6 +41,7 @@ and this project adheres to
 - Add VOLATILE_TMP_DIR variable
 - Add support for visionfive2 board
 - Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d
+- Add yoe updater support for MX8-VAR-SOM symphony board
 
 ### Removed
 
