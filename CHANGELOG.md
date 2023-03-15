@@ -28,6 +28,12 @@ and this project adheres to
 - Yoe updater now supports tmpfs as well as persistent overlays
 - Add yoe-installer-image to create SD card installer for eMMC
 - Switch to using ext4.xz for rootfs in updater
+- Update arm optee-os to 3.20.0
+- Upgrade bpftrace to 0.17.0
+- Fix serveral recipes in meta-freesclale to build world
+- Enable parallel execution of ptest images and fix ptest dependencies
+- Handle spaces within user $PATH in SDK installers
+- Upgrade systemd to 253.1
 
 ### Added
 
@@ -35,6 +41,7 @@ and this project adheres to
 - Add VOLATILE_TMP_DIR variable
 - Add support for visionfive2 board
 - Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d
+- Add yoe updater support for MX8-VAR-SOM symphony board
 
 ### Removed
 
