@@ -1,0 +1,20 @@
+# short-description: Create SD card image with a boot partition
+# long-description:
+# Create an image that can be written onto a SD card using dd for use
+# with i.MX SoC family
+# It uses u-boot + other binaries gathered together on imx-boot file
+#
+# The disk layout used is:
+#  - ---------- -------------- -------------------
+# | | imx-boot |     installer     |    empty    |
+#  - ---------- ------------------ --------------
+# ^ ^          ^                  ^             ^
+# | |          |                  |             |
+# 0 |        8MiB              1024MiB         1024MiB + IMAGE_EXTRA_SPACE (default 10MiB)
+#   ${IMX_BOOT_SEEK} 32 or 33kiB, see reference manual
+#
+part u-boot --source rawcopy --sourceparams="file=imx-boot" --ondisk mmcblk --no-table --align ${IMX_BOOT_SEEK}
+# 1G
+part /boot --source bootimg-partition --ondisk mmcblk --fstype=ext4 --label boot --active --align 4096 --size 1024
+
+bootloader --ptable gpt
