@@ -22,8 +22,14 @@ BOOTLOADER_ARTEFACTS = "\
     dpfw.bin \
     hdmirxfw.bin \
     hdmitxfw.bin \
+    tee.bin \
     "
-UPDATE_IMAGES = "version.txt ${BOOTLOADER_ARTEFACTS} ${KERNEL_ARTEFACTS} ${DTBO_ARTEFACTS} ${ROOTFS_ARTEFACTS}"
+
+# Anything that is not mentioned above but it is created during updater artifacts creation e.g.
+# default DTB symlinks etc.
+EXTRA_ARTEFACTS = "imx8qm-var-som-symphony.dtb"
+
+UPDATE_IMAGES = "version.txt ${BOOTLOADER_ARTEFACTS} ${KERNEL_ARTEFACTS} ${DTBO_ARTEFACTS} ${ROOTFS_ARTEFACTS} ${EXTRA_ARTEFACTS}"
 
 do_updater() {
         echo "IMG_VERSION = ${IMG_VERSION}"
