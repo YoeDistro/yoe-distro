@@ -14,7 +14,5 @@ IMAGE_FEATURES += "splash \
 CORE_IMAGE_EXTRA_INSTALL += " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'wayland x11', 'weston-xwayland', '', d)} \
   ${X11ONLYPKGS} \
-  gstreamer1.0-libav \
 "
-
 SYSTEMD_DEFAULT_TARGET = "graphical.target"
