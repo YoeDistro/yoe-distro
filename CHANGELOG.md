@@ -34,6 +34,9 @@ and this project adheres to
 - Enable parallel execution of ptest images and fix ptest dependencies
 - Handle spaces within user $PATH in SDK installers
 - Upgrade systemd to 253.1
+- Upgrade visionfive2-firmware to VF2_v2.10.4
+- Fix nodejs build on older build hosts eg. centos8
+- Move android-tools from meta-clang to meta-oe
 
 ### Added
 

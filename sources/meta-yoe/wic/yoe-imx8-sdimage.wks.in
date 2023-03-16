@@ -21,4 +21,4 @@ part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --fixed-size 1
 # User data partition (1M)
 part /data --ondisk mmcblk --fstype=ext4 --label data --fixed-size 1 --align 4096 --fsoptions "x-systemd.growfs"
 
-bootloader --ptable gpt
+bootloader --ptable msdos
