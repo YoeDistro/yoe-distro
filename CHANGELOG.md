@@ -37,6 +37,9 @@ and this project adheres to
 - Upgrade visionfive2-firmware to VF2_v2.10.4
 - Fix nodejs build on older build hosts eg. centos8
 - Move android-tools from meta-clang to meta-oe
+- Update openssh to 3.1.0
+- Update matchbox recipes to latest
+- Upgrade networkmanager to 1.42.4
 
 ### Added
 
