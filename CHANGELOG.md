@@ -40,6 +40,9 @@ and this project adheres to
 - Update openssh to 3.1.0
 - Update matchbox recipes to latest
 - Upgrade networkmanager to 1.42.4
+- Upgrade clang to 16.0.0
+- Fix building various packagegroups in meta-openembedded
+- Use python3-unittest-automake-output in python recipes for ptest integration
 
 ### Added
 
@@ -47,11 +50,13 @@ and this project adheres to
 - Add VOLATILE_TMP_DIR variable
 - Add support for visionfive2 board
 - Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d
+  pgpool2, python3-unittest-automake-output
 - Add yoe updater support for MX8-VAR-SOM symphony board
+- Add ptest support for mbedTLS
 
 ### Removed
 
-- Removed recipes - quagga
+- Removed recipes - quagga, jhi
 
 ## [2023.02] - 2023-02-28
 
