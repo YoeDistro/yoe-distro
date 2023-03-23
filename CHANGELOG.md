@@ -43,6 +43,11 @@ and this project adheres to
 - Upgrade clang to 16.0.0
 - Fix building various packagegroups in meta-openembedded
 - Use python3-unittest-automake-output in python recipes for ptest integration
+- Fix qtpdf with clang-native from 16.0.0 release
+- Update android-tools to 29.0.6.r14
+- Disable warnings as errors when building glibc
+- Update mesa to 23.0.0
+- respect IMAGE_LINK_NAME in seftests
 
 ### Added
 
