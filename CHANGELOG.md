@@ -48,6 +48,8 @@ and this project adheres to
 - Disable warnings as errors when building glibc
 - Update mesa to 23.0.0
 - respect IMAGE_LINK_NAME in seftests
+- Upgrade RPI kernel to 6.1
+- Fix some linkshared regression introduced in go 1.20
 
 ### Added
 
@@ -58,6 +60,8 @@ and this project adheres to
   pgpool2, python3-unittest-automake-output
 - Add yoe updater support for MX8-VAR-SOM symphony board
 - Add ptest support for mbedTLS
+- Add buildstats-summary script
+- Add support for loongarch64
 
 ### Removed
 
