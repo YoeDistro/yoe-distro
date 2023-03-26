@@ -10,8 +10,8 @@ and this project adheres to
 
 ### Changed
 
-- Upgrade raspberrypi kernel to 5.15.92
-- Upgrade linux-yocto to v6.1.14
+- Upgrade raspberrypi kernel to 5.15.103
+- Upgrade linux-yocto to v6.1.20
 - Upgrade openSBI to 1.2 and fix cyclic dependency for fitImage based boards
 - Create machine-id with "uninitialized" text
 - Upgrade simpleIOT to 0.9.0 release
