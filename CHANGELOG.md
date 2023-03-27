@@ -50,6 +50,8 @@ and this project adheres to
 - respect IMAGE_LINK_NAME in seftests
 - Upgrade RPI kernel to 6.1
 - Fix some linkshared regression introduced in go 1.20
+- Upgrade openssh to 9.3p1
+- Fix rpi specific vlc and ffmpeg with clang16
 
 ### Added
 
@@ -57,11 +59,12 @@ and this project adheres to
 - Add VOLATILE_TMP_DIR variable
 - Add support for visionfive2 board
 - Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d
-  pgpool2, python3-unittest-automake-output
+  pgpool2, python3-unittest-automake-output, debugedit
 - Add yoe updater support for MX8-VAR-SOM symphony board
 - Add ptest support for mbedTLS
 - Add buildstats-summary script
 - Add support for loongarch64
+- Add find-debuginfo support back
 
 ### Removed
 
