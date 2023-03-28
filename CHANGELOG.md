@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2023.03] - TBD
+## [2023.03] - 2023-02-30
 
 ### Changed
 
@@ -59,7 +59,9 @@ and this project adheres to
 - Add VOLATILE_TMP_DIR variable
 - Add support for visionfive2 board
 - Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d
-  pgpool2, python3-unittest-automake-output, debugedit
+  pgpool2, python3-unittest-automake-output, debugedit, reboot-mode
+  python3-executing, python3-pure-eval, python3-stack-data
+  exfatprogs
 - Add yoe updater support for MX8-VAR-SOM symphony board
 - Add ptest support for mbedTLS
 - Add buildstats-summary script
@@ -68,7 +70,7 @@ and this project adheres to
 
 ### Removed
 
-- Removed recipes - quagga, jhi
+- Removed recipes - quagga, jhi, exfat-utils
 
 ## [2023.02] - 2023-02-28
 
