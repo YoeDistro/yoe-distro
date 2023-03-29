@@ -52,6 +52,8 @@ and this project adheres to
 - Fix some linkshared regression introduced in go 1.20
 - Upgrade openssh to 9.3p1
 - Fix rpi specific vlc and ffmpeg with clang16
+- Update clang to 16.0.1
+- Fix libunwind compile failures on 32-bit arm with Clang 16
 
 ### Added
 
