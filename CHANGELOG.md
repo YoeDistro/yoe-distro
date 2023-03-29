@@ -6,12 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2023.03] - TBD
+## [2023.03] - 2023-02-30
 
 ### Changed
 
-- Upgrade raspberrypi kernel to 5.15.92
-- Upgrade linux-yocto to v6.1.14
+- Upgrade raspberrypi kernel to 5.15.103
+- Upgrade linux-yocto to v6.1.20
 - Upgrade openSBI to 1.2 and fix cyclic dependency for fitImage based boards
 - Create machine-id with "uninitialized" text
 - Upgrade simpleIOT to 0.9.0 release
@@ -43,6 +43,15 @@ and this project adheres to
 - Upgrade clang to 16.0.0
 - Fix building various packagegroups in meta-openembedded
 - Use python3-unittest-automake-output in python recipes for ptest integration
+- Fix qtpdf with clang-native from 16.0.0 release
+- Update android-tools to 29.0.6.r14
+- Disable warnings as errors when building glibc
+- Update mesa to 23.0.0
+- respect IMAGE_LINK_NAME in seftests
+- Upgrade RPI kernel to 6.1
+- Fix some linkshared regression introduced in go 1.20
+- Upgrade openssh to 9.3p1
+- Fix rpi specific vlc and ffmpeg with clang16
 
 ### Added
 
@@ -50,13 +59,18 @@ and this project adheres to
 - Add VOLATILE_TMP_DIR variable
 - Add support for visionfive2 board
 - Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d
-  pgpool2, python3-unittest-automake-output
+  pgpool2, python3-unittest-automake-output, debugedit, reboot-mode
+  python3-executing, python3-pure-eval, python3-stack-data
+  exfatprogs
 - Add yoe updater support for MX8-VAR-SOM symphony board
 - Add ptest support for mbedTLS
+- Add buildstats-summary script
+- Add support for loongarch64
+- Add find-debuginfo support back
 
 ### Removed
 
-- Removed recipes - quagga, jhi
+- Removed recipes - quagga, jhi, exfat-utils
 
 ## [2023.02] - 2023-02-28
 
