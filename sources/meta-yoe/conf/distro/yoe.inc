@@ -37,6 +37,16 @@ https://.*/.*    http://downloads.yoctoproject.org/mirror/sources/ \n"
 # Allow reusing DL_DIR from the current build as a mirror for other builds.
 BB_GENERATE_MIRROR_TARBALLS = "1"
 
+# see https://docs.yoctoproject.org/bitbake/2.0/bitbake-user-manual/bitbake-user-manual-ref-variables.html#term-BB_GIT_SHALLOW
+BB_GIT_SHALLOW = "1"
+
+# Keep only the top commit
+BB_GIT_SHALLOW_DEPTH = "1"
+
+# This defaults to enabled if both BB_GIT_SHALLOW and
+# BB_GENERATE_MIRROR_TARBALLS are enabled
+BB_GENERATE_SHALLOW_TARBALLS = "1"
+
 PRSERV_HOST ?= "localhost:0"
 TCLIBCAPPEND = ""
 
