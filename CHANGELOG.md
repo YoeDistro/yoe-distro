@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.04] - XXXX-XX-XX
+
+### Changed
+
+- Fix meta-clang towards meeting yocto layer compatible status
+- Fix clang packaging issue where installing clang-tools
+  would pull in whole compiler
+- Simplify imx-boot container
+- Add 6.1 linux-ti-staging
+- Update tzdata 2023c
+- Make EXCLUDE_FROM_WORLD boolean
+
+### Added
+
+- Add new CVE database fetcher cve-update-nvd2-native
+
+### Removed
+
 ## [2023.03] - 2023-02-30
 
 ### Changed
