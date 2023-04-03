@@ -17,10 +17,13 @@ and this project adheres to
 - Add 6.1 linux-ti-staging
 - Update tzdata 2023c
 - Make EXCLUDE_FROM_WORLD boolean
+- Fix recipes to build with upcoming 2.72 autconf release
 
 ### Added
 
 - Add new CVE database fetcher cve-update-nvd2-native
+- Added new recipes:
+  - libpcsc-perl
 
 ### Removed
 
