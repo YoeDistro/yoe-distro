@@ -53,7 +53,7 @@ jobs:
       - name: Test Image
         run: |
           export DISPLAY=":0"
-          echo TESTIMAGE_AUTO_qemuall = \"1\" >> conf/local.conf
+          echo TESTIMAGE_AUTO:qemuall = \"1\" >> conf/local.conf
           /bin/bash -c ". ./envsetup.sh qemuarm64 && bitbake yoe-sdk-image"
       - name: Prepare results
         run: |
