@@ -18,12 +18,19 @@ and this project adheres to
 - Update tzdata 2023c
 - Make EXCLUDE_FROM_WORLD boolean
 - Fix recipes to build with upcoming 2.72 autconf release
+- Remove double protocol= from SRC_URIs in meta-oe
+- Correct the license information for several recipes in meta-oe
+- Update several gnome recipes to 44.0
+- Add ptest images for meta-oe, meta-python, meta-perl
+- Update rust to 1.68.1
+- Add missing dependency on glib-2.0-native in several recipes
+- Add fixes to several recipes to build with autoconf 2.72
 
 ### Added
 
 - Add new CVE database fetcher cve-update-nvd2-native
 - Added new recipes:
-  - libpcsc-perl
+  - libpcsc-perl, polkit-gnome
 
 ### Removed
 
