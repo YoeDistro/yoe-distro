@@ -25,12 +25,22 @@ and this project adheres to
 - Update rust to 1.68.1
 - Add missing dependency on glib-2.0-native in several recipes
 - Add fixes to several recipes to build with autoconf 2.72
+- Update clang to llvmorg-16.0.1 release
+- Fix bindgen-cli and python3-pyruvate to work with new crate
+  updated class
+- Fix upstream patch status in meta-webserver, meta-perl, meta-xfce
+  meta-gnome, and meta-multimedia
+- Improve cargo-update-recipe-crates to specify two different versions
+  of same crate in given recipe
 
 ### Added
 
 - Add new CVE database fetcher cve-update-nvd2-native
 - Added new recipes:
   - libpcsc-perl, polkit-gnome
+- Add ptests for libtinyxml2, python3-lorem, python3-path and dc
+  bitwise
+- Enable hashserve distro-wide for yoe
 
 ### Removed
 
