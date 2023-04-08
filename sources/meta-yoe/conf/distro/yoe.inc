@@ -37,6 +37,11 @@ https://.*/.*    http://downloads.yoctoproject.org/mirror/sources/ \n"
 # Allow reusing DL_DIR from the current build as a mirror for other builds.
 BB_GENERATE_MIRROR_TARBALLS = "1"
 
+# Use Hash Equivalence
+BB_SIGNATURE_HANDLER = "OEEquivHash"
+# Start a local hashserver instance
+BB_HASHSERVE = "auto"
+
 # see https://docs.yoctoproject.org/bitbake/2.0/bitbake-user-manual/bitbake-user-manual-ref-variables.html#term-BB_GIT_SHALLOW
 BB_GIT_SHALLOW = "1"
 
