@@ -10,3 +10,7 @@
 	path = sources/meta-openembedded
 	url = https://github.com/yoedistro/meta-openembedded
 	branch = master
+[submodule "sources/meta-example"]
+	path = sources/meta-example
+	url = https://github.com/kraj/meta-example
+	branch = main
