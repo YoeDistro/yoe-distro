@@ -1,0 +1,32 @@
+{
+	"YOCTO": {
+		/* Target Device Settings */
+		"TARGET_IP":"192.168.7.2",
+
+		/* Project Settings */
+		"PROGRAM":"${workspaceFolder}/workspace/sources/opencv-example/oe-workdir/image/usr/bin/DisplayImage",
+		"ARGS":"/usr/share/DisplayImage/example_100kb.jpg",
+
+		/* Yocto SDK Configuration */
+		"ARCH":"x86_64-yoe-linux",
+		"OECORE_NATIVE_SYSROOT":"/mnt/b/rdk/yocto-layer-dev/build/tmp/sysroots/x86_64/",
+		"SDKTARGETSYSROOT": "/mnt/b/rdk/yocto-layer-dev/build/tmp/sysroots/qemux86-64/",
+
+		/* Yocto SDK Constants */
+		"CC_PREFIX": "${config:YOCTO.OECORE_NATIVE_SYSROOT}/usr/bin/${config:YOCTO.ARCH}/${config:YOCTO.ARCH}-",
+		"CXX": "${config:YOCTO.CC_PREFIX}g++ --sysroot=${config:YOCTO.SDKTARGETSYSROOT}",
+		"CC": "${config:YOCTO.CC_PREFIX}gcc --sysroot=${config:YOCTO.SDKTARGETSYSROOT}",
+	},
+	"bitbake.workingFolder": "build-vscode-bitbake",
+	"bitbake.loggingLevel": "info",
+	"bitbake.deepExamine": true,
+	"bitbake.generateWorkingFolder": true,
+	"bitbake.machine": "qemux86-64",
+	"terminal.integrated.profiles.osx": {
+		"Init dev env": {
+		"path": "zsh",
+		"args": ["-c", "source ${workspaceFolder}/build/tmp/deploy/images/qemux86-64/environment-setup-core2-64-yoe-linux"],
+		},
+	},
+	"terminal.integrated.defaultProfile.osx": "Init dev env"
+}

@@ -1,0 +1,49 @@
+{
+    "version": "2.0.0",
+    /* Configure Yocto SDK Constants from settings.json */
+    "options": {
+        "env": {
+            "CXX": "${config:YOCTO.CXX}",
+            "CC": "${config:YOCTO.CC}",
+        }
+     },
+     /* Configure integrated VS Code Terminal */
+     "presentation": {
+        "echo": false,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+    },
+    "tasks": [
+        /* Configure launch.json (debug) preLaunchTask Task */
+        {
+            "label": "xgdb",
+            "isBackground": true,
+            "problemMatcher": {
+                "base": "$gcc",
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern":  "Deploying to target",
+                    "endsPattern":  "Starting GDB Server on Target"
+                }
+            },
+            "type": "shell",
+            "command": "/bin/sh",
+            "args": [
+                "${workspaceFolder}/.vscode/xgdb.sh",
+                "${config:YOCTO.TARGET_IP}",
+                "${config:YOCTO.PROGRAM}",
+                "${config:YOCTO.ARGS}",
+            ],
+            "dependsOn": ["build"],
+        },
+        /* Configure Build Task */
+        {
+           "label": "build",
+            "type": "shell",
+            "command": "${workspaceFolder}/workspace/sources/opencv-example/oe-workdir/temp/run.do_compile && ${workspaceFolder}/workspace/sources/opencv-example/oe-workdir/temp/run.do_install",
+            "problemMatcher": ["$gcc"]
+        },
+    ]
+}

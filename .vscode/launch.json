@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "stopAtEntry": true,
+            "name": "Debug",
+            "preLaunchTask": "xgdb",
+            "program": "${workspaceFolder}/workspace/sources/opencv-example/oe-workdir/image/usr/bin/DisplayImage",
+            "args": ["/usr/share/DisplayImage/example_100kb.jpg"],
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "targetArchitecture": "x86_64",
+            "setupCommands": [{
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "Set sysroot ",
+                "text": "set sysroot ${config:YOCTO.SDKTARGETSYSROOT}"
+            },
+            {
+                "description": "Set safe paths ",
+                "text": "set auto-load safe-path /"
+            },
+            ],
+            "miDebuggerPath": "${config:YOCTO.CC_PREFIX}gdb",
+            "miDebuggerServerAddress": "${config:YOCTO.TARGET_IP}:3000",
+            "sourceFileMap": {
+                "/usr/src/debug/opencv-example/1.0+git999-r0/": "${workspaceFolder}/workspace/sources/opencv-example",
+                "/usr/include/": "${workspaceFolder}/build/tmp/sysroots/qemux86-64/usr/include",
+                "/usr/src/debug/glibc/2.37-r1": "${workspaceFolder}/build/tmp/work/core2-64-yoe-linux/glibc/2.37-r1/git",
+                "/usr/src/debug/": "${workspaceFolder}/build/tmp/work/core2-64-yoe-linux/"
+            },
+        }
+    ]
+}
