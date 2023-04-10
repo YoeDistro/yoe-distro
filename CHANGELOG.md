@@ -32,12 +32,15 @@ and this project adheres to
   meta-gnome, and meta-multimedia
 - Improve cargo-update-recipe-crates to specify two different versions
   of same crate in given recipe
+- Use 3.20 version for OPTEE components
+- Update VisionFive2 firmware to 2.11.5
+- Upgrade pipewire to 0.3.68
 
 ### Added
 
 - Add new CVE database fetcher cve-update-nvd2-native
 - Added new recipes:
-  - libpcsc-perl, polkit-gnome
+  - libpcsc-perl, polkit-gnome, libnfs
 - Add ptests for libtinyxml2, python3-lorem, python3-path and dc
   bitwise
 - Enable hashserve distro-wide for yoe
