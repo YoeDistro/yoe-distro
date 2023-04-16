@@ -37,6 +37,13 @@ and this project adheres to
 - Upgrade pipewire to 0.3.68
 - Fix recipes to build with multilib on
 - Switch beaglebone and beagle-x15 to bb.org kernel/u-boot
+- Add support for creating bootable SD card for visionfive2 board
+- Use 6.2 for linux-ti-mainline kernel
+- Use shlex instead of deprecated pipe in python scripts
+- Upgrade u-boot to 2023.04
+- Update ffmpeg to 6.0
+- Update musl to latest trunk
+- Update rust to 1.68.2
 
 ### Added
 
