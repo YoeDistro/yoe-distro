@@ -35,12 +35,21 @@ and this project adheres to
 - Use 3.20 version for OPTEE components
 - Update VisionFive2 firmware to 2.11.5
 - Upgrade pipewire to 0.3.68
+- Fix recipes to build with multilib on
+- Switch beaglebone and beagle-x15 to bb.org kernel/u-boot
+- Add support for creating bootable SD card for visionfive2 board
+- Use 6.2 for linux-ti-mainline kernel
+- Use shlex instead of deprecated pipe in python scripts
+- Upgrade u-boot to 2023.04
+- Update ffmpeg to 6.0
+- Update musl to latest trunk
+- Update rust to 1.68.2
 
 ### Added
 
 - Add new CVE database fetcher cve-update-nvd2-native
 - Added new recipes:
-  - libpcsc-perl, polkit-gnome, libnfs
+  - libpcsc-perl, polkit-gnome, libnfs, adw-gtk3
 - Add ptests for libtinyxml2, python3-lorem, python3-path and dc
   bitwise
 - Enable hashserve distro-wide for yoe
