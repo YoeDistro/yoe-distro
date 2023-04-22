@@ -44,6 +44,12 @@ and this project adheres to
 - Update ffmpeg to 6.0
 - Update musl to latest trunk
 - Update rust to 1.68.2
+- Update FSL u-boot to 2023.04 release
+- Update QT5 to v5.15.9-lts-lgpl
+- Add new Assimp submodule to qt3d
+- Fix visionfive2 wic file generation
+- Upgrade systemd 253.1 -> 253.3
+- Fix several ptests to work on musl systems
 
 ### Added
 
@@ -53,6 +59,7 @@ and this project adheres to
 - Add ptests for libtinyxml2, python3-lorem, python3-path and dc
   bitwise
 - Enable hashserve distro-wide for yoe
+- Add support for Raspberry Pi Camera Module v3
 
 ### Removed
 
