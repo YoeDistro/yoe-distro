@@ -50,12 +50,13 @@ and this project adheres to
 - Fix visionfive2 wic file generation
 - Upgrade systemd 253.1 -> 253.3
 - Fix several ptests to work on musl systems
+- Fix runtime dependencies for clang scanbuild
 
 ### Added
 
 - Add new CVE database fetcher cve-update-nvd2-native
 - Added new recipes:
-  - libpcsc-perl, polkit-gnome, libnfs, adw-gtk3
+  - libpcsc-perl, polkit-gnome, libnfs, adw-gtk3, etcd-cpp-apiv3
 - Add ptests for libtinyxml2, python3-lorem, python3-path and dc
   bitwise
 - Enable hashserve distro-wide for yoe
