@@ -524,8 +524,13 @@ yoe_clean_sstate() {
 # set DOCKER_REPO to 'none' to disable docker
 
 if [ -z "$DOCKER_REPO" ]; then
-  echo "Setting DOCKER_REPO to yoedistro/yoe-build:bullseye"
-  export DOCKER_REPO=yoedistro/yoe-build:bullseye
+  if [ "`uname`" = "Darwin" -a "`uname -m`" = "arm64" ]; then
+    dockerarch="-aarch64"
+    elif [ "`uname`" = "Linux" ]; then
+    dockerarch="-`uname -m`"
+  fi
+  echo "Setting DOCKER_REPO to yoedistro/yoe-build:bullseye${dockerarch}"
+  export DOCKER_REPO=yoedistro/yoe-build:bullseye${dockerarch}
 fi
 
 # if we are building using docker, we don't really care what /bin/sh is since the Yoe docker images defaults
@@ -617,8 +622,10 @@ dkr() {
     -e MACHINE=$MACHINE \
     -e PROJECT=$PROJECT \
     -w ${OE_BASE} \
-    $UID_ARGS --user=$UUID:$GGID \
+    --env GGID=$(id -g) \
+    --env UUID=$(id -u) \
     $VNC_PORT \
+    $UID_ARGS \
     ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
 
