@@ -51,6 +51,8 @@ and this project adheres to
 - Upgrade systemd 253.1 -> 253.3
 - Fix several ptests to work on musl systems
 - Fix runtime dependencies for clang scanbuild
+- Update linux-yocto to v6.1.25, v5.15.108, v6.1.24
+- Fix bunch pf ptests on musl to fix core-image-ptests-fast
 
 ### Added
 
