@@ -30,6 +30,10 @@ _EOF
 
 addtask create_updater_env before do_image_wic
 
+do_create_updater_env[sstate-inputdirs] = "${DEPLOY_DIR_IMAGE}"
+do_create_updater_env[sstate-outputdirs] = "${DEPLOY_DIR_IMAGE}"
+do_create_updater_env[dirs] = "${DEPLOY_DIR_IMAGE}"
+
 do_updater() {
     install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.xz ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
     install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.bmap ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.bmap
