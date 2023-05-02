@@ -90,7 +90,7 @@ fi
 ###############################################################################
 # OE_BASE    - The root directory for all OE sources and development.
 ###############################################################################
-OE_BASE=$(/bin/readlink -f $(dirname $arg0))
+OE_BASE=$(readlink -f $(dirname $arg0))
 
 cd $OE_BASE
 

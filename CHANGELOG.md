@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.05] - 2023-XX-XX
+
+### Changed
+
+- Upgrade clang to 16.0.3
+- Fix stale SRC_URI locations in several meta-openembedded recipes
+
+### Added
+
+
+### Removed
+
+
 ## [2023.04] - 2023-04-29
 
 ### Changed
