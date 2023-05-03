@@ -37,7 +37,7 @@ do_updater() {
             install ${DEPLOY_DIR_IMAGE}/$f $f
         done
         #default device tree file One of the dtbs from BOOTLOADER_ARTEFACTS here we choose 'sd' one
-        install imx8qxp-var-som-symphony-sd.dtb imx8qxp-var-som-symphony.dtb
+        install imx8qxp-var-som-symphony-wifi.dtb imx8qxp-var-som-symphony.dtb
 
         for f in ${DTBO_ARTEFACTS}
         do

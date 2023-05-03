@@ -6,6 +6,7 @@ USB_DETECTION_DELAY=4
 
 KERNEL="\
     Image.gz \
+    imx8qxp-var-som-symphony.dtb \
     imx8qxp-var-som-symphony-sd.dtb \
     imx8qxp-var-som-symphony-wifi.dtb \
 "
