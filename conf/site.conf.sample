@@ -27,8 +27,9 @@ YOE_PROFILE = "yoe-musl-sysvinit-eglfs"
 YOE_PROFILE = "yoe-musl-sysvinit-wayland"
 YOE_PROFILE = "yoe-musl-sysvinit-x11"
 # configure docker container to run bitbake in
-export DOCKER_REPO=yoedistro/yoe-build:bullseye
-
+export DOCKER_REPO=yoedistro/yoe-build:bookworm-x86_64
+# For aarch64 build hosts
+#export DOCKER_REPO=yoedistro/yoe-build:bookworm-aarch64
 # Keep the load in control and do not issue more parallel jobs
 # when load hits 1.5 * number of cpus
 PARALLEL_MAKE_append = " \
