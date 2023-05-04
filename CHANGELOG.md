@@ -14,6 +14,7 @@ and this project adheres to
 - Fix stale SRC_URI locations in several meta-openembedded recipes
 - Drop crosssdk suffix from virtual binutils, gcc, go and clang recipes
 - Fix SRC_URI locations for several recipes in meta-openembedded
+- Switch to using upcoming debian "bookworm" based container for building
 
 ### Added
 
