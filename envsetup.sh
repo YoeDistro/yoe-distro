@@ -519,7 +519,7 @@ yoe_clean_sstate() {
 }
 
 # Docker integration
-# set DOCKER_REPO to something like yoedistro/yoe-build:bullseye
+# set DOCKER_REPO to something like yoedistro/yoe-build:bookworm-x86_64
 # DOCKER_REPO can be set in scripts that wrap envsetup.sh
 # set DOCKER_REPO to 'none' to disable docker
 
@@ -529,8 +529,8 @@ if [ -z "$DOCKER_REPO" ]; then
     elif [ "`uname`" = "Linux" ]; then
     dockerarch="-`uname -m`"
   fi
-  echo "Setting DOCKER_REPO to yoedistro/yoe-build:bullseye${dockerarch}"
-  export DOCKER_REPO=yoedistro/yoe-build:bullseye${dockerarch}
+  echo "Setting DOCKER_REPO to yoedistro/yoe-build:bookworm${dockerarch}"
+  export DOCKER_REPO=yoedistro/yoe-build:bookworm${dockerarch}
 fi
 
 # if we are building using docker, we don't really care what /bin/sh is since the Yoe docker images defaults
@@ -607,7 +607,7 @@ dkr() {
     # our own.
     # Running without namespace mapping as non-root
     # https://github.com/containers/podman/issues/2180
-    UID_ARGS="--privileged --uidmap $UUID:0:1 --uidmap 0:1:$UUID --gidmap $GGID:0:1 --gidmap 0:1:$GGID"
+    UID_ARGS="--privileged --uidmap $UUID:0:1 --uidmap 0:1:$UUID --gidmap $GGID:0:1 --gidmap 0:1:$GGID --net=slirp4netns:port_handler=slirp4netns"
   fi
 
   $DOCKER run --rm -i $PSEUDO_TTY \

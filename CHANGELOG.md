@@ -12,9 +12,13 @@ and this project adheres to
 
 - Upgrade clang to 16.0.3
 - Fix stale SRC_URI locations in several meta-openembedded recipes
+- Drop crosssdk suffix from virtual binutils, gcc, go and clang recipes
+- Fix SRC_URI locations for several recipes in meta-openembedded
 
 ### Added
 
+- New recipes
+  - etcd
 
 ### Removed
 
