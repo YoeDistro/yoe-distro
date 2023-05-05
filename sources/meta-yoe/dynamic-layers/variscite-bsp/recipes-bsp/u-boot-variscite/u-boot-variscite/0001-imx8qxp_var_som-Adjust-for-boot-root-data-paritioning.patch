@@ -1,0 +1,34 @@
+From e968741a7b9c8835884f518918988c4a66cd45c7 Mon Sep 17 00:00:00 2001
+From: Cliff Brake <cbrake@bec-systems.com>
+Date: Sat, 29 Apr 2023 17:12:25 -0400
+Subject: [PATCH] imx8qxp_var_som: Adjust for boot/root/data paritioning scheme
+
+---
+ include/configs/imx8qxp_var_som.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/imx8qxp_var_som.h b/include/configs/imx8qxp_var_som.h
+index f4edae3e03..e291b7a832 100644
+--- a/include/configs/imx8qxp_var_som.h
++++ b/include/configs/imx8qxp_var_som.h
+@@ -64,7 +64,7 @@
+ 	CONFIG_MFG_ENV_SETTINGS \
+ 	M4_BOOT_ENV \
+ 	AHAB_ENV \
+-	"bootdir=/boot\0"	\
++	"bootdir=\0"	\
+ 	"script=boot.scr\0" \
+ 	"image=Image.gz\0" \
+ 	"console=ttyLP3\0" \
+@@ -88,7 +88,7 @@
+ 		"bootaux ${m4_addr};\0" \
+ 	"optargs=setenv bootargs ${bootargs} ${kernelargs};\0" \
+ 	"mmcargs=setenv bootargs console=${console},${baudrate} earlycon " \
+-		"root=/dev/mmcblk${mmcblk}p${mmcpart} rootfstype=ext4 rootwait rw ${cma_size} cma_name=linux,cma\0 " \
++		"root=/dev/mmcblk${mmcblk}p2 rootfstype=ext4 rootwait rw ${cma_size} cma_name=linux,cma\0 " \
+ 	"loadbootscript=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}/${script};\0" \
+ 	"bootscript=echo Running bootscript from mmc ...; " \
+ 		"source\0" \
+-- 
+2.40.1
+

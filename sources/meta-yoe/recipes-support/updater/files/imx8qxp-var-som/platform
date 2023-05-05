@@ -1,0 +1,96 @@
+TITLE="VAR-SOM-MX8X Symphony Board"
+PLAT="imx8qxp-var-som"
+UPDATE_FILE_NAME="${PLAT}"
+
+USB_DETECTION_DELAY=4
+
+KERNEL="\
+    Image.gz \
+    imx8qxp-var-som-symphony.dtb \
+    imx8qxp-var-som-symphony-sd.dtb \
+    imx8qxp-var-som-symphony-wifi.dtb \
+"
+
+BOOT="\
+    imx-boot \
+    tee.bin \
+"
+
+ROOTFS="rootfs.ext4.xz"
+
+EMMC_DEVICE=/dev/mmcblk0
+SD_DEVICE=/dev/mmcblk1
+
+# Can have "emmc" or "sd", this is the install target media
+STORAGE="emmc"
+# Install location is EMMC_DEVICE if STORAGE is 'emmc' and
+# SD_DEVICE if STORAGE is 'sd'
+if [ "$STORAGE" = "emmc" ]; then
+INSTALL_DEVICE=${EMMC_DEVICE}
+else
+INSTALL_DEVICE=${SD_DEVICE}
+fi
+
+INSTALL_BOOT_DEV=${INSTALL_DEVICE}p1
+INSTALL_ROOTFS_DEV=${INSTALL_DEVICE}p2
+INSTALL_DATA_DEV=${INSTALL_DEVICE}p3
+
+EMMC_BOOT_DEV=${EMMC_DEVICE}p1
+EMMC_ROOTFS_DEV=${EMMC_DEVICE}p2
+EMMC_DATA_DEV=${EMMC_DEVICE}p3
+
+SD_BOOT_DEV=${SD_DEVICE}p1
+SD_ROOTFS_DEV=${SD_DEVICE}p2
+SD_DATA_DEV=${SD_DEVICE}p3
+
+BOOT_MOUNT_POINT=/boot
+ROOTFS_MOUNT_POINT=/root
+DATA_MOUNT_POINT=/data
+USB_MOUNT_POINT=/media/usb
+SD_MOUNT_POINT=/media/sd
+
+# Size in 'M' for MB, 'G' for GB
+RESERVED_SIZE=2M
+BOOT_SIZE=100M
+ROOTFS_SIZE=1G
+
+FSTYPE=ext4
+BOOT_FSTYPE=ext4
+
+UPDATER_SPEECH=0
+UPDATER_CAN_PARTITION=1
+
+# It might be 32 or 33, check ref manual carefully for the SOM in use
+# e.g. for coral-dev based on imx8mq-evk
+# it is 33 but var-som-mx8 it is 32, most of variscite SOMs seems to
+# have 32 for now
+IMX_BOOT_SEEK=32
+
+# Space separated list of dirs to create in /data
+# which is used by volatile-binds during main rootfs boot
+PERSISTENT_BINDS="/etc/ssh"
+
+plat_init() {
+  msg "Running $PLAT initializations ..."
+  cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
+}
+
+plat_bootloader_quirks() {
+  # unlock eMMC boot partitions
+  # see https://www.kernel.org/doc/Documentation/mmc/mmc-dev-parts.txt
+  BOOTDEV=$(basename ${EMMC_DEVICE})
+  if [ -e imx-boot ]; then
+    if ! diff imx-boot $BOOT_MOUNT_POINT/imx-boot 2>&1 >/dev/null; then
+      msg_splash "Updating bootloader in eMMC ..."
+      dd if=imx-boot of=/dev/${BOOTDEV} seek=${IMX_BOOT_SEEK} bs=1k
+      if [ $UPDATE_RECOVERY_PARTITIONS ]; then
+        echo 0 > /sys/block/${BOOTDEV}boot0/force_ro
+        dd if=imx-boot of=/dev/${BOOTDEV}boot0 seek=${IMX_BOOT_SEEK} bs=1k
+        echo 1 > /sys/block/${BOOTDEV}boot0/force_ro
+        echo 0 > /sys/block/${BOOTDEV}boot1/force_ro
+        dd if=imx-boot of=/dev/${BOOTDEV}boot1 seek=${IMX_BOOT_SEEK} bs=1k
+        echo 1 > /sys/block/${BOOTDEV}boot1/force_ro
+      fi
+    fi
+  fi
+}
