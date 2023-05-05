@@ -132,7 +132,7 @@ case "$PROJECT" in
   "var-som-mx8")
     MACHINE=imx8qm-var-som
     ;;
-  "imx8qxp-var-som")
+  "var-som-mx8x")
     MACHINE=imx8qxp-var-som
     ;;
   "nezha-d1")
