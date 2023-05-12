@@ -15,14 +15,27 @@ and this project adheres to
 - Drop crosssdk suffix from virtual binutils, gcc, go and clang recipes
 - Fix SRC_URI locations for several recipes in meta-openembedded
 - Switch to using upcoming debian "bookworm" based container for building
+- Enable LoongArch support in clang
+- Upgrade lvgl recipes and support wayland and fbdev backends
+- Fix buildpath QA errors in many meta-openembedded recipes
+- Fix recipes to build without gobject-introspection-data
+- Upgrade Gstreamer to 1.22.2
+- Update musl to 1.2.4
+- Add CPE_NAME to /etc/os-release
+- Set minimum required target kernel to 5.15
+- Upgrade rust compiler to 1.69.0
+- Upgrade QEMU to 8.0.0 and fix ppc32 emulation bug
+- Default to https git protocol where possible in SRC_URI
 
 ### Added
 
 - New recipes
-  - etcd
+  - etcd, python3-tomlkit, python3-pytest-mock, python3-calver
+    python3-trove-classifiers
 
 ### Removed
 
+- Drop MIPS Edgerouter support
 
 ## [2023.04] - 2023-04-29
 
