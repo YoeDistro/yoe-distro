@@ -26,16 +26,24 @@ and this project adheres to
 - Upgrade rust compiler to 1.69.0
 - Upgrade QEMU to 8.0.0 and fix ppc32 emulation bug
 - Default to https git protocol where possible in SRC_URI
+- Add --libfiles option to llvm-config
+- Add systemd unit file for etcd
+- Uprev libplist to 2.3.0, fix several dependent recipes to
+  support API changes from 2.3.0
 
 ### Added
 
 - New recipes
   - etcd, python3-tomlkit, python3-pytest-mock, python3-calver
-    python3-trove-classifiers
+    python3-trove-classifiers, python3-platformdirs, python3-uswid
+    python3-pefile, libcbor, psutils, libpaper, serial, libisoburn
+    libisofs, paprefs
 
 ### Removed
 
 - Drop MIPS Edgerouter support
+- Removed recipes
+  - xorriso
 
 ## [2023.04] - 2023-04-29
 
