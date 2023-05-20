@@ -30,6 +30,12 @@ and this project adheres to
 - Add systemd unit file for etcd
 - Uprev libplist to 2.3.0, fix several dependent recipes to
   support API changes from 2.3.0
+- Fix rpi-libcamera-apps recipe for ARM64
+- Fix linux-bb.org to build with gcc 13
+- Fix several recipes in meta-oe to remove TMPDIR in output packages
+- Update libfmt to version 10 and fix dependencies to support new APIs
+- Use autoconf-archive-native as m4 macros dependencies during build
+  instead of target autoconf-archive during build
 
 ### Added
 
@@ -37,7 +43,7 @@ and this project adheres to
   - etcd, python3-tomlkit, python3-pytest-mock, python3-calver
     python3-trove-classifiers, python3-platformdirs, python3-uswid
     python3-pefile, libcbor, psutils, libpaper, serial, libisoburn
-    libisofs, paprefs
+    libisofs, paprefs, openfortivpn, networkmanager-fortisslvpn
 
 ### Removed
 
