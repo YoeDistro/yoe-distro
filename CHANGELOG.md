@@ -10,7 +10,7 @@ and this project adheres to
 
 ### Changed
 
-- Upgrade clang to 16.0.3
+- Upgrade clang to 16.0.4+
 - Fix stale SRC_URI locations in several meta-openembedded recipes
 - Drop crosssdk suffix from virtual binutils, gcc, go and clang recipes
 - Fix SRC_URI locations for several recipes in meta-openembedded
@@ -36,6 +36,12 @@ and this project adheres to
 - Update libfmt to version 10 and fix dependencies to support new APIs
 - Use autoconf-archive-native as m4 macros dependencies during build
   instead of target autoconf-archive during build
+- Enable zbb manip extensions for rv32/rv64 in ffmpeg build
+- Fix few of buildpath issues in meta-openembedded recipes
+- Simplify MACHINEOVERRIDES definitions for rpi
+- Add missing run-time dependencies in several ptython module recipes
+- Mandate gobject-introspection-data DISTRO_FEATURE
+- Let clang override the llvm provided by OE-Core
 
 ### Added
 
@@ -49,7 +55,8 @@ and this project adheres to
 
 - Drop MIPS Edgerouter support
 - Removed recipes
-  - xorriso
+  - xorriso, python3-async
+- Drop lzop from linux-imx defaults
 
 ## [2023.04] - 2023-04-29
 
