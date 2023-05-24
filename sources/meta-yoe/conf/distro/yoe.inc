@@ -117,6 +117,13 @@ DISTRO_FEATURES:append = " opengl multiarch wayland pam vulkan usrmerge ld-ls-ll
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
 #PREFERRED_PROVIDER_nativesdk-pkgconfig = "nativesdk-pkgconf"
 
+PREFERRED_PROVIDER_llvm = "clang"
+PREFERRED_PROVIDER_llvm-native = "clang-native"
+PREFERRED_PROVIDER_nativesdk-llvm = "nativesdk-clang"
+PROVIDES:pn-clang = "llvm"
+PROVIDES:pn-clang-native = "llvm-native"
+PROVIDES:pn-nativesdk-clang = "nativesdk-llvm"
+
 PREFERRED_PROVIDER_virtual/libgl ??= "mesa"
 PREFERRED_PROVIDER_virtual/libgl-native ?= "mesa-native"
 PREFERRED_PROVIDER_libgl-native = "mesa-native"
