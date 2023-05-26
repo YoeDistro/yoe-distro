@@ -42,6 +42,10 @@ and this project adheres to
 - Add missing run-time dependencies in several ptython module recipes
 - Mandate gobject-introspection-data DISTRO_FEATURE
 - Let clang override the llvm provided by OE-Core
+- Remove unused patch files in core and meta-openembedded layers
+- Add ptest support to hiredis and uprev to 1.1.0
+- Upgrade go compiler to 1.20.4
+- Upgrade binutils to latest top of 2.40 branch
 
 ### Added
 
@@ -50,6 +54,7 @@ and this project adheres to
     python3-trove-classifiers, python3-platformdirs, python3-uswid
     python3-pefile, libcbor, psutils, libpaper, serial, libisoburn
     libisofs, paprefs, openfortivpn, networkmanager-fortisslvpn
+    mbpoll, python3-bleak
 
 ### Removed
 
