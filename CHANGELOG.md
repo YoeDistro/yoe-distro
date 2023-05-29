@@ -46,6 +46,11 @@ and this project adheres to
 - Add ptest support to hiredis and uprev to 1.1.0
 - Upgrade go compiler to 1.20.4
 - Upgrade binutils to latest top of 2.40 branch
+- Upgrade zfs to latest master which is 2.1.11+
+- Requires gobject-introspection-data DISTRO_FEATURE in dependent recipes
+- Update curl to 8.1.1
+- Update busybox to 1.36.1
+- Upgrade to GCC 13.1
 
 ### Added
 
@@ -60,7 +65,7 @@ and this project adheres to
 
 - Drop MIPS Edgerouter support
 - Removed recipes
-  - xorriso, python3-async
+  - xorriso, python3-async, linux-yocto 5.15
 - Drop lzop from linux-imx defaults
 
 ## [2023.04] - 2023-04-29
