@@ -88,7 +88,7 @@ do_updater() {
         cd ${TOPDIR}/deploy/${MACHINE}
         echo "${IMG_VERSION}" > version.txt
         # rootfs
-        install ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.ext4.xz ${ROOTFS_ARTEFACTS}
+        install ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.ext4.xz ${ROOTFS_ARTEFACTS}
         # bootloader ( if using u-boot
         #install ${DEPLOY_DIR_IMAGE}/u-boot.bin kernel7.img
         #install ${DEPLOY_DIR_IMAGE}/boot.scr boot.scr
