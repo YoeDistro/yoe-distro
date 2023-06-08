@@ -6,6 +6,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.06] - YYYY-MM-DD
+
+### Changed
+
+- Add missing run-time dependencies in several python recipes
+- Stop using PYTHON_PN in several python recipes
+- Add 44.2 gnome recipes
+- Fix REQUIRED_DISTRO_FEATURES gobject-introspection-data in several recipes
+- Upgrade linux-yocto/6.1 to v6.1.32
+- Document SPLASH_IMAGES variable
+- Do not search host paths for find_program() in cmake.bbclass
+- Don't force PAHOLE=false in linux-yocto
+- Upgrade OpenSSL 3.1.1
+- Enable fullscreen and disable startup-msg in psplash
+- Fix spdx license parsing
+- Make built-in libtraceevent plugins from perf cohabit with external libtraceevent
+- Fix vulkan-samples build on 32-bit platforms
+- Make OpenSBI FW_TEXT_START=0x40000000 specific to jh7110
+- Use python3 in oe-stylize
+- Upgrade wireshark to 4.0.x
+- remove -fcanon-prefix-map in scp-firmware recipe
+- Use IMAGE_LINK_NAME in updater and yoe-initramfs-image
+
+### Added
+
+- Added recipes - python3-ninja-syntax, python3-lazy, python3-classes
+  python3-pypng,
+- Add support for loongarch64 to initramfs
+- Add QT6 layer and enable it for var-som-mx8
+
+### Removed
+
+- Removed recipes - u-boot-bb.org
+- Drop QT5 layer
+
 ## [2023.05] - 2023-05-30
 
 ### Changed

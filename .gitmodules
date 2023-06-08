@@ -62,3 +62,7 @@
 	path = sources/meta-variscite-bsp
 	url = https://github.com/YoeDistro/meta-variscite-bsp.git
 	branch = yoe/master
+[submodule "sources/meta-qt6"]
+	path = sources/meta-qt6
+	url = https://github.com/YoeDistro/meta-qt6
+	branch = 6.5.1

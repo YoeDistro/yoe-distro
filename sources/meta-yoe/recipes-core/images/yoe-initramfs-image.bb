@@ -11,6 +11,8 @@ IMAGE_FEATURES = ""
 # which can cause dependency loops
 EXTRA_IMAGEDEPENDS = ""
 
+IMAGE_NAME_SUFFIX = ""
+
 export IMAGE_BASENAME = "yoe-initramfs-image"
 IMAGE_LINGUAS = ""
 
