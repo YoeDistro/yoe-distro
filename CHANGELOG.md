@@ -34,6 +34,7 @@ and this project adheres to
 - Update clang to 16.0.5 tag
 - Fix enabling lld as distro linker in clang.bbclass
 - Upgrade go compiler to 1.20.5
+- Fix recipes to build issues found using lld linker
 
 ### Added
 
