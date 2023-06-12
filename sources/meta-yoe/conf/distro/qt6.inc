@@ -1,3 +1,4 @@
+PACKAGECONFIG:append:pn-qtbase = " cups"
 # enable examples for all Qt modules
 PACKAGECONFIG:append:pn-qmlcompilerplus = " examples"
 PACKAGECONFIG:append:pn-qt3d = " examples"

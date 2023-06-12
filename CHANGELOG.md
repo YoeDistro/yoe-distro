@@ -28,11 +28,17 @@ and this project adheres to
 - Upgrade wireshark to 4.0.x
 - remove -fcanon-prefix-map in scp-firmware recipe
 - Use IMAGE_LINK_NAME in updater and yoe-initramfs-image
+- Upgrade gstreamer1.0 to 1.22.3
+- Update rust to 1.70.0
+- Switch meta-qt6 to 6.5 branch instead of 6.5.1 point release branch
+- Update clang to 16.0.5 tag
+- Fix enabling lld as distro linker in clang.bbclass
+- Upgrade go compiler to 1.20.5
 
 ### Added
 
 - Added recipes - python3-ninja-syntax, python3-lazy, python3-classes
-  python3-pypng,
+  python3-pypng, stopit, vulkan-validation-layers
 - Add support for loongarch64 to initramfs
 - Add QT6 layer and enable it for var-som-mx8
 
