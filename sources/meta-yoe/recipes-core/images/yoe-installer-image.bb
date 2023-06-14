@@ -35,8 +35,8 @@ do_create_updater_env[sstate-outputdirs] = "${DEPLOY_DIR_IMAGE}"
 do_create_updater_env[dirs] = "${DEPLOY_DIR_IMAGE}"
 
 do_updater() {
-    install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.xz ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
-    install ${DEPLOY_DIR_IMAGE}/yoe-installer-image-${MACHINE}.wic.bmap ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.bmap
+    install ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.wic.xz ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.xz
+    install ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.wic.bmap ${TOPDIR}/deploy/${MACHINE}_${IMG_VERSION}.wic.bmap
 }
 
 IMAGE_INSTALL:remove = " kernel-devicetree kernel-image-${KERNEL_IMAGETYPE}"
