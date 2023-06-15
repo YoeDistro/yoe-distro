@@ -35,13 +35,22 @@ and this project adheres to
 - Fix enabling lld as distro linker in clang.bbclass
 - Upgrade go compiler to 1.20.5
 - Fix recipes to build issues found using lld linker
+- Drop setting ARM_INSTRUCTION_SET explicitly, it can build in thumb mode
+  and upgrade to 8.2.7
+- Use BFD linker for libgcc and glibc explicitly
+- Replace Yocto .h by .png splashscreen in psplash
+- Add weston user to wayland and render groups
+- Upgrade libubootenv to 0.3.4
+- Fix several recipes to link with LLD linker
 
 ### Added
 
 - Added recipes - python3-ninja-syntax, python3-lazy, python3-classes
-  python3-pypng, stopit, vulkan-validation-layers
+  python3-pypng, stopit, vulkan-validation-layers, python3-meson-python
 - Add support for loongarch64 to initramfs
 - Add QT6 layer and enable it for var-som-mx8
+- Add LGPL-3.0-with-zeromq-exception to common-licenses
+- Add python_mesonpy class
 
 ### Removed
 
