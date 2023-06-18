@@ -17,6 +17,9 @@ QT6EXAMPLES += " \
   qtmultimedia-examples \
   qtwebengine-examples \
 "
+# chromium works on aarch64/arm32/x86
+QT6EXAMPLES:remove:riscv64 = "qtwebengine-examples"
+
 export IMAGE_BASENAME = "yoe-qt6-image"
 
 # ptest needs a lot of memory
