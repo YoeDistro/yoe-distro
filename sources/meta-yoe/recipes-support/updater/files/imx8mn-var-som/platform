@@ -17,7 +17,7 @@ BOOT="\
 
 ROOTFS="rootfs.ext4.xz"
 
-EMMC_DEVICE=/dev/mmcblk0
+EMMC_DEVICE=/dev/mmcblk2
 SD_DEVICE=/dev/mmcblk1
 
 # Can have "emmc" or "sd", this is the install target media
