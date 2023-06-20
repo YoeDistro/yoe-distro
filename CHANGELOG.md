@@ -49,6 +49,12 @@ and this project adheres to
 - Drop using tunctl in runqemu/qemu-helper
 - Upgrade python to 3.11.3
 - Upgrade mesa to 23.1.1
+- Fix gn to build with gcc-13
+- Backport fix for linking failures using LLD linker for RISCV
+- Migrate to use markdown format for READMEs in meta-openembedded
+- Fix vpu and pvr-graphics build and packaging issues on visionfive2
+- Bump LLVM in core layer to 16.0.6
+- Fix several recipes to build when LLD is default distro linker
 
 ### Added
 
