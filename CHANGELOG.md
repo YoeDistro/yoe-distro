@@ -65,6 +65,7 @@ and this project adheres to
 - Add LGPL-3.0-with-zeromq-exception to common-licenses
 - Add python_mesonpy class
 - Add new project for VisionFive2
+- Add support for Variscite VAR-SOM-MX8M-NANO
 
 ### Removed
 
