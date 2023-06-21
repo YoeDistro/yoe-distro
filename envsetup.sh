@@ -135,6 +135,9 @@ case "$PROJECT" in
   "var-som-mx8x")
     MACHINE=imx8qxp-var-som
     ;;
+  "var-som-mx8m-nano")
+    MACHINE=imx8mn-var-som
+    ;;
   "nezha-d1")
     MACHINE=nezha-allwinner-d1
     ;;

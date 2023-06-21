@@ -1,0 +1,25 @@
+From 333e79dfe0fe7632d48c2d97ad9c941e97c8be9e Mon Sep 17 00:00:00 2001
+From: Cliff Brake <cbrake@bec-systems.com>
+Date: Tue, 20 Jun 2023 17:16:24 -0400
+Subject: [PATCH] move fdt load up to make space for kernel
+
+---
+ include/configs/imx8mn_var_som.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/imx8mn_var_som.h b/include/configs/imx8mn_var_som.h
+index 8713720356..dba6fc8bc2 100644
+--- a/include/configs/imx8mn_var_som.h
++++ b/include/configs/imx8mn_var_som.h
+@@ -89,7 +89,7 @@
+ 	"image=Image.gz\0" \
+ 	"img_addr=0x42000000\0" \
+ 	"console=ttymxc3,115200 earlycon=ec_imx6q,0x30a60000,115200\0" \
+-	"fdt_addr_r=0x43000000\0" \
++	"fdt_addr_r=0x44000000\0" \
+ 	"fdt_addr=0x43000000\0" \
+ 	"fdt_high=0xffffffffffffffff\0" \
+ 	"boot_fdt=try\0" \
+-- 
+2.41.0
+

@@ -1,14 +1,13 @@
 TITLE="VAR-SOM-MX8X Symphony Board"
-PLAT="imx8qxp-var-som"
+PLAT="imx8mn-var-som"
 UPDATE_FILE_NAME="${PLAT}"
 
 USB_DETECTION_DELAY=4
 
 KERNEL="\
     Image.gz \
-    imx8qxp-var-som-symphony.dtb \
-    imx8qxp-var-som-symphony-sd.dtb \
-    imx8qxp-var-som-symphony-wifi.dtb \
+    imx8mn-var-som-symphony.dtb \
+    imx8mn-var-som-symphony-root.dtb \
 "
 
 BOOT="\
@@ -18,7 +17,7 @@ BOOT="\
 
 ROOTFS="rootfs.ext4.xz"
 
-EMMC_DEVICE=/dev/mmcblk0
+EMMC_DEVICE=/dev/mmcblk2
 SD_DEVICE=/dev/mmcblk1
 
 # Can have "emmc" or "sd", this is the install target media
