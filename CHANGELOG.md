@@ -14,7 +14,7 @@ and this project adheres to
 - Stop using PYTHON_PN in several python recipes
 - Add 44.2 gnome recipes
 - Fix REQUIRED_DISTRO_FEATURES gobject-introspection-data in several recipes
-- Upgrade linux-yocto/6.1 to v6.1.32
+- Upgrade linux-yocto/6.1 to v6.1.33
 - Document SPLASH_IMAGES variable
 - Do not search host paths for find_program() in cmake.bbclass
 - Don't force PAHOLE=false in linux-yocto
@@ -31,7 +31,7 @@ and this project adheres to
 - Upgrade gstreamer1.0 to 1.22.3
 - Update rust to 1.70.0
 - Switch meta-qt6 to 6.5 branch instead of 6.5.1 point release branch
-- Update clang to 16.0.5 tag
+- Update clang to 16.0.6 tag
 - Fix enabling lld as distro linker in clang.bbclass
 - Upgrade go compiler to 1.20.5
 - Fix recipes to build issues found using lld linker
@@ -42,6 +42,19 @@ and this project adheres to
 - Add weston user to wayland and render groups
 - Upgrade libubootenv to 0.3.4
 - Fix several recipes to link with LLD linker
+- Use llvm-strip system-wide for STRIP utility for RISCV targets
+- Fix ntpd systemd service type forking -> simple
+- Fix OpenSBI build for visionfive2 SBC
+- Upgrade GDB to 13.2
+- Drop using tunctl in runqemu/qemu-helper
+- Upgrade python to 3.11.3
+- Upgrade mesa to 23.1.1
+- Fix gn to build with gcc-13
+- Backport fix for linking failures using LLD linker for RISCV
+- Migrate to use markdown format for READMEs in meta-openembedded
+- Fix vpu and pvr-graphics build and packaging issues on visionfive2
+- Bump LLVM in core layer to 16.0.6
+- Fix several recipes to build when LLD is default distro linker
 
 ### Added
 
@@ -51,6 +64,7 @@ and this project adheres to
 - Add QT6 layer and enable it for var-som-mx8
 - Add LGPL-3.0-with-zeromq-exception to common-licenses
 - Add python_mesonpy class
+- Add new project for VisionFive2
 
 ### Removed
 

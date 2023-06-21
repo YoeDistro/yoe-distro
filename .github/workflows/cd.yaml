@@ -42,8 +42,9 @@ jobs:
           /bin/bash -c "sed -i -e 's/SDK_UPDATE_URL.*$//' conf/site.conf"
       - name: Build Images
         run: |
-          /bin/bash -c ". ./envsetup.sh beaglebone && bitbake yoe-installer-image yoe-qt5-image"
-          /bin/bash -c ". ./envsetup.sh rpi4-64    && bitbake yoe-installer-image yoe-qt5-image"
+          /bin/bash -c ". ./envsetup.sh visionfive2 && bitbake yoe-installer-image"
+          /bin/bash -c ". ./envsetup.sh var-som-mx8 && bitbake yoe-installer-image yoe-qt6-image"
+          /bin/bash -c ". ./envsetup.sh rpi4-64     && bitbake yoe-installer-image yoe-qt5-image"
       - name: ver
         run: echo "ver=$(printf ' - ' && cat sources/meta-yoe/conf/distro/yoe.inc | grep 'DISTRO_CODENAME =' | cut -d' ' -f 3 )" >> $GITHUB_OUTPUT
         id: ver
