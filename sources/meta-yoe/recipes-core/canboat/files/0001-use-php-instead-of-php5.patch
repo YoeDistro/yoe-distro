@@ -5,6 +5,7 @@ Subject: [PATCH] use php instead of php5
 
 OE ships php5 as php
 
+Upstream-Status: Pending
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
 ---
  airmar/airmar.php             | 2 +-

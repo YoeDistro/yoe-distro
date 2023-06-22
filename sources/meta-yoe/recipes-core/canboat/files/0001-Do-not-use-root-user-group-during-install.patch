@@ -5,6 +5,7 @@ Subject: [PATCH] Do not use root user/group during install
 
 OE has its own way of using fake root using pseudo
 
+Upstream-Status: Pending
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
 ---
  Makefile | 2 +-
