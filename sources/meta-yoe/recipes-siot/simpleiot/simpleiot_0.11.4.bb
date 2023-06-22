@@ -63,4 +63,4 @@ INSANE_SKIP:${PN} += "ldflags already-stripped"
 
 # we use sqlite and not all architectures seem to be supported see
 # https://pkg.go.dev/modernc.org/sqlite#hdr-Supported_platforms_and_architectures
-COMPATIBLE_HOST = "(x86_64.*|i.86.*|arm.*|aarch64.*|riscv64)-(linux)"
+COMPATIBLE_HOST = "(x86_64.*|i.86.*|arm.*|aarch64.*|riscv64.*|powerpc64le.*)-(linux)"
