@@ -1,0 +1,72 @@
+TITLE="Starfive VISIONFIVE2"
+PLAT="visionfive2"
+UPDATE_FILE_NAME="${PLAT}"
+
+USB_DETECTION_DELAY=4
+
+KERNEL="\
+    fitImage \
+    jh7110-visionfive-v2.dtb \
+"
+
+BOOT="\
+    fw_payload.bin \
+    boot.scr.uimg \
+    vf2_uEnv.txt \
+"
+
+ROOTFS="rootfs.ext4.xz"
+
+EMMC_DEVICE=/dev/mmcblk0
+SD_DEVICE=/dev/mmcblk1
+
+# Can have "emmc" or "sd", this is the install target media
+STORAGE="sd"
+# Install location is EMMC_DEVICE if STORAGE is 'emmc' and
+# SD_DEVICE if STORAGE is 'sd'
+if [ "$STORAGE" = "emmc" ]; then
+INSTALL_DEVICE=${EMMC_DEVICE}
+else
+INSTALL_DEVICE=${SD_DEVICE}
+fi
+
+INSTALL_BOOT_DEV=${INSTALL_DEVICE}p3
+INSTALL_ROOTFS_DEV=${INSTALL_DEVICE}p4
+INSTALL_DATA_DEV=${INSTALL_DEVICE}p5
+
+EMMC_BOOT_DEV=${EMMC_DEVICE}p3
+EMMC_ROOTFS_DEV=${EMMC_DEVICE}p4
+EMMC_DATA_DEV=${EMMC_DEVICE}p5
+
+SD_BOOT_DEV=${SD_DEVICE}p1
+SD_ROOTFS_DEV=${SD_DEVICE}p2
+SD_DATA_DEV=${SD_DEVICE}p3
+
+BOOT_MOUNT_POINT=/boot
+ROOTFS_MOUNT_POINT=/root
+DATA_MOUNT_POINT=/data
+USB_MOUNT_POINT=/media/usb
+SD_MOUNT_POINT=/media/sd
+
+# Size in 'M' for MB, 'G' for GB
+RESERVED_SIZE=2M
+BOOT_SIZE=300M
+ROOTFS_SIZE=3G
+
+FSTYPE=ext4
+BOOT_FSTYPE=ext4
+
+UPDATER_SPEECH=0
+UPDATER_CAN_PARTITION=0
+
+# Space separated list of dirs to create in /data
+# which is used by volatile-binds during main rootfs boot
+PERSISTENT_BINDS="/etc/ssh"
+
+plat_init() {
+  msg "Running $PLAT initializations ..."
+  cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
+}
+
+plat_bootloader_quirks() {
+}

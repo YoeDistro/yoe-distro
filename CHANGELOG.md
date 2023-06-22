@@ -55,6 +55,13 @@ and this project adheres to
 - Fix vpu and pvr-graphics build and packaging issues on visionfive2
 - Bump LLVM in core layer to 16.0.6
 - Fix several recipes to build when LLD is default distro linker
+- Add Upstream-Status tags to meta-openembedded, meta-rpi, meta-odroid
+  meta-freescale, meta-clang and meta-yoe layers
+- Add support for mbedTLS v3.x
+- Bump QT6 packages to 6.5.3
+- Fix weston booting issues on visionfive2 SBC and update to use
+  StarFive SDK v3.0.4 components
+- Improve patch-status layer filtering in insane.bbclass QA checks
 
 ### Added
 
@@ -66,6 +73,7 @@ and this project adheres to
 - Add python_mesonpy class
 - Add new project for VisionFive2
 - Add support for Variscite VAR-SOM-MX8M-NANO
+- Add layer-<layername> override support
 
 ### Removed
 
