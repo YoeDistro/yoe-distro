@@ -367,7 +367,13 @@ mount_rootfs_emmc() {
 
   #mount_boot /mnt/boot $EMMC_BOOT_DEV
   mount_data /mnt/data $EMMC_DATA_DEV
-  mount_overlay_tmpfs
+  if [ "$OVERLAY_TYPE" = "persistent" ]; then
+    msg_splash "Mounting filesystem overlay on data partition"
+    mount_overlay_data
+  else
+    msg_splash "Mounting filesystem overlay on tmpfs"
+    mount_overlay_tmpfs
+  fi
   mount -n --move /mnt/data /mnt/overlay/data
 }
 
