@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2023.06] - YYYY-MM-DD
+## [2023.06] - 2023-06-30
 
 ### Changed
 
@@ -14,7 +14,7 @@ and this project adheres to
 - Stop using PYTHON_PN in several python recipes
 - Add 44.2 gnome recipes
 - Fix REQUIRED_DISTRO_FEATURES gobject-introspection-data in several recipes
-- Upgrade linux-yocto/6.1 to v6.1.33
+- Upgrade linux-yocto/6.1 to v6.1.35
 - Document SPLASH_IMAGES variable
 - Do not search host paths for find_program() in cmake.bbclass
 - Don't force PAHOLE=false in linux-yocto
@@ -62,6 +62,9 @@ and this project adheres to
 - Fix weston booting issues on visionfive2 SBC and update to use
   StarFive SDK v3.0.4 components
 - Improve patch-status layer filtering in insane.bbclass QA checks
+- Update rpi kernel to 6.1.34
+- Enable glx/opengl support in gstreamer1.0-plugins-base
+- Update python3 to 3.11.4
 
 ### Added
 
@@ -74,6 +77,7 @@ and this project adheres to
 - Add new project for VisionFive2
 - Add support for Variscite VAR-SOM-MX8M-NANO
 - Add layer-<layername> override support
+- Enable largefile and 64bit time_t support systemwide for 32 bit platforms
 
 ### Removed
 
