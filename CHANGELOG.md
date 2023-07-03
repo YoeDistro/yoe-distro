@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.07] - 2023-07-XX
+
+### Changed
+
+- Fix parallel build issue with external modules on visionfive2
+- Move xcb-util-cursor from meta-oe to core layer
+- Upgrade ostree to 2023.5
+
+### Added
+
+- Added recipes - python3-pyqt5, python3-pyqt5-sip, python3-pyqt-builder
+
+### Removed
+
 ## [2023.06] - 2023-06-30
 
 ### Changed
