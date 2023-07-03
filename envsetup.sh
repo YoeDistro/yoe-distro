@@ -682,10 +682,10 @@ yoe_install_image() {
   IMAGE_NAME=$2
 
   if [ -n "$IMAGE_NAME" ]; then
-    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.wic.xz
+    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/${IMAGE_NAME}-${MACHINE}.rootfs.wic.xz
   else
     echo "no image specified -- installing default installer image ..."
-    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/yoe-installer-image-${MACHINE}.wic.xz
+    WICIMG=${OE_BASE}/build/tmp/deploy/images/${MACHINE}/yoe-installer-image-${MACHINE}.rootfs.wic.xz
   fi
 
   yoe_check_install_dependencies || return 1
