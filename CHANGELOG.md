@@ -13,6 +13,9 @@ and this project adheres to
 - Fix parallel build issue with external modules on visionfive2
 - Move xcb-util-cursor from meta-oe to core layer
 - Upgrade ostree to 2023.5
+- Upgrade bcc to 0.28.0
+- Update visionfive2 SDK components to V3.1.5
+- Upgrade openCV to 4.8.0
 
 ### Added
 

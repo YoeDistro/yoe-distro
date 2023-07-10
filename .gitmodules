@@ -61,7 +61,7 @@
 [submodule "sources/meta-variscite-bsp"]
 	path = sources/meta-variscite-bsp
 	url = https://github.com/YoeDistro/meta-variscite-bsp.git
-	branch = yoe/master
+	branch = yoe/kirkstone-var02
 [submodule "sources/meta-qt6"]
 	path = sources/meta-qt6
 	url = https://github.com/YoeDistro/meta-qt6
