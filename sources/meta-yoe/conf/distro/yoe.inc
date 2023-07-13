@@ -37,6 +37,9 @@ https://.*/.*    http://downloads.yoctoproject.org/mirror/sources/ \n"
 # Allow reusing DL_DIR from the current build as a mirror for other builds.
 BB_GENERATE_MIRROR_TARBALLS = "1"
 
+# Template for feed server
+PACKAGE_FEED_URIS ??= "http://<feedserver>:8000/"
+
 # Use Hash Equivalence
 BB_SIGNATURE_HANDLER = "OEEquivHash"
 # Start a local hashserver instance
