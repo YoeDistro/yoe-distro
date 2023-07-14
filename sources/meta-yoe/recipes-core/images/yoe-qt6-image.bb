@@ -9,6 +9,8 @@ require graphics.inc
 CORE_IMAGE_EXTRA_INSTALL += " \
   packagegroup-qt6-modules \
   liberation-fonts \
+  yoe-kiosk-browser \
+  qtvirtualkeyboard \
   ${QT6EXAMPLES} \
 "
 
@@ -16,7 +18,6 @@ QT6EXAMPLES += " \
   qtvirtualkeyboard-examples \
   qtbase-examples \
   qtmultimedia-examples \
-  qtwebengine-examples \
 "
 # chromium works on aarch64/arm32/x86
 QT6EXAMPLES:remove:riscv64 = "qtwebengine-examples"
@@ -30,5 +31,3 @@ python() {
     if 'qt6-layer' not in d.getVar('BBFILE_COLLECTIONS').split():
         raise bb.parse.SkipRecipe('Requires meta-qt6 in bblayers.conf')
 }
-
-
