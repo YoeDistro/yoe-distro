@@ -8,6 +8,7 @@ require graphics.inc
 
 CORE_IMAGE_EXTRA_INSTALL += " \
   packagegroup-qt6-modules \
+  liberation-fonts \
   ${QT6EXAMPLES} \
 "
 
