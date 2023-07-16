@@ -11,16 +11,15 @@ CORE_IMAGE_EXTRA_INSTALL += " \
   liberation-fonts \
   yoe-kiosk-browser \
   qtvirtualkeyboard \
-  ${QT6EXAMPLES} \
-"
-
-QT6EXAMPLES += " \
+  \
   qtvirtualkeyboard-examples \
   qtbase-examples \
   qtmultimedia-examples \
 "
-# chromium works on aarch64/arm32/x86
-QT6EXAMPLES:remove:riscv64 = "qtwebengine-examples"
+# chromium works on aarch64/arm32/x86 only
+# qtwebview and qtwebengine needs it, yoe-kiosk-browser
+# needs qtwebview
+CORE_IMAGE_EXTRA_INSTALL:remove:riscv64 = "qtwebengine-examples yoe-kiosk-browser"
 
 export IMAGE_BASENAME = "yoe-qt6-image"
 
