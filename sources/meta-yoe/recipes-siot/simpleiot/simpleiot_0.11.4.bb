@@ -52,6 +52,8 @@ do_install() {
     install -D -m 0755 ${S}/siot ${D}${bindir}/siot
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -D -m 0644 ${S}/contrib/siot.service ${D}${systemd_unitdir}/system/siot.service
+        sed -i "s:ExecStart=/usr/bin/siot:ExecStart=/bin/sh -c \"cd /data; /usr/bin/siot\":" \
+            ${D}${systemd_unitdir}/system/siot.service
     else
         install -D -m 0755 ${S}/contrib/siot.init ${D}${sysconfdir}/init.d/siot
     fi
