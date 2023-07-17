@@ -16,6 +16,11 @@ and this project adheres to
 - Upgrade bcc to 0.28.0
 - Update visionfive2 SDK components to V3.1.5
 - Upgrade openCV to 4.8.0
+- Upgrade bpftrace to 0.18.0
+- Upgrade linux-raspberrypi to 6.1.38
+- Update linux-yocto 6.1 to v6.1.38 and 6.4 to v6.4.2
+- Upgrade bluez5 5.66 -> 5.68
+- Enable JIT on RISCV64 for webkitgtk
 
 ### Added
 
