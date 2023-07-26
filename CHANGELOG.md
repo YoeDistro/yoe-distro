@@ -18,13 +18,25 @@ and this project adheres to
 - Upgrade openCV to 4.8.0
 - Upgrade bpftrace to 0.18.0
 - Upgrade linux-raspberrypi to 6.1.38
-- Update linux-yocto 6.1 to v6.1.38 and 6.4 to v6.4.2
+- Update linux-yocto 6.1 to v6.1.38 and 6.4 to v6.4.3
 - Upgrade bluez5 5.66 -> 5.68
 - Enable JIT on RISCV64 for webkitgtk
+- Add -Wl,--undefined-version when using lld for few recipes
+- Upgrade opkg to 0.6.2
+- Upgrade go compiler to 1.20.6
+- Improve pybootchartgui rendering
+- Add -mbranch-protection=standard for all aarch64
+- Configure gcc without --enable-standard-branch-protection
+- Upgrade qemu to 8.0.3
+- Upgrade linux-firmware to 20230625
+- Add rust selftests
+- Fix network restrictions for glibc-testsuite ptests
 
 ### Added
 
 - Added recipes - python3-pyqt5, python3-pyqt5-sip, python3-pyqt-builder
+  wtmpdb, lastlog2
+- Yoe logo in psplash
 
 ### Removed
 
