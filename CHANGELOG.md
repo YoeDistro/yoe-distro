@@ -31,6 +31,8 @@ and this project adheres to
 - Upgrade linux-firmware to 20230625
 - Add rust selftests
 - Fix network restrictions for glibc-testsuite ptests
+- Add the disable-wifi overlay for RPI machines
+- Improve glibc testing over nfs root
 
 ### Added
 
