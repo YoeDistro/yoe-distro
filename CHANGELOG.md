@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2023.07] - 2023-07-XX
+## [2023.07] - 2023-07-31
 
 ### Changed
 
@@ -33,6 +33,9 @@ and this project adheres to
 - Fix network restrictions for glibc-testsuite ptests
 - Add the disable-wifi overlay for RPI machines
 - Improve glibc testing over nfs root
+- Upgrade GCC to 13.2 release
+- Upgrade autoconf to 2.72c
+- Fix freertos-variscite compile failure when do_compile is rerun
 
 ### Added
 
