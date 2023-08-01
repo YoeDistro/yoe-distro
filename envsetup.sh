@@ -9,7 +9,7 @@ echoerr() {
 # List supported projects
 yoe_get_projects() {
     (
-    cd $OE_BASE/sources/meta-yoe/conf/projects
+    cd $OE_BASE/conf/projects
     for f in *; do
         if [ -e $f/config.conf ]; then
             echo $f
@@ -481,7 +481,7 @@ yoe_add_layer() {
   fi
   git submodule add -b $br -f $1 sources/$n
   git submodule init sources/$n
-  echo "Add it from project layers.conf files in sources/meta-yoe/conf/projects"
+  echo "Add it from project layers.conf files in conf/projects"
   echo "please commit with - git commit -s -m'Add module $n'"
 }
 
@@ -495,7 +495,7 @@ yoe_remove_layer() {
   bitbake-layers remove-layer $1
   git submodule deinit -f $m
   git rm -r -f $m
-  echo "Remove it from project layers.conf files in sources/meta-yoe/conf/projects"
+  echo "Remove it from project layers.conf files in conf/projects"
   echo "please commit with - git commit -s -m'Remove module $n'"
   rm -rf .git/modules/$m
   #rm -rf $m
