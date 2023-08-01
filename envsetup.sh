@@ -119,37 +119,19 @@ fi
 export PROJECT
 echo "Setting PROJECT=$PROJECT"
 
-case "$PROJECT" in
-  "rpi4-64")
-    MACHINE=raspberrypi4-64
-    ;;
-  "odroid-c4")
-    MACHINE=odroid-c4-hardkernel
-    ;;
-  "rockpi-4b")
-    MACHINE=rockpi-4-b
-    ;;
-  "var-som-mx8")
-    MACHINE=imx8qm-var-som
-    ;;
-  "var-som-mx8x")
-    MACHINE=imx8qxp-var-som
-    ;;
-  "var-som-mx8m-nano")
-    MACHINE=imx8mn-var-som
-    ;;
-  "nezha-d1")
-    MACHINE=nezha-allwinner-d1
-    ;;
-  "unleashed")
-    MACHINE=freedom-u540
-    ;;
-  "var-dart-imx6ul")
-    MACHINE=imx6ul-var-dart
-    ;;
-  *)
-    MACHINE=$PROJECT
-esac
+MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE.*=' | cut -d '"' -f 2`
+
+if [ -z "$MACHINE" ]; then
+  MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE.*=' | cut -d "'" -f 2`
+fi
+
+if [ -z "$MACHINE" ]; then
+  echo "Please define MACHINE = \"<name>\" in conf/projects/$PROJECT/config.conf"
+  unset PROJECT
+  unset MACHINE
+  return 1
+fi
+
 export MACHINE
 echo "Setting MACHINE=$MACHINE"
 
