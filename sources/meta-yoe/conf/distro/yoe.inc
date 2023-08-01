@@ -166,12 +166,6 @@ PREFERRED_VERSION_nativesdk-swig = "4%"
 # other BSP layers fail bitbake parsing (ti).
 MACHINE_KERNEL_PR = "0"
 
-# Enable u-boot for RPI
-#RPI_USE_U_BOOT = "1"
-
-# Disable rpi raimbow screen
-DISABLE_SPLASH = "1"
-
 # swupdate initramfs init system
 SWUPDATE_INIT = "tiny"
 
