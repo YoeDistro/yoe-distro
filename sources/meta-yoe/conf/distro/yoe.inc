@@ -190,10 +190,6 @@ VOLATILE_LOG_DIR = "no"
 # Use gcc for perf temporarily, until oe-core gets it
 TOOLCHAIN:pn-perf = "gcc"
 
-# Subprocess output:arm-yoe-linux-llvm-objcopy: error: Link field value 22 in section .rel.dyn is not a symbol table
-OBJCOPY:pn-linux-raspberrypi:toolchain-clang = "${HOST_PREFIX}objcopy"
-OBJCOPY:pn-linux-ti-staging:toolchain-clang = "${HOST_PREFIX}objcopy"
-
 SKIP_RECIPE[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
 SKIP_RECIPE[smartrefrigerator] = "Needs porting to QT > 5.6"
 SKIP_RECIPE[qmlbrowser] = "Needs porting to QT > 5.6"
