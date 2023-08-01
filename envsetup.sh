@@ -9,7 +9,7 @@ echoerr() {
 # List supported projects
 yoe_get_projects() {
     (
-    cd $OE_BASE/sources/meta-yoe/conf/projects
+    cd $OE_BASE/conf/projects
     for f in *; do
         if [ -e $f/config.conf ]; then
             echo $f
@@ -119,37 +119,19 @@ fi
 export PROJECT
 echo "Setting PROJECT=$PROJECT"
 
-case "$PROJECT" in
-  "rpi4-64")
-    MACHINE=raspberrypi4-64
-    ;;
-  "odroid-c4")
-    MACHINE=odroid-c4-hardkernel
-    ;;
-  "rockpi-4b")
-    MACHINE=rockpi-4-b
-    ;;
-  "var-som-mx8")
-    MACHINE=imx8qm-var-som
-    ;;
-  "var-som-mx8x")
-    MACHINE=imx8qxp-var-som
-    ;;
-  "var-som-mx8m-nano")
-    MACHINE=imx8mn-var-som
-    ;;
-  "nezha-d1")
-    MACHINE=nezha-allwinner-d1
-    ;;
-  "unleashed")
-    MACHINE=freedom-u540
-    ;;
-  "var-dart-imx6ul")
-    MACHINE=imx6ul-var-dart
-    ;;
-  *)
-    MACHINE=$PROJECT
-esac
+MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE.*=' | cut -d '"' -f 2`
+
+if [ -z "$MACHINE" ]; then
+  MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE.*=' | cut -d "'" -f 2`
+fi
+
+if [ -z "$MACHINE" ]; then
+  echo "Please define MACHINE = \"<name>\" in conf/projects/$PROJECT/config.conf"
+  unset PROJECT
+  unset MACHINE
+  return 1
+fi
+
 export MACHINE
 echo "Setting MACHINE=$MACHINE"
 
@@ -481,7 +463,7 @@ yoe_add_layer() {
   fi
   git submodule add -b $br -f $1 sources/$n
   git submodule init sources/$n
-  echo "Add it from project layers.conf files in sources/meta-yoe/conf/projects"
+  echo "Add it from project layers.conf files in conf/projects"
   echo "please commit with - git commit -s -m'Add module $n'"
 }
 
@@ -495,7 +477,7 @@ yoe_remove_layer() {
   bitbake-layers remove-layer $1
   git submodule deinit -f $m
   git rm -r -f $m
-  echo "Remove it from project layers.conf files in sources/meta-yoe/conf/projects"
+  echo "Remove it from project layers.conf files in conf/projects"
   echo "please commit with - git commit -s -m'Remove module $n'"
   rm -rf .git/modules/$m
   #rm -rf $m

@@ -64,10 +64,6 @@ BUILDHISTORY_COMMIT ?= "1"
 # e.g. qtwebkit from 163M down to < 1M
 CMAKE_VERBOSE ?= ""
 
-# the following is required because some BSP layers (fsl) don't set this, and then
-# other BSP layers fail bitbake parsing (ti).
-MACHINE_KERNEL_PR ??= "0"
-
 # account for some layers which have bbappends for layers we dont include
 BB_DANGLINGAPPENDS_WARNONLY = "1"
 
@@ -166,12 +162,6 @@ PREFERRED_VERSION_nativesdk-swig = "4%"
 # other BSP layers fail bitbake parsing (ti).
 MACHINE_KERNEL_PR = "0"
 
-# Enable u-boot for RPI
-#RPI_USE_U_BOOT = "1"
-
-# Disable rpi raimbow screen
-DISABLE_SPLASH = "1"
-
 # swupdate initramfs init system
 SWUPDATE_INIT = "tiny"
 
@@ -192,13 +182,6 @@ RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""
 
 # Enable persistent logs across reboots
 VOLATILE_LOG_DIR = "no"
-
-# Use gcc for perf temporarily, until oe-core gets it
-TOOLCHAIN:pn-perf = "gcc"
-
-# Subprocess output:arm-yoe-linux-llvm-objcopy: error: Link field value 22 in section .rel.dyn is not a symbol table
-OBJCOPY:pn-linux-raspberrypi:toolchain-clang = "${HOST_PREFIX}objcopy"
-OBJCOPY:pn-linux-ti-staging:toolchain-clang = "${HOST_PREFIX}objcopy"
 
 SKIP_RECIPE[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
 SKIP_RECIPE[smartrefrigerator] = "Needs porting to QT > 5.6"
