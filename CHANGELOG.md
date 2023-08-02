@@ -12,6 +12,8 @@ and this project adheres to
 
 - Move projects to toplevel conf directory
 - Implement new project detection logic in envsetup
+- Upgrade Simple IoT to v0.12.2
+- Fix dependencies for yoe-kiosk-browser
 
 ### Added
 
