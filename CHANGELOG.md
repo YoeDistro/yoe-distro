@@ -21,6 +21,8 @@ and this project adheres to
 - Move gcr3 to meta-oe
 - Upgrade systemd to 253.7
 - Upgrade FSL graphics stack to 6.4.11.p1.2 BSP release
+- Use libgpiod 1.x for VAR-SOM based projects e.g. var-som-mx8
+- Switch Qemu based projects to use QT6 instead of QT5
 
 ### Added
 
