@@ -14,6 +14,9 @@ inherit cmake qt6-cmake systemd
 
 DEPENDS += "qtbase qtwebview qtdeclarative qtdeclarative-native"
 
+RDEPENDS:${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)}"
+RDEPENDS:${PN} += "qtvirtualkeyboard"
+
 INITSCRIPT_NAME = "yoe-kiosk-browser"
 INITSCRIPT_PARAMS = "start 99 5 . stop 20 6 ."
 

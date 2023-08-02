@@ -1,14 +1,14 @@
-From 96338d5df13744052a74eab44faecfb6e08483a8 Mon Sep 17 00:00:00 2001
+From 141cf431c581ba39c45bc8b766edc56f6317ca93 Mon Sep 17 00:00:00 2001
 From: Cliff Brake <cbrake@bec-systems.com>
-Date: Fri, 16 Jun 2023 14:25:01 -0400
-Subject: [PATCH] imx8mn_var_som: Adjust for boot/root/data paritioning scheme
+Date: Tue, 1 Aug 2023 17:16:42 -0400
+Subject: [PATCH] imx8mn_var_som: Adjust for boot/root/data partitioning scheme
 
 ---
  include/configs/imx8mn_var_som.h | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/configs/imx8mn_var_som.h b/include/configs/imx8mn_var_som.h
-index 5cf49f528c..8713720356 100644
+index 85843ac8d2..3692ede332 100644
 --- a/include/configs/imx8mn_var_som.h
 +++ b/include/configs/imx8mn_var_som.h
 @@ -81,7 +81,7 @@
@@ -18,12 +18,12 @@ index 5cf49f528c..8713720356 100644
 -	"bootdir=/boot\0" \
 +	"bootdir=\0" \
  	BOOTENV \
+ 	"prepare_mcore=setenv mcore_clk clk-imx8mn.mcore_booted;\0" \
  	"scriptaddr=0x43500000\0" \
- 	"kernel_addr_r=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
-@@ -120,7 +120,7 @@
+@@ -121,7 +121,7 @@
  		"bootaux ${m7_addr};\0" \
  	"optargs=setenv bootargs ${bootargs} ${kernelargs};\0" \
- 	"mmcargs=setenv bootargs console=${console} " \
+ 	"mmcargs=setenv bootargs ${mcore_clk} console=${console} " \
 -		"root=/dev/mmcblk${mmcblk}p${mmcpart} rootwait rw ${cma_size} cma_name=linux,cma\0 " \
 +		"root=/dev/mmcblk${mmcblk}p2 rootwait rw ${cma_size} cma_name=linux,cma\0 " \
  	"loadbootscript=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}/${bsp_script};\0" \
