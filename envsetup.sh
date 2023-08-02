@@ -695,3 +695,7 @@ yoe_install_image() {
   unset WICIMG
 }
 
+# Needed for running per-image ptest images in parallel on qemu
+yoe_create_tap_devices() {
+  sudo runqemu-gen-tapdevs `id -u` ` nproc --all`
+}
