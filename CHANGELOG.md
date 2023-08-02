@@ -27,6 +27,10 @@ and this project adheres to
 - Added recipes
   - webkitgtk3, libnvme, python3-telnetlib3, mstpd
 
+### Removed
+
+- Remove version-going-backwards from build QA errors
+
 ## [2023.07] - 2023-07-31
 
 ### Changed
