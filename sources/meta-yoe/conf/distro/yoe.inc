@@ -154,6 +154,10 @@ PREFERRED_PROVIDER_nativesdk-u-boot-mkimage ??= "nativesdk-${IMX_DEFAULT_BOOTLOA
 #
 PREFERRED_PROVIDER_virtual/wpebackend ??= "wpebackend-fdo"
 
+# Use prebuilt simpleiot
+PREFERRED_PROVIDER_simpleiot:powerpc64le = "simpleiot"
+PREFERRED_PROVIDER_simpleiot ?= "simpleiot-binary"
+
 # Disable qt in wpe
 PACKAGECONFIG:remove:pn-wpewebkit = "qtwpe"
 
