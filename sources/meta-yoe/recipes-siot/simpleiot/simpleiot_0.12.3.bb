@@ -7,7 +7,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57"
 SECTION = "apps"
 
-DEPENDS = "go-native elm-binary-native nodejs-native"
+DEPENDS += "go-native elm-binary-native nodejs-native curl-native ca-certificates-native"
 
 inherit systemd update-rc.d goarch
 
@@ -29,6 +29,11 @@ INITSCRIPT_PARAMS = "start 99 5 . stop 20 6 ."
 
 do_configure[network] = "1"
 do_compile[network] = "1"
+
+# It uses curl-native to fetch npm dependencies which need to also use
+# native certs bundle, by default curl is compiled to point to curl-native's RSS
+# location which is buildtime path of curl-native not the recipe where it is being used
+export CURL_CA_BUNDLE = "${RECIPE_SYSROOT_NATIVE}${sysconfdir}/ssl/certs/ca-certificates.crt"
 
 do_configure() {
     export GOPATH=${GOPATH}
