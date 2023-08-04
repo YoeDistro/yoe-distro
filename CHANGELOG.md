@@ -14,8 +14,24 @@ and this project adheres to
 - Implement new project detection logic in envsetup
 - Upgrade Simple IoT to v0.12.2
 - Fix dependencies for yoe-kiosk-browser
+- Convert CVE_CHECK_IGNORE to CVE_STATUS in meta-openembedded
+- Fix cross builds for python3-pyaudio
+- Enable wayland/x11/opengl configs based corresponding distro features in mesa-pvr
+- Move libadwaita to core layer
+- Move gcr3 to meta-oe
+- Upgrade systemd to 253.7
+- Upgrade FSL graphics stack to 6.4.11.p1.2 BSP release
+- Use libgpiod 1.x for VAR-SOM based projects e.g. var-som-mx8
+- Switch Qemu based projects to use QT6 instead of QT5
 
 ### Added
+
+- Added recipes
+  - webkitgtk3, libnvme, python3-telnetlib3, mstpd
+
+### Removed
+
+- Remove version-going-backwards from build QA errors
 
 ## [2023.07] - 2023-07-31
 

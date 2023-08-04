@@ -49,7 +49,7 @@ jobs:
           /bin/bash -c "sed -i -e 's/SDK_UPDATE_URL.*$//' conf/site.conf"
       - name: Build Image
         run: |
-          /bin/bash -c ". ./envsetup.sh qemuarm64 && bitbake yoe-qt5-image"
+          /bin/bash -c ". ./envsetup.sh qemuarm64 && bitbake yoe-kiosk-image"
       - name: Test Image
         run: |
           export DISPLAY=":0"

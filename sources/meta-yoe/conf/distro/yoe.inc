@@ -89,6 +89,8 @@ WARN_TO_ERROR_QA ?= "\
 
 WARN_QA:remove = "${WARN_TO_ERROR_QA}"
 ERROR_QA:append = " ${WARN_TO_ERROR_QA}"
+# Yoe does not build binary feeds, this build QA error breaks builds unnessarily
+ERROR_QA:remove = "version-going-backwards"
 #
 # Additional image features
 #
