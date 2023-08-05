@@ -8,31 +8,28 @@
 # "yoe-<libc>-<init-system>-<windowing-system>"
 #
 # Possible options are
-YOE_PROFILE = "yoe-glibc-busyboxinit-eglfs"
-YOE_PROFILE = "yoe-glibc-busyboxinit-wayland"
-YOE_PROFILE = "yoe-glibc-busyboxinit-x11"
-YOE_PROFILE = "yoe-glibc-systemd-eglfs"
+#YOE_PROFILE = "yoe-glibc-busyboxinit-eglfs"
+#YOE_PROFILE = "yoe-glibc-busyboxinit-wayland"
+#YOE_PROFILE = "yoe-glibc-busyboxinit-x11"
+#YOE_PROFILE = "yoe-glibc-systemd-eglfs"
 YOE_PROFILE = "yoe-glibc-systemd-wayland"
-YOE_PROFILE = "yoe-glibc-systemd-x11"
-YOE_PROFILE = "yoe-glibc-sysvinit-eglfs"
-YOE_PROFILE = "yoe-glibc-sysvinit-wayland"
-YOE_PROFILE = "yoe-glibc-sysvinit-x11"
-YOE_PROFILE = "yoe-musl-busyboxinit-eglfs"
-YOE_PROFILE = "yoe-musl-busyboxinit-wayland"
-YOE_PROFILE = "yoe-musl-busyboxinit-x11"
-YOE_PROFILE = "yoe-musl-systemd-eglfs"
-YOE_PROFILE = "yoe-musl-systemd-wayland"
-YOE_PROFILE = "yoe-musl-systemd-x11"
-YOE_PROFILE = "yoe-musl-sysvinit-eglfs"
-YOE_PROFILE = "yoe-musl-sysvinit-wayland"
-YOE_PROFILE = "yoe-musl-sysvinit-x11"
+#YOE_PROFILE = "yoe-glibc-systemd-x11"
+#YOE_PROFILE = "yoe-glibc-sysvinit-eglfs"
+#YOE_PROFILE = "yoe-glibc-sysvinit-wayland"
+#YOE_PROFILE = "yoe-glibc-sysvinit-x11"
+#YOE_PROFILE = "yoe-musl-busyboxinit-eglfs"
+#YOE_PROFILE = "yoe-musl-busyboxinit-wayland"
+#YOE_PROFILE = "yoe-musl-busyboxinit-x11"
+#YOE_PROFILE = "yoe-musl-systemd-eglfs"
+#YOE_PROFILE = "yoe-musl-systemd-wayland"
+#YOE_PROFILE = "yoe-musl-systemd-x11"
+#YOE_PROFILE = "yoe-musl-sysvinit-eglfs"
+#YOE_PROFILE = "yoe-musl-sysvinit-wayland"
+#YOE_PROFILE = "yoe-musl-sysvinit-x11"
 # configure docker container to run bitbake in
-export DOCKER_REPO=yoedistro/yoe-build:bookworm-x86_64
-# For aarch64 build hosts
-#export DOCKER_REPO=yoedistro/yoe-build:bookworm-aarch64
+# for mac hosts `uname -m` may return arm64 which needs
+# to be mapped to `aarch64`
+export DOCKER_REPO=yoedistro/yoe-build:bookworm-`uname -m`
 # Keep the load in control and do not issue more parallel jobs
 # when load hits 1.5 * number of cpus
-PARALLEL_MAKE_append = " \
--l ${@int(os.sysconf(os.sysconf_names['SC_NPROCESSORS_ONLN'])) * 150/100} \
-"
-
+PARALLEL_MAKE:append = " -l ${@int(os.sysconf(os.sysconf_names['SC_NPROCESSORS_ONLN'])) * 150/100}"
