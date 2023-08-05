@@ -19,10 +19,16 @@ and this project adheres to
 - Enable wayland/x11/opengl configs based corresponding distro features in mesa-pvr
 - Move libadwaita to core layer
 - Move gcr3 to meta-oe
-- Upgrade systemd to 253.7
+- Upgrade systemd to 254
 - Upgrade FSL graphics stack to 6.4.11.p1.2 BSP release
 - Use libgpiod 1.x for VAR-SOM based projects e.g. var-som-mx8
 - Switch Qemu based projects to use QT6 instead of QT5
+- Upgrade musl to tip of trunk
+- Upgrade binutils to 2.41 release
+- Fix syntax error in image_types_sparse
+- Bump libcamera to latest tip of trunk
+- Fix conversion errors in cve_check
+- Fix poco ptests run
 
 ### Added
 
