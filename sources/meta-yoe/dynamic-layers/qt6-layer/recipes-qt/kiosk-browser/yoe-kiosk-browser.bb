@@ -53,3 +53,11 @@ do_install:append() {
 SYSTEMD_SERVICE:${PN} = "yoe-kiosk-browser.service"
 
 FILES:${PN} += "${sysconfdir}/default"
+
+# Keep in sync with meta-qt6/recipes-qt/qt6/chromium-gn.inc
+COMPATIBLE_MACHINE = "(-)"
+COMPATIBLE_MACHINE:aarch64 = "(.*)"
+COMPATIBLE_MACHINE:armv6 = "(.*)"
+COMPATIBLE_MACHINE:armv7a = "(.*)"
+COMPATIBLE_MACHINE:armv7ve = "(.*)"
+COMPATIBLE_MACHINE:x86-64 = "(.*)"
