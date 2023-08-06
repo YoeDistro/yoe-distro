@@ -29,6 +29,8 @@ and this project adheres to
 - Bump libcamera to latest tip of trunk
 - Fix conversion errors in cve_check
 - Fix poco ptests run
+- Fix ptests runs on qemu inside container
+- Do not use lld on riscv with binutils 2.41
 
 ### Added
 
