@@ -113,6 +113,10 @@ INHERIT += "${@bb.utils.contains('BUILD_ARCH', 'ppc64le', '', 'uninative', d)}"
 INHERIT += "image-buildinfo"
 
 DISTRO_FEATURES:append = " opengl multiarch wayland pam vulkan usrmerge ld-is-lld"
+# lld does not work with objects created with gas from binutils 2.41 yet
+# see https://reviews.llvm.org/D142880
+DISTRO_FEATURES:remove:riscv64 = "ld-is-lld"
+DISTRO_FEATURES:remove:riscv32 = "ld-is-lld"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
