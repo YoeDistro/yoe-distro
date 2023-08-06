@@ -31,6 +31,8 @@ and this project adheres to
 - Fix poco ptests run
 - Fix ptests runs on qemu inside container
 - Do not use lld on riscv with binutils 2.41
+- More LLD fixes e.g. elfutils and gnu-efi
+- Use yoe-kiosk-image instead of yoe-qt5-image for CI
 
 ### Added
 
@@ -40,6 +42,7 @@ and this project adheres to
 ### Removed
 
 - Remove version-going-backwards from build QA errors
+- Remove unused AUTHOR variable from recipes in meta-openembedded
 
 ## [2023.07] - 2023-07-31
 
