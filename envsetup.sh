@@ -614,6 +614,8 @@ dkr() {
     --env UUID=$(id -u) \
     $VNC_PORT \
     $UID_ARGS \
+    --cap-add=NET_ADMIN --device /dev/net/tun \
+    --device /dev/kvm \
     ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
 
