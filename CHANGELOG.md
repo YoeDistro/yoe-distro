@@ -19,10 +19,20 @@ and this project adheres to
 - Enable wayland/x11/opengl configs based corresponding distro features in mesa-pvr
 - Move libadwaita to core layer
 - Move gcr3 to meta-oe
-- Upgrade systemd to 253.7
+- Upgrade systemd to 254
 - Upgrade FSL graphics stack to 6.4.11.p1.2 BSP release
 - Use libgpiod 1.x for VAR-SOM based projects e.g. var-som-mx8
 - Switch Qemu based projects to use QT6 instead of QT5
+- Upgrade musl to tip of trunk
+- Upgrade binutils to 2.41 release
+- Fix syntax error in image_types_sparse
+- Bump libcamera to latest tip of trunk
+- Fix conversion errors in cve_check
+- Fix poco ptests run
+- Fix ptests runs on qemu inside container
+- Do not use lld on riscv with binutils 2.41
+- More LLD fixes e.g. elfutils and gnu-efi
+- Use yoe-kiosk-image instead of yoe-qt5-image for CI
 
 ### Added
 
@@ -32,6 +42,7 @@ and this project adheres to
 ### Removed
 
 - Remove version-going-backwards from build QA errors
+- Remove unused AUTHOR variable from recipes in meta-openembedded
 
 ## [2023.07] - 2023-07-31
 
