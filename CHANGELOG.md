@@ -33,6 +33,9 @@ and this project adheres to
 - Do not use lld on riscv with binutils 2.41
 - More LLD fixes e.g. elfutils and gnu-efi
 - Use yoe-kiosk-image instead of yoe-qt5-image for CI
+- Bump libcamera-apps to latest
+- Do not use internal assembler with clang for qtbase
+- Restart yoe-kiosk-browser service on failure
 
 ### Added
 

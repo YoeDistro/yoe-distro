@@ -3,8 +3,8 @@ DESCRIPTION = "A web browser designed for embedded systems"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
 
-SRC_URI = "git://github.com/YoeDistro/yoe-kiosk-browser;branch=kraj/main;protocol=https"
-SRCREV = "976108d9d092df457b50c55938db3ab3ef67bc1b"
+SRC_URI = "git://github.com/YoeDistro/yoe-kiosk-browser;branch=main;protocol=https"
+SRCREV = "ebeead7dc190cdbdc6f634a6fb5f6859c6765655"
 
 PV = "1.0.0+git${SRCPV}"
 
