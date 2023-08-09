@@ -595,7 +595,16 @@ dkr() {
     # our own.
     # Running without namespace mapping as non-root
     # https://github.com/containers/podman/issues/2180
-    UID_ARGS="--privileged --uidmap $UUID:0:1 --uidmap 0:1:$UUID --gidmap $GGID:0:1 --gidmap 0:1:$GGID --net=slirp4netns:port_handler=slirp4netns"
+    UID_ARGS="--privileged \
+      --uidmap $UUID:0:1 \
+      --uidmap 0:1:$UUID \
+      --gidmap $GGID:0:1 \
+      --gidmap 0:1:$GGID \
+      --net=slirp4netns:port_handler=slirp4netns \
+      --security-opt seccomp=unconfined \
+      --security-opt label=disable \
+      --cap-add=NET_RAW \
+      "
   fi
 
   $DOCKER run --rm -i $PSEUDO_TTY \
@@ -614,8 +623,10 @@ dkr() {
     --env UUID=$(id -u) \
     $VNC_PORT \
     $UID_ARGS \
-    --cap-add=NET_ADMIN --device /dev/net/tun \
+    --cap-add=NET_ADMIN \
+    --device /dev/net/tun \
     --device /dev/kvm \
+    --device /dev/vhost-net \
     ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
 
