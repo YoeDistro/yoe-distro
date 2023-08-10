@@ -38,11 +38,14 @@ and this project adheres to
 - Restart yoe-kiosk-browser service on failure
 - Update linux-yocto/6.4 to v6.4.9
 - Pass /dev/vhost-net to build container from envsetup
+- Upgrade openssh to 9.3p2
 
 ### Added
 
 - Added recipes
   - webkitgtk3, libnvme, python3-telnetlib3, mstpd
+- Add script to generate kernel CVE_STATUS entries for linux-yocto
+- Add packageconfig to support colored logs in journald
 
 ### Removed
 
