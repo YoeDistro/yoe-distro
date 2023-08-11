@@ -209,6 +209,3 @@ SKIP_RECIPE[python3-pyqtchart] = "needs python3-pyqt5 which needs reworked to wo
 RDEPENDS:packagegroup-meta-multimedia:remove:pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
 RDEPENDS:packagegroup-meta-oe-fortran-packages:remove:pn-packagegroup-meta-oe = "lapack octave suitesparse"
 RDEPENDS:packagegroup-meta-python3:remove:pn-packagegroup-meta-python = "python3-cvxopt"
-
-# remove once the definition in meta-raspberrypi is gone
-SPLASH = "${@bb.utils.contains("MACHINE_FEATURES", "screen", "psplash", "", d)}"
