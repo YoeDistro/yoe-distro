@@ -39,6 +39,7 @@ and this project adheres to
 - Update linux-yocto/6.4 to v6.4.9
 - Pass /dev/vhost-net to build container from envsetup
 - Upgrade openssh to 9.3p2
+- Upgrade go compiler to 1.20.7
 
 ### Added
 
@@ -51,6 +52,7 @@ and this project adheres to
 
 - Remove version-going-backwards from build QA errors
 - Remove unused AUTHOR variable from recipes in meta-openembedded
+  and core
 
 ## [2023.07] - 2023-07-31
 
