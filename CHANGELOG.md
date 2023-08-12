@@ -40,6 +40,7 @@ and this project adheres to
 - Pass /dev/vhost-net to build container from envsetup
 - Upgrade openssh to 9.3p2
 - Upgrade go compiler to 1.20.7
+- Fix recipe_sysroot_check_ld_is_lld to not trigger on allarch recipes
 
 ### Added
 
