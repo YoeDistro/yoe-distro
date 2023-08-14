@@ -44,6 +44,7 @@ and this project adheres to
 - Fix rust features for vfpv3d16
 - Adjust commman to work with interface renaming with
   kernel 6.4 and systemd 254
+- Switch RPI4 to use QT6
 
 ### Added
 
