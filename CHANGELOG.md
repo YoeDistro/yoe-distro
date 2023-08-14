@@ -36,16 +36,25 @@ and this project adheres to
 - Bump libcamera-apps to latest
 - Do not use internal assembler with clang for qtbase
 - Restart yoe-kiosk-browser service on failure
+- Update linux-yocto/6.4 to v6.4.9
+- Pass /dev/vhost-net to build container from envsetup
+- Upgrade openssh to 9.3p2
+- Upgrade go compiler to 1.20.7
+- Fix recipe_sysroot_check_ld_is_lld to not trigger on allarch recipes
 
 ### Added
 
 - Added recipes
   - webkitgtk3, libnvme, python3-telnetlib3, mstpd
+- Add script to generate kernel CVE_STATUS entries for linux-yocto
+- Add packageconfig to support colored logs in journald
+- Add DOCKER_PORTS variable in setenv to forward ports between docker and host
 
 ### Removed
 
 - Remove version-going-backwards from build QA errors
 - Remove unused AUTHOR variable from recipes in meta-openembedded
+  and core
 
 ## [2023.07] - 2023-07-31
 

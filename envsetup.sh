@@ -559,12 +559,13 @@ dkr() {
   if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
     PSEUDO_TTY=""
   else
-    PSEUDO_TTY="-t"
+    PSEUDO_TTY="--tty"
   fi
-  if [ -z "$DOCKER_FORWARD_VNC" ]; then
-    VNC_PORT=""
-  else
-    VNC_PORT="-p 5900:5900"
+  if [ -n "$DOCKER_PORTS" ]; then
+    unset PORTMAPS
+    for p in $DOCKER_PORTS; do
+      PORTMAPS="$PORTMAPS --publish $p"
+    done
   fi
 
   SSH_AUTH_DIR=~/
@@ -595,7 +596,16 @@ dkr() {
     # our own.
     # Running without namespace mapping as non-root
     # https://github.com/containers/podman/issues/2180
-    UID_ARGS="--privileged --uidmap $UUID:0:1 --uidmap 0:1:$UUID --gidmap $GGID:0:1 --gidmap 0:1:$GGID --net=slirp4netns:port_handler=slirp4netns"
+    UID_ARGS="--privileged \
+      --uidmap $UUID:0:1 \
+      --uidmap 0:1:$UUID \
+      --gidmap $GGID:0:1 \
+      --gidmap 0:1:$GGID \
+      --net=slirp4netns:port_handler=slirp4netns \
+      --security-opt seccomp=unconfined \
+      --security-opt label=disable \
+      --cap-add=NET_RAW \
+      "
   fi
 
   $DOCKER run --rm -i $PSEUDO_TTY \
@@ -612,10 +622,12 @@ dkr() {
     -w ${OE_BASE} \
     --env GGID=$(id -g) \
     --env UUID=$(id -u) \
-    $VNC_PORT \
+    $PORTMAPS \
     $UID_ARGS \
-    --cap-add=NET_ADMIN --device /dev/net/tun \
+    --cap-add=NET_ADMIN \
+    --device /dev/net/tun \
     --device /dev/kvm \
+    --device /dev/vhost-net \
     ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
 
