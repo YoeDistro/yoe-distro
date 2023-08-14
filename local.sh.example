@@ -29,3 +29,9 @@
 # By default docker is used if DOCKER_REPO is set to a value different than
 # none. If you prefer to use podman instead of docker, un-comment this line
 #export DOCKER="podman"
+
+# Ports that should be exposed from docker container to host
+# format is host-port:container-port e.g.
+# 5900 is for VNC
+# 8181 is for clang static analyzer bitbake -cscanview <recipe>
+#export DOCKER_PORTS="5900:5900 8181:8181"

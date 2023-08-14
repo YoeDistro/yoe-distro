@@ -559,12 +559,13 @@ dkr() {
   if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
     PSEUDO_TTY=""
   else
-    PSEUDO_TTY="-t"
+    PSEUDO_TTY="--tty"
   fi
-  if [ -z "$DOCKER_FORWARD_VNC" ]; then
-    VNC_PORT=""
-  else
-    VNC_PORT="-p 5900:5900"
+  if [ -n "$DOCKER_PORTS" ]; then
+    unset PORTMAPS
+    for p in $DOCKER_PORTS; do
+      PORTMAPS="$PORTMAPS --publish $p"
+    done
   fi
 
   SSH_AUTH_DIR=~/
@@ -621,7 +622,7 @@ dkr() {
     -w ${OE_BASE} \
     --env GGID=$(id -g) \
     --env UUID=$(id -u) \
-    $VNC_PORT \
+    $PORTMAPS \
     $UID_ARGS \
     --cap-add=NET_ADMIN \
     --device /dev/net/tun \
