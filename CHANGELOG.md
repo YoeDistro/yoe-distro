@@ -48,6 +48,7 @@ and this project adheres to
   - webkitgtk3, libnvme, python3-telnetlib3, mstpd
 - Add script to generate kernel CVE_STATUS entries for linux-yocto
 - Add packageconfig to support colored logs in journald
+- Add DOCKER_PORTS variable in setenv to forward ports between docker and host
 
 ### Removed
 
