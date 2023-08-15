@@ -553,7 +553,7 @@ dkr() {
     echo "setting dkr action to shell"
     CMD="/bin/bash"
   else
-    CMD=". ${OE_BASE}/envsetup.sh $PROJECT && $@"
+    CMD=". ${OE_BASE}/envsetup.sh $PROJECT 2>&1 > /dev/null && $@"
     shift
   fi
   if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
@@ -631,23 +631,52 @@ dkr() {
     ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
 
-bitbake() {
+wrapcmd() {
   ulimit -n 4096
+  cmd=$1
+  shift
   if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
-    ${OE_BASE}/sources/poky/bitbake/bin/bitbake $@
+    $cmd $@
   else
-    dkr "${OE_BASE}/sources/poky/bitbake/bin/bitbake $@"
+    dkr "$cmd $@"
   fi
 }
 
-devtool() {
-  ulimit -n 4096
-  if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
-    ${OE_BASE}/sources/poky/scripts/devtool $@
-  else
-    dkr "${OE_BASE}/sources/poky/scripts/devtool $@"
-  fi
+bitbake() {
+  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake $@
 }
+bitbake-diffsigs() {
+  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-diffsigs $@
+}
+
+bitbake-dumpsig() {
+  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-dumpsig $@
+}
+
+bitbake-getvar() {
+  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-getvar $@
+}
+
+bitbake-layers() {
+  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-layers $@
+}
+
+bitbake-selftest() {
+  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-selftest $@
+}
+
+devtool() {
+  wrapcmd ${OE_BASE}/sources/poky/scripts/devtool $@
+}
+
+oe-pkgdata-util() {
+  wrapcmd ${OE_BASE}/sources/poky/scripts/oe-pkgdata-util $@
+}
+
+recipetool() {
+  wrapcmd ${OE_BASE}/sources/poky/scripts/recipetool $@
+}
+
 
 yoe_get_image_version() {
   echo $(read_var_from_conf 'IMG_VERSION')
