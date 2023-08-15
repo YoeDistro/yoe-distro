@@ -5,51 +5,24 @@ KERNEL_IMAGE = "${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin"
 
 # Add ${KERNEL_IMAGETYPE} to KERNEL_ARTEFACTS if using u-boot
 KERNEL_ARTEFACTS = "\
-    bcm2708-rpi-b.dtb \
-    bcm2708-rpi-cm.dtb \
+    bcm2708-rpi-zero.dtb \
     bcm2708-rpi-zero-w.dtb \
+    bcm2708-rpi-b.dtb \
+    bcm2708-rpi-b-rev1.dtb \
+    bcm2708-rpi-b-plus.dtb \
     bcm2709-rpi-2-b.dtb \
-    bcm2710-rpi-3-b-plus.dtb \
+    bcm2710-rpi-2-b.dtb \
     bcm2710-rpi-3-b.dtb \
-    bcm2710-rpi-cm3.dtb \
+    bcm2710-rpi-3-b-plus.dtb \
+    bcm2710-rpi-zero-2.dtb \
     bcm2711-rpi-4-b.dtb \
+    bcm2711-rpi-400.dtb \
+    bcm2708-rpi-cm.dtb \
+    bcm2710-rpi-cm3.dtb \
+    bcm2711-rpi-cm4.dtb \
+    bcm2711-rpi-cm4s.dtb \
 "
-DTBOFILES = "\
-    overlays/mcp2515-can1.dtbo \
-    overlays/hifiberry-dac.dtbo \
-    overlays/hifiberry-digi.dtbo \
-    overlays/hifiberry-dacplus.dtbo \
-    overlays/pitft28-capacitive.dtbo \
-    overlays/gpio-ir.dtbo \
-    overlays/iqaudio-dacplus.dtbo \
-    overlays/justboom-digi.dtbo \
-    overlays/justboom-dac.dtbo \
-    overlays/vc4-kms-dsi-7inch.dtbo \
-    overlays/mcp2515-can0.dtbo \
-    overlays/i2c-rtc.dtbo \
-    overlays/miniuart-bt.dtbo \
-    overlays/at86rf233.dtbo \
-    overlays/pitft22.dtbo \
-    overlays/imx219.dtbo \
-    overlays/vc4-fkms-v3d.dtbo \
-    overlays/justboom-both.dtbo \
-    overlays/disable-bt.dtbo \
-    overlays/w1-gpio.dtbo \
-    overlays/rpi-ft5406.dtbo \
-    overlays/dwc2.dtbo \
-    overlays/pitft28-resistive.dtbo \
-    overlays/hifiberry-amp.dtbo \
-    overlays/vc4-kms-v3d.dtbo \
-    overlays/w1-gpio-pullup.dtbo \
-    overlays/vc4-kms-v3d-pi4.dtbo \
-    overlays/gpio-key.dtbo \
-    overlays/gpio-ir-tx.dtbo \
-    overlays/pps-gpio.dtbo \
-    overlays/rpi-poe.dtbo \
-    overlays/pitft35-resistive.dtbo \
-    overlays/overlay_map.dtb \
-    overlays/iqaudio-dac.dtbo \
-    "
+DTBOFILES = " ${RPI_KERNEL_DEVICETREE_OVERLAYS} "
 
 ROOTFS_ARTEFACTS = "rootfs.ext4.xz"
 
