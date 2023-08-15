@@ -45,6 +45,7 @@ and this project adheres to
 - Adjust commman to work with interface renaming with
   kernel 6.4 and systemd 254
 - Switch RPI4 to use QT6
+- Wrap more bitbake commands in container e.g. bitbake-getvar
 
 ### Added
 
