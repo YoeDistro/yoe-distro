@@ -32,6 +32,12 @@ else
   BOOTPART_TYPE=c
 fi
 
+if [ "$OVERLAY_TYPE" = "persistent" -o "$OVERLAY_TYPE" = "tmpfs" ]; then
+  FINAL_ROOTFS="/mnt/overlay"
+else
+  FINAL_ROOTFS="/mnt/rootfs"
+fi
+
 speak() {
   if [ "$UPDATER_SPEECH" = "1" ]; then
     msg "speak $1"
@@ -347,11 +353,11 @@ mount_rootfs_sd() {
   if [ "$OVERLAY_TYPE" = "persistent" ]; then
     msg_splash "Mounting filesystem overlay on data partition"
     mount_overlay_data
-  else
+  elif [ "$OVERLAY_TYPE" = "tmpfs" ]; then
     msg_splash "Mounting filesystem overlay on tmpfs"
     mount_overlay_tmpfs
   fi
-  mount -n --move /mnt/data /mnt/overlay/data
+  mount -n --move /mnt/data $FINAL_ROOTFS/data
 }
 
 mount_rootfs_emmc() {
@@ -370,11 +376,11 @@ mount_rootfs_emmc() {
   if [ "$OVERLAY_TYPE" = "persistent" ]; then
     msg_splash "Mounting filesystem overlay on data partition"
     mount_overlay_data
-  else
+  elif [ "$OVERLAY_TYPE" = "tmpfs" ]; then
     msg_splash "Mounting filesystem overlay on tmpfs"
     mount_overlay_tmpfs
   fi
-  mount -n --move /mnt/data /mnt/overlay/data
+  mount -n --move /mnt/data $FINAL_ROOTFS/data
 }
 
 mount_rootfs_nand() {
@@ -499,7 +505,9 @@ update_from_usb() {
   if [ "$update_file" != "" ]; then
     speak "updater, found u s b disk"
     msg_splash "USB update: $update_file"
-    . $USB_MOUNT_POINT/yoe-updater.env
+    if [ -e $USB_MOUNT_POINT/yoe-updater.env ]; then
+      . $USB_MOUNT_POINT/yoe-updater.env
+    fi
     if ! process_update $USB_MOUNT_POINT/$update_file; then
       msg_splash "Failed to process update from USB"
       speak "updater, failed to process update from u s b"
@@ -518,7 +526,9 @@ update_from_sd() {
   if [ "$update_file" != "" ]; then
     speak "update found on S D card"
     msg_splash "SD update: $update_file"
-    . $SD_MOUNT_POINT/yoe-updater.env
+    if [ -e $SD_MOUNT_POINT/yoe-updater.env ]; then
+      . $SD_MOUNT_POINT/yoe-updater.env
+    fi
     if ! process_update $SD_MOUNT_POINT/$update_file; then
       msg_splash "Failed to process update from SD"
       speak "updater, failed to process update from s d card"
@@ -563,9 +573,10 @@ update() {
     fi
   fi
 }
+
 create_persistent_bind_dir() {
   for d in ${PERSISTENT_BINDS}; do
-    mkdir -p /mnt/overlay/data/persistent/$d
+    mkdir -p $FINAL_ROOTFS/data/persistent/$d
   done
 }
 
@@ -597,7 +608,7 @@ boot() {
   msg_splash 50
 
 #  exec switch_root -c /dev/console /mnt/overlay /sbin/init
-  exec switch_root /mnt/overlay /sbin/init
+  exec switch_root $FINAL_ROOTFS /sbin/init
 }
 
 initialize
