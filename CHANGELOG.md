@@ -46,6 +46,8 @@ and this project adheres to
   kernel 6.4 and systemd 254
 - Switch RPI4 to use QT6
 - Wrap more bitbake commands in container e.g. bitbake-getvar
+- Enable i2c and disable rpi boot logo for rpi4-64
+- Add needed host SDK bits for QT6 to yoe-kiosk-image
 
 ### Added
 
@@ -55,6 +57,7 @@ and this project adheres to
 - Add packageconfig to support colored logs in journald
 - Add DOCKER_PORTS variable in setenv to forward ports between docker and host
 - Add GCP fetcher to list of supported protocols
+- Add yocto sstate mirror as default backup for public sstate feeds
 
 ### Removed
 
