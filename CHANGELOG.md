@@ -48,16 +48,21 @@ and this project adheres to
 - Wrap more bitbake commands in container e.g. bitbake-getvar
 - Enable i2c and disable rpi boot logo for rpi4-64
 - Add needed host SDK bits for QT6 to yoe-kiosk-image
+- Define SRCREV_FORMAT for recipes with multiple git SRC_URIs
+- Upgrade to glibc 2.38
+- Upgrade openSSL to 3.1.2
 
 ### Added
 
 - Added recipes
-  - webkitgtk3, libnvme, python3-telnetlib3, mstpd
+  - webkitgtk3, libnvme, python3-telnetlib3, mstpd, bolt
+    python3-types-psutil, python3-types-setuptools, qad
 - Add script to generate kernel CVE_STATUS entries for linux-yocto
 - Add packageconfig to support colored logs in journald
 - Add DOCKER_PORTS variable in setenv to forward ports between docker and host
 - Add GCP fetcher to list of supported protocols
 - Add yocto sstate mirror as default backup for public sstate feeds
+- Add MESON_TARGET to meson class which can be defined in recipes
 
 ### Removed
 
