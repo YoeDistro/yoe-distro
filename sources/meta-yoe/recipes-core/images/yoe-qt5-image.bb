@@ -11,3 +11,8 @@ export IMAGE_BASENAME = "yoe-qt5-image"
 
 # ptest needs a lot of memory
 QB_MEM = "-m 1024"
+
+python() {
+    if 'qt5-layer' not in d.getVar('BBFILE_COLLECTIONS').split():
+        raise bb.parse.SkipRecipe('Requires meta-qt5 in bblayers.conf')
+}

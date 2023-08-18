@@ -14,10 +14,6 @@
 	path = sources/meta-freescale-3rdparty
 	url = https://github.com/YoeDistro/meta-freescale-3rdparty
 	branch = master
-[submodule "sources/meta-qt5"]
-	path = sources/meta-qt5
-	url = https://github.com/YoeDistro/meta-qt5
-	branch = master
 [submodule "sources/meta-intel"]
 	path = sources/meta-intel
 	url = https://github.com/YoeDistro/meta-intel
