@@ -51,12 +51,16 @@ and this project adheres to
 - Define SRCREV_FORMAT for recipes with multiple git SRC_URIs
 - Upgrade to glibc 2.38
 - Upgrade openSSL to 3.1.2
+- Fix unnessary clang rebuild when enabling MULTILIBS
+- Add ptests to librelp and run them by default in meta-oe ptest image
+- Upgrade mariadb to 10.11.5
 
 ### Added
 
 - Added recipes
   - webkitgtk3, libnvme, python3-telnetlib3, mstpd, bolt
     python3-types-psutil, python3-types-setuptools, qad
+    ttf-google-fira, python3-oauth2client, python3-schedule
 - Add script to generate kernel CVE_STATUS entries for linux-yocto
 - Add packageconfig to support colored logs in journald
 - Add DOCKER_PORTS variable in setenv to forward ports between docker and host
