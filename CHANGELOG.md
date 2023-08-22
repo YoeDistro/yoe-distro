@@ -54,6 +54,8 @@ and this project adheres to
 - Fix unnessary clang rebuild when enabling MULTILIBS
 - Add ptests to librelp and run them by default in meta-oe ptest image
 - Upgrade mariadb to 10.11.5
+- Fix musl build for riscv32
+- Allow building some native recipes with ccache
 
 ### Added
 
