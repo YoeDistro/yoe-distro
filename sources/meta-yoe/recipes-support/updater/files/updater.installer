@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=20.5
+VERSION=21.3
 
 . ./platform
 
@@ -510,7 +510,14 @@ find_update_file() {
   cd - >/dev/null
 }
 
+check_rescue_shell() {
+  if [ -f $1/rescue-shell ]; then
+    rescue_shell
+  fi
+}
+
 update_from_usb() {
+  check_rescue_shell $USB_MOUNT_POINT
   update_file=$(find_update_file $USB_MOUNT_POINT)
   if [ "$update_file" != "" ]; then
     speak "updater, found u s b disk"
@@ -532,6 +539,7 @@ update_from_usb() {
 }
 
 update_from_sd() {
+  check_rescue_shell $SD_MOUNT_POINT
   update_file=$(find_update_file $SD_MOUNT_POINT)
   if [ "$update_file" != "" ]; then
     speak "update found on S D card"
@@ -553,6 +561,7 @@ update_from_sd() {
 }
 
 update_from_data() {
+  check_rescue_shell $DATA_MOUNT_POINT
   update_file=$(find_update_file $DATA_MOUNT_POINT)
   if [ "$update_file" != "" ]; then
     speak "update found on data partition"
