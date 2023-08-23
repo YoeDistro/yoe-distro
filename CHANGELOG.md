@@ -36,7 +36,7 @@ and this project adheres to
 - Bump libcamera-apps to latest
 - Do not use internal assembler with clang for qtbase
 - Restart yoe-kiosk-browser service on failure
-- Update linux-yocto/6.4 to v6.4.9
+- Update linux-yocto/6.4 to v6.4.11 and 6.1 to v6.1.46
 - Pass /dev/vhost-net to build container from envsetup
 - Upgrade openssh to 9.3p2
 - Upgrade go compiler to 1.20.7
@@ -54,6 +54,8 @@ and this project adheres to
 - Fix unnessary clang rebuild when enabling MULTILIBS
 - Add ptests to librelp and run them by default in meta-oe ptest image
 - Upgrade mariadb to 10.11.5
+- Fix musl build for riscv32
+- Allow building some native recipes with ccache
 
 ### Added
 

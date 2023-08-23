@@ -689,7 +689,7 @@ yoe_get_image_version() {
 yoe_check_install_dependencies() {
   if ! command -v bmaptool >&/dev/null; then
     # build own copy of native tools
-    bitbake build-sysroots
+    bitbake bmap-tools-native build-sysroots
     if ! command -v bmaptool >&/dev/null; then
       echo "bmaptool not installed"
       echo "Install bmap-tools package on build host"
@@ -740,5 +740,6 @@ yoe_install_image() {
 
 # Needed for running per-image ptest images in parallel on qemu
 yoe_create_tap_devices() {
-  sudo runqemu-gen-tapdevs `id -u` ` nproc --all`
+  bitbake qemu-helper-native
+  sudo ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs `id -u` ` nproc --all`
 }
