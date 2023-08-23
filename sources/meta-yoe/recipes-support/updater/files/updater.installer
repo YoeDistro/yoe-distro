@@ -71,7 +71,6 @@ msg_splash() {
 rescue_shell() {
   msg "$@"
   msg "Something went wrong. Dropping you to a shell."
-  busybox --install -s
   exec /bin/sh
 }
 
