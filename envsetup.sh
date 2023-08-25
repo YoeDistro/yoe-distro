@@ -740,6 +740,8 @@ yoe_install_image() {
 
 # Needed for running per-image ptest images in parallel on qemu
 yoe_create_tap_devices() {
-  bitbake qemu-helper-native
+  if [ ! -e ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs ]; then
+    bitbake qemu-helper-native
+  fi
   sudo ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs `id -u` ` nproc --all`
 }
