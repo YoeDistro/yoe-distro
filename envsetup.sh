@@ -743,5 +743,5 @@ yoe_create_tap_devices() {
   if [ ! -e ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs ]; then
     bitbake qemu-helper-native
   fi
-  sudo ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs `id -u` ` nproc --all`
+  sudo ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs `id -g` `nproc --all`
 }
