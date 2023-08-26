@@ -624,6 +624,7 @@ dkr() {
     --env UUID=$(id -u) \
     $PORTMAPS \
     $UID_ARGS \
+    $DOCKER_EXTRA_ARGS \
     --cap-add=NET_ADMIN \
     --device /dev/net/tun \
     --device /dev/kvm \
