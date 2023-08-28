@@ -56,6 +56,14 @@ and this project adheres to
 - Upgrade mariadb to 10.11.5
 - Fix musl build for riscv32
 - Allow building some native recipes with ccache
+- Do not use LLD linker to build go-runtime on aarch64, subsequent
+  apps linking with this go-runtime crashes go linker
+- Switch from GNU-TLS to openssl transport by default on rsyslog
+- Update to latest on QT6 6.5 LTS
+- Improve taskhash reproducibility in bitbake/siggen
+- Add new srcrev fetcher API to fetch2
+- Disable perl support in perf
+- Do not define TESTIMAGE_AUTO for qemu machines
 
 ### Added
 
@@ -63,12 +71,15 @@ and this project adheres to
   - webkitgtk3, libnvme, python3-telnetlib3, mstpd, bolt
     python3-types-psutil, python3-types-setuptools, qad
     ttf-google-fira, python3-oauth2client, python3-schedule
+    spice-guest-vdagent, aml, phodav, gnome-boxes, libosinfo
+    gnome-remote-desktop, libcacard, usbids, qcbor
 - Add script to generate kernel CVE_STATUS entries for linux-yocto
 - Add packageconfig to support colored logs in journald
 - Add DOCKER_PORTS variable in setenv to forward ports between docker and host
 - Add GCP fetcher to list of supported protocols
 - Add yocto sstate mirror as default backup for public sstate feeds
 - Add MESON_TARGET to meson class which can be defined in recipes
+- Add DOCKER_EXTRA_ARGS to envsetup to pass custom options to docker
 
 ### Removed
 
