@@ -64,6 +64,7 @@ and this project adheres to
 - Add new srcrev fetcher API to fetch2
 - Disable perl support in perf
 - Do not define TESTIMAGE_AUTO for qemu machines
+- Fix allarch override syntax in cmake class
 
 ### Added
 
@@ -73,6 +74,7 @@ and this project adheres to
     ttf-google-fira, python3-oauth2client, python3-schedule
     spice-guest-vdagent, aml, phodav, gnome-boxes, libosinfo
     gnome-remote-desktop, libcacard, usbids, qcbor
+    python3-sdbus, libfaketime
 - Add script to generate kernel CVE_STATUS entries for linux-yocto
 - Add packageconfig to support colored logs in journald
 - Add DOCKER_PORTS variable in setenv to forward ports between docker and host
