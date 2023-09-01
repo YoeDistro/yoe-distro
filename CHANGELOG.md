@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2023.08] - 2023-XX-XX
+## [2023.08] - 2023-08-31
 
 ### Changed
 
@@ -65,6 +65,10 @@ and this project adheres to
 - Disable perl support in perf
 - Do not define TESTIMAGE_AUTO for qemu machines
 - Fix allarch override syntax in cmake class
+- Fix recipes to work on arm without neon systems
+- Update contribution guidelines
+- Upgrade cmake to 3.27.4
+- Increase python thread stack size to 2M on musl
 
 ### Added
 
@@ -74,7 +78,7 @@ and this project adheres to
     ttf-google-fira, python3-oauth2client, python3-schedule
     spice-guest-vdagent, aml, phodav, gnome-boxes, libosinfo
     gnome-remote-desktop, libcacard, usbids, qcbor
-    python3-sdbus, libfaketime
+    python3-sdbus, libfaketime, python3-piccata, python3-gspread
 - Add script to generate kernel CVE_STATUS entries for linux-yocto
 - Add packageconfig to support colored logs in journald
 - Add DOCKER_PORTS variable in setenv to forward ports between docker and host
@@ -82,6 +86,7 @@ and this project adheres to
 - Add yocto sstate mirror as default backup for public sstate feeds
 - Add MESON_TARGET to meson class which can be defined in recipes
 - Add DOCKER_EXTRA_ARGS to envsetup to pass custom options to docker
+- Add vfat image type
 
 ### Removed
 
