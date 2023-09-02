@@ -12,8 +12,12 @@ and this project adheres to
 
 - Reset DOCKER_REPO inside interactive docker shell
 - Add glibc 2.38 stable updates
+- Switch glib-networking to use gnuTLS for TLS needs
+- Fix KCONFIG_CONFIG_COMMAND in menuconfig task
 
 ### Added
+
+- Add gpt-hybrid partition layout to wic
 
 ### Removed
 
