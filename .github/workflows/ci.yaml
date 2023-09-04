@@ -1,63 +1,66 @@
-name: Yoe Distro CI
+# @file      ci.yml
+# @brief     Used to perform code format checking and Sonarcloud analysis
+#
+# MIT License
+#
+# Copyright (c) 2022-2023 joelguittet and mender-mcu-client contributors
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
+name: ci
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
   push:
     branches:
-      - master
-      - dunfell
+      - '**'
   pull_request:
-    branches:
-      - master
-      - dunfell
+    types: [opened, synchronize, reopened]
+  schedule:
+    - cron: '0 0 1 * *'
 jobs:
-  build:
-    name: Yoe Build
-    runs-on: [self-hosted, Linux]
-    timeout-minutes: 720
+  check:
+    name: Update open source layer reference
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          submodules: recursive
-          #path: '${{ github.event.pull_request.head.sha }}'
-      - name: Setup
+      - uses: actions/checkout@v3
+
+      - name: Update open source layer reference
         run: |
-          export DOCKER_REPO=none
-          export LANG=en_US.UTF-8
-          export SSTATE_CACHE_DIR=/scratch/sstate-cache
-          echo export DOCKER_REPO=none > local.sh
-          echo export LANG=en_US.UTF-8 >> local.sh
-          echo export SSTATE_CACHE_DIR=/scratch/sstate-cache >> local.sh
-          cp conf/local.conf.sample conf/local.conf
-          echo SSTATE_DIR = \"$SSTATE_CACHE_DIR\" >> conf/local.conf
-          echo IMAGE_CLASSES += \"testimage testsdk\" >> conf/local.conf
-          echo INHERIT += \"report-error rm_work\" >> conf/local.conf
-          echo ERR_REPORT_SERVER = \"errors.yoctoproject.org\" >> conf/local.conf
-          echo ERR_REPORT_PORT = \"80\" >> conf/local.conf
-          echo ERR_REPORT_USERNAME = \"Drone Autobuilder\" >> conf/local.conf
-          echo ERR_REPORT_EMAIL = \"info@yoedistro.org\" >> conf/local.conf
-          echo TOOLCHAIN = \"clang\" >> conf/local.conf
-          echo BB_NUMBER_THREADS = \"16\" >> conf/local.conf
-          echo PARALLEL_MAKE = \"-j 32\" >> conf/local.conf
-          echo ZSTD_THREADS = \"8\" >> conf/local.conf
-          echo XZ_THREADS = \"8\" >> conf/local.conf
-          echo XZ_MEMLIMIT = \"20%\" >> conf/local.conf
-          /bin/bash -c "sed -i -e 's/PACKAGE_FEED_URI.*$//' conf/site.conf"
-          /bin/bash -c "sed -i -e 's/SDK_UPDATE_URL.*$//' conf/site.conf"
-      - name: Build Image
-        run: |
-          /bin/bash -c ". ./envsetup.sh qemuarm64 && bitbake yoe-kiosk-image"
-      - name: Test Image
-        run: |
-          export DISPLAY=":0"
-          echo TESTIMAGE_AUTO:qemuall = \"1\" >> conf/local.conf
-          /bin/bash -c ". ./envsetup.sh qemuarm64 && bitbake yoe-sdk-image"
-      - name: Prepare results
-        run: |
-          /bin/bash -c ". ./envsetup.sh qemuarm64 && resulttool report build/tmp/log/oeqa"
-      - name: Clean shared state
-        run: |
-          /bin/bash -c ". ./envsetup.sh qemuarm64 && ./sources/poky/scripts/sstate-cache-management.sh -d -y"
+          git config --global user.name "UmairAsghar-max"
+          git config --global user.email "umairasghar1042@gmail.com"
+          sudo apt-get install hub -y
+
+          git checkout -b submodule-release-update-${GITHUB_SHA::7}
+          git submodule update --init --recursive
+
+          git submodule foreach '
+              latest_release=$(git tag --sort=committerdate | grep -E '[0-9]' | tail -1)
+              if [ -n "$latest_release" ]; then
+                  if [ "$(git rev-parse HEAD)" != "$(git rev-parse $latest_release)" ]; then
+                  echo "Latest Release: $latest_release"
+                  echo "Latest Release Commit SHA: $(git rev-parse $latest_release)"
+                  git checkout "$latest_release"
+                  fi
+              fi
+              '
+          git commit -am "Update Submodules to latest release"
+          git push origin submodule-release-update-${GITHUB_SHA::7}
+          hub pull-request -m "Update submodules to latest release" -r UmairAsghar-max
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
