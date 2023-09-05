@@ -43,11 +43,14 @@ jobs:
         run: |
           echo "Author Name: ${{ github.event.head_commit.author.name }}"
           echo "Author Email: ${{ github.event.head_commit.author.email }}"
+          echo "Branch Name: ${GITHUB_REF#refs/heads/}"
+          export base_branch_name=${GITHUB_REF#refs/heads/}
           git config --global user.name "${{ github.event.head_commit.author.name }}"
           git config --global user.email "${{ github.event.head_commit.author.email }}"
           sudo apt-get install hub -y
 
           git checkout -b submodule-release-update-${GITHUB_SHA::7}
+          echo "Branch Name: ${GITHUB_REF#refs/heads/}"
           git submodule update --init --recursive
 
           git submodule foreach '
