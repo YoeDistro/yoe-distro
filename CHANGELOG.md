@@ -14,6 +14,9 @@ and this project adheres to
 - Add glibc 2.38 stable updates
 - Switch glib-networking to use gnuTLS for TLS needs
 - Fix KCONFIG_CONFIG_COMMAND in menuconfig task
+- Fix python, tcl ptest runs on musl
+- Fix multilib builds of few packages in meta-oe
+- Fix several packages to build for non-neon arm targets
 
 ### Added
 
