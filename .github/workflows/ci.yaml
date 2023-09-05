@@ -34,23 +34,24 @@ on:
     - cron: '0 0 1 * *'
 jobs:
   check:
-    name: Update open source layer reference
+    name: Update Open Source Layers Reference
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
 
-      - name: Update open source layer reference
+      - name: Update Open Source Layers Reference
+        if: ${{ github.event_name == 'schedule'  }}
         run: |
-          echo "Author Name: ${{ github.event.head_commit.author.name }}"
-          echo "Author Email: ${{ github.event.head_commit.author.email }}"
-          echo "Branch Name: ${GITHUB_REF#refs/heads/}"
-          export base_branch_name=${GITHUB_REF#refs/heads/}
-          git config --global user.name "${{ github.event.head_commit.author.name }}"
-          git config --global user.email "${{ github.event.head_commit.author.email }}"
           sudo apt-get install hub -y
 
-          git checkout -b submodule-release-update-${GITHUB_SHA::7}
-          echo "Branch Name: ${GITHUB_REF#refs/heads/}"
+          export reviewer1=raphaelschrader
+          export reviewer2=wennmbj
+          export reviewer3=danielklawitter
+
+          git config --global user.name "${{ github.event.head_commit.author.name }}"
+          git config --global user.email "${{ github.event.head_commit.author.email }}"
+
+          git checkout -b feature/layers-ref-update
           git submodule update --init --recursive
 
           git submodule foreach '
@@ -63,9 +64,14 @@ jobs:
                   fi
               fi
               '
-          git commit -am "Update Submodules to latest release"
-          git push origin submodule-release-update-${GITHUB_SHA::7}
-          hub pull-request -m "Update submodules to latest release" -r UmairAsghar-max
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -am "Update open source layers reference"
+            git push origin feature/layers-ref-update
+
+            hub pull-request -b ${GITHUB_REF#refs/heads/} -m "Update open source layers reference" -r $reviewer1,$reviewer2,$reviewer3
+          else
+            exit 0
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
