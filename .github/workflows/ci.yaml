@@ -40,7 +40,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Update Open Source Layers Reference
-        if: ${{ github.event_name == 'schedule'  }}
         run: |
           sudo apt-get install hub -y
 
