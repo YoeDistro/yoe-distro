@@ -64,9 +64,10 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git commit -am "Update open source layers reference"
             git push origin feature/layers-ref-update
-
-            hub pull-request -b ${GITHUB_REF#refs/heads/} -m "Update open source layers reference" -r $reviewer1,$reviewer2,$reviewer3
+            hub pull-request -b ${GITHUB_REF#refs/heads/} -m "Update open source layers reference" -r $reviewer1
+            hub pr list --head feature/layers-ref-update --format='%t'
           else
+            echo "Nothing to Commit"
             exit 0
           fi
         env:
