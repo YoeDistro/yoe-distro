@@ -43,9 +43,7 @@ jobs:
         run: |
           sudo apt-get install hub -y
 
-          export reviewer1=raphaelschrader
-          export reviewer2=wennmbj
-          export reviewer3=danielklawitter
+          export reviewer1=UmairAsghar-max
 
           git config --global user.name "${{ github.event.head_commit.author.name }}"
           git config --global user.email "${{ github.event.head_commit.author.email }}"
