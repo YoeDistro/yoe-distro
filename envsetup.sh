@@ -551,7 +551,8 @@ dkr() {
 
   if [ -z "$1" ]; then
     echo "setting dkr action to shell"
-    CMD=". ${OE_BASE}/envsetup.sh $PROJECT 2>&1 > /dev/null && /bin/bash"
+    CMD=". ${OE_BASE}/envsetup.sh $PROJECT 2>&1 > /dev/null && \
+      DOCKER_REPO=none /bin/bash && . ./envsetup.sh"
   else
     CMD=". ${OE_BASE}/envsetup.sh $PROJECT 2>&1 > /dev/null && $@"
     shift

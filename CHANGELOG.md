@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.09] - 2023-09-XX
+
+### Changed
+
+- Reset DOCKER_REPO inside interactive docker shell
+- Add glibc 2.38 stable updates
+- Switch glib-networking to use gnuTLS for TLS needs
+- Fix KCONFIG_CONFIG_COMMAND in menuconfig task
+- Fix python, tcl ptest runs on musl
+- Fix multilib builds of few packages in meta-oe
+- Fix several packages to build for non-neon arm targets
+
+### Added
+
+- Add gpt-hybrid partition layout to wic
+
+### Removed
+
 ## [2023.08] - 2023-08-31
 
 ### Changed
