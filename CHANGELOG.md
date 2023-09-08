@@ -17,9 +17,20 @@ and this project adheres to
 - Fix python, tcl ptest runs on musl
 - Fix multilib builds of few packages in meta-oe
 - Fix several packages to build for non-neon arm targets
+- Fix multilib support in clang to search lib32
+- Fix fetching bcc recipe to not modify .gitconfig on build host
+- Explicitly disable JIT in webkitgtk for armv7* with softfp
+- Fix rust targets for ppc64 architecture
+- Improve loongarch support in go compile and gcc toolchain
+- Update linux-yocto/6.4 to v6.4.14 and 6.1 to v6.1.51
+- Upgrade qemu to 8.1.0
+- Review CVE_STATUS for kernel vulnerablity list
+- Fix several ptests in core to work on musl
 
 ### Added
 
+- Added new recipes
+  - microcom, vsomeip
 - Add gpt-hybrid partition layout to wic
 
 ### Removed
