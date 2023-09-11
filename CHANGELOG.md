@@ -26,11 +26,13 @@ and this project adheres to
 - Upgrade qemu to 8.1.0
 - Review CVE_STATUS for kernel vulnerablity list
 - Fix several ptests in core to work on musl
+- Upgrade weston to 12.0.2
+- Switch to using "nanbield" layer series compat
 
 ### Added
 
 - Added new recipes
-  - microcom, vsomeip
+  - microcom, vsomeip, libei
 - Add gpt-hybrid partition layout to wic
 
 ### Removed
