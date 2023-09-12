@@ -382,14 +382,7 @@ yoe_feed_server() {
 }
 
 yoe_host_ip() {
-  ADAPTERS="eth0 eth1 enp39s0"
-  for a in $ADAPTERS; do
-    ip=$(ip addr show dev "${a}" 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
-    if [ -n "$ip" ]; then
-      echo "$ip"
-      return
-    fi
-  done
+  hostname -i
 }
 
 yoe_setup_feed_server() {
