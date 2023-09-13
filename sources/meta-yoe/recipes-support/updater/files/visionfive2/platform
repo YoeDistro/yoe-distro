@@ -61,7 +61,9 @@ UPDATER_CAN_PARTITION=0
 
 # Space separated list of dirs to create in /data
 # which is used by volatile-binds during main rootfs boot
-PERSISTENT_BINDS="/etc/ssh"
+PERSISTENT_BINDS=""
+
+MOUNT_BOOT=1
 
 plat_init() {
   msg "Running $PLAT initializations ..."
