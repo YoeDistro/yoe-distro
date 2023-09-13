@@ -28,12 +28,15 @@ and this project adheres to
 - Fix several ptests in core to work on musl
 - Upgrade weston to 12.0.2
 - Switch to using "nanbield" layer series compat
+- Update VisionFive2 SDK to V3.6.1
+- Fix -fstack-protector GCC on aarch64
 
 ### Added
 
 - Added new recipes
   - microcom, vsomeip, libei
 - Add gpt-hybrid partition layout to wic
+- Enable generating spdx manifest by default
 
 ### Removed
 
