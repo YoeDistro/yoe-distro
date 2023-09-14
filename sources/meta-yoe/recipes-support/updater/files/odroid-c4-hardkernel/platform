@@ -83,10 +83,12 @@ BOOT_FSTYPE=vfat
 UPDATER_SPEECH=0
 UPDATER_CAN_PARTITION=0
 # OVERLAY_TYPE is one of 'tmpfs' or 'persistent'
-OVERLAY_TYPE=persistent
+# OVERLAY_TYPE=persistent
 # Space separated list of dirs to create in /data
 # which is used by volatile-binds during main rootfs boot
 PERSISTENT_BINDS=""
+
+MOUNT_BOOT=1
 
 plat_init() {
   msg "Running $PLAT initializations ..."

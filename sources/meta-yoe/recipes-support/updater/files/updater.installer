@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=20.5
+VERSION=21.3
 
 . ./platform
 
@@ -71,7 +71,6 @@ msg_splash() {
 rescue_shell() {
   msg "$@"
   msg "Something went wrong. Dropping you to a shell."
-  busybox --install -s
   exec /bin/sh
 }
 
@@ -348,7 +347,12 @@ mount_rootfs_sd() {
     fi
   fi
 
-  #mount_boot /mnt/boot $SD_BOOT_DEV
+  if [ "$MOUNT_BOOT" = "1" ]; then
+    msg_splash "mounting boot"
+    mount_boot /mnt/boot $SD_BOOT_DEV
+    mount -n --move /mnt/boot $FINAL_ROOTFS/boot
+  fi
+
   mount_data /mnt/data $SD_DATA_DEV
   if [ "$OVERLAY_TYPE" = "persistent" ]; then
     msg_splash "Mounting filesystem overlay on data partition"
@@ -371,7 +375,12 @@ mount_rootfs_emmc() {
     fi
   fi
 
-  #mount_boot /mnt/boot $EMMC_BOOT_DEV
+  if [ "$MOUNT_BOOT" = "1" ]; then
+    msg_splash "mounting boot"
+    mount_boot /mnt/boot $EMMC_BOOT_DEV
+    mount -n --move /mnt/boot $FINAL_ROOTFS/boot
+  fi
+
   mount_data /mnt/data $EMMC_DATA_DEV
   if [ "$OVERLAY_TYPE" = "persistent" ]; then
     msg_splash "Mounting filesystem overlay on data partition"
@@ -500,7 +509,14 @@ find_update_file() {
   cd - >/dev/null
 }
 
+check_rescue_shell() {
+  if [ -f $1/rescue-shell ]; then
+    rescue_shell
+  fi
+}
+
 update_from_usb() {
+  check_rescue_shell $USB_MOUNT_POINT
   update_file=$(find_update_file $USB_MOUNT_POINT)
   if [ "$update_file" != "" ]; then
     speak "updater, found u s b disk"
@@ -522,6 +538,7 @@ update_from_usb() {
 }
 
 update_from_sd() {
+  check_rescue_shell $SD_MOUNT_POINT
   update_file=$(find_update_file $SD_MOUNT_POINT)
   if [ "$update_file" != "" ]; then
     speak "update found on S D card"
@@ -543,6 +560,7 @@ update_from_sd() {
 }
 
 update_from_data() {
+  check_rescue_shell $DATA_MOUNT_POINT
   update_file=$(find_update_file $DATA_MOUNT_POINT)
   if [ "$update_file" != "" ]; then
     speak "update found on data partition"

@@ -141,6 +141,8 @@ OVERLAY_TYPE=persistent
 # which is used by volatile-binds during main rootfs boot
 PERSISTENT_BINDS=""
 
+MOUNT_BOOT=1
+
 plat_init() {
   msg "Running $PLAT initializations ..."
   cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
