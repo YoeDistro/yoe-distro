@@ -32,6 +32,11 @@ and this project adheres to
 - Fix -fstack-protector GCC on aarch64
 - Mark RISCV32 incompatible architecture in goarch.bbclass
 - Upgrade coreutils to 9.4
+- Add ptest support to mariadb
+- Enable 64 bit shell arithmetic in busybox, helps 64bit time_t
+- Fix build race in piglit and groff
+- Use mtime checks instead of inotify in bitbake
+- Use 64 bit integers across all targets in perl
 
 ### Added
 
@@ -39,7 +44,7 @@ and this project adheres to
   - microcom, vsomeip, libei, python3-apiflask
     python3-webargs, python3-flask-httpauth, python3-apispec
     python3-flask-marshmallow, webrtc-audio-processing, python3-flask-jwt-extended
-
+    tecla
 - Add gpt-hybrid partition layout to wic
 - Enable generating spdx manifest by default
 
