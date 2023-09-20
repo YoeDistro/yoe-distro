@@ -37,6 +37,7 @@ and this project adheres to
 - Fix build race in piglit and groff
 - Use mtime checks instead of inotify in bitbake
 - Use 64 bit integers across all targets in perl
+- Upgrade clang to 17.0 major release series
 
 ### Added
 
