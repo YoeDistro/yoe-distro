@@ -50,5 +50,5 @@ feed server to serve packages to any connected device.
 
 See also:
 
-- https://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#package-feeds-dev-environment
-- https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#var-FEED_DEPLOYDIR_BASE_URI
+- https://docs.yoctoproject.org/overview-manual/concepts.html#package-feeds
+- https://docs.yoctoproject.org/ref-manual/variables.html#term-FEED_DEPLOYDIR_BASE_URI
