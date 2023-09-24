@@ -38,6 +38,11 @@ and this project adheres to
 - Use mtime checks instead of inotify in bitbake
 - Use 64 bit integers across all targets in perl
 - Upgrade clang to 17.0 major release series
+- Upgrade gnome recipes to 45.0
+- Update linux-raspberrypi kernel to 6.1.54
+- Update OpenSSL to 3.1.3
+- Improve oeqa/runtime/parselogs
+- Enable yocto sstate feed server
 
 ### Added
 
