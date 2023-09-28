@@ -43,6 +43,9 @@ and this project adheres to
 - Update OpenSSL to 3.1.3
 - Improve oeqa/runtime/parselogs
 - Enable yocto sstate feed server
+- Upgrade to systemd 254.4
+- Reduce debuf info size of webkitgtk3 and webkitgtk
+- Fix mesa to build with LLVM 17
 
 ### Added
 
@@ -50,7 +53,8 @@ and this project adheres to
   - microcom, vsomeip, libei, python3-apiflask
     python3-webargs, python3-flask-httpauth, python3-apispec
     python3-flask-marshmallow, webrtc-audio-processing, python3-flask-jwt-extended
-    tecla
+    tecla, python3-pyu2f, python3-uritools, python3-beartype, musl-legacy-error
+    python3-spdx-tools
 - Add gpt-hybrid partition layout to wic
 - Enable generating spdx manifest by default
 
