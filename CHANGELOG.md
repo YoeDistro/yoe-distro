@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2023.09] - 2023-09-XX
+## [2023.09] - 2023-09-30
 
 ### Changed
 
@@ -46,6 +46,10 @@ and this project adheres to
 - Upgrade to systemd 254.4
 - Reduce debuf info size of webkitgtk3 and webkitgtk
 - Fix mesa to build with LLVM 17
+- Fix recipes to build with kernel 6.5
+- Add missing upstream status for all recipes in meta-openembedded
+- Update nodejs to 20.5.1
+- Bump VF2 SDK to v3.7.5
 
 ### Added
 
@@ -54,7 +58,8 @@ and this project adheres to
     python3-webargs, python3-flask-httpauth, python3-apispec
     python3-flask-marshmallow, webrtc-audio-processing, python3-flask-jwt-extended
     tecla, python3-pyu2f, python3-uritools, python3-beartype, musl-legacy-error
-    python3-spdx-tools
+    python3-spdx-tools, python3-flask-cors, python3-boto3, python3-botocore
+    python3-nacl 
 - Add gpt-hybrid partition layout to wic
 - Enable generating spdx manifest by default
 
