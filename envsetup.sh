@@ -602,7 +602,7 @@ dkr() {
       "
   fi
 
-  if [ -f /dev/kvm ]; then
+  if [ -c /dev/kvm ]; then
     DOCKER_ENABLE_KVM="--device /dev/kvm"
   else
     DOCKER_ENABLE_KVM=""
