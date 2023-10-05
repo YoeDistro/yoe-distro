@@ -602,6 +602,12 @@ dkr() {
       "
   fi
 
+  if [ -f /dev/kvm ]; then
+    DOCKER_ENABLE_KVM="--device /dev/kvm"
+  else
+    DOCKER_ENABLE_KVM=""
+  fi
+
   $DOCKER run --rm -i $PSEUDO_TTY \
     -v ${OE_BASE}:${OE_BASE} \
     -v ~/.ssh:/home/build/.ssh \
@@ -621,7 +627,7 @@ dkr() {
     $DOCKER_EXTRA_ARGS \
     --cap-add=NET_ADMIN \
     --device /dev/net/tun \
-    --device /dev/kvm \
+    ${DOCKER_ENABLE_KVM} \
     --device /dev/vhost-net \
     ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
