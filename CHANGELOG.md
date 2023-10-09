@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.10] - 2023-xx-yy
+
+### Changed
+
+- Upgrade clang to 17.0.2
+- Fix libcgroup and kernel-selftest to build with lld linker
+- Fix ptest images to match core layer naming convention
+- Fix ptest reporting issues in meta-oe packages
+- Upgrade mason to 1.2.2
+- Upgrade u-boot to 2023.10
+- Add 6.5 kernel and switch to using it as default for qemu machines
+
+### Added
+
+- Added recipes - tayga
+
+### Removed
+
 ## [2023.09] - 2023-09-30
 
 ### Changed
