@@ -17,10 +17,14 @@ and this project adheres to
 - Upgrade mason to 1.2.2
 - Upgrade u-boot to 2023.10
 - Add 6.5 kernel and switch to using it as default for qemu machines
+- Add kernel-selftest to slow ptest image for x86 and enable bpf tests
+- Upgrade cryptodev to build with kernel 6.5
+- Use ttyrun to get getty on busybox init and sysvinit init systems
 
 ### Added
 
-- Added recipes - tayga
+- Added recipes - tayga, ttyrun
+- Add bblock feature to core
 
 ### Removed
 
