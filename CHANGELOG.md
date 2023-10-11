@@ -20,6 +20,7 @@ and this project adheres to
 - Add kernel-selftest to slow ptest image for x86 and enable bpf tests
 - Upgrade cryptodev to build with kernel 6.5
 - Use ttyrun to get getty on busybox init and sysvinit init systems
+- Add static-passwd and static-group files for meta-openembedded layers
 
 ### Added
 
