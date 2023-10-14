@@ -31,6 +31,7 @@ and this project adheres to
 
 - Added recipes - tayga, ttyrun
 - Add bblock feature to core
+- Add  Yoe updater support for VisionFive2 board
 
 ### Removed
 
