@@ -26,11 +26,14 @@ and this project adheres to
 - Upgrade linux-yocto recipes to v6.1.57, v6.5.7
 - Upgrade go compiler to 1.20.10
 - Upgrade curl to 8.4.0
+- Fix ptests for python3-py-cpuinfo and python3-pytest-mock
+- Add ptest for libtext-diff-perl
 
 ### Added
 
-- Added recipes - tayga, ttyrun
+- Added recipes - tayga, ttyrun, python3-arrow, python-git-pw
 - Add bblock feature to core
+- Add  Yoe updater support for VisionFive2 board
 
 ### Removed
 

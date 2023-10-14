@@ -1,7 +1,7 @@
 # We use updater to handle disk/SD management, therefore remove 96boards-tools
 IMAGE_INSTALL:remove = "96boards-tools"
 
-KERNEL_IMAGE = "${KERNEL_IMAGETYPE}"
+KERNEL_IMAGE = "${KERNEL_IMAGETYPE}-${INITRAMFS_IMAGE}-${MACHINE}-${MACHINE}"
 
 KERNEL_ARTEFACTS = "\
     ${KERNEL_IMAGETYPE} \

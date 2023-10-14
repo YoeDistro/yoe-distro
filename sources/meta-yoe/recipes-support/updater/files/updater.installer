@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=21.3
+VERSION=21.4
 
 . ./platform
 
@@ -115,22 +115,32 @@ initialize() {
   mkdir -p $DATA_MOUNT_POINT
 }
 
+# Pass device,partition e.g. $EMMC_DEVICE $EMMC_DATA_DEV
+# Default is SD device if nothing is passed
 resize_sd() {
-  echo "Checking data partition size ..." || return 1
   if [ -z "$1" ]; then
     DEVICE=$SD_DEVICE
+    PART=$SD_DATA_DEV
   else
     DEVICE=$1
+    if [ -z "$2"]; then
+      echo "Please specify partition to resize e.g. /dev/mmcblk0p3" || return 1
+      return 0
+    fi
+    PART=$2
   fi
-  DEVICE_NAME=$(basename ${DEVICE})
-  PART_SIZE=$(cat "/sys/class/block/${DEVICE_NAME}p3/size")
+  PART_NAME=$(basename ${PART})
+  PART_SIZE=$(cat "/sys/class/block/${PART_NAME}/size")
+  PART_NUM=$(cat "/sys/class/block/${PART_NAME}/partition")
   # only continue if partition size is 1MB
+  echo "Checking data partition size ..." || return 1
   if [ $PART_SIZE -gt 2048 ]; then
     return 0
   fi
   echo "Resizing data partition ..." || return 1
-  echo "- +" | sfdisk -N 3 ${DEVICE}
-  resize2fs ${DEVICE}p3
+  echo "- +" | sfdisk -N ${PART_NUM} ${DEVICE}
+  e2fsck -fy ${PART}
+  resize2fs ${PART}
 }
 
 partition_sd() {
@@ -219,7 +229,7 @@ partition_emmc() {
 }
 
 resize_emmc() {
-  resize_sd $EMMC_DEVICE
+  resize_sd $EMMC_DEVICE $EMMC_DATA_DEV
 }
 
 format_emmc_boot() {
