@@ -38,9 +38,9 @@ EMMC_BOOT_DEV=${EMMC_DEVICE}p3
 EMMC_ROOTFS_DEV=${EMMC_DEVICE}p4
 EMMC_DATA_DEV=${EMMC_DEVICE}p5
 
-SD_BOOT_DEV=${SD_DEVICE}p1
-SD_ROOTFS_DEV=${SD_DEVICE}p2
-SD_DATA_DEV=${SD_DEVICE}p3
+SD_BOOT_DEV=${SD_DEVICE}p3
+SD_ROOTFS_DEV=${SD_DEVICE}p4
+SD_DATA_DEV=${SD_DEVICE}p5
 
 BOOT_MOUNT_POINT=/boot
 ROOTFS_MOUNT_POINT=/root
@@ -67,7 +67,7 @@ MOUNT_BOOT=1
 
 plat_init() {
   msg "Running $PLAT initializations ..."
-  cat /proc/cpuinfo | grep Revision | cut -d' ' -f 2 > /etc/hwrevision
+  cat /proc/cpuinfo | grep uarch | cut -d' ' -f 2 | head -1 > /etc/hwrevision
 }
 
 plat_bootloader_quirks() {

@@ -20,6 +20,12 @@ and this project adheres to
 - Add kernel-selftest to slow ptest image for x86 and enable bpf tests
 - Upgrade cryptodev to build with kernel 6.5
 - Use ttyrun to get getty on busybox init and sysvinit init systems
+- Add static-passwd and static-group files for meta-openembedded layers
+- Fix ptest failures in poco, libtevent, and libnet-idn-encode
+- Add ptests for libldb
+- Upgrade linux-yocto recipes to v6.1.57, v6.5.7
+- Upgrade go compiler to 1.20.10
+- Upgrade curl to 8.4.0
 
 ### Added
 
@@ -27,6 +33,8 @@ and this project adheres to
 - Add bblock feature to core
 
 ### Removed
+
+- Dropped recipes for linux-yocto/6.4
 
 ## [2023.09] - 2023-09-30
 
