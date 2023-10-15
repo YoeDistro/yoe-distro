@@ -28,6 +28,9 @@ and this project adheres to
 - Upgrade curl to 8.4.0
 - Fix ptests for python3-py-cpuinfo and python3-pytest-mock
 - Add ptest for libtext-diff-perl
+- Update QT6.5 to latest
+- Upgrade openSSH to 9.5p1
+- Update dtb path for qemuarmv5 in linux-yocto 6.5 onwards
 
 ### Added
 
