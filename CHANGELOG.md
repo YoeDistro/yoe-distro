@@ -31,6 +31,7 @@ and this project adheres to
 - Update QT6.5 to latest
 - Upgrade openSSH to 9.5p1
 - Update dtb path for qemuarmv5 in linux-yocto 6.5 onwards
+- Fix pvr drivers to work with musl on visionfive2
 
 ### Added
 
