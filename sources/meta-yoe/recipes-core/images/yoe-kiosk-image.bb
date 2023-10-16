@@ -13,6 +13,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 # qtwebview and qtwebengine needs it, yoe-kiosk-browser
 # needs qtwebengine
 CORE_IMAGE_EXTRA_INSTALL:remove:riscv64 = "qtwebengine-examples yoe-kiosk-browser"
+CORE_IMAGE_EXTRA_INSTALL:remove:riscv32 = "qtwebengine-examples yoe-kiosk-browser"
 
 TOOLCHAIN_HOST_TASK:append = " nativesdk-packagegroup-qt6-toolchain-host"
 
