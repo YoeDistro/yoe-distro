@@ -22,7 +22,7 @@ and this project adheres to
 - Use ttyrun to get getty on busybox init and sysvinit init systems
 - Add static-passwd and static-group files for meta-openembedded layers
 - Fix ptest failures in poco, libtevent, and libnet-idn-encode
-- Add ptests for libldb
+- Add ptests for libldb, cjson, re2
 - Upgrade linux-yocto recipes to v6.1.57, v6.5.7
 - Upgrade go compiler to 1.20.10
 - Upgrade curl to 8.4.0
@@ -32,10 +32,13 @@ and this project adheres to
 - Upgrade openSSH to 9.5p1
 - Update dtb path for qemuarmv5 in linux-yocto 6.5 onwards
 - Fix pvr drivers to work with musl on visionfive2
+- Fix pvr visionfive2 drivers on musl
+- Update nodejs to 20.8.1
 
 ### Added
 
 - Added recipes - tayga, ttyrun, python3-arrow, python-git-pw
+  - libexosip2, libosip2
 - Add bblock feature to core
 - Add  Yoe updater support for VisionFive2 board
 
