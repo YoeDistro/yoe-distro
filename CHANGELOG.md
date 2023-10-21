@@ -10,7 +10,7 @@ and this project adheres to
 
 ### Changed
 
-- Upgrade clang to 17.0.2
+- Upgrade clang to 17.0.3
 - Fix libcgroup and kernel-selftest to build with lld linker
 - Fix ptest images to match core layer naming convention
 - Fix ptest reporting issues in meta-oe packages
@@ -34,6 +34,7 @@ and this project adheres to
 - Fix pvr drivers to work with musl on visionfive2
 - Fix pvr visionfive2 drivers on musl
 - Update nodejs to 20.8.1
+- Make systemd packaging more granular
 
 ### Added
 
@@ -44,7 +45,9 @@ and this project adheres to
 
 ### Removed
 
-- Dropped recipes for linux-yocto/6.4
+- Dropped recipes for linux-yocto/6.4, po4a, debsums
+- Remove bitbake-whatchanged bitbake utility
+- Drop DEPLOY_DIR_TAR variable
 
 ## [2023.09] - 2023-09-30
 
