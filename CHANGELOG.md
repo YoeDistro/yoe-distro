@@ -35,6 +35,8 @@ and this project adheres to
 - Fix pvr visionfive2 drivers on musl
 - Update nodejs to 20.8.1
 - Make systemd packaging more granular
+- Replace RUNTIME variable with TC_CXX_RUNTIME
+- Do not set powersave as the default CPU governor in linux-raspberrypi
 
 ### Added
 
