@@ -11,7 +11,7 @@ DEPENDS += "go-native elm-binary-native nodejs-native curl-native ca-certificate
 
 inherit systemd update-rc.d goarch
 
-SRCREV = "79a514fc2749257c30a9aef26bdb64e636c7e0f4"
+SRCREV = "76fa277a25518561076d6a0944e8c03594244509"
 
 BRANCH ?= "master"
 
