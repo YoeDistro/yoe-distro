@@ -39,11 +39,12 @@ and this project adheres to
 - Do not set powersave as the default CPU governor in linux-raspberrypi
 - Update simpleIOT to 0.13.1
 - Switch to using QT 6.6
+- Update ostree to 2023.7 and add ed25519-openssl support
 
 ### Added
 
 - Added recipes - tayga, ttyrun, python3-arrow, python-git-pw
-  - libexosip2, libosip2
+  - libexosip2, libosip2, pcapplusplus
 - Add bblock feature to core
 - Add  Yoe updater support for VisionFive2 board
 
