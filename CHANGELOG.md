@@ -38,6 +38,7 @@ and this project adheres to
 - Replace RUNTIME variable with TC_CXX_RUNTIME
 - Do not set powersave as the default CPU governor in linux-raspberrypi
 - Update simpleIOT to 0.13.1
+- Switch to using QT 6.6
 
 ### Added
 
