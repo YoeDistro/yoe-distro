@@ -61,4 +61,4 @@
 [submodule "sources/meta-qt6"]
 	path = sources/meta-qt6
 	url = https://github.com/YoeDistro/meta-qt6
-	branch = yoe/6.5
+	branch = yoe/6.6
