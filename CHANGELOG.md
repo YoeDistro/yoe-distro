@@ -12,6 +12,8 @@ and this project adheres to
 
 - Revive patchreview script
 - Add python_hatchling support to recipetool
+- Upgrade QEMU to 8.1.2
+- Drop dependecy on libcroco in openbox and gnome-shell
 
 ### Added
 
@@ -20,6 +22,7 @@ and this project adheres to
 ### Removed
 
 - Remove ${CCACHE} from FORTRAN compiler in bitbake config file
+- Removed recipes - libcroco
 
 ## [2023.10] - 2023-10-30
 
