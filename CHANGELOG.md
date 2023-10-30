@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2023.10] - 2023-xx-yy
+## [2023.10] - 2023-10-30
 
 ### Changed
 
@@ -38,11 +38,13 @@ and this project adheres to
 - Replace RUNTIME variable with TC_CXX_RUNTIME
 - Do not set powersave as the default CPU governor in linux-raspberrypi
 - Update simpleIOT to 0.13.1
+- Switch to using QT 6.6
+- Update ostree to 2023.7 and add ed25519-openssl support
 
 ### Added
 
 - Added recipes - tayga, ttyrun, python3-arrow, python-git-pw
-  - libexosip2, libosip2
+  - libexosip2, libosip2, pcapplusplus
 - Add bblock feature to core
 - Add  Yoe updater support for VisionFive2 board
 
