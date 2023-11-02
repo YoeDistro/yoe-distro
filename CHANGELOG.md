@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2023.11] - 2023-11-XX
+
+### Changed
+
+- Revive patchreview script
+- Add python_hatchling support to recipetool
+- Upgrade QEMU to 8.1.2
+- Drop dependecy on libcroco in openbox and gnome-shell
+
+### Added
+
+- Add nanopi-m4b machine
+
+### Removed
+
+- Remove ${CCACHE} from FORTRAN compiler in bitbake config file
+- Removed recipes - libcroco
+
 ## [2023.10] - 2023-10-30
 
 ### Changed
