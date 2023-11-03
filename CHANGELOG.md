@@ -14,15 +14,24 @@ and this project adheres to
 - Add python_hatchling support to recipetool
 - Upgrade QEMU to 8.1.2
 - Drop dependecy on libcroco in openbox and gnome-shell
+- Update QT6 to 6.6.1
 
 ### Added
 
 - Add nanopi-m4b machine
+- Added recipes for:
+  - python3-pcodedmp, python3-olefile, python3-oletools
+  - python3-multivolumefile, python3-pymemcache, python3-jsbeautifier
+  - python3-inflate64, python3-colorclass, python3-rarfile
+- Add KAS support in meta-riscv
 
 ### Removed
 
 - Remove ${CCACHE} from FORTRAN compiler in bitbake config file
 - Removed recipes - libcroco
+- Drop obsolete SERIAL_CONSOLES_CHECK for all machines
+- Dropped recipes:
+  - python3-nacl
 
 ## [2023.10] - 2023-10-30
 
