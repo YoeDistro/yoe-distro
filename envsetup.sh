@@ -747,3 +747,29 @@ yoe_create_tap_devices() {
   fi
   sudo ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs `id -g` `nproc --all`
 }
+
+# link downloads and sstate directory to some common location
+# it is often best if a relative directory is used for this
+yoe_link_downloads_sstate() {
+  DIR=$1
+
+  if [ -z "$1" ]; then
+    echo "Must specify destination directory"
+  fi
+
+  if [ -e downloads ]; then
+    rm -rf downloads
+  fi
+
+  ln -sf $DIR/downloads downloads
+
+  if [[ $DIR == *".." ]]; then
+    DIR=$DIR/..
+  fi
+
+  if [ -e build/sstate-cache ]; then
+    rm -rf build/sstate-cache
+  fi
+
+  ln -sf $DIR/sstate-cache build/sstate-cache
+}
