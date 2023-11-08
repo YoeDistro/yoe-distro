@@ -104,7 +104,7 @@ fi
 
 projects="`yoe_get_projects | tr '\n' ' '`"
 
-echo "$projects" | grep -q "\<$PROJECT\>" >&2
+echo "$projects" | \grep -q "\<$PROJECT\>" >&2
 
 if [ $? != 0 ]; then
   echo
