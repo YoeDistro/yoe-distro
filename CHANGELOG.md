@@ -27,7 +27,8 @@ and this project adheres to
   - python3-multivolumefile, python3-pymemcache, python3-jsbeautifier
   - python3-inflate64, python3-colorclass, python3-rarfile
   - reptyr, python3-unoconv, python3-screeninfo, python3-zopeevent
-  - python3-flask-restx
+  - python3-flask-restx, exiftool, python3-pdm, python3-pdm-backend
+  - python3-wand, python3-py7zr, python3-pyppmd, python3-pybcj
 - Add KAS support in meta-riscv
 - Add handler to create go recipes Add go-vendor class
 - Add recipetool handler to create go recipes
