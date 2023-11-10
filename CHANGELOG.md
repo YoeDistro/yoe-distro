@@ -18,6 +18,9 @@ and this project adheres to
 - Upgrade clang to 17.0.4
 - add nativesdk version of acpica
 - Use correct targets for rust binaries in meson
+- Update openSBI to 1.3.1
+- Update linux-yocto/6.5 to v6.5.9 and linux-yocto/6.1 to v6.1.60
+- Fix arm arch mapping issues in libdnf
 
 ### Added
 
@@ -33,6 +36,7 @@ and this project adheres to
 - Add handler to create go recipes Add go-vendor class
 - Add recipetool handler to create go recipes
 - Add initial support to use RISCV64 build host
+- Add websocket support and SQLalchemy hashserv backend in bitbake
 
 ### Removed
 
