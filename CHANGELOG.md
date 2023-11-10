@@ -15,6 +15,12 @@ and this project adheres to
 - Upgrade QEMU to 8.1.2
 - Drop dependecy on libcroco in openbox and gnome-shell
 - Update QT6 to 6.6.1
+- Upgrade clang to 17.0.4
+- add nativesdk version of acpica
+- Use correct targets for rust binaries in meson
+- Update openSBI to 1.3.1
+- Update linux-yocto/6.5 to v6.5.9 and linux-yocto/6.1 to v6.1.60
+- Fix arm arch mapping issues in libdnf
 
 ### Added
 
@@ -23,7 +29,14 @@ and this project adheres to
   - python3-pcodedmp, python3-olefile, python3-oletools
   - python3-multivolumefile, python3-pymemcache, python3-jsbeautifier
   - python3-inflate64, python3-colorclass, python3-rarfile
+  - reptyr, python3-unoconv, python3-screeninfo, python3-zopeevent
+  - python3-flask-restx, exiftool, python3-pdm, python3-pdm-backend
+  - python3-wand, python3-py7zr, python3-pyppmd, python3-pybcj
 - Add KAS support in meta-riscv
+- Add handler to create go recipes Add go-vendor class
+- Add recipetool handler to create go recipes
+- Add initial support to use RISCV64 build host
+- Add websocket support and SQLalchemy hashserv backend in bitbake
 
 ### Removed
 
