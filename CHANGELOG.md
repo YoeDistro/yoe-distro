@@ -46,6 +46,7 @@ and this project adheres to
 - Add websocket support and SQLalchemy hashserv backend in bitbake
 - Add new project for orin nano tegra board
 - Add initial support for Milk-V Duo board
+- Add new project for NVIDIA jetson orin-nano
 
 ### Removed
 
