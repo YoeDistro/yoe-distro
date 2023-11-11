@@ -37,6 +37,7 @@ and this project adheres to
 - Add recipetool handler to create go recipes
 - Add initial support to use RISCV64 build host
 - Add websocket support and SQLalchemy hashserv backend in bitbake
+- Add new project for orin nano tegra board
 
 ### Removed
 
