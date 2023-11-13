@@ -62,3 +62,7 @@
 	path = sources/meta-qt6
 	url = https://github.com/YoeDistro/meta-qt6
 	branch = yoe/6.6
+[submodule "sources/meta-tegra"]
+	path = sources/meta-tegra
+	url = https://github.com/YoeDistro/meta-tegra
+	branch = master

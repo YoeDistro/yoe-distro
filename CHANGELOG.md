@@ -21,6 +21,13 @@ and this project adheres to
 - Update openSBI to 1.3.1
 - Update linux-yocto/6.5 to v6.5.9 and linux-yocto/6.1 to v6.1.60
 - Fix arm arch mapping issues in libdnf
+- Fix ODROID-C4 broken SD cards by dropping use of IMAGE_NAME_SUFFIX
+- Upgrade linux-hardkernel-4.9 to latest upstream
+- Fix WKS_FILE assignment which lets it use yoe wks template now
+- Pin minimum kernel to 4.9 for C4
+- Fix librsvg for RISCV32 architecture
+- Fix libarchive build inconsistency w.r.t. libb2 presence
+- Fix ptest-packagelists for RISCV32
 
 ### Added
 
@@ -37,6 +44,9 @@ and this project adheres to
 - Add recipetool handler to create go recipes
 - Add initial support to use RISCV64 build host
 - Add websocket support and SQLalchemy hashserv backend in bitbake
+- Add new project for orin nano tegra board
+- Add initial support for Milk-V Duo board
+- Add new project for NVIDIA jetson orin-nano
 
 ### Removed
 
