@@ -28,6 +28,11 @@ and this project adheres to
 - Fix librsvg for RISCV32 architecture
 - Fix libarchive build inconsistency w.r.t. libb2 presence
 - Fix ptest-packagelists for RISCV32
+- Fix spidev-test on kernel 4.9
+- Add ptest support to nlohmann-json
+- Use meson as default buildsystem for gnomebase.bbclass
+- Adjust recipes in meta-openembedded to work with meson defaults for
+  gnomebase.bbclass
 
 ### Added
 
@@ -39,6 +44,7 @@ and this project adheres to
   - reptyr, python3-unoconv, python3-screeninfo, python3-zopeevent
   - python3-flask-restx, exiftool, python3-pdm, python3-pdm-backend
   - python3-wand, python3-py7zr, python3-pyppmd, python3-pybcj
+  - bindfs, kmsxx
 - Add KAS support in meta-riscv
 - Add handler to create go recipes Add go-vendor class
 - Add recipetool handler to create go recipes
@@ -54,7 +60,7 @@ and this project adheres to
 - Removed recipes - libcroco
 - Drop obsolete SERIAL_CONSOLES_CHECK for all machines
 - Dropped recipes:
-  - python3-nacl
+  - python3-nacl, toscoterm
 
 ## [2023.10] - 2023-10-30
 
