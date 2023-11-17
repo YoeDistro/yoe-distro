@@ -33,6 +33,8 @@ and this project adheres to
 - Use meson as default buildsystem for gnomebase.bbclass
 - Adjust recipes in meta-openembedded to work with meson defaults for
   gnomebase.bbclass
+- Obsolete dleyna related recipes
+- Update linux-raspberrypi to 6.1.61
 
 ### Added
 
@@ -44,7 +46,7 @@ and this project adheres to
   - reptyr, python3-unoconv, python3-screeninfo, python3-zopeevent
   - python3-flask-restx, exiftool, python3-pdm, python3-pdm-backend
   - python3-wand, python3-py7zr, python3-pyppmd, python3-pybcj
-  - bindfs, kmsxx
+  - bindfs, kmsxx, python3-file-magic
 - Add KAS support in meta-riscv
 - Add handler to create go recipes Add go-vendor class
 - Add recipetool handler to create go recipes
@@ -57,7 +59,7 @@ and this project adheres to
 ### Removed
 
 - Remove ${CCACHE} from FORTRAN compiler in bitbake config file
-- Removed recipes - libcroco
+- Removed recipes - libcroco, netkit
 - Drop obsolete SERIAL_CONSOLES_CHECK for all machines
 - Dropped recipes:
   - python3-nacl, toscoterm
