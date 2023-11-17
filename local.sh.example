@@ -34,9 +34,10 @@
 # format is host-port:container-port e.g.
 # 5900 is for VNC
 # 8181 is for clang static analyzer bitbake -cscanview <recipe>
+# 8000 is for opkg feedserver
 #export DOCKER_PORTS="5900:5900 8181:8181"
 # Pass additional options to launch docker
 # --net=host is used to expose host network to
 # container, e.g. TAP devices created on host are accessible inside
 # docker needed for running ptests e.g. core-image-ptest-all
-#DOCKER_EXTRA_ARGS = "--net=host"
+#export DOCKER_EXTRA_ARGS="--net=host"
