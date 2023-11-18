@@ -32,9 +32,11 @@ do_install:append() {
     echo "Browser URL: ${YOE_KIOSK_BROWSER_URL}"
     if ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'true', 'false', d)}; then
         install -D -m 0644 ${S}/yoe-kiosk-browser-wayland.service ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
-    else
+    elif ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'true', 'false', d)}; then
         install -D -m 0644 ${S}/yoe-kiosk-browser-eglfs.service ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
         install -D -m 0644 ${S}/eglfs.json ${D}${sysconfdir}/default/eglfs.json
+    else
+        install -D -m 0644 ${S}/yoe-kiosk-browser-linuxfb.service ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
     fi
 
     install -D -m 0644 ${S}/yoe-kiosk-browser-env ${D}${sysconfdir}/default/yoe-kiosk-browser
