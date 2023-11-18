@@ -4,9 +4,9 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
 
 SRC_URI = "git://github.com/YoeDistro/yoe-kiosk-browser;branch=main;protocol=https"
-SRCREV = "ebeead7dc190cdbdc6f634a6fb5f6859c6765655"
+SRCREV = "6e94c4013f4f636a9d65561243e675dff0ae381d"
 
-PV = "1.0.0+git${SRCPV}"
+PV = "1.0.0+git"
 
 S = "${WORKDIR}/git"
 
@@ -27,18 +27,13 @@ YOE_KIOSK_BROWSER_URL ?= "http://localhost:8118"
 YOE_KIOSK_BROWSER_ROTATE ?= "0"
 # the following scale should be <= 1
 YOE_KIOSK_BROWSER_KEYBOARD_SCALE ?= "1"
+# Define it via a knob which can be set from config file e.g. local.conf
+YOE_KIOSK_BROWSER_SYSTEMD_UNIT ?= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'yoe-kiosk-browser-wayland.service', 'yoe-kiosk-browser-eglfs.service', d)}"
 
 do_install:append() {
     echo "Browser URL: ${YOE_KIOSK_BROWSER_URL}"
-    if ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'true', 'false', d)}; then
-        install -D -m 0644 ${S}/yoe-kiosk-browser-wayland.service ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
-    elif ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'true', 'false', d)}; then
-        install -D -m 0644 ${S}/yoe-kiosk-browser-eglfs.service ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
-        install -D -m 0644 ${S}/eglfs.json ${D}${sysconfdir}/default/eglfs.json
-    else
-        install -D -m 0644 ${S}/yoe-kiosk-browser-linuxfb.service ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
-    fi
-
+    install -D -m 0644 ${S}/${YOE_KIOSK_BROWSER_SYSTEMD_UNIT} ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
+    install -D -m 0644 ${S}/eglfs.json ${D}${sysconfdir}/default/eglfs.json
     install -D -m 0644 ${S}/yoe-kiosk-browser-env ${D}${sysconfdir}/default/yoe-kiosk-browser
 
     # fill in service template values
