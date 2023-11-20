@@ -2,6 +2,8 @@
 
 require yoe-sdk-image.bb
 
+inherit features_check
+
 REQUIRED_DISTRO_FEATURES += "ptest"
 
 IMAGE_FEATURES += "ptest-pkgs"
