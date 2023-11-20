@@ -15,7 +15,7 @@ and this project adheres to
 - Upgrade QEMU to 8.1.2
 - Drop dependecy on libcroco in openbox and gnome-shell
 - Update QT6 to 6.6.1
-- Upgrade clang to 17.0.4
+- Upgrade clang to 17.0.5
 - add nativesdk version of acpica
 - Use correct targets for rust binaries in meson
 - Update openSBI to 1.3.1
@@ -38,6 +38,7 @@ and this project adheres to
 - Add systemd startup to yoe-kiosk-browser to run it usin linuxfb
 - Add G31 mali driver and make it work with ODROID-C4
 - Update rpi-config to tip of tree
+- Fix mesa-gl build with LLD
 
 ### Added
 
