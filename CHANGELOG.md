@@ -39,6 +39,9 @@ and this project adheres to
 - Add G31 mali driver and make it work with ODROID-C4
 - Update rpi-config to tip of tree
 - Fix mesa-gl build with LLD
+- Drop PE, PR from /usr/src/debug paths in recipes from multiple layers
+- Use nonarch libdir for tmpfiles.d in multiple recipes
+- Process installed dependencies in deterministic order during staging
 
 ### Added
 
