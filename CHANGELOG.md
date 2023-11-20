@@ -35,6 +35,9 @@ and this project adheres to
   gnomebase.bbclass
 - Obsolete dleyna related recipes
 - Update linux-raspberrypi to 6.1.61
+- Add systemd startup to yoe-kiosk-browser to run it usin linuxfb
+- Add G31 mali driver and make it work with ODROID-C4
+- Update rpi-config to tip of tree
 
 ### Added
 
@@ -46,7 +49,7 @@ and this project adheres to
   - reptyr, python3-unoconv, python3-screeninfo, python3-zopeevent
   - python3-flask-restx, exiftool, python3-pdm, python3-pdm-backend
   - python3-wand, python3-py7zr, python3-pyppmd, python3-pybcj
-  - bindfs, kmsxx, python3-file-magic
+  - bindfs, kmsxx, python3-file-magic, btop
 - Add KAS support in meta-riscv
 - Add handler to create go recipes Add go-vendor class
 - Add recipetool handler to create go recipes
