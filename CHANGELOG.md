@@ -42,6 +42,7 @@ and this project adheres to
 - Drop PE, PR from /usr/src/debug paths in recipes from multiple layers
 - Use nonarch libdir for tmpfiles.d in multiple recipes
 - Process installed dependencies in deterministic order during staging
+- Add sysvinit to distro features when using busybox init system
 
 ### Added
 
