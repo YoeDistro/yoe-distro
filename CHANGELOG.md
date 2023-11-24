@@ -14,8 +14,8 @@ and this project adheres to
 - Add python_hatchling support to recipetool
 - Upgrade QEMU to 8.1.2
 - Drop dependecy on libcroco in openbox and gnome-shell
-- Update QT6 to 6.6.1
-- Upgrade clang to 17.0.4
+- Update QT6 to 6.6.2
+- Upgrade clang to 17.0.5
 - add nativesdk version of acpica
 - Use correct targets for rust binaries in meson
 - Update openSBI to 1.3.1
@@ -38,6 +38,14 @@ and this project adheres to
 - Add systemd startup to yoe-kiosk-browser to run it usin linuxfb
 - Add G31 mali driver and make it work with ODROID-C4
 - Update rpi-config to tip of tree
+- Fix mesa-gl build with LLD
+- Drop PE, PR from /usr/src/debug paths in recipes from multiple layers
+- Use nonarch libdir for tmpfiles.d in multiple recipes
+- Process installed dependencies in deterministic order during staging
+- Add sysvinit to distro features when using busybox init system
+- Fix mesa for ODROID-C4 with G32 Mali userspace driver
+- Upgrade gstreamer to 1.22.7
+- Add minimal configuration for VS Code
 
 ### Added
 
