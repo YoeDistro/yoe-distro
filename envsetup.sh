@@ -526,7 +526,7 @@ fi
 
 check_docker() {
   if ! $DOCKER -v >/dev/null 2>&1; then
-    echo "Error, please install docker or set DOCKER_REPO=none in environment"
+    echo "Error, $DOCKER not installed, please install supported container technology ( docker or podman ) or set DOCKER_REPO=none in environment"
     return 1
   fi
 
