@@ -19,6 +19,7 @@ IMAGE_INSTALL = "\
     packagegroup-machine-base \
     packagegroup-base-ipv6 \
     os-release \
+    htop \
     ${CORE_IMAGE_EXTRA_INSTALL} \
 "
 
