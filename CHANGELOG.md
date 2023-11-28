@@ -46,6 +46,7 @@ and this project adheres to
 - Fix mesa for ODROID-C4 with G32 Mali userspace driver
 - Upgrade gstreamer to 1.22.7
 - Add minimal configuration for VS Code
+- Add htop to yoe-simple-image
 
 ### Added
 

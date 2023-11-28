@@ -18,11 +18,8 @@ IMAGE_FEATURES += "tools-debug tools-profile"
 IMAGE_INSTALL += "\
 	rsync \
 	devmem2 \
-	htop \
 	evtest \
 	netperf \
-	gdbserver \
-	gdb \
 	mtd-utils \
 	tslib \
 	tslib-calibrate \
@@ -42,13 +39,12 @@ IMAGE_INSTALL += "\
 	dosfstools \
 	usbutils \
 	i2c-tools \
-        iw \
+  iw \
 	minicom \
 	screen \
 	cpufrequtils \
 	nano \
 	sox \
-	strace \
 	ethtool \
 	python3 \
 	python3-pyserial \
@@ -57,8 +53,6 @@ IMAGE_INSTALL += "\
 IMAGE_INSTALL:append:armv7a = " cpuburn-arm "
 IMAGE_INSTALL:append:armv7ve = " cpuburn-arm "
 IMAGE_INSTALL:append:aarch64 = " cpuburn-arm "
-
-IMAGE_INSTALL:remove:riscv32 = "strace"
 
 export IMAGE_BASENAME = "yoe-debug-image"
 
