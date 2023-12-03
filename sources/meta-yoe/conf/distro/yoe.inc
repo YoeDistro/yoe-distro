@@ -118,6 +118,9 @@ DISTRO_FEATURES:append = " opengl multiarch wayland pam vulkan usrmerge ld-is-ll
 # see https://reviews.llvm.org/D142880
 DISTRO_FEATURES:remove:riscv64 = "ld-is-lld"
 DISTRO_FEATURES:remove:riscv32 = "ld-is-lld"
+# See https://discourse.llvm.org/t/lld-cannot-make-pie-binaries-on-x32/67131
+DISTRO_FEATURES:remove:linux-gnux32 = "ld-is-lld"
+DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
