@@ -13,8 +13,13 @@ and this project adheres to
 - Fix mesa-gl conflict with mali-g31 driver KHR/khrplatform.h header
 - Enable utmp support in busybox on musl systems
 - Support qemu for cmake via cmake-qemu.bbclass
+- Update clang to 17.0.6
+- Disable lld for x32 ABI, it does not have support
 
 ### Added
+
+- Added recipes - monocypher
+- Devtool now supports git submodules for SRC_URI
 
 ### Removed
 
