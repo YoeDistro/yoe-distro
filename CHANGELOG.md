@@ -15,6 +15,8 @@ and this project adheres to
 - Support qemu for cmake via cmake-qemu.bbclass
 - Update clang to 17.0.6
 - Disable lld for x32 ABI, it does not have support
+- Upgrade autoconf to 2.72d
+- Unset CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES in cmake
 
 ### Added
 
@@ -22,6 +24,8 @@ and this project adheres to
 - Devtool now supports git submodules for SRC_URI
 
 ### Removed
+
+- Removed recipes - vte9
 
 ## [2023.11] - 2023-11-30
 
