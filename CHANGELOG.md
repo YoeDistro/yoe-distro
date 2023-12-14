@@ -17,15 +17,20 @@ and this project adheres to
 - Disable lld for x32 ABI, it does not have support
 - Upgrade autoconf to 2.72d
 - Unset CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES in cmake
+- Upgrade rust to 1.71.1
+- Update go compiler to 1.20.12
+- Update linux-yocto versions to v6.1.65, v6.5.13
 
 ### Added
 
-- Added recipes - monocypher
+- Added recipes - monocypher, xorg-docs, xcursor-themes
 - Devtool now supports git submodules for SRC_URI
+- Add python recipe writing support to recipetool
 
 ### Removed
 
-- Removed recipes - vte9
+- Removed recipes - vte9, systemtap-uprobes
+- Remove unused SRC_DISTRIBUTE_LICENSES variable
 
 ## [2023.11] - 2023-11-30
 

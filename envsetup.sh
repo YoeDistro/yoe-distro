@@ -629,6 +629,7 @@ dkr() {
     --device /dev/net/tun \
     ${DOCKER_ENABLE_KVM} \
     --device /dev/vhost-net \
+    --ulimit "nofile=1024:1048576" \
     ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
 
