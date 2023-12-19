@@ -30,6 +30,7 @@ and this project adheres to
 - Devtool now supports git submodules for SRC_URI
 - Add python recipe writing support to recipetool
 - Add python maturin support
+- Add project for jetson-orin-nano with NVME boot media
 
 ### Removed
 
