@@ -20,12 +20,16 @@ and this project adheres to
 - Upgrade rust to 1.71.1
 - Update go compiler to 1.20.12
 - Update linux-yocto versions to v6.1.65, v6.5.13
+- Prepate several recipes for working with python 3.12
+- Fix meta-tegra to build with musl
 
 ### Added
 
 - Added recipes - monocypher, xorg-docs, xcursor-themes
+  python3-maturin
 - Devtool now supports git submodules for SRC_URI
 - Add python recipe writing support to recipetool
+- Add python maturin support
 
 ### Removed
 
