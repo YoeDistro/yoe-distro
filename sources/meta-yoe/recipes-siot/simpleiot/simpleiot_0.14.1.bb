@@ -7,9 +7,9 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57"
 SECTION = "apps"
 
-DEPENDS += "go-native elm-binary-native nodejs-native curl-native ca-certificates-native"
+DEPENDS += "go-native elm-binary-native nodejs-native nodejs-oe-cache-native gyp-native python3-packaging-native curl-native ca-certificates-native"
 
-inherit systemd update-rc.d goarch
+inherit python3native systemd update-rc.d goarch
 
 SRCREV = "b79e7183909ceabdb185cf4a51ad93fb379a9354"
 
