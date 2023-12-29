@@ -19,14 +19,22 @@ and this project adheres to
 - Unset CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES in cmake
 - Upgrade rust to 1.71.1
 - Update go compiler to 1.20.12
-- Update linux-yocto versions to v6.1.65, v6.5.13
+- Update linux-yocto versions to v6.1.68, v6.5.13
 - Prepate several recipes for working with python 3.12
 - Fix meta-tegra to build with musl
+- Use clang to compile openSSH again
+- Fix build issues in bpftrace ptests
+- Add ptests for c-ares
+- Switch to 6.1 kernel for linux-starfive from 3.9.3 SDK
+- Ensure features don't get backfilled for nativesdk
+- Switch to using zstd compression in core layer
+- Update gdb to 14.1 release
+- Fix several packages to use right basename POSIX or GNU option
 
 ### Added
 
 - Added recipes - monocypher, xorg-docs, xcursor-themes
-  python3-maturin
+  python3-maturin, cyaml, pkcs11-provider
 - Devtool now supports git submodules for SRC_URI
 - Add python recipe writing support to recipetool
 - Add python maturin support
@@ -36,6 +44,7 @@ and this project adheres to
 
 - Removed recipes - vte9, systemtap-uprobes
 - Remove unused SRC_DISTRIBUTE_LICENSES variable
+- Drop removed IMA option from linux-yocto
 
 ## [2023.11] - 2023-11-30
 

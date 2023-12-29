@@ -60,4 +60,4 @@ jobs:
           /bin/bash -c ". ./envsetup.sh qemuarm64 && resulttool report build/tmp/log/oeqa"
       - name: Clean shared state
         run: |
-          /bin/bash -c ". ./envsetup.sh qemuarm64 && ./sources/poky/scripts/sstate-cache-management.sh -d -y"
+          /bin/bash -c ". ./envsetup.sh qemuarm64 && ./sources/poky/scripts/sstate-cache-management.py -d --remove-orphans -y "

@@ -496,7 +496,7 @@ yoe_build_all() {
 }
 
 yoe_clean_sstate() {
-  $OE_BASE/sources/poky/scripts/sstate-cache-management.sh -d -y --cache-dir=$OE_BASE/build/sstate-cache
+  $OE_BASE/sources/poky/scripts/sstate-cache-management.py -d -y --cache-dir=$OE_BASE/build/sstate-cache
 }
 
 # Docker integration
