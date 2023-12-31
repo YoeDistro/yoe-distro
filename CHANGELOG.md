@@ -9,8 +9,16 @@ and this project adheres to
 ## [2024.01] - 2024-01-xx
 
 ### Changed
+
+- Fix llvm-config to work in cross-compilation environment
+- Fix several recipes to work with python 3.12
+- Update rust compiler to 1.74.1
+
 ### Added
+
 ### Removed
+
+- Removed  recipes: zvariant, polkit-0.119, mozjs-102
 
 ## [2023.12] - 2023-12-30
 
