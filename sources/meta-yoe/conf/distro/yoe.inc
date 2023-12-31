@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2023.11"
-DISTRO_CODENAME = "Istrian Pramenka"
+DISTRO_VERSION = "2023.12"
+DISTRO_CODENAME = "Jezerskosolflorinavska"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
