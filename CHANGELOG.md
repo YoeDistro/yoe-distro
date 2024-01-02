@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.01] - 2024-01-xx
+
+### Changed
+
+- Fix llvm-config to work in cross-compilation environment
+- Fix several recipes to work with python 3.12
+- Update rust compiler to 1.74.1
+
+### Added
+
+### Removed
+
+- Removed  recipes: zvariant, polkit-0.119, mozjs-102
+
 ## [2023.12] - 2023-12-30
 
 ### Changed
