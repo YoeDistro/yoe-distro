@@ -13,12 +13,21 @@ and this project adheres to
 - Fix llvm-config to work in cross-compilation environment
 - Fix several recipes to work with python 3.12
 - Update rust compiler to 1.74.1
+- introduce 6.6 reference kernel and make it default for Qemu machines
+- Update linux-kernels to v6.1.70 and v6.6.9
+- Require bitbake 2.7.1 minimum
+- Update mesa to 23.3.2
+- Update visionfive2 firmware to JH7110_VF2_6.1_v5.10.3
+- Disable mongodb build until its ported to python 3.12
 
 ### Added
 
+- New recipe - ssd1306
+
 ### Removed
 
-- Removed  recipes: zvariant, polkit-0.119, mozjs-102
+- Removed recipes: zvariant, polkit-0.119, mozjs-102, python3-jsonrpcserver
+  python3-oslash, python3-kmod, python3-xmlrunner
 
 ## [2023.12] - 2023-12-30
 
