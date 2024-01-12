@@ -19,6 +19,8 @@ and this project adheres to
 - Update mesa to 23.3.2
 - Update visionfive2 firmware to JH7110_VF2_6.1_v5.10.3
 - Disable mongodb build until its ported to python 3.12
+- Add udev-bash-completion package to systemd
+- Upgrade reference u-boot to 2024.01
 
 ### Added
 

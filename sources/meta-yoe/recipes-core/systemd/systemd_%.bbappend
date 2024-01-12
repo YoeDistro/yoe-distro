@@ -10,6 +10,9 @@ SRC_URI += "${NETWORKING_SCRIPTS}"
 # Hack in meta-variscite-bsp layer for boot2qt which yoe does not need so remove this patch
 # here
 SRC_URI:remove = "file://0001-units-add-dependencies-to-avoid-conflict-between-con.patch"
+# remove another meta-variscite-bsp patch which is trying to get networkmanager going with systemd
+# however it was never used in yoe
+SRC_URI:remove = "file://0002-units-disable-systemd-networkd-wait-online-if-Networ.patch"
 
 do_install:append() {
   install -d ${D}${sysconfdir}/systemd/network/
