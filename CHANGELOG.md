@@ -21,6 +21,13 @@ and this project adheres to
 - Disable mongodb build until its ported to python 3.12
 - Add udev-bash-completion package to systemd
 - Upgrade reference u-boot to 2024.01
+- Use pkg-config in the meson cross files
+- Backport opkg fix to drop --numeric-owner parameter
+- don't exclude gtkdocize in autotools class, fix several recipes
+  to inherit gtk-doc
+- Distable incompatible-function-pointer-types warning as error
+  with clang 17 on python3-lxml and python3-kivy
+- Update VisionFive2 u-boot to JH7110_VF2_6.1_v5.10.3
 
 ### Added
 
