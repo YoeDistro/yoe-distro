@@ -1,0 +1,36 @@
+From fdcd8fbf23983d33327967f3e4249bba7c5a1b93 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Tue, 9 Jan 2024 11:15:21 -0800
+Subject: [PATCH] tls/tests/connection.c: Disable unclean-close-by-server with
+ openssl backend
+
+This test does not work when using openssl backend as reported here [1]
+
+Fixes
+
+not ok /tls/openssl/connection/unclean-close-by-server - GLib-Net:ERROR:../tls/tests/connection.c:2374:test_unclean_close_by_server: assertion failed (test->read_error == (g-tls-error-quark, 6)): Error reading data from TLS socket: error:00000005:lib(0)::reason(5) (g-tls-error-quark, 1) Bail out!
+stderr:
+**
+GLib-Net:ERROR:../tls/tests/connection.c:2374:test_unclean_close_by_server: assertion failed (test->read_error == (g-tls-error-quark, 6)): Error reading data from TLS socket: error:00000005:lib(0)::reason(5) (g-tls-error-quark, 1)
+
+[1] https://gitlab.gnome.org/GNOME/glib-networking/-/issues/219
+
+Upstream-Status: Inappropriate [ Disabled test as a workaround until fixed ]
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ tls/tests/connection.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/tls/tests/connection.c
++++ b/tls/tests/connection.c
+@@ -3466,8 +3466,10 @@ main (int   argc,
+               setup_connection, test_simultaneous_sync_rehandshake, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/close-immediately", TestConnection, NULL,
+               setup_connection, test_close_immediately, teardown_connection);
++  #ifndef BACKEND_IS_OPENSSL
+   g_test_add ("/tls/" BACKEND "/connection/unclean-close-by-server", TestConnection, NULL,
+               setup_connection, test_unclean_close_by_server, teardown_connection);
++  #endif
+   g_test_add ("/tls/" BACKEND "/connection/async-implicit-handshake", TestConnection, NULL,
+               setup_connection, test_async_implicit_handshake, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/output-stream-close", TestConnection, NULL,
