@@ -38,6 +38,7 @@ and this project adheres to
 - Improve go-vendor support in recipetool
 - Add build time QA check for "virtual/" in RPROVIDES and RDEPENDS
 - Fix the mozjs-115 build on ARMv5
+- Update linux-yocto versions to v6.1.73, v6.6.12
 
 ### Added
 
