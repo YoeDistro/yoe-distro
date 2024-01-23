@@ -66,3 +66,9 @@
 	path = sources/meta-tegra
 	url = https://github.com/YoeDistro/meta-tegra
 	branch = master
+[submodule "sources/meta-toradex-bsp-common"]
+	path = sources/meta-toradex-bsp-common
+	url = https://git.toradex.com/meta-toradex-bsp-common.git
+[submodule "sources/meta-toradex-ti"]
+	path = sources/meta-toradex-ti
+	url = https://git.toradex.com/meta-toradex-ti.git
