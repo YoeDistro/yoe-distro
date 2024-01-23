@@ -28,10 +28,25 @@ and this project adheres to
 - Distable incompatible-function-pointer-types warning as error
   with clang 17 on python3-lxml and python3-kivy
 - Update VisionFive2 u-boot to JH7110_VF2_6.1_v5.10.3
+- Fix evolution-data-server fallout with inherit_defer
+- Add check for rv32 musl support being absent in Core layer
+- Undo the musl/rv32 host compatible check in meta-riscv
+- Update weston to 13.0.0
+- Update autoconf to 2.72d -> 2.72e
+- Fix openssl build on riscv32
+- Update to python 3.12 major release
+- Improve go-vendor support in recipetool
+- Add build time QA check for "virtual/" in RPROVIDES and RDEPENDS
+- Fix the mozjs-115 build on ARMv5
+- Update linux-yocto versions to v6.1.73, v6.6.12
 
 ### Added
 
 - New recipe - ssd1306
+- Added machines - orangepi-5-plus, rock-4c-plus, rock-3a, roc-rk3308-cc
+  roc-rk3328-cc
+- Add Darwin platform support to cmake class
+- Add a new `inherit_defer` keyword support to bitbake
 
 ### Removed
 
