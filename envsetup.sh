@@ -158,6 +158,8 @@ PROXYHOST=""
 YOE_ENV_VERSION=13
 YOE_ENV_FILE=localconfig.sh
 
+[ -n "`git config user.email`" ] && GIT_USER_EMAIL="$(git config user.email)" || GIT_USER_EMAIL="yoe@yoedistro"
+[ -n "`git config user.name`" ] && GIT_USER_NAME="$(git config user.name)" || GIT_USER_NAME="Yoe User"
 # Workaround for differences between yocto bitbake and vanilla bitbake
 export BBFETCH2=True
 
@@ -299,6 +301,9 @@ TMPDIR = "${OE_BUILD_TMPDIR}"
 #HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
 
 MACHINE ?= "$MACHINE"
+
+PATCH_GIT_USER_NAME = "${GIT_USER_NAME}"
+PATCH_GIT_USER_EMAIL = "${GIT_USER_EMAIL}"
 _EOF
 
 echo "${AUTO_CONF} has been updated"
