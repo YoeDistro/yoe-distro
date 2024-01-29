@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2024.01] - 2024-01-xx
+## [2024.01] - 2024-01-31
 
 ### Changed
 
@@ -39,19 +39,26 @@ and this project adheres to
 - Add build time QA check for "virtual/" in RPROVIDES and RDEPENDS
 - Fix the mozjs-115 build on ARMv5
 - Update linux-yocto versions to v6.1.73, v6.6.12
+- Upgrade uftrace to 0.15.2, adds support for rust and python
+- Add ptest support for xz
+- Upgrade rpm to 4.19.1
+- upgrade systemd to 255.1
+- Upgrade Qemu to 8.2.0
 
 ### Added
 
-- New recipe - ssd1306
+- New recipe - ssd1306, dropwatch, python3-apscheduler
 - Added machines - orangepi-5-plus, rock-4c-plus, rock-3a, roc-rk3308-cc
-  roc-rk3328-cc
+  roc-rk3328-cc, Raspberrypi5
 - Add Darwin platform support to cmake class
 - Add a new `inherit_defer` keyword support to bitbake
+- add devtool support for multiple source in SRC_URI
+- Add new project for rpi4 32bit machine
 
 ### Removed
 
 - Removed recipes: zvariant, polkit-0.119, mozjs-102, python3-jsonrpcserver
-  python3-oslash, python3-kmod, python3-xmlrunner
+  python3-oslash, python3-kmod, python3-xmlrunner, linux-yocto/6.1
 
 ## [2023.12] - 2023-12-30
 

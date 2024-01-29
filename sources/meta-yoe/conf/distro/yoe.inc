@@ -6,7 +6,7 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2024.01-rc.1"
+DISTRO_VERSION = "2024.01"
 DISTRO_CODENAME = "Katahdin"
 SDK_VERSION := "${DISTRO_VERSION}"
 
