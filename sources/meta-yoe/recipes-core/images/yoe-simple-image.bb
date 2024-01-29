@@ -24,6 +24,8 @@ IMAGE_INSTALL = "\
 "
 
 IMAGE_INSTALL:append:libc-musl = " gcompat"
+# Add pregenerated ssh keys for improving first time bootup speed
+IMAGE_INSTALL:append:qemuall = " ssh-pregen-hostkeys"
 
 export IMAGE_BASENAME = "yoe-simple-image"
 
