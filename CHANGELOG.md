@@ -44,6 +44,7 @@ and this project adheres to
 - Upgrade rpm to 4.19.1
 - upgrade systemd to 255.1
 - Upgrade Qemu to 8.2.0
+- Update QT6 to 6.6.2 and add build fixes to QTWebengine with latest clang
 
 ### Added
 
