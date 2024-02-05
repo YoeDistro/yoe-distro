@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.02] - 2024-02-XX
+
+### Changed
+
+- Update linux-raspberrypi to 6.1.74
+- Fix VisionFive2 u-boot and linux kernel builds with GCC-14
+- Fix support for large rootfs on tegra platforms
+- Fix several packages to build with GCC-14 and clang-18
+- Upgrade linux-yocto-dev to 6.8+
+- Avoid using -march when -mcpu is chosen for armv8/armv9 architectures
+- Update Golang to 1.20.13
+- Update pseudo to pull in gcc14 fix and missing statvfs64 intercept
+
+### Added
+
+- New packages - python3-moteus, python3-google-auth-oauthlib, python3-janus
+  flatcc, python3-aiohappyeyeballs, bonnie++.
+- Add cortexa78 tune files
+
+### Removed
+
 ## [2024.01] - 2024-01-31
 
 ### Changed
