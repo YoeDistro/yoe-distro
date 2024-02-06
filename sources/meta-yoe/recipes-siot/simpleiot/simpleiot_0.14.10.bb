@@ -7,11 +7,11 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57"
 SECTION = "apps"
 
-DEPENDS += "go-native elm-binary-native nodejs-native nodejs-oe-cache-native gyp-native python3-packaging-native curl-native ca-certificates-native"
+DEPENDS += "go-native"
 
-inherit python3native systemd update-rc.d goarch
+inherit systemd update-rc.d goarch
 
-SRCREV = "b79e7183909ceabdb185cf4a51ad93fb379a9354"
+SRCREV = "b764cc87d0c0ea887cb8b773cd3e261a4da8416a"
 
 BRANCH ?= "master"
 
@@ -30,15 +30,9 @@ INITSCRIPT_PARAMS = "start 99 5 . stop 20 6 ."
 do_configure[network] = "1"
 do_compile[network] = "1"
 
-# It uses curl-native to fetch npm dependencies which need to also use
-# native certs bundle, by default curl is compiled to point to curl-native's RSS
-# location which is buildtime path of curl-native not the recipe where it is being used
-export CURL_CA_BUNDLE = "${RECIPE_SYSROOT_NATIVE}${sysconfdir}/ssl/certs/ca-certificates.crt"
-
 do_configure() {
     export GOPATH=${GOPATH}
     export GOFLAGS="-modcacherw"
-    go install github.com/benbjohnson/genesis/...
 }
 
 do_compile() {
@@ -47,10 +41,7 @@ do_compile() {
     export PATH=${GOPATH}/bin:$PATH
     export GOFLAGS="-modcacherw"
     . ${S}/envsetup.sh
-    # FIXME: get elm cache in ~/.elm moved to work-shared
-    rm -rf frontend/elm-stuff
-    siot_setup
-    siot_build
+    siot_build_backend
 }
 
 do_install() {
