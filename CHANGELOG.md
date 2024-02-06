@@ -27,6 +27,8 @@ and this project adheres to
 
 ### Removed
 
+- Remove meta-elm-binary layer, its not needed anymore for simpleIOT
+
 ## [2024.01] - 2024-01-31
 
 ### Changed
