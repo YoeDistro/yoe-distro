@@ -18,11 +18,20 @@ and this project adheres to
 - Avoid using -march when -mcpu is chosen for armv8/armv9 architectures
 - Update Golang to 1.20.13
 - Update pseudo to pull in gcc14 fix and missing statvfs64 intercept
+- Upgrade OpenSSL to 3.2.1
+- Upgrade glibc to 2.39
+- Upgrade binutils to 2.42
+- Upgrade linux-yocto to v6.6.15
+- Improve running default image ptests on RISCV
+- Upgrade opkg to 0.6.3
+- Fix build race in xfstests
 
 ### Added
 
 - New packages - python3-moteus, python3-google-auth-oauthlib, python3-janus
-  flatcc, python3-aiohappyeyeballs, bonnie++.
+  flatcc, python3-aiohappyeyeballs, bonnie++. e2tools, python3-strenum
+  python3-httpx, python3-httpcore, python3-sniffio, python3-anyio
+  python3-socksio
 - Add cortexa78 tune files
 
 ### Removed
