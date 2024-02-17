@@ -25,6 +25,13 @@ and this project adheres to
 - Improve running default image ptests on RISCV
 - Upgrade opkg to 0.6.3
 - Fix build race in xfstests
+- Fix compiler-rt sanitizers build
+- Make clangd compilation optional
+- Update LLVM to 18 RC2
+- Upgrade openSSH to 9.6p1
+- Update mesa to 24.x release
+- Upgrade valgrind to 3.22.0
+- Fix various python pieces to work with python 3.12
 
 ### Added
 
@@ -37,6 +44,7 @@ and this project adheres to
 ### Removed
 
 - Remove meta-elm-binary layer, its not needed anymore for simpleIOT
+- Delete LLVMVERSION
 
 ## [2024.01] - 2024-01-31
 
