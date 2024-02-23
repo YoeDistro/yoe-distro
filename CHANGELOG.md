@@ -21,7 +21,7 @@ and this project adheres to
 - Upgrade OpenSSL to 3.2.1
 - Upgrade glibc to 2.39
 - Upgrade binutils to 2.42
-- Upgrade linux-yocto to v6.6.16
+- Upgrade linux-yocto to v6.6.17
 - Improve running default image ptests on RISCV
 - Upgrade opkg to 0.6.3
 - Fix build race in xfstests
@@ -36,13 +36,16 @@ and this project adheres to
 - Switch meta-python repcipes to use pytest --automake enmass
 - Upgrade linux-raspberrypi to 6.1.77
 - Enable RTC in RISCV qemu kernel configs
+- Fix yocto compatible status for meta-clang
+- Fix dav1d build on RISCV
+- Improve vscode IDE support
 
 ### Added
 
 - New packages - python3-moteus, python3-google-auth-oauthlib, python3-janus
   flatcc, python3-aiohappyeyeballs, bonnie++. e2tools, python3-strenum
   python3-httpx, python3-httpcore, python3-sniffio, python3-anyio
-  python3-socksio, python3-pyyaml-include, whitenoise
+  python3-socksio, python3-pyyaml-include, whitenoise, wavemon, libdaq, snort3
 - Add cortexa78 tune files
 
 ### Removed
