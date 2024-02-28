@@ -16,8 +16,7 @@ SDKPATHINSTALL = "/opt/${DISTRO}/${SDK_VERSION}"
 SDKEXTPATH = "~/${SDK_NAME_PREFIX}_sdk/${DISTRO_VERSION}"
 SDK_INCLUDE_NATIVESDK = "1"
 
-DISTRO_VERSION[vardepsexclude] = "DATE"
-SDK_VERSION[vardepsexclude] = "DATE"
+SDK_VERSION[vardepvalue] = "${SDK_VERSION}"
 
 PREMIRRORS ??= "\
 bzr://.*/.*   http://downloads.yoctoproject.org/mirror/sources/ \n \
