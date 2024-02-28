@@ -21,7 +21,7 @@ and this project adheres to
 - Upgrade OpenSSL to 3.2.1
 - Upgrade glibc to 2.39
 - Upgrade binutils to 2.42
-- Upgrade linux-yocto to v6.6.17
+- Upgrade linux-yocto to v6.6.18
 - Improve running default image ptests on RISCV
 - Upgrade opkg to 0.6.3
 - Fix build race in xfstests
@@ -39,6 +39,8 @@ and this project adheres to
 - Fix yocto compatible status for meta-clang
 - Fix dav1d build on RISCV
 - Improve vscode IDE support
+- Add images to enable BBCLASSEXTEND parallel execution for
+  meta-networking, meta-multimedia, meta-filesystems layers
 
 ### Added
 
@@ -46,6 +48,7 @@ and this project adheres to
   flatcc, python3-aiohappyeyeballs, bonnie++. e2tools, python3-strenum
   python3-httpx, python3-httpcore, python3-sniffio, python3-anyio
   python3-socksio, python3-pyyaml-include, whitenoise, wavemon, libdaq, snort3
+  sdmon, python3-looseversion
 - Add cortexa78 tune files
 
 ### Removed
@@ -53,6 +56,7 @@ and this project adheres to
 - Remove meta-elm-binary layer, its not needed anymore for simpleIOT
 - Delete LLVMVERSION
 - drop using PYTHON_PN variable
+- Removed recipes - libencode-locale-perl, libencode-perl
 
 ## [2024.01] - 2024-01-31
 
