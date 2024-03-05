@@ -696,7 +696,7 @@ yoe_get_image_version() {
 yoe_check_install_dependencies() {
   if ! command -v bmaptool >&/dev/null; then
     # build own copy of native tools
-    bitbake bmap-tools-native
+    bitbake bmaptool-native
     bitbake -c build_native_sysroot build-sysroots
     if ! command -v bmaptool >&/dev/null; then
       echo "bmaptool not installed"
