@@ -37,7 +37,7 @@ https://.*/.*    http://downloads.yoctoproject.org/mirror/sources/ \n"
 BB_GENERATE_MIRROR_TARBALLS = "1"
 
 # Template for feed server
-PACKAGE_FEED_URIS ??= "http://<feedserver>:8000/"
+PACKAGE_FEED_URIS ?= "http://<feedserver>:8000/"
 
 # Use Hash Equivalence
 BB_SIGNATURE_HANDLER = "OEEquivHash"
