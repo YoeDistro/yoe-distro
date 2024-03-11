@@ -6,6 +6,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.03] - 2024-03-XX
+
+### Changed
+
+- Adjustments for bmap-tools -> bmaptool rename
+- Major update of clang compiler to 18.1.1
+- Add fixes to build recipes with clang-18
+- Upgrade vlc to 3.0.20
+- Fix reproducibility issues in gnome recipes
+- Fix several recipes to work with libxml2 2.12+
+- Upgrade PHP to 8.2.16
+- Upgrade systemd from 255.1 -> 255.4
+- Bump Go compiler to 1.22
+- Upgrade GDB to 14.2
+- Update linux-yocto to v6.6.20
+- Add ptests to several python recipes
+
+### Added
+
+- Add new recipes
+  - python3-wsproto, python3-httptools, python3-a2wsgi
+    python3-a2wsgi, python3-responses, python3-pytest-localserver
+    python3-tomli-w, python3-invoke, python3-icecream
+    python3-types-python-dateutil, python3-freezegun
+
+- Add genericarm64 MACHINE
+
+### Removed
+
 ## [2024.02] - 2024-02-29
 
 ### Changed

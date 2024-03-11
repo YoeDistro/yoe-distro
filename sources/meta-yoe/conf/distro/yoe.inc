@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2024.02"
-DISTRO_CODENAME = "Lati"
+DISTRO_VERSION = "2024.03-rc.1"
+DISTRO_CODENAME = "Massese"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
@@ -37,7 +37,7 @@ https://.*/.*    http://downloads.yoctoproject.org/mirror/sources/ \n"
 BB_GENERATE_MIRROR_TARBALLS = "1"
 
 # Template for feed server
-PACKAGE_FEED_URIS ??= "http://<feedserver>:8000/"
+PACKAGE_FEED_URIS ?= "http://<feedserver>:8000/"
 
 # Use Hash Equivalence
 BB_SIGNATURE_HANDLER = "OEEquivHash"
