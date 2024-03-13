@@ -14,8 +14,8 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
 
 --- a/include/configs/imx8qm_var_som.h
 +++ b/include/configs/imx8qm_var_som.h
-@@ -93,7 +93,7 @@
- 	CONFIG_MFG_ENV_SETTINGS \
+@@ -76,7 +76,7 @@
+ 	CFG_MFG_ENV_SETTINGS \
  	M4_BOOT_ENV \
  	AHAB_ENV \
 -	"bootdir=/boot\0" \
@@ -23,12 +23,12 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
  	"script=boot.scr\0" \
  	"image=Image.gz\0" \
  	"panel=VAR-WVGA-LCD\0" \
-@@ -126,7 +126,7 @@
+@@ -109,7 +109,7 @@
  		"bootaux ${m41_addr} 1;\0" \
  	"optargs=setenv bootargs ${bootargs} ${kernelargs};\0" \
  	"mmcargs=setenv bootargs console=${console},${baudrate} earlycon som_wifi=${som_wifi} " \
 -		"root=/dev/mmcblk${mmcblk}p${mmcpart} rootfstype=ext4 rootwait rw\0 " \
 +		"root=/dev/mmcblk${mmcblk}p2 rootfstype=ext4 rootwait rw\0 " \
+ 	"bootenv=uEnv.txt\0" \
  	"loadbootscript=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}/${script};\0" \
  	"bootscript=echo Running bootscript from mmc ...; " \
- 		"source\0" \
