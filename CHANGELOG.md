@@ -22,6 +22,8 @@ and this project adheres to
 - Upgrade GDB to 14.2
 - Update linux-yocto to v6.6.20
 - Add ptests to several python recipes
+- Upgrade LVGL to 9.0 major release
+- Upgrade to using QT 6.7.1 in yoe-kiosk-browser
 
 ### Added
 
