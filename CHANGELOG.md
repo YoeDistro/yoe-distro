@@ -24,6 +24,8 @@ and this project adheres to
 - Add ptests to several python recipes
 - Upgrade LVGL to 9.0 major release
 - Upgrade to using QT 6.7.1 in yoe-kiosk-browser
+- Update to use 6.1 kernel on all IMX8/IMX9 projects
+- Fix var-som-mx8 project to use 6.1 kernel
 
 ### Added
 
