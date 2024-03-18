@@ -26,6 +26,9 @@ and this project adheres to
 - Upgrade to using QT 6.7.1 in yoe-kiosk-browser
 - Update to use 6.1 kernel on all IMX8/IMX9 projects
 - Fix var-som-mx8 project to use 6.1 kernel
+- Generate versioned shared libraries from LVGL
+- Upgrade frr to latest on 9.1 stable
+- set TNSPEC_BOOTDEV_DEFAULT for jetson-orin-nano-devkit
 
 ### Added
 
@@ -34,6 +37,7 @@ and this project adheres to
     python3-a2wsgi, python3-responses, python3-pytest-localserver
     python3-tomli-w, python3-invoke, python3-icecream
     python3-types-python-dateutil, python3-freezegun
+    buildtools-imagemagick, spandsp, sngrep
 
 - Add genericarm64 MACHINE
 
