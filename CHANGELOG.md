@@ -29,6 +29,12 @@ and this project adheres to
 - Generate versioned shared libraries from LVGL
 - Upgrade frr to latest on 9.1 stable
 - set TNSPEC_BOOTDEV_DEFAULT for jetson-orin-nano-devkit
+- Upgrade some portions of Gnome to 46.0
+- Add linux-raspberrypi 6.6 LTS kernel recipe and default to it
+- Update meta-tegra to use R35.5.0 nvidia SDK
+- Upgrade golang compiler to 1.22.1
+- Update to LLVM 18.1.1
+- Fix vala to work with gtk < 4.14
 
 ### Added
 
@@ -37,7 +43,7 @@ and this project adheres to
     python3-a2wsgi, python3-responses, python3-pytest-localserver
     python3-tomli-w, python3-invoke, python3-icecream
     python3-types-python-dateutil, python3-freezegun
-    buildtools-imagemagick, spandsp, sngrep
+    buildtools-imagemagick, spandsp, sngrep, bluez-tools
 
 - Add genericarm64 MACHINE
 
