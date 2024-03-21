@@ -20,7 +20,7 @@ and this project adheres to
 - Upgrade systemd from 255.1 -> 255.4
 - Bump Go compiler to 1.22
 - Upgrade GDB to 14.2
-- Update linux-yocto to v6.6.20
+- Update linux-yocto to v6.6.22
 - Add ptests to several python recipes
 - Upgrade LVGL to 9.0 major release
 - Upgrade to using QT 6.7.1 in yoe-kiosk-browser
@@ -35,6 +35,7 @@ and this project adheres to
 - Upgrade golang compiler to 1.22.1
 - Update to LLVM 18.1.1
 - Fix vala to work with gtk < 4.14
+- Use +nocrypto with -mcpu compiler options for rpi3/rpi4
 
 ### Added
 
@@ -44,6 +45,7 @@ and this project adheres to
     python3-tomli-w, python3-invoke, python3-icecream
     python3-types-python-dateutil, python3-freezegun
     buildtools-imagemagick, spandsp, sngrep, bluez-tools
+    freerdp3
 
 - Add genericarm64 MACHINE
 
