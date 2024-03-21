@@ -11,7 +11,7 @@ and this project adheres to
 ### Changed
 
 - Adjustments for bmap-tools -> bmaptool rename
-- Major update of clang compiler to 18.1.1
+- Major update of clang compiler to 18.1.2
 - Add fixes to build recipes with clang-18
 - Upgrade vlc to 3.0.20
 - Fix reproducibility issues in gnome recipes
@@ -36,6 +36,7 @@ and this project adheres to
 - Update to LLVM 18.1.1
 - Fix vala to work with gtk < 4.14
 - Use +nocrypto with -mcpu compiler options for rpi3/rpi4
+- Fix qttools 6.x build with clang
 
 ### Added
 
