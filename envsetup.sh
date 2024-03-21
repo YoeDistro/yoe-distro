@@ -314,7 +314,7 @@ echo "${AUTO_CONF} has been updated"
 yoe_update_all() {
   CWD=$(pwd)
   cd ${OE_BASE}
-  git pull && git submodule sync && git submodule update
+  git pull && git submodule sync && git submodule update --init
   cd $CWD
 }
 
