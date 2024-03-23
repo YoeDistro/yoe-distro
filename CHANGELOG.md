@@ -37,6 +37,7 @@ and this project adheres to
 - Fix vala to work with gtk < 4.14
 - Use +nocrypto with -mcpu compiler options for rpi3/rpi4
 - Fix qttools 6.x build with clang
+- Update simpleIOT to 0.15.3
 
 ### Added
 
