@@ -47,7 +47,7 @@ and this project adheres to
     python3-tomli-w, python3-invoke, python3-icecream
     python3-types-python-dateutil, python3-freezegun
     buildtools-imagemagick, spandsp, sngrep, bluez-tools
-    freerdp3
+    freerdp3, python3-dbus
 
 - Add genericarm64 MACHINE
 
