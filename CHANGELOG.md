@@ -38,6 +38,9 @@ and this project adheres to
 - Use +nocrypto with -mcpu compiler options for rpi3/rpi4
 - Fix qttools 6.x build with clang
 - Update simpleIOT to 0.15.3
+- Fix libcamera crashes due to clang patches
+- Fix musl builds for openflow, liburing, tracker-miners, libcamera
+  plocate
 
 ### Added
 
@@ -47,7 +50,7 @@ and this project adheres to
     python3-tomli-w, python3-invoke, python3-icecream
     python3-types-python-dateutil, python3-freezegun
     buildtools-imagemagick, spandsp, sngrep, bluez-tools
-    freerdp3, python3-dbus
+    freerdp3, python3-dbus, msgraph, gtk4mm
 
 - Add genericarm64 MACHINE
 
