@@ -1,0 +1,33 @@
+From 442ff80c5e32f6a01ec160b15efb8ada114beff5 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Tue, 26 Mar 2024 12:24:50 -0700
+Subject: [PATCH] Enable PCIE for imx8qm-var-som
+
+Upstream-Status: Pending
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ arch/arm64/boot/dts/freescale/imx8qm-var-som-symphony.dtsi | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/freescale/imx8qm-var-som-symphony.dtsi b/arch/arm64/boot/dts/freescale/imx8qm-var-som-symphony.dtsi
+index 62d17f620822..f055d864df6d 100644
+--- a/arch/arm64/boot/dts/freescale/imx8qm-var-som-symphony.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8qm-var-som-symphony.dtsi
+@@ -676,8 +676,12 @@ &mipi_csi_1 {
+ 	status = "disabled";
+ };
+ 
++&phyx2_0 {
++	fsl,refclk-pad-mode = <IMX8_PCIE_REFCLK_PAD_INPUT>;
++	status = "okay";
++};
++
+ &pciea{
+-	ext_osc = <1>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_pciea>;
+ 	reset-gpio = <&lsio_gpio3 14 GPIO_ACTIVE_LOW>;
+-- 
+2.44.0
+

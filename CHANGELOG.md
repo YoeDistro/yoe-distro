@@ -41,6 +41,7 @@ and this project adheres to
 - Fix libcamera crashes due to clang patches
 - Fix musl builds for openflow, liburing, tracker-miners, libcamera
   plocate
+- Bump linux-raspberrypi to 6.6.22
 
 ### Added
 
@@ -50,7 +51,8 @@ and this project adheres to
     python3-tomli-w, python3-invoke, python3-icecream
     python3-types-python-dateutil, python3-freezegun
     buildtools-imagemagick, spandsp, sngrep, bluez-tools
-    freerdp3, python3-dbus, msgraph, gtk4mm
+    freerdp3, python3-dbus, msgraph, gtk4mm, aer-inject
+    microsoft-gsl, libcpr
 
 - Add genericarm64 MACHINE
 
