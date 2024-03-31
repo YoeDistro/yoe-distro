@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2024.03] - 2024-03-XX
+## [2024.03] - 2024-03-31
 
 ### Changed
 
@@ -42,6 +42,8 @@ and this project adheres to
 - Fix musl builds for openflow, liburing, tracker-miners, libcamera
   plocate
 - Bump linux-raspberrypi to 6.6.22
+- Add rpi hifiberry-dacplusadc overlay
+- Add apache preset mpm=prefork by default
 
 ### Added
 
@@ -52,7 +54,7 @@ and this project adheres to
     python3-types-python-dateutil, python3-freezegun
     buildtools-imagemagick, spandsp, sngrep, bluez-tools
     freerdp3, python3-dbus, msgraph, gtk4mm, aer-inject
-    microsoft-gsl, libcpr
+    microsoft-gsl, libcpr, gnome-user-share
 
 - Add genericarm64 MACHINE
 
