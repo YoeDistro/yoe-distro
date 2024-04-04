@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.04] - 2024-04-xx
+
+### Changed
+
+- Upgrade webkitgtk3 to 2.44
+- Fix packaging conflicts between mesa and mesa-pvr for RISCV64
+- Upgrade linux-yocto to v6.6.23
+- Upgrade gstreamer to 1.22.11
+- Fix openssl crash on aarch64 w/o crypto instructions
+- Accomodate llvm in readelf and objdump commands in oe packaging
+
+### Added
+
+- New Recipes
+  - highway, libjxl, python-libusb1
+
+### Removed
+
 ## [2024.03] - 2024-03-31
 
 ### Changed
