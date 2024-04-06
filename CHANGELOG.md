@@ -16,6 +16,7 @@ and this project adheres to
 - Upgrade gstreamer to 1.22.11
 - Fix openssl crash on aarch64 w/o crypto instructions
 - Accomodate llvm in readelf and objdump commands in oe packaging
+- Enable OPTEE for var-som-mx8 project
 
 ### Added
 
