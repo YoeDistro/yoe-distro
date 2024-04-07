@@ -17,11 +17,16 @@ and this project adheres to
 - Fix openssl crash on aarch64 w/o crypto instructions
 - Accomodate llvm in readelf and objdump commands in oe packaging
 - Enable OPTEE for var-som-mx8 project
+- Upgrade Golang to 1.22.2
+- Upgrade webkit to 2.44.0
+- Fix ptests for several meta-python recipes
+- Update QT6 to latest 6.7
+- Upgrade clang compiler to 18.1.3
 
 ### Added
 
 - New Recipes
-  - highway, libjxl, python-libusb1
+  - highway, libjxl, python-libusb1, libfido2, avro-c++
 
 ### Removed
 
