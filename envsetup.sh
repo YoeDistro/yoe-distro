@@ -119,10 +119,10 @@ fi
 export PROJECT
 echo "Setting PROJECT=$PROJECT"
 
-MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE.*=' | cut -d '"' -f 2`
+MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE[[:space:]]*=' | cut -d '"' -f 2`
 
 if [ -z "$MACHINE" ]; then
-  MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE.*=' | cut -d "'" -f 2`
+  MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE[[:space:]]*=' | cut -d "'" -f 2`
 fi
 
 if [ -z "$MACHINE" ]; then
