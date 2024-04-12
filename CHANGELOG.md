@@ -19,16 +19,22 @@ and this project adheres to
 - Enable OPTEE for var-som-mx8 project
 - Upgrade Golang to 1.22.2
 - Upgrade webkit to 2.44.0
-- Fix ptests for several meta-python recipes
+- Fix ptests for several meta-openembedded recipes
 - Update QT6 to latest 6.7
 - Upgrade clang compiler to 18.1.3
+- Switch to use http/https instead of ftp in SRC_URIs
+- Update linux-variscite to include DT fix to enable PCIE
 
 ### Added
 
 - New Recipes
-  - highway, libjxl, python-libusb1, libfido2, avro-c++
+  - highway, libjxl, python-libusb1, libfido2, avro-c++, python3-flexcache
+    python3-flexparser, composefs
 
 ### Removed
+
+- Removed recipes
+  - libxml++
 
 ## [2024.03] - 2024-03-31
 
