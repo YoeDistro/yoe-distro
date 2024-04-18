@@ -1,31 +1,43 @@
-From 141cf431c581ba39c45bc8b766edc56f6317ca93 Mon Sep 17 00:00:00 2001
+From 9daf99369c9ddc1bb63f74edf76bb4f5a6a37477 Mon Sep 17 00:00:00 2001
 From: Cliff Brake <cbrake@bec-systems.com>
-Date: Tue, 1 Aug 2023 17:16:42 -0400
-Subject: [PATCH] imx8mn_var_som: Adjust for boot/root/data partitioning scheme
+Date: Thu, 18 Apr 2024 16:51:05 -0400
+Subject: [PATCH] imx8mn_var_som - adjust for boot root data partitioning
 
 ---
- include/configs/imx8mn_var_som.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/configs/imx8mn_var_som.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/include/configs/imx8mn_var_som.h b/include/configs/imx8mn_var_som.h
-index 85843ac8d2..3692ede332 100644
+index 2854032248..8b4cf330aa 100644
 --- a/include/configs/imx8mn_var_som.h
 +++ b/include/configs/imx8mn_var_som.h
-@@ -81,7 +81,7 @@
+@@ -62,7 +62,7 @@
  /* Initial environment variables */
- #define CONFIG_EXTRA_ENV_SETTINGS \
- 	CONFIG_MFG_ENV_SETTINGS \
+ #define CFG_EXTRA_ENV_SETTINGS \
+ 	CFG_MFG_ENV_SETTINGS \
 -	"bootdir=/boot\0" \
 +	"bootdir=\0" \
  	BOOTENV \
  	"prepare_mcore=setenv mcore_clk clk-imx8mn.mcore_booted;\0" \
  	"scriptaddr=0x43500000\0" \
-@@ -121,7 +121,7 @@
+@@ -71,7 +71,7 @@
+ 	"image=Image.gz\0" \
+ 	"img_addr=0x42000000\0" \
+ 	"console=ttymxc3,115200 earlycon=ec_imx6q,0x30a60000,115200\0" \
+-	"fdt_addr_r=0x43000000\0" \
++	"fdt_addr_r=0x44000000\0" \
+ 	"fdt_addr=0x43000000\0" \
+ 	"fdt_high=0xffffffffffffffff\0" \
+ 	"boot_fdt=try\0" \
+@@ -102,7 +102,7 @@
  		"bootaux ${m7_addr};\0" \
  	"optargs=setenv bootargs ${bootargs} ${kernelargs};\0" \
  	"mmcargs=setenv bootargs ${mcore_clk} console=${console} " \
 -		"root=/dev/mmcblk${mmcblk}p${mmcpart} rootwait rw ${cma_size} cma_name=linux,cma\0 " \
 +		"root=/dev/mmcblk${mmcblk}p2 rootwait rw ${cma_size} cma_name=linux,cma\0 " \
+ 	"bootenv=uEnv.txt\0" \
  	"loadbootscript=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}/${bsp_script};\0" \
  	"bootscript=echo Running bootscript from mmc ...; " \
- 		"source\0" \
+-- 
+2.44.0
+
