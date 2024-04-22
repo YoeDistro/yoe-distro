@@ -10,6 +10,8 @@ SIMPLEIOT:riscv32 = ""
 
 IMAGE_INSTALL += "\
     ${SIMPLEIOT} \
+    networkmanager \
+    wireguard-tools \
 "
 
 export IMAGE_BASENAME = "yoe-simpleiot-image"
