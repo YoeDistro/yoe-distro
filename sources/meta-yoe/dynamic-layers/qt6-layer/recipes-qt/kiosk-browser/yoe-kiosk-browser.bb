@@ -4,7 +4,7 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
 
 SRC_URI = "git://github.com/YoeDistro/yoe-kiosk-browser;branch=main;protocol=https"
-SRCREV = "6e94c4013f4f636a9d65561243e675dff0ae381d"
+SRCREV = "c4550fd947fcb6ef4b75eca514701aad2b588134"
 
 PV = "1.0.0+git"
 
@@ -27,6 +27,16 @@ YOE_KIOSK_BROWSER_URL ?= "http://localhost:8118"
 YOE_KIOSK_BROWSER_ROTATE ?= "0"
 # the following scale should be <= 1
 YOE_KIOSK_BROWSER_KEYBOARD_SCALE ?= "1"
+# the following is the interval at which we try
+# to reload a failed web page (seconds)
+# default is 5s if not specified.
+YOE_KIOSK_BROWSER_RETRY_INTERVAL = "10"
+# the following is typically a local web page that is loaded
+# instead of the default error screen.
+# If this is not set, the default error screen is shown.
+YOE_KIOSK_BROWSER_EXCEPTION_URL=""
+
+
 # Define it via a knob which can be set from config file e.g. local.conf
 YOE_KIOSK_BROWSER_SYSTEMD_UNIT ?= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'yoe-kiosk-browser-wayland.service', 'yoe-kiosk-browser-eglfs.service', d)}"
 
@@ -45,6 +55,13 @@ do_install:append() {
 
     sed -i "s|@KEYBOARD_SCALE@|${YOE_KIOSK_BROWSER_KEYBOARD_SCALE}|" \
         ${D}${sysconfdir}/default/yoe-kiosk-browser
+
+    sed -i "s|@RETRY_INTERVAL@|${YOE_KIOSK_BROWSER_RETRY_INTERVAL}|" \
+        ${D}${sysconfdir}/default/yoe-kiosk-browser
+
+    sed -i "s|@@|${YOE_KIOSK_BROWSER_KEYBOARD_SCALE}|" \
+        ${D}${sysconfdir}/default/yoe-kiosk-browser
+
 }
 
 SYSTEMD_SERVICE:${PN} = "yoe-kiosk-browser.service"
