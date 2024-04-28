@@ -1,4 +1,4 @@
-TITLE="VAR-SOM-MX8X Symphony Board"
+TITLE="VAR-SOM-MX8M-NANO Symphony Board"
 PLAT="imx8mn-var-som"
 UPDATE_FILE_NAME="${PLAT}"
 
