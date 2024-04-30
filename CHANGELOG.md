@@ -24,17 +24,24 @@ and this project adheres to
 - Upgrade clang compiler to 18.1.3
 - Switch to use http/https instead of ftp in SRC_URIs
 - Update linux-variscite to include DT fix to enable PCIE
+- Upgrade clang to 18.1.4
+- Support 6.6 kernel and u-boot 2024.04 on upstream odroid machines
+- Update several gnome components to 46.1
+- Add GPT partition names to partitions on rockchip machines
+- Fix ptest runs for pv, psqlodbc, unixdoc, ostree
+- Add fido2 support to openSSH
+- Make predictable name mac policy opt-out in systemd
 
 ### Added
 
 - New Recipes
   - highway, libjxl, python-libusb1, libfido2, avro-c++, python3-flexcache
-    python3-flexparser, composefs
+    python3-flexparser, composefs, aravis, ydotool
 
 ### Removed
 
 - Removed recipes
-  - libxml++
+  - libxml++, python3-websockets
 
 ## [2024.03] - 2024-03-31
 
