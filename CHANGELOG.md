@@ -10,6 +10,14 @@ and this project adheres to
 
 ### Changed
 
+- Upgrade strace to 6.8
+
+### Added
+
+- Introduce UNPACKDIR bitbake variable
+
+### Removed
+
 ## [2024.04] - 2024-04-30
 
 ### Changed
