@@ -11,6 +11,8 @@ and this project adheres to
 ### Changed
 
 - Upgrade strace to 6.8
+- Upgrade clang compiler to 18.1.5
+- Upgrade nginx to 1.26.0
 
 ### Added
 
