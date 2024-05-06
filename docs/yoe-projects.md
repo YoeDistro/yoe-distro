@@ -51,13 +51,26 @@ Currently these projects are supported.
 
 If you used yoe before you might want to convert a project to the new config. In
 the simplest case you just need to create a new directory at
-conf/project/jour_project_name and copy over your local.conf to config.conf and
-bblayers.conf to layers.conf.
+`conf/project/jour_project_name` and copy over your `local.conf` to
+`config.conf` and bblayers.conf to layers.conf.
 
 ## Creating a new project
 
 Choose a project which asembles your needs most from the projects copy it to
-conf/project/jour_project_name and change it to your needs.
+`conf/project/jour_project_name` and change it to your needs.
+
+## Modifying an example project (ex: SOM baseboard)
+
+A very common scenario is that you might want to create a custom baseboard for a
+SOM (system on module). You want to start with the SOM vendors reference
+baseboard, but customize to the changes you have made. In this case it is very
+useful to have a separate `PROJECT` and `MACHINE` so that you can build images
+for the reference board and your custom board in one build system. The steps to
+do this includes:
+
+1. create a new machine conf in
+   `sources/meta-<your custom layer>/conf/machine/mymachine.conf`. This is
+   typically a copy of the baseboard machine conf file.
 
 ## Contribute
 
