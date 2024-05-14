@@ -16,7 +16,7 @@ SRC_URI:remove = "file://0002-units-disable-systemd-networkd-wait-online-if-Netw
 
 do_install:append() {
   install -d ${D}${sysconfdir}/systemd/network/
-	install -m 0644 ${WORKDIR}/*.network ${D}${sysconfdir}/systemd/network/
+	install -m 0644 ${UNPACKDIR}/*.network ${D}${sysconfdir}/systemd/network/
 	if ${@bb.utils.contains('PACKAGECONFIG', 'timesyncd', 'true', 'false', d)}; then
 		install -d ${D}${sysconfdir}/systemd/system/sysinit.target.wants/
 		ln -sf ${systemd_system_unitdir}/systemd-time-wait-sync.service ${D}${sysconfdir}/systemd/system/sysinit.target.wants/systemd-time-wait-sync.service

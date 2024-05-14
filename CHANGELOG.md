@@ -13,6 +13,11 @@ and this project adheres to
 - Upgrade strace to 6.8
 - Upgrade clang compiler to 18.1.5
 - Upgrade nginx to 1.26.0
+- Fix several recipes to build with GCC-14
+- Refactor composefs recipe
+- Fix visionfive2-pvr-graphics sysvinit support
+- Fix milkv-duo support in meta-riscv
+- Accomodate recipes for UNPACKDIR migration
 
 ### Added
 
