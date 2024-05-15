@@ -12,8 +12,8 @@ do_compile() {
     :
 }
 do_install() {
-    install -Dm 0775 ${WORKDIR}/init ${D}/init
-    install -Dm 0664 ${WORKDIR}/platform ${D}/platform
+    install -Dm 0775 ${UNPACKDIR}/init ${D}/init
+    install -Dm 0664 ${UNPACKDIR}/platform ${D}/platform
     install -d ${D}/dev
     mknod -m 622 ${D}/dev/console c 5 1
 }
