@@ -20,6 +20,7 @@ IMAGE_INSTALL = "\
     packagegroup-base-ipv6 \
     os-release \
     htop \
+    ca-certificates \
     ${CORE_IMAGE_EXTRA_INSTALL} \
 "
 
