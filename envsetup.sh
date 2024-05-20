@@ -746,6 +746,19 @@ yoe_install_image() {
   unset WICIMG
 }
 
+# deploy image to update server
+yoe_deploy_update() {
+  IMG_VERSION=$(yoe_get_image_version) || return 1
+  server=files.bec-systems.com:/var/www/files/yoe
+  UPFILE="${MACHINE}_${IMG_VERSION}.upd"
+  echo "Uploading ${UPFILE}"
+  scp "${OE_BASE}/deploy/${UPFILE}" ${server}/ || return 1
+  scp ${server}/files.txt . || return 1
+  echo "${UPFILE}" >> files.txt || return 1
+  scp files.txt ${server}/  || return 1
+  echo "Image uploaded to update server"
+}
+
 # Needed for running per-image ptest images in parallel on qemu
 yoe_create_tap_devices() {
   if [ ! -e ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs ]; then

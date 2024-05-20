@@ -25,3 +25,4 @@ tools/python
 tools/python-config
 workspace/*
 logs/
+files.txt
