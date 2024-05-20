@@ -20,6 +20,7 @@ and this project adheres to
 - Accomodate recipes for UNPACKDIR migration
 - update Simple IoT to v0.16.0
 - default `IMG_VERSION` to Yoe release: 2024.04 -> 24.04.x
+- add `ca-certificates` to `yoe-simple-image`
 
 ### Added
 
