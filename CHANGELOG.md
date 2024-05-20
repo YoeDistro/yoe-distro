@@ -18,6 +18,8 @@ and this project adheres to
 - Fix visionfive2-pvr-graphics sysvinit support
 - Fix milkv-duo support in meta-riscv
 - Accomodate recipes for UNPACKDIR migration
+- update Simple IoT to v0.16.0
+- default `IMG_VERSION` to Yoe release: 2024.04 -> 24.04.x
 
 ### Added
 
@@ -95,8 +97,7 @@ and this project adheres to
 - Fix qttools 6.x build with clang
 - Update simpleIOT to 0.15.3
 - Fix libcamera crashes due to clang patches
-- Fix musl builds for openflow, liburing, tracker-miners, libcamera
-  plocate
+- Fix musl builds for openflow, liburing, tracker-miners, libcamera plocate
 - Bump linux-raspberrypi to 6.6.22
 - Add rpi hifiberry-dacplusadc overlay
 - Add apache preset mpm=prefork by default
@@ -104,13 +105,13 @@ and this project adheres to
 ### Added
 
 - Add new recipes
-  - python3-wsproto, python3-httptools, python3-a2wsgi
-    python3-a2wsgi, python3-responses, python3-pytest-localserver
-    python3-tomli-w, python3-invoke, python3-icecream
-    python3-types-python-dateutil, python3-freezegun
-    buildtools-imagemagick, spandsp, sngrep, bluez-tools
-    freerdp3, python3-dbus, msgraph, gtk4mm, aer-inject
-    microsoft-gsl, libcpr, gnome-user-share
+
+  - python3-wsproto, python3-httptools, python3-a2wsgi python3-a2wsgi,
+    python3-responses, python3-pytest-localserver python3-tomli-w,
+    python3-invoke, python3-icecream python3-types-python-dateutil,
+    python3-freezegun buildtools-imagemagick, spandsp, sngrep, bluez-tools
+    freerdp3, python3-dbus, msgraph, gtk4mm, aer-inject microsoft-gsl, libcpr,
+    gnome-user-share
 
 - Add genericarm64 MACHINE
 
@@ -149,8 +150,8 @@ and this project adheres to
 - Fix yocto compatible status for meta-clang
 - Fix dav1d build on RISCV
 - Improve vscode IDE support
-- Add images to enable BBCLASSEXTEND parallel execution for
-  meta-networking, meta-multimedia, meta-filesystems layers
+- Add images to enable BBCLASSEXTEND parallel execution for meta-networking,
+  meta-multimedia, meta-filesystems layers
 
 ### Added
 
@@ -185,10 +186,10 @@ and this project adheres to
 - Upgrade reference u-boot to 2024.01
 - Use pkg-config in the meson cross files
 - Backport opkg fix to drop --numeric-owner parameter
-- don't exclude gtkdocize in autotools class, fix several recipes
-  to inherit gtk-doc
-- Distable incompatible-function-pointer-types warning as error
-  with clang 17 on python3-lxml and python3-kivy
+- don't exclude gtkdocize in autotools class, fix several recipes to inherit
+  gtk-doc
+- Distable incompatible-function-pointer-types warning as error with clang 17 on
+  python3-lxml and python3-kivy
 - Update VisionFive2 u-boot to JH7110_VF2_6.1_v5.10.3
 - Fix evolution-data-server fallout with inherit_defer
 - Add check for rv32 musl support being absent in Core layer
@@ -250,8 +251,8 @@ and this project adheres to
 
 ### Added
 
-- Added recipes - monocypher, xorg-docs, xcursor-themes
-  python3-maturin, cyaml, pkcs11-provider
+- Added recipes - monocypher, xorg-docs, xcursor-themes python3-maturin, cyaml,
+  pkcs11-provider
 - Devtool now supports git submodules for SRC_URI
 - Add python recipe writing support to recipetool
 - Add python maturin support
@@ -373,7 +374,7 @@ and this project adheres to
 - Added recipes - tayga, ttyrun, python3-arrow, python-git-pw
   - libexosip2, libosip2, pcapplusplus
 - Add bblock feature to core
-- Add  Yoe updater support for VisionFive2 board
+- Add Yoe updater support for VisionFive2 board
 
 ### Removed
 
@@ -394,7 +395,7 @@ and this project adheres to
 - Fix several packages to build for non-neon arm targets
 - Fix multilib support in clang to search lib32
 - Fix fetching bcc recipe to not modify .gitconfig on build host
-- Explicitly disable JIT in webkitgtk for armv7* with softfp
+- Explicitly disable JIT in webkitgtk for armv7\* with softfp
 - Fix rust targets for ppc64 architecture
 - Improve loongarch support in go compile and gcc toolchain
 - Update linux-yocto/6.4 to v6.4.14 and 6.1 to v6.1.51
@@ -429,12 +430,11 @@ and this project adheres to
 ### Added
 
 - Added new recipes
-  - microcom, vsomeip, libei, python3-apiflask
-    python3-webargs, python3-flask-httpauth, python3-apispec
-    python3-flask-marshmallow, webrtc-audio-processing, python3-flask-jwt-extended
-    tecla, python3-pyu2f, python3-uritools, python3-beartype, musl-legacy-error
-    python3-spdx-tools, python3-flask-cors, python3-boto3, python3-botocore
-    python3-nacl 
+  - microcom, vsomeip, libei, python3-apiflask python3-webargs,
+    python3-flask-httpauth, python3-apispec python3-flask-marshmallow,
+    webrtc-audio-processing, python3-flask-jwt-extended tecla, python3-pyu2f,
+    python3-uritools, python3-beartype, musl-legacy-error python3-spdx-tools,
+    python3-flask-cors, python3-boto3, python3-botocore python3-nacl
 - Add gpt-hybrid partition layout to wic
 - Enable generating spdx manifest by default
 
@@ -450,7 +450,8 @@ and this project adheres to
 - Fix dependencies for yoe-kiosk-browser
 - Convert CVE_CHECK_IGNORE to CVE_STATUS in meta-openembedded
 - Fix cross builds for python3-pyaudio
-- Enable wayland/x11/opengl configs based corresponding distro features in mesa-pvr
+- Enable wayland/x11/opengl configs based corresponding distro features in
+  mesa-pvr
 - Move libadwaita to core layer
 - Move gcr3 to meta-oe
 - Upgrade systemd to 254
@@ -476,8 +477,7 @@ and this project adheres to
 - Upgrade go compiler to 1.20.7
 - Fix recipe_sysroot_check_ld_is_lld to not trigger on allarch recipes
 - Fix rust features for vfpv3d16
-- Adjust commman to work with interface renaming with
-  kernel 6.4 and systemd 254
+- Adjust commman to work with interface renaming with kernel 6.4 and systemd 254
 - Switch RPI4 to use QT6
 - Wrap more bitbake commands in container e.g. bitbake-getvar
 - Enable i2c and disable rpi boot logo for rpi4-64
@@ -490,8 +490,8 @@ and this project adheres to
 - Upgrade mariadb to 10.11.5
 - Fix musl build for riscv32
 - Allow building some native recipes with ccache
-- Do not use LLD linker to build go-runtime on aarch64, subsequent
-  apps linking with this go-runtime crashes go linker
+- Do not use LLD linker to build go-runtime on aarch64, subsequent apps linking
+  with this go-runtime crashes go linker
 - Switch from GNU-TLS to openssl transport by default on rsyslog
 - Update to latest on QT6 6.5 LTS
 - Improve taskhash reproducibility in bitbake/siggen
@@ -507,12 +507,11 @@ and this project adheres to
 ### Added
 
 - Added recipes
-  - webkitgtk3, libnvme, python3-telnetlib3, mstpd, bolt
-    python3-types-psutil, python3-types-setuptools, qad
-    ttf-google-fira, python3-oauth2client, python3-schedule
-    spice-guest-vdagent, aml, phodav, gnome-boxes, libosinfo
-    gnome-remote-desktop, libcacard, usbids, qcbor
-    python3-sdbus, libfaketime, python3-piccata, python3-gspread
+  - webkitgtk3, libnvme, python3-telnetlib3, mstpd, bolt python3-types-psutil,
+    python3-types-setuptools, qad ttf-google-fira, python3-oauth2client,
+    python3-schedule spice-guest-vdagent, aml, phodav, gnome-boxes, libosinfo
+    gnome-remote-desktop, libcacard, usbids, qcbor python3-sdbus, libfaketime,
+    python3-piccata, python3-gspread
 - Add script to generate kernel CVE_STATUS entries for linux-yocto
 - Add packageconfig to support colored logs in journald
 - Add DOCKER_PORTS variable in setenv to forward ports between docker and host
@@ -525,8 +524,7 @@ and this project adheres to
 ### Removed
 
 - Remove version-going-backwards from build QA errors
-- Remove unused AUTHOR variable from recipes in meta-openembedded
-  and core
+- Remove unused AUTHOR variable from recipes in meta-openembedded and core
 
 ## [2023.07] - 2023-07-31
 
@@ -561,8 +559,8 @@ and this project adheres to
 
 ### Added
 
-- Added recipes - python3-pyqt5, python3-pyqt5-sip, python3-pyqt-builder
-  wtmpdb, lastlog2
+- Added recipes - python3-pyqt5, python3-pyqt5-sip, python3-pyqt-builder wtmpdb,
+  lastlog2
 - Yoe logo in psplash
 
 ### Removed
@@ -582,7 +580,8 @@ and this project adheres to
 - Upgrade OpenSSL 3.1.1
 - Enable fullscreen and disable startup-msg in psplash
 - Fix spdx license parsing
-- Make built-in libtraceevent plugins from perf cohabit with external libtraceevent
+- Make built-in libtraceevent plugins from perf cohabit with external
+  libtraceevent
 - Fix vulkan-samples build on 32-bit platforms
 - Make OpenSBI FW_TEXT_START=0x40000000 specific to jh7110
 - Use python3 in oe-stylize
@@ -596,8 +595,8 @@ and this project adheres to
 - Fix enabling lld as distro linker in clang.bbclass
 - Upgrade go compiler to 1.20.5
 - Fix recipes to build issues found using lld linker
-- Drop setting ARM_INSTRUCTION_SET explicitly, it can build in thumb mode
-  and upgrade to 8.2.7
+- Drop setting ARM_INSTRUCTION_SET explicitly, it can build in thumb mode and
+  upgrade to 8.2.7
 - Use BFD linker for libgcc and glibc explicitly
 - Replace Yocto .h by .png splashscreen in psplash
 - Add weston user to wayland and render groups
@@ -620,8 +619,8 @@ and this project adheres to
   meta-freescale, meta-clang and meta-yoe layers
 - Add support for mbedTLS v3.x
 - Bump QT6 packages to 6.5.3
-- Fix weston booting issues on visionfive2 SBC and update to use
-  StarFive SDK v3.0.4 components
+- Fix weston booting issues on visionfive2 SBC and update to use StarFive SDK
+  v3.0.4 components
 - Improve patch-status layer filtering in insane.bbclass QA checks
 - Update rpi kernel to 6.1.34
 - Enable glx/opengl support in gstreamer1.0-plugins-base
@@ -667,14 +666,14 @@ and this project adheres to
 - Default to https git protocol where possible in SRC_URI
 - Add --libfiles option to llvm-config
 - Add systemd unit file for etcd
-- Uprev libplist to 2.3.0, fix several dependent recipes to
-  support API changes from 2.3.0
+- Uprev libplist to 2.3.0, fix several dependent recipes to support API changes
+  from 2.3.0
 - Fix rpi-libcamera-apps recipe for ARM64
 - Fix linux-bb.org to build with gcc 13
 - Fix several recipes in meta-oe to remove TMPDIR in output packages
 - Update libfmt to version 10 and fix dependencies to support new APIs
-- Use autoconf-archive-native as m4 macros dependencies during build
-  instead of target autoconf-archive during build
+- Use autoconf-archive-native as m4 macros dependencies during build instead of
+  target autoconf-archive during build
 - Enable zbb manip extensions for rv32/rv64 in ffmpeg build
 - Fix few of buildpath issues in meta-openembedded recipes
 - Simplify MACHINEOVERRIDES definitions for rpi
@@ -696,9 +695,8 @@ and this project adheres to
 - New recipes
   - etcd, python3-tomlkit, python3-pytest-mock, python3-calver
     python3-trove-classifiers, python3-platformdirs, python3-uswid
-    python3-pefile, libcbor, psutils, libpaper, serial, libisoburn
-    libisofs, paprefs, openfortivpn, networkmanager-fortisslvpn
-    mbpoll, python3-bleak
+    python3-pefile, libcbor, psutils, libpaper, serial, libisoburn libisofs,
+    paprefs, openfortivpn, networkmanager-fortisslvpn mbpoll, python3-bleak
 
 ### Removed
 
@@ -712,8 +710,8 @@ and this project adheres to
 ### Changed
 
 - Fix meta-clang towards meeting yocto layer compatible status
-- Fix clang packaging issue where installing clang-tools
-  would pull in whole compiler
+- Fix clang packaging issue where installing clang-tools would pull in whole
+  compiler
 - Simplify imx-boot container
 - Add 6.1 linux-ti-staging
 - Update tzdata 2023c
@@ -727,12 +725,11 @@ and this project adheres to
 - Add missing dependency on glib-2.0-native in several recipes
 - Add fixes to several recipes to build with autoconf 2.72
 - Update clang to llvmorg-16.0.1 release
-- Fix bindgen-cli and python3-pyruvate to work with new crate
-  updated class
-- Fix upstream patch status in meta-webserver, meta-perl, meta-xfce
-  meta-gnome, and meta-multimedia
-- Improve cargo-update-recipe-crates to specify two different versions
-  of same crate in given recipe
+- Fix bindgen-cli and python3-pyruvate to work with new crate updated class
+- Fix upstream patch status in meta-webserver, meta-perl, meta-xfce meta-gnome,
+  and meta-multimedia
+- Improve cargo-update-recipe-crates to specify two different versions of same
+  crate in given recipe
 - Use 3.20 version for OPTEE components
 - Update VisionFive2 firmware to 2.11.5
 - Upgrade pipewire to 0.3.68
@@ -760,8 +757,7 @@ and this project adheres to
 - Add new CVE database fetcher cve-update-nvd2-native
 - Added new recipes:
   - libpcsc-perl, polkit-gnome, libnfs, adw-gtk3, etcd-cpp-apiv3
-- Add ptests for libtinyxml2, python3-lorem, python3-path and dc
-  bitwise
+- Add ptests for libtinyxml2, python3-lorem, python3-path and dc bitwise
 - Enable hashserve distro-wide for yoe
 - Add support for Raspberry Pi Camera Module v3
 
@@ -821,10 +817,9 @@ and this project adheres to
 - Add kernel specific KERNEL_OBJDUMP variable
 - Add VOLATILE_TMP_DIR variable
 - Add support for visionfive2 board
-- Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d
-  pgpool2, python3-unittest-automake-output, debugedit, reboot-mode
-  python3-executing, python3-pure-eval, python3-stack-data
-  exfatprogs
+- Add recipes - python3-rich, xdg-dbus-proxy, libavif, dav1d pgpool2,
+  python3-unittest-automake-output, debugedit, reboot-mode python3-executing,
+  python3-pure-eval, python3-stack-data exfatprogs
 - Add yoe updater support for MX8-VAR-SOM symphony board
 - Add ptest support for mbedTLS
 - Add buildstats-summary script
@@ -882,9 +877,9 @@ and this project adheres to
 ### Added
 
 - New recipes
-  - python3-pycups, extract-cert, rtkit, system-config-printer
-    rpi-eeprom, libdeflate, python-daemon, smemstat, linux-serial-test
-    libgpiod v2.0-rc2, python3-gpiod, plocate
+  - python3-pycups, extract-cert, rtkit, system-config-printer rpi-eeprom,
+    libdeflate, python-daemon, smemstat, linux-serial-test libgpiod v2.0-rc2,
+    python3-gpiod, plocate
 - Add initial support for loongarch64 architecture
 - Add artifact signing infrastructure class ( signing.bbclass )
 - Add weston kiosk shell
@@ -924,8 +919,8 @@ and this project adheres to
 - Fix various python modules to migrate from picobuild to python3-build
 - Fix freedom-u540 opensbi dependency loop in meta-riscv
 - Improve shutdown handling and lockfile handling in bitbake at exit
-- Set ac_cv_sys_file_offset_bits=64 for musl builds globally, enables
-  64-bit off_t on autotool based packages
+- Set ac_cv_sys_file_offset_bits=64 for musl builds globally, enables 64-bit
+  off_t on autotool based packages
 - Unify rust patches into rust-source.inc
 - Update linux-yocto kernels to v5.15.87 and v6.1.5
 - Add libgcc to uninative-tarball
@@ -947,10 +942,9 @@ and this project adheres to
 
 ### Added
 
-- Added recipes - xdg-desktop-portal-gtk, eog
-  libdecor, biodbc, python3-build, python3-pyproject-hooks
-  python3-reedsolo, lvgl-demo-fb, nv-codec-headers, webp-pixbuf-loader
-  gnome-chess
+- Added recipes - xdg-desktop-portal-gtk, eog libdecor, biodbc, python3-build,
+  python3-pyproject-hooks python3-reedsolo, lvgl-demo-fb, nv-codec-headers,
+  webp-pixbuf-loader gnome-chess
 - Add GLIBC_64BIT_TIME_FLAGS on ppc/x86
 - Introduce v6.1 reference linux-yocto kernel recipes
 
@@ -997,15 +991,15 @@ and this project adheres to
 ### Added
 
 - New recipes - xdg-desktop-portal-wlr, basu, gnome-software,
-  xdg-desktop-portal, editorconfig, python3-rapidjson, tuna,
-  sip, python3-uefi-firmware, python3-linux-procfs, python3-schedutils,
-  gcr-4, python3-watchdogdev, appstream, libtraceevent, libtracefs,
-  flatpak, flatpak-xdg-utils, libslirp
+  xdg-desktop-portal, editorconfig, python3-rapidjson, tuna, sip,
+  python3-uefi-firmware, python3-linux-procfs, python3-schedutils, gcr-4,
+  python3-watchdogdev, appstream, libtraceevent, libtracefs, flatpak,
+  flatpak-xdg-utils, libslirp
 - Add time64.conf to enable 64bit time_t on 32bit glibc systems
 - Add x86-64-v3 tunes (AVX, AVX2, BMI1, BMI2, F16C, FMA, LZCNT, MOVBE, XSAVE)
 
 ### Removed
- 
+
 - Drop OEBasic siggen from sstate signature
 - Remove RRECOMMENDS to rng-tools for sshd package
 - Remove SERIAL_CONSOLE variable
@@ -1034,8 +1028,8 @@ and this project adheres to
 
 ### Added
 
-- Added recipes - gtk-vnc, libglvnd, python3-brotli, minio
-  jwt-cpp, spice-gtk, python3-kmod, python3-aioserial
+- Added recipes - gtk-vnc, libglvnd, python3-brotli, minio jwt-cpp, spice-gtk,
+  python3-kmod, python3-aioserial
 - Add libc testsuite for musl
 - Add 7-Zip support in conversion types for image_types
 - Add crate in own-mirrors
@@ -1057,7 +1051,7 @@ and this project adheres to
 - Build u-boot-starfive outside source tree
 - Improve manuals with reference to familiar tasks
 - Assorted package version upgrades
-- Update clang to  15.0.3
+- Update clang to 15.0.3
 - Fix bpftrace on RISCV64
 - Fix linux-hardkernel 4.9 with GCC 12
 - Update documentation for oe-core
@@ -1065,10 +1059,10 @@ and this project adheres to
 ### Added
 
 - Add ptest support for bpftrace
-- Add new recipe - rpi-libcamera-apps, python3-pytest-json-report
-  Perfetto, md4c
+- Add new recipe - rpi-libcamera-apps, python3-pytest-json-report Perfetto, md4c
 
 ### Removed
+
 - Removed recipes: onboard
 - Remove -ffile-compilation-dir from global clang options
 
@@ -1114,19 +1108,18 @@ and this project adheres to
 - Update mozjs-91 91.13.0 and fix build with python 3.11
 - Update clang to latest on 15.x release
 - Fix buildpaths warning on more recipes e.g. exiv2, fltk
-- Ubreak opensbi dependencies being added to u-boot for non-riscv
-  machines
+- Ubreak opensbi dependencies being added to u-boot for non-riscv machines
 - Enable ZSTD as default compression backend for opkg for yoe
-- Enable clang for more applications which were marked non clangable
-  Notable recipes e.g. u-boot, python3
+- Enable clang for more applications which were marked non clangable Notable
+  recipes e.g. u-boot, python3
 - Update simpleIOT to 0.5.0 release
 - Fix compiler-rt-sanitizers builds on non-x86 builds
 - Fix Yoe graphical images with musl to work on IMX8 devices
 - Fixes for logger debug() calls
 - Fix gcompat on aarch64
 - Upgrade mesa to 22.2.0
-- Mark simpleIOT builds on riscv32 incompatible since golang support does
-  not exist yet
+- Mark simpleIOT builds on riscv32 incompatible since golang support does not
+  exist yet
 - Fix recipes in meta-arm to build with clang-15
 - Update clang to 15.0.2
 - Logic in gtk-icon-cache class fixed for GTK4
@@ -1162,7 +1155,7 @@ and this project adheres to
 - Clean sourced from workspace after devtool finish
 - Update python3-setuptools to 65.x
 - Add support for config snippet includes to ssh and sshd
-- Address recipes with -Wimplicit-function-declaration as error in 
+- Address recipes with -Wimplicit-function-declaration as error in
   pedantic-errors with clang 15
 - Update optee to 3.18
 - Update musl to tip of trunk
@@ -1185,8 +1178,8 @@ and this project adheres to
 
 ### Added
 
-- Add recipe for mdio-tools, usbmuxd, libusbmuxd, libimobiledevice,
-  libplist, gst-editing-services, uutils-coreutils, python3-asgiref
+- Add recipe for mdio-tools, usbmuxd, libusbmuxd, libimobiledevice, libplist,
+  gst-editing-services, uutils-coreutils, python3-asgiref
 - Added clang-native class to build native compoennts with clang
 - Add test for debuginfod
 - Add devmem 128-bit support in busybox
@@ -1268,8 +1261,8 @@ and this project adheres to
 ### Added
 
 - Added recipes: libspiro, python3-picobuild, python3-oslash
-  python3-jsonrpcclient, python3-aiodns, python3-pycares
-  waylandpp, python-requests-unixsocket, sshpass
+  python3-jsonrpcclient, python3-aiodns, python3-pycares waylandpp,
+  python-requests-unixsocket, sshpass
 - Add support for visionfive board in meta-riscv
 - Add QA check for shebangs
 - Add buildpaths to WARN_QA by default
@@ -1322,8 +1315,7 @@ and this project adheres to
 
 ### Added
 
-- Added recipes
-  libavtp, libtomcrypt, flite
+- Added recipes libavtp, libtomcrypt, flite
 - Add QB_KERNEL_CMDLINE to runqemu
 
 ### Removed
@@ -1337,8 +1329,7 @@ and this project adheres to
 - Correctly handle file names containing colons in bitbake
 - Fix firmware autoloading for rpi by creating
   brcmfmac43455-sdio.raspberrypi,4-model-b.bin symlink
-- Update qemu to 7.0.0
-= Upgrade musl to tip of trunk
+- Update qemu to 7.0.0 = Upgrade musl to tip of trunk
 - Upgrade 250.5
 - Use arm-versatile-926ejs KMACHINE for qemuarmv5
 - Make git intercept global
@@ -1377,17 +1368,16 @@ and this project adheres to
 - Add recipe for cpulimit, openzfs, ulog2, libcoap, btrfsmaintenance
   python3-web3, python3-lru-dict, python3-eth-account, python3-eth-abi
   python3-parsimonious, python3-eth-rlp, python3-rlp, python3-hexbytes
-  python3-eth-keyfile, python3-eth-keys, python3-eth-utils
-  python3-eth-typing, python3-eth-hash, python3-decouple
-  python3-cytoolz, python3-toolz, python3-inotify, nodejs-oe-cache-native
-  overlayfs-progs, overlayfs-tools, python3-uinput, xfstests
-  python3-editables, python3-hatchling, python3-pathspec
-  python3-setuptools-scm-git-archive
+  python3-eth-keyfile, python3-eth-keys, python3-eth-utils python3-eth-typing,
+  python3-eth-hash, python3-decouple python3-cytoolz, python3-toolz,
+  python3-inotify, nodejs-oe-cache-native overlayfs-progs, overlayfs-tools,
+  python3-uinput, xfstests python3-editables, python3-hatchling,
+  python3-pathspec python3-setuptools-scm-git-archive
 
 ### Removed
 
-- Remove meta-networking dependency on meta-python by re-arranging
-  recipe locations
+- Remove meta-networking dependency on meta-python by re-arranging recipe
+  locations
 - Drop GPL-3.0 license from libgcrypt
 - Remove uclibc remnants from DISTRO_FEATURES
 - Removed recipes: speedtest-cli
