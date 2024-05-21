@@ -749,7 +749,7 @@ yoe_install_image() {
 # deploy image to update server
 yoe_deploy_update() {
   IMG_VERSION=$(yoe_get_image_version) || return 1
-  server=files.bec-systems.com:/var/www/files/yoe
+  server=files.bec-systems.com:/var/www/files/yoe/testing
   UPFILE="${MACHINE}_${IMG_VERSION}.upd"
   echo "Uploading ${UPFILE}"
   scp "${OE_BASE}/deploy/${UPFILE}" ${server}/ || return 1
