@@ -21,12 +21,18 @@ and this project adheres to
 - update Simple IoT to v0.16.0
 - default `IMG_VERSION` to Yoe release: 2024.04 -> 24.04.x
 - add `ca-certificates` to `yoe-simple-image`
+- Upgrade valgrind to 3.23.0
 
 ### Added
 
 - Introduce UNPACKDIR bitbake variable
+- New recipes
+  - glib-testing, opentelemetry-cpp, malcontent
 
 ### Removed
+
+- Removed recipes
+  - orrery, libtirpc126
 
 ## [2024.04] - 2024-04-30
 
