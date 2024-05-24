@@ -10,18 +10,24 @@ and this project adheres to
 
 ### Changed
 
+- Upgrade GCC to 14.1 major release
+- Enable LLD linker as default for RISCV
 - Upgrade strace to 6.8
-- Upgrade clang compiler to 18.1.5
+- Upgrade clang compiler to 18.1.6
 - Upgrade nginx to 1.26.0
 - Fix several recipes to build with GCC-14
 - Refactor composefs recipe
 - Fix visionfive2-pvr-graphics sysvinit support
 - Fix milkv-duo support in meta-riscv
-- Accomodate recipes for UNPACKDIR migration
+- Update recipes in multiple layers for UNPACKDIR migration
+- Update recipes to move away from S = WORKDIR assignments
+- Introduce GO_SRCURI_DESTSUFFIX for go based recipes
 - update Simple IoT to v0.16.0
 - default `IMG_VERSION` to Yoe release: 2024.04 -> 24.04.x
 - add `ca-certificates` to `yoe-simple-image`
 - Upgrade valgrind to 3.23.0
+- Upgrade QT6 to 6.7.2
+- Upgrade vulkan SDK to 1.3.283.0
 
 ### Added
 
@@ -32,7 +38,7 @@ and this project adheres to
 ### Removed
 
 - Removed recipes
-  - orrery, libtirpc126
+  - orrery, libtirpc126, usbinit
 
 ## [2024.04] - 2024-04-30
 
