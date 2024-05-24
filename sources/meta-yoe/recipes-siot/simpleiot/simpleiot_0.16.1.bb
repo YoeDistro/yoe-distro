@@ -11,7 +11,7 @@ DEPENDS += "go-native"
 
 inherit systemd update-rc.d goarch
 
-SRCREV = "763dc6f055c3db7c04f84ca48c40ab9bc49d1f26"
+SRCREV = "b925bc3ea6bfbdf282b4a137c7201d686718b771"
 
 BRANCH ?= "master"
 
