@@ -113,10 +113,7 @@ INHERIT += "${@bb.utils.contains_any('BUILD_ARCH', 'ppc64le riscv64', '', 'unina
 INHERIT += "image-buildinfo"
 
 DISTRO_FEATURES:append = " opengl multiarch wayland pam vulkan usrmerge ld-is-lld"
-# lld does not work with objects created with gas from binutils 2.41 yet
-# see https://reviews.llvm.org/D142880
-DISTRO_FEATURES:remove:riscv64 = "ld-is-lld"
-DISTRO_FEATURES:remove:riscv32 = "ld-is-lld"
+
 # See https://discourse.llvm.org/t/lld-cannot-make-pie-binaries-on-x32/67131
 DISTRO_FEATURES:remove:linux-gnux32 = "ld-is-lld"
 DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
