@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2024.05] - 2024-05-XX
+## [2024.05] - 2024-05-31
 
 ### Changed
 
@@ -28,17 +28,23 @@ and this project adheres to
 - Upgrade valgrind to 3.23.0
 - Upgrade QT6 to 6.7.2
 - Upgrade vulkan SDK to 1.3.283.0
+- Upgrade spirv-llvm-translator 18.1.0
+- Fix renaming of network interfaces on rpi projects using systemd
+- Upgrade go to 1.22.3
 
 ### Added
 
 - Introduce UNPACKDIR bitbake variable
 - New recipes
   - glib-testing, opentelemetry-cpp, malcontent
+    python3-dasbus
 
 ### Removed
 
 - Removed recipes
-  - orrery, libtirpc126, usbinit
+  - orrery, libtirpc126, usbinit, libomxil
+- Drop using LLVMVERSION
+- Drop unused 5.15 linux-raspberrypi version
 
 ## [2024.04] - 2024-04-30
 
