@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.06] - 2024-06-XX
+
+### Changed
+
+- Fix libclc build
+- Bump fsl kernel to 6.6.32
+- Disable -Wincompatible-pointer-types as error in few recipes
+  to build with GCC-14
+- Upgrade libcamera to 0.3.0
+- Adjust several recipes to build with libtool 2.5 
+- Update linux-yocto/6.6 v6.6.32
+- Upgrade QEMU to 9.0.0
+- Upgrade OpenSSL to 3.3.1
+- Update wayland to 1.23.0
+
+## Added
+
+- Added new recipes for - sexpect
+- Add ptests support for python3-dasbus, python3-flask
+
 ## [2024.05] - 2024-05-31
 
 ### Changed
