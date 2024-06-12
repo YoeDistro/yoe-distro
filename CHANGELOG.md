@@ -20,6 +20,8 @@ and this project adheres to
 - Upgrade QEMU to 9.0.0
 - Upgrade OpenSSL to 3.3.1
 - Update wayland to 1.23.0
+- Bump QT to 6.7.3
+- Fix kernel build for Jetson orin-nano
 
 ## Added
 
