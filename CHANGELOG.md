@@ -22,11 +22,18 @@ and this project adheres to
 - Update wayland to 1.23.0
 - Bump QT to 6.7.3
 - Fix kernel build for Jetson orin-nano
+- Update clang to 18.1.7 release
+- Upgrade libgpiod-1.x to 1.6.5 and fix build  with musl
+- Upgrade fwupd-efi to 1.6 and move py-pefile to meta-oe
+- Allow using LLVM libc++ with GCC compiler
+- Move fmt package from meta-oe -> core layer
 
 ## Added
 
-- Added new recipes for - sexpect
+- Added new recipes for - sexpect, trompeloeil, cabextract
+  udpcast
 - Add ptests support for python3-dasbus, python3-flask
+- Add support for BeagleV-Ahead SBC
 
 ## [2024.05] - 2024-05-31
 
