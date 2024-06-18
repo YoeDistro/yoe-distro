@@ -27,13 +27,18 @@ and this project adheres to
 - Upgrade fwupd-efi to 1.6 and move py-pefile to meta-oe
 - Allow using LLVM libc++ with GCC compiler
 - Move fmt package from meta-oe -> core layer
+- Fix libstdc++ unicode header typo regression found with clang
 
 ## Added
 
 - Added new recipes for - sexpect, trompeloeil, cabextract
-  udpcast
+  udpcast, python3-typer 
 - Add ptests support for python3-dasbus, python3-flask
 - Add support for BeagleV-Ahead SBC
+
+## Removed
+
+- remove g77/f77
 
 ## [2024.05] - 2024-05-31
 
