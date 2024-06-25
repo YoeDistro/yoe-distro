@@ -28,11 +28,12 @@ and this project adheres to
 - Allow using LLVM libc++ with GCC compiler
 - Move fmt package from meta-oe -> core layer
 - Fix libstdc++ unicode header typo regression found with clang
+- Update rpidistro-ffmpeg to 5.1.4
 
 ## Added
 
 - Added new recipes for - sexpect, trompeloeil, cabextract
-  udpcast, python3-typer 
+  udpcast, python3-typer, magic-enum 
 - Add ptests support for python3-dasbus, python3-flask
 - Add support for BeagleV-Ahead SBC
 
