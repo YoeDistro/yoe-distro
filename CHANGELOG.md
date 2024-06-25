@@ -36,6 +36,7 @@ and this project adheres to
   udpcast, python3-typer, magic-enum 
 - Add ptests support for python3-dasbus, python3-flask
 - Add support for BeagleV-Ahead SBC
+- Add support for jetson-agx-orin-devkit
 
 ## Removed
 
