@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2024.06] - 2024-06-XX
+## [2024.06] - 2024-06-30
 
 ### Changed
 
@@ -22,13 +22,17 @@ and this project adheres to
 - Update wayland to 1.23.0
 - Bump QT to 6.7.3
 - Fix kernel build for Jetson orin-nano
-- Update clang to 18.1.7 release
+- Update clang to 18.1.8 release
 - Upgrade libgpiod-1.x to 1.6.5 and fix build  with musl
 - Upgrade fwupd-efi to 1.6 and move py-pefile to meta-oe
 - Allow using LLVM libc++ with GCC compiler
 - Move fmt package from meta-oe -> core layer
 - Fix libstdc++ unicode header typo regression found with clang
 - Update rpidistro-ffmpeg to 5.1.4
+- Fix contains reference to TMPDIR [buildpaths] warning in several recipes
+- Upgrade PHP to 8.2.20
+- Upgrade go compiler to 1.22.4
+- Add PACKAGECONFIG for bpf-framework to systemd
 
 ## Added
 
@@ -41,6 +45,7 @@ and this project adheres to
 ## Removed
 
 - remove g77/f77
+- drop the old 1.4 bootstrap C version for go compiler
 
 ## [2024.05] - 2024-05-31
 
