@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.07] - 2024-07-XX
+
+### Changed
+
+- Fix several packages to build with clang fortify and glibc 2.40
+- Add ptest support for unbound
+- Stop overriding unprefixed *FLAGS variables for native and nativesdk
+- Update linux-yocto/6.6 to v6.6.35
+- Use objdump instead of readelf to compute SONAME during image generation
+- Adjust metadata to remove True option in getVar calls
+
+### Added
+
+- Added new recipes - libabigail
+
 ## [2024.06] - 2024-06-30
 
 ### Changed
