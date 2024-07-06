@@ -49,7 +49,7 @@ and this project adheres to
 - Upgrade go compiler to 1.22.4
 - Add PACKAGECONFIG for bpf-framework to systemd
 
-## Added
+### Added
 
 - Added new recipes for - sexpect, trompeloeil, cabextract
   udpcast, python3-typer, magic-enum 
@@ -57,7 +57,7 @@ and this project adheres to
 - Add support for BeagleV-Ahead SBC
 - Add support for jetson-agx-orin-devkit
 
-## Removed
+### Removed
 
 - remove g77/f77
 - drop the old 1.4 bootstrap C version for go compiler
