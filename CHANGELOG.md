@@ -16,6 +16,9 @@ and this project adheres to
 - Update linux-yocto/6.6 to v6.6.35
 - Use objdump instead of readelf to compute SONAME during image generation
 - Adjust metadata to remove True option in getVar calls
+- Fix exceptions with -mbranch-protection on ARM64/Libc++
+- Enable build-id for systems built with clang compiler
+- Upgrade QEMU to 9.0.1
 
 ### Added
 
