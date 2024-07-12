@@ -16,6 +16,9 @@ and this project adheres to
 - Update linux-yocto/6.6 to v6.6.35
 - Use objdump instead of readelf to compute SONAME during image generation
 - Adjust metadata to remove True option in getVar calls
+- Fix exceptions with -mbranch-protection on ARM64/Libc++
+- Enable build-id for systems built with clang compiler
+- Upgrade QEMU to 9.0.1
 
 ### Added
 
@@ -49,7 +52,7 @@ and this project adheres to
 - Upgrade go compiler to 1.22.4
 - Add PACKAGECONFIG for bpf-framework to systemd
 
-## Added
+### Added
 
 - Added new recipes for - sexpect, trompeloeil, cabextract
   udpcast, python3-typer, magic-enum 
@@ -57,7 +60,7 @@ and this project adheres to
 - Add support for BeagleV-Ahead SBC
 - Add support for jetson-agx-orin-devkit
 
-## Removed
+### Removed
 
 - remove g77/f77
 - drop the old 1.4 bootstrap C version for go compiler
