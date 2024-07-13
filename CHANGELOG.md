@@ -19,6 +19,12 @@ and this project adheres to
 - Fix exceptions with -mbranch-protection on ARM64/Libc++
 - Enable build-id for systems built with clang compiler
 - Upgrade QEMU to 9.0.1
+- Update MACHINE in jetson-agx-orin-devkit
+- Always use lld linker with clang for qt6 recipes
+- Ignore various issues fatal with gcc-14
+- Upgrade linux-raspberrypi to 6.6.36
+- Pin runtime type to GCC runtime in cuda-gcc and define TOOLCHAIN variable
+- Upgrade Go compiler to 1.22.5
 
 ### Added
 
