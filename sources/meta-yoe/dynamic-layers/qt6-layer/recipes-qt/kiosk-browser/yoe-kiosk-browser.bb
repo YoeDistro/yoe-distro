@@ -4,7 +4,7 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
 
 SRC_URI = "git://github.com/YoeDistro/yoe-kiosk-browser;branch=main;protocol=https"
-SRCREV = "c4550fd947fcb6ef4b75eca514701aad2b588134"
+SRCREV = "738469237165cf991a24541e18ce99909b3806d4"
 
 PV = "1.0.0+git"
 
@@ -36,7 +36,11 @@ YOE_KIOSK_BROWSER_RETRY_INTERVAL = "10"
 # If this is not set, the default error screen is shown.
 YOE_KIOSK_BROWSER_EXCEPTION_URL=""
 
+# Depending upon screen attached to system
+SCREEN_RESOLUTION ?= "1024x600"
 
+# DRI card number, may vary for different boards
+DISPLAY_CARD ?= "/dev/dri/card0"
 # Define it via a knob which can be set from config file e.g. local.conf
 YOE_KIOSK_BROWSER_SYSTEMD_UNIT ?= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'yoe-kiosk-browser-wayland.service', 'yoe-kiosk-browser-eglfs.service', d)}"
 
@@ -61,6 +65,12 @@ do_install:append() {
 
     sed -i "s|@@|${YOE_KIOSK_BROWSER_KEYBOARD_SCALE}|" \
         ${D}${sysconfdir}/default/yoe-kiosk-browser
+
+    sed -i "s|@RESOLUTION@|${SCREEN_RESOLUTION}|" \
+        ${D}${sysconfdir}/default/eglfs.json
+
+    sed -i "s|@DISPLAY_CARD@|${DISPLAY_CARD}|" \
+        ${D}${sysconfdir}/default/eglfs.json
 
 }
 
