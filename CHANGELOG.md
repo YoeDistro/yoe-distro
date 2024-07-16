@@ -30,6 +30,8 @@ and this project adheres to
 - Enforce default remote name to "origin" in git fetcher
 - Enable GTK in OpenCV with wayland as well
 - Switch Jetson platforms to use Yoe distro with wayland instead of EGLFS
+- Update blueZ to 5.77
+- Upgrade GDB to 15.1
 
 ### Added
 
@@ -37,6 +39,7 @@ and this project adheres to
 - Added DEBUG_LEVELFLAG variable to contain default debug level e.g. -g1, -g, etc.
 - Add packageconfig knob to control tegra gallium driver in mesa
 - Add nospdx class
+- Add and switch default SPDX version to 3.0
 
 ### Removed
 
