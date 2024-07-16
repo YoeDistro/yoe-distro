@@ -28,6 +28,8 @@ and this project adheres to
 - Upgrade systemd to v256
 - Upgrade util-linux to  2.40.1
 - Enforce default remote name to "origin" in git fetcher
+- Enable GTK in OpenCV with wayland as well
+- Switch Jetson platforms to use Yoe distro with wayland instead of EGLFS
 
 ### Added
 
