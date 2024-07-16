@@ -25,10 +25,24 @@ and this project adheres to
 - Upgrade linux-raspberrypi to 6.6.36
 - Pin runtime type to GCC runtime in cuda-gcc and define TOOLCHAIN variable
 - Upgrade Go compiler to 1.22.5
+- Upgrade systemd to v256
+- Upgrade util-linux to  2.40.1
+- Enforce default remote name to "origin" in git fetcher
+- Enable GTK in OpenCV with wayland as well
+- Switch Jetson platforms to use Yoe distro with wayland instead of EGLFS
 
 ### Added
 
 - Added new recipes - libabigail
+- Added DEBUG_LEVELFLAG variable to contain default debug level e.g. -g1, -g, etc.
+- Add packageconfig knob to control tegra gallium driver in mesa
+- Add nospdx class
+
+### Removed
+
+- Drop generating a static libpython
+- Remove /etc/ethertypes in iptables
+- Drop obsolete debug compiler option -feliminate-unused-debug-types
 
 ## [2024.06] - 2024-06-30
 
