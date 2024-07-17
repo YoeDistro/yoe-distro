@@ -21,6 +21,8 @@ IMAGE_INSTALL = "\
     os-release \
     htop \
     ca-certificates \
+    networkmanager \
+    wireguard-tools \
     ${CORE_IMAGE_EXTRA_INSTALL} \
 "
 
