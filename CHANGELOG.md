@@ -34,6 +34,9 @@ and this project adheres to
 - Upgrade GDB to 15.1
 - Enable kprobes in tegra kernel
 - Add python3-cuda to tegra based images
+- Do not manage wifi with systemd-networkmanager
+- Disable audit subsystem in kernel for tegra platforms
+- Add networkmanager and wireguard to all yoe images
 
 ### Added
 
