@@ -30,6 +30,13 @@ and this project adheres to
 - Enforce default remote name to "origin" in git fetcher
 - Enable GTK in OpenCV with wayland as well
 - Switch Jetson platforms to use Yoe distro with wayland instead of EGLFS
+- Update blueZ to 5.77
+- Upgrade GDB to 15.1
+- Enable kprobes in tegra kernel
+- Add python3-cuda to tegra based images
+- Do not manage wifi with systemd-networkmanager
+- Disable audit subsystem in kernel for tegra platforms
+- Add networkmanager and wireguard to all yoe images
 
 ### Added
 
@@ -37,6 +44,8 @@ and this project adheres to
 - Added DEBUG_LEVELFLAG variable to contain default debug level e.g. -g1, -g, etc.
 - Add packageconfig knob to control tegra gallium driver in mesa
 - Add nospdx class
+- Add and switch default SPDX version to 3.0
+- Add meta-tegra-community layer
 
 ### Removed
 

@@ -70,3 +70,7 @@
 	path = sources/meta-tegra
 	url = https://github.com/YoeDistro/meta-tegra
 	branch = master
+[submodule "sources/meta-tegra-community"]
+	path = sources/meta-tegra-community
+	url = https://github.com/yoedistro/meta-tegra-community
+	branch = master

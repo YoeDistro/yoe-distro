@@ -2,8 +2,10 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${BPN}:"
 
 PACKAGECONFIG:append = " networkd resolved coredump"
 
+# Add wireless.network here if the system has wifi and
+# it is managed via wpa-supplicant + systemd-networkd
+# if using networkmanager wireless.network file is not needed
 NETWORKING_SCRIPTS ?= "file://wired.network \
-                       file://wireless.network \
                        "
 SRC_URI += "${NETWORKING_SCRIPTS}"
 
