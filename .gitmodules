@@ -40,19 +40,19 @@
 	branch = master
 [submodule "sources/meta-arm"]
 	path = sources/meta-arm
-	url = https://github.com/yoedistro/meta-arm
+	url = https://github.com/YoeDistro/meta-arm
 	branch = master
 [submodule "sources/meta-elm-binary"]
 	path = sources/meta-elm-binary
-	url = https://github.com/yoedistro/meta-elm-binary
+	url = https://github.com/YoeDistro/meta-elm-binary
 	branch = master
 [submodule "sources/meta-rockchip"]
 	path = sources/meta-rockchip
-	url = https://github.com/yoedistro/meta-rockchip
+	url = https://github.com/YoeDistro/meta-rockchip
 	branch = master
 [submodule "sources/poky"]
 	path = sources/poky
-	url = https://github.com/yoedistro/poky
+	url = https://github.com/YoeDistro/poky
 	branch = master
 [submodule "sources/meta-variscite-bsp-common"]
 	path = sources/meta-variscite-bsp-common
@@ -60,7 +60,7 @@
 	branch = yoe/mickledore-var02
 [submodule "sources/meta-variscite-bsp"]
 	path = sources/meta-variscite-bsp
-	url = https://github.com/YoeDistro/meta-variscite-bsp.git
+	url = https://github.com/YoeDistro/meta-variscite-bsp
 	branch = yoe/mickledore-var02
 [submodule "sources/meta-qt6"]
 	path = sources/meta-qt6
@@ -72,5 +72,5 @@
 	branch = master
 [submodule "sources/meta-tegra-community"]
 	path = sources/meta-tegra-community
-	url = https://github.com/yoedistro/meta-tegra-community
+	url = https://github.com/YoeDistro/meta-tegra-community
 	branch = master
