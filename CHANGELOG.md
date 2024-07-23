@@ -37,6 +37,7 @@ and this project adheres to
 - Do not manage wifi with systemd-networkmanager
 - Disable audit subsystem in kernel for tegra platforms
 - Add networkmanager and wireguard to all yoe images
+- Fix busybox/tc compilation with 6.9 linux kernel headers
 
 ### Added
 
@@ -52,6 +53,7 @@ and this project adheres to
 - Drop generating a static libpython
 - Remove /etc/ethertypes in iptables
 - Drop obsolete debug compiler option -feliminate-unused-debug-types
+- Drop deprecated configs from android-driver.cfg for rpi kernel
 
 ## [2024.06] - 2024-06-30
 
