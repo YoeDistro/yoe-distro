@@ -38,10 +38,14 @@ and this project adheres to
 - Disable audit subsystem in kernel for tegra platforms
 - Add networkmanager and wireguard to all yoe images
 - Fix busybox/tc compilation with 6.9 linux kernel headers
+- Fix buildpaths QA error checks in several meta-oe recipes
+- Fix several recipes in meta-oe for correct UPSTREAM_CHECK vars
+- Update OpenSSH to 9.8p1
+- Upgrade to glibc 2.40
 
 ### Added
 
-- Added new recipes - libabigail
+- Added new recipes - libabigail, include-what-you-use, dediprog-flasher
 - Added DEBUG_LEVELFLAG variable to contain default debug level e.g. -g1, -g, etc.
 - Add packageconfig knob to control tegra gallium driver in mesa
 - Add nospdx class
