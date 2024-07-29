@@ -37,10 +37,15 @@ and this project adheres to
 - Do not manage wifi with systemd-networkmanager
 - Disable audit subsystem in kernel for tegra platforms
 - Add networkmanager and wireguard to all yoe images
+- Fix busybox/tc compilation with 6.9 linux kernel headers
+- Fix buildpaths QA error checks in several meta-oe recipes
+- Fix several recipes in meta-oe for correct UPSTREAM_CHECK vars
+- Update OpenSSH to 9.8p1
+- Upgrade to glibc 2.40
 
 ### Added
 
-- Added new recipes - libabigail
+- Added new recipes - libabigail, include-what-you-use, dediprog-flasher
 - Added DEBUG_LEVELFLAG variable to contain default debug level e.g. -g1, -g, etc.
 - Add packageconfig knob to control tegra gallium driver in mesa
 - Add nospdx class
@@ -52,6 +57,7 @@ and this project adheres to
 - Drop generating a static libpython
 - Remove /etc/ethertypes in iptables
 - Drop obsolete debug compiler option -feliminate-unused-debug-types
+- Drop deprecated configs from android-driver.cfg for rpi kernel
 
 ## [2024.06] - 2024-06-30
 
