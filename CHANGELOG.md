@@ -13,6 +13,20 @@ and this project adheres to
 - Fix native builds for sanitizer version of compiler-rt
 - Upgrade linux-yocto 6.6 to 6.6.43
 - Update linux-kernel-headers to 6.10
+- Update linux-yocto/6.10 6.10.3
+- Fix clang compiled apps reproducibility issue w.r.t. clang version
+- Switch several python recipes to use PEP-517 build backend
+- Fix buildpaths build QA error in several recipes
+- Add UPSTREAM_CHECK_COMMITS to meta-openembedded recipes
+- Upgrade go to 1.22.6
+- Upgrade rust to 1.77.2
+- Upgrade GCC to 14.2
+- Upgrade binutils to 2.43
+- Set CVE_PRODUCT in several recipes
+
+### Added
+
+- Introduce 6.10 reference kernel
 
 ## [2024.07] - 2024-07-30
 

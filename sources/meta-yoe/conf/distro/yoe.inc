@@ -90,8 +90,11 @@ WARN_QA:remove = "${WARN_TO_ERROR_QA}"
 ERROR_QA:append = " ${WARN_TO_ERROR_QA}"
 
 # Yoe does not build binary feeds, this build QA error breaks builds unnessarily
+ERROR_QA:remove = "version-going-backwards"
+
 # buildpaths is demoted unless layers needed in distro are fixed
-ERROR_TO_WARN_QA ?= "buildpaths version-going-backwards"
+ERROR_TO_WARN_QA ?= "buildpaths"
+
 WARN_QA:append = "${ERROR_TO_WARN_QA}"
 ERROR_QA:remove = " ${ERROR_TO_WARN_QA}"
 #
