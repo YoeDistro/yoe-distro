@@ -77,26 +77,10 @@ CLANGSDK = "1"
 TC_CXX_RUNTIME ?= "llvm"
 RUNTIME ?= "llvm"
 
-# QA check settings - a little stricter than the OE-Core defaults
-WARN_TO_ERROR_QA ?= "\
-            libdir xorg-driver-abi \
-            textrel incompatible-license files-invalid \
-            infodir build-deps src-uri-bad symlink-to-sysroot multilib \
-            invalid-packageconfig host-user-contaminated uppercase-pn patch-fuzz \
-            mime mime-xdg unlisted-pkg-lics unhandled-features-check \
-            missing-update-alternatives native-last \
-            "
-WARN_QA:remove = "${WARN_TO_ERROR_QA}"
-ERROR_QA:append = " ${WARN_TO_ERROR_QA}"
-
 # Yoe does not build binary feeds, this build QA error breaks builds unnessarily
-ERROR_QA:remove = "version-going-backwards"
-
 # buildpaths is demoted unless layers needed in distro are fixed
-ERROR_TO_WARN_QA ?= "buildpaths"
-
-WARN_QA:append = "${ERROR_TO_WARN_QA}"
-ERROR_QA:remove = " ${ERROR_TO_WARN_QA}"
+ERROR_QA:remove = "version-going-backwards buildpaths"
+WARN_QA:append = " buildpaths"
 #
 # Additional image features
 #

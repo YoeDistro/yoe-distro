@@ -11,7 +11,7 @@ and this project adheres to
 ### Changed
 
 - Fix native builds for sanitizer version of compiler-rt
-- Upgrade linux-yocto 6.6 to 6.6.43
+- Upgrade linux-yocto 6.6 to 6.6.45
 - Update linux-kernel-headers to 6.10
 - Update linux-yocto/6.10 6.10.3
 - Fix clang compiled apps reproducibility issue w.r.t. clang version
@@ -23,10 +23,16 @@ and this project adheres to
 - Upgrade GCC to 14.2
 - Upgrade binutils to 2.43
 - Set CVE_PRODUCT in several recipes
+- Use imx-boot from NXP 6.6.23-2.0.0 BSP
+- Pin weston to 12.0.4.imx for IMX
+- Upgrade systemd to 256.4
+- Upgrade rust to 1.78
+- Fix reproducibility issues in several meta-openembedded recipes
 
 ### Added
 
 - Introduce 6.10 reference kernel
+- Added vex class for CVE management
 
 ## [2024.07] - 2024-07-30
 
