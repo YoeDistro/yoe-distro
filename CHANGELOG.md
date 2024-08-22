@@ -25,9 +25,11 @@ and this project adheres to
 - Set CVE_PRODUCT in several recipes
 - Use imx-boot from NXP 6.6.23-2.0.0 BSP
 - Pin weston to 12.0.4.imx for IMX
-- Upgrade systemd to 256.4
+- Upgrade systemd to 256.5
 - Upgrade rust to 1.78
 - Fix reproducibility issues in several meta-openembedded recipes
+- Set umask to 0022 on build directories on bitbake invocation
+- Upgrade binutils to 2.43.1
 
 ### Added
 

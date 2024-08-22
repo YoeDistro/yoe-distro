@@ -640,6 +640,7 @@ dkr() {
 
 wrapcmd() {
   ulimit -n 4096
+  umask 0022
   cmd=$1
   shift
   if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
