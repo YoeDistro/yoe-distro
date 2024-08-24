@@ -30,6 +30,7 @@ and this project adheres to
 - Fix reproducibility issues in several meta-openembedded recipes
 - Set umask to 0022 on build directories on bitbake invocation
 - Upgrade binutils to 2.43.1
+- Fix QT 6.7 builds with Clang-19
 
 ### Added
 
