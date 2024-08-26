@@ -31,12 +31,15 @@ and this project adheres to
 - Set umask to 0022 on build directories on bitbake invocation
 - Upgrade binutils to 2.43.1
 - Fix QT 6.7 builds with Clang-19
+- Upgrade libxml2 to 2.13.3 and address ABI breakges due to it in meta-oe
 
 ### Added
 
 - Introduce 6.10 reference kernel
 - Added vex class for CVE management
-
+- Added recipes:
+  - drgn, vdpauinfo, python3-psycopg
+ 
 ## [2024.07] - 2024-07-30
 
 ### Changed
