@@ -1,0 +1,13 @@
+globals:
+{
+	verbose = false;
+	loglevel = 3;
+	select = "system,slot_@BOOTSLOT@";
+};
+
+identify : (
+	 { name = "swversion"; value = "@SWVERSION@" },
+	 { name = "serialnumber"; value = "@SERIALNUMBER@" },
+	 { name = "model"; value = "@MODEL@" }
+);
+
