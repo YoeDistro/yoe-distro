@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2024.08] - 2024-08-XX
+## [2024.08] - 2024-08-31
 
 ### Changed
 
@@ -19,7 +19,7 @@ and this project adheres to
 - Fix buildpaths build QA error in several recipes
 - Add UPSTREAM_CHECK_COMMITS to meta-openembedded recipes
 - Upgrade go to 1.22.6
-- Upgrade rust to 1.77.2
+- Upgrade rust to 1.79.0
 - Upgrade GCC to 14.2
 - Upgrade binutils to 2.43
 - Set CVE_PRODUCT in several recipes
@@ -32,13 +32,22 @@ and this project adheres to
 - Upgrade binutils to 2.43.1
 - Fix QT 6.7 builds with Clang-19
 - Upgrade libxml2 to 2.13.3 and address ABI breakges due to it in meta-oe
+- Fix several multimedia recipes to work with ffmpeg 7
+- Fix recipes to work with fmt 11.x
+- Correct LICENSE field  of several recipes in meta-python
+- Upgrade musl to latest on trunk 1.2.5+
+- Upgrade automate to 1.17
 
 ### Added
 
 - Introduce 6.10 reference kernel
 - Added vex class for CVE management
 - Added recipes:
-  - drgn, vdpauinfo, python3-psycopg
+  - drgn, vdpauinfo, python3-psycopg, libplacebo, cpuset
+
+### Removed
+
+- Removed VOLATILE_TMP_DIR and VOLATILE_LOG_DIR bitbake variables
  
 ## [2024.07] - 2024-07-30
 
