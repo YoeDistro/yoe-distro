@@ -37,6 +37,7 @@ and this project adheres to
 - Correct LICENSE field  of several recipes in meta-python
 - Upgrade musl to latest on trunk 1.2.5+
 - Upgrade automate to 1.17
+- Add swupdate OTA support on tegra platforms
 
 ### Added
 
