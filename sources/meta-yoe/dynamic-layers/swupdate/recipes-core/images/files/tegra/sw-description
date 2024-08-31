@@ -1,0 +1,104 @@
+software =
+{
+	version = "@@DISTRO_VERSION@@";
+
+	@@MACHINE@@ = {
+		hardware-compatibility: [ "1.0" ]
+		system = {
+			slot_a : {
+				partitions: (
+					{
+						type = "diskformat";
+						device = "@@ROOTFS_DEVICE_PATH@@/APP_b";
+						properties: {
+							fstype = "ext4";
+							force = "true";
+						}
+					}
+				);
+				images: (
+					{
+						filename = "@@ROOTFS_FILENAME@@";
+						type = "archive";
+						device = "@@ROOTFS_DEVICE_PATH@@/APP_b";
+						filesystem = "ext4";
+						path = "/";
+						installed-directly = true;
+						preserve-attributes = true;
+						sha256 = "$swupdate_get_sha256(@@ROOTFS_FILENAME@@)";
+					},
+					{
+                                                filename = "@@DEPLOY_KERNEL_IMAGE@@";
+                                                device = "@@ROOTFS_DEVICE_PATH@@/@@KERNEL_B_PARTNAME@@";
+                                        },
+                                        {
+                                                filename = "@@DTBFILE@@";
+                                                device = "@@ROOTFS_DEVICE_PATH@@/@@KERNEL_B_DTB_PARTNAME@@";
+                                        }
+
+				);
+				files: (
+					{
+						filename = "tegra-bl.cap";
+						path = "/boot/efi/EFI/UpdateCapsule/TEGRA_BL.Cap";
+						properties = {create-destination = "true";}
+					}
+				);
+				scripts: (
+					{
+						filename = "bootloader-update.lua";
+						type = "lua"
+						sha256 = "$swupdate_get_sha256(bootloader-update.lua)";
+					}
+				);
+
+			};
+			slot_b : {
+				partitions: (
+					{
+						type = "diskformat";
+						device = "@@ROOTFS_DEVICE_PATH@@/APP";
+						properties: {
+							fstype = "ext4";
+							force = "true";
+						}
+					}
+				);
+				images: (
+					{
+						filename = "@@ROOTFS_FILENAME@@";
+						type = "archive";
+						device = "@@ROOTFS_DEVICE_PATH@@/APP";
+						filesystem = "ext4";
+						path = "/";
+						installed-directly = true;
+						preserve-attributes = true;
+						sha256 = "$swupdate_get_sha256(@@ROOTFS_FILENAME@@)";
+					},
+					{
+                                                filename = "@@DEPLOY_KERNEL_IMAGE@@";
+                                                device = "@@ROOTFS_DEVICE_PATH@@/@@KERNEL_A_PARTNAME@@";
+                                        },
+                                        {
+                                                filename = "@@DTBFILE@@";
+                                                device = "@@ROOTFS_DEVICE_PATH@@/@@KERNEL_A_DTB_PARTNAME@@";
+                                        }
+				);
+				files: (
+					{
+						filename = "tegra-bl.cap";
+						path = "/boot/efi/EFI/UpdateCapsule/TEGRA_BL.Cap";
+						properties = {create-destination = "true";}
+					}
+				);
+				scripts: (
+					{
+						filename = "bootloader-update.lua";
+						type = "lua"
+						sha256 = "$swupdate_get_sha256(bootloader-update.lua)";
+					}
+				);
+			};
+		};
+	}
+}
