@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.09] - 2024-09-xx
+
+### Changed
+
+- Fix systemd to not set polkit permissions manually
+- Support testing over serial connection in textexport
+- Always use BFD linker to build u-boot
+- Fix several recipes to build with Clang-19
+- Fix more buildpaths QA error in meta-openembedded
+- Update QT6 to latest on 6.7 series
+
+### Added
+
+### Removed
+
+
 ## [2024.08] - 2024-08-31
 
 ### Changed
