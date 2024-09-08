@@ -16,11 +16,17 @@ and this project adheres to
 - Fix several recipes to build with Clang-19
 - Fix more buildpaths QA error in meta-openembedded
 - Update QT6 to latest on 6.7 series
+- Update bpftrace to 0.21.2
+- Switch to support 'styhead' ( yocto 5.1 ) release codename
+- Fix license field to reflect current state in several recipes
 
 ### Added
 
+- Added recipes - libspelling
+
 ### Removed
 
+- Drop TCLIBCAPPEND
 
 ## [2024.08] - 2024-08-31
 
