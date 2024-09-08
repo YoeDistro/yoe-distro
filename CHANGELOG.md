@@ -22,6 +22,8 @@ and this project adheres to
 
 ### Added
 
+- Added recipes - libspelling
+
 ### Removed
 
 - Drop TCLIBCAPPEND
