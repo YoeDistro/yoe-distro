@@ -19,10 +19,16 @@ and this project adheres to
 - Update bpftrace to 0.21.2
 - Switch to support 'styhead' ( yocto 5.1 ) release codename
 - Fix license field to reflect current state in several recipes
+- Update linux-yocto v6.6.50, v6.10.8
+- Fix python3-cude build breaks
+- Fix python3 ptest runs on some recipes
+- Use KMS instead of FKMS on pi4/pi5 non-eglfs distros
 
 ### Added
 
-- Added recipes - libspelling
+- Added recipes - libspelling, imx-cst, freeipmi
+- Add gomodule fetcher
+- Add genimage support
 
 ### Removed
 
