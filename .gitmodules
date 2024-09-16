@@ -77,4 +77,4 @@
 [submodule "sources/meta-swupdate"]
 	path = sources/meta-swupdate
 	url = https://github.com/yoedistro/meta-swupdate
-	branch = yoe/master
+	branch = master
