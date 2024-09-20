@@ -23,6 +23,9 @@ and this project adheres to
 - Fix python3-cude build breaks
 - Fix python3 ptest runs on some recipes
 - Use KMS instead of FKMS on pi4/pi5 non-eglfs distros
+- Upgrade Clang to 19.1.0 major release
+- Fix several recipes to build for RISCV32 architecture
+- Switch QT6 to 6.8 release
 
 ### Added
 
