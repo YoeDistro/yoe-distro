@@ -26,6 +26,9 @@ and this project adheres to
 - Upgrade Clang to 19.1.0 major release
 - Fix several recipes to build for RISCV32 architecture
 - Switch QT6 to 6.8 release
+- Upgrade glib-2.0 to 2.82.1
+- Upgrade gtk4 to 4.16
+- Upgrade OpenCV to 4.10
 
 ### Added
 
