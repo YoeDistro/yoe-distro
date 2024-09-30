@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2024.09] - 2024-09-xx
+## [2024.09] - 2024-09-30
 
 ### Changed
 
@@ -29,16 +29,21 @@ and this project adheres to
 - Upgrade glib-2.0 to 2.82.1
 - Upgrade gtk4 to 4.16
 - Upgrade OpenCV to 4.10
+- Use GNU C++ runtime for building vte
+- Fix all ptest failures in meta-python layer
 
 ### Added
 
-- Added recipes - libspelling, imx-cst, freeipmi
+- Added recipes - libspelling, imx-cst, freeipmi, valkey
+  python3-trio, python3-python-multipart, python3-outcome
+  python3-pdm-build-locked, python3-starlette python3-setproctitle
 - Add gomodule fetcher
 - Add genimage support
 
 ### Removed
 
 - Drop TCLIBCAPPEND
+- Removed cmem and ti-osal recipes
 
 ## [2024.08] - 2024-08-31
 
