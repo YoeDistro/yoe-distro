@@ -66,7 +66,7 @@ DISPLAY_CARD ?= "/dev/dri/card0"
 # Define it via a knob which can be set from config file e.g. local.conf
 YOE_KIOSK_BROWSER_SYSTEMD_UNIT ?= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'yoe-kiosk-browser-wayland.service', 'yoe-kiosk-browser-eglfs.service', d)}"
 
-YOE_KIOSK_BROWSER_XCB = "1"
+YOE_KIOSK_BROWSER_XCB = "0"
 
 do_install:append() {
     echo "Browser URL: ${YOE_KIOSK_BROWSER_URL}"
