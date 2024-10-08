@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.10] - 2024-10-XX
+
+### Changed
+
+- Fix all enabled ptests for meta-multimedia layer
+- Enable go plugins to build in netdata
+- Upgrade systemd to 256.6
+- Enable systemd-boot on RISCV64
+- Update linux-yocto/6.10 to v6.10.11 and linux-yocto/6.6 to v6.6.52
+- Update llvm from 18.x to 19.x
+- Upgrade OpenSSH to 9.9p1
+
 ## [2024.09] - 2024-09-30
 
 ### Changed
