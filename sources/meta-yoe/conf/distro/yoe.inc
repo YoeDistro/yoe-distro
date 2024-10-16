@@ -174,7 +174,7 @@ PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
 RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""
 
 # Enable persistent logs across reboots
-VOLATILE_LOG_DIR = "no"
+FILESYSTEM_PERMS_TABLES:remove = "files/fs-perms-volatile-log.txt"
 
 SKIP_RECIPE[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
 SKIP_RECIPE[smartrefrigerator] = "Needs porting to QT > 5.6"
