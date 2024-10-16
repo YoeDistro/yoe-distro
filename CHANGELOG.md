@@ -14,7 +14,7 @@ and this project adheres to
 - Enable go plugins to build in netdata
 - Upgrade systemd to 256.6
 - Enable systemd-boot on RISCV64
-- Update linux-yocto/6.10 to v6.10.11 and linux-yocto/6.6 to v6.6.52
+- Update linux-yocto/6.10 to v6.10.14 and linux-yocto/6.6 to v6.6.54
 - Update llvm from 18.x to 19.x
 - Upgrade OpenSSH to 9.9p1
 - Use clang to build u-boot
@@ -23,6 +23,14 @@ and this project adheres to
 - Several fixes for python 3.13 migration
 - Update Gnome components to version 47
 - Fix ptests in meta-filesystems and meta-multimedia
+
+### Added
+
+- Added recipes for - fastfloat, glad, python3-pytest-codspeed
+
+### Removed
+
+- Removed VOLATILE_TMP_DIR and VOLATILE_LOG_DIR
 
 ## [2024.09] - 2024-09-30
 
