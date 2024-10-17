@@ -23,6 +23,7 @@ and this project adheres to
 - Several fixes for python 3.13 migration
 - Update Gnome components to version 47
 - Fix ptests in meta-filesystems and meta-multimedia
+- Upgrade clang to 19.1.2 release
 
 ### Added
 
