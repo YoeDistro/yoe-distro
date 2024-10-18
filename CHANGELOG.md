@@ -24,10 +24,12 @@ and this project adheres to
 - Update Gnome components to version 47
 - Fix ptests in meta-filesystems and meta-multimedia
 - Upgrade clang to 19.1.2 release
+- Fix several recipes to work with python 3.13
 
 ### Added
 
 - Added recipes for - fastfloat, glad, python3-pytest-codspeed
+  tomlplusplus
 
 ### Removed
 
