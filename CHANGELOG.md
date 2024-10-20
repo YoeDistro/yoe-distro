@@ -25,11 +25,13 @@ and this project adheres to
 - Fix ptests in meta-filesystems and meta-multimedia
 - Upgrade clang to 19.1.2 release
 - Fix several recipes to work with python 3.13
+- Drop unnecessary SRC_URI md5sum in meta-python
+- Fix do_fetch error for vlock and wireguard-tools recipes
 
 ### Added
 
 - Added recipes for - fastfloat, glad, python3-pytest-codspeed
-  tomlplusplus
+  tomlplusplus, snapper
 
 ### Removed
 
