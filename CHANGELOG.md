@@ -27,6 +27,8 @@ and this project adheres to
 - Fix several recipes to work with python 3.13
 - Drop unnecessary SRC_URI md5sum in meta-python
 - Fix do_fetch error for vlock and wireguard-tools recipes
+- Upgrade musl to latest SHA 047a16398b29d2702a41a0d6d15370d54b9d723c
+- Upgrade Qt6.8 recipes to latest on 6.8 release
 
 ### Added
 
@@ -36,6 +38,7 @@ and this project adheres to
 ### Removed
 
 - Removed VOLATILE_TMP_DIR and VOLATILE_LOG_DIR
+- Drop unnecessary SRC_URI md5sum entries in meta-perl
 
 ## [2024.09] - 2024-09-30
 
