@@ -29,16 +29,26 @@ and this project adheres to
 - Fix do_fetch error for vlock and wireguard-tools recipes
 - Upgrade musl to latest SHA 047a16398b29d2702a41a0d6d15370d54b9d723c
 - Upgrade Qt6.8 recipes to latest on 6.8 release
+- Fix LLDB python path in SDK
+- Fix several ineffective overrides in meta-clang
+- Change references to search.cpan.org to use metacpan.org in meta-perl
+- Fix upstream status tags for beagleV kernel and uboot patches
+- Update busyvbox to 1.37
+- Update python to 3.13
+- Update meson to 1.6.0
 
 ### Added
 
 - Added recipes for - fastfloat, glad, python3-pytest-codspeed
-  tomlplusplus, snapper
+  tomlplusplus, snapper, tegra-cuda-utils
+- L4T R36.4.0/JetPack 6.1 support
+- Add class for building Unified Kernel Images (UKI)
 
 ### Removed
 
 - Removed VOLATILE_TMP_DIR and VOLATILE_LOG_DIR
 - Drop unnecessary SRC_URI md5sum entries in meta-perl
+- Skip rust setftests on all MIPS platforms
 
 ## [2024.09] - 2024-09-30
 
