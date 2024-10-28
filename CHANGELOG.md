@@ -36,6 +36,8 @@ and this project adheres to
 - Update busyvbox to 1.37
 - Update python to 3.13
 - Update meson to 1.6.0
+- Update gnome componets to 47.1
+- Disable perl support in graphviz
 
 ### Added
 
