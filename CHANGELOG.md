@@ -41,6 +41,9 @@ and this project adheres to
 - Disable perl support in graphviz
 - Fix ptests in meta-python to work with python 3.13
 - Add ztd compression type option to SDK_ARCHIVE_TYPE
+- Upgrade go compiler to 1.22.8
+- Uphgrade systemd to 256.7
+- Drop openssl/riscv workarounds to add libatomic 
 
 ### Added
 
@@ -48,6 +51,8 @@ and this project adheres to
   tomlplusplus, snapper, tegra-cuda-utils
 - L4T R36.4.0/JetPack 6.1 support
 - Add class for building Unified Kernel Images (UKI)
+- Add WIC_SECTOR_SIZE variable to wic
+- Add tegra support for linux-yocto 6.10 kernel
 
 ### Removed
 
