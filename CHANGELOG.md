@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2024.10] - 2024-10-XX
+## [2024.10] - 2024-10-31
 
 ### Changed
 
@@ -32,12 +32,18 @@ and this project adheres to
 - Fix LLDB python path in SDK
 - Fix several ineffective overrides in meta-clang
 - Change references to search.cpan.org to use metacpan.org in meta-perl
+- Use CPAN_MIRRORS for several recipes in meta-perl
 - Fix upstream status tags for beagleV kernel and uboot patches
 - Update busyvbox to 1.37
 - Update python to 3.13
 - Update meson to 1.6.0
 - Update gnome componets to 47.1
 - Disable perl support in graphviz
+- Fix ptests in meta-python to work with python 3.13
+- Add ztd compression type option to SDK_ARCHIVE_TYPE
+- Upgrade go compiler to 1.22.8
+- Uphgrade systemd to 256.7
+- Drop openssl/riscv workarounds to add libatomic 
 
 ### Added
 
@@ -45,12 +51,15 @@ and this project adheres to
   tomlplusplus, snapper, tegra-cuda-utils
 - L4T R36.4.0/JetPack 6.1 support
 - Add class for building Unified Kernel Images (UKI)
+- Add WIC_SECTOR_SIZE variable to wic
+- Add tegra support for linux-yocto 6.10 kernel
 
 ### Removed
 
 - Removed VOLATILE_TMP_DIR and VOLATILE_LOG_DIR
 - Drop unnecessary SRC_URI md5sum entries in meta-perl
 - Skip rust setftests on all MIPS platforms
+- Removed recipes - python3-whoosh
 
 ## [2024.09] - 2024-09-30
 
