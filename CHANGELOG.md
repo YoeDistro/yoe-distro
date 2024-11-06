@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024.11] - 2024-11-xx
+
+### Changed
+
+- Refresh FILESEXTRAPATHS for meta-oe recipes
+- Upgrade bluez to 5.79
+- use lz4 instead of lz4c in bitbake compress
+- Upgrade busybox to 1.37 and refresh defconfigs
+- Selectively enable GObject introspection in libgpiod
+
+### Added
+
+- Added recipes for - drm-info, asyncmqtt, swagger-ui
+
 ## [2024.10] - 2024-10-31
 
 ### Changed
