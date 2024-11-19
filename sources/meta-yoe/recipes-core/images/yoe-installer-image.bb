@@ -11,7 +11,7 @@ export IMAGE_BASENAME = "yoe-installer-image"
 IMAGE_FSTYPES = "wic.bmap wic.xz"
 
 # Do not pollute the installer image with full image features
-IMAGE_FEATURES = "ssh-server-openssh hwcodecs debug-tweaks"
+IMAGE_FEATURES = "ssh-server-openssh hwcodecs allow-empty-password empty-root-password allow-root-login post-install-logging"
 
 PACKAGE_INSTALL = "\
     packagegroup-core-boot \
