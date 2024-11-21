@@ -63,9 +63,6 @@ BUILDHISTORY_COMMIT ?= "1"
 # e.g. qtwebkit from 163M down to < 1M
 CMAKE_VERBOSE ?= ""
 
-# account for some layers which have bbappends for layers we dont include
-BB_DANGLINGAPPENDS_WARNONLY = "1"
-
 # Use clang as default compiler
 TOOLCHAIN ?= "clang"
 

@@ -9,7 +9,7 @@ require updater.inc
 
 IMAGE_FEATURES += "ssh-server-openssh package-management hwcodecs"
 
-IMAGE_FEATURES += "debug-tweaks"
+IMAGE_FEATURES += "allow-empty-password empty-root-password allow-root-login post-install-logging"
 
 IMAGE_INSTALL = "\
     packagegroup-core-boot \
@@ -37,7 +37,7 @@ BAD_RECOMMENDATIONS += "eudev-hwdb udev-hwdb libmodule-build-perl"
 # How to add password/user to image
 #inherit extrausers
 
-#IMAGE_FEATURES:remove = "debug-tweaks"
+#IMAGE_FEATURES:remove = "allow-empty-password empty-root-password allow-root-login post-install-logging"
 
 #EXTRA_USERS_PARAMS += "\
 #    useradd scribbledeedoo; \
