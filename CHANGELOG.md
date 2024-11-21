@@ -40,6 +40,7 @@ and this project adheres to
 
 - Removed debug_tweaks image feature
 - Drop unnecessary SRC_URI md5sum from the recipes in meta-oe
+- Drop support for BB_DANGLINGAPPENDS_WARNONLY
 
 ## [2024.10] - 2024-10-31
 
