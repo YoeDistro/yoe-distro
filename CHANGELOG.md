@@ -23,11 +23,13 @@ and this project adheres to
 - Inherit cython class in several recipes
 - Package libswupdate into separate package
 - Add TEGRA_UEFI_MINIMAL support
-- Update linux-yocto/6.6 to v6.6.59
+- Update linux-yocto/6.6 to v6.6.62
 - Require lz4 instead of lz4c in bitbake.conf
 - Update kernel-devsrc to 6.12+
 - Upgrade rust to 1.80.1
 - Add itstool-native dependency to several recipes in meta-gnome
+- Start using 6.12 for linux libc headers
+- Fix keepalived build on musl
 
 ### Added
 
