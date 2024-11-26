@@ -29,7 +29,10 @@ and this project adheres to
 - Upgrade rust to 1.80.1
 - Add itstool-native dependency to several recipes in meta-gnome
 - Start using 6.12 for linux libc headers
-- Fix keepalived build on musl
+- Fix taisei, keepalived build on musl
+- Fix several recipes to work with ICU-76
+- Disable ARM64_SME in linux-yocto
+- Fix GCC build with tzdata 2024b
 
 ### Added
 
@@ -37,7 +40,7 @@ and this project adheres to
   python3-rouge-score, python3-nltk, python3-fuse
   raspi-utils4, canopenterm, pocketpy, libpanel, libdex
   python3-mlcommons-loadgen, python3-inline-snapshot
-  python3-black 
+  python3-black, python3-scikit-build-core 
 - Add recipes for tcl/tk 9.0 and tcl/tk 8.x to live side-by-side
 - Add cython bbclass to abstract cython usage during build
 
