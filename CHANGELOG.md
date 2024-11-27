@@ -19,20 +19,28 @@ and this project adheres to
 - Add ptests for openvpn
 - Fix gdm to launch with plymouth
 - Set CVE_PRODUCT for libestr, librelp, rsyslog, libfastjson
-  u-boot
+  u-boot, tcpdump, net-snmp
 - Inherit cython class in several recipes
 - Package libswupdate into separate package
 - Add TEGRA_UEFI_MINIMAL support
-- Update linux-yocto/6.6 to v6.6.59
+- Update linux-yocto/6.6 to v6.6.62
 - Require lz4 instead of lz4c in bitbake.conf
 - Update kernel-devsrc to 6.12+
-- Upgrade rust to 1.80.0
+- Upgrade rust to 1.80.1
+- Add itstool-native dependency to several recipes in meta-gnome
+- Start using 6.12 for linux libc headers
+- Fix taisei, keepalived build on musl
+- Fix several recipes to work with ICU-76
+- Disable ARM64_SME in linux-yocto
+- Fix GCC build with tzdata 2024b
 
 ### Added
 
 - Added recipes for - drm-info, asyncmqtt, swagger-ui
   python3-rouge-score, python3-nltk, python3-fuse
-  raspi-utils4
+  raspi-utils4, canopenterm, pocketpy, libpanel, libdex
+  python3-mlcommons-loadgen, python3-inline-snapshot
+  python3-black, python3-scikit-build-core 
 - Add recipes for tcl/tk 9.0 and tcl/tk 8.x to live side-by-side
 - Add cython bbclass to abstract cython usage during build
 
