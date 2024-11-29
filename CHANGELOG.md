@@ -38,6 +38,7 @@ and this project adheres to
 - Upgrade systemd to 256.8
 - Upgrade LLVM to 19.1.4
 - Use the new xserver-abi.inc to generate Xserver ABI dependencies
+- Update clang to 19.1.4 release
 
 ### Added
 
