@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2024.11] - 2024-11-xx
+## [2024.11] - 2024-11-30
 
 ### Changed
 
@@ -33,6 +33,12 @@ and this project adheres to
 - Fix several recipes to work with ICU-76
 - Disable ARM64_SME in linux-yocto
 - Fix GCC build with tzdata 2024b
+- Fix weston-init to work with seatd
+- Fix qemu build for riscv64/musl and upgrade to 9.1.1
+- Upgrade systemd to 256.8
+- Upgrade LLVM to 19.1.4
+- Use the new xserver-abi.inc to generate Xserver ABI dependencies
+- Update clang to 19.1.4 release
 
 ### Added
 
@@ -40,15 +46,17 @@ and this project adheres to
   python3-rouge-score, python3-nltk, python3-fuse
   raspi-utils4, canopenterm, pocketpy, libpanel, libdex
   python3-mlcommons-loadgen, python3-inline-snapshot
-  python3-black, python3-scikit-build-core 
+  python3-black, python3-scikit-build-core, pytesseract 
 - Add recipes for tcl/tk 9.0 and tcl/tk 8.x to live side-by-side
 - Add cython bbclass to abstract cython usage during build
+- Add SECURITY.md file to various layers
 
 ### Removed
 
 - Removed debug_tweaks image feature
 - Drop unnecessary SRC_URI md5sum from the recipes in meta-oe
 - Drop support for BB_DANGLINGAPPENDS_WARNONLY
+- Remove python3-isodate
 
 ## [2024.10] - 2024-10-31
 
