@@ -13,6 +13,15 @@ and this project adheres to
 - Upgrade openssl to 3.4.0
 - Upgrade gnu-efi to 4.0.0
 - Improve bitbake's setscene performance
+- Enable GCC sanitizers for riscv64
+- Fix Qt5/6 wireshark configuration
+
+### Added
+
+### Removed
+
+- Removed recipes - xserver-common, autoconf-2.13-native
+- Remove gpe bbclass
 
 ## [2024.11] - 2024-11-30
 
