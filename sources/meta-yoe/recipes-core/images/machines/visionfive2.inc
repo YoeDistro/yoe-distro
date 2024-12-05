@@ -5,7 +5,7 @@ KERNEL_IMAGE = "${KERNEL_IMAGETYPE}-${INITRAMFS_IMAGE}-${MACHINE}-${MACHINE}"
 
 KERNEL_ARTEFACTS = "\
     ${KERNEL_IMAGETYPE} \
-    jh7110-visionfive-v2.dtb \
+    jh7110-starfive-visionfive-2-v1.3b.dtb \
     "
 DTBO_ARTEFACTS = "\
     "

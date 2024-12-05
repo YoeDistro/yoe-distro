@@ -6,7 +6,7 @@ USB_DETECTION_DELAY=4
 
 KERNEL="\
     fitImage \
-    jh7110-visionfive-v2.dtb \
+    jh7110-starfive-visionfive-2-v1.3b.dtb \
 "
 
 BOOT="\
