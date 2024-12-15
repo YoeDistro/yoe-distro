@@ -15,13 +15,22 @@ and this project adheres to
 - Improve bitbake's setscene performance
 - Enable GCC sanitizers for riscv64
 - Fix Qt5/6 wireshark configuration
+- Add 6.12 linux-yocto reference kernel
+- Upgrade 6.6 kernel to v6.6.64
+- Upgrade curl to 8.11.1
+- Upgrade linux-raspberrypi-6.6 to 6.6.63
+- Fix external kernel modules for 6.12 kernel e.g. emlog, vboxdrivers
+- Upgrade LLVM to 19.1.5
 
 ### Added
+
+- Added recipes - pam-radius
 
 ### Removed
 
 - Removed recipes - xserver-common, autoconf-2.13-native
 - Remove gpe bbclass
+- Drop linux-yocto 6.10
 
 ## [2024.11] - 2024-11-30
 
