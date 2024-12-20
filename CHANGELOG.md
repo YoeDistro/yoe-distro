@@ -27,6 +27,8 @@ and this project adheres to
 - Upgrade Qemu to 9.2.0
 - Upgrade systemd to 256.9
 - Add linux-yocto 6.10 to meta-tegra
+- Upgrade musl to latest master at 61399d4bd02ae1ec03068445aa7ffe9174466bfd
+- Run aclocal cleanup on expect,tcl,bash recipes
 
 ### Added
 
