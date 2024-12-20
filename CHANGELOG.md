@@ -20,11 +20,18 @@ and this project adheres to
 - Upgrade curl to 8.11.1
 - Upgrade linux-raspberrypi-6.6 to 6.6.63
 - Fix external kernel modules for 6.12 kernel e.g. emlog, vboxdrivers
-- Upgrade LLVM to 19.1.5
+- Upgrade LLVM and Clang to 19.1.5
+- Introduce recipe for libpeas 2.x and make it cohabit with libpeas-1
+- Update XFCE base components to 4.20 release
+- Revert python3-numpy from 2.2 back to 2.1
+- Upgrade Qemu to 9.2.0
+- Upgrade systemd to 256.9
+- Add linux-yocto 6.10 to meta-tegra
 
 ### Added
 
-- Added recipes - pam-radius
+- Added recipes - pam-radius, lua-lgi, cbindgen
+- Add include_all conf file bitbake directive
 
 ### Removed
 
