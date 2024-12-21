@@ -15,13 +15,31 @@ and this project adheres to
 - Improve bitbake's setscene performance
 - Enable GCC sanitizers for riscv64
 - Fix Qt5/6 wireshark configuration
+- Add 6.12 linux-yocto reference kernel
+- Upgrade 6.6 kernel to v6.6.64
+- Upgrade curl to 8.11.1
+- Upgrade linux-raspberrypi-6.6 to 6.6.63
+- Fix external kernel modules for 6.12 kernel e.g. emlog, vboxdrivers
+- Upgrade LLVM and Clang to 19.1.5
+- Introduce recipe for libpeas 2.x and make it cohabit with libpeas-1
+- Update XFCE base components to 4.20 release
+- Revert python3-numpy from 2.2 back to 2.1
+- Upgrade Qemu to 9.2.0
+- Upgrade systemd to 256.9
+- Add linux-yocto 6.10 to meta-tegra
+- Upgrade musl to latest master at 61399d4bd02ae1ec03068445aa7ffe9174466bfd
+- Run aclocal cleanup on expect,tcl,bash recipes
 
 ### Added
+
+- Added recipes - pam-radius, lua-lgi, cbindgen
+- Add include_all conf file bitbake directive
 
 ### Removed
 
 - Removed recipes - xserver-common, autoconf-2.13-native
 - Remove gpe bbclass
+- Drop linux-yocto 6.10
 
 ## [2024.11] - 2024-11-30
 
