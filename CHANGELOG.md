@@ -20,7 +20,7 @@ and this project adheres to
 - Upgrade curl to 8.11.1
 - Upgrade linux-raspberrypi-6.6 to 6.6.63
 - Fix external kernel modules for 6.12 kernel e.g. emlog, vboxdrivers
-- Upgrade LLVM and Clang to 19.1.5
+- Upgrade LLVM and Clang to 19.1.6
 - Introduce recipe for libpeas 2.x and make it cohabit with libpeas-1
 - Update XFCE base components to 4.20 release
 - Revert python3-numpy from 2.2 back to 2.1
@@ -29,6 +29,9 @@ and this project adheres to
 - Add linux-yocto 6.10 to meta-tegra
 - Upgrade musl to latest master at 61399d4bd02ae1ec03068445aa7ffe9174466bfd
 - Run aclocal cleanup on expect,tcl,bash recipes
+- Use 7zip 24.09 to replace p7zip 16.02
+- Add fido and apparmor packageconfigs to systemd
+- Upgrade meson to 1.6.1
 
 ### Added
 
