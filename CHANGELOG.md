@@ -32,6 +32,10 @@ and this project adheres to
 - Use 7zip 24.09 to replace p7zip 16.02
 - Add fido and apparmor packageconfigs to systemd
 - Upgrade meson to 1.6.1
+- Drop debug tweaks setting from meta-odroid
+- Update VisionFive2 SDK to JH7110_VF2_6.6_v5.13.1
+- Update VisionFive2 kernel to 6.6.20
+- Bump OpenSBI to 1.6
 
 ### Added
 
