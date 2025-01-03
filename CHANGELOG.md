@@ -10,6 +10,8 @@ and this project adheres to
 
 ### Changed
 
+- Upgrade nss to 3.107 and nspr to 4.36
+
 ## [2024.12] - 2024-12-31
 
 ### Changed
