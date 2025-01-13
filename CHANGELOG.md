@@ -11,6 +11,33 @@ and this project adheres to
 ### Changed
 
 - Upgrade nss to 3.107 and nspr to 4.36
+- Upgrade bingen-cli to 0.71.1
+- Use ptest-python-pytest class in meta-python recipes for ptests
+- Upgrade mpd to 0.23.16
+- Use go module fetcher for crucible recipe
+- Fix recipes in meta-openembedded to build with fmt 11.1.x
+- Upgrade QT 6.8 to latest
+- Update linux-yocto/6.12 to v6.12.9 and linux-yocto/6.6 to v6.6.69
+- Update reference u-boot to 2025.01
+- Disable recipes not compatible with boost 1.87 in meta-oe
+- Upgrade systemd to 257.1 and enable create-log-dirs
+- Upgrade python to 3.13.1
+- Upgrade cmake to 3.31.3
+- Support usrmerge in toolchain SDK builds
+- Lower the length of TMPDIR limit to 400 in sanity class
+- Fix absolute paths in go-vendor class
+
+### Added
+
+- Add new recipes - libheif, yyjson, ctre, jsoncons 
+- add Go mod h1 checksum support to bitbake fetcher
+- Add UBI support to initrdscripts
+- Add support for qemuriscv64 and qemuriscv32 to formfactor
+- Add a new class to consolidate pytest ptest functionality
+
+### Removed
+
+- Remove recipe - blktool
 
 ## [2024.12] - 2024-12-31
 
