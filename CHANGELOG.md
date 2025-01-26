@@ -26,18 +26,32 @@ and this project adheres to
 - Support usrmerge in toolchain SDK builds
 - Lower the length of TMPDIR limit to 400 in sanity class
 - Fix absolute paths in go-vendor class
+- Upgrade LLVM and Clang to 19.1.7
+- Use ptest-python-pytest class in several python package recipes
+- Update polkit to 126
+- Upgrade mariadb to 11.4.x LTS release
+- Switch visionfive2 to efi boot
+- Upgrade python3-numpy to 2.2.2
+- Switch several recipes using virtual/XXX-gcc to virtual/cross-cc
+- Upgrade rust to 1.81.0
+- Update rust data layouts for ppc , riscv64 , aarch64 and loongaarch64 targets
+- Fix ??= bitbake operator for variable flags
+- Fix include poisoning GCC patch to be fatal again in gcc/g++
 
 ### Added
 
-- Add new recipes - libheif, yyjson, ctre, jsoncons 
+- Add new recipes - libheif, yyjson, ctre, jsoncons, cxxopts,  
+  pistache, spectre-meltdown-checker
 - add Go mod h1 checksum support to bitbake fetcher
 - Add UBI support to initrdscripts
 - Add support for qemuriscv64 and qemuriscv32 to formfactor
 - Add a new class to consolidate pytest ptest functionality
+- Add squish support to QT6
 
 ### Removed
 
-- Remove recipe - blktool
+- Remove ACLOCALDIR and ACLOCALEXTRAPATH from autotools class
+- Remove recipe - blktool, mozjs-115
 
 ## [2024.12] - 2024-12-31
 
