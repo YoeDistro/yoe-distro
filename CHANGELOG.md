@@ -6,7 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2025.01] - 2025-01-xx
+
+## [2025.01] - 2025-01-31
 
 ### Changed
 
@@ -37,11 +38,16 @@ and this project adheres to
 - Update rust data layouts for ppc , riscv64 , aarch64 and loongaarch64 targets
 - Fix ??= bitbake operator for variable flags
 - Fix include poisoning GCC patch to be fatal again in gcc/g++
+- Bump swupdate to release 2024.12.1
+- Update tzdata to 2025a
+- Upgrade GDB to 16.1
+- Upgrade Go compiler to 1.22.11
 
 ### Added
 
 - Add new recipes - libheif, yyjson, ctre, jsoncons, cxxopts,  
-  pistache, spectre-meltdown-checker
+  pistache, spectre-meltdown-checker, python3-nanobind
+  python3-lief, cheese, opencl-cts
 - add Go mod h1 checksum support to bitbake fetcher
 - Add UBI support to initrdscripts
 - Add support for qemuriscv64 and qemuriscv32 to formfactor
