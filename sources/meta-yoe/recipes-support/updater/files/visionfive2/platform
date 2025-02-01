@@ -5,14 +5,13 @@ UPDATE_FILE_NAME="${PLAT}"
 USB_DETECTION_DELAY=4
 
 KERNEL="\
-    fitImage \
+    Image \
     jh7110-starfive-visionfive-2-v1.3b.dtb \
 "
 
 BOOT="\
     fw_payload.bin \
-    boot.scr.uimg \
-    vf2_uEnv.txt \
+	grub-efi-bootriscv64.efi \
 "
 
 ROOTFS="rootfs.ext4.xz"
