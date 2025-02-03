@@ -7,6 +7,23 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2025.02] - 2025-02-xx
+
+### Changed
+
+- Fix several recipes in meta-python to use ptest-python-pytest class
+- Correct Licenses for libdvbcsa, fatresize, znc, ndpi
+- Upgrade linux-yocto/6.12 to v6.12.11, linux-yocto/6.6 to v6.6.74
+- Enable high precision arithmetic support in gawk
+
+### Added
+
+- Added recipes - libspdm
+
+### Removed
+
+- Deleted recipes - pipewire-0.2
+
 ## [2025.01] - 2025-01-31
 
 ### Changed

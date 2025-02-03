@@ -18,7 +18,7 @@ part uboot --source rawcopy --sourceparams="file=u-boot.itb" --part-name uboot -
 
 part /boot --source bootimg-efi --sourceparams="loader=grub-efi,dtb=jh7110-starfive-visionfive-2-v1.3b.dtb" --ondisk mmcblk --fstype=vfat --label boot --use-uuid --part-name boot  --align 4096 --size 292M
 # rootfs (3G)
-part /root --source rootfs --ondisk mmcblk --fstype=ext4 --part-name root --part-type 0FC63DAF-8483-4772-8E79-3D69D8477DE4 --active --label root --align 4096 --size 3072M
+part / --source rootfs --ondisk mmcblk --fstype=ext4 --part-name root --part-type 0FC63DAF-8483-4772-8E79-3D69D8477DE4 --active --label root --align 4096 --size 3072M
 # User data partition (1M)
 part /data --ondisk mmcblk --fstype=ext4 --label data --fixed-size 1 --align 4096 --fsoptions "x-systemd.growfs"
 
