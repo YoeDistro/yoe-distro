@@ -15,6 +15,8 @@ and this project adheres to
 - Correct Licenses for libdvbcsa, fatresize, znc, ndpi
 - Upgrade linux-yocto/6.12 to v6.12.11, linux-yocto/6.6 to v6.6.74
 - Enable high precision arithmetic support in gawk
+- Do not use git submodule fetcher in protobuf
+- Upgrade sip to 6.10.0
 
 ### Added
 
