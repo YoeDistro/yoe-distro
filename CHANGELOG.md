@@ -17,10 +17,20 @@ and this project adheres to
 - Enable high precision arithmetic support in gawk
 - Do not use git submodule fetcher in protobuf
 - Upgrade sip to 6.10.0
+- Separate out mdns-libnss-mdns package from mdns and rename nss-mdns recipe to avahi-libnss-mdns
+- Upgrade opencv to 4.11.0
+- Enable '-o pipefail' for the SDK installer
+- Upgrade libseccomp to 2.6
+- Upgrade Glibc to 2.41
+- Upgrade GDB to 16.2
+- Upgrade binutils to 2.44
+- Enable Sv39 memory address scheme by default for qemuriscv machines
+- Upgrade LLVM to 19.1.7
+- Upgrade Gstreamer to 1.24.12
 
 ### Added
 
-- Added recipes - libspdm
+- Added recipes - libspdm, spdm-utils
 
 ### Removed
 
