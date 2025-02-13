@@ -27,14 +27,22 @@ and this project adheres to
 - Enable Sv39 memory address scheme by default for qemuriscv machines
 - Upgrade LLVM to 19.1.7
 - Upgrade Gstreamer to 1.24.12
+- Fix RPI-5/CM5 boot issue
+- Enable create-spdx to build SPDX manifests
+- Update linux-yocto/6.12 to v6.12.13
+- Upgrade python to 2.13.2
+- Upgrade Go compiler to 1.22.12
+- Switch p7zip to 7zip in classes
 
 ### Added
 
 - Added recipes - libspdm, spdm-utils
+- Add linux-raspberrypi 6.12 recipe
 
 ### Removed
 
-- Deleted recipes - pipewire-0.2
+- Deleted recipes - pipewire-0.2, linux-yocto/6.6
+- Drop ld-is-gold support
 
 ## [2025.01] - 2025-01-31
 

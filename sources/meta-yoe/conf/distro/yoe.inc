@@ -96,7 +96,7 @@ require conf/distro/include/security_flags.inc
 INHERIT += "${@bb.utils.contains_any('BUILD_ARCH', 'ppc64le riscv64', '', 'uninative', d)}"
 
 # Add /etc/build to every image
-INHERIT += "image-buildinfo"
+INHERIT += "image-buildinfo create-spdx"
 
 DISTRO_FEATURES:append = " opengl multiarch wayland pam vulkan usrmerge ld-is-lld"
 
