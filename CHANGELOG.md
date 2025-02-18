@@ -33,6 +33,9 @@ and this project adheres to
 - Upgrade python to 2.13.2
 - Upgrade Go compiler to 1.22.12
 - Switch p7zip to 7zip in classes
+- Upgrade musl to latest and fix failing recipes
+- Update coreutils to 9.6
+- Update OpenSSL to 3.4.1
 
 ### Added
 
