@@ -36,10 +36,12 @@ and this project adheres to
 - Upgrade musl to latest and fix failing recipes
 - Update coreutils to 9.6
 - Update OpenSSL to 3.4.1
+- Include xz support by default in GDB
+- Fix PACKAGECONFIG handling for cross recipes
 
 ### Added
 
-- Added recipes - libspdm, spdm-utils
+- Added recipes - libspdm, spdm-utils, python3-cairocffi
 - Add linux-raspberrypi 6.12 recipe
 
 ### Removed
