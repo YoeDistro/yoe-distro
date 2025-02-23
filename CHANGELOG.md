@@ -38,6 +38,9 @@ and this project adheres to
 - Update OpenSSL to 3.4.1
 - Include xz support by default in GDB
 - Fix PACKAGECONFIG handling for cross recipes
+- Upgrade rust to 1.82.0
+- Drop net-tools from busybox defconfig
+- Drop ifconfig in favor of ip
 
 ### Added
 
