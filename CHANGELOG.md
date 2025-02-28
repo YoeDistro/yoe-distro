@@ -7,7 +7,7 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [2025.02] - 2025-02-xx
+## [2025.02] - 2025-02-28
 
 ### Changed
 
@@ -41,6 +41,7 @@ and this project adheres to
 - Upgrade rust to 1.82.0
 - Drop net-tools from busybox defconfig
 - Drop ifconfig in favor of ip
+- Update uninative to 4.7 which uses glibc 2.41
 
 ### Added
 
