@@ -7,6 +7,28 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2025.03] - 2025-03-xx
+
+### Changed
+
+- Update linux-hardkernel to latest on hk 4.9 branch
+- Add ptests for Wolfssl
+- Fix recipes to remove obsolete use of acpaths needed by latest autoconf bbclass
+- Fix qtwenengine 6.8 build with clang-20
+- Fix WiFi on Raspberry Pi 5
+- Upgrade OpenSSH to 9.9p2
+- Upgrade rust compiler to 1.83.0
+- Upgrade Go compiler to 1.24.0
+- Add charconv lib build in boost
+
+### Added
+
+- Added recipes - clpeak
+
+### Removed
+
+- Removed recipes - iksemel
+
 ## [2025.02] - 2025-02-28
 
 ### Changed
