@@ -20,10 +20,13 @@ and this project adheres to
 - Upgrade rust compiler to 1.83.0
 - Upgrade Go compiler to 1.24.0
 - Add charconv lib build in boost
+- Update Go compiler to 1.24.1
+- Use avahi as mdns provider
 
 ### Added
 
-- Added recipes - clpeak
+- Added recipes - clpeak, python3-pyasyncore, python3-gpt-image, libsdl3, libsdl2-compat
+  minizip
 
 ### Removed
 
