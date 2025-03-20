@@ -129,8 +129,8 @@ PREFERRED_PROVIDER_u-boot-fw-utils ??= "libubootenv"
 PREFERRED_PROVIDER_u-boot ??= "u-boot"
 
 PREFERRED_RPROVIDER_ssh ??= "openssh"
-# Use avahi mdns implementation
-PREFERRED_RPROVIDER_libnss-mdns ??= "avahi-libnss-mdns"
+# Use systemd's resolved implementation
+PREFERRED_RPROVIDER_libnss-mdns ??= "systemd-resolved"
 
 # This helps in using imx specific provider when building for imx platforms, otherwise
 # it uses the oe-core versions
