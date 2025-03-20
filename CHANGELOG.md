@@ -24,15 +24,24 @@ and this project adheres to
 - Use avahi as mdns provider
 - Upgrade fluentbit 3.2.1 -> 3.2.8
 - Upgrade PHP from 8.2.26 to 8.4.4
+- Switch to QT 6.9 release
+- Upgrade several Gnome peices to 48 release
+- Fix several recipes to build with C23 standard
+- Stop allowing non-autotooled recipes to inherit autotools
+- Upgrade systemd to 257.4
 
 ### Added
 
 - Added recipes - clpeak, python3-pyasyncore, python3-gpt-image, libsdl3, libsdl2-compat
-  minizip
+  minizip, scdoc
+- Add support for DNG files in libcamera
+- Add clean-hashserver-database script
 
 ### Removed
 
 - Removed recipes - iksemel
+- Eliminate needless linux-libc-headers and binutils version defaults
+- Drop symlinking gold linker in gcc
 
 ## [2025.02] - 2025-02-28
 
