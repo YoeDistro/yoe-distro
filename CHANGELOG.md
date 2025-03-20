@@ -22,6 +22,8 @@ and this project adheres to
 - Add charconv lib build in boost
 - Update Go compiler to 1.24.1
 - Use avahi as mdns provider
+- Upgrade fluentbit 3.2.1 -> 3.2.8
+- Upgrade PHP from 8.2.26 to 8.4.4
 
 ### Added
 
