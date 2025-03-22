@@ -29,6 +29,9 @@ and this project adheres to
 - Fix several recipes to build with C23 standard
 - Stop allowing non-autotooled recipes to inherit autotools
 - Upgrade systemd to 257.4
+- Upgrade clang to 20.1.0
+- Upgrade protobuf to 5.29.4
+- Update linux-yocto/6.12 to 6.12.19
 
 ### Added
 
