@@ -39,6 +39,7 @@ and this project adheres to
   minizip, scdoc
 - Add support for DNG files in libcamera
 - Add clean-hashserver-database script
+- Add Jetson Orin AGX to CD pipeline
 
 ### Removed
 
