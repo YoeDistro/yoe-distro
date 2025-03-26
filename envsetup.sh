@@ -519,16 +519,6 @@ if [ -z "$DOCKER_REPO" ]; then
   export DOCKER_REPO=yoedistro/yoe-build:bookworm${dockerarch}
 fi
 
-# if we are building using docker, we don't really care what /bin/sh is since the Yoe docker images defaults
-# to using bash for /bin/sh. If user is building in their host system, then require that /bin/sh be bash
-if [ "$DOCKER_REPO" = "none" ]; then
-  if [ "$(readlink /bin/sh)" != "bash" ]; then
-    echo "ERROR: /bin/sh should point to bash, other shells (such as dash) have not been extensively tested"
-    echo "on Ubuntu/debian, try: sudo dpkg-reconfigure dash"
-    return 1
-  fi
-fi
-
 check_docker() {
   if ! $DOCKER -v >/dev/null 2>&1; then
     echo "Error, $DOCKER not installed, please install supported container technology ( docker or podman ) or set DOCKER_REPO=none in environment"
