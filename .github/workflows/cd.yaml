@@ -44,7 +44,7 @@ jobs:
         run: |
           /bin/bash -c ". ./envsetup.sh visionfive2 && bitbake yoe-installer-image"
           /bin/bash -c ". ./envsetup.sh rpi4-64 && bitbake yoe-installer-image yoe-kiosk-image"
-          /bin/bash -c ". ./envsetup.sh jetson-agx-orin-devkit && bitbake yoe-swupdate-image-tegra"
+          /bin/bash -c ". ./envsetup.sh jetson-agx-orin-devkit && bitbake yoe-swupdate-image-tegra && cp build/tmp/deploy/images/p3737-0000-p3701-0005/yoe-swupdate-image-tegra-p3737-0000-p3701-0005.rootfs.swu deploy/"
       - name: ver
         run: echo "ver=$(printf ' - ' && cat sources/meta-yoe/conf/distro/yoe.inc | grep 'DISTRO_CODENAME =' | cut -d' ' -f 3 )" >> $GITHUB_OUTPUT
         id: ver
