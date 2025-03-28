@@ -33,6 +33,10 @@ and this project adheres to
 - Upgrade protobuf to 5.29.4
 - Update linux-yocto/6.12 to 6.12.19
 - Update lvgl to 9.2.2 release
+- Use https:// in HOMEPAGE variable instead of http:// in several recipes in meta-openembedded
+- Upgrade iperf3 to 3.18
+- Upgrade PHP to 8.4.5
+- Fix several recipes to work with upcoming GCC-15 release with C23 standard defaults
 
 ### Added
 
