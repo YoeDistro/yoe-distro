@@ -7,7 +7,7 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [2025.03] - 2025-03-xx
+## [2025.03] - 2025-03-31
 
 ### Changed
 
@@ -37,6 +37,7 @@ and this project adheres to
 - Upgrade iperf3 to 3.18
 - Upgrade PHP to 8.4.5
 - Fix several recipes to work with upcoming GCC-15 release with C23 standard defaults
+- Update gimp to 3.0 release
 
 ### Added
 
