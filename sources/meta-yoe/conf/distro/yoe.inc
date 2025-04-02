@@ -130,7 +130,7 @@ PREFERRED_PROVIDER_u-boot ??= "u-boot"
 
 PREFERRED_RPROVIDER_ssh ??= "openssh"
 # Use systemd's resolved implementation
-PREFERRED_RPROVIDER_libnss-mdns ??= "systemd-resolved"
+PREFERRED_RPROVIDER_libnss-mdns ??= "avahi-libnss-mdns"
 
 # This helps in using imx specific provider when building for imx platforms, otherwise
 # it uses the oe-core versions
