@@ -7,6 +7,30 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2025.04] - 2025-04-xx
+
+### Changed
+
+- Add whitespace around assignments in recipes in all layers
+- Fix compiler-rt multilib build regression
+- Fix recipes to build with GCC 15
+- Use go module fetcher for crucible
+- Upgrade meson to 1.7.1
+- Upgrade gstreamer components to 1.26.0
+- Upgrade rust to 1.85.1
+- Compile rust llvm to use dynamic libraries
+- Upgrade bluez to 5.80
+- Upgrade tzdata to 2025b
+
+### Added
+
+- Added recipes - minizip-ng, python3-typing-inspection:
+- Add support for using alternative runtime D-Bus e.g. dbus-broker
+
+### Removed
+
+- Drop styhead from LAYERSERIES_COMPAT
+
 ## [2025.03] - 2025-03-31
 
 ### Changed
