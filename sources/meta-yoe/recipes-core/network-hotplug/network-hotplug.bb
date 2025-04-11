@@ -8,14 +8,15 @@ SRC_URI = " \
            file://network.rules \
           "
 
-FILES:${PN} = "${sysconfdir}/udev/rules.d/* ${base_libdir}/systemd/system/*"
-RDEPENDS:${PN} = "udev"
+S = "${WORKDIR}/sources"
+UNPACKDIR = "${S}"
 
 do_install() {
     install -d ${D}${base_libdir}/systemd/system/basic.target.wants
-    install -m 0644 ${UNPACKDIR}/*.service ${D}${base_libdir}/systemd/system
+    install -m 0644 ${S}/*.service ${D}${base_libdir}/systemd/system
 
-    install -d ${D}${sysconfdir}/udev/rules.d
-    install -m 0644 ${UNPACKDIR}/network.rules ${D}${sysconfdir}/udev/rules.d/network.rules
+    install -Dm 0644 ${S}/network.rules ${D}${sysconfdir}/udev/rules.d/network.rules
 }
 
+FILES:${PN} = "${sysconfdir}/udev/rules.d/* ${base_libdir}/systemd/system/*"
+RDEPENDS:${PN} = "udev"

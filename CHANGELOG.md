@@ -21,10 +21,12 @@ and this project adheres to
 - Compile rust llvm to use dynamic libraries
 - Upgrade bluez to 5.80
 - Upgrade tzdata to 2025b
+- Update clang to 20.1.2
+- Fix rust compiler and packages to build on riscv32
 
 ### Added
 
-- Added recipes - minizip-ng, python3-typing-inspection:
+- Added recipes - minizip-ng, python3-typing-inspection, bit7z
 - Add support for using alternative runtime D-Bus e.g. dbus-broker
 
 ### Removed
