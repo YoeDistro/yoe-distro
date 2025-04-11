@@ -11,11 +11,11 @@ DEPENDS += "go-native"
 
 inherit systemd update-rc.d goarch
 
-SRCREV = "b925bc3ea6bfbdf282b4a137c7201d686718b771"
+SRCREV = "5da5ae814c7053cffe6bb18b89a8d18f77acde8a"
 
 BRANCH ?= "master"
 
-SRC_URI = "git://github.com/simpleiot/simpleiot;branch=${BRANCH};protocol=https \
+SRC_URI = "git://github.com/simpleiot/simpleiot;branch=${BRANCH};tag=v${PV};protocol=https \
            "
 S = "${WORKDIR}/git"
 
