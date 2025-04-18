@@ -23,15 +23,26 @@ and this project adheres to
 - Upgrade tzdata to 2025b
 - Update clang to 20.1.2
 - Fix rust compiler and packages to build on riscv32
+- Enable NVPTX and SPIRV clang targets
+- Migrate several meta-python recipes to use PEP-517 build backend
+- Add support for RustiCL to mesa enabled with opencl packageconfig
+- Upgrade mesa to 25.0.2
+- Update linux-yocto/6.12 to 6.12.22
+- Update openssl to 3.5.0
+- Upgrade systemd to 257.5
+- Fix target rust compiler, cargo and rust packages to build on riscv32
+- Remove initramfs-framework's hard dependency with busybox
 
 ### Added
 
-- Added recipes - minizip-ng, python3-typing-inspection, bit7z
+- Added recipes - minizip-ng, python3-typing-inspection, bit7zi, source-highlight
+  qhull, b4
 - Add support for using alternative runtime D-Bus e.g. dbus-broker
 
 ### Removed
 
 - Drop styhead from LAYERSERIES_COMPAT
+- Removed recipes: pmtools
 
 ## [2025.03] - 2025-03-31
 

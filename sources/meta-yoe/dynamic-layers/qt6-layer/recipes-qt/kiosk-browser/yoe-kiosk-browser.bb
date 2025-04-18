@@ -49,7 +49,7 @@ YOE_KIOSK_BROWSER_RETRY_INTERVAL = "10"
 # the following is typically a local web page that is loaded
 # instead of the default error screen.
 # If this is not set, the default error screen is shown.
-YOE_KIOSK_BROWSER_EXCEPTION_URL=""
+YOE_KIOSK_BROWSER_EXCEPTION_URL = ""
 
 # In case you use your own trusted https webserver on your local browser
 # you can ignore the certification errors.
