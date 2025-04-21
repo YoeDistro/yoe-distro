@@ -32,11 +32,15 @@ and this project adheres to
 - Upgrade systemd to 257.5
 - Fix target rust compiler, cargo and rust packages to build on riscv32
 - Remove initramfs-framework's hard dependency with busybox
+- Fix whitespaces around assignment operator in several layers
+- Update recipes R36.4.0/JetPack 6.1 -> 36.4.3/JetPack 6.2
+- Update PHP to 8.4.6
+- Upgrde libunwind to 1.8.1
 
 ### Added
 
 - Added recipes - minizip-ng, python3-typing-inspection, bit7zi, source-highlight
-  qhull, b4
+  qhull, b4, libsimplelog
 - Add support for using alternative runtime D-Bus e.g. dbus-broker
 
 ### Removed
