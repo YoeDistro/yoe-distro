@@ -117,6 +117,10 @@ PROVIDES:pn-clang = "llvm"
 PROVIDES:pn-clang-native = "llvm-native"
 PROVIDES:pn-nativesdk-clang = "nativesdk-llvm"
 
+PREFERRED_PROVIDER_virtual/libsdl2 = "libsdl2"
+PREFERRED_PROVIDER_virtual/libsdl2-native = "libsdl2-native"
+PREFERRED_PROVIDER_virtual/nativesdk-libsdl2 = "nativesdk-libsdl2"
+
 PREFERRED_PROVIDER_virtual/libgl ??= "mesa"
 PREFERRED_PROVIDER_virtual/libgl-native ?= "mesa-native"
 PREFERRED_PROVIDER_libgl-native = "mesa-native"
