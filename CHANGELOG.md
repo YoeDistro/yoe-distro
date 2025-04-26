@@ -7,7 +7,7 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [2025.04] - 2025-04-xx
+## [2025.04] - 2025-04-30
 
 ### Changed
 
@@ -27,7 +27,7 @@ and this project adheres to
 - Migrate several meta-python recipes to use PEP-517 build backend
 - Add support for RustiCL to mesa enabled with opencl packageconfig
 - Upgrade mesa to 25.0.2
-- Update linux-yocto/6.12 to 6.12.22
+- Update linux-yocto/6.12 to v6.12.23
 - Update openssl to 3.5.0
 - Upgrade systemd to 257.5
 - Fix target rust compiler, cargo and rust packages to build on riscv32
@@ -36,11 +36,16 @@ and this project adheres to
 - Update recipes R36.4.0/JetPack 6.1 -> 36.4.3/JetPack 6.2
 - Update PHP to 8.4.6
 - Upgrde libunwind to 1.8.1
+- Add recipes for libsdl3 and libsdl2-compat and define virtual/libsdl
+- Upgrade nodejs to 2.15.0
+- Switch prefix mapping to use -ffile-prefix-map
+- Enable getty generator by default in systemd
+- Add pam_env support openssh
 
 ### Added
 
 - Added recipes - minizip-ng, python3-typing-inspection, bit7zi, source-highlight
-  qhull, b4, libsimplelog
+  qhull, b4, libsimplelog, libxmp
 - Add support for using alternative runtime D-Bus e.g. dbus-broker
 
 ### Removed
