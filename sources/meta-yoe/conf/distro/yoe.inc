@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2025.03"
-DISTRO_CODENAME = "Yiecheng"
+DISTRO_VERSION = "2025.04"
+DISTRO_CODENAME = "Zagoria"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
@@ -116,6 +116,10 @@ PREFERRED_PROVIDER_nativesdk-llvm = "nativesdk-clang"
 PROVIDES:pn-clang = "llvm"
 PROVIDES:pn-clang-native = "llvm-native"
 PROVIDES:pn-nativesdk-clang = "nativesdk-llvm"
+
+PREFERRED_PROVIDER_virtual/libsdl2 = "libsdl2"
+PREFERRED_PROVIDER_virtual/libsdl2-native = "libsdl2-native"
+PREFERRED_PROVIDER_virtual/nativesdk-libsdl2 = "nativesdk-libsdl2"
 
 PREFERRED_PROVIDER_virtual/libgl ??= "mesa"
 PREFERRED_PROVIDER_virtual/libgl-native ?= "mesa-native"
