@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025.05] - 2025-05-xx
+
+### Changed
+
+- Upgrade GCC to 15.1.0
+- Fix several recipes to build with GCC-15
+- Upgrade GDB to 16.3 and fix build on mingw
+- Fix binutils build for musl target
+- Upgrade meson to 1.8.0
+- Let wget use libpcre2 and not libpcre
+- Upgrade python3-numpy to 2.2.5
+- Use virtual/libsdl2 in recipes needing libsdl2
+- Refactor qemu.bbclass functions into library functions
+
+### Added
+
+- add entries for virtual/libsdl2 as default providers
+
+### Removed
+
+- Remove md5 checksums from oe-core recipes
 
 ## [2025.04] - 2025-04-30
 
