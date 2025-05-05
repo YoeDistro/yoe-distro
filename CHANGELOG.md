@@ -19,14 +19,21 @@ and this project adheres to
 - Upgrade python3-numpy to 2.2.5
 - Use virtual/libsdl2 in recipes needing libsdl2
 - Refactor qemu.bbclass functions into library functions
+- Move clang recipes from meta-clang to core
+- Upgrade clang to 20.1.3
+- Upgrade qemu to 10.x
+- Upgrade mesa to 25.0.5
+- Adapt recipes to qemu.bbclass refactoring
 
 ### Added
 
-- add entries for virtual/libsdl2 as default providers
+- Add entries for virtual/libsdl2 as default providers
+- New recipes: blktests
 
 ### Removed
 
 - Remove md5 checksums from oe-core recipes
+- Drop supporting 32bit SDK and build hosts
 
 ## [2025.04] - 2025-04-30
 
