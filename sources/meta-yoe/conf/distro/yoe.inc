@@ -92,6 +92,7 @@ IMAGE_CLASSES += "testimage testsdk"
 require conf/distro/include/no-static-libs.inc
 require conf/distro/include/yocto-uninative.inc
 require conf/distro/include/security_flags.inc
+require conf/distro/include/yocto-space-optimize.inc
 
 INHERIT += "${@bb.utils.contains_any('BUILD_ARCH', 'ppc64le riscv64', '', 'uninative', d)}"
 
@@ -105,6 +106,8 @@ DISTRO_FEATURES:remove:linux-gnux32 = "ld-is-lld"
 DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
 # mips-yoe-linux-ld.lld: error: the .gnu.hash section is not compatible with the MIPS target
 DISTRO_FEATURES:remove:mipsarcho32 = "ld-is-lld"
+# qemu usermode segfaults the programs during glib-2.0-initial configure step
+DISTRO_FEATURES:remove:powerpc = "ld-is-lld"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
