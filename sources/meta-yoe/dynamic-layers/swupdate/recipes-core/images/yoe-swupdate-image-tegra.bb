@@ -35,4 +35,8 @@ DTBFILE_PATH = "${@'${EXTERNAL_KERNEL_DEVICETREE}/${DTBFILE}' if len(d.getVar('E
 SWUPDATE_IMAGES = "${ROOTFS_FILENAME} tegra-bl.cap ${DEPLOY_KERNEL_IMAGE} ${DTBFILE_PATH}"
 
 do_swuimage[depends] += "${DTB_EXTRA_DEPS}"
-do_swuimage[dirs] += "${S}"
+
+# Add a link using the core image name.swu to the resulting swu image
+do_swuimage:append() {
+    os.symlink(d.getVar("IMAGE_NAME") + ".swu", d.getVar("SWUPDATE_CORE_IMAGE_NAME") + "-" + d.getVar("MACHINE") + ".swu")
+}
