@@ -21,18 +21,19 @@ SWUPDATE_CORE_IMAGE_NAME ?= "yoe-simple-image"
 
 ROOTFS_FILENAME ?= "${SWUPDATE_CORE_IMAGE_NAME}-${MACHINE}.rootfs.tar.gz"
 
-# Handle differences in redundant partition naming on t194 platforms
 KERNEL_A_PARTNAME = "A_kernel"
 KERNEL_A_DTB_PARTNAME = "A_kernel-dtb"
 KERNEL_B_PARTNAME = "B_kernel"
 KERNEL_B_DTB_PARTNAME = "B_kernel-dtb"
 
 # images to build before building swupdate image
-IMAGE_DEPENDS = "${SWUPDATE_CORE_IMAGE_NAME} tegra-uefi-capsules"
+IMAGE_DEPENDS = "${SWUPDATE_CORE_IMAGE_NAME} tegra-uefi-capsules tegra-swupdate-script tegra-espimage"
+
+ESP_ARCHIVE ?= "${TEGRA_ESP_IMAGE}-${MACHINE}.tar.gz"
 
 # images and files that will be included in the .swu image
 DTBFILE_PATH = "${@'${EXTERNAL_KERNEL_DEVICETREE}/${DTBFILE}' if len(d.getVar('EXTERNAL_KERNEL_DEVICETREE')) else '${DTBFILE}'}"
-SWUPDATE_IMAGES = "${ROOTFS_FILENAME} tegra-bl.cap ${DEPLOY_KERNEL_IMAGE} ${DTBFILE_PATH}"
+SWUPDATE_IMAGES = "${ROOTFS_FILENAME} tegra-bl.cap ${DEPLOY_KERNEL_IMAGE} ${DTBFILE_PATH} tegra-swupdate-script.lua ${ESP_ARCHIVE}"
 
 do_swuimage[depends] += "${DTB_EXTRA_DEPS}"
 
