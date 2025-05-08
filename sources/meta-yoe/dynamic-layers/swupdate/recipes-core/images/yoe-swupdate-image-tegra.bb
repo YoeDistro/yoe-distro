@@ -6,10 +6,9 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384
 
 SRC_URI = "\
     file://sw-description \
-    file://bootloader-update.lua \
 "
 
-inherit swupdate image_types_tegra
+inherit swupdate image_types_tegra tegra_swupdate
 
 DEPLOY_KERNEL_IMAGE ?= "${@os.path.basename(tegra_kernel_image(d))}"
 
