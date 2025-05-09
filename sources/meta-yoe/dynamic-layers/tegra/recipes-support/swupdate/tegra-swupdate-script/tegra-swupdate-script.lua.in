@@ -1,0 +1,57 @@
+local function get_current_slot()
+    local handle = io.popen("nvbootctrl get-current-slot")
+    if not handle then
+        print("Failed to get-current-slot")
+        return nil
+    end
+    local result = handle:read("*a")
+    handle:close()
+    return result:match("%d") -- Extracts the first digit found
+end
+
+local function set_active_slot(slot)
+    local command = "nvbootctrl set-active-boot-slot " .. slot
+    return os.execute(command)
+end
+
+local function switch_slots()
+    local current_slot = get_current_slot()
+    local success = -1
+    if current_slot then
+        local new_slot = current_slot == "1" and "0" or "1"
+        print("Switching active slot to: " .. new_slot)
+        success = set_active_slot(new_slot)
+    else
+        print("Failed to determine the current slot.")
+    end
+    return success
+end
+
+local function file_exists(path)
+    local file = io.open(path, "r")
+    if file then
+        file:close()
+        return true
+    else
+        return false
+    end
+end
+
+function postinst()
+    local success = -1
+    local result = ""
+    if file_exists("@TEGRA_SWUPDATE_CAPSULE_INSTALL_PATH@") then
+        print("Running bootloader update script")
+        success = os.execute("/usr/bin/oe4t-set-uefi-OSIndications")
+        result = "oe4t-set-uefi-OSIndications completed with status: " .. tostring(success)
+    else
+        if @TEGRA_SWUPDATE_BOOTLOADER_INSTALL_ONLY_IF_DIFFERENT@ then
+            print("Running os switch instead of bootloader update since @TEGRA_SWUPDATE_CAPSULE_INSTALL_PATH@ is missing")
+            success = switch_slots()
+            result = "switch_slots completed with status: " .. tostring(success)
+        else
+            result = "Missing @TEGRA_SWUPDATE_CAPSULE_INSTALL_PATH@, cannot complete update"
+        end
+    end
+    return success, result
+end
