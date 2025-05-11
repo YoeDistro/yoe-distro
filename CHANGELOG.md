@@ -24,11 +24,15 @@ and this project adheres to
 - Upgrade qemu to 10.x
 - Upgrade mesa to 25.0.5
 - Adapt recipes to qemu.bbclass refactoring
+- Fix ppc32 builds with clang
+- Upgrade linux-yocto/6.12 to v6.12.27
+- Enable musl based riscv32 in OE-Core
 
 ### Added
 
 - Add entries for virtual/libsdl2 as default providers
-- New recipes: blktests
+- add recipe for nmap 7.92
+- New recipes: blktests, testdisk, libserialmodule, python3-pillow-heif
 
 ### Removed
 
