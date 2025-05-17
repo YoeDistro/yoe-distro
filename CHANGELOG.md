@@ -20,20 +20,32 @@ and this project adheres to
 - Use virtual/libsdl2 in recipes needing libsdl2
 - Refactor qemu.bbclass functions into library functions
 - Move clang recipes from meta-clang to core
-- Upgrade clang to 20.1.3
+- Upgrade clang to 20.1.4
 - Upgrade qemu to 10.x
 - Upgrade mesa to 25.0.5
 - Adapt recipes to qemu.bbclass refactoring
+- Fix ppc32 builds with clang
+- Upgrade linux-yocto/6.12 to v6.12.27
+- Enable musl based riscv32 in OE-Core
+- Update dropbear to 2025.88
+- Upgrade openSSH to 10.0p1
+- Move libsoup-2.4 to met-oe
+- Upgrade go compiler to 1.24.3
+- Add option for fips support in openssl
+- Upgrade gstreamer to 1.26.1
+- Upgrade python3-cython 3.1.0
 
 ### Added
 
 - Add entries for virtual/libsdl2 as default providers
-- New recipes: blktests
+- add recipe for nmap 7.92
+- New recipes: blktests, testdisk, libserialmodule, python3-pillow-heif
 
 ### Removed
 
 - Remove md5 checksums from oe-core recipes
 - Drop supporting 32bit SDK and build hosts
+- Removed recipes - xserver-xorg-cvt
 
 ## [2025.04] - 2025-04-30
 
