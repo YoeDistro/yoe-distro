@@ -34,18 +34,28 @@ and this project adheres to
 - Add option for fips support in openssl
 - Upgrade gstreamer to 1.26.1
 - Upgrade python3-cython 3.1.0
+- Let libglvnd provide virtual packages e.g. libegl
+- Upgrade nodejs to 22.16.0
+- Switch to using libsoup 3.0 wherever possible instead of libsoup-2
+- Upgrade linux-raspberrypi to 6.12.25
+- Upgrade clang to 20.1.5 release
+- Upgrade mesa to 25.1.0 and add support for asahi drivers
 
 ### Added
 
 - Add entries for virtual/libsdl2 as default providers
 - add recipe for nmap 7.92
 - New recipes: blktests, testdisk, libserialmodule, python3-pillow-heif
+  socketcand, bvi, libnvfatbin
 
 ### Removed
 
 - Remove md5 checksums from oe-core recipes
 - Drop supporting 32bit SDK and build hosts
-- Removed recipes - xserver-xorg-cvt
+- Removed recipes - xserver-xorg-cvt, gfbgraph, librest
+- Remove distutils classes
+- Drop dri3 PACKAGECONFIG from mesa
+- Remove OSMesa support from mesa
 
 ## [2025.04] - 2025-04-30
 
