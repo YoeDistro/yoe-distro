@@ -41,6 +41,7 @@ and this project adheres to
 - Upgrade mesa to 25.1.0 and add support for asahi drivers
 - Upgrade linux-yocto/6.12  to v6.12.30
 - Update coreutils to 9.7
+- Upgrade QT6 to 1.9.1
 
 ### Added
 
