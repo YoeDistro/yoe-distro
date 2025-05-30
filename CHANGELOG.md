@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2025.05] - 2025-05-xx
+## [2025.05] - 2025-05-31
 
 ### Changed
 
@@ -20,7 +20,6 @@ and this project adheres to
 - Use virtual/libsdl2 in recipes needing libsdl2
 - Refactor qemu.bbclass functions into library functions
 - Move clang recipes from meta-clang to core
-- Upgrade clang to 20.1.4
 - Upgrade qemu to 10.x
 - Upgrade mesa to 25.0.5
 - Adapt recipes to qemu.bbclass refactoring
@@ -40,6 +39,8 @@ and this project adheres to
 - Upgrade linux-raspberrypi to 6.12.25
 - Upgrade clang to 20.1.5 release
 - Upgrade mesa to 25.1.0 and add support for asahi drivers
+- Upgrade linux-yocto/6.12  to v6.12.30
+- Update coreutils to 9.7
 
 ### Added
 
