@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025.06] - 2025-06-xx
+
+### Changed
+
+- Upgrade clang to 20.1.6
+- generate preset for templates using systemd bbclass
+- Upgrade musl to latest tip of trunk
+- Upgrade bind to 9.20.9
+- Upgrade ICU to 77-1
+
 ## [2025.05] - 2025-05-31
 
 ### Changed
