@@ -64,7 +64,7 @@ BUILDHISTORY_COMMIT ?= "1"
 CMAKE_VERBOSE ?= ""
 
 # Use clang as default compiler
-TOOLCHAIN ?= "clang"
+PREFERRED_TOOLCHAIN_TARGET ?= "clang"
 
 # Build clang into SDK as well
 CLANGSDK = "1"
