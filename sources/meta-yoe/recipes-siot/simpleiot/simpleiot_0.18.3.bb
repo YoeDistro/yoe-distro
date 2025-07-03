@@ -17,8 +17,6 @@ BRANCH ?= "master"
 
 SRC_URI = "git://github.com/simpleiot/simpleiot;branch=${BRANCH};tag=v${PV};protocol=https \
            "
-S = "${WORKDIR}/git"
-
 GOPATH = "${TMPDIR}/work-shared/go"
 
 CGO_ENABLED:x86-64 = "0"
