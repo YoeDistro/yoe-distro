@@ -9,8 +9,6 @@ DEPENDS = "gtk+"
 
 SRC_URI = "git://github.com/cbrake/lcd-test.git;branch=master;protocol=https"
 
-S = "${WORKDIR}/git"
-
 inherit cmake pkgconfig features_check
 
 ANY_OF_DISTRO_FEATURES = "${GTK2DISTROFEATURES}"

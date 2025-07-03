@@ -8,8 +8,6 @@ SRCREV = "47846c7a62aea8317070f4a79b80cd26ded74bdd"
 
 PV = "1.0.0+git"
 
-S = "${WORKDIR}/git"
-
 inherit cmake qt6-cmake systemd
 
 DEPENDS += "qtbase qtwebview qtdeclarative qtdeclarative-native"
