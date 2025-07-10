@@ -8,8 +8,7 @@ SRC_URI = " \
            file://network.rules \
           "
 
-S = "${WORKDIR}/sources"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 do_install() {
     install -d ${D}${base_libdir}/systemd/system/basic.target.wants

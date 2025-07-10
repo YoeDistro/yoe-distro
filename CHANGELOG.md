@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025.07] - 2025-07-xx
+
+### Changed
+
+- Adjust for S changing defaults to be in UNPACKDIR
+- Upgrade protobuf to 6.31.1
+- Upgrade clang to 20.1.7
+- Upgrade rust compiler from 1.86.0 to 1.87.0
+- Enable glvnd in mesa if it is enabled in DISTRO_FEATURES
+- Update uninative to 4.8 for GCC 15.1
+- Upgrade go compiler to 1.24.4
+
+### Added
+
+- Added recipes - gpicview, pstack, opensbi-revyos, python3-colorama
+  python3-sphinx-argparse, python3-sphinx-copybutton, python3-pytest-sugar
+  systemd-repart-native, nilfs-utils, python3-rich-argparse
+- Add systemd-sysext image class
+- Add OrangePi RV2 machine support
+- Add Tegra holoscan SDK support
+- Add TCOVERRIDE for toolchain selection at recipe scope
+- Add whinlatter to compatible layers
+
 ## [2025.06] - 2025-06-30
 
 ### Changed
