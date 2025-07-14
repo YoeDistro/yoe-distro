@@ -16,8 +16,6 @@ SRCBRANCH = "master"
 
 SRCREV = "b8923b45570c21feff89de4eff6007ed5408e1b7"
 
-S = "${WORKDIR}/git"
-
 PREFIX ?= "${root_prefix}"
 #PREFIX_class-native = "${prefix}"
 

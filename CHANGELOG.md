@@ -6,6 +6,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025.07] - 2025-07-xx
+
+### Changed
+
+- Adjust for S changing defaults to be in UNPACKDIR
+- Upgrade protobuf to 6.31.1
+- Upgrade clang to 20.1.7
+- Upgrade rust compiler from 1.86.0 to 1.87.0
+- Enable glvnd in mesa if it is enabled in DISTRO_FEATURES
+- Update uninative to 4.8 for GCC 15.1
+- Upgrade go compiler to 1.24.4
+- Fix several recipes to build with Cmake 4+
+- Update Linux UAPI libc headers to v6.15
+- Enable TUNE_FEATURES based KERNEL_FEATURES for RISCV
+- Update linux-yocto/6.12 to v6.12.36
+- Handle workspaces for multiconfig in devtool
+- Add support for xz archives for XFCE components tarballs in SRC_URI
+- Upgrade go compiler from 1.24.4 -> 1.24.5
+- Fix building with clang-native when using compiler-rt
+- Upgrade openSSL from 3.5.0 -> 3.5.1
+ 
+### Added
+
+- Added recipes - gpicview, pstack, opensbi-revyos, python3-colorama
+  python3-sphinx-argparse, python3-sphinx-copybutton, python3-pytest-sugar
+  systemd-repart-native, nilfs-utils, python3-rich-argparse, python3-genson
+  cpp-argparse, python3-jsonschema-default, python3-rstr, lldb
+  llvm-tblgen-native
+- Add systemd-sysext image class
+- Add OrangePi RV2 machine support
+- Add Tegra holoscan SDK support
+- Add TCOVERRIDE for toolchain selection at recipe scope
+- Add whinlatter to compatible layers
+- Add support for required TUNE_FEATURES in features_check.bbclass
+- Add XFCEBASEBUILDCLASS in xfce bbclass
+
 ## [2025.06] - 2025-06-30
 
 ### Changed
