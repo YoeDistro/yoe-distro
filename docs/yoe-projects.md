@@ -46,6 +46,7 @@ Currently these projects are supported.
 - rpi4-64
 - var-som-mx8
 - visionfive2
+- intel-x86-64
 
 ## Converting a project
 
