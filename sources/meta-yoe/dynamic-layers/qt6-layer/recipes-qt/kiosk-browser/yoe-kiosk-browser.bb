@@ -4,7 +4,7 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
 
 SRC_URI = "git://github.com/YoeDistro/yoe-kiosk-browser;branch=main;protocol=https"
-SRCREV = "47846c7a62aea8317070f4a79b80cd26ded74bdd"
+SRCREV = "42f0fa68cdf9533c450bbd8da8b6b9ccb3664c34"
 
 PV = "1.0.0+git"
 
