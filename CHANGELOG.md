@@ -26,6 +26,7 @@ and this project adheres to
 - Upgrade go compiler from 1.24.4 -> 1.24.5
 - Fix building with clang-native when using compiler-rt
 - Upgrade openSSL from 3.5.0 -> 3.5.1
+- Fix compiler-rt nativesdk builds when using clang and llvm runtime
  
 ### Added
 
