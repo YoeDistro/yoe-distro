@@ -65,6 +65,14 @@ CMAKE_VERBOSE ?= ""
 
 # Use clang as default compiler
 TOOLCHAIN ?= "clang"
+# Since default toolchain is clang, following packages want clang for native toolchain as well
+TOOLCHAIN_NATIVE:pn-rust ?= "clang"
+TOOLCHAIN_NATIVE:pn-rust-native ?= "clang"
+TOOLCHAIN_NATIVE:pn-nativesdk-rust ?= "clang"
+TOOLCHAIN_NATIVE:pn-rust-llvm ?= "clang"
+TOOLCHAIN_NATIVE:pn-rust-llvm-native ?= "clang"
+TOOLCHAIN_NATIVE:pn-nativesdk-rust-llvm ?= "clang"
+TOOLCHAIN_NATIVE:pn-qtwebengine ?= "clang"
 
 # Build clang into SDK as well
 CLANGSDK = "1"
