@@ -116,6 +116,8 @@ DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
 DISTRO_FEATURES:remove:mipsarcho32 = "ld-is-lld"
 # qemu usermode segfaults the programs during glib-2.0-initial configure step
 DISTRO_FEATURES:remove:powerpc = "ld-is-lld"
+DISTRO_FEATURES_FILTER_NATIVE:append = " ld-is-lld lto lto-thin"
+DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld lto lto-thin"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
