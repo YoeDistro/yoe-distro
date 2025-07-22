@@ -208,6 +208,7 @@ SKIP_RECIPE[bigbuckbunny-720p] = "big and doesn't really need to be tested so mu
 SKIP_RECIPE[tearsofsteel-1080p] = "big and doesn't really need to be tested so much"
 SKIP_RECIPE[python3-pyqt5] = "needs re-work  to build with sip3"
 SKIP_RECIPE[python3-pyqtchart] = "needs python3-pyqt5 which needs reworked to work with sip3"
+SKIP_RECIPE[python3-pyside6] = "Does not build with clang/lld"
 
 RDEPENDS:packagegroup-meta-multimedia:remove:pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
 RDEPENDS:packagegroup-meta-oe-fortran-packages:remove:pn-packagegroup-meta-oe = "lapack octave suitesparse"
