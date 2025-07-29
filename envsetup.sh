@@ -505,7 +505,7 @@ yoe_clean_sstate() {
 }
 
 # Docker integration
-# set DOCKER_REPO to something like yoedistro/yoe-build:bookworm-x86_64
+# set DOCKER_REPO to something like yoedistro/yoe-build:trixie-x86_64
 # DOCKER_REPO can be set in scripts that wrap envsetup.sh
 # set DOCKER_REPO to 'none' to disable docker
 
@@ -515,8 +515,8 @@ if [ -z "$DOCKER_REPO" ]; then
     elif [ "`uname`" = "Linux" ]; then
     dockerarch="-`uname -m`"
   fi
-  echo "Setting DOCKER_REPO to yoedistro/yoe-build:bookworm${dockerarch}"
-  export DOCKER_REPO=yoedistro/yoe-build:bookworm${dockerarch}
+  echo "Setting DOCKER_REPO to yoedistro/yoe-build:trixie${dockerarch}"
+  export DOCKER_REPO=yoedistro/yoe-build:trixie${dockerarch}
 fi
 
 check_docker() {

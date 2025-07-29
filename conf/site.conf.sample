@@ -29,7 +29,7 @@ YOE_PROFILE = "yoe-glibc-systemd-wayland"
 # configure docker container to run bitbake in
 # for mac hosts `uname -m` may return arm64 which needs
 # to be mapped to `aarch64`
-export DOCKER_REPO=yoedistro/yoe-build:bookworm-`uname -m`
+export DOCKER_REPO=yoedistro/yoe-build:trixie-`uname -m`
 # Keep the load in control and do not issue more parallel jobs
 # when load hits 1.5 * number of cpus
 PARALLEL_MAKE:append = " -l ${@int(os.sysconf(os.sysconf_names['SC_NPROCESSORS_ONLN'])) * 150/100}"

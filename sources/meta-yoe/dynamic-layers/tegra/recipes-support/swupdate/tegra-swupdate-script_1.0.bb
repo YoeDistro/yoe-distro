@@ -6,8 +6,7 @@ SRC_URI = "\
     file://tegra-swupdate-script.lua.in \
 "
 
-S = "${WORKDIR}/sources"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 B = "${WORKDIR}/build"
 
 inherit tegra_swupdate deploy

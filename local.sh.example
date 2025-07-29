@@ -17,7 +17,7 @@
 # export HOST_IP=10.10.10.10
 
 # configure docker container to run bitbake in
-#export DOCKER_REPO=yoedistro/yoe-build:bookworm-`uname -m`
+#export DOCKER_REPO=yoedistro/yoe-build:trixie-`uname -m`
 
 # Flag to control docker launch with pseudo-tty
 # when output is piped or redirected to files then

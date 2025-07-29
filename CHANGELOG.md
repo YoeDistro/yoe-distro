@@ -20,21 +20,24 @@ and this project adheres to
 - Fix several recipes to build with Cmake 4+
 - Update Linux UAPI libc headers to v6.15
 - Enable TUNE_FEATURES based KERNEL_FEATURES for RISCV
-- Update linux-yocto/6.12 to v6.12.36
+- Update linux-yocto/6.12 to v6.12.38
 - Handle workspaces for multiconfig in devtool
 - Add support for xz archives for XFCE components tarballs in SRC_URI
 - Upgrade go compiler from 1.24.4 -> 1.24.5
 - Fix building with clang-native when using compiler-rt
 - Upgrade openSSL from 3.5.0 -> 3.5.1
 - Fix compiler-rt nativesdk builds when using clang and llvm runtime
- 
+- Split libclc into a independent recipe out of clang
+- Upgrade cmake to 4.0.3
+- Upgrade clang to 20.1.8 release
+
 ### Added
 
 - Added recipes - gpicview, pstack, opensbi-revyos, python3-colorama
   python3-sphinx-argparse, python3-sphinx-copybutton, python3-pytest-sugar
   systemd-repart-native, nilfs-utils, python3-rich-argparse, python3-genson
   cpp-argparse, python3-jsonschema-default, python3-rstr, lldb
-  llvm-tblgen-native
+  llvm-tblgen-native, tailscale
 - Add systemd-sysext image class
 - Add OrangePi RV2 machine support
 - Add Tegra holoscan SDK support
@@ -42,6 +45,13 @@ and this project adheres to
 - Add whinlatter to compatible layers
 - Add support for required TUNE_FEATURES in features_check.bbclass
 - Add XFCEBASEBUILDCLASS in xfce bbclass
+- Fix several recipes to build with clang from oe-core
+- Add ptest support for icu and dosfstools
+
+### Removed
+
+- Deleted recipes - msr-tools
+- Remove obsolete 'terminfo' PACKAGECONFIG from clang
 
 ## [2025.06] - 2025-06-30
 

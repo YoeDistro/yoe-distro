@@ -65,6 +65,14 @@ CMAKE_VERBOSE ?= ""
 
 # Use clang as default compiler
 TOOLCHAIN ?= "clang"
+# Since default toolchain is clang, following packages want clang for native toolchain as well
+TOOLCHAIN_NATIVE:pn-rust ?= "clang"
+TOOLCHAIN_NATIVE:pn-rust-native ?= "clang"
+TOOLCHAIN_NATIVE:pn-nativesdk-rust ?= "clang"
+TOOLCHAIN_NATIVE:pn-rust-llvm ?= "clang"
+TOOLCHAIN_NATIVE:pn-rust-llvm-native ?= "clang"
+TOOLCHAIN_NATIVE:pn-nativesdk-rust-llvm ?= "clang"
+TOOLCHAIN_NATIVE:pn-qtwebengine ?= "clang"
 
 # Build clang into SDK as well
 CLANGSDK = "1"
@@ -108,6 +116,8 @@ DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
 DISTRO_FEATURES:remove:mipsarcho32 = "ld-is-lld"
 # qemu usermode segfaults the programs during glib-2.0-initial configure step
 DISTRO_FEATURES:remove:powerpc = "ld-is-lld"
+DISTRO_FEATURES_FILTER_NATIVE:append = " ld-is-lld lto lto-thin"
+DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld lto lto-thin"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
@@ -198,6 +208,7 @@ SKIP_RECIPE[bigbuckbunny-720p] = "big and doesn't really need to be tested so mu
 SKIP_RECIPE[tearsofsteel-1080p] = "big and doesn't really need to be tested so much"
 SKIP_RECIPE[python3-pyqt5] = "needs re-work  to build with sip3"
 SKIP_RECIPE[python3-pyqtchart] = "needs python3-pyqt5 which needs reworked to work with sip3"
+SKIP_RECIPE[python3-pyside6] = "Does not build with clang/lld"
 
 RDEPENDS:packagegroup-meta-multimedia:remove:pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
 RDEPENDS:packagegroup-meta-oe-fortran-packages:remove:pn-packagegroup-meta-oe = "lapack octave suitesparse"
