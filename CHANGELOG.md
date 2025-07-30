@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2025.07] - 2025-07-xx
+## [2025.07] - 2025-07-31
 
 ### Changed
 
@@ -30,6 +30,7 @@ and this project adheres to
 - Split libclc into a independent recipe out of clang
 - Upgrade cmake to 4.0.3
 - Upgrade clang to 20.1.8 release
+- Upgrade QT6 to latest 6.9 release
 
 ### Added
 
