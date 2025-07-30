@@ -53,6 +53,7 @@ and this project adheres to
 
 - Deleted recipes - msr-tools
 - Remove obsolete 'terminfo' PACKAGECONFIG from clang
+- Drop CCACHE_COMPILERCHECK
 
 ## [2025.06] - 2025-06-30
 
