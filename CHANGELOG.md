@@ -30,6 +30,7 @@ and this project adheres to
 - Split libclc into a independent recipe out of clang
 - Upgrade cmake to 4.0.3
 - Upgrade clang to 20.1.8 release
+- Upgrade QT6 to latest 6.9 release
 
 ### Added
 
