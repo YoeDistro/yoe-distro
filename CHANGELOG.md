@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025.08] - 2025-07-xx
+
+### Changed
+
+- Upgrade binutils to 2.45 release
+- Upgrade bash to 5.3
+- Cleanup setuptools3 class and enable parallelism in build step
+- Upgrade Rust from 1.87.0 -> 1.88.0
+- Fix recipes to build with glibc 2.42
+
+### Added
+
+- Add xz to HOSTTOOLS
+
+### Removed
+
+- Remove runtime-llvm override
+- Drop var-undefined QA check from package class
+
 ## [2025.07] - 2025-07-31
 
 ### Changed
