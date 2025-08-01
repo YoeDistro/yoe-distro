@@ -121,7 +121,7 @@ DISTRO_FEATURES_FILTER_NATIVE:append = " lto lto-thin"
 DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld lto lto-thin"
 
 # Configure clang cross-compiler to use lld as default linker
-PACKAGECONFIG:pn-clang-native:append:class-native = " lld"
+PACKAGECONFIG:append:pn-clang-native = " lld"
 
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
