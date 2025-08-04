@@ -15,6 +15,8 @@ and this project adheres to
 - Cleanup setuptools3 class and enable parallelism in build step
 - Upgrade Rust from 1.87.0 -> 1.88.0
 - Fix recipes to build with glibc 2.42
+- Update NodeJS to 22.18.0
+- Update pydantic core to 2.37.2 and fix build on RISCV32
 
 ### Added
 
