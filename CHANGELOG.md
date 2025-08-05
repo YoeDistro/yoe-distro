@@ -17,10 +17,15 @@ and this project adheres to
 - Fix recipes to build with glibc 2.42
 - Update NodeJS to 22.18.0
 - Update pydantic core to 2.37.2 and fix build on RISCV32
+- Use correct Python build backend class in several python module recipes
+- Split lld into a separate recipe out of clang
+- Enable ccache for all recipes if it is in HOSTTOOLS
+- Add +nocrypto to -mcpu when crypto not in features
 
 ### Added
 
 - Add xz to HOSTTOOLS
+- Add PEP517 build class for PDM
 
 ### Removed
 
