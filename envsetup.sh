@@ -504,6 +504,20 @@ yoe_clean_sstate() {
   $OE_BASE/sources/poky/scripts/sstate-cache-management.py -d -y --cache-dir=$OE_BASE/build/sstate-cache
 }
 
+# see - https://docs.yoctoproject.org/sdk-manual/extensible.html#setting-up-the-extensible-sdk-environment-directly-in-a-yocto-build
+yoe_setup_esdk_env() {
+  if test -z "$1"; then
+    bitbake meta-ide-support &&
+    bitbake build-sysroots -c build_native_sysroot &&
+    bitbake build-sysroots -c build_target_sysroot
+  else
+    bitbake meta-ide-support &&
+    bitbake "$1" &&
+    bitbake build-sysroots -c build_native_sysroot &&
+    bitbake build-sysroots -c build_target_sysroot
+  fi
+}
+
 # Docker integration
 # set DOCKER_REPO to something like yoedistro/yoe-build:trixie-x86_64
 # DOCKER_REPO can be set in scripts that wrap envsetup.sh
