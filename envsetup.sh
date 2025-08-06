@@ -489,11 +489,12 @@ yoe_console() {
 
 yoe_build_all() {
   # build images for all routinely tested platforms
-  MACHINES="raspberrypi3 beaglebone"
-  for m in $MACHINES; do
+  projects="rpi4-64 agx"
+  cd $OE_BASE
+  for p in $projects; do
     echo "=========================="
-    echo "Building $m ....."
-    export MACHINE=$m
+    echo "Building $p ....."
+    . ./envsetup.sh $p
     if ! bitbake yoe-simple-image; then
       return
     fi
