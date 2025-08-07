@@ -489,11 +489,12 @@ yoe_console() {
 
 yoe_build_all() {
   # build images for all routinely tested platforms
-  MACHINES="raspberrypi3 beaglebone"
-  for m in $MACHINES; do
+  projects="rpi4-64 agx"
+  cd $OE_BASE
+  for p in $projects; do
     echo "=========================="
-    echo "Building $m ....."
-    export MACHINE=$m
+    echo "Building $p ....."
+    . ./envsetup.sh $p
     if ! bitbake yoe-simple-image; then
       return
     fi
@@ -502,6 +503,20 @@ yoe_build_all() {
 
 yoe_clean_sstate() {
   $OE_BASE/sources/poky/scripts/sstate-cache-management.py -d -y --cache-dir=$OE_BASE/build/sstate-cache
+}
+
+# see - https://docs.yoctoproject.org/sdk-manual/extensible.html#setting-up-the-extensible-sdk-environment-directly-in-a-yocto-build
+yoe_setup_esdk_env() {
+  if test -z "$1"; then
+    bitbake meta-ide-support &&
+    bitbake build-sysroots -c build_native_sysroot &&
+    bitbake build-sysroots -c build_target_sysroot
+  else
+    bitbake meta-ide-support &&
+    bitbake "$1" &&
+    bitbake build-sysroots -c build_native_sysroot &&
+    bitbake build-sysroots -c build_target_sysroot
+  fi
 }
 
 # Docker integration

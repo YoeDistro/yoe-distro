@@ -21,11 +21,13 @@ and this project adheres to
 - Split lld into a separate recipe out of clang
 - Enable ccache for all recipes if it is in HOSTTOOLS
 - Add +nocrypto to -mcpu when crypto not in features
+- Upgrade glibc to 2.42 release
 
 ### Added
 
 - Add xz to HOSTTOOLS
 - Add PEP517 build class for PDM
+- Add yoe env function to setup direct eSDK
 
 ### Removed
 
