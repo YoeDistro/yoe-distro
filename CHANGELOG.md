@@ -22,12 +22,15 @@ and this project adheres to
 - Enable ccache for all recipes if it is in HOSTTOOLS
 - Add +nocrypto to -mcpu when crypto not in features
 - Upgrade glibc to 2.42 release
+- Default to zstd compressed image output
+- Update musl to tip of trunk
 
 ### Added
 
 - Add xz to HOSTTOOLS
 - Add PEP517 build class for PDM
 - Add yoe env function to setup direct eSDK
+- Add runqemu support for running compressed .zst rootfs images
 
 ### Removed
 
