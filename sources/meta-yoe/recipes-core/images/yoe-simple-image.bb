@@ -32,7 +32,7 @@ IMAGE_INSTALL:append:qemuall = " ssh-pregen-hostkeys"
 
 export IMAGE_BASENAME = "yoe-simple-image"
 
-BAD_RECOMMENDATIONS += "eudev-hwdb udev-hwdb libmodule-build-perl"
+BAD_RECOMMENDATIONS += "eudev-hwdb udev-hwdb libmodule-build-perl kbd-keymaps-pine"
 
 # How to add password/user to image
 #inherit extrausers

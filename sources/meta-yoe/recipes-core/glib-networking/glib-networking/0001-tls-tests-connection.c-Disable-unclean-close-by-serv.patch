@@ -1,0 +1,50 @@
+From b730d679898c92c1c33559260ea0a643c4b657a1 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Wed, 13 Aug 2025 15:17:15 -0700
+Subject: [PATCH] tls/tests/connection.c: Disable unclean-close-by-server with
+ openssl backend
+
+This test does not work when using openssl backend as reported here [1]
+
+Fixes
+
+GLib-Net:ERROR:../sources/glib-networking-2.80.1/tls/tests/connection.c:272:on_rehandshake_finish: assertion failed (error == NULL): Peer does not support safe renegotiation (g-tls-error-quark, 1)
+not ok /tls/openssl/connection/client-auth-rehandshake - GLib-Net:ERROR:../sources/glib-networking-2.80.1/tls/tests/connection.c:272:on_rehandshake_finish: assertion failed (error == NULL): Peer does not support safe renegotiation (g-tls-error-quark, 1)
+Bail out!
+FAIL: glib-networking/connection-openssl.test (Child process killed by signal 6)
+
+[1] https://gitlab.gnome.org/GNOME/glib-networking/-/issues/219
+
+Upstream-Status: Inappropriate [ Disabled test as a workaround until fixed ]
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ tls/tests/connection.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/tls/tests/connection.c
++++ b/tls/tests/connection.c
+@@ -3442,8 +3442,10 @@ main (int   argc,
+               setup_connection, test_invalid_chain_with_alternative_ca_cert, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/client-auth", TestConnection, NULL,
+               setup_connection, test_client_auth_connection, teardown_connection);
++#ifndef BACKEND_IS_OPENSSL
+   g_test_add ("/tls/" BACKEND "/connection/client-auth-rehandshake", TestConnection, NULL,
+               setup_connection, test_client_auth_rehandshake, teardown_connection);
++#endif
+   g_test_add ("/tls/" BACKEND "/connection/client-auth-failure", TestConnection, NULL,
+               setup_connection, test_client_auth_failure, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/client-auth-fail-missing-client-private-key", TestConnection, NULL,
+@@ -3472,10 +3474,12 @@ main (int   argc,
+               setup_connection, test_simultaneous_async, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/simultaneous-sync", TestConnection, NULL,
+               setup_connection, test_simultaneous_sync, teardown_connection);
++#ifndef BACKEND_IS_OPENSSL
+   g_test_add ("/tls/" BACKEND "/connection/simultaneous-async-rehandshake", TestConnection, NULL,
+               setup_connection, test_simultaneous_async_rehandshake, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/simultaneous-sync-rehandshake", TestConnection, NULL,
+               setup_connection, test_simultaneous_sync_rehandshake, teardown_connection);
++#endif
+   g_test_add ("/tls/" BACKEND "/connection/close-immediately", TestConnection, NULL,
+               setup_connection, test_close_immediately, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/unclean-close-by-server", TestConnection, NULL,

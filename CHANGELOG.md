@@ -24,6 +24,15 @@ and this project adheres to
 - Upgrade glibc to 2.42 release
 - Default to zstd compressed image output
 - Update musl to tip of trunk
+- Tweak nftables, networkmanager, wireguard, yoe-simple-image to shed bash, readline
+  libgmp, from image
+- Update linux-raspberrypi to 6.12.41
+- Update L4T from R36.4.3 -> R36.4.4, JetPack 6.2.1
+- Update OpenSSL to 3.5.2
+- Upgrade golang compiler to 1.24.6
+- Fix GCS annotations in compiler-rt on aarch64
+- Upgrade systemd to 257.8
+- Upgrade vulkan recipes to 1.4.321
 
 ### Added
 
