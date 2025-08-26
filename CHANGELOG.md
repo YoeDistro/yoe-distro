@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2025.08] - 2025-07-xx
+## [2025.08] - 2025-08-27
 
 ### Changed
 
@@ -29,10 +29,24 @@ and this project adheres to
 - Update linux-raspberrypi to 6.12.41
 - Update L4T from R36.4.3 -> R36.4.4, JetPack 6.2.1
 - Update OpenSSL to 3.5.2
-- Upgrade golang compiler to 1.24.6
+- Upgrade golang compiler to 1.25.0
 - Fix GCS annotations in compiler-rt on aarch64
 - Upgrade systemd to 257.8
 - Upgrade vulkan recipes to 1.4.321
+- Fix several recipes to work with x86-64-v3 tune
+- Upgrade gstreamer to 1.26.5
+- Handle USE_NLS in systemd and related dependencies
+- Switch qemux86-64 machine defaults to use x86-64-v3 tune
+- Update linux-yocto/6.12 to v6.12.41
+- Switch linux UAPI headers to v6.16
+- Devtool fixed for upgrading recipes which use git submodules
+- Upgrade cmake to 4.1.0
+- Upgrade GCC to 15.2.0 release
+- Musl ptests fixes for elfutils, strace
+- Upgrade LTTng and related recipes to 2.14.0
+- Use nocrypto default tunes for raspberrypi3-64,raspberrypi4-64
+- Fix several musl ptests in core-image-ptest-all
+- Introduce 6.16 reference kernels
 
 ### Added
 
@@ -40,11 +54,16 @@ and this project adheres to
 - Add PEP517 build class for PDM
 - Add yoe env function to setup direct eSDK
 - Add runqemu support for running compressed .zst rootfs images
+- New recipes: clight, clightd, libmodule
+- Add nocrypto tune variant for cortex-a53 and cortex-a72 CPUs
 
 ### Removed
 
 - Remove runtime-llvm override
 - Drop var-undefined QA check from package class
+- Remove distro_alias file
+- remove nghttp2-proxy from remove nghttp2
+- Remove babeltrace in favor of babeltrace2
 
 ## [2025.07] - 2025-07-31
 
