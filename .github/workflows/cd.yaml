@@ -42,7 +42,6 @@ jobs:
           /bin/bash -c "sed -i -e 's/SDK_UPDATE_URL.*$//' conf/site.conf"
       - name: Build Images
         run: |
-          /bin/bash -c ". ./envsetup.sh visionfive2 && bitbake yoe-installer-image"
           /bin/bash -c ". ./envsetup.sh rpi4-64 && bitbake yoe-installer-image yoe-kiosk-image"
           #/bin/bash -c ". ./envsetup.sh jetson-agx-orin-devkit && bitbake yoe-swupdate-image-tegra && cp build/tmp/deploy/images/p3737-0000-p3701-0005/yoe-swupdate-image-tegra-p3737-0000-p3701-0005.rootfs.swu deploy/"
       - name: ver
