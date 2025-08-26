@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2025.07"
-DISTRO_CODENAME = "Cormo"
+DISTRO_VERSION = "2025.08"
+DISTRO_CODENAME = "Dala"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
