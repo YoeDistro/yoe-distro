@@ -20,10 +20,10 @@ jobs:
         run: |
           export DOCKER_REPO=none
           export LANG=en_US.UTF-8
-          export SSTATE_CACHE_DIR=/scratch/sstate-cache
+          export SSTATE_CACHE_DIR=/srv/build/sstate-cache
           echo export DOCKER_REPO=none > local.sh
           echo export LANG=en_US.UTF-8 >> local.sh
-          echo export SSTATE_CACHE_DIR=/scratch/sstate-cache >> local.sh
+          echo export SSTATE_CACHE_DIR=/srv/build/sstate-cache >> local.sh
           cp conf/local.conf.sample conf/local.conf
           echo SSTATE_DIR = \"$SSTATE_CACHE_DIR\" >> conf/local.conf
           echo IMAGE_CLASSES += \"testimage testsdk\" >> conf/local.conf
