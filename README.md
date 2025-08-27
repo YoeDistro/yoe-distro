@@ -1,6 +1,6 @@
 <img src="docs/yoe-logo.png?raw=true" width="180">
 
-[![Yoe Distro CI](https://github.com/YoeDistro/yoe-distro/workflows/Yoe%20Distro%20CI/badge.svg?branch=master)](https://github.com/YoeDistro/yoe-distro/actions/workflows/yoe.yml?query=workflow%3AYoe+branch%3Amaster)
+[![Yoe Distro CI](https://github.com/YoeDistro/yoe-distro/actions/workflows/ci.yaml/badge.svg)](https://github.com/YoeDistro/yoe-distro/actions/workflows/ci.yaml)
 [![](https://tokei.rs/b1/github/YoeDistro/yoe-distro?category=code)](https://github.com/XAMPPRocky/tokei)
 
 # Yoe Embedded Linux Distribution  🐑
