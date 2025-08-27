@@ -25,16 +25,23 @@ KERNEL_A_DTB_PARTNAME = "A_kernel-dtb"
 KERNEL_B_PARTNAME = "B_kernel"
 KERNEL_B_DTB_PARTNAME = "B_kernel-dtb"
 
-# images to build before building swupdate image
-IMAGE_DEPENDS = "${SWUPDATE_CORE_IMAGE_NAME} tegra-uefi-capsules tegra-swupdate-script tegra-espimage"
+# images to build before building swupdate image. For any non image depends, add to the do_swuimage[depends] instead.
+IMAGE_DEPENDS = "${SWUPDATE_CORE_IMAGE_NAME} tegra-espimage"
 
 ESP_ARCHIVE ?= "${TEGRA_ESP_IMAGE}-${MACHINE}.tar.gz"
 
+# Prepend "devicetree" to the ${DTBFILE} in the images list, since this is the target for do_deploy
+# On the nvidia-kernel-oot-dtb recipe.
+DTBFILE_PATH = "devicetree/${DTBFILE}"
+
 # images and files that will be included in the .swu image
-DTBFILE_PATH = "${@'${EXTERNAL_KERNEL_DEVICETREE}/${DTBFILE}' if len(d.getVar('EXTERNAL_KERNEL_DEVICETREE')) else '${DTBFILE}'}"
 SWUPDATE_IMAGES = "${ROOTFS_FILENAME} tegra-bl.cap ${DEPLOY_KERNEL_IMAGE} ${DTBFILE_PATH} tegra-swupdate-script.lua ${ESP_ARCHIVE}"
 
-do_swuimage[depends] += "${DTB_EXTRA_DEPS}"
+# All non-image related depends go here
+do_swuimage[depends] += "${@'virtual/dtb:do_deploy' if d.getVar('PREFERRED_PROVIDER_virtual/dtb') else ''}"
+do_swuimage[depends] += "virtual/kernel:do_deploy"
+do_swuimage[depends] += "tegra-uefi-capsules:do_deploy"
+do_swuimage[depends] += "tegra-swupdate-script:do_deploy"
 
 # Add a link using the core image name.swu to the resulting swu image
 do_swuimage:append() {
