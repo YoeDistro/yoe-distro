@@ -28,6 +28,7 @@ and this project adheres to
 - Upgrade rust compiler to 1.89.0
 - Address all failures in core-image-ptest-all for qemux86-64/musl
 - Upgrade apt to 3.0.3
+- Upgrade QT6 to use 6.10 release
 
 ### Added
 
