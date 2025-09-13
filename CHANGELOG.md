@@ -11,6 +11,29 @@ and this project adheres to
 ### Changed
 
 - Reduce use of --undefined-version with lld, fix recipes
+- Upgrade to Clang 21.1.0 major release
+- Fix and upgrade recipes to build with clang-21
+- Upgrade bpftrace to 0.24.0
+- Upgrade boost to 1.89.0 and fix recipes for API changes
+- Check recipes needing opengl distro feature
+- Upgrade klibc to 2.0.14
+- Upgrade nodejs to 22.19.0
+- Fix beaglev-ahead support and upgrade kernel to 6.15
+- Update NVCC GCC to 13.2
+- Add support for OVERLAYS for tegra platforms
+- Bump default kernel reference for QEMU machines to 6.16
+- Upgrade mesa to 25.2.2
+- Upgrade linux-yocto/6.16 to 6.16.4 and linux-yocto/6.12 to 6.12.44
+- Upgrade ruby to 3.4.5
+- Upgrade rust compiler to 1.89.0
+- Address all failures in core-image-ptest-all for qemux86-64/musl
+- Upgrade apt to 3.0.3
+- Upgrade QT6 to use 6.10 release
+
+### Added
+
+- New recipes - python3-pre-commit, python3-nodeenv, python3-identify
+  python3-ukkonen, python3-cfgv, libnvjpeg
 
 ## [2025.08] - 2025-08-27
 
