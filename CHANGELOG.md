@@ -23,17 +23,24 @@ and this project adheres to
 - Add support for OVERLAYS for tegra platforms
 - Bump default kernel reference for QEMU machines to 6.16
 - Upgrade mesa to 25.2.2
-- Upgrade linux-yocto/6.16 to 6.16.4 and linux-yocto/6.12 to 6.12.44
+- Upgrade linux-yocto/6.16 to 6.16.7 and linux-yocto/6.12 to 6.12.47
 - Upgrade ruby to 3.4.5
 - Upgrade rust compiler to 1.89.0
 - Address all failures in core-image-ptest-all for qemux86-64/musl
 - Upgrade apt to 3.0.3
 - Upgrade QT6 to use 6.10 release
+- Upgrade ffmpeg to 8.0 and fix recipes to build with ffmpeg 8.0 APIs
+- Fix beaglev-ahead kernel builds
+- Enable GPU backends for the opencl DISTRO_FEATURE
+- Upgrade clang to 21.1.1 release
+- Upgrade binutils on to latest on 2.45 release branch
+- Remove fcntl-lock from util-linux
 
 ### Added
 
 - New recipes - python3-pre-commit, python3-nodeenv, python3-identify
-  python3-ukkonen, python3-cfgv, libnvjpeg
+  python3-ukkonen, python3-cfgv, libnvjpeg, tinycompress, libtatsu
+- Add opencl new distro feature
 
 ## [2025.08] - 2025-08-27
 
