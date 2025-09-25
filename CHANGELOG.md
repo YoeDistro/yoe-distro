@@ -35,12 +35,20 @@ and this project adheres to
 - Upgrade clang to 21.1.1 release
 - Upgrade binutils on to latest on 2.45 release branch
 - Remove fcntl-lock from util-linux
+- Provide virtuals for vulkan and opencl drivers in mesa-pvr-riscv
+- Update curl to 8.16.0
+- Update mesa to 25.2.3
 
 ### Added
 
 - New recipes - python3-pre-commit, python3-nodeenv, python3-identify
   python3-ukkonen, python3-cfgv, libnvjpeg, tinycompress, libtatsu
 - Add opencl new distro feature
+- Add erofs filesystem types support to Runqemu
+
+### Removed
+
+- Delete COMPILER_RT and LIBCPLUSPLUS variables and its use
 
 ## [2025.08] - 2025-08-27
 
