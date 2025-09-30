@@ -1,3 +1,11 @@
+[submodule "sources/openembedded-core"]
+	path = sources/openembedded-core
+	url = https://github.com/YoeDistro/openembedded-core
+	branch = master
+[submodule "sources/bitbake"]
+	path = sources/bitbake
+	url = https://github.com/YoeDistro/bitbake
+	branch = master
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = https://github.com/YoeDistro/meta-openembedded
@@ -49,10 +57,6 @@
 [submodule "sources/meta-rockchip"]
 	path = sources/meta-rockchip
 	url = https://github.com/YoeDistro/meta-rockchip
-	branch = master
-[submodule "sources/poky"]
-	path = sources/poky
-	url = https://github.com/YoeDistro/poky
 	branch = master
 [submodule "sources/meta-variscite-bsp-common"]
 	path = sources/meta-variscite-bsp-common

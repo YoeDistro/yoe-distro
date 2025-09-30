@@ -15,7 +15,7 @@ a package manager such as opkg.
 
 - `packagegroup-core-buildessential` - this is most often what you need and is
   very similiar to the build-essential package on Debian/Ubuntu.
-  [recipe](https://github.com/YoeDistro/poky/blob/master/meta/recipes-core/packagegroups/packagegroup-core-buildessential.bb)
+  [recipe](https://github.com/YoeDistro/openembedded-core/blob/master/meta/recipes-core/packagegroups/packagegroup-core-buildessential.bb)
 - `packagegroup-self-hosted` - a much more extensive list of packages that
   includes what is in buildessential, plus a lot more.
-  [recipe](https://github.com/YoeDistro/poky/blob/master/meta/recipes-core/packagegroups/packagegroup-self-hosted.bb)
+  [recipe](https://github.com/YoeDistro/openembedded-core/blob/master/meta/recipes-core/packagegroups/packagegroup-self-hosted.bb)
