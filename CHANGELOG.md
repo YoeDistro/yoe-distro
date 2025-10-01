@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2025.09] - 2025-09-xx
+## [2025.09] - 2025-09-30
 
 ### Changed
 
@@ -23,7 +23,7 @@ and this project adheres to
 - Add support for OVERLAYS for tegra platforms
 - Bump default kernel reference for QEMU machines to 6.16
 - Upgrade mesa to 25.2.2
-- Upgrade linux-yocto/6.16 to 6.16.7 and linux-yocto/6.12 to 6.12.47
+- Upgrade linux-yocto/6.16 to 6.16.9 and linux-yocto/6.12 to 6.12.49
 - Upgrade ruby to 3.4.5
 - Upgrade rust compiler to 1.89.0
 - Address all failures in core-image-ptest-all for qemux86-64/musl
@@ -38,6 +38,7 @@ and this project adheres to
 - Provide virtuals for vulkan and opencl drivers in mesa-pvr-riscv
 - Update curl to 8.16.0
 - Update mesa to 25.2.3
+- Use OE-core + bitbake instead of poky repo for core layer
 
 ### Added
 
