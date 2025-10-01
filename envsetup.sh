@@ -207,7 +207,7 @@ export OE_BASE
 #--------------------------------------------------------------------------
 # Include up-to-date bitbake in our PATH.
 #--------------------------------------------------------------------------
-export PATH=${OE_SOURCE_DIR}/poky/scripts:${OE_SOURCE_DIR}/poky/bitbake/bin:${OE_BUILD_TMPDIR}/sysroots/`uname -m`/usr/bin:${PATH}
+export PATH=${OE_SOURCE_DIR}/openembedded-core/scripts:${OE_SOURCE_DIR}/bitbake/bin:${OE_BUILD_TMPDIR}/sysroots/`uname -m`/usr/bin:${PATH}
 # remove duplicate entries from path
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 #--------------------------------------------------------------------------
@@ -243,7 +243,7 @@ fi
 #--------------------------------------------------------------------------
 # Set up the bitbake path to find the OpenEmbedded recipes.
 #--------------------------------------------------------------------------
-export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/poky/meta${BBPATH_EXTRA}
+export BBPATH=${OE_BUILD_DIR}:${OE_SOURCE_DIR}/openembedded-core/meta${BBPATH_EXTRA}
 
 #--------------------------------------------------------------------------
 # If an env already exists, use it, otherwise generate it
@@ -502,7 +502,7 @@ yoe_build_all() {
 }
 
 yoe_clean_sstate() {
-  $OE_BASE/sources/poky/scripts/sstate-cache-management.py -d -y --cache-dir=$OE_BASE/build/sstate-cache
+  $OE_BASE/sources/openembedded-core/scripts/sstate-cache-management.py -d -y --cache-dir=$OE_BASE/build/sstate-cache
 }
 
 # see - https://docs.yoctoproject.org/sdk-manual/extensible.html#setting-up-the-extensible-sdk-environment-directly-in-a-yocto-build
@@ -656,38 +656,38 @@ wrapcmd() {
 }
 
 bitbake() {
-  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake $@
+  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake $@
 }
 bitbake-diffsigs() {
-  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-diffsigs $@
+  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-diffsigs $@
 }
 
 bitbake-dumpsig() {
-  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-dumpsig $@
+  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-dumpsig $@
 }
 
 bitbake-getvar() {
-  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-getvar $@
+  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-getvar $@
 }
 
 bitbake-layers() {
-  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-layers $@
+  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-layers $@
 }
 
 bitbake-selftest() {
-  wrapcmd ${OE_BASE}/sources/poky/bitbake/bin/bitbake-selftest $@
+  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-selftest $@
 }
 
 devtool() {
-  wrapcmd ${OE_BASE}/sources/poky/scripts/devtool $@
+  wrapcmd ${OE_BASE}/sources/scripts/devtool $@
 }
 
 oe-pkgdata-util() {
-  wrapcmd ${OE_BASE}/sources/poky/scripts/oe-pkgdata-util $@
+  wrapcmd ${OE_BASE}/sources/scripts/oe-pkgdata-util $@
 }
 
 recipetool() {
-  wrapcmd ${OE_BASE}/sources/poky/scripts/recipetool $@
+  wrapcmd ${OE_BASE}/sources/scripts/recipetool $@
 }
 
 
@@ -767,10 +767,10 @@ yoe_deploy_update() {
 
 # Needed for running per-image ptest images in parallel on qemu
 yoe_create_tap_devices() {
-  if [ ! -e ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs ]; then
+  if [ ! -e ${OE_BASE}/sources/openembedded-core/scripts/runqemu-gen-tapdevs ]; then
     bitbake qemu-helper-native
   fi
-  sudo ${OE_BASE}/sources/poky/scripts/runqemu-gen-tapdevs `id -g` `nproc --all`
+  sudo ${OE_BASE}/sources/openembedded-core/scripts/runqemu-gen-tapdevs `id -g` `nproc --all`
 }
 
 # link downloads and sstate directory to some common location
