@@ -679,15 +679,15 @@ bitbake-selftest() {
 }
 
 devtool() {
-  wrapcmd ${OE_BASE}/sources/scripts/devtool $@
+  wrapcmd ${OE_BASE}/sources/openembedded-core/scripts/devtool $@
 }
 
 oe-pkgdata-util() {
-  wrapcmd ${OE_BASE}/sources/scripts/oe-pkgdata-util $@
+  wrapcmd ${OE_BASE}/sources/openembedded-core/scripts/oe-pkgdata-util $@
 }
 
 recipetool() {
-  wrapcmd ${OE_BASE}/sources/scripts/recipetool $@
+  wrapcmd ${OE_BASE}/sources/openembedded-core/scripts/recipetool $@
 }
 
 
