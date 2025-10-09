@@ -74,6 +74,7 @@ TOOLCHAIN_NATIVE:pn-rust-llvm ?= "clang"
 TOOLCHAIN_NATIVE:pn-rust-llvm-native ?= "clang"
 TOOLCHAIN_NATIVE:pn-nativesdk-rust-llvm ?= "clang"
 TOOLCHAIN_NATIVE:pn-qtwebengine ?= "clang"
+TOOLCHAIN_NATIVE:pn-qtpdf ?= "clang"
 
 # Build clang into SDK as well
 CLANGSDK = "1"
