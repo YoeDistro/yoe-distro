@@ -74,6 +74,7 @@ TOOLCHAIN_NATIVE:pn-rust-llvm ?= "clang"
 TOOLCHAIN_NATIVE:pn-rust-llvm-native ?= "clang"
 TOOLCHAIN_NATIVE:pn-nativesdk-rust-llvm ?= "clang"
 TOOLCHAIN_NATIVE:pn-qtwebengine ?= "clang"
+TOOLCHAIN_NATIVE:pn-qtpdf ?= "clang"
 
 # Build clang into SDK as well
 CLANGSDK = "1"
@@ -126,13 +127,6 @@ PACKAGECONFIG:append:pn-clang-native = " lld"
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
 #PREFERRED_PROVIDER_nativesdk-pkgconfig = "nativesdk-pkgconf"
-
-PREFERRED_PROVIDER_llvm = "clang"
-PREFERRED_PROVIDER_llvm-native = "clang-native"
-PREFERRED_PROVIDER_nativesdk-llvm = "nativesdk-clang"
-PROVIDES:pn-clang = "llvm"
-PROVIDES:pn-clang-native = "llvm-native"
-PROVIDES:pn-nativesdk-clang = "nativesdk-llvm"
 
 PREFERRED_PROVIDER_virtual/libsdl2 = "libsdl2"
 PREFERRED_PROVIDER_virtual/libsdl2-native = "libsdl2-native"
