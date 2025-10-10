@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025.10] - 2025-10-xx
+
+### Changed
+
+- Use clang for native pieces for qtpdf as well
+- Upgrade mariaDB to 11.4.8
+- Upgrade reference u-boot 2025.07 -> 2025.10
+- Upgrade OpenSSL to 3.5.4
+- Separate clang and llvm into separate recipes
+- Upgrade Clang/LLVM to 21.1.2 release
+- Update musl to tip of trunk
+- Require mimimum gcc version on build host to 10.1
+
+### Added
+
+- Added recipes - touchpademulator, gn
+- Add new machine for Raspberry Pi 2B V1.2 (64-bit)
+
 ## [2025.09] - 2025-09-30
 
 ### Changed
