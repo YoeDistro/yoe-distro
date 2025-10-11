@@ -613,7 +613,7 @@ dkr() {
   fi
 
   if [ -c /dev/kvm ]; then
-    DOCKER_ENABLE_KVM="--device /dev/kvm"
+    DOCKER_ENABLE_KVM="--device=/dev/kvm"
   else
     DOCKER_ENABLE_KVM=""
   fi
@@ -636,9 +636,9 @@ dkr() {
     $UID_ARGS \
     $DOCKER_EXTRA_ARGS \
     --cap-add=NET_ADMIN \
-    --device /dev/net/tun \
+    --device=/dev/net/tun \
     ${DOCKER_ENABLE_KVM} \
-    --device /dev/vhost-net \
+    --device=/dev/vhost-net \
     --ulimit "nofile=1024:1048576" \
     ${DOCKER_REPO} /bin/bash -c "$CMD"
 }
