@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount persistent /data from DATA partition (ext4, growfs)
+After=data-format.service
+Requires=data-format.service
+
+[Mount]
+What=/dev/disk/by-partlabel/DATA
+Where=/data
+Type=ext4
+Options=defaults,x-systemd.growfs
+
+[Install]
+WantedBy=local-fs.target
+
