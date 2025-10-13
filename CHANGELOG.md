@@ -15,14 +15,20 @@ and this project adheres to
 - Upgrade reference u-boot 2025.07 -> 2025.10
 - Upgrade OpenSSL to 3.5.4
 - Separate clang and llvm into separate recipes
-- Upgrade Clang/LLVM to 21.1.2 release
+- Upgrade Clang/LLVM to 21.1.3 release
 - Update musl to tip of trunk
 - Require mimimum gcc version on build host to 10.1
+- Upgrade abseil-cpp to 20250814.1 release and fix its dependents
+- Add dmem support in OpenOCD for am64xx and j784s4 platforms
+- Fix tegra-storage-layout to work with UNPACKDIR change
+- Upgrade go compiler to 1.25.2
+- Add persisten /data partition to AGX platforms, reduce rootfs size to 8GB
 
 ### Added
 
 - Added recipes - touchpademulator, gn
 - Add new machine for Raspberry Pi 2B V1.2 (64-bit)
+- Add zsh-completion-pkgs image feature
 
 ## [2025.09] - 2025-09-30
 
