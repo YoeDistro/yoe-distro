@@ -1,0 +1,23 @@
+[Unit]
+Description=Initialize DATA partition with ext4 (first-boot)
+DefaultDependencies=no
+After=dev-disk-by\x2dpartlabel-DATA.device
+Before=local-fs.target
+Requires=dev-disk-by\x2dpartlabel-DATA.device
+
+[Service]
+Type=oneshot
+# Only mkfs if it's not already an ext4 filesystem; otherwise do nothing.
+ExecStart=/bin/sh -c '\
+  DEV=/dev/disk/by-partlabel/DATA; \
+  if ! blkid "$DEV" | grep -q "TYPE=\\"ext4\\""; then \
+    echo "Creating ext4 on $DEV (label=DATA)"; \
+    /sbin/mkfs.ext4 -L DATA "$DEV"; \
+  else \
+    echo "DATA partition already formatted; skipping mkfs"; \
+  fi'
+
+RemainAfterExit=yes
+
+[Install]
+WantedBy=local-fs.target
