@@ -11,7 +11,7 @@ distribution does not end at demo images but rather begins there.
 
 ## Example 👀
 
-This following is example of building and installing a linux system from scratch
+The following is example of building and installing a linux system from scratch
 on a Raspberry PI 3:
 
 ## Install Pre-requisites 💻
