@@ -67,9 +67,6 @@ CMAKE_VERBOSE ?= ""
 PREFERRED_TOOLCHAIN_TARGET ?= "clang"
 PREFERRED_TOOLCHAIN_SDK ?= "clang"
 # Since default toolchain is clang, following packages want clang for native toolchain as well
-TOOLCHAIN_NATIVE:pn-rust ?= "clang"
-TOOLCHAIN_NATIVE:pn-rust-native ?= "clang"
-TOOLCHAIN_NATIVE:pn-nativesdk-rust ?= "clang"
 TOOLCHAIN_NATIVE:pn-qtwebengine ?= "clang"
 TOOLCHAIN_NATIVE:pn-qtpdf ?= "clang"
 
