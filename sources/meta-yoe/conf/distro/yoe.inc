@@ -77,6 +77,10 @@ CLANGSDK = "1"
 TC_CXX_RUNTIME ?= "llvm"
 RUNTIME ?= "llvm"
 
+# Work-around until https://patchwork.yoctoproject.org/project/oe-core/patch/20251018070621.3456800-1-raj.khem@gmail.com/
+# is merged
+LDFLAGS:append:toolchain-clang:class-cross-canadian = " -Wl,-dynamic-linker,${base_libdir}/ld-linux-x86-64.so.2"
+
 # Yoe does not build binary feeds, this build QA error breaks builds unnessarily
 # buildpaths is demoted unless layers needed in distro are fixed
 ERROR_QA:remove = "version-going-backwards buildpaths"
