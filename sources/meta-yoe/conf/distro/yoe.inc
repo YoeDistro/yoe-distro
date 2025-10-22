@@ -74,8 +74,7 @@ TOOLCHAIN_NATIVE:pn-qtpdf ?= "clang"
 CLANGSDK = "1"
 
 # Use compile-rt/libcxx/libunwind as default runtime libraries
-TC_CXX_RUNTIME ?= "llvm"
-RUNTIME ?= "llvm"
+#TC_CXX_RUNTIME ?= "llvm"
 
 # Work-around until https://patchwork.yoctoproject.org/project/oe-core/patch/20251018070621.3456800-1-raj.khem@gmail.com/
 # is merged
