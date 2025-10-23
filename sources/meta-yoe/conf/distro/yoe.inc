@@ -67,12 +67,6 @@ CMAKE_VERBOSE ?= ""
 PREFERRED_TOOLCHAIN_TARGET ?= "clang"
 PREFERRED_TOOLCHAIN_SDK ?= "clang"
 # Since default toolchain is clang, following packages want clang for native toolchain as well
-TOOLCHAIN_NATIVE:pn-rust ?= "clang"
-TOOLCHAIN_NATIVE:pn-rust-native ?= "clang"
-TOOLCHAIN_NATIVE:pn-nativesdk-rust ?= "clang"
-TOOLCHAIN_NATIVE:pn-rust-llvm ?= "clang"
-TOOLCHAIN_NATIVE:pn-rust-llvm-native ?= "clang"
-TOOLCHAIN_NATIVE:pn-nativesdk-rust-llvm ?= "clang"
 TOOLCHAIN_NATIVE:pn-qtwebengine ?= "clang"
 TOOLCHAIN_NATIVE:pn-qtpdf ?= "clang"
 
@@ -80,8 +74,11 @@ TOOLCHAIN_NATIVE:pn-qtpdf ?= "clang"
 CLANGSDK = "1"
 
 # Use compile-rt/libcxx/libunwind as default runtime libraries
-TC_CXX_RUNTIME ?= "llvm"
-RUNTIME ?= "llvm"
+#TC_CXX_RUNTIME ?= "llvm"
+
+# Work-around until https://patchwork.yoctoproject.org/project/oe-core/patch/20251018070621.3456800-1-raj.khem@gmail.com/
+# is merged
+LDFLAGS:append:toolchain-clang:class-cross-canadian = " -Wl,-dynamic-linker,${base_libdir}/ld-linux-x86-64.so.2"
 
 # Yoe does not build binary feeds, this build QA error breaks builds unnessarily
 # buildpaths is demoted unless layers needed in distro are fixed
@@ -110,7 +107,8 @@ INHERIT += "${@bb.utils.contains_any('BUILD_ARCH', 'ppc64le riscv64', '', 'unina
 INHERIT += "image-buildinfo create-spdx"
 
 DISTRO_FEATURES:append = " opengl multiarch wayland pam vulkan usrmerge ld-is-lld"
-
+# Use lld as default linker for nativesdk clang as well
+DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld"
 # See https://discourse.llvm.org/t/lld-cannot-make-pie-binaries-on-x32/67131
 DISTRO_FEATURES:remove:linux-gnux32 = "ld-is-lld"
 DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
