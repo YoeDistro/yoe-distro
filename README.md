@@ -11,7 +11,7 @@ distribution does not end at demo images but rather begins there.
 
 ## Example 👀
 
-The following is example of building and installing a linux system from scratch
+The following is an example of building and installing a linux system from scratch
 on a Raspberry PI 3:
 
 ## Install Pre-requisites 💻
@@ -30,7 +30,7 @@ Add yourself to the `docker` group:
 Install nftable version of iptables on host distribution this is needed for VNC
 port forwarding to work on docker
 
-- Archlinux based sytems - `sudo pacman -S iptables-nft`
+- Archlinux based systems - `sudo pacman -S iptables-nft`
 
 - On host systems with 8G RAM or less it will be necessary to ensure a swap file
   of 8G.
@@ -53,9 +53,9 @@ port forwarding to work on docker
 
 [Detailed documentation](docs/README.md)
 
-## Vision 🔭 
+## Vision 🔭
 
-There are many Embedded Linux distribution built on top of OpenEmbedded/Yocto.
+There are many Embedded Linux distributions built on top of OpenEmbedded/Yocto.
 There is the Poky reference distribution. Most SOC and SOM vendors provide a
 Yocto variant that supports their products (often put together with repo). While
 these all provide good ways to build demo images, we feel something slightly
@@ -64,7 +64,7 @@ different is needed for product development. Thus, the following goals:
 1. **simple**: directory layout is logical so it is easy to find things, and
    tooling is as simple as possible. Emphasis is on logical organization,
    minimal magic, and good tooling where it makes sense. We try to minimize
-   uneeded indirection or abstraction unless it really adds value.
+   unneeded indirection or abstraction unless it really adds value.
 1. **modern**: generate a modern Linux root filesystem using the latest
    technologies.
 1. **broad platform support**: support a range of single board computers (SBC),
@@ -78,7 +78,7 @@ different is needed for product development. Thus, the following goals:
    repeatable builds
 1. **extendable**: simple to modify and add your own custom software, scripts
    and tooling. The focus is not on hiding or abstracting Yocto functionality,
-   but rather provider simpler and clearer ways to use it.
+   but rather provide simpler and clearer ways to use it.
 1. **maintainable**: product lifecycles run for many years, so we need a
    solution where we can build images on a number of different hosts as time
    marches on. We achieve this through a simple and transparent
@@ -124,7 +124,7 @@ yoe\_ that can be executed. Type yoe\_ <tab><tab> to see them.
 - _conf_: configuration files for the build
 - _sources_: various sources used for the build. The entries in this directory
   are git submodules. Note, by default, submodules are shallow clones. If you
-  need the the full git history of a submodule, then run `git fetch --unshallow`
+  need the full git history of a submodule, then run `git fetch --unshallow`
   in the submodule directory.
 - _downloads_: contains files that are downloaded by various recipes during
   builds.
@@ -165,7 +165,7 @@ Sometimes you want to install packages you build on the target system without
 building and re-installing the entire rootfs. This can be done using a
 [feed server](docs/packages.md).
 
-This advantage of a feed server versus scp'ing opkg files to the target and
+The advantage of a feed server versus scp'ing opkg files to the target and
 installing manually is that dependencies will automatically get installed. This
 mechanism is very useful for packages that are only needed occasionally during
 development (gdb, screen, strace, iperf, etc).
@@ -184,7 +184,7 @@ Pull requests are welcome.
 
 For support or to discuss this project, use one of the following options:
 
-- [Yoe community forum](https://community.tmpdir.org/c/yoe-distro/6) 💬 
+- [Yoe community forum](https://community.tmpdir.org/c/yoe-distro/6) 💬
 - [Open a github issue](https://github.com/YoeDistro/yoe-distro/issues/new) #️⃣
 - [Yoe Videos](https://www.youtube.com/@yoedistro)  🎬
 
