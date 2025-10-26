@@ -23,12 +23,26 @@ and this project adheres to
 - Fix tegra-storage-layout to work with UNPACKDIR change
 - Upgrade go compiler to 1.25.2
 - Add persisten /data partition to AGX platforms, reduce rootfs size to 8GB
+- Update LVGL recipes to 9.4.0
+- Update rtorrent to 0.16.1
+- Fix failing ptests in meta-oe, meta-perl layers
+- Update PHP to 8.4.14
+- Upgrade NodeJS to 22.21.0
+- Upgrade linux-yocto/6.16 to 6.16.11 and linux-yocto/6.12 to 6.12.52
+- Use llvm instead of rust-llvm in rust recipe
 
 ### Added
 
-- Added recipes - touchpademulator, gn
+- Added recipes - touchpademulator, gni, python3-pcpp, python3-questionary
+  python3-pyfiglet, python3-pybase64, python3-orjson, python3-mmh3
+  libpisp
 - Add new machine for Raspberry Pi 2B V1.2 (64-bit)
+- Add support for OrangePi RV2 with mainline Linux
 - Add zsh-completion-pkgs image feature
+
+### Removed
+
+- Removed recipes - rust-llvm
 
 ## [2025.09] - 2025-09-30
 
@@ -422,7 +436,7 @@ and this project adheres to
 
 ### Added
 
-- Add new recipes - libheif, yyjson, ctre, jsoncons, cxxopts,  
+- Add new recipes - libheif, yyjson, ctre, jsoncons, cxxopts,
   pistache, spectre-meltdown-checker, python3-nanobind
   python3-lief, cheese, opencl-cts
 - add Go mod h1 checksum support to bitbake fetcher
@@ -518,7 +532,7 @@ and this project adheres to
   python3-rouge-score, python3-nltk, python3-fuse
   raspi-utils4, canopenterm, pocketpy, libpanel, libdex
   python3-mlcommons-loadgen, python3-inline-snapshot
-  python3-black, python3-scikit-build-core, pytesseract 
+  python3-black, python3-scikit-build-core, pytesseract
 - Add recipes for tcl/tk 9.0 and tcl/tk 8.x to live side-by-side
 - Add cython bbclass to abstract cython usage during build
 - Add SECURITY.md file to various layers
@@ -567,7 +581,7 @@ and this project adheres to
 - Add ztd compression type option to SDK_ARCHIVE_TYPE
 - Upgrade go compiler to 1.22.8
 - Uphgrade systemd to 256.7
-- Drop openssl/riscv workarounds to add libatomic 
+- Drop openssl/riscv workarounds to add libatomic
 
 ### Added
 
@@ -667,7 +681,7 @@ and this project adheres to
 ### Removed
 
 - Removed VOLATILE_TMP_DIR and VOLATILE_LOG_DIR bitbake variables
- 
+
 ## [2024.07] - 2024-07-30
 
 ### Changed
@@ -730,7 +744,7 @@ and this project adheres to
 - Disable -Wincompatible-pointer-types as error in few recipes
   to build with GCC-14
 - Upgrade libcamera to 0.3.0
-- Adjust several recipes to build with libtool 2.5 
+- Adjust several recipes to build with libtool 2.5
 - Update linux-yocto/6.6 v6.6.32
 - Upgrade QEMU to 9.0.0
 - Upgrade OpenSSL to 3.3.1
@@ -752,7 +766,7 @@ and this project adheres to
 ### Added
 
 - Added new recipes for - sexpect, trompeloeil, cabextract
-  udpcast, python3-typer, magic-enum 
+  udpcast, python3-typer, magic-enum
 - Add ptests support for python3-dasbus, python3-flask
 - Add support for BeagleV-Ahead SBC
 - Add support for jetson-agx-orin-devkit
