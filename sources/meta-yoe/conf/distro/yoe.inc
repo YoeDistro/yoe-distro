@@ -116,8 +116,8 @@ DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
 DISTRO_FEATURES:remove:mipsarcho32 = "ld-is-lld"
 # qemu usermode segfaults the programs during glib-2.0-initial configure step
 DISTRO_FEATURES:remove:powerpc = "ld-is-lld"
-DISTRO_FEATURES_FILTER_NATIVE:append = " lto lto-thin"
-DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld lto lto-thin"
+DISTRO_FEATURES_FILTER_NATIVE:append = " lto thin-lto"
+DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld lto thin-lto"
 
 # Configure clang cross-compiler to use lld as default linker
 PACKAGECONFIG:append:pn-clang-native = " lld"
