@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2025.10] - 2025-10-xx
+## [2025.10] - 2025-10-31
 
 ### Changed
 
@@ -15,13 +15,13 @@ and this project adheres to
 - Upgrade reference u-boot 2025.07 -> 2025.10
 - Upgrade OpenSSL to 3.5.4
 - Separate clang and llvm into separate recipes
-- Upgrade Clang/LLVM to 21.1.3 release
+- Upgrade Clang/LLVM to 21.1.4 release
 - Update musl to tip of trunk
 - Require mimimum gcc version on build host to 10.1
 - Upgrade abseil-cpp to 20250814.1 release and fix its dependents
 - Add dmem support in OpenOCD for am64xx and j784s4 platforms
 - Fix tegra-storage-layout to work with UNPACKDIR change
-- Upgrade go compiler to 1.25.2
+- Upgrade go compiler to 1.25.3
 - Add persisten /data partition to AGX platforms, reduce rootfs size to 8GB
 - Update LVGL recipes to 9.4.0
 - Update rtorrent to 0.16.1
@@ -30,6 +30,9 @@ and this project adheres to
 - Upgrade NodeJS to 22.21.0
 - Upgrade linux-yocto/6.16 to 6.16.11 and linux-yocto/6.12 to 6.12.52
 - Use llvm instead of rust-llvm in rust recipe
+- Upgrade openssh to 10.0p1 -> 10.1p1
+- Upgrade OPKG 0.7.0 -> 0.8.0
+- Fix cross-canadian packages to work with clang in SDK environment
 
 ### Added
 
