@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025.11] - 2025-11-xx
+
+### Changed
+
+- Update linux-yocto/6.12: to 6.12.55
+- Introduce linux-yocto/6.17 and update to v6.17.6
+- Apply --print-multiarch omission in python to non-native builds with clang
+- Update gnome-software to 49.1
+- Fix uuu build with clang-21 and cmake-4
+- Fix linux-firmware and perf build with linux-variscite 6.1
+
 ## [2025.10] - 2025-10-31
 
 ### Changed
