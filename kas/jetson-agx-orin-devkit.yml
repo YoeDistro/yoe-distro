@@ -7,7 +7,7 @@ env:
   PROJECT: "jetson-agx-orin-devkit"
 local_conf_header:
   yoe_project: |
-    require conf/${PROJECT}/conf.conf
+    require ${TOPDIR}/../conf/projects/${PROJECT}/config.conf
 repos:
   meta-tegra:
     url: https://github.com/YoeDistro/meta-tegra

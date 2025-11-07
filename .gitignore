@@ -27,3 +27,5 @@ workspace/*
 logs/
 files.txt
 kas/local.yml
+sources-kas
+.kas_shell_history
