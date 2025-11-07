@@ -1,0 +1,20 @@
+header:
+  version: 1
+  includes:
+  - kas/include/base.yml
+target: "yoe-simple-image"
+env:
+  PROJECT: "jetson-agx-orin-devkit"
+local_conf_header:
+  yoe_project: |
+    require conf/${PROJECT}/conf.conf
+repos:
+  meta-tegra:
+    url: https://github.com/YoeDistro/meta-tegra
+    branch: master
+    path: sources-kas/meta-tegra
+
+  meta-tegra-community:
+    url: https://github.com/YoeDistro/meta-tegra-community
+    branch: master
+    path: sources-kas/meta-tegra-community
