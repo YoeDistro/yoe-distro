@@ -1,0 +1,8 @@
+header:
+  version: 20
+
+local_conf_header:
+  Synaptics license: |
+      # Acknowledge that Synaptics can revoke their license at any time on the
+      # Rapsberry pi firmware
+      LICENSE_FLAGS_ACCEPTED:append = "commercial_ffmpeg"

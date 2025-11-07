@@ -1,0 +1,13 @@
+header:
+  version: 20
+  includes:
+  - kas/include/base.yml
+  - kas/include/tegra.yml
+
+machine: "jetson-orin-nano-devkit-nvme"
+
+local_conf_header:
+
+  Nothing yet: |
+    #
+  

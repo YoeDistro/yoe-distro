@@ -16,6 +16,24 @@ and this project adheres to
 - Update gnome-software to 49.1
 - Fix uuu build with clang-21 and cmake-4
 - Fix linux-firmware and perf build with linux-variscite 6.1
+- Add UPSTREAM_CHECK_PYPI_PACKAGE for several packages in meta-openembedded
+- Switch variscite imx8 projects to use scarthgap release with 6.6.52 kernel
+- Upgrade curl to 8.17.0
+- Upgrade clang/llvm to 21.1.5 release
+- Upgrade openSSH to 10.2p1
+- Use SRC_URI from gnomebase for several recipes in OE-core
+- Upgrade go compiler to 1.25.4
+- Fix Nezha/RISCV machine build and boot
+- Fix yoe updater for VisionFive2 project
+
+### Added
+
+- Added recipes - python3-checksec-py, python3-pylddwrap, python3-icontract
+  fex, gpp, gtk-layer-shell,
+
+### Removed
+
+- Removed tcp-wrappers recipes and support in other packages
 
 ## [2025.10] - 2025-10-31
 

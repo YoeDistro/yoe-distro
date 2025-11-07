@@ -26,3 +26,6 @@ tools/python-config
 workspace/*
 logs/
 files.txt
+kas/local.yml
+layers
+.kas_shell_history

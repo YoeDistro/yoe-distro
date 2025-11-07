@@ -1,0 +1,112 @@
+header:
+  version: 20
+
+target: "yoe-swupdate-image-tegra"
+
+repos:
+
+  meta-tegra:
+    url: https://github.com/YoeDistro/meta-tegra
+    branch: master
+    path: layers/meta-tegra
+
+  meta-tegra-community:
+    url: https://github.com/YoeDistro/meta-tegra-community
+    branch: master
+    path: layers/meta-tegra-community
+
+  meta-swupdate:
+    url: https://github.com/yoedistro/meta-swupdate
+    branch: master
+    path: layers/meta-swupdate
+
+local_conf_header:
+
+  yoe-<libc>-<init-system>-<windowing-system>: |
+    YOE_PROFILE = "yoe-glibc-systemd-wayland"
+
+  Include the tegra_flash components to the image class: |
+    IMAGE_CLASSES:append = " image_types_tegra"
+    IMAGE_FSTYPES:append = " ext4.xz"
+    IMAGE_FSTYPES:remove = "ext4 wic.*"
+
+  SWupdate: |
+    IMAGE_INSTALL:append = " swupdate"
+    USE_REDUNDANT_FLASH_LAYOUT = "1"
+    IMAGE_FSTYPES:append = " tar.gz"
+
+  Use GNU objcopy for kernel with clang: |
+    OBJCOPY:pn-linux-tegra:toolchain-clang = "${HOST_PREFIX}objcopy"
+    OBJCOPY:pn-linux-jammy-nvidia-tegra:toolchain-clang = "${HOST_PREFIX}objcopy"
+
+  Use tegra-udrm-gbm for now - https://github.com/OE4T/meta-tegra/issues/1613#issuecomment-2221113973: |
+    #PREFERRED_RPROVIDER_tegra-gbm-backend ?= "tegra-udrm-gbm"
+
+  Kernel providor: |
+    PREFERRED_PROVIDER_virtual/kernel = "linux-yocto"
+
+  Use gcc for the following recipes on jetson: |
+    #TOOLCHAIN:pn-edk2-firmware-tegra = "gcc"
+    #TOOLCHAIN:pn-optee-os-tadevkit = "gcc"
+    #TOOLCHAIN:pn-optee-nvsamples = "gcc"
+    #TOOLCHAIN:pn-optee-os = "gcc"
+    #TOOLCHAIN:pn-libgcc-for-nvcc = "gcc"
+    #TOOLCHAIN:pn-gcc-for-nvcc-runtime = "gcc"
+    #TOOLCHAIN:pn-opencv = "gcc"
+    #TOOLCHAIN:pn-efivar = "gcc"
+    #TOOLCHAIN:pn-qwt = "gcc"
+
+  Use gnu run time to keep cuda happy: |
+    RUNTIME = "gnu"
+    TC_CXX_RUNTIME = "gnu"
+    CORE_IMAGE_EXTRA_INSTALL:append = " \
+      tegra-tools-jetson-clocks \
+      nvidia-drm-loadconf \
+      cuda-libraries \
+      ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'tegra-mmapi-samples mesa-demos l4t-graphics-demos-x11 nvgstapps argus-samples', '', d)} \
+      ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'l4t-graphics-demos-wayland weston-examples', '', d)} \
+      ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan-tools', '', d)} \
+      tensorrt-samples \
+      tegra-tools-tegrastats \
+      optee-nvsamples optee-test \
+      cuda-samples \
+      python3-opencv \
+      python3-cuda \
+      "
+
+  Misc: |
+    DISTRO_FEATURES:remove = "ld-is-lld"
+
+    DISPLAY_CARD = "/dev/dri/card1"
+
+  Needed for Running bitbake -ctestimage <image>: |
+    #TEST_TARGET_IP = "10.0.0.36"
+    #TEST_SERVER_IP = "10.0.0.13"
+    #TEST_TARGET = "simpleremote"
+
+    #####################################################################
+    # add project specific configuration below this line
+    #####################################################################
+    #require conf/distro/include/lto.inc
+    #DISTRO_FEATURES:append = " lto"
+    # set max loadavg equal to nr of cpus, same at 1.0 on 1 cpu machine
+    #PARALLEL_MAKE:append = " \
+    #-l ${@int(os.sysconf(os.sysconf_names['SC_NPROCESSORS_ONLN'])) * 150/100} \
+    #"
+
+    # Setting a user/password in system
+    #INHERIT += "extrausers"
+    #EXTRA_USERS_PARAMS += "\
+    #    useradd admin; \
+    #    usermod -p '$(openssl passwd -6 myrootpassword)' admin; \
+    #    usermod -a -G adm admin; \
+    #    usermod -a -G video admin; \
+    #    usermod -a -G audio admin; \
+    #    usermod -a -G systemd-journal admin; \
+    #"
+    #EXTRA_IMAGE_FEATURES:remove = "allow-empty-password empty-root-password allow-root-login post-install-logging"
+
+    # For running oe-selftest uncomment below lines
+    #USER_CLASSES:remove = "buildhistory"
+    #PRSERV_HOST = ""
+
