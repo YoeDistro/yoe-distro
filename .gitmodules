@@ -61,11 +61,11 @@
 [submodule "sources/meta-variscite-bsp-common"]
 	path = sources/meta-variscite-bsp-common
 	url = https://github.com/YoeDistro/meta-variscite-bsp-common
-	branch = yoe/mickledore-var02
+	branch = yoe/scarthgap_6.6.52-2.2.0_var01
 [submodule "sources/meta-variscite-bsp"]
 	path = sources/meta-variscite-bsp
 	url = https://github.com/YoeDistro/meta-variscite-bsp
-	branch = yoe/mickledore-var02
+	branch = yoe/scarthgap_6.6.52-2.2.0_var01
 [submodule "sources/meta-qt6"]
 	path = sources/meta-qt6
 	url = https://github.com/YoeDistro/meta-qt6
