@@ -10,8 +10,7 @@ KERNEL="\
 "
 
 BOOT="\
-    fw_payload.bin \
-	grub-efi-bootriscv64.efi \
+	EFI/BOOT/bootriscv64.efi \
 "
 
 ROOTFS="rootfs.ext4.xz"
