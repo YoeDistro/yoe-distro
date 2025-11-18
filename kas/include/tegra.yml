@@ -30,10 +30,6 @@ local_conf_header:
     IMAGE_FSTYPES:append = " ext4.xz"
     IMAGE_FSTYPES:remove = "ext4 wic.*"
 
-  Allocate 10GB for each rootfsA and rootfsB since it uses two partion scheme: |
-    # 20GB/2
-    ROOTFSPART_SIZE_DEFAULT ?= "21474836480"
-
   SWupdate: |
     IMAGE_INSTALL:append = " swupdate"
     USE_REDUNDANT_FLASH_LAYOUT = "1"
@@ -77,16 +73,11 @@ local_conf_header:
       python3-opencv \
       python3-cuda \
       "
-  Data partition initialization: |
-    IMAGE_INSTALL:append = " data-partition-init"
 
   Misc: |
     DISTRO_FEATURES:remove = "ld-is-lld"
 
     DISPLAY_CARD = "/dev/dri/card1"
-
-  set custom power mode to high performance: |
-    NVPMODEL_CONFIG_DEFAULT = "0"
 
   Needed for Running bitbake -ctestimage <image>: |
     #TEST_TARGET_IP = "10.0.0.36"
