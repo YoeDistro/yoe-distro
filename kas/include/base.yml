@@ -1,6 +1,8 @@
 header:
   version: 1
 
+distro: "yoe"
+
 repos:
   yoe-distro:
     path: .
