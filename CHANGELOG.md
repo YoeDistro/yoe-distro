@@ -22,11 +22,14 @@ and this project adheres to
 - Upgrade clang/llvm to 21.1.5 release
 - Upgrade openSSH to 10.2p1
 - Use SRC_URI from gnomebase for several recipes in OE-core
+- Upgrade go compiler to 1.25.4
+- Fix Nezha/RISCV machine build and boot
+- Fix yoe updater for VisionFive2 project
 
 ### Added
 
 - Added recipes - python3-checksec-py, python3-pylddwrap, python3-icontract
-  fex, gpp
+  fex, gpp, gtk-layer-shell,
 
 ### Removed
 
