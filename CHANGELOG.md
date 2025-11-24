@@ -25,6 +25,8 @@ and this project adheres to
 - Upgrade go compiler to 1.25.4
 - Fix Nezha/RISCV machine build and boot
 - Fix yoe updater for VisionFive2 project
+- Remove php-phar from PHP to support reproducible build
+- Upgrade VisionFive2 to use JH7110_VF2_6.12_v6.0.0 SDK and 6.12 kernel
 
 ### Added
 
