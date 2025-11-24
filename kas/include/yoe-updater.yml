@@ -1,0 +1,12 @@
+header:
+  version: 20
+
+local_conf_header:
+
+  Yoe updater common configuration: |
+    INITRAMFS_IMAGE_BUNDLE = "1"
+    # Use yoe-initramfs-image for initramfs
+    INITRAMFS_IMAGE = "yoe-initramfs-image"
+    # Use kernel+initramfs image to boot
+    IMAGE_BOOT_FILES:remove = "${KERNEL_IMAGETYPE}"
+    IMAGE_BOOT_FILES:append = " ${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin;${KERNEL_IMAGETYPE}"

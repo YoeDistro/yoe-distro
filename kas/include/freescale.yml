@@ -1,6 +1,0 @@
-header:
-  version: 20
-
-local_conf_header:
-  Freeescale stuff EULA yeah :(: |
-    ACCEPT_FSL_EULA = "1"

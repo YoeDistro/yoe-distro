@@ -25,6 +25,9 @@ local_conf_header:
   yoe-<libc>-<init-system>-<windowing-system>: |
     YOE_PROFILE = "yoe-glibc-systemd-wayland"
 
+  ffmpeg license: |
+    LICENSE_FLAGS_ACCEPTED:append = "commercial_ffmpeg"
+
   Include the tegra_flash components to the image class: |
     IMAGE_CLASSES:append = " image_types_tegra"
     IMAGE_FSTYPES:append = " ext4.xz"
@@ -78,35 +81,3 @@ local_conf_header:
     DISTRO_FEATURES:remove = "ld-is-lld"
 
     DISPLAY_CARD = "/dev/dri/card1"
-
-  Needed for Running bitbake -ctestimage <image>: |
-    #TEST_TARGET_IP = "10.0.0.36"
-    #TEST_SERVER_IP = "10.0.0.13"
-    #TEST_TARGET = "simpleremote"
-
-    #####################################################################
-    # add project specific configuration below this line
-    #####################################################################
-    #require conf/distro/include/lto.inc
-    #DISTRO_FEATURES:append = " lto"
-    # set max loadavg equal to nr of cpus, same at 1.0 on 1 cpu machine
-    #PARALLEL_MAKE:append = " \
-    #-l ${@int(os.sysconf(os.sysconf_names['SC_NPROCESSORS_ONLN'])) * 150/100} \
-    #"
-
-    # Setting a user/password in system
-    #INHERIT += "extrausers"
-    #EXTRA_USERS_PARAMS += "\
-    #    useradd admin; \
-    #    usermod -p '$(openssl passwd -6 myrootpassword)' admin; \
-    #    usermod -a -G adm admin; \
-    #    usermod -a -G video admin; \
-    #    usermod -a -G audio admin; \
-    #    usermod -a -G systemd-journal admin; \
-    #"
-    #EXTRA_IMAGE_FEATURES:remove = "allow-empty-password empty-root-password allow-root-login post-install-logging"
-
-    # For running oe-selftest uncomment below lines
-    #USER_CLASSES:remove = "buildhistory"
-    #PRSERV_HOST = ""
-
