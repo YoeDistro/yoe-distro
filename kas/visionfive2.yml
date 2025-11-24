@@ -1,0 +1,51 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/riscv.yml
+
+machine: visionfive2
+
+local_conf_header:
+
+  visionfive2 specific: |
+    IMAGE_FSTYPES:append = " wic.xz wic.bmap ext4.xz"
+    # Yoe Updater Supported Machine
+    INITRAMFS_IMAGE_BUNDLE = "1"
+    WKS_FILE:yoe = "yoe-visionfive2-sdimage.wks"
+    # Use yoe-initramfs-image for initramfs
+    INITRAMFS_IMAGE = "yoe-initramfs-image"
+    # Use kernel+initramfs image to boot
+    IMAGE_BOOT_FILES:remove = "${KERNEL_IMAGETYPE}"
+    IMAGE_BOOT_FILES:append = " ${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin;${KERNEL_IMAGETYPE}"
+
+    # Needed for Running bitbake -ctestimage <image>
+    TEST_TARGET_IP = "10.0.0.86"
+    TEST_SERVER_IP = "10.0.0.13"
+    TEST_TARGET = "simpleremote"
+
+    #####################################################################
+    # add project specific configuration below this line
+    #####################################################################
+    #require conf/distro/include/lto.inc
+    #DISTRO_FEATURES:append = " lto"
+
+    # lld from upcoming 17.0 release is crashing for RISCV atm
+    #DISTRO_FEATURES:remove = "ld-is-lld"
+
+    # Setting a user/password in system
+    #INHERIT += "extrausers"
+    #EXTRA_USERS_PARAMS += "\
+    #    useradd admin; \
+    #    usermod -p '$(openssl passwd -6 myrootpassword)' admin; \
+    #    usermod -a -G adm admin; \
+    #    usermod -a -G video admin; \
+    #    usermod -a -G audio admin; \
+    #    usermod -a -G systemd-journal admin; \
+    #"
+    #EXTRA_IMAGE_FEATURES:remove = "allow-empty-password empty-root-password allow-root-login post-install-logging"
+
+    # For running oe-selftest uncomment below lines
+    #USER_CLASSES:remove = "buildhistory"
+    #PRSERV_HOST = ""
+
