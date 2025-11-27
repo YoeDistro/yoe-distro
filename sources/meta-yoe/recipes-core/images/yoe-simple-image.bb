@@ -13,11 +13,7 @@ IMAGE_FEATURES += "allow-empty-password empty-root-password allow-root-login pos
 
 IMAGE_INSTALL = "\
     packagegroup-core-boot \
-    packagegroup-base-wifi \
-    packagegroup-base-zeroconf \
-    packagegroup-distro-base \
-    packagegroup-machine-base \
-    packagegroup-base-ipv6 \
+    packagegroup-base \
     os-release \
     htop \
     ca-certificates \
