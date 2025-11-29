@@ -1,0 +1,19 @@
+header:
+  version: 20
+  includes:
+  - kas/include/base.yml
+  - kas/include/tegra.yml
+
+machine: "p3737-0000-p3701-0005"
+
+local_conf_header:
+
+  Allocate 10GB for each rootfsA and rootfsB since it uses two partion scheme: |
+    # 20GB/2
+    ROOTFSPART_SIZE_DEFAULT ?= "21474836480"
+
+  Data partition initialization: |
+    IMAGE_INSTALL:append = " data-partition-init"
+
+  set custom power mode to high performance: |
+    NVPMODEL_CONFIG_DEFAULT = "0"

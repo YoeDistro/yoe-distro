@@ -1,0 +1,17 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/riscv.yml
+
+machine: visionfive
+
+local_conf_header:
+
+  image types: |
+    IMAGE_FSTYPES:append = " wic.xz wic.bmap tar.xz"
+  
+  Needed for Running bitbake -ctestimage <image>: |
+    # TEST_TARGET_IP = "10.0.0.86"
+    # TEST_SERVER_IP = "10.0.0.13"
+    TEST_TARGET = "simpleremote"

@@ -1,0 +1,21 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/riscv.yml
+    - kas/include/yoe-updater.yml
+
+machine: visionfive2
+
+local_conf_header:
+
+  image types: |
+    IMAGE_FSTYPES:append = " wic.xz wic.bmap ext4.xz"
+  
+  Yoe updater configuration (in addition to kas/include/yoe-updater.yml): |
+    WKS_FILE:yoe = "yoe-visionfive2-sdimage.wks"
+
+  Needed for Running bitbake -ctestimage <image>: |
+    TEST_TARGET_IP = "10.0.0.86"
+    TEST_SERVER_IP = "10.0.0.13"
+    TEST_TARGET = "simpleremote"
