@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2025.11] - 2025-11-xx
+## [2025.11] - 2025-11-30
 
 ### Changed
 
@@ -27,6 +27,11 @@ and this project adheres to
 - Fix yoe updater for VisionFive2 project
 - Remove php-phar from PHP to support reproducible build
 - Upgrade VisionFive2 to use JH7110_VF2_6.12_v6.0.0 SDK and 6.12 kernel
+- Fix weston crash on RPI machines
+- Upgrade QT6 to 6.10.2
+- Fix building visionfive2 SDK firmware fetching location
+- Fix -fcanon-prefix-map handling
+- Use native gawk to fix glibc reproducibility
 
 ### Added
 
