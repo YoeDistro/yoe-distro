@@ -1,0 +1,66 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/yoe-updater.yml
+
+machine: raspberrypi4-64
+target: yoe-installer-image yoe-kiosk-image
+
+repos:
+
+  meta-raspberrypi:
+    url: https://github.com/YoeDistro/meta-raspberrypi.git
+    path: layers/meta-raspberrypi
+    branch: master
+
+local_conf_header:
+
+  yoe-<libc>-<init-system>-<windowing-system>: |
+    YOE_PROFILE = "yoe-glibc-systemd-wayland"
+
+  Acknowledge that Synaptics can revoke their license at any time on the: |
+    # Rapsberry pi firmware
+    LICENSE_FLAGS_ACCEPTED += "\
+        synaptics-killswitch \
+        nonfree_chexquest3 \
+        nonfree_chexquest-galactic-conflict \
+        "
+
+  Enable serial console on Raspberry PI systems: |
+    ENABLE_UART = "1"
+
+    ENABLE_I2C = "1"
+
+  Disable rpi boot logo: |
+    DISABLE_RPI_BOOT_LOGO = "1"
+
+  Disable rpi raimbow screen: |
+    DISABLE_SPLASH = "1"
+
+  image types: |
+    IMAGE_FSTYPES = "wic.xz wic.bmap ext4.xz tar.xz"
+
+  Yoe updater configuration (in addition to kas/include/yoe-updater.yml): |
+    WKS_FILE = "yoe-sdimage.wks"
+    # rpi (when not using u-boot )
+    IMAGE_BOOT_FILES:remove = "${KERNEL_IMAGETYPE};${SDIMG_KERNELIMAGE}"
+    IMAGE_BOOT_FILES:remove = "${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin;${KERNEL_IMAGETYPE}"
+    IMAGE_BOOT_FILES:append = " ${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin;${SDIMG_KERNELIMAGE}"
+
+  arm-yoe-linux-llvm-objcopy fix: |
+    # Subprocess output:arm-yoe-linux-llvm-objcopy: error: Link field value 22 in section .rel.dyn is not a symbol table
+    OBJCOPY:pn-linux-raspberrypi:toolchain-clang = "${HOST_PREFIX}objcopy"
+
+  Needed for Running bitbake -ctestimage <image>: |
+    TEST_TARGET_IP = "10.0.0.47"
+    TEST_SERVER_IP = "10.0.0.13"
+    TEST_TARGET = "simpleremote"
+
+  Rpi wpebackend - FIXME these were both in the original project config.conf: | 
+    PACKAGECONFIG:pn-wpebackend-rdk = "rpi"
+    PACKAGECONFIG:pn-wpebackend-rdk:rpi = "rpi"
+
+  Use fkms for eglfs on RPI4 this enables both console display & graphics (for EGLFS): |
+    # Otherwise use full kms
+    VC4DTBO = "${@bb.utils.contains_any('DISTRO_FEATURES', 'x11 wayland', 'vc4-kms-v3d', 'vc4-fkms-v3d', d)}"

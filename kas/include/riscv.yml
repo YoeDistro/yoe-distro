@@ -1,0 +1,16 @@
+header:
+  version: 20
+
+target: "yoe-simple-image"
+
+repos:
+
+  meta-riscv:
+    url: https://github.com/YoeDistro/meta-riscv.git
+    path: layers/meta-riscv
+    branch: master
+
+local_conf_header:
+
+  yoe-<libc>-<init-system>-<windowing-system>: |
+    YOE_PROFILE = "yoe-glibc-systemd-wayland"
