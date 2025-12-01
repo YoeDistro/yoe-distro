@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025.12] - 2025-12-xx
+
+### Changed
+
+- Update mpd to 0.24.6
+- Update dbus-broker to 37 and add ptest support
+- Upgrade linux-raspberrypi-6.12 to 6.12.58
+- Add kas project for orangepi-rv2 in meta-riscv
+- Upgrade gstreamer 1.26.5 -> 1.26.7
+- Upgrade clang to 21.1.6
+
+### Added
+
+- New recipes - python3-fastapi[-cli], python3-annotated-doc, python3-soundcard
+
 ## [2025.11] - 2025-11-30
 
 ### Changed
