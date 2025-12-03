@@ -16,10 +16,18 @@ and this project adheres to
 - Add kas project for orangepi-rv2 in meta-riscv
 - Upgrade gstreamer 1.26.5 -> 1.26.7
 - Upgrade clang to 21.1.6
+- Switch recipes which need PCRE to use libpcre2 as first choice
+- Add ptest support for gupnp-av and gssdp
 
 ### Added
 
 - New recipes - python3-fastapi[-cli], python3-annotated-doc, python3-soundcard
+  python3-mpv, python3-svglib, python3-cssselect2, python3-tinycss2
+  python3-reportlab, colortail
+
+### Removed
+
+- Removed recipes - yasm, lowpan-tools
 
 ## [2025.11] - 2025-11-30
 
