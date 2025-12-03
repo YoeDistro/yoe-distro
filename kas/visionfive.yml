@@ -8,6 +8,9 @@ machine: visionfive
 
 local_conf_header:
 
+  MACHINE description: |
+    # StarFive JH7100 SOC VisionFive board
+
   image types: |
     IMAGE_FSTYPES:append = " wic.xz wic.bmap tar.xz"
   

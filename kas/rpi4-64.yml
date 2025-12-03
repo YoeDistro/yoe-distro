@@ -16,6 +16,9 @@ repos:
 
 local_conf_header:
 
+  MACHINE description: |
+    # Raspberry Pi 4 64-bit
+
   yoe-<libc>-<init-system>-<windowing-system>: |
     YOE_PROFILE = "yoe-glibc-systemd-wayland"
 
