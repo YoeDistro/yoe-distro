@@ -30,6 +30,10 @@ export IMAGE_BASENAME = "yoe-simple-image"
 
 BAD_RECOMMENDATIONS += "eudev-hwdb udev-hwdb libmodule-build-perl kbd-keymaps-pine"
 
+# Just include en-us locale for now. This was needed to avoid opkg native crash seen here
+# https://lists.openembedded.org/g/openembedded-core/message/227243
+IMAGE_LINGUAS = "en-us"
+
 # How to add password/user to image
 #inherit extrausers
 
