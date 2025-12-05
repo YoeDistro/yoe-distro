@@ -4,9 +4,9 @@ header:
   - kas/include/base.yml
   - kas/include/tegra.yml
 
-machine: "jetson-orin-nano-devkit-nvme"
+machine: "p3768-0000-p3767-0003"
 
 local_conf_header:
 
   MACHINE description: |
-    # Nvidia Jetson Orin Nano devkit using NVMe drive for rootfs
+    # Nvidia Jetson Orin Nano 8G module using NVMe drive for rootfs

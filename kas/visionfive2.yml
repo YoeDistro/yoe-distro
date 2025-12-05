@@ -9,6 +9,9 @@ machine: visionfive2
 
 local_conf_header:
 
+  MACHINE description: |
+    # StarFive JH7110 SOC VisionFive 2 board
+
   image types: |
     IMAGE_FSTYPES:append = " wic.xz wic.bmap ext4.xz"
   

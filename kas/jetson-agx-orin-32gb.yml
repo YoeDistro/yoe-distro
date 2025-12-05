@@ -4,9 +4,9 @@ header:
   - kas/include/base.yml
   - kas/include/jetson-agx-orin.yml
 
-machine: "jetson-agx-orin-devkit"
+machine: "p3737-0000-p3701-0004"
 
 local_conf_header:
 
   MACHINE description: |
-    # Nvidia Jetson AGX Orin dev kit
+    # Nvidia Jetson AGX Orin 32GB
