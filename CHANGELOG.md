@@ -18,16 +18,23 @@ and this project adheres to
 - Upgrade clang to 21.1.6
 - Switch recipes which need PCRE to use libpcre2 as first choice
 - Add ptest support for gupnp-av and gssdp
+- Add support for swupdate 2025.12 release
+- Add support for llvm-libgcc
+- Upgrade gtk4 to 4.20.2
+- Add ptest support for gupnp-igd, libcheck
+- Fix recipes to build with upcoming glibc 2.43+
+- Upgrade PHP to 8.5.0
 
 ### Added
 
 - New recipes - python3-fastapi[-cli], python3-annotated-doc, python3-soundcard
   python3-mpv, python3-svglib, python3-cssselect2, python3-tinycss2
-  python3-reportlab, colortail
+  python3-reportlab, colortail, holohub-apps, ngc-cli, ucxx, matx
+  concurrentqueue, claraviz
 
 ### Removed
 
-- Removed recipes - yasm, lowpan-tools
+- Removed recipes - yasm, lowpan-tools, libconfig-tegra
 
 ## [2025.11] - 2025-11-30
 
