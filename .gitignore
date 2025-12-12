@@ -27,6 +27,7 @@ workspace/*
 logs/
 files.txt
 kas/local.yml
-layers
+kas/build
+kas/layers
 .kas_shell_history
 .vscode

@@ -4,10 +4,8 @@ header:
 distro: "yoe"
 
 repos:
-  yoe-distro:
-    path: .
-    layers:
-      sources/meta-yoe:
+  meta-yoe:
+    path: layers/meta-yoe
 
   openembedded-core:
     url: https://github.com/YoeDistro/openembedded-core
