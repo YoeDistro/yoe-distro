@@ -15,7 +15,7 @@ and this project adheres to
 - Upgrade linux-raspberrypi-6.12 to 6.12.58
 - Add kas project for orangepi-rv2 in meta-riscv
 - Upgrade gstreamer 1.26.5 -> 1.26.7
-- Upgrade clang to 21.1.6
+- Upgrade clang to 21.1.7
 - Switch recipes which need PCRE to use libpcre2 as first choice
 - Add ptest support for gupnp-av and gssdp
 - Add support for swupdate 2025.12 release
@@ -24,17 +24,28 @@ and this project adheres to
 - Add ptest support for gupnp-igd, libcheck
 - Fix recipes to build with upcoming glibc 2.43+
 - Upgrade PHP to 8.5.0
+- Disable LTO with clang for some recipes e.g. bluez, zlib, systemd-boot
+- Add -ffat-lto-objects to clang LTO settings
+- Add HOMEPAGE entry in several recipes
+- Normalizing <cmath> usage in cuda-cccl to fix macros
+- Upgrade systemd to 258.1
+- Add clock group in base filesystem
+- Upgrade sqlite to 3.51.1
+- Upgrade go compiler to 1.25.5
+- Upgrade linux-yocto/6.12 to v6.12.60 and linux-yocto/6.17 to 6.17.10
+- Upgrade valgrind to 3.26.0
 
 ### Added
 
 - New recipes - python3-fastapi[-cli], python3-annotated-doc, python3-soundcard
   python3-mpv, python3-svglib, python3-cssselect2, python3-tinycss2
   python3-reportlab, colortail, holohub-apps, ngc-cli, ucxx, matx
-  concurrentqueue, claraviz
+  concurrentqueue, claraviz, ripgrep, fd-find, python3-sphinxcontrib-svg2pdfconverter
 
 ### Removed
 
 - Removed recipes - yasm, lowpan-tools, libconfig-tegra
+- Remove dleyna support and recipes from meta-openembedded
 
 ## [2025.11] - 2025-11-30
 
