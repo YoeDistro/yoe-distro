@@ -20,6 +20,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 # qtwebview and qtwebengine needs it, yoe-kiosk-browser
 # needs qtwebview
 CORE_IMAGE_EXTRA_INSTALL:remove:riscv64 = "qtwebengine-examples yoe-kiosk-browser"
+CORE_IMAGE_EXTRA_INSTALL:remove:riscv32 = "qtwebengine-examples yoe-kiosk-browser"
 
 export IMAGE_BASENAME = "yoe-qt6-image"
 

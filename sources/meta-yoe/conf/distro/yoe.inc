@@ -173,6 +173,10 @@ SWUPDATE_INIT = "tiny"
 # Use 1GB DRAM for QEMU machines, helps in running tests
 QB_MEM = "-m 1024"
 
+# Enable fortran by default, lot of new machine need it surprisingly
+FORTRAN = ",fortran"
+TOOLCHAIN_TARGET_TASK:append = " gfortran"
+
 # The two lines below enable SDL frontend for qemu
 # default is VNC
 PACKAGECONFIG:append:pn-qemu-native = " sdl"
@@ -203,5 +207,3 @@ SKIP_RECIPE[python3-pyqtchart] = "needs python3-pyqt5 which needs reworked to wo
 SKIP_RECIPE[python3-pyside6] = "Does not build with clang/lld"
 
 RDEPENDS:packagegroup-meta-multimedia:remove:pn-packagegroup-meta-multimedia = "bigbuckbunny-1080p bigbuckbunny-480p bigbuckbunny-720p tearsofsteel-1080p"
-RDEPENDS:packagegroup-meta-oe-fortran-packages:remove:pn-packagegroup-meta-oe = "lapack octave suitesparse"
-RDEPENDS:packagegroup-meta-python3:remove:pn-packagegroup-meta-python = "python3-cvxopt"

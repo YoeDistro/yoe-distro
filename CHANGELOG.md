@@ -34,6 +34,9 @@ and this project adheres to
 - Upgrade go compiler to 1.25.5
 - Upgrade linux-yocto/6.12 to v6.12.60 and linux-yocto/6.17 to 6.17.10
 - Upgrade valgrind to 3.26.0
+- Fix packagegroups contents to exclude packages not building for riscv32
+- In ripgrep limit libstd-rs dependency to apply for target alone
+- Enable fortran support at distro scope for yoe
 
 ### Added
 
