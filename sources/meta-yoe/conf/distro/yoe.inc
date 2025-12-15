@@ -175,7 +175,7 @@ QB_MEM = "-m 1024"
 
 # Enable fortran by default, lot of new machine need it surprisingly
 FORTRAN = ",fortran"
-TOOLCHAIN_TARGET_TASK:append = " gfortran"
+TOOLCHAIN_TARGET_TASK:append = " libgfortran"
 
 # The two lines below enable SDL frontend for qemu
 # default is VNC
