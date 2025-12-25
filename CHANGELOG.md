@@ -32,11 +32,26 @@ and this project adheres to
 - Add clock group in base filesystem
 - Upgrade sqlite to 3.51.1
 - Upgrade go compiler to 1.25.5
-- Upgrade linux-yocto/6.12 to v6.12.60 and linux-yocto/6.17 to 6.17.10
+- Upgrade linux-yocto/6.12 to v6.12.62
 - Upgrade valgrind to 3.26.0
 - Fix packagegroups contents to exclude packages not building for riscv32
 - In ripgrep limit libstd-rs dependency to apply for target alone
 - Enable fortran support at distro scope for yoe
+- Drop LLVMVERSION in meta-clang
+- Add ptest support to wireplumber, freerdp3, crossguid, libmediaart-2.0, uriparser
+  python3-pyconnman, python3-priority, python3-hyperframe, python3-hpack, python3-h2
+  botan
+- Fix ltp and strace to build/test with linux 6.18
+- Upgrade alsa recipes to 1.2.15
+- Upgrade linux UAPI headers to 6.18
+- Allow out-of-tree builds for libseccomp
+- Disable workspaces in go recipes
+- Upgrade gstreamer recipes to 1.26.9
+- Enable 802.11be support in wpa-supplicant
+- Upgrade meson to 1.10.0
+- Remove *.la from FILES for recipes using meson
+- Upgrade rust to 1.91.1
+- Change GOTMPDIR to improve reproducibility of go recipes
 
 ### Added
 
@@ -44,11 +59,14 @@ and this project adheres to
   python3-mpv, python3-svglib, python3-cssselect2, python3-tinycss2
   python3-reportlab, colortail, holohub-apps, ngc-cli, ucxx, matx
   concurrentqueue, claraviz, ripgrep, fd-find, python3-sphinxcontrib-svg2pdfconverter
+  python3-pyro5, linux-yocto/6.18
 
 ### Removed
 
-- Removed recipes - yasm, lowpan-tools, libconfig-tegra
+- Removed recipes - yasm, lowpan-tools, libconfig-tegra, python3-pyro4, linux-yocto/6.17
 - Remove dleyna support and recipes from meta-openembedded
+- Drop PTEST_EXPECT_FAILURE from core-image-ptest
+- Remove obsolete oelint class
 
 ## [2025.11] - 2025-11-30
 
