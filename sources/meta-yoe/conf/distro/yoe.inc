@@ -103,8 +103,6 @@ INHERIT += "${@bb.utils.contains_any('BUILD_ARCH', 'ppc64le riscv64', '', 'unina
 INHERIT += "image-buildinfo create-spdx"
 
 DISTRO_FEATURES:append = " opengl multiarch wayland pam vulkan usrmerge ld-is-lld"
-# Use lld as default linker for nativesdk clang as well
-DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld"
 # See https://discourse.llvm.org/t/lld-cannot-make-pie-binaries-on-x32/67131
 DISTRO_FEATURES:remove:linux-gnux32 = "ld-is-lld"
 DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
@@ -112,7 +110,8 @@ DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
 DISTRO_FEATURES:remove:mipsarcho32 = "ld-is-lld"
 # qemu usermode segfaults the programs during glib-2.0-initial configure step
 DISTRO_FEATURES:remove:powerpc = "ld-is-lld"
-DISTRO_FEATURES_FILTER_NATIVE:append = " lto thin-lto"
+DISTRO_FEATURES_FILTER_NATIVE:append = " ld-is-lld lto thin-lto"
+# Use lld as default linker for nativesdk clang as well
 DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld lto thin-lto"
 
 # Configure clang cross-compiler to use lld as default linker
