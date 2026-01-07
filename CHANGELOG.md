@@ -10,6 +10,19 @@ and this project adheres to
 
 ### Changed
 
+- Set CVE_PRODUCT for meta-openembedded layers
+- Introduce k1 include and SOC_FAMILY in RISCV layer
+- Package fuse and dram-info tools in tegra-tools
+- Upgrade LLVM/Clang to 21.1.8 release
+- Upgrade rust to  1.92.0
+- Upgrade spirv-llvm-translator to 21.1.3
+- Upgrade Qemu to 10.1.3
+
+### Added
+
+- Add new recipes for - python3-bumble, python3-pyee, u-boot-spl-k1
+- Add new machines for bananapi-f3 and orangepi-rv2-mainline
+
 ## [2025.12] - 2025-12-31
 
 ### Changed
