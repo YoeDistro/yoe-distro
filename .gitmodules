@@ -82,3 +82,7 @@
 	path = sources/meta-swupdate
 	url = https://github.com/yoedistro/meta-swupdate
 	branch = master
+[submodule "sources/meta-security"]
+	path = sources/meta-security
+	url = https://github.com/yoedistro/meta-security
+	branch = master
