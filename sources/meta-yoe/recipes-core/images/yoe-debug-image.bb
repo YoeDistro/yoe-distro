@@ -25,6 +25,7 @@ IMAGE_INSTALL += "\
 	tslib-calibrate \
 	tslib-tests \
 	alsa-utils \
+	alsa-utils-alsa-info \
 	alsa-utils-alsamixer \
 	alsa-utils-aconnect \
 	alsa-utils-alsactl \
@@ -34,7 +35,6 @@ IMAGE_INSTALL += "\
 	alsa-utils-aseqdump \
 	alsa-utils-aseqnet \
 	alsa-utils-iecset \
-	alsa-utils-scripts \
 	alsa-utils-speakertest \
 	dosfstools \
 	usbutils \
