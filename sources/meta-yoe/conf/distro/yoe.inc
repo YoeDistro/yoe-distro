@@ -102,7 +102,7 @@ INHERIT += "${@bb.utils.contains_any('BUILD_ARCH', 'ppc64le riscv64', '', 'unina
 # Add /etc/build to every image
 INHERIT += "image-buildinfo create-spdx"
 
-DISTRO_FEATURES:append = " opengl multiarch wayland pam vulkan usrmerge ld-is-lld"
+DISTRO_FEATURES:append = " security opengl multiarch wayland pam vulkan usrmerge ld-is-lld"
 # See https://discourse.llvm.org/t/lld-cannot-make-pie-binaries-on-x32/67131
 DISTRO_FEATURES:remove:linux-gnux32 = "ld-is-lld"
 DISTRO_FEATURES:remove:linux-muslx32 = "ld-is-lld"
