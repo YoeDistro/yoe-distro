@@ -14,4 +14,3 @@ SRC_URI[sha256sum] = "44e7b9be7b445aac742003ddee52ca31385d52dffb8c60adf633fad8e7
 inherit pypi python_setuptools_build_meta ptest-python-pytest python_hatchling
 
 DEPENDS += "python3-hatch-vcs-native"
-RDEPENDS:${PN}-ptest += "python3-backports-zstd"

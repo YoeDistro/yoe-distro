@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2026.01] - 2026-01-XX
+## [2026.01] - 2026-01-30
 
 ### Changed
 
@@ -14,14 +14,33 @@ and this project adheres to
 - Introduce k1 include and SOC_FAMILY in RISCV layer
 - Package fuse and dram-info tools in tegra-tools
 - Upgrade LLVM/Clang to 21.1.8 release
-- Upgrade rust to  1.92.0
+- Upgrade rust to 1.92.0
 - Upgrade spirv-llvm-translator to 21.1.3
-- Upgrade Qemu to 10.1.3
+- Upgrade Qemu to 10.2.0
+- Upgrade QT to 6.10.3
+- Add ptest support for python3-django, nanomsg and nng
+  python3-filelock, python3-send2trash
+- Update GRPC to 1.76.0
+- Update recipes to enable gnome 49 support
+- Upgrade nodeJS to 22.22.0
+- Add kas support for qemuriscv64
+- Upgrade go compiler to 1.25.6
+- Upgrade mesa to 25.3.3
+- Upgrade python to 3.14.2 release
+- Upgrade linux-yocto/6.12 to 6.12.64 and linux-yocto/6.18 to v6.18.5
+- Upgrade OpenSBI to 1.8.1
+- Use libtool to install test binaries for several core layer recipes
+- Handle openat2 in pseudo
 
 ### Added
 
 - Add new recipes for - python3-bumble, python3-pyee, u-boot-spl-k1
-- Add new machines for bananapi-f3 and orangepi-rv2-mainline
+  kmscon, libtsm, python3-pytokens, python3-tblib
+- Add new machines for bananapi-f3 and orangepi-rv2-mainline and eswin-ebc77
+
+### Removed
+
+- Removed recipes - python3-django 4.2
 
 ## [2025.12] - 2025-12-31
 
