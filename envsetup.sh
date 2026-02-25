@@ -775,6 +775,14 @@ yoe_create_tap_devices() {
 
 # link downloads and sstate directory to some common location
 # it is often best if a relative directory is used for this
+yoe_format() {
+  prettier --write "*.md" "docs/**/*.md" || return 1
+}
+
+yoe_format_check() {
+  prettier --check "*.md" "docs/**/*.md" || return 1
+}
+
 yoe_link_downloads_sstate() {
   DIR=$1
 
