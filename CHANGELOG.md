@@ -18,8 +18,8 @@ and this project adheres to
 - Upgrade spirv-llvm-translator to 21.1.3
 - Upgrade Qemu to 10.2.0
 - Upgrade QT to 6.10.3
-- Add ptest support for python3-django, nanomsg and nng
-  python3-filelock, python3-send2trash
+- Add ptest support for python3-django, nanomsg and nng python3-filelock,
+  python3-send2trash
 - Update GRPC to 1.76.0
 - Update recipes to enable gnome 49 support
 - Upgrade nodeJS to 22.22.0
@@ -34,8 +34,8 @@ and this project adheres to
 
 ### Added
 
-- Add new recipes for - python3-bumble, python3-pyee, u-boot-spl-k1
-  kmscon, libtsm, python3-pytokens, python3-tblib
+- Add new recipes for - python3-bumble, python3-pyee, u-boot-spl-k1 kmscon,
+  libtsm, python3-pytokens, python3-tblib
 - Add new machines for bananapi-f3 and orangepi-rv2-mainline and eswin-ebc77
 
 ### Removed
@@ -74,9 +74,9 @@ and this project adheres to
 - In ripgrep limit libstd-rs dependency to apply for target alone
 - Enable fortran support at distro scope for yoe
 - Drop LLVMVERSION in meta-clang
-- Add ptest support to wireplumber, freerdp3, crossguid, libmediaart-2.0, uriparser
-  python3-pyconnman, python3-priority, python3-hyperframe, python3-hpack, python3-h2
-  botan
+- Add ptest support to wireplumber, freerdp3, crossguid, libmediaart-2.0,
+  uriparser python3-pyconnman, python3-priority, python3-hyperframe,
+  python3-hpack, python3-h2 botan
 - Fix ltp and strace to build/test with linux 6.18
 - Upgrade alsa recipes to 1.2.15
 - Upgrade linux UAPI headers to 6.18
@@ -85,7 +85,7 @@ and this project adheres to
 - Upgrade gstreamer recipes to 1.26.9
 - Enable 802.11be support in wpa-supplicant
 - Upgrade meson to 1.10.0
-- Remove *.la from FILES for recipes using meson
+- Remove \*.la from FILES for recipes using meson
 - Upgrade rust to 1.91.1
 - Change GOTMPDIR to improve reproducibility of go recipes
 
@@ -94,12 +94,13 @@ and this project adheres to
 - New recipes - python3-fastapi[-cli], python3-annotated-doc, python3-soundcard
   python3-mpv, python3-svglib, python3-cssselect2, python3-tinycss2
   python3-reportlab, colortail, holohub-apps, ngc-cli, ucxx, matx
-  concurrentqueue, claraviz, ripgrep, fd-find, python3-sphinxcontrib-svg2pdfconverter
-  python3-pyro5, linux-yocto/6.18
+  concurrentqueue, claraviz, ripgrep, fd-find,
+  python3-sphinxcontrib-svg2pdfconverter python3-pyro5, linux-yocto/6.18
 
 ### Removed
 
-- Removed recipes - yasm, lowpan-tools, libconfig-tegra, python3-pyro4, linux-yocto/6.17
+- Removed recipes - yasm, lowpan-tools, libconfig-tegra, python3-pyro4,
+  linux-yocto/6.17
 - Remove dleyna support and recipes from meta-openembedded
 - Drop PTEST_EXPECT_FAILURE from core-image-ptest
 - Remove obsolete oelint class
@@ -133,8 +134,8 @@ and this project adheres to
 
 ### Added
 
-- Added recipes - python3-checksec-py, python3-pylddwrap, python3-icontract
-  fex, gpp, gtk-layer-shell,
+- Added recipes - python3-checksec-py, python3-pylddwrap, python3-icontract fex,
+  gpp, gtk-layer-shell,
 
 ### Removed
 
@@ -171,8 +172,7 @@ and this project adheres to
 ### Added
 
 - Added recipes - touchpademulator, gni, python3-pcpp, python3-questionary
-  python3-pyfiglet, python3-pybase64, python3-orjson, python3-mmh3
-  libpisp
+  python3-pyfiglet, python3-pybase64, python3-orjson, python3-mmh3 libpisp
 - Add new machine for Raspberry Pi 2B V1.2 (64-bit)
 - Add support for OrangePi RV2 with mainline Linux
 - Add zsh-completion-pkgs image feature
@@ -244,8 +244,8 @@ and this project adheres to
 - Upgrade glibc to 2.42 release
 - Default to zstd compressed image output
 - Update musl to tip of trunk
-- Tweak nftables, networkmanager, wireguard, yoe-simple-image to shed bash, readline
-  libgmp, from image
+- Tweak nftables, networkmanager, wireguard, yoe-simple-image to shed bash,
+  readline libgmp, from image
 - Update linux-raspberrypi to 6.12.41
 - Update L4T from R36.4.3 -> R36.4.4, JetPack 6.2.1
 - Update OpenSSL to 3.5.2
@@ -377,7 +377,7 @@ and this project adheres to
 - Upgrade linux-raspberrypi to 6.12.25
 - Upgrade clang to 20.1.5 release
 - Upgrade mesa to 25.1.0 and add support for asahi drivers
-- Upgrade linux-yocto/6.12  to v6.12.30
+- Upgrade linux-yocto/6.12 to v6.12.30
 - Update coreutils to 9.7
 - Upgrade QT6 to 1.9.1
 
@@ -434,8 +434,8 @@ and this project adheres to
 
 ### Added
 
-- Added recipes - minizip-ng, python3-typing-inspection, bit7zi, source-highlight
-  qhull, b4, libsimplelog, libxmp
+- Added recipes - minizip-ng, python3-typing-inspection, bit7zi,
+  source-highlight qhull, b4, libsimplelog, libxmp
 - Add support for using alternative runtime D-Bus e.g. dbus-broker
 
 ### Removed
@@ -449,7 +449,8 @@ and this project adheres to
 
 - Update linux-hardkernel to latest on hk 4.9 branch
 - Add ptests for Wolfssl
-- Fix recipes to remove obsolete use of acpaths needed by latest autoconf bbclass
+- Fix recipes to remove obsolete use of acpaths needed by latest autoconf
+  bbclass
 - Fix qtwenengine 6.8 build with clang-20
 - Fix WiFi on Raspberry Pi 5
 - Upgrade OpenSSH to 9.9p2
@@ -469,16 +470,18 @@ and this project adheres to
 - Upgrade protobuf to 5.29.4
 - Update linux-yocto/6.12 to 6.12.19
 - Update lvgl to 9.2.2 release
-- Use https:// in HOMEPAGE variable instead of http:// in several recipes in meta-openembedded
+- Use https:// in HOMEPAGE variable instead of http:// in several recipes in
+  meta-openembedded
 - Upgrade iperf3 to 3.18
 - Upgrade PHP to 8.4.5
-- Fix several recipes to work with upcoming GCC-15 release with C23 standard defaults
+- Fix several recipes to work with upcoming GCC-15 release with C23 standard
+  defaults
 - Update gimp to 3.0 release
 
 ### Added
 
-- Added recipes - clpeak, python3-pyasyncore, python3-gpt-image, libsdl3, libsdl2-compat
-  minizip, scdoc
+- Added recipes - clpeak, python3-pyasyncore, python3-gpt-image, libsdl3,
+  libsdl2-compat minizip, scdoc
 - Add support for DNG files in libcamera
 - Add clean-hashserver-database script
 - Add Jetson Orin AGX to CD pipeline
@@ -499,7 +502,8 @@ and this project adheres to
 - Enable high precision arithmetic support in gawk
 - Do not use git submodule fetcher in protobuf
 - Upgrade sip to 6.10.0
-- Separate out mdns-libnss-mdns package from mdns and rename nss-mdns recipe to avahi-libnss-mdns
+- Separate out mdns-libnss-mdns package from mdns and rename nss-mdns recipe to
+  avahi-libnss-mdns
 - Upgrade opencv to 4.11.0
 - Enable '-o pipefail' for the SDK installer
 - Upgrade libseccomp to 2.6
@@ -573,9 +577,8 @@ and this project adheres to
 
 ### Added
 
-- Add new recipes - libheif, yyjson, ctre, jsoncons, cxxopts,
-  pistache, spectre-meltdown-checker, python3-nanobind
-  python3-lief, cheese, opencl-cts
+- Add new recipes - libheif, yyjson, ctre, jsoncons, cxxopts, pistache,
+  spectre-meltdown-checker, python3-nanobind python3-lief, cheese, opencl-cts
 - add Go mod h1 checksum support to bitbake fetcher
 - Add UBI support to initrdscripts
 - Add support for qemuriscv64 and qemuriscv32 to formfactor
@@ -641,8 +644,8 @@ and this project adheres to
 - Don't use debug-tweaks in image features
 - Add ptests for openvpn
 - Fix gdm to launch with plymouth
-- Set CVE_PRODUCT for libestr, librelp, rsyslog, libfastjson
-  u-boot, tcpdump, net-snmp
+- Set CVE_PRODUCT for libestr, librelp, rsyslog, libfastjson u-boot, tcpdump,
+  net-snmp
 - Inherit cython class in several recipes
 - Package libswupdate into separate package
 - Add TEGRA_UEFI_MINIMAL support
@@ -665,11 +668,10 @@ and this project adheres to
 
 ### Added
 
-- Added recipes for - drm-info, asyncmqtt, swagger-ui
-  python3-rouge-score, python3-nltk, python3-fuse
-  raspi-utils4, canopenterm, pocketpy, libpanel, libdex
-  python3-mlcommons-loadgen, python3-inline-snapshot
-  python3-black, python3-scikit-build-core, pytesseract
+- Added recipes for - drm-info, asyncmqtt, swagger-ui python3-rouge-score,
+  python3-nltk, python3-fuse raspi-utils4, canopenterm, pocketpy, libpanel,
+  libdex python3-mlcommons-loadgen, python3-inline-snapshot python3-black,
+  python3-scikit-build-core, pytesseract
 - Add recipes for tcl/tk 9.0 and tcl/tk 8.x to live side-by-side
 - Add cython bbclass to abstract cython usage during build
 - Add SECURITY.md file to various layers
@@ -722,8 +724,8 @@ and this project adheres to
 
 ### Added
 
-- Added recipes for - fastfloat, glad, python3-pytest-codspeed
-  tomlplusplus, snapper, tegra-cuda-utils
+- Added recipes for - fastfloat, glad, python3-pytest-codspeed tomlplusplus,
+  snapper, tegra-cuda-utils
 - L4T R36.4.0/JetPack 6.1 support
 - Add class for building Unified Kernel Images (UKI)
 - Add WIC_SECTOR_SIZE variable to wic
@@ -764,9 +766,9 @@ and this project adheres to
 
 ### Added
 
-- Added recipes - libspelling, imx-cst, freeipmi, valkey
-  python3-trio, python3-python-multipart, python3-outcome
-  python3-pdm-build-locked, python3-starlette python3-setproctitle
+- Added recipes - libspelling, imx-cst, freeipmi, valkey python3-trio,
+  python3-python-multipart, python3-outcome python3-pdm-build-locked,
+  python3-starlette python3-setproctitle
 - Add gomodule fetcher
 - Add genimage support
 
@@ -803,7 +805,7 @@ and this project adheres to
 - Upgrade libxml2 to 2.13.3 and address ABI breakges due to it in meta-oe
 - Fix several multimedia recipes to work with ffmpeg 7
 - Fix recipes to work with fmt 11.x
-- Correct LICENSE field  of several recipes in meta-python
+- Correct LICENSE field of several recipes in meta-python
 - Upgrade musl to latest on trunk 1.2.5+
 - Upgrade automate to 1.17
 - Add swupdate OTA support on tegra platforms
@@ -825,7 +827,7 @@ and this project adheres to
 
 - Fix several packages to build with clang fortify and glibc 2.40
 - Add ptest support for unbound
-- Stop overriding unprefixed *FLAGS variables for native and nativesdk
+- Stop overriding unprefixed \*FLAGS variables for native and nativesdk
 - Update linux-yocto/6.6 to v6.6.35
 - Use objdump instead of readelf to compute SONAME during image generation
 - Adjust metadata to remove True option in getVar calls
@@ -839,7 +841,7 @@ and this project adheres to
 - Pin runtime type to GCC runtime in cuda-gcc and define TOOLCHAIN variable
 - Upgrade Go compiler to 1.22.5
 - Upgrade systemd to v256
-- Upgrade util-linux to  2.40.1
+- Upgrade util-linux to 2.40.1
 - Enforce default remote name to "origin" in git fetcher
 - Enable GTK in OpenCV with wayland as well
 - Switch Jetson platforms to use Yoe distro with wayland instead of EGLFS
@@ -859,7 +861,8 @@ and this project adheres to
 ### Added
 
 - Added new recipes - libabigail, include-what-you-use, dediprog-flasher
-- Added DEBUG_LEVELFLAG variable to contain default debug level e.g. -g1, -g, etc.
+- Added DEBUG_LEVELFLAG variable to contain default debug level e.g. -g1, -g,
+  etc.
 - Add packageconfig knob to control tegra gallium driver in mesa
 - Add nospdx class
 - Add and switch default SPDX version to 3.0
@@ -878,8 +881,8 @@ and this project adheres to
 
 - Fix libclc build
 - Bump fsl kernel to 6.6.32
-- Disable -Wincompatible-pointer-types as error in few recipes
-  to build with GCC-14
+- Disable -Wincompatible-pointer-types as error in few recipes to build with
+  GCC-14
 - Upgrade libcamera to 0.3.0
 - Adjust several recipes to build with libtool 2.5
 - Update linux-yocto/6.6 v6.6.32
@@ -889,7 +892,7 @@ and this project adheres to
 - Bump QT to 6.7.3
 - Fix kernel build for Jetson orin-nano
 - Update clang to 18.1.8 release
-- Upgrade libgpiod-1.x to 1.6.5 and fix build  with musl
+- Upgrade libgpiod-1.x to 1.6.5 and fix build with musl
 - Upgrade fwupd-efi to 1.6 and move py-pefile to meta-oe
 - Allow using LLVM libc++ with GCC compiler
 - Move fmt package from meta-oe -> core layer
@@ -902,8 +905,8 @@ and this project adheres to
 
 ### Added
 
-- Added new recipes for - sexpect, trompeloeil, cabextract
-  udpcast, python3-typer, magic-enum
+- Added new recipes for - sexpect, trompeloeil, cabextract udpcast,
+  python3-typer, magic-enum
 - Add ptests support for python3-dasbus, python3-flask
 - Add support for BeagleV-Ahead SBC
 - Add support for jetson-agx-orin-devkit
@@ -943,8 +946,7 @@ and this project adheres to
 
 - Introduce UNPACKDIR bitbake variable
 - New recipes
-  - glib-testing, opentelemetry-cpp, malcontent
-    python3-dasbus
+  - glib-testing, opentelemetry-cpp, malcontent python3-dasbus
 
 ### Removed
 
@@ -1031,7 +1033,6 @@ and this project adheres to
 ### Added
 
 - Add new recipes
-
   - python3-wsproto, python3-httptools, python3-a2wsgi python3-a2wsgi,
     python3-responses, python3-pytest-localserver python3-tomli-w,
     python3-invoke, python3-icecream python3-types-python-dateutil,

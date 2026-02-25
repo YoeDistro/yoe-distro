@@ -3,7 +3,7 @@
 [![Yoe Distro CI](https://github.com/YoeDistro/yoe-distro/actions/workflows/ci.yaml/badge.svg)](https://github.com/YoeDistro/yoe-distro/actions/workflows/ci.yaml)
 [![](https://tokei.rs/b1/github/YoeDistro/yoe-distro?category=code)](https://github.com/XAMPPRocky/tokei)
 
-# Yoe Embedded Linux Distribution  🐑
+# Yoe Embedded Linux Distribution 🐑
 
 Yoe is an Embedded Linux Distribution optimized for product development. It is
 built on **Y**octo and **O**pen**E**mbedded with a focus on simplicity. This
@@ -11,8 +11,8 @@ distribution does not end at demo images but rather begins there.
 
 ## Example 👀
 
-The following is an example of building and installing a linux system from scratch
-on a Raspberry PI 3:
+The following is an example of building and installing a linux system from
+scratch on a Raspberry PI 3:
 
 ## Install Pre-requisites 💻
 
@@ -124,8 +124,8 @@ yoe\_ that can be executed. Type yoe\_ <tab><tab> to see them.
 - _conf_: configuration files for the build
 - _sources_: various sources used for the build. The entries in this directory
   are git submodules. Note, by default, submodules are shallow clones. If you
-  need the full git history of a submodule, then run `git fetch --unshallow`
-  in the submodule directory.
+  need the full git history of a submodule, then run `git fetch --unshallow` in
+  the submodule directory.
 - _downloads_: contains files that are downloaded by various recipes during
   builds.
 - _tools_: utility scripts
@@ -186,7 +186,7 @@ For support or to discuss this project, use one of the following options:
 
 - [Yoe community forum](https://community.tmpdir.org/c/yoe-distro/6) 💬
 - [Open a github issue](https://github.com/YoeDistro/yoe-distro/issues/new) #️⃣
-- [Yoe Videos](https://www.youtube.com/@yoedistro)  🎬
+- [Yoe Videos](https://www.youtube.com/@yoedistro) 🎬
 
 ## License
 

@@ -1,0 +1,27 @@
+name: Documentation Check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  format-check:
+    name: Markdown Format Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install prettier
+        run: npm install -g prettier
+
+      - name: Check Markdown formatting
+        run: prettier --check "*.md" "docs/**/*.md"
