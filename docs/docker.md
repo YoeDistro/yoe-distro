@@ -20,8 +20,8 @@ Using this container has the following benefits:
   version of Yoe over long product life cycles.
 
 Yoe uses docker by default, but this can be disabled by setting
-`DOCKER_REPO=none` in your _local.sh_ file. You can also set
-`DOCKER_REPO` to a custom container if you need something different.
+`DOCKER_REPO=none` in your _local.sh_ file. You can also set `DOCKER_REPO` to a
+custom container if you need something different.
 
 Any tool (such as `devtool`) that uses bitbake must also be run in the
 container. As these tools are not yet wrapped, you must enter the docker
