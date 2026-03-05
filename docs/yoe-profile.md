@@ -1,6 +1,5 @@
 # Yoe Profile
 
-
 The Yoe Distribution makes it easy to select the libc, init, and graphics
 subsystem for your project. To select a profile, set `YOE_PROFILE` in
 `conf/site.conf` equal to one of the following:

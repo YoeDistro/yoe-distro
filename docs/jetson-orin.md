@@ -4,8 +4,8 @@ Yoe supports several NVIDIA Jetson Orin developer kits:
 
 - **Jetson AGX Orin Developer Kit** — the high-end Orin module with up to 64 GB
   RAM and 2048 CUDA cores
-- **Jetson Orin Nano Developer Kit** — the entry-level Orin module with up to
-  8 GB RAM and 1024 CUDA cores
+- **Jetson Orin Nano Developer Kit** — the entry-level Orin module with up to 8
+  GB RAM and 1024 CUDA cores
 - **Jetson Orin Nano Developer Kit (NVMe)** — same as above, configured to boot
   from NVMe SSD
 

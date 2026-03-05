@@ -4,11 +4,11 @@
 
 Yoe supports the following Raspberry Pi projects:
 
-| Project   | Board              | Architecture |
-| --------- | ------------------ | ------------ |
-| `rpi4-32` | Raspberry Pi 4     | 32-bit ARM   |
-| `rpi4-64` | Raspberry Pi 4     | 64-bit ARM   |
-| `rpi5`    | Raspberry Pi 5     | 64-bit ARM   |
+| Project   | Board          | Architecture |
+| --------- | -------------- | ------------ |
+| `rpi4-32` | Raspberry Pi 4 | 32-bit ARM   |
+| `rpi4-64` | Raspberry Pi 4 | 64-bit ARM   |
+| `rpi5`    | Raspberry Pi 5 | 64-bit ARM   |
 
 ## Raspberry Pi 5
 
@@ -23,11 +23,11 @@ performance. A 5V/3A supply will work but may throttle under load.
 
 ## Raspberry Pi 4
 
-The [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
-features a Broadcom BCM2711 SoC with quad Cortex-A72 cores at 1.8 GHz, up to
-8 GB LPDDR4 RAM, dual micro-HDMI (4Kp60), Gigabit Ethernet, USB 3.0, and
-dual-band WiFi. Both 32-bit (`rpi4-32`) and 64-bit (`rpi4-64`) builds are
-supported.
+The
+[Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
+features a Broadcom BCM2711 SoC with quad Cortex-A72 cores at 1.8 GHz, up to 8
+GB LPDDR4 RAM, dual micro-HDMI (4Kp60), Gigabit Ethernet, USB 3.0, and dual-band
+WiFi. Both 32-bit (`rpi4-32`) and 64-bit (`rpi4-64`) builds are supported.
 
 ## Building/installing an image
 
@@ -39,8 +39,8 @@ supported.
 1. Insert SD card
 1. `lsblk` (note SD card device, and substitute for /dev/sdX below)
 1. `yoe_install_image /dev/sdX yoe-simple-image` (Note,
-   [Etcher](https://www.balena.io/etcher/) can also be used to write images to
-   SD cards).
+   [Etcher](https://etcher.balena.io/) can also be used to write images to SD
+   cards).
 1. Optional: configure console for serial port (see below)
 1. `sudo eject /dev/sdX`
 1. Install SD card in the Raspberry Pi and enjoy your new image

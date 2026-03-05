@@ -1,6 +1,7 @@
 # NXP i.MX 8M Mini DDR4 EVK
 
-The [i.MX 8M Mini](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-8-applications-processors/i-mx-8m-mini-arm-cortex-a53-cortex-m4-audio-voice-video:i.MX8MMINI)
+The
+[i.MX 8M Mini](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-8-applications-processors/i-mx-8m-mini-arm-cortex-a53-cortex-m4-audio-voice-video:i.MX8MMINI)
 is an applications processor from NXP featuring quad Arm Cortex-A53 cores and a
 Cortex-M4 core. The DDR4 EVK is NXP's evaluation kit for this SoC using DDR4
 memory.

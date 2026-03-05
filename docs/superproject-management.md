@@ -1,6 +1,5 @@
 # Git Superproject Management
 
-
 One controversial choice in Yoe is the use of Git Submodules vs Repo. Because we
 need to manage multiple Git repositories, something is needed. There are a
 number of solutions including:
@@ -29,7 +28,7 @@ requirements (somewhat ordered by priority).
    build, and be able to rebuild any version on any machine.
 1. all build and configuration files (local.conf, etc) must be stored in git.
 1. project structure is obvious and easy to understand. Obscure steps such as
-   copying on soft-linking setup scripts that may be modified is minimized.
+   copying or soft-linking setup scripts that may be modified is minimized.
 1. hard to make mistakes such as changing a layer version or config file, and
    then forgetting to record this change.
 1. easy to add/remove layers to the build.
@@ -38,7 +37,7 @@ requirements (somewhat ordered by priority).
    upstream.
 
 Every solution has tradeoffs. To accomplish one goal, you often have to accept
-compromises on another goal, so it is likely no one tools is best to accomplish
+compromises on another goal, so it is likely no one tool is best to accomplish
 all of these goals.
 
 ## Git Submodules
@@ -77,7 +76,7 @@ all of these goals.
     subprojects (example, repo can apply a tag to all the subprojects). However,
     with Yocto, you are typically using 3rd party layers where you don't own the
     repository and can't push tags to these repositories.
-  - optmized for development when subprojects are changing a lot
+  - optimized for development when subprojects are changing a lot
 - cons
   - To lock down layers, you have to specify the git hash in the manifest:
     https://github.com/Angstrom-distribution/angstrom-manifest/blob/angstrom-v2018.06-sumo/default.xml#L22.
@@ -106,7 +105,8 @@ file. Yoe is moving toward KAS as the recommended approach for managing builds.
   - actively maintained with good documentation
   - growing adoption in the Yocto community
 - cons
-  - separate tool that needs to be installed (though container mode reduces this)
+  - separate tool that needs to be installed (though container mode reduces
+    this)
   - less familiar to developers who already know git submodules
 
 KAS addresses many of the same goals as git submodules — reproducible builds,
@@ -116,7 +116,7 @@ details on using KAS with Yoe.
 
 ## Git Subtree
 
-At this point git subtree is not activily being considered as it mixes all the
+At this point git subtree is not actively being considered as it mixes all the
 subprojects into one repo, and likely not optimal for managing layers, most of
 which will rarely change during a product lifecycle. It seems to be a tool for
 more advanced users.
@@ -133,8 +133,8 @@ deal with multiple repositories or figure out the
 [combo-layer](http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/scripts/combo-layer)
 tool. Additionally, if you make changes to one of the pieces of Poky, extracting
 these changes to submit back upstream is not as easy as if the repositories were
-simply split out in their original form. Also, it is less obvious you might
-update just one port of the combo repo, but not others.
+simply split out in their original form. Also, it is less obvious that you might
+update just one part of the combo repo, but not others.
 
 It seems monorepos are best for projects where a company owns everything in the
 repo. With a Yocto build, most of the layers come from third parties. In this
@@ -177,11 +177,11 @@ hashes to the manifest file for a release build, and then revert this back to
 floating branches for development. This tooling is unnecessary with git
 submodules.
 
-There is a cost to complexity. We may be temped to reach for the most powerful
+There is a cost to complexity. We may be tempted to reach for the most powerful
 tool at our disposal, but there is a cost if a simpler tool would work. With
 tooling, there is no one-size-fits all. We don't pick up a sledge hammer to
 drive a tack, nor do we use a tack hammer to bust up concrete, nor do we buy a
-robot if we only need to drive a few nails. The best solutions are the simplest
+robot if we only need to drive a few nails. The best solution is the simplest
 one that does the job well. "Clear" and "obvious" are the best solutions in a
 build system. "Neat" and "clever" usually are not.
 

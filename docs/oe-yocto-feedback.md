@@ -1,6 +1,6 @@
 It is no secret that OpenEmbedded/Yocto has a steep learning curve. Many people
-who try to use it get discouraged and write it off as porely done and impossible
-to understand. This is one of the problems the motivated us to create Yoe.
+who try to use it get discouraged and write it off as poorly done and impossible
+to understand. This is one of the problems that motivated us to create Yoe.
 
 Below is some of the feedback we've collected and links to various discussions.
 

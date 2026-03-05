@@ -1,5 +1,4 @@
-# Notes on using Yoe on the BeagleBone Black
-
+# BeagleBone Black
 
 [BSP Layer README](https://github.com/YoeDistro/meta-ti/blob/master/README)
 
@@ -12,20 +11,20 @@
 1. `. ./envsetup.sh beaglebone`
 1. `yoe_setup`
 1. `bitbake yoe-simple-image`
-1. insert SD card
-1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
+1. Insert SD card
+1. `lsblk` (note SD card device, and substitute for /dev/sdX below)
 1. `yoe_install_image /dev/sdX yoe-simple-image` (Note,
-   [Etcher](https://www.balena.io/etcher/) can also be used to write images to
-   SD cards).
-1. `cp deploy/beaglebone_0.0.1.upd /run/media/<SD card boot partition/`
+   [Etcher](https://etcher.balena.io/) can also be used to write images to SD
+   cards).
+1. `cp deploy/beaglebone_0.0.1.upd /run/media/<SD card boot partition>/`
 1. `sudo eject /dev/sdX`
-1. connect serial console (instructions below)
-1. install SD card in a BeagleBone
-1. hold the boot switch, apply power, and BeagleBone will now boot from SD card
-   and install Yoe to the eMMC flash.
-1. remove power and SD card. Yoe should now boot from eMMC disk.
+1. Connect serial console (instructions below)
+1. Install SD card in a BeagleBone
+1. Hold the boot switch, apply power, and the BeagleBone will boot from the SD
+   card and install Yoe to the eMMC flash
+1. Remove power and SD card. Yoe should now boot from eMMC.
 
-## Connecting to serial console
+## Serial Console
 
 The BeagleBone Black serial console is available on a 6-pin header as shown in
 the image below. The pinout matches a standard

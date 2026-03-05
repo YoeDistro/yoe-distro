@@ -1,8 +1,8 @@
 # Allwinner Nezha D1
 
-The [Nezha D1](https://d1.docs.aw-ol.com/en/) is a RISC-V single-board
-computer based on the Allwinner D1 SoC, featuring the XuanTie C906 64-bit
-RISC-V core. It is one of the first affordable RISC-V Linux SBCs.
+The [Nezha D1](https://d1.docs.aw-ol.com/en/) is a RISC-V single-board computer
+based on the Allwinner D1 SoC, featuring the XuanTie C906 64-bit RISC-V core. It
+is one of the first affordable RISC-V Linux SBCs.
 
 ## Key Features
 

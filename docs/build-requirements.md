@@ -5,10 +5,10 @@ by with 8GB of RAM for simple images, but building anything with Chromium in it
 will likely require 64GB of RAM. We recommend at least 16GB and preferably 32 or
 64GB.
 
-Yocto agressively parallizes the build, so it will max it your CPUs. Generally,
-you need to have 2GB of RAM for each virtual core. To determine the number of
-cores, run `cat /proc/cpus` and locate the `siblings` field. For x86 CPUS, this
-is typically twice the number of CPU cores due to hyperthreading.
+Yocto aggressively parallelizes the build, so it will max out your CPUs.
+Generally, you need to have 2GB of RAM for each virtual core. To determine the
+number of cores, run `cat /proc/cpuinfo` and locate the `siblings` field. For
+x86 CPUs, this is typically twice the number of CPU cores due to hyperthreading.
 
 ```
 processor       : 0
@@ -26,8 +26,7 @@ core id         : 0
 cpu cores       : 12
 ```
 
-For the above above 12 core machine, we have 24 virtual cores, so need ~48GB of
-RAM.
+For the above 12-core machine, we have 24 virtual cores, so need ~48GB of RAM.
 
 If you are running out of memory during builds, you can add the following to
 `local.conf`:

@@ -4,17 +4,17 @@ Yoe supports a variety of QEMU targets for testing and development without
 physical hardware. These are useful for build testing, application development,
 and CI pipelines.
 
-| Project       | Architecture       | Description                  |
-| ------------- | ------------------ | ---------------------------- |
-| `qemuarm`     | ARM 32-bit         | Versatile Express Cortex-A15 |
-| `qemuarm64`   | ARM 64-bit         | Generic ARM64 (Cortex-A57)   |
-| `qemux86`     | x86 32-bit         | Generic PC (i586)            |
-| `qemux86-64`  | x86 64-bit         | Generic PC (x86-64)          |
-| `qemumips`    | MIPS 32-bit        | Malta board                  |
-| `qemuppc`     | PowerPC 32-bit     | Mac99 machine                |
-| `qemuppc64`   | PowerPC 64-bit     | pseries machine              |
-| `qemuriscv32` | RISC-V 32-bit      | Generic RISC-V (virt)        |
-| `qemuriscv64` | RISC-V 64-bit      | Generic RISC-V (virt)        |
+| Project       | Architecture   | Description                  |
+| ------------- | -------------- | ---------------------------- |
+| `qemuarm`     | ARM 32-bit     | Versatile Express Cortex-A15 |
+| `qemuarm64`   | ARM 64-bit     | Generic ARM64 (Cortex-A57)   |
+| `qemux86`     | x86 32-bit     | Generic PC (i586)            |
+| `qemux86-64`  | x86 64-bit     | Generic PC (x86-64)          |
+| `qemumips`    | MIPS 32-bit    | Malta board                  |
+| `qemuppc`     | PowerPC 32-bit | Mac99 machine                |
+| `qemuppc64`   | PowerPC 64-bit | pseries machine              |
+| `qemuriscv32` | RISC-V 32-bit  | Generic RISC-V (virt)        |
+| `qemuriscv64` | RISC-V 64-bit  | Generic RISC-V (virt)        |
 
 ## Building an image
 
