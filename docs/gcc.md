@@ -1,6 +1,5 @@
 # GCC
 
-[up](README.md)
 
 The primary use for OE is to cross-compile software on a fast workstation, but
 there are times during development or evaluating technology where it may be

@@ -1,6 +1,5 @@
 # Yoe Layer Management
 
-[up](README.md)
 
 All OE layers that are being used in Yoe project are mirrored in the YoeDistro
 space on github. These layers are synced every two hours with upstream since the

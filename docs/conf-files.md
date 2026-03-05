@@ -1,6 +1,5 @@
 # Configuration Files
 
-[up](README.md)
 
 OpenEmbedded is configured through "conf" files. These exist at various
 [places](https://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#user-configuration)

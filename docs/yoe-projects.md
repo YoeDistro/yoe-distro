@@ -23,28 +23,32 @@ project/platform.
 Currently these projects are supported.
 
 - beaglebone
-- qemuarm
-- qemuppc
-- qemux86
-- unleashed
-- var-som-mx8m-nano
 - imx8mm-ddr4-evk
-- qemuarm64
-- qemuppc64
-- qemux86-64
-- unmatched
-- var-som-mx8x
+- jetson-agx-orin-devkit
+- jetson-orin-nano-devkit
+- jetson-orin-nano-devkit-nvme
 - nezha-d1
-- qemucommon
-- qemuriscv32
-- rockpi-4b
-- var-dart-imx6ul
-- visionfive
 - odroid-c4
+- qemuarm
+- qemuarm64
 - qemumips
+- qemuppc
+- qemuppc64
+- qemuriscv32
 - qemuriscv64
+- qemux86
+- qemux86-64
+- rockpi-4b
+- rpi4-32
 - rpi4-64
+- rpi5
+- unleashed
+- unmatched
+- var-dart-imx6ul
 - var-som-mx8
+- var-som-mx8m-nano
+- var-som-mx8x
+- visionfive
 - visionfive2
 
 ## Converting a project

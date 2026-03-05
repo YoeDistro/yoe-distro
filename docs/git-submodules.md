@@ -1,6 +1,5 @@
 # Working with Git Submodules
 
-[up](README.md)
 
 Git submodules are used in this project to manage the various OE layers for
 reasons described in [this document](superproject-management.md). See this

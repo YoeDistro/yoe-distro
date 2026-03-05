@@ -4,10 +4,17 @@
 
 # Machine Documentation
 
-- [Raspberry PI](raspberrypi.md)
+- [Raspberry Pi](raspberrypi.md)
 - [BeagleBone Black](beagleboneblack.md)
+- [NXP i.MX 8M Mini EVK](imx8mm-ddr4-evk.md)
+- [NVIDIA Jetson Orin](jetson-orin.md)
+- [Allwinner Nezha D1](nezha-d1.md)
 - [ODROID](odroid.md)
-- [ATSAMA5D27](sama5d27.md)
+- [ROCK Pi 4B](rockpi-4b.md)
+- [SiFive RISC-V](sifive.md)
+- [StarFive VisionFive](visionfive.md)
+- [Variscite SOMs](variscite.md)
+- [QEMU Virtual Machines](qemu.md)
 
 # Using Yoe
 

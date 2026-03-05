@@ -1,6 +1,5 @@
 # Yoe Profile
 
-[up](README.md)
 
 The Yoe Distribution makes it easy to select the libc, init, and graphics
 subsystem for your project. To select a profile, set `YOE_PROFILE` in

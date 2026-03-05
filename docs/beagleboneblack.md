@@ -1,6 +1,5 @@
 # Notes on using Yoe on the BeagleBone Black
 
-[up](README.md)
 
 [BSP Layer README](https://github.com/YoeDistro/meta-ti/blob/master/README)
 

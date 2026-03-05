@@ -1,6 +1,5 @@
 # Packages
 
-[up](README.md)
 
 During an image build, OpenEmbedded builds all software into packages, which are
 then combined into a rootfs. One benefit of this is you can install packages

@@ -1,6 +1,5 @@
 # libc and init system selection
 
-[up](README.md)
 
 ## Selection
 

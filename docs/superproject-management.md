@@ -1,12 +1,12 @@
 # Git Superproject Management
 
-[up](README.md)
 
 One controversial choice in Yoe is the use of Git Submodules vs Repo. Because we
 need to manage multiple Git repositories, something is needed. There are a
 number of solutions including:
 
-- Git submodules (what we use now)
+- Git submodules (legacy, still supported)
+- [KAS](kas.md) (recommended for new projects)
 - Google repo
 - Git subtree
 - custom scripts
@@ -89,6 +89,31 @@ all of these goals.
   - location of manifest file is somewhat hidden and less obvious how to manage
   - difficult to store both subproject info and other files in the superproject.
 
+## KAS
+
+[KAS](https://github.com/siemens/kas) is a build tool for Yocto/OE that manages
+layer repositories, configuration, and build environments from a single YAML
+file. Yoe is moving toward KAS as the recommended approach for managing builds.
+
+- pros
+  - single YAML file defines layers, repos, and configuration — easy to read and
+    maintain
+  - built-in container support for reproducible build environments
+  - layer repository URLs, branches, and revisions are declared in one place
+  - no separate tooling needed to lock down layer versions — commit hashes go
+    directly in the YAML
+  - supports configuration includes for sharing common settings across projects
+  - actively maintained with good documentation
+  - growing adoption in the Yocto community
+- cons
+  - separate tool that needs to be installed (though container mode reduces this)
+  - less familiar to developers who already know git submodules
+
+KAS addresses many of the same goals as git submodules — reproducible builds,
+version locking, and configuration management — while providing a more
+integrated and streamlined workflow. See the [KAS documentation](kas.md) for
+details on using KAS with Yoe.
+
 ## Git Subtree
 
 At this point git subtree is not activily being considered as it mixes all the
@@ -162,10 +187,11 @@ build system. "Neat" and "clever" usually are not.
 
 (Note, I don't claim Yoe meets this lofty goal, but this is the vision.)
 
-It seems git submodules are still a better fit for the use case Yoe was designed
-for, however this is not set in stone, but simply where we are at this point. It
-is acknowledged that repo may make some things easier for OE/Layer core
-developers where who are often modifying and updating layers. So, if repo works
-great for you, by all means keep using it. That is the beauty of OE layers --
-you can put then together using whatever tools works best for you. Yoe is just
-an attempt at keeping things as simple as possible for product developers.
+Yoe is moving toward [KAS](kas.md) as the recommended way to manage builds. KAS
+combines layer management and build configuration into a single YAML file,
+eliminating much of the complexity discussed above. Git submodules remain
+supported for existing projects, but new projects are encouraged to use KAS.
+
+That said, the beauty of OE layers is that you can put them together using
+whatever tools work best for you. Yoe is just an attempt at keeping things as
+simple as possible for product developers.
