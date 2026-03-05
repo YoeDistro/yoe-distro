@@ -26,7 +26,8 @@ Gigabit Ethernet, and four USB 3.2 Gen 1 ports.
 
 1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
 1. `cd yoe`
-1. `kas build kas/<machine>.yml` (e.g., `kas/unmatched.yml`, `kas/unleashed.yml`)
+1. `kas build kas/<machine>.yml` (e.g., `kas/unmatched.yml`,
+   `kas/unleashed.yml`)
 1. Insert SD card
 1. `lsblk` (note SD card device, and substitute for /dev/sdX below)
 1. Flash the image from `build/tmp/deploy/images/` to the SD card

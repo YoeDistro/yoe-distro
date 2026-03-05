@@ -3,8 +3,8 @@
 ## Selection
 
 Selection of the libc and init system is done via KAS include files. See
-[KAS](kas.md) for details on how to combine component includes to customize
-the libc, init system, and window system.
+[KAS](kas.md) for details on how to combine component includes to customize the
+libc, init system, and window system.
 
 ## Comparison of disk space used
 

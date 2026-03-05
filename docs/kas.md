@@ -47,8 +47,8 @@ Available configurations:
 
 ## Customizing libc, init, and window system
 
-The default build uses glibc, systemd, and wayland. To change these, combine
-the machine config with one or more component includes using KAS multi-config
+The default build uses glibc, systemd, and wayland. To change these, combine the
+machine config with one or more component includes using KAS multi-config
 syntax:
 
 ```bash
@@ -58,11 +58,12 @@ kas build kas/rpi4-64.yml:kas/include/libc/musl.yml:kas/include/init/sysvinit.ym
 Available component includes:
 
 - **libc** (`kas/include/libc/`): `glibc.yml`, `musl.yml`
-- **init** (`kas/include/init/`): `busyboxinit.yml`, `systemd.yml`, `sysvinit.yml`
+- **init** (`kas/include/init/`): `busyboxinit.yml`, `systemd.yml`,
+  `sysvinit.yml`
 - **winsys** (`kas/include/winsys/`): `eglfs.yml`, `wayland.yml`, `x11.yml`
 
-Mix and match any combination. Only include the axes you want to change from
-the defaults (glibc + systemd + wayland).
+Mix and match any combination. Only include the axes you want to change from the
+defaults (glibc + systemd + wayland).
 
 ## Running a Build
 
