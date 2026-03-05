@@ -1,0 +1,16 @@
+# run cargo install mdbook mdbook-toc mdbook-linkcheck
+
+[book]
+authors = ["Cliff Brake", "Khem Raj"]
+language = "en"
+src = "docs"
+title = "Yoe Embedded Linux Distribution"
+
+[preprocessor.toc]
+
+[output.html]
+git-repository-url = "https://github.com/YoeDistro/yoe-distro"
+edit-url-template = "https://github.com/YoeDistro/yoe-distro/edit/master/{path}"
+
+#[output.linkcheck]
+#follow-web-links = true
