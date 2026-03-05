@@ -1,0 +1,6 @@
+header:
+  version: 20
+
+local_conf_header:
+  yoe-init: |
+    INIT_MANAGER = "sysvinit"

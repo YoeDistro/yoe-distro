@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/beaglebone.yml
+
+machine: beaglebone
+
+local_conf_header:
+  MACHINE description: |
+    # TI AM335x BeagleBone

@@ -1,0 +1,33 @@
+header:
+  version: 20
+  includes:
+    - kas/include/yoe-updater.yml
+
+target: yoe-simple-image
+
+repos:
+  meta-ti:
+    url: https://github.com/YoeDistro/meta-ti
+    branch: master
+    path: layers/meta-ti
+    layers:
+      meta-ti-bsp:
+      meta-ti-extras:
+
+  meta-arm:
+    url: https://github.com/yoedistro/meta-arm
+    branch: master
+    path: layers/meta-arm
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
+local_conf_header:
+  image types: |
+    IMAGE_FSTYPES = "wic.xz wic.bmap ext4.xz"
+
+  ti graphics: |
+    IMAGE_INSTALL:append = " ti-sgx-ddk-um"
+
+  kernel: |
+    OLDEST_KERNEL = "5.10"

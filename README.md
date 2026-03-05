@@ -12,7 +12,7 @@ distribution does not end at demo images but rather begins there.
 ## Example 👀
 
 The following is an example of building and installing a linux system from
-scratch on a Raspberry PI 3:
+scratch on a Raspberry PI 4:
 
 ## Install Pre-requisites 💻
 
@@ -39,14 +39,11 @@ port forwarding to work on docker
 
 1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
 1. `cd yoe`
-1. `. ./envsetup.sh rpi4-64`
-1. `yoe_setup`
-1. `bitbake yoe-simple-image`
+1. `kas build kas/rpi4-64.yml`
 1. insert SD card
 1. `lsblk` (note sd card device, and substitute for /dev/sdX below)
-1. `yoe_install_image /dev/sdX yoe-simple-image` (Note,
-   [Etcher](https://www.balena.io/etcher/) can also be used to write images to
-   SD cards).
+1. Flash the image from `build/tmp/deploy/images/` to the SD card (e.g. using
+   [Etcher](https://www.balena.io/etcher/))
 1. optional: [configure console for serial port](docs/raspberrypi.md)
 1. `sudo eject /dev/sdX`
 1. Install SD card in a Raspberry PI and enjoy your new image
@@ -85,18 +82,15 @@ different is needed for product development. Thus, the following goals:
    [docker wrapper](docs/docker.md) that contains all the host dependencies
    needed. This wrapper is invisible (the file system still lives on the host),
    and is optional if you choose not to use it.
-1. **transparent**: we try to use industry standard tools (git, bitbake, etc)
-   where possible and not invent a lot of new tooling that needs to be learned
-   to use the system. As an example, much of the tooling (envsetup.sh) are
-   simple bash functions and are easy to learn from. Using Yoe will teach you
-   about Yocto.
+1. **transparent**: we try to use industry standard tools (git, bitbake, kas,
+   etc) where possible and not invent a lot of new tooling that needs to be
+   learned to use the system. Using Yoe will teach you about Yocto.
 1. **minimal**: Embedded Linux images can quickly become bloated so we support
    technologies like musl libc, opkg package manager, etc. where appropriate.
 
 ## Supported Machines
 
-See the output of `./envsetup.sh` for examples of projects we regularly test
-with.
+See [KAS](docs/kas.md) for a list of supported machine configurations.
 
 There is also
 [machine specific documentation](docs/README.md#machine-documentation)
@@ -106,17 +100,23 @@ Additional machines can be added by including appropriate BSP layers.
 
 ## Using ⚙️
 
-### envsetup.sh
+### KAS
 
-This is where all the magic happens. In general, this build system must be run
-in a bash shell. To set up the environment, source the following file:
+Yoe uses [KAS](https://github.com/siemens/kas) to manage builds. Each machine
+has a YAML configuration file in the `kas/` directory. To build for a machine:
 
-`. ./envsetup.sh <project>`
+```bash
+kas build kas/<machine>.yml
+```
 
-Or, you can export a PROJECT environment variable, and then source envsetup.sh.
+To drop into a bitbake shell:
 
-This file will create a bunch of functions in the environment prefixed with
-yoe\_ that can be executed. Type yoe\_ <tab><tab> to see them.
+```bash
+kas shell kas/<machine>.yml
+```
+
+See the [KAS documentation](docs/kas.md) for details on customizing builds,
+selecting libc/init/winsys options, and running in containers.
 
 ### directories and key files
 
@@ -129,14 +129,7 @@ yoe\_ that can be executed. Type yoe\_ <tab><tab> to see them.
 - _downloads_: contains files that are downloaded by various recipes during
   builds.
 - _tools_: utility scripts
-- _localconfig.sh_: file created by envsetup.sh that contains directory specific
-  variables based on the build system location.
-- _local.sh_: can be used to customize MACHINE, and other variables
-
-### building for another machine
-
-- `export MACHINE=[my machine]`
-- `bitbake [recipe name]`
+- _kas_: KAS build configurations
 
 ### Layer management
 
@@ -150,9 +143,9 @@ Remove meta-altera:
 
 ### Customizing the distribution
 
-`conf/site.conf` contains settings that are common for the project. The
-[YOE_PROFILE](docs/yoe-profile.md) templates make it easy to select common
-options.
+The default configuration uses glibc, systemd, and wayland. To customize these
+options, combine KAS include files when building. See [KAS](docs/kas.md) for
+details.
 
 ### customizing settings for your build machine
 

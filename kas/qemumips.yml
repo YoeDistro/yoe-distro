@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/qemu.yml
+
+machine: qemumips
+
+local_conf_header:
+  MACHINE description: |
+    # QEMU MIPS

@@ -20,14 +20,12 @@ factor with significantly more processing power.
 
 ## Building/installing an image
 
-1. `git clone https://github.com/YoeDistro/yoe-distro.git`
-1. `cd yoe-distro`
-1. `. ./envsetup.sh rockpi-4b`
-1. `yoe_setup`
-1. `bitbake yoe-simple-image`
+1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
+1. `cd yoe`
+1. `kas build kas/rockpi-4b.yml`
 1. Insert SD card
 1. `lsblk` (note SD card device, and substitute for /dev/sdX below)
-1. `yoe_install_image /dev/sdX yoe-simple-image`
+1. Flash the image from `build/tmp/deploy/images/` to the SD card
 1. `sudo eject /dev/sdX`
 1. Install SD card in the ROCK Pi 4B and apply power
 

@@ -1,0 +1,22 @@
+header:
+  version: 20
+
+target: yoe-simple-image
+
+repos:
+  meta-rockchip:
+    url: https://github.com/yoedistro/meta-rockchip
+    branch: master
+    path: layers/meta-rockchip
+
+  meta-arm:
+    url: https://github.com/yoedistro/meta-arm
+    branch: master
+    path: layers/meta-arm
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
+local_conf_header:
+  image types: |
+    IMAGE_FSTYPES = "wic.xz wic.bmap tar.xz"

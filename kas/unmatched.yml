@@ -1,0 +1,21 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/riscv.yml
+    - kas/include/yoe-updater.yml
+
+machine: unmatched
+
+repos:
+  meta-sifive:
+    url: https://github.com/YoeDistro/meta-sifive
+    branch: master
+    path: layers/meta-sifive
+
+local_conf_header:
+  MACHINE description: |
+    # SiFive HiFive Unmatched
+
+  image types: |
+    IMAGE_FSTYPES:append = " wic.xz wic.bmap tar.xz"

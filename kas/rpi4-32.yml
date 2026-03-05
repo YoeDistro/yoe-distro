@@ -4,11 +4,11 @@ header:
     - kas/include/base.yml
     - kas/include/raspberrypi.yml
 
-machine: raspberrypi4-64
+machine: raspberrypi4
 
 local_conf_header:
   MACHINE description: |
-    # Raspberry Pi 4 64-bit
+    # Raspberry Pi 4 32-bit
 
   Needed for Running bitbake -ctestimage <image>: |
     TEST_TARGET_IP = "10.0.0.47"

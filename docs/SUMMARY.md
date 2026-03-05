@@ -27,7 +27,6 @@
 # Image Configuration
 
 - [Configuration Files](conf-files.md)
-- [Profile](yoe-profile.md)
 - [libc/init System](libc-init.md)
 - [GCC](gcc.md)
 
@@ -36,7 +35,6 @@
 - [Superproject Management](superproject-management.md)
 - [Layer Management](layer-management.md)
 - [OE/Yocto Feedback](oe-yocto-feedback.md)
-- [Yoe Projects](yoe-projects.md)
 
 # Reference
 

@@ -1,0 +1,25 @@
+header:
+  version: 20
+  includes:
+    - kas/include/yoe-updater.yml
+
+target: yoe-simple-image
+
+repos:
+  meta-odroid:
+    url: https://github.com/YoeDistro/meta-odroid
+    branch: master
+    path: layers/meta-odroid
+    layers:
+      meta-odroid:
+      meta-odroid-extras:
+
+local_conf_header:
+  image types: |
+    IMAGE_FSTYPES = "wic.xz wic.bmap ext4.xz"
+
+  kernel: |
+    OLDEST_KERNEL = "4.9"
+
+  odroid sanity: |
+    SKIP_META_ODROID_EXTRA_SANITY_CHECK = "1"

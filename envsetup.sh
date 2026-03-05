@@ -6,17 +6,6 @@ echoerr() {
   echo $@ >&2
 }
 
-# List supported projects
-yoe_get_projects() {
-    (
-    cd $OE_BASE/conf/projects
-    for f in *; do
-        if [ -e $f/config.conf ]; then
-            echo $f
-        fi
-    done
-    )
-}
 read_var_from_conf() {
   VAR_NAME=$1
   files="conf/local.conf conf/site.conf"
@@ -39,9 +28,7 @@ usage() {
   echo "Usage:"
   echo ". $arg0 <project>"
   echo
-  echo "Please specify one of the following projects"
-  echo
-  yoe_get_projects
+  echo "Project names correspond to directories in conf/projects/"
   echo
   return 0
 }
@@ -51,8 +38,6 @@ if [ -n "${shell##*zsh*}" ] && [ -n "${shell##*bash*}" ]; then
   echo "Error: We require running Yoe in a bash or zsh shell. Other shells have not been tested."
   return 1
 fi
-
-DOCKER="docker"
 
 if [ -f local.sh ]; then
   echo "reading local settings"
@@ -94,46 +79,39 @@ OE_BASE=$(readlink -f $(dirname $arg0))
 
 cd $OE_BASE
 
-if [ $# -eq 0 -a -z $PROJECT ]; then
-  usage
-fi
-
 if [ $# -gt 0 ]; then
   PROJECT=$1
 fi
 
-projects="`yoe_get_projects | tr '\n' ' '`"
+if [ -n "$PROJECT" ]; then
+  if [ ! -d "conf/projects/$PROJECT" ] || [ ! -e "conf/projects/$PROJECT/config.conf" ]; then
+    echo
+    echo "'$PROJECT' is not a valid project (no conf/projects/$PROJECT/config.conf found)"
+    usage
+    unset PROJECT
+    unset MACHINE
+    return 1
+  fi
 
-echo "$projects" | \grep -q "\<$PROJECT\>" >&2
+  export PROJECT
+  echo "Setting PROJECT=$PROJECT"
 
-if [ $? != 0 ]; then
-  echo
-  echo "'$PROJECT' is not yet a supported project"
-  echo "Please unset PROJECT environment variable or set it to a supported project"
-  usage
-  unset PROJECT
-  unset MACHINE
-  return 1
+  MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE[[:space:]]*=' | cut -d '"' -f 2`
+
+  if [ -z "$MACHINE" ]; then
+    MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE[[:space:]]*=' | cut -d "'" -f 2`
+  fi
+
+  if [ -z "$MACHINE" ]; then
+    echo "Please define MACHINE = \"<name>\" in conf/projects/$PROJECT/config.conf"
+    unset PROJECT
+    unset MACHINE
+    return 1
+  fi
+
+  export MACHINE
+  echo "Setting MACHINE=$MACHINE"
 fi
-
-export PROJECT
-echo "Setting PROJECT=$PROJECT"
-
-MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE[[:space:]]*=' | cut -d '"' -f 2`
-
-if [ -z "$MACHINE" ]; then
-  MACHINE=`cat conf/projects/$PROJECT/config.conf | grep '^MACHINE[[:space:]]*=' | cut -d "'" -f 2`
-fi
-
-if [ -z "$MACHINE" ]; then
-  echo "Please define MACHINE = \"<name>\" in conf/projects/$PROJECT/config.conf"
-  unset PROJECT
-  unset MACHINE
-  return 1
-fi
-
-export MACHINE
-echo "Setting MACHINE=$MACHINE"
 
 if [ -z "${MEDIA}" ]; then
   # set the location of the automounted location for removable storage
@@ -219,7 +197,7 @@ HTTPS_PROXY https_proxy FTP_PROXY ftp_proxy FTPS_PROXY ftps_proxy ALL_PROXY \
 all_proxy NO_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY \
 SDKMACHINE BB_NUMBER_THREADS BB_NO_NETWORK PARALLEL_MAKE GIT_PROXY_COMMAND \
 SOCKS5_PASSWD SOCKS5_USER SCREENDIR STAMPS_DIR BBPATH_EXTRA BB_SETSCENE_ENFORCE \
-OE_BASE IMG_VERSION BUILDHISTORY_RESET YOE_PROFILE DOCKER PROJECT"
+OE_BASE IMG_VERSION BUILDHISTORY_RESET PROJECT"
 
 BB_ENV_PASSTHROUGH_ADDITIONS="$(echo $BB_ENV_PASSTHROUGH_ADDITIONS $BB_ENV_PASSTHROUGH_ADDITIONS_OE | tr ' ' '\n' | LC_ALL=C sort --unique | tr '\n' ' ')"
 
@@ -282,9 +260,10 @@ fi # if -e ${YOE_ENV_FILE}
 #--------------------------------------------------------------------------
 mkdir -p ${OE_BUILD_DIR}/conf
 
-AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
-rm -f $AUTO_CONF
-cat >$AUTO_CONF <<_EOF
+if [ -n "$PROJECT" ]; then
+  AUTO_CONF=${OE_BUILD_DIR}/conf/auto.conf
+  rm -f $AUTO_CONF
+  cat >$AUTO_CONF <<_EOF
 # This is an automatically generated file, please do not edit.
 
 ACONF_VERSION = "1"
@@ -306,7 +285,8 @@ PATCH_GIT_USER_NAME = "${GIT_USER_NAME}"
 PATCH_GIT_USER_EMAIL = "${GIT_USER_EMAIL}"
 _EOF
 
-echo "${AUTO_CONF} has been updated"
+  echo "${AUTO_CONF} has been updated"
+fi
 
 ###############################################################################
 # UPDATE_ALL() - Make sure everything is up to date
@@ -519,176 +499,6 @@ yoe_setup_esdk_env() {
   fi
 }
 
-# Docker integration
-# set DOCKER_REPO to something like yoedistro/yoe-build:trixie-x86_64
-# DOCKER_REPO can be set in scripts that wrap envsetup.sh
-# set DOCKER_REPO to 'none' to disable docker
-
-if [ -z "$DOCKER_REPO" ]; then
-  if [ "`uname`" = "Darwin" -a "`uname -m`" = "arm64" ]; then
-    dockerarch="-aarch64"
-    elif [ "`uname`" = "Linux" ]; then
-    dockerarch="-`uname -m`"
-  fi
-  echo "Setting DOCKER_REPO to yoedistro/yoe-build:trixie${dockerarch}"
-  export DOCKER_REPO=yoedistro/yoe-build:trixie${dockerarch}
-fi
-
-check_docker() {
-  if ! $DOCKER -v >/dev/null 2>&1; then
-    echo "Error, $DOCKER not installed, please install supported container technology ( docker or podman ) or set DOCKER_REPO=none in environment"
-    return 1
-  fi
-
-  if ! $DOCKER images -q $DOCKER_REPO >/dev/null 2>&1; then
-    echo "Error, docker image $DOCKER_REPO not installed"
-    echo "Please install it with: docker pull $DOCKER_REPO"
-    return 1
-  fi
-
-  return 0
-}
-
-dkr() {
-  check_docker || return 1
-
-  if [ -z "$1" ]; then
-    echo "setting dkr action to shell"
-    CMD=". ${OE_BASE}/envsetup.sh $PROJECT 2>&1 > /dev/null && \
-      DOCKER_REPO=none /bin/bash && . ./envsetup.sh"
-  else
-    CMD=". ${OE_BASE}/envsetup.sh $PROJECT 2>&1 > /dev/null && $@"
-    shift
-  fi
-  if [ "$DOCKER_PSEUDO_TTY" = "no" ]; then
-    PSEUDO_TTY=""
-  else
-    PSEUDO_TTY="--tty"
-  fi
-  if [ -n "$DOCKER_PORTS" ]; then
-    unset PORTMAPS
-    for p in $DOCKER_PORTS; do
-      PORTMAPS="$PORTMAPS --publish $p"
-    done
-  fi
-
-  SSH_AUTH_DIR=~/
-
-  unset MAP_DL_DIR
-  unset MAP_TMPDIR
-  unset MAP_SSTATE_DIR
-  unset MAP_GITCONFIG
-  MAP_TMPDIR="--volume=$(readlink -f $OE_BUILD_TMPDIR):$(readlink -f $OE_BUILD_TMPDIR)"
-  MAP_DL_DIR="--volume=$(readlink -f $OE_DL_DIR):$(readlink -f $OE_DL_DIR)"
-  MAP_SSTATE_DIR="--volume=$(readlink -f $OE_SSTATE_DIR):$(readlink -f $OE_SSTATE_DIR)"
-
-  if [ -n "$SSH_AUTH_SOCK" ]; then
-    SSH_AUTH_DIR=$(readlink -f $SSH_AUTH_SOCK)
-  fi
-
-  if [ -e ~/.gitconfig ]; then
-    MAP_GITCONFIG="--volume=$HOME/.gitconfig:/home/build/.gitconfig"
-  fi
-
-  GGID=$(id -g)
-  UUID=$(id -u)
-  UID_ARGS=""
-  if [ "$DOCKER" = "podman" ]; then
-    # Running with namespace and overlay-fs labelling enabled introduces a
-    # significant delay in podman startup when the build directory contains
-    # giga-bytes of data, so for now, disable default namespacing and provide
-    # our own.
-    # Running without namespace mapping as non-root
-    # https://github.com/containers/podman/issues/2180
-    UID_ARGS="--privileged \
-      --uidmap $UUID:0:1 \
-      --uidmap 0:1:$UUID \
-      --gidmap $GGID:0:1 \
-      --gidmap 0:1:$GGID \
-      --net=slirp4netns:port_handler=slirp4netns \
-      --security-opt seccomp=unconfined \
-      --security-opt label=disable \
-      --cap-add=NET_RAW \
-      "
-  fi
-
-  if [ -c /dev/kvm ]; then
-    DOCKER_ENABLE_KVM="--device=/dev/kvm"
-  else
-    DOCKER_ENABLE_KVM=""
-  fi
-
-  $DOCKER run --rm -i $PSEUDO_TTY \
-    -v ${OE_BASE}:${OE_BASE} \
-    -v ~/.ssh:/home/build/.ssh \
-    $MAP_GITCONFIG \
-    $MAP_DL_DIR \
-    $MAP_SSTATE_DIR \
-    $MAP_TMPDIR \
-    -v $SSH_AUTH_DIR:/ssh-agent \
-    -e SSH_AUTH_SOCK=/ssh-agent \
-    -e MACHINE=$MACHINE \
-    -e PROJECT=$PROJECT \
-    -w ${OE_BASE} \
-    --env GGID=$(id -g) \
-    --env UUID=$(id -u) \
-    $PORTMAPS \
-    $UID_ARGS \
-    $DOCKER_EXTRA_ARGS \
-    --cap-add=NET_ADMIN \
-    --device=/dev/net/tun \
-    ${DOCKER_ENABLE_KVM} \
-    --device=/dev/vhost-net \
-    --ulimit "nofile=1024:1048576" \
-    ${DOCKER_REPO} /bin/bash -c "$CMD"
-}
-
-wrapcmd() {
-  ulimit -n 4096
-  umask 0022
-  cmd=$1
-  shift
-  if [ -z $DOCKER_REPO ] || [ "$DOCKER_REPO" = "none" ]; then
-    $cmd $@
-  else
-    dkr "$cmd $@"
-  fi
-}
-
-bitbake() {
-  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake $@
-}
-bitbake-diffsigs() {
-  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-diffsigs $@
-}
-
-bitbake-dumpsig() {
-  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-dumpsig $@
-}
-
-bitbake-getvar() {
-  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-getvar $@
-}
-
-bitbake-layers() {
-  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-layers $@
-}
-
-bitbake-selftest() {
-  wrapcmd ${OE_BASE}/sources/bitbake/bin/bitbake-selftest $@
-}
-
-devtool() {
-  wrapcmd ${OE_BASE}/sources/openembedded-core/scripts/devtool $@
-}
-
-oe-pkgdata-util() {
-  wrapcmd ${OE_BASE}/sources/openembedded-core/scripts/oe-pkgdata-util $@
-}
-
-recipetool() {
-  wrapcmd ${OE_BASE}/sources/openembedded-core/scripts/recipetool $@
-}
 
 
 yoe_get_image_version() {

@@ -30,21 +30,17 @@ Yoe supports several NVIDIA Jetson Orin developer kits:
 
 ### Jetson AGX Orin
 
-1. `git clone https://github.com/YoeDistro/yoe-distro.git`
-1. `cd yoe-distro`
-1. `. ./envsetup.sh jetson-agx-orin-devkit`
-1. `yoe_setup`
-1. `bitbake yoe-simple-image`
+1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
+1. `cd yoe`
+1. `kas build kas/jetson-agx-orin-devkit.yml`
 
 ### Jetson Orin Nano
 
-1. `git clone https://github.com/YoeDistro/yoe-distro.git`
-1. `cd yoe-distro`
-1. `. ./envsetup.sh jetson-orin-nano-devkit`
-1. `yoe_setup`
-1. `bitbake yoe-simple-image`
+1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
+1. `cd yoe`
+1. `kas build kas/jetson-orin-nano-devkit.yml`
 
-For NVMe boot, use `jetson-orin-nano-devkit-nvme` instead.
+For NVMe boot, use `kas/jetson-orin-nano-devkit-nvme.yml` instead.
 
 ## Flashing
 
