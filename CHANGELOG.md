@@ -6,6 +6,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.02] - 2026-02-28
+
+### Changed
+
+- Add CVE_PRODUCT product name entries in several recipes
+- Upgrade PHP to 8.5.3
+- Upgrade rpidistro ffmpeg to 7.1.13
+- Switch kerel for K1 SOCs to linux-mainline-k1 6.19
+- Update L4T from R36.4.4 to R36.5.0
+- Update affected recipes to build with Jetpack R36.5.0
+- Add recipe for linux-yocto 6.12 in tegra layer
+- Upgrade coreutils to 9.10
+- Upgrade go compiler to 1.26.0
+- Disable TLS 1.0/1.1 by default in OpenSSL
+- Upgrade mesa to 26.0.0
+- Update linux-yocto/6.18 to v6.18.8
+
+### Added
+
+- Added recipes - thermald, redis-8,hotdoc, python3-dbus-deviation
+  python3-wheezy-template, python3-toposort, python3-schema drm-framebuffer,
+  python3-pytest-env, media-types, mailcap glaze, cjose, onboard, tmon,
+  tegra-kernel-makefile
+
+### Removed
+
+- Removed recipes - redis-6.2.21, can-isotp, mime-support openssl111, jquery,
+  linux-yocto/6.16, linux-yocto/6.12
+- Drop sysvinit PACKAGECONFIG from systemd
+- Drop default-versions.inc
+
 ## [2026.01] - 2026-01-30
 
 ### Changed
