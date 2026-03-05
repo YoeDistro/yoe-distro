@@ -1,14 +1,27 @@
 # KAS
 
-KAS is a tool to manage metadata and build environments for Yocto/OE builds:
-https://github.com/siemens/kas
+[KAS](https://github.com/siemens/kas) is a tool for managing layer repositories,
+configuration, and build environments for Yocto/OE builds. It is the recommended
+approach for new Yoe projects (see
+[Superproject Management](superproject-management.md) for background).
 
-To run KAS in Yoe Distro, use the kas/ subfolder as the working directory. This
-directory contains KAS configurations for each supported target machine at the
-top level. Once the `kas-container` script is run in the kas/ folder, it will
-also contain the build/ and layers/ folders.
+## Getting Started
 
-To set up a docker container ready to run bitbake commands:
+KAS configurations live in the `kas/` directory. Each YAML file defines a
+complete build for a target machine, including layer repositories, local.conf
+settings, and bblayers.conf entries.
+
+Available configurations:
+
+- `jetson-agx-orin-devkit.yml`
+- `jetson-orin-nano-devkit-nvme.yml`
+- `rpi4-64.yml`
+- `visionfive.yml`
+- `visionfive2.yml`
+
+## Running a Build
+
+To set up a container and drop into a shell ready for bitbake:
 
 ```bash
 cd kas/
@@ -18,13 +31,26 @@ cd kas/
     shell jetson-agx-orin-devkit.yml
 ```
 
-The `--volume` flag is passed to docker through the kas-container
-`--runtime-args` flag and mounts the local meta-yoe layer in the container's
-layer/ directory for use in the build.
+The `--volume` flag mounts the local meta-yoe layer into the container so that
+local changes are available in the build.
 
-To have local configuration, create kas/local.yml (git ignored) and append it to
-the project configuration when invoking KAS:
+Once inside the container shell, run bitbake as usual:
+
+```bash
+bitbake yoe-simple-image
+```
+
+## Local Configuration
+
+To add machine-specific or user-specific settings without modifying the
+checked-in YAML files, create `kas/local.yml` (git-ignored) and append it when
+invoking KAS:
 
 ```bash
 ./kas-container <...> <target>.yml:local.yml
 ```
+
+## References
+
+- [KAS Documentation](https://kas.readthedocs.io/)
+- [KAS Repository](https://github.com/siemens/kas)
