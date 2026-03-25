@@ -8,7 +8,7 @@ conf/projects this got a lot easier. You can switch between a lot of pre made
 projects. A project consists of a config.conf and a layers.conf file. The
 layers.conf file is the bblayers.conf for that specific project. And the
 config.conf is everything you would normally put into your local.conf file. To
-choose between a configuration simpy do the following
+choose between configurations, simply do the following
 
 ```bash
 . ./envsetup.sh beaglebone
@@ -23,41 +23,45 @@ project/platform.
 Currently these projects are supported.
 
 - beaglebone
-- qemuarm
-- qemuppc
-- qemux86
-- unleashed
-- var-som-mx8m-nano
 - imx8mm-ddr4-evk
-- qemuarm64
-- qemuppc64
-- qemux86-64
-- unmatched
-- var-som-mx8x
+- jetson-agx-orin-devkit
+- jetson-orin-nano-devkit
+- jetson-orin-nano-devkit-nvme
 - nezha-d1
-- qemucommon
-- qemuriscv32
-- rockpi-4b
-- var-dart-imx6ul
-- visionfive
 - odroid-c4
+- qemuarm
+- qemuarm64
 - qemumips
+- qemuppc
+- qemuppc64
+- qemuriscv32
 - qemuriscv64
+- qemux86
+- qemux86-64
+- rockpi-4b
+- rpi4-32
 - rpi4-64
+- rpi5
+- unleashed
+- unmatched
+- var-dart-imx6ul
 - var-som-mx8
+- var-som-mx8m-nano
+- var-som-mx8x
+- visionfive
 - visionfive2
 
 ## Converting a project
 
-If you used yoe before you might want to convert a project to the new config. In
-the simplest case you just need to create a new directory at
-`conf/project/jour_project_name` and copy over your `local.conf` to
+If you used Yoe before, you might want to convert a project to the new config.
+In the simplest case you just need to create a new directory at
+`conf/project/your_project_name` and copy over your `local.conf` to
 `config.conf` and bblayers.conf to layers.conf.
 
 ## Creating a new project
 
-Choose a project which asembles your needs most from the projects copy it to
-`conf/project/jour_project_name` and change it to your needs.
+Choose the project that most closely resembles your needs, copy it to
+`conf/project/your_project_name` and change it to your needs.
 
 ## Supporting a custom SOM baseboard
 
@@ -67,7 +71,7 @@ baseboard, but we need to customize the build to account for the differences
 between the reference and custom baseboards. In this case it is very useful to
 have a separate `PROJECT` and `MACHINE` so that you can build images for the
 reference board and your custom board in one build system. This allows you to
-easily compare the systems to debug problems. Steps to do this includes:
+easily compare the systems to debug problems. Steps to do this include:
 
 1. **machine conf**
    `sources/meta-<your custom layer>/conf/machine/mymachine.conf`. This

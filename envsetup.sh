@@ -806,3 +806,20 @@ yoe_link_downloads_sstate() {
 
   ln -sf $DIR/sstate-cache build/sstate-cache
 }
+
+yoe_mdbook() {
+	mdbook serve -p 3333
+}
+
+yoe_mdbook_build() {
+	mdbook build
+}
+
+yoe_mdbook_cleanup() {
+	rm -rf book
+}
+
+yoe_deploy_docs() {
+	yoe_mdbook_build || return 1
+	rsync -av --delete book/ docs.yoedistro.org:/srv/http/yoe/docs/ || return 1
+}

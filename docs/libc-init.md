@@ -1,13 +1,11 @@
 # libc and init system selection
 
-[up](README.md)
-
 ## Selection
 
-Selection of the libc and init system can be done be selecting a
+Selection of the libc and init system can be done by selecting a
 [Yoe Profile](yoe-profile.md).
 
-## Comparison of disk spaced used
+## Comparison of disk space used
 
 - Musl + Busybox init/dev/login
   - space used in ext4 filesystem on running system using df: 1.9MB
@@ -26,6 +24,6 @@ Selection of the libc and init system can be done be selecting a
   - adding sizes of files in image from buildhistory: 22MB
   - number of files in image: 1,806
 
-The space on disc used by a systemd image is much larger than adding the size of
+The space on disk used by a systemd image is much larger than adding the size of
 the files in the image. We're not sure why this is -- perhaps there is
 filesystem overhead for small files.

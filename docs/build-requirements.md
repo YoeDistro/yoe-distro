@@ -1,0 +1,43 @@
+# Build Machine Requirements
+
+Build machine requirements vary depending on what you are building. You may get
+by with 8GB of RAM for simple images, but building anything with Chromium in it
+will likely require 64GB of RAM. We recommend at least 16GB and preferably 32 or
+64GB.
+
+Yocto aggressively parallelizes the build, so it will max out your CPUs.
+Generally, you need to have 2GB of RAM for each virtual core. To determine the
+number of cores, run `cat /proc/cpuinfo` and locate the `siblings` field. For
+x86 CPUs, this is typically twice the number of CPU cores due to hyperthreading.
+
+```
+processor       : 0
+vendor_id       : AuthenticAMD
+cpu family      : 23
+model           : 113
+model name      : AMD Ryzen 9 3900X 12-Core Processor
+stepping        : 0
+microcode       : 0x8701021
+cpu MHz         : 2200.000
+cache size      : 512 KB
+physical id     : 0
+siblings        : 24
+core id         : 0
+cpu cores       : 12
+```
+
+For the above 12-core machine, we have 24 virtual cores, so need ~48GB of RAM.
+
+If you are running out of memory during builds, you can add the following to
+`local.conf`:
+
+```
+PARALLEL_MAKE = "-j 11"
+BB_NUMBER_THREADS = "11"
+XZ_THREADS = "8"
+# Max 10% of memory to be used during parallel xz
+XZ_MEMLIMIT = "10%"
+```
+
+A single build can take 50GB of disk space or more. SSD drives speed up builds
+quite a bit over rotating disks.

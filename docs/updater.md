@@ -7,7 +7,7 @@ There are two functions of the Init/Updater system:
 1. verify the system is initialized such that it can run (disk partitions, etc)
 1. update the system with new software
 
-Both of these functions are critical for a reliable system. Having
+Both of these functions are critical for a reliable system. Having an
 initialization system also greatly simplifies production deployment as the
 system can completely initialize itself as long as a kernel can boot.
 
@@ -20,7 +20,7 @@ system can completely initialize itself as long as a kernel can boot.
   - `data`: data that is preserved between updates
 - Initializes disk partitions
   - if disk is not partitioned correctly (# partitions), re-partition disk
-  - optionally re-partition disk if sizes or not correct (example rootfs is too
+  - optionally re-partition disk if sizes are not correct (example rootfs is too
     small)
     - try to preserve data if possible
 - Mounts all partitions
@@ -33,17 +33,17 @@ system can completely initialize itself as long as a kernel can boot.
   - if found, select latest version
   - verify checksums for all files
   - compare contents of boot and kernel images and _only_ update them if they
-    have changed. This is very import to minimize flash wear in `boot`
+    have changed. This is very important to minimize flash wear in `boot`
     partition, and minimize windows where unit may be bricked.
   - unconditionally write rootfs
   - optionally ask user to remove USB disk (if updating from USB)
-- Platform specified hooks
-  - any platform specific setup that needs done
+- Platform-specific hooks
+  - any platform-specific setup that needs to be done
 - Switch root from initramfs to main rootfs
 
 ## Adding updater support for a new machine
 
-You generally need to do two things to add updater support for you machine:
+You generally need to do two things to add updater support for your machine:
 
 1. modify the image recipes to generate update files, initramfs, etc. See
    examples in `sources/meta-yoe/recipes-core/images/machines/`
@@ -78,7 +78,7 @@ An alternative implementation (described above in the above Requirements
 section) is much simpler because the complete update process lives in an
 initramfs bundled with the kernel. As long as the kernel boots, you can easily
 recover the system from a USB disk, or perhaps a recovery update image stored in
-the data partition. Because the booloader and kernel are stored in a `boot`
+the data partition. Because the bootloader and kernel are stored in a `boot`
 partition that is rarely written to (only on updates), this data is fairly
 reliable. Network updates can be managed from an application running in the main
 rootfs that fetches an update, stores it in the data partition and then reboots.

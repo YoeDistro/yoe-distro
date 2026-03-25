@@ -1,13 +1,11 @@
 # Packages
 
-[up](README.md)
-
 During an image build, OpenEmbedded builds all software into packages, which are
 then combined into a rootfs. One benefit of this is you can install packages
 later into a running system, much like you would a desktop distribution like
 Debian, Ubuntu, Arch, etc. OE supports the RPM, DEB, and IPK package formats,
 and the format can be set using the
-[PACKAGE_CLASSES](https://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#var-PACKAGE_CLASSES)
+[PACKAGE_CLASSES](https://docs.yoctoproject.org/ref-manual/variables.html#term-PACKAGE_CLASSES)
 variable.
 
 ## Installing packages from a local build

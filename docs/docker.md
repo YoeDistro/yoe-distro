@@ -1,7 +1,5 @@
 # Yoe Docker Integration
 
-[up](README.md)
-
 The Yoe project provides a
 [docker container](https://hub.docker.com/r/yoedistro/yoe-build/) that has all
 the dependencies needed to build Yoe. This container is mostly transparent as it
