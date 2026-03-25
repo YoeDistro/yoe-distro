@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.03] - 2026-03-31
+
+### Changed
+
+- Upgrade binutils to 2.46 release
+- Upgrade perl to 5.42.0
+- Upgrade linux-yocto/6.18 to v6.18.13
+- Add recipes for sbom-cve-check
+- Upgrade systemd to 259.3
+- Upgrade ccache to 4.12.3
+- Upgrade go to 1.26.1
+- Upgrade lua to 5.5.0
+- Upgrade gettext to 1.0
+- Upgrade glibc to 2.43 release
+- Fix recipes to work with glibc 2.43
+- Enable rust in kernel
+- Enable dynamic LLVM linking by default in rust compiler
+- Upgrade XFCE to 4.21
+- Upgrade nodejs to 22.22.1
+- Update layers to support YP 6.0 (wrynose) release
+
 ## [2026.02] - 2026-02-28
 
 ### Changed
