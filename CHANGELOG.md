@@ -12,7 +12,7 @@ and this project adheres to
 
 - Upgrade binutils to 2.46 release
 - Upgrade perl to 5.42.0
-- Upgrade linux-yocto/6.18 to v6.18.13
+- Upgrade linux-yocto/6.18 to v6.18.19
 - Add recipes for sbom-cve-check
 - Upgrade systemd to 259.3
 - Upgrade ccache to 4.12.3
@@ -26,6 +26,25 @@ and this project adheres to
 - Upgrade XFCE to 4.21
 - Upgrade nodejs to 22.22.1
 - Update layers to support YP 6.0 (wrynose) release
+- Update weston to 15.0.0
+- Upgrade musl to 1.2.6
+- Update linux-mainline-k1 to 7.0-rc5
+- Include tag in SRC_URI for several recipes using git fetcher
+- Update packing commands to match modern git in git fetcher
+- Upgrade mesa to 26.0.3
+
+### Added
+
+- Add kas project for beagleV-ahead
+- Add check-layer to CI workflow in meta-riscv
+- add new MACHINE muse-pi-pro
+- New recipes - sd
+
+### Removed
+
+- Remove support for pkgconfig in favor of pkgconf
+- Remove SPDX 2.2 support
+- Removed recipes - python3-pyzstd
 
 ## [2026.02] - 2026-02-28
 
