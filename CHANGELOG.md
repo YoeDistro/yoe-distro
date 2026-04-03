@@ -32,13 +32,15 @@ and this project adheres to
 - Include tag in SRC_URI for several recipes using git fetcher
 - Update packing commands to match modern git in git fetcher
 - Upgrade mesa to 26.0.3
+- Upgrade clang/llvm to 22.x
+- Drop soup2 support for few recipes
 
 ### Added
 
 - Add kas project for beagleV-ahead
 - Add check-layer to CI workflow in meta-riscv
 - add new MACHINE muse-pi-pro
-- New recipes - sd
+- New recipes - sd, python3-kirk
 
 ### Removed
 

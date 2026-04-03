@@ -2,6 +2,6 @@
 # long-description: Creates a partitioned SD card image.
 
 # Boot env partition
-part --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --active --align 4096 --size 1024
+part --source bootimg_partition --ondisk mmcblk0 --fstype=vfat --label boot --active --align 4096 --size 1024
 
 bootloader --ptable msdos
