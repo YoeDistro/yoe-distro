@@ -1,8 +1,8 @@
 # short-description: Create SD card image
 # long-description: Creates a partitioned SD card image.
 
-# Boot env partition (200M)
-part --source bootimg_partition --ondisk mmcblk0 --fstype=vfat --label boot --align 2048 --fixed-size 32
+# Boot env partition (256M)
+part --source bootimg_partition --ondisk mmcblk0 --fstype=vfat --label boot --active --align 2048 --fixed-size 256
 
 # Main Rootfs partition (4G)
 part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label root --fixed-size 4096 --align 1024
