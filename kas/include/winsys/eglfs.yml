@@ -1,0 +1,7 @@
+header:
+  version: 20
+
+local_conf_header:
+  yoe-winsys: |
+    DISTRO_FEATURES:remove = " x11 wayland"
+    PREFERRED_PROVIDER_virtual/wpebackend = "wpebackend-rdk"

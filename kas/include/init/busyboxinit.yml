@@ -1,0 +1,8 @@
+header:
+  version: 20
+
+local_conf_header:
+  yoe-init: |
+    INIT_MANAGER = "mdev-busybox"
+    DISTRO_FEATURES:append = " sysvinit "
+    DISTRO_FEATURES_BACKFILL_CONSIDERED:remove = "sysvinit"

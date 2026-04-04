@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/riscv.yml
+
+machine: nezha-allwinner-d1
+
+local_conf_header:
+  MACHINE description: |
+    # Allwinner D1 Nezha board

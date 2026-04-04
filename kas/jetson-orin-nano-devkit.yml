@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/tegra.yml
+
+machine: jetson-orin-nano-devkit
+
+local_conf_header:
+  MACHINE description: |
+    # Nvidia Jetson Orin Nano devkit

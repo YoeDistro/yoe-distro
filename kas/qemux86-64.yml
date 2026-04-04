@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/qemu.yml
+
+machine: qemux86-64
+
+local_conf_header:
+  MACHINE description: |
+    # QEMU x86-64

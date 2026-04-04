@@ -31,16 +31,13 @@ WiFi. Both 32-bit (`rpi4-32`) and 64-bit (`rpi4-64`) builds are supported.
 
 ## Building/installing an image
 
-1. `git clone https://github.com/YoeDistro/yoe-distro.git`
-1. `cd yoe-distro`
-1. `. ./envsetup.sh <project>` (e.g., `rpi4-64`, `rpi5`)
-1. `yoe_setup`
-1. `bitbake yoe-simple-image`
+1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
+1. `cd yoe`
+1. `kas build kas/<machine>.yml` (e.g., `kas/rpi4-64.yml`, `kas/rpi5.yml`)
 1. Insert SD card
 1. `lsblk` (note SD card device, and substitute for /dev/sdX below)
-1. `yoe_install_image /dev/sdX yoe-simple-image` (Note,
-   [Etcher](https://etcher.balena.io/) can also be used to write images to SD
-   cards).
+1. Flash the image from `build/tmp/deploy/images/` to the SD card (e.g. using
+   [Etcher](https://etcher.balena.io/))
 1. Optional: configure console for serial port (see below)
 1. `sudo eject /dev/sdX`
 1. Install SD card in the Raspberry Pi and enjoy your new image

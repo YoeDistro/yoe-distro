@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/qemu.yml
+
+machine: qemuarm
+
+local_conf_header:
+  MACHINE description: |
+    # QEMU ARM (32-bit)

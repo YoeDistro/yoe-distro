@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/variscite.yml
+
+machine: imx8mn-var-som
+
+local_conf_header:
+  MACHINE description: |
+    # Variscite VAR-SOM-MX8M-NANO (i.MX8MN)

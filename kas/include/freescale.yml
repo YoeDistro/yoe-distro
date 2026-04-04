@@ -1,0 +1,15 @@
+header:
+  version: 20
+
+repos:
+  meta-freescale:
+    url: https://github.com/YoeDistro/meta-freescale
+    branch: master
+    path: layers/meta-freescale
+
+local_conf_header:
+  freescale eula: |
+    ACCEPT_FSL_EULA = "1"
+
+  image types: |
+    IMAGE_FSTYPES = "wic.xz wic.bmap ext4.xz"

@@ -1,0 +1,18 @@
+header:
+  version: 20
+  includes:
+    - kas/include/freescale.yml
+    - kas/include/yoe-updater.yml
+
+target: yoe-simple-image
+
+repos:
+  meta-variscite-bsp-common:
+    url: https://github.com/YoeDistro/meta-variscite-bsp-common
+    branch: yoe/scarthgap_6.6.52-2.2.0_var01
+    path: layers/meta-variscite-bsp-common
+
+  meta-variscite-bsp:
+    url: https://github.com/YoeDistro/meta-variscite-bsp.git
+    branch: yoe/scarthgap_6.6.52-2.2.0_var01
+    path: layers/meta-variscite-bsp

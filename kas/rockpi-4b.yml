@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/rockchip.yml
+
+machine: rock-pi-4b
+
+local_conf_header:
+  MACHINE description: |
+    # Radxa ROCK Pi 4B

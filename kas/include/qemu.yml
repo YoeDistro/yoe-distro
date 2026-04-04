@@ -1,0 +1,13 @@
+header:
+  version: 20
+
+target: yoe-simple-image
+
+local_conf_header:
+  qemu common: |
+    DISTRO_FEATURES:append = " x11"
+    IMAGE_FSTYPES = "wic.xz wic.bmap tar.xz"
+
+  ptest support: |
+    EXTRA_IMAGE_FEATURES:append = " ptest-pkgs"
+    IMAGE_FEATURES:append = " allow-empty-password empty-root-password allow-root-login post-install-logging"

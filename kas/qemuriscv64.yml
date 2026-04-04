@@ -1,0 +1,12 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/qemu.yml
+    - kas/include/riscv.yml
+
+machine: qemuriscv64
+
+local_conf_header:
+  MACHINE description: |
+    # QEMU RISC-V (64-bit)

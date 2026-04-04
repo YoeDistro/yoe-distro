@@ -18,11 +18,9 @@ and CI pipelines.
 
 ## Building an image
 
-1. `git clone https://github.com/YoeDistro/yoe-distro.git`
-1. `cd yoe-distro`
-1. `. ./envsetup.sh <project>` (e.g., `qemuarm64`)
-1. `yoe_setup`
-1. `bitbake yoe-simple-image`
+1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
+1. `cd yoe`
+1. `kas build kas/<machine>.yml` (e.g., `kas/qemuarm64.yml`)
 
 ## Running the image
 

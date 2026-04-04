@@ -1,0 +1,13 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/freescale.yml
+    - kas/include/yoe-updater.yml
+
+machine: imx8mm-ddr4-evk
+target: yoe-simple-image
+
+local_conf_header:
+  MACHINE description: |
+    # NXP i.MX8M Mini DDR4 EVK

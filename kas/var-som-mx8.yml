@@ -1,0 +1,29 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/variscite.yml
+
+machine: imx8qm-var-som
+
+repos:
+  meta-security:
+    url: https://github.com/yoedistro/meta-security
+    branch: master
+    path: layers/meta-security
+    layers:
+      meta-security:
+      meta-tpm:
+
+local_conf_header:
+  MACHINE description: |
+    # Variscite VAR-SOM-MX8 (i.MX8QM)
+
+  optee: |
+    MACHINE_FEATURES:append = " optee"
+    DISTRO_FEATURES:append = " optee"
+
+  fortran: |
+    FORTRAN:forcevariable = ",fortran"
+    RUNTIMETARGET:append:pn-gcc-runtime = " libquadmath"
+    TOOLCHAIN_TARGET_TASK:append = " libgfortran-dev libgfortran-staticdev"

@@ -22,9 +22,6 @@ repos:
 
 local_conf_header:
 
-  yoe-<libc>-<init-system>-<windowing-system>: |
-    YOE_PROFILE = "yoe-glibc-systemd-wayland"
-
   ffmpeg license: |
     LICENSE_FLAGS_ACCEPTED:append = "commercial_ffmpeg"
 

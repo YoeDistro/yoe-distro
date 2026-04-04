@@ -1,0 +1,7 @@
+header:
+  version: 20
+
+local_conf_header:
+  yoe-winsys: |
+    DISTRO_FEATURES:append = " wayland"
+    DISTRO_FEATURES_DEFAULT:remove = "x11"

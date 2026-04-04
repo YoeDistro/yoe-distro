@@ -1,0 +1,11 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/raspberrypi.yml
+
+machine: raspberrypi5
+
+local_conf_header:
+  MACHINE description: |
+    # Raspberry Pi 5
