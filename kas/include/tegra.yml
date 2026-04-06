@@ -7,17 +7,14 @@ repos:
 
   meta-tegra:
     url: https://github.com/YoeDistro/meta-tegra
-    branch: master
     path: layers/meta-tegra
 
   meta-tegra-community:
     url: https://github.com/YoeDistro/meta-tegra-community
-    branch: master
     path: layers/meta-tegra-community
 
   meta-swupdate:
     url: https://github.com/yoedistro/meta-swupdate
-    branch: master
     path: layers/meta-swupdate
 
 local_conf_header:

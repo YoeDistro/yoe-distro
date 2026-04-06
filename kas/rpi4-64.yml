@@ -15,7 +15,6 @@ repos:
   meta-raspberrypi:
     url: https://github.com/YoeDistro/meta-raspberrypi.git
     path: layers/meta-raspberrypi
-    branch: master
 
 local_conf_header:
 

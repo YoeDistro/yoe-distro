@@ -3,6 +3,10 @@ header:
 
 distro: "yoe"
 
+defaults:
+  repos:
+    branch: master
+
 repos:
   meta-yoe:
     path: sources/meta-yoe
@@ -10,21 +14,18 @@ repos:
       .:
   openembedded-core:
     url: https://github.com/YoeDistro/openembedded-core
-    branch: master
     path: layers/openembedded-core
     layers:
       meta:
 
   bitbake:
     url: https://github.com/YoeDistro/bitbake
-    branch: master
     path: layers/bitbake
     layers:
       bitbake: disabled
 
   meta-openembedded:
     url: https://github.com/YoeDistro/meta-openembedded
-    branch: master
     path: layers/meta-openembedded
     layers:
       meta-oe:
@@ -45,5 +46,4 @@ repos:
 
   meta-clang:
     url: https://github.com/YoeDistro/meta-clang
-    branch: master
     path: layers/meta-clang
