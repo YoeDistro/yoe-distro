@@ -5,8 +5,9 @@ distro: "yoe"
 
 repos:
   meta-yoe:
-    path: layers/meta-yoe
-
+    path: sources/meta-yoe
+    layers:
+      .:
   openembedded-core:
     url: https://github.com/YoeDistro/openembedded-core
     branch: master
@@ -39,7 +40,7 @@ repos:
 
   meta-qt6:
     url: https://github.com/YoeDistro/meta-qt6
-    branch: yoe/6.10
+    branch: '6.11'
     path: layers/meta-qt6
 
   meta-clang:

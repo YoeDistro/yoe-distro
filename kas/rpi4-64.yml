@@ -5,7 +5,10 @@ header:
     - kas/include/yoe-updater.yml
 
 machine: raspberrypi4-64
-target: yoe-installer-image yoe-kiosk-image
+
+target:
+  - yoe-installer-image
+  - yoe-kiosk-image
 
 repos:
 
@@ -60,7 +63,7 @@ local_conf_header:
     TEST_SERVER_IP = "10.0.0.13"
     TEST_TARGET = "simpleremote"
 
-  Rpi wpebackend - FIXME these were both in the original project config.conf: | 
+  Rpi wpebackend - FIXME these were both in the original project config.conf: |
     PACKAGECONFIG:pn-wpebackend-rdk = "rpi"
     PACKAGECONFIG:pn-wpebackend-rdk:rpi = "rpi"
 
