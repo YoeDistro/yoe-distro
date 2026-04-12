@@ -43,6 +43,9 @@ PACKAGE_FEED_URIS ?= "http://<feedserver>:8000/"
 BB_SIGNATURE_HANDLER = "OEEquivHash"
 # Start a local hashserver instance
 BB_HASHSERVE = "auto"
+# Helps when sstate dir is shared across multiple build trees
+BB_HASHSERVE_DB_DIR = "${SSTATE_DIR}"
+
 #BB_HASHSERVE_UPSTREAM = "hashserv.yocto.io:8687"
 #SSTATE_MIRRORS ?= "file://.*  https://cdn.jsdelivr.net/yocto/sstate/all/PATH;downloadfilename=PATH"
 # see https://docs.yoctoproject.org/bitbake/2.0/bitbake-user-manual/bitbake-user-manual-ref-variables.html#term-BB_GIT_SHALLOW
