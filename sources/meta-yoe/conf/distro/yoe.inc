@@ -115,6 +115,7 @@ DISTRO_FEATURES_FILTER_NATIVESDK:append = " ld-is-lld lto thin-lto"
 # Configure clang cross-compiler to use lld as default linker
 PACKAGECONFIG:append:pn-clang-native = " lld"
 
+
 #PREFERRED_PROVIDER_pkgconfig = "pkgconf"
 #PREFERRED_PROVIDER_pkgconfig-native = "pkgconf-native"
 #PREFERRED_PROVIDER_nativesdk-pkgconfig = "nativesdk-pkgconf"
@@ -178,6 +179,11 @@ TOOLCHAIN_TARGET_TASK:append = " libgfortran"
 # default is VNC
 PACKAGECONFIG:append:pn-qemu-native = " sdl"
 PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
+
+# disable system minizip/zlib as 1.3.2+ does not work _yet_
+# with QTwebengine ( meta-oe now has 1.3.2 )
+PACKAGECONFIG:remove:pn-qtbase = "zlib"
+PACKAGECONFIG:remove:pn-qtwebengine = "zlib"
 
 # Dont package kernel into image
 RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""
