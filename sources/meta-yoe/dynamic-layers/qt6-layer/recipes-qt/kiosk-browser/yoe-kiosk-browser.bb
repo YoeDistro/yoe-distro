@@ -19,7 +19,7 @@ INITSCRIPT_NAME = "yoe-kiosk-browser"
 INITSCRIPT_PARAMS = "start 99 5 . stop 20 6 ."
 
 # You can override the following settings in site.conf, etc.
-# Default to Simple IoT. 
+# Default to Simple IoT.
 YOE_KIOSK_BROWSER_URL ?= "http://localhost:8118"
 
 # Currently, values of 0, 90, and 270 are supported
@@ -35,7 +35,7 @@ YOE_KIOSK_BROWSER_FULLSCREEN ?= "1"
 YOE_KIOSK_BROWSER_DEFAULT_DIALOGS ?= "0"
 YOE_KIOSK_BROWSER_DIALOG_COLOR ?= "#D91824"
 
-# On some touchscreens the first input of a touch event wont activate the 
+# On some touchscreens the first input of a touch event won't activate the
 # correct focus. This quirk solves this issue.
 YOE_KIOSK_BROWSER_TOUCH_QUIRK ?= "1"
 
@@ -67,16 +67,17 @@ YOE_KIOSK_BROWSER_SYSTEMD_UNIT ?= "${@bb.utils.contains('DISTRO_FEATURES', 'wayl
 # Wayland socket on which weston is running
 WAYLAND_SOCKET ?= "wayland-0"
 WAYLAND_SOCKET:rpi = "wayland-1"
+WAYLAND_SOCKET:meson-gx = "wayland-1"
 
 YOE_KIOSK_BROWSER_XCB = "0"
 
 do_install:append() {
     echo "Browser URL: ${YOE_KIOSK_BROWSER_URL}"
     install -D -m 0644 ${S}/${YOE_KIOSK_BROWSER_SYSTEMD_UNIT} ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
-    
+
     # Fill in the socket name, on RPI its wayland-1 on iMX8 it is wayland-0
     sed -i "s|wayland-0|${WAYLAND_SOCKET}|" ${D}${systemd_unitdir}/system/yoe-kiosk-browser.service
-    
+
     install -D -m 0644 ${S}/eglfs.json ${D}${sysconfdir}/default/eglfs.json
     install -D -m 0644 ${S}/yoe-kiosk-browser-env ${D}${sysconfdir}/default/yoe-kiosk-browser
 

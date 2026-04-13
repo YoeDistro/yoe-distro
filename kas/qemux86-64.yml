@@ -1,0 +1,28 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+
+machine: qemux86-64
+
+target:
+  - yoe-sdk-image
+
+local_conf_header:
+
+  MACHINE description: |
+    # Qemu machine emulating x86-64 ISA target
+
+  For world builds: |
+    DISTRO_FEATURES:append = " x11"
+
+  image types: |
+    IMAGE_FSTYPES:remove = "tar.bz2 tar.xz tar tar.gz wic.xz wic.bmap"
+  package feeds nullified for ptests: |
+    PACKAGE_FEED_URIS ?= ""
+    EXTRA_IMAGE_FEATURES:append = " allow-empty-password empty-root-password allow-root-login post-install-logging"
+    TESTIMAGE_AUTO = "1"
+    IMAGE_INSTALL:append = " ssh-pregen-hostkeys"
+
+  Enable for world builds: |
+    LICENSE_FLAGS_ACCEPTED:append = " commercial non-commercial"

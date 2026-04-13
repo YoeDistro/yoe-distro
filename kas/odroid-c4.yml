@@ -1,0 +1,54 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/yoe-updater.yml
+
+machine: odroid-c4
+
+target:
+  - yoe-installer-image
+  - yoe-kiosk-image
+
+repos:
+
+  meta-odroid:
+    url: https://github.com/YoeDistro/meta-odroid.git
+    path: layers/meta-odroid
+
+local_conf_header:
+
+  MACHINE description: |
+    # ODROID C4 64-bit
+
+  yoe-<libc>-<init-system>-<windowing-system>: |
+    YOE_PROFILE = "yoe-glibc-systemd-wayland"
+
+  u-boot on uSD-card: |
+    UBOOT_ROOT = "mmcblk0p2"
+    UBOOT_BOOTPART = "1"
+    UBOOT_LOAD_CMD = "fatload"
+    BOOT_PREFIX = ""
+
+  image types: |
+    IMAGE_FSTYPES = "wic.xz wic.bmap ext4.xz tar.xz"
+
+  Yoe updater configuration (in addition to kas/include/yoe-updater.yml): |
+    WKS_FILE = "yoe-sdimage.wks"
+    # rpi (when not using u-boot )
+    IMAGE_BOOT_FILES:remove = "${KERNEL_IMAGETYPE}"
+    IMAGE_BOOT_FILES:append = " ${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin;${KERNEL_IMAGETYPE} ${@make_dtb_boot_files(d)}"
+
+  Install the wayland systemd launch unit for kiosk browser: |
+    YOE_KIOSK_BROWSER_SYSTEMD_UNIT = "yoe-kiosk-browser-wayland.service"
+
+  Enable touchscreen in QT: |
+    PACKAGECONFIG:append:pn-qtbase = " tslib"
+
+  We know we do not use X11 but its still needed for some bbappends e.g. mesa-gl_%.bbappend: |
+    SKIP_META_ODROID_EXTRA_SANITY_CHECK = "1"
+
+  Needed for Running bitbake -ctestimage <image>: |
+    TEST_TARGET_IP = "odroid-c4@local"
+    TEST_SERVER_IP = "10.0.0.10"
+    TEST_TARGET = "simpleremote"

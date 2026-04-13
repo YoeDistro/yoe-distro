@@ -8,7 +8,6 @@ repos:
   meta-riscv:
     url: https://github.com/YoeDistro/meta-riscv.git
     path: layers/meta-riscv
-    branch: master
 
 local_conf_header:
 
