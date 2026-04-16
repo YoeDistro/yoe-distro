@@ -179,7 +179,6 @@ QB_MEM = "-m 1024"
 # Enable fortran by default, lot of new machine need it surprisingly
 FORTRAN = ",fortran"
 RUNTIMETARGET:append:pn-gcc-runtime = " libquadmath"
-TOOLCHAIN_TARGET_TASK:append = " libgfortran"
 
 # The two lines below enable SDL frontend for qemu
 # default is VNC
