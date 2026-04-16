@@ -13,14 +13,18 @@ and this project adheres to
 - Upgrade QT6 6.10 -> 6.11
 - Convert confusing append to assignment in several recipes
 - Fix build issues seen with use of autoconf 2.73
+- Upgrade OSTree to 2026.01
+- Fix reproduciblity issues with autoconf 2.73
+- Do not override system linker to not be LLD
+- Use rpi distro provided vlc and ffmpeg on rpi machines
 
 ### Added
 
-- Added recipes - isocline
+- Added recipes - isocline, coremark
 
 ### Removed
 
-- Removed recipes - netcf, libgdata
+- Removed recipes - netcf, libgdata, openct
 
 ## [2026.03] - 2026-03-31
 
