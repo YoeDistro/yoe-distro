@@ -139,6 +139,11 @@ PREFERRED_RPROVIDER_ssh ??= "openssh"
 # Use systemd's resolved implementation
 PREFERRED_RPROVIDER_libnss-mdns ??= "avahi-libnss-mdns"
 
+# Resolves
+# NOTE: Multiple providers are available for runtime libva-dev-native (libva-initial-native, libva-native)
+#Consider defining a PREFERRED_RPROVIDER entry to match libva-dev-native
+PREFERRED_RPROVIDER_libva-dev-native = "libva-native"
+
 # This helps in using imx specific provider when building for imx platforms, otherwise
 # it uses the oe-core versions
 IMX_DEFAULT_BOOTLOADER ??= "u-boot"
