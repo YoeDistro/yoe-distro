@@ -69,3 +69,12 @@ local_conf_header:
   Use fkms for eglfs on RPI4 this enables both console display & graphics (for EGLFS): |
     # Otherwise use full kms
     VC4DTBO = "${@bb.utils.contains_any('DISTRO_FEATURES', 'x11 wayland', 'vc4-kms-v3d', 'vc4-fkms-v3d', d)}"
+
+
+  The Raspberry Pi's Distro components: |
+    # implementation of VLC with HW accelerated video decode through
+    # MMAL and the Raspberry PI's Distro implementation of ffmpeg.
+    PREFERRED_PROVIDER_vlc = "rpidistro-vlc"
+    PREFERRED_PROVIDER_ffmpeg = "rpidistro-ffmpeg"
+    PREFERRED_PROVIDER_libav = "rpidistro-ffmpeg"
+    PREFERRED_PROVIDER_libpostproc = "rpidistro-ffmpeg"
