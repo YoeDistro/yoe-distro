@@ -8,7 +8,7 @@ defaults:
     branch: master
 
 env:
-  IMG_VERSION: "26.03.1"
+  IMG_VERSION: "26.03.2"
 
 repos:
   meta-yoe:
