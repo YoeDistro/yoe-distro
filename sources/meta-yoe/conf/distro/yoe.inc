@@ -139,6 +139,11 @@ PREFERRED_RPROVIDER_ssh ??= "openssh"
 # Use systemd's resolved implementation
 PREFERRED_RPROVIDER_libnss-mdns ??= "avahi-libnss-mdns"
 
+# Resolves
+# NOTE: Multiple providers are available for runtime libva-dev-native (libva-initial-native, libva-native)
+#Consider defining a PREFERRED_RPROVIDER entry to match libva-dev-native
+PREFERRED_RPROVIDER_libva-dev-native = "libva-native"
+
 # This helps in using imx specific provider when building for imx platforms, otherwise
 # it uses the oe-core versions
 IMX_DEFAULT_BOOTLOADER ??= "u-boot"
@@ -174,7 +179,6 @@ QB_MEM = "-m 1024"
 # Enable fortran by default, lot of new machine need it surprisingly
 FORTRAN = ",fortran"
 RUNTIMETARGET:append:pn-gcc-runtime = " libquadmath"
-TOOLCHAIN_TARGET_TASK:append = " libgfortran"
 
 # The two lines below enable SDL frontend for qemu
 # default is VNC

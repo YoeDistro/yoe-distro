@@ -75,6 +75,9 @@ local_conf_header:
       "
 
   Misc: |
-    DISTRO_FEATURES:remove = "ld-is-lld"
-
     DISPLAY_CARD = "/dev/dri/card1"
+
+  Tweaks for GCC-15 on host: |
+    BUILD_CFLAGS:append:pn-standalone-mm-optee-tegra = " -Wno-error=discarded-qualifiers"
+    BUILD_CFLAGS:append:pn-edk2-firmware-tegra = " -Wno-error=discarded-qualifiers"
+    BUILD_CFLAGS:append:pn-edk2-firmware-tegra-rcmboot = " -Wno-error=discarded-qualifiers"
