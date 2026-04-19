@@ -1,0 +1,111 @@
+{
+    "description": "Yoe Distribution - QEMU machines (x86, ARM, MIPS, PowerPC)",
+    "sources": {
+        "bitbake": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/bitbake",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "openembedded-core": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/openembedded-core",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "yoe-distro": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/yoe-distro",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-openembedded": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-openembedded",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-clang": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-clang",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-qt6": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-qt6",
+                "branch": "yoe/6.10",
+                "rev": "yoe/6.10"
+            }
+        }
+    },
+    "bitbake-setup": {
+        "configurations": [
+            {
+                "name": "yoe",
+                "description": "Yoe Distribution for QEMU",
+                "setup-dir-name": "yoe-$machine",
+                "oe-fragments": [
+                    "meta-yoe/projects/qemucommon"
+                ],
+                "bb-layers": [
+                    "yoe-distro/sources/meta-yoe",
+                    "meta-clang",
+                    "meta-qt6",
+                    "meta-openembedded/meta-filesystems",
+                    "meta-openembedded/meta-gnome",
+                    "meta-openembedded/meta-initramfs",
+                    "meta-openembedded/meta-multimedia",
+                    "meta-openembedded/meta-networking",
+                    "meta-openembedded/meta-oe",
+                    "meta-openembedded/meta-perl",
+                    "meta-openembedded/meta-python",
+                    "meta-openembedded/meta-webserver",
+                    "meta-openembedded/meta-xfce",
+                    "openembedded-core/meta"
+                ],
+                "oe-fragments-one-of": {
+                    "machine": {
+                        "description": "Target machine",
+                        "options": [
+                            {
+                                "name": "machine/qemux86-64",
+                                "description": "x86-64"
+                            },
+                            {
+                                "name": "machine/qemux86",
+                                "description": "x86"
+                            },
+                            {
+                                "name": "machine/qemuarm64",
+                                "description": "ARMv8 (64-bit)"
+                            },
+                            {
+                                "name": "machine/qemuarm",
+                                "description": "ARM (32-bit)"
+                            },
+                            {
+                                "name": "machine/qemumips",
+                                "description": "MIPS"
+                            },
+                            {
+                                "name": "machine/qemuppc",
+                                "description": "PowerPC (32-bit)"
+                            },
+                            {
+                                "name": "machine/qemuppc64",
+                                "description": "PowerPC (64-bit)"
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    "version": "1.0"
+}
