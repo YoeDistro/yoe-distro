@@ -61,8 +61,6 @@
     "bitbake-setup": {
         "configurations": [
             {
-                "name": "beaglebone",
-                "description": "Yoe Distribution for BeagleBone",
                 "setup-dir-name": "yoe-beaglebone",
                 "oe-fragments": [
                     "meta-yoe/projects/beaglebone"
@@ -86,6 +84,17 @@
                     "meta-ti/meta-ti-extras",
                     "meta-arm/meta-arm",
                     "meta-arm/meta-arm-toolchain"
+                ],
+                "configurations": [
+                    {
+                        "name": "beaglebone",
+                        "description": "Yoe Distribution for BeagleBone"
+                    },
+                    {
+                        "name": "beaglebone-with-sstate",
+                        "description": "Yoe Distribution for BeagleBone with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "oe-fragments": ["core/yocto/sstate-mirror-cdn"]
+                    }
                 ]
             }
         ]

@@ -54,8 +54,6 @@
     "bitbake-setup": {
         "configurations": [
             {
-                "name": "yoe",
-                "description": "Yoe Distribution for Raspberry Pi",
                 "setup-dir-name": "yoe-$machine",
                 "oe-fragments": [
                     "meta-yoe/projects/rpi-common"
@@ -95,7 +93,18 @@
                             }
                         ]
                     }
-                }
+                },
+                "configurations": [
+                    {
+                        "name": "yoe",
+                        "description": "Yoe Distribution for Raspberry Pi"
+                    },
+                    {
+                        "name": "yoe-with-sstate",
+                        "description": "Yoe Distribution for Raspberry Pi with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "oe-fragments": ["core/yocto/sstate-mirror-cdn"]
+                    }
+                ]
             }
         ]
     },

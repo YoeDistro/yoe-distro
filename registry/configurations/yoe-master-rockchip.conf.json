@@ -61,8 +61,6 @@
     "bitbake-setup": {
         "configurations": [
             {
-                "name": "rockpi-4b",
-                "description": "Yoe Distribution for Radxa Rock Pi 4B",
                 "setup-dir-name": "yoe-rockpi-4b",
                 "oe-fragments": [
                     "meta-yoe/projects/rockpi-4b"
@@ -85,6 +83,17 @@
                     "meta-rockchip",
                     "meta-arm/meta-arm",
                     "meta-arm/meta-arm-toolchain"
+                ],
+                "configurations": [
+                    {
+                        "name": "rockpi-4b",
+                        "description": "Yoe Distribution for Radxa Rock Pi 4B"
+                    },
+                    {
+                        "name": "rockpi-4b-with-sstate",
+                        "description": "Yoe Distribution for Radxa Rock Pi 4B with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "oe-fragments": ["core/yocto/sstate-mirror-cdn"]
+                    }
                 ]
             }
         ]

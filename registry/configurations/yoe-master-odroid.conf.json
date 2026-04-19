@@ -54,8 +54,6 @@
     "bitbake-setup": {
         "configurations": [
             {
-                "name": "odroid-c4",
-                "description": "Yoe Distribution for Hardkernel Odroid-C4",
                 "setup-dir-name": "yoe-odroid-c4",
                 "oe-fragments": [
                     "meta-yoe/projects/odroid-c4"
@@ -77,6 +75,17 @@
                     "openembedded-core/meta",
                     "meta-odroid",
                     "meta-odroid/meta-odroid-extras"
+                ],
+                "configurations": [
+                    {
+                        "name": "odroid-c4",
+                        "description": "Yoe Distribution for Hardkernel Odroid-C4"
+                    },
+                    {
+                        "name": "odroid-c4-with-sstate",
+                        "description": "Yoe Distribution for Hardkernel Odroid-C4 with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "oe-fragments": ["core/yocto/sstate-mirror-cdn"]
+                    }
                 ]
             }
         ]

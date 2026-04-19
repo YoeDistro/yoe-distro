@@ -54,9 +54,6 @@
     "bitbake-setup": {
         "configurations": [
             {
-                "name": "yoe",
-                "description": "Yoe Distribution",
-                "oe-fragments": [],
                 "bb-layers": [
                     "yoe-distro/sources/meta-yoe",
                     "meta-clang",
@@ -84,11 +81,29 @@
                         ]
                     },
                     {
+                        "name": "nezha-d1-with-sstate",
+                        "description": "Yoe Distribution for Allwinner Nezha D1 with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-nezha-d1",
+                        "oe-fragments": [
+                            "meta-yoe/projects/nezha-d1",
+                            "core/yocto/sstate-mirror-cdn"
+                        ]
+                    },
+                    {
                         "name": "unleashed",
                         "description": "Yoe Distribution for SiFive HiFive Unleashed",
                         "setup-dir-name": "yoe-unleashed",
                         "oe-fragments": [
                             "meta-yoe/projects/unleashed"
+                        ]
+                    },
+                    {
+                        "name": "unleashed-with-sstate",
+                        "description": "Yoe Distribution for SiFive HiFive Unleashed with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-unleashed",
+                        "oe-fragments": [
+                            "meta-yoe/projects/unleashed",
+                            "core/yocto/sstate-mirror-cdn"
                         ]
                     },
                     {
@@ -100,6 +115,15 @@
                         ]
                     },
                     {
+                        "name": "unmatched-with-sstate",
+                        "description": "Yoe Distribution for SiFive HiFive Unmatched with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-unmatched",
+                        "oe-fragments": [
+                            "meta-yoe/projects/unmatched",
+                            "core/yocto/sstate-mirror-cdn"
+                        ]
+                    },
+                    {
                         "name": "visionfive",
                         "description": "Yoe Distribution for StarFive VisionFive",
                         "setup-dir-name": "yoe-visionfive",
@@ -108,11 +132,29 @@
                         ]
                     },
                     {
+                        "name": "visionfive-with-sstate",
+                        "description": "Yoe Distribution for StarFive VisionFive with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-visionfive",
+                        "oe-fragments": [
+                            "meta-yoe/projects/visionfive",
+                            "core/yocto/sstate-mirror-cdn"
+                        ]
+                    },
+                    {
                         "name": "visionfive2",
                         "description": "Yoe Distribution for StarFive VisionFive 2",
                         "setup-dir-name": "yoe-visionfive2",
                         "oe-fragments": [
                             "meta-yoe/projects/visionfive2"
+                        ]
+                    },
+                    {
+                        "name": "visionfive2-with-sstate",
+                        "description": "Yoe Distribution for StarFive VisionFive 2 with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-visionfive2",
+                        "oe-fragments": [
+                            "meta-yoe/projects/visionfive2",
+                            "core/yocto/sstate-mirror-cdn"
                         ]
                     }
                 ]

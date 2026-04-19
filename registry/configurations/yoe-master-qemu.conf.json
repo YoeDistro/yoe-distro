@@ -47,8 +47,6 @@
     "bitbake-setup": {
         "configurations": [
             {
-                "name": "yoe",
-                "description": "Yoe Distribution for QEMU",
                 "setup-dir-name": "yoe-$machine",
                 "oe-fragments": [
                     "meta-yoe/projects/qemucommon"
@@ -103,7 +101,18 @@
                             }
                         ]
                     }
-                }
+                },
+                "configurations": [
+                    {
+                        "name": "yoe",
+                        "description": "Yoe Distribution for QEMU"
+                    },
+                    {
+                        "name": "yoe-with-sstate",
+                        "description": "Yoe Distribution for QEMU with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "oe-fragments": ["core/yocto/sstate-mirror-cdn"]
+                    }
+                ]
             }
         ]
     },
