@@ -68,9 +68,6 @@
     "bitbake-setup": {
         "configurations": [
             {
-                "name": "yoe",
-                "description": "Yoe Distribution",
-                "oe-fragments": [],
                 "bb-layers": [
                     "yoe-distro/sources/meta-yoe",
                     "meta-qt6",
@@ -97,11 +94,54 @@
                         ]
                     },
                     {
+                        "name": "jetson-agx-orin-devkit-with-sstate",
+                        "description": "Yoe Distribution for NVIDIA Jetson AGX Orin Developer Kit with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-jetson-agx-orin-devkit",
+                        "oe-fragments": [
+                            "meta-yoe/projects/jetson-agx-orin-devkit",
+                            "core/yocto/sstate-mirror-cdn"
+                        ],
+                        "bb-layers": [
+                            "meta-tegra",
+                            "meta-tegra-community",
+                            "meta-swupdate"
+                        ]
+                    },
+                    {
                         "name": "jetson-orin-nano-devkit",
                         "description": "Yoe Distribution for NVIDIA Jetson Orin Nano Developer Kit",
                         "setup-dir-name": "yoe-$machine",
                         "oe-fragments": [
                             "meta-yoe/projects/jetson-orin-nano-common"
+                        ],
+                        "oe-fragments-one-of": {
+                            "machine": {
+                                "description": "Target machine",
+                                "options": [
+                                    {
+                                        "name": "machine/jetson-orin-nano-devkit",
+                                        "description": "Jetson Orin Nano Developer Kit (SD)"
+                                    },
+                                    {
+                                        "name": "machine/jetson-orin-nano-devkit-nvme",
+                                        "description": "Jetson Orin Nano Developer Kit (NVMe)"
+                                    }
+                                ]
+                            }
+                        },
+                        "bb-layers": [
+                            "meta-tegra",
+                            "meta-tegra-community",
+                            "meta-swupdate"
+                        ]
+                    },
+                    {
+                        "name": "jetson-orin-nano-devkit-with-sstate",
+                        "description": "Yoe Distribution for NVIDIA Jetson Orin Nano Developer Kit with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-$machine",
+                        "oe-fragments": [
+                            "meta-yoe/projects/jetson-orin-nano-common",
+                            "core/yocto/sstate-mirror-cdn"
                         ],
                         "oe-fragments-one-of": {
                             "machine": {
