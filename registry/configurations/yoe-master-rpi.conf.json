@@ -1,0 +1,103 @@
+{
+    "description": "Yoe Distribution - Raspberry Pi boards",
+    "sources": {
+        "bitbake": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/bitbake",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "openembedded-core": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/openembedded-core",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "yoe-distro": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/yoe-distro",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-openembedded": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-openembedded",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-clang": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-clang",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-qt6": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-qt6",
+                "branch": "yoe/6.10",
+                "rev": "yoe/6.10"
+            }
+        },
+        "meta-raspberrypi": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-raspberrypi",
+                "branch": "master",
+                "rev": "master"
+            }
+        }
+    },
+    "bitbake-setup": {
+        "configurations": [
+            {
+                "name": "yoe",
+                "description": "Yoe Distribution for Raspberry Pi",
+                "setup-dir-name": "yoe-$machine",
+                "oe-fragments": [
+                    "meta-yoe/projects/rpi-common"
+                ],
+                "bb-layers": [
+                    "yoe-distro/sources/meta-yoe",
+                    "meta-clang",
+                    "meta-qt6",
+                    "meta-openembedded/meta-filesystems",
+                    "meta-openembedded/meta-gnome",
+                    "meta-openembedded/meta-initramfs",
+                    "meta-openembedded/meta-multimedia",
+                    "meta-openembedded/meta-networking",
+                    "meta-openembedded/meta-oe",
+                    "meta-openembedded/meta-perl",
+                    "meta-openembedded/meta-python",
+                    "meta-openembedded/meta-webserver",
+                    "meta-openembedded/meta-xfce",
+                    "openembedded-core/meta",
+                    "meta-raspberrypi"
+                ],
+                "oe-fragments-one-of": {
+                    "machine": {
+                        "description": "Target machine",
+                        "options": [
+                            {
+                                "name": "machine/raspberrypi4-64",
+                                "description": "Raspberry Pi 4 (64-bit)"
+                            },
+                            {
+                                "name": "machine/raspberrypi4",
+                                "description": "Raspberry Pi 4 (32-bit)"
+                            },
+                            {
+                                "name": "machine/raspberrypi5",
+                                "description": "Raspberry Pi 5"
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    "version": "1.0"
+}
