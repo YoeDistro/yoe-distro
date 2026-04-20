@@ -185,11 +185,6 @@ RUNTIMETARGET:append:pn-gcc-runtime = " libquadmath"
 PACKAGECONFIG:append:pn-qemu-native = " sdl"
 PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
 
-# disable system minizip/zlib as 1.3.2+ does not work _yet_
-# with QTwebengine ( meta-oe now has 1.3.2 )
-PACKAGECONFIG:remove:pn-qtbase = "zlib"
-PACKAGECONFIG:remove:pn-qtwebengine = "zlib"
-
 # Dont package kernel into image
 RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""
 
