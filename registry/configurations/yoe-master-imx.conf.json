@@ -1,0 +1,231 @@
+{
+    "description": "Yoe Distribution - NXP i.MX and Variscite i.MX boards",
+    "sources": {
+        "bitbake": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/bitbake",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "openembedded-core": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/openembedded-core",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "yoe-distro": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/yoe-distro",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-openembedded": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-openembedded",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-clang": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-clang",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-qt6": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-qt6",
+                "branch": "yoe/6.10",
+                "rev": "yoe/6.10"
+            }
+        },
+        "meta-freescale": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-freescale",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-variscite-bsp": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-variscite-bsp",
+                "branch": "yoe/scarthgap_6.6.52-2.2.0_var01",
+                "rev": "yoe/scarthgap_6.6.52-2.2.0_var01"
+            }
+        },
+        "meta-variscite-bsp-common": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-variscite-bsp-common",
+                "branch": "yoe/scarthgap_6.6.52-2.2.0_var01",
+                "rev": "yoe/scarthgap_6.6.52-2.2.0_var01"
+            }
+        },
+        "meta-security": {
+            "git-remote": {
+                "uri": "https://github.com/yoedistro/meta-security",
+                "branch": "master",
+                "rev": "master"
+            }
+        }
+    },
+    "bitbake-setup": {
+        "configurations": [
+            {
+                "bb-layers": [
+                    "yoe-distro/sources/meta-yoe",
+                    "meta-clang",
+                    "meta-qt6",
+                    "meta-openembedded/meta-filesystems",
+                    "meta-openembedded/meta-gnome",
+                    "meta-openembedded/meta-initramfs",
+                    "meta-openembedded/meta-multimedia",
+                    "meta-openembedded/meta-networking",
+                    "meta-openembedded/meta-oe",
+                    "meta-openembedded/meta-perl",
+                    "meta-openembedded/meta-python",
+                    "meta-openembedded/meta-webserver",
+                    "meta-openembedded/meta-xfce",
+                    "openembedded-core/meta"
+                ],
+                "configurations": [
+                    {
+                        "name": "imx8mm-ddr4-evk",
+                        "description": "Yoe Distribution for NXP i.MX 8M Mini DDR4 EVK",
+                        "setup-dir-name": "yoe-imx8mm-ddr4-evk",
+                        "oe-fragments": [
+                            "meta-yoe/projects/imx8mm-ddr4-evk"
+                        ],
+                        "bb-layers": [
+                            "meta-freescale"
+                        ]
+                    },
+                    {
+                        "name": "imx8mm-ddr4-evk-with-sstate",
+                        "description": "Yoe Distribution for NXP i.MX 8M Mini DDR4 EVK with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-imx8mm-ddr4-evk",
+                        "oe-fragments": [
+                            "meta-yoe/projects/imx8mm-ddr4-evk",
+                            "core/yocto/sstate-mirror-cdn"
+                        ],
+                        "bb-layers": [
+                            "meta-freescale"
+                        ]
+                    },
+                    {
+                        "name": "var-dart-imx6ul",
+                        "description": "Yoe Distribution for Variscite VAR-DART i.MX6UL",
+                        "setup-dir-name": "yoe-var-dart-imx6ul",
+                        "oe-fragments": [
+                            "meta-yoe/projects/var-dart-imx6ul"
+                        ],
+                        "bb-layers": [
+                            "meta-variscite-bsp",
+                            "meta-freescale"
+                        ]
+                    },
+                    {
+                        "name": "var-dart-imx6ul-with-sstate",
+                        "description": "Yoe Distribution for Variscite VAR-DART i.MX6UL with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-var-dart-imx6ul",
+                        "oe-fragments": [
+                            "meta-yoe/projects/var-dart-imx6ul",
+                            "core/yocto/sstate-mirror-cdn"
+                        ],
+                        "bb-layers": [
+                            "meta-variscite-bsp",
+                            "meta-freescale"
+                        ]
+                    },
+                    {
+                        "name": "var-som-mx8",
+                        "description": "Yoe Distribution for Variscite VAR-SOM-MX8",
+                        "setup-dir-name": "yoe-var-som-mx8",
+                        "oe-fragments": [
+                            "meta-yoe/projects/var-som-mx8"
+                        ],
+                        "bb-layers": [
+                            "meta-variscite-bsp-common",
+                            "meta-variscite-bsp",
+                            "meta-freescale",
+                            "meta-security",
+                            "meta-security/meta-tpm"
+                        ]
+                    },
+                    {
+                        "name": "var-som-mx8-with-sstate",
+                        "description": "Yoe Distribution for Variscite VAR-SOM-MX8 with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-var-som-mx8",
+                        "oe-fragments": [
+                            "meta-yoe/projects/var-som-mx8",
+                            "core/yocto/sstate-mirror-cdn"
+                        ],
+                        "bb-layers": [
+                            "meta-variscite-bsp-common",
+                            "meta-variscite-bsp",
+                            "meta-freescale",
+                            "meta-security",
+                            "meta-security/meta-tpm"
+                        ]
+                    },
+                    {
+                        "name": "var-som-mx8m-nano",
+                        "description": "Yoe Distribution for Variscite VAR-SOM-MX8M-NANO",
+                        "setup-dir-name": "yoe-var-som-mx8m-nano",
+                        "oe-fragments": [
+                            "meta-yoe/projects/var-som-mx8m-nano"
+                        ],
+                        "bb-layers": [
+                            "meta-variscite-bsp-common",
+                            "meta-variscite-bsp",
+                            "meta-freescale"
+                        ]
+                    },
+                    {
+                        "name": "var-som-mx8m-nano-with-sstate",
+                        "description": "Yoe Distribution for Variscite VAR-SOM-MX8M-NANO with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-var-som-mx8m-nano",
+                        "oe-fragments": [
+                            "meta-yoe/projects/var-som-mx8m-nano",
+                            "core/yocto/sstate-mirror-cdn"
+                        ],
+                        "bb-layers": [
+                            "meta-variscite-bsp-common",
+                            "meta-variscite-bsp",
+                            "meta-freescale"
+                        ]
+                    },
+                    {
+                        "name": "var-som-mx8x",
+                        "description": "Yoe Distribution for Variscite VAR-SOM-MX8X",
+                        "setup-dir-name": "yoe-var-som-mx8x",
+                        "oe-fragments": [
+                            "meta-yoe/projects/var-som-mx8x"
+                        ],
+                        "bb-layers": [
+                            "meta-variscite-bsp",
+                            "meta-freescale"
+                        ]
+                    },
+                    {
+                        "name": "var-som-mx8x-with-sstate",
+                        "description": "Yoe Distribution for Variscite VAR-SOM-MX8X with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "setup-dir-name": "yoe-var-som-mx8x",
+                        "oe-fragments": [
+                            "meta-yoe/projects/var-som-mx8x",
+                            "core/yocto/sstate-mirror-cdn"
+                        ],
+                        "bb-layers": [
+                            "meta-variscite-bsp",
+                            "meta-freescale"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "version": "1.0"
+}
