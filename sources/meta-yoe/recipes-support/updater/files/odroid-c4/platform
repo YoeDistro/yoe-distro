@@ -47,9 +47,10 @@ DATA_MOUNT_POINT=/data
 USB_MOUNT_POINT=/media/usb
 SD_MOUNT_POINT=/media/sd
 
+# 4096 sector = 2MB
+FIRST_SECTOR=4096
 # Size in 'M' for MB, 'G' for GB
-RESERVED_SIZE=2M
-BOOT_SIZE=200M
+BOOT_SIZE=256M
 ROOTFS_SIZE=4G
 
 FSTYPE=ext4
@@ -76,7 +77,7 @@ plat_bootloader_quirks() {
     if ! diff $f $INSTALL_BOOT_MOUNT/$f; then
       msg_splash "Updating bootloader asset ... $f"
       cp $f $INSTALL_BOOT_MOUNT
-      dd if=$INSTALL_BOOT_MOUNT/$f of=$INSTALL_DEVICE bs=512 seek=1
+      #dd if=$INSTALL_BOOT_MOUNT/$f of=$INSTALL_DEVICE bs=512 seek=1 conv=fsync,notrunc
       bootloader_updated=1
     fi
   fi
