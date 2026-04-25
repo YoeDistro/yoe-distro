@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2026.03"
-DISTRO_CODENAME = "kooka"
+DISTRO_VERSION = "2026.04"
+DISTRO_CODENAME = "leineschaf"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
