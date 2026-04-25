@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2026.03"
-DISTRO_CODENAME = "kooka"
+DISTRO_VERSION = "2026.04"
+DISTRO_CODENAME = "leineschaf"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
@@ -184,11 +184,6 @@ RUNTIMETARGET:append:pn-gcc-runtime = " libquadmath"
 # default is VNC
 PACKAGECONFIG:append:pn-qemu-native = " sdl"
 PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
-
-# disable system minizip/zlib as 1.3.2+ does not work _yet_
-# with QTwebengine ( meta-oe now has 1.3.2 )
-PACKAGECONFIG:remove:pn-qtbase = "zlib"
-PACKAGECONFIG:remove:pn-qtwebengine = "zlib"
 
 # Dont package kernel into image
 RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""

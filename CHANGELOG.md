@@ -17,6 +17,12 @@ and this project adheres to
 - Fix reproduciblity issues with autoconf 2.73
 - Do not override system linker to not be LLD
 - Use rpi distro provided vlc and ffmpeg on rpi machines
+- Drop libhugetlbfs dependency in memcached
+- Add ptest support to several recipes
+- Fix kernel selftests
+- Update linux-yocto to 6.18.24
+- Upgrade OpenSSH to 10.3p1
+- Fix build issues seen with clang-22
 
 ### Added
 
