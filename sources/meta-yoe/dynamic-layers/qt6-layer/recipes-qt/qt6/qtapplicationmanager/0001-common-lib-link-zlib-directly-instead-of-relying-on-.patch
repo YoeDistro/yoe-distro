@@ -1,0 +1,51 @@
+From 6ac1907cf61a24b4416624b2906f8851f52a7c3f Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Sun, 19 Apr 2026 10:31:06 -0700
+Subject: [PATCH] common-lib: link zlib directly instead of relying on Qt's
+ system_zlib feature
+
+Qt's QT_FEATURE_system_zlib can be disabled in qtbase to avoid a minizip
+version conflict with qtwebengine (external minizip requires 1.3.2 while
+qtwebengine depends on an older version). This caused AppManCommonPrivate
+to fall back to Qt::ZlibPrivate, which does not export zlib symbols to
+external consumers, resulting in undefined symbol errors for gzopen,
+gzread and gzclose at link time.
+
+Fix by bypassing Qt's zlib feature flag entirely and using CMake's native
+FindZLIB to link directly against the sysroot libz. This is independent
+of the qtwebengine/minizip conflict since processtitle.cpp only needs
+libz to read /proc/config.gz.
+
+Change-Id: I0f6f5f6ef33109af743bcd8c2a6343f766087b99
+
+Upstream-Status: Submitted [https://codereview.qt-project.org/c/qt/qtapplicationmanager/+/729764]
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ src/common-lib/CMakeLists.txt | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/src/common-lib/CMakeLists.txt b/src/common-lib/CMakeLists.txt
+index 8d39f1fa..8c2062b8 100644
+--- a/src/common-lib/CMakeLists.txt
++++ b/src/common-lib/CMakeLists.txt
+@@ -65,12 +65,11 @@ qt_internal_extend_target(AppManCommonPrivate CONDITION NOT QT_FEATURE_am_system
+         Qt::BundledLibYaml
+ )
+
+-qt_internal_extend_target(AppManCommonPrivate CONDITION LINUX AND QT_FEATURE_system_zlib
+-    LIBRARIES
+-        WrapZLIB::WrapZLIB
+-)
+-
+-qt_internal_extend_target(AppManCommonPrivate CONDITION LINUX AND NOT QT_FEATURE_system_zlib
+-    LIBRARIES
+-        Qt::ZlibPrivate
+-)
++# With this:
++if(LINUX)
++    find_package(ZLIB REQUIRED)
++    qt_internal_extend_target(AppManCommonPrivate
++        LIBRARIES
++            ZLIB::ZLIB
++    )
++endif()
