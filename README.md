@@ -37,6 +37,59 @@ port forwarding to work on docker
 
 ## Workspace Setup 👷
 
+### Using bitbake-setup
+
+`bitbake-setup` is the new way to initialize a Yoe workspace without cloning the
+repository manually. It fetches all needed layers and sets up the build
+directory automatically.
+
+Requirements: Python 3, git
+
+1. Get `bitbake-setup`
+
+   ```sh
+   git clone https://git.openembedded.org/bitbake
+   ```
+
+   Note: This bitbake clone is only needed once to bootstrap `bitbake-setup`.
+   After `bitbake-setup init`, bitbake from yoe-distro will be used.
+
+1. Get yoe layers and initialize the build environment
+
+   ```sh
+   GIT_REPO=git://github.com/YoeDistro/yoe-distro
+   GIT_BRANCH=master
+   GIT_REV=$GIT_BRANCH
+   bitbake/bin/bitbake-setup --setting default registry "$GIT_REPO;protocol=https;branch=$GIT_BRANCH;rev=$GIT_REV" init
+   ```
+
+   Note: Changing the variables allows to work with forked git repositories as
+   well.
+
+   Follow the wizard to choose a machine and configure the build environment.
+
+1. Source the environment and build
+
+   `bitbake-setup init` prints instructions on how to load the environment or
+   open it in VS Code. For example:
+
+   ```sh
+   . bitbake-builds/yoe-rpi5/build/init-build-env
+   bitbake yoe-simple-image
+   ```
+
+To keep layers up to date, run `bitbake-setup update` from a shell where the
+build environment has been sourced. It fetches the latest upstream revisions for
+all layers, rebases any local commits on top, and updates the build
+configuration. Uncommitted changes in a layer directory will block the update
+until they are committed, manually stashed or rebased. Alternatively use
+`--rebase-conflicts-strategy=backup` to automatically back up the conflicting
+directory and re-clone from upstream. See the
+[bitbake-setup update docs](https://docs.yoctoproject.org/bitbake/dev/bitbake-user-manual/bitbake-user-manual-environment-setup.html#bitbake-setup-update)
+for details.
+
+### Using git submodules (traditional)
+
 1. `git clone --recurse-submodules -j8 -b master https://github.com/YoeDistro/yoe-distro.git yoe`
 1. `cd yoe`
 1. `. ./envsetup.sh rpi4-64`

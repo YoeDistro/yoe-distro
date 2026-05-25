@@ -1,0 +1,103 @@
+{
+    "description": "Yoe Distribution - BeagleBone (TI AM335x)",
+    "sources": {
+        "bitbake": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/bitbake",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "openembedded-core": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/openembedded-core",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "yoe-distro": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/yoe-distro",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-openembedded": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-openembedded",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-clang": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-clang",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-qt6": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-qt6",
+                "branch": "yoe/6.10",
+                "rev": "yoe/6.10"
+            }
+        },
+        "meta-arm": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-arm",
+                "branch": "master",
+                "rev": "master"
+            }
+        },
+        "meta-ti": {
+            "git-remote": {
+                "uri": "https://github.com/YoeDistro/meta-ti",
+                "branch": "master",
+                "rev": "master"
+            }
+        }
+    },
+    "bitbake-setup": {
+        "configurations": [
+            {
+                "setup-dir-name": "yoe-beaglebone",
+                "oe-fragments": [
+                    "meta-yoe/projects/beaglebone"
+                ],
+                "bb-layers": [
+                    "yoe-distro/sources/meta-yoe",
+                    "meta-clang",
+                    "meta-qt6",
+                    "meta-openembedded/meta-filesystems",
+                    "meta-openembedded/meta-gnome",
+                    "meta-openembedded/meta-initramfs",
+                    "meta-openembedded/meta-multimedia",
+                    "meta-openembedded/meta-networking",
+                    "meta-openembedded/meta-oe",
+                    "meta-openembedded/meta-perl",
+                    "meta-openembedded/meta-python",
+                    "meta-openembedded/meta-webserver",
+                    "meta-openembedded/meta-xfce",
+                    "openembedded-core/meta",
+                    "meta-ti/meta-ti-bsp",
+                    "meta-ti/meta-ti-extras",
+                    "meta-arm/meta-arm",
+                    "meta-arm/meta-arm-toolchain"
+                ],
+                "configurations": [
+                    {
+                        "name": "beaglebone",
+                        "description": "Yoe Distribution for BeagleBone"
+                    },
+                    {
+                        "name": "beaglebone-with-sstate",
+                        "description": "Yoe Distribution for BeagleBone with internet sstate mirror acceleration. Note: hit rates may be low as Yoe uses DISTRO=yoe and Clang rather than the standard Yocto/GCC configuration.",
+                        "oe-fragments": ["core/yocto/sstate-mirror-cdn"]
+                    }
+                ]
+            }
+        ]
+    },
+    "version": "1.0"
+}
