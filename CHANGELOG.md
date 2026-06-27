@@ -12,17 +12,19 @@ and this project adheres to
 
 - Upgrade GCC to 16.1 release
 - Upgrade glibc to 2.43 stable branch
-- Upgrade clang/llvm to 22.1.7 release
+- Upgrade clang/llvm to 22.1.8 release
 - Upgrade rust to 1.96.0
 - Upgrade go compiler to 1.26.4
 - Upgrade gdb to 17.2
-- Upgrade binutils libmpc to 1.4.1
+- Upgrade binutils to 2.46.1 release
+- Upgrade perl to 5.42.2
 - Upgrade qemu to 11.0.1
-- Upgrade python to 3.14.5
+- Upgrade python to 3.14.6
 - Upgrade busybox to 1.38.0
-- Upgrade mesa to 26.0.6
+- Upgrade mesa to 26.1.2
 - Upgrade openssl to 3.5.7
-- Upgrade gnutls to 3.8.13
+- Upgrade gnutls to 3.8.13 and nettle to 4.0
+- Upgrade vulkan recipes to 1.4.350.0
 - Upgrade glib-2.0 to 2.88.1
 - Upgrade gstreamer and plugins to 1.28.4
 - Upgrade ffmpeg to 8.1.1
@@ -108,7 +110,9 @@ and this project adheres to
 
 ### Removed
 
-- Removed recipes - libsoup-2.4, webrtc-audio-processing, android-tools 5.x
+- Removed recipes - libsoup-2.4, libpcre, webrtc-audio-processing, android-tools
+  5.x
+- Drop libpcre (PCRE1) packageconfig from wget and slang in favor of libpcre2
 - Drop pyinotify and git-make-shallow from bitbake
 - Drop do_package_write_tar and related package_manager code from oe-core
 - Remove linux-yocto CVE exclusion lists (handled by sbom-cve-check)
