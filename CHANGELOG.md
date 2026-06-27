@@ -6,6 +6,117 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.06] - 2026-06-30
+
+### Changed
+
+- Upgrade GCC to 16.1 release
+- Upgrade glibc to 2.43 stable branch
+- Upgrade clang/llvm to 22.1.7 release
+- Upgrade rust to 1.96.0
+- Upgrade go compiler to 1.26.4
+- Upgrade gdb to 17.2
+- Upgrade binutils libmpc to 1.4.1
+- Upgrade qemu to 11.0.1
+- Upgrade python to 3.14.5
+- Upgrade busybox to 1.38.0
+- Upgrade mesa to 26.0.6
+- Upgrade openssl to 3.5.7
+- Upgrade gnutls to 3.8.13
+- Upgrade glib-2.0 to 2.88.1
+- Upgrade gstreamer and plugins to 1.28.4
+- Upgrade ffmpeg to 8.1.1
+- Upgrade linux-yocto/6.18 to v6.18.35 and bump linux-yocto-dev to v7.1
+- Upgrade linux-firmware to 20260519
+- Upgrade reference u-boot to 2026.04
+- Upgrade wayland to 1.25.0 and wayland-protocols to 1.49
+- Upgrade weston to 15.0.1
+- Upgrade harfbuzz to 14.2.1
+- Upgrade gtk4 to 4.22.4 and gtk+3 to 3.24.52
+- Upgrade libadwaita to 1.9.1 and librsvg to 2.62.2
+- Upgrade curl to 8.20.0
+- Upgrade git to 2.54.0 and raise minimum required git to 2.22.0
+- Upgrade cmake to 4.3.3 and meson to 1.11.1
+- Upgrade valgrind to 3.27.1
+- Upgrade libxml2 to 2.15.3 and expat to 2.8.1
+- Upgrade ruby to 4.0.5
+- Upgrade tzdata/tzcode to 2026b
+- Upgrade strace, ethtool, iproute2 and btrfs-tools to 7.0
+- Upgrade QT6 6.10 -> 6.11 and enable KMS support in qtbase by default
+- Upgrade nodejs to 24.16.0 LTS
+- Upgrade PHP to 8.5.7
+- Upgrade MariaDB to 11.4.12 and PostgreSQL to 17.10
+- Upgrade XFCE components to 4.21.2
+- Upgrade gnome-shell to 48.8 and gdm to 50.1
+- Upgrade octave to 11.3.0, graphviz to 15.0.0 and doxygen to 1.17.0
+- Upgrade freerdp3 to 3.27.1, nginx to 1.30.3 and apache2 to 2.4.67
+- Upgrade wireshark to 4.6.6 and botan to 3.12.0
+- Upgrade valkey to 9.0.4 and python3-redis to 8.0.0
+- Upgrade plymouth to 26.124.222 and dracut to 111
+- Upgrade 7zip to 26.01
+- Upgrade swupdate to 2026.05.1
+- Use dbus-broker to provide D-Bus on systemd distros
+- bitbake fetcher hardening: drop shell=True from runfetchcmd and convert
+  all fetchers and unpack() to use argument lists instead of shell strings
+- bitbake: improve crate fetcher to use CDN and skip yanked versions, and
+  validate unihash values in hashserv
+- Switch Yocto Project source mirrors to HTTPS
+- useradd: switch from --root to --prefix and add USERMOD_PARAM support
+- glibc/gcc-runtime: disable automatic libatomic linking
+- ovmf: add Clang toolchain support
+- Disable kernel module deploy tarball by default
+- BSP: update OP-TEE to 4.10.0, trusted-firmware-a LTS to 2.14.2 and
+  edk2-firmware to 202605 (meta-arm)
+- Tegra: update L4T from R36.5.0 to R39.2.0 (JetPack 7.2) with CUDA 13.2,
+  cuDNN 9.20 and TensorRT 10.16, and switch Orin DEFAULTTUNE to aarch64
+- Tegra community: update PyTorch to 2.11.0, torchvision to 0.26.0 and
+  python3-cuda to 13.2.0
+- i.MX: bump linux-fslc-imx BSP to LF6.18.2_1.0.0, imx-gpu-viv to
+  6.4.11.p4.4, firmware-imx to 8.31 and Weston to v14 (meta-freescale)
+- Qualcomm: upgrade linux-qcom-6.18 to v6.18.30, u-boot to 2026.07, Adreno
+  GPU to 1.855.5 and QAIRT SDK to 2.47.0, and switch Ride platforms to
+  Gunyah virtualization (meta-qcom)
+- RISC-V: upgrade linux-mainline kernel to 7.0 (meta-riscv)
+- TI: upgrade Rogue GPU driver to 26.1 and BeagleBoard kernel to 6.12.57
+- Intel: restructure intel-oneapi-toolkit into a unified 2026.0.0.198 recipe
+  with mkl/ipp split into sub-packages
+- Raspberry Pi: upgrade linux-raspberrypi/6.12 to 6.12.87
+- Security: upgrade suricata to 8.0.4, clamav to 1.4.4 and crowdsec to 1.7.7
+
+### Added
+
+- Added recipes - assimp, vkmark, cloudflared, ssh-audit, lsd, playerctl,
+  libyuv, librav1e, svt-av1, octave, xdp-tools, pegtl, python3-qemu-qmp,
+  python3-cyclonedx-python-lib, python3-packageurl-python
+- Add upstream-stable-release-point and python_uv_build classes in oe-core
+- Add devtool upgrade --stable option with changelog extraction
+- Add 64-bit time/file-offset (time64) support for 32-bit nativesdk
+- Add ptest support for go, googletest, lcms, hunspell and openjpeg
+- Add SBOM (CycloneDX) generation support to QT6
+- Tegra: add Tegra264 (Thor) / AGX Thor SOM machine support, initrd-flash
+  for Orin, and python3-jetson-io
+- Qualcomm: add SDX75 SoC/IDP and IQ-8275-AC STARTER EVK board support,
+  FIT boot support and Hamoa CamX camera module
+- RISC-V: add machines k3-pico-itx (SpacemiT K3), dc-roma-fml13v01
+  (DeepComputing ROMA laptop) and bananapi-cm6-io
+- meta-arm: add trusted-firmware-a v2.15.0, trusted-firmware-m 2.3.0 and a
+  standalone corstone1000-a320-fvp machine
+- meta-freescale: import fsl-image-* images, packagegroups and imx-gpu-sdk
+  from meta-freescale-distro, and add i.MX91/i.MX93 imx-boot-container support
+- meta-ti: add meta-ti-test layer and initramfs-module-netsetup for NFS boot
+- Raspberry Pi: add linux-raspberrypi recipe for the 6.18 kernel
+
+### Removed
+
+- Removed recipes - libsoup-2.4, webrtc-audio-processing, android-tools 5.x
+- Drop pyinotify and git-make-shallow from bitbake
+- Drop do_package_write_tar and related package_manager code from oe-core
+- Remove linux-yocto CVE exclusion lists (handled by sbom-cve-check)
+- Tegra: remove nvidia-docker and tegra-libraries-dla-compiler recipes
+- meta-arm: remove older trusted-firmware-a LTS and trusted-firmware-m 2.1.4
+- meta-intel: drop archived i965 intel-vaapi-driver backend
+- meta-clang: remove obsolete bbappends (ncurses, mdadm, valgrind)
+
 ## [2026.04] - 2026-04-30
 
 ### Changed
