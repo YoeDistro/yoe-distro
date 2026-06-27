@@ -56,8 +56,8 @@ and this project adheres to
 - Upgrade 7zip to 26.01
 - Upgrade swupdate to 2026.05.1
 - Use dbus-broker to provide D-Bus on systemd distros
-- bitbake fetcher hardening: drop shell=True from runfetchcmd and convert
-  all fetchers and unpack() to use argument lists instead of shell strings
+- bitbake fetcher hardening: drop shell=True from runfetchcmd and convert all
+  fetchers and unpack() to use argument lists instead of shell strings
 - bitbake: improve crate fetcher to use CDN and skip yanked versions, and
   validate unihash values in hashserv
 - Switch Yocto Project source mirrors to HTTPS
@@ -67,15 +67,15 @@ and this project adheres to
 - Disable kernel module deploy tarball by default
 - BSP: update OP-TEE to 4.10.0, trusted-firmware-a LTS to 2.14.2 and
   edk2-firmware to 202605 (meta-arm)
-- Tegra: update L4T from R36.5.0 to R39.2.0 (JetPack 7.2) with CUDA 13.2,
-  cuDNN 9.20 and TensorRT 10.16, and switch Orin DEFAULTTUNE to aarch64
+- Tegra: update L4T from R36.5.0 to R39.2.0 (JetPack 7.2) with CUDA 13.2, cuDNN
+  9.20 and TensorRT 10.16, and switch Orin DEFAULTTUNE to aarch64
 - Tegra community: update PyTorch to 2.11.0, torchvision to 0.26.0 and
   python3-cuda to 13.2.0
-- i.MX: bump linux-fslc-imx BSP to LF6.18.2_1.0.0, imx-gpu-viv to
-  6.4.11.p4.4, firmware-imx to 8.31 and Weston to v14 (meta-freescale)
-- Qualcomm: upgrade linux-qcom-6.18 to v6.18.30, u-boot to 2026.07, Adreno
-  GPU to 1.855.5 and QAIRT SDK to 2.47.0, and switch Ride platforms to
-  Gunyah virtualization (meta-qcom)
+- i.MX: bump linux-fslc-imx BSP to LF6.18.2_1.0.0, imx-gpu-viv to 6.4.11.p4.4,
+  firmware-imx to 8.31 and Weston to v14 (meta-freescale)
+- Qualcomm: upgrade linux-qcom-6.18 to v6.18.30, u-boot to 2026.07, Adreno GPU
+  to 1.855.5 and QAIRT SDK to 2.47.0, and switch Ride platforms to Gunyah
+  virtualization (meta-qcom)
 - RISC-V: upgrade linux-mainline kernel to 7.0 (meta-riscv)
 - TI: upgrade Rogue GPU driver to 26.1 and BeagleBoard kernel to 6.12.57
 - Intel: restructure intel-oneapi-toolkit into a unified 2026.0.0.198 recipe
@@ -93,16 +93,16 @@ and this project adheres to
 - Add 64-bit time/file-offset (time64) support for 32-bit nativesdk
 - Add ptest support for go, googletest, lcms, hunspell and openjpeg
 - Add SBOM (CycloneDX) generation support to QT6
-- Tegra: add Tegra264 (Thor) / AGX Thor SOM machine support, initrd-flash
-  for Orin, and python3-jetson-io
-- Qualcomm: add SDX75 SoC/IDP and IQ-8275-AC STARTER EVK board support,
-  FIT boot support and Hamoa CamX camera module
+- Tegra: add Tegra264 (Thor) / AGX Thor SOM machine support, initrd-flash for
+  Orin, and python3-jetson-io
+- Qualcomm: add SDX75 SoC/IDP and IQ-8275-AC STARTER EVK board support, FIT boot
+  support and Hamoa CamX camera module
 - RISC-V: add machines k3-pico-itx (SpacemiT K3), dc-roma-fml13v01
   (DeepComputing ROMA laptop) and bananapi-cm6-io
 - meta-arm: add trusted-firmware-a v2.15.0, trusted-firmware-m 2.3.0 and a
   standalone corstone1000-a320-fvp machine
-- meta-freescale: import fsl-image-* images, packagegroups and imx-gpu-sdk
-  from meta-freescale-distro, and add i.MX91/i.MX93 imx-boot-container support
+- meta-freescale: import fsl-image-\* images, packagegroups and imx-gpu-sdk from
+  meta-freescale-distro, and add i.MX91/i.MX93 imx-boot-container support
 - meta-ti: add meta-ti-test layer and initramfs-module-netsetup for NFS boot
 - Raspberry Pi: add linux-raspberrypi recipe for the 6.18 kernel
 
