@@ -165,6 +165,8 @@ PACKAGECONFIG:remove:pn-wpewebkit = "qtwpe"
 PREFERRED_VERSION_swig = "4%"
 PREFERRED_VERSION_swig-native = "4%"
 PREFERRED_VERSION_nativesdk-swig = "4%"
+# See https://patchwork.yoctoproject.org/project/oe-core/patch/20260624232119.1501995-1-khem.raj@oss.qualcomm.com/
+LDFLAGS:append:pn-jansson = " -fuse-ld=bfd"
 
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).
