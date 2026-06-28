@@ -6,8 +6,8 @@ MAINTAINER = "Yoe Distro Community <http://yoedistro.org>"
 TARGET_VENDOR = "-yoe"
 SDK_VENDOR = "-yoesdk"
 # Distro version is YYYY.MM
-DISTRO_VERSION = "2026.04"
-DISTRO_CODENAME = "leineschaf"
+DISTRO_VERSION = "2026.06"
+DISTRO_CODENAME = "Manx Loaghtan"
 SDK_VERSION := "${DISTRO_VERSION}"
 
 SDK_NAME_PREFIX = "yoe"
@@ -165,6 +165,8 @@ PACKAGECONFIG:remove:pn-wpewebkit = "qtwpe"
 PREFERRED_VERSION_swig = "4%"
 PREFERRED_VERSION_swig-native = "4%"
 PREFERRED_VERSION_nativesdk-swig = "4%"
+# See https://patchwork.yoctoproject.org/project/oe-core/patch/20260624232119.1501995-1-khem.raj@oss.qualcomm.com/
+LDFLAGS:append:pn-jansson = " -fuse-ld=bfd"
 
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).
