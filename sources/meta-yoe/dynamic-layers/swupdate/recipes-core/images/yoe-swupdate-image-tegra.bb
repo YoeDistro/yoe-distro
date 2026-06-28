@@ -33,6 +33,7 @@ ESP_ARCHIVE ?= "${TEGRA_ESP_IMAGE}-${MACHINE}.tar.gz"
 # Prepend "devicetree" to the ${DTBFILE} in the images list, since this is the target for do_deploy
 # On the nvidia-kernel-oot-dtb recipe.
 DTBFILE_PATH = "devicetree/${DTBFILE}"
+DTBFILE = "${@os.path.basename(d.getVar('KERNEL_DEVICETREE').split()[0])}"
 
 # images and files that will be included in the .swu image
 SWUPDATE_IMAGES = "${ROOTFS_FILENAME} tegra-bl.cap ${DEPLOY_KERNEL_IMAGE} ${DTBFILE_PATH} tegra-swupdate-script.lua ${ESP_ARCHIVE}"
