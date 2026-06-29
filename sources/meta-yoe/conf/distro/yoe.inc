@@ -167,6 +167,9 @@ PREFERRED_VERSION_swig-native = "4%"
 PREFERRED_VERSION_nativesdk-swig = "4%"
 # See https://patchwork.yoctoproject.org/project/oe-core/patch/20260624232119.1501995-1-khem.raj@oss.qualcomm.com/
 LDFLAGS:append:pn-jansson = " -fuse-ld=bfd"
+# lld can not link it
+# | aarch64-yoe-linux-ld.lld: error: version script assignment of 'global' to symbol 'lttng_reclaim_handle_get_pending_memory_size_bytes' failed: symbol not defined
+LDFLAGS:append:pn-lttng-tools = " -fuse-ld=bfd"
 
 # the following is required because some BSP layers (fsl) don't set this, and then
 # other BSP layers fail bitbake parsing (ti).

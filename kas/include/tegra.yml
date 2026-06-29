@@ -70,8 +70,10 @@ local_conf_header:
       tegra-tools-tegrastats \
       optee-nvsamples optee-test \
       cuda-samples \
+      python3-cuda-bindings \
+      python3-cuda-pathfinder \
+      python3-cuda-python \
       python3-opencv \
-      python3-cuda \
       "
 
   Misc: |

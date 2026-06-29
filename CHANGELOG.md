@@ -27,15 +27,15 @@ and this project adheres to
 - Upgrade vulkan recipes to 1.4.350.0
 - Upgrade glib-2.0 to 2.88.1
 - Upgrade gstreamer and plugins to 1.28.4
-- Upgrade ffmpeg to 8.1.1
+- Upgrade ffmpeg to 8.1.2
 - Upgrade linux-yocto/6.18 to v6.18.35 and bump linux-yocto-dev to v7.1
-- Upgrade linux-firmware to 20260519
+- Upgrade linux-firmware to 20260622
 - Upgrade reference u-boot to 2026.04
 - Upgrade wayland to 1.25.0 and wayland-protocols to 1.49
 - Upgrade weston to 15.0.1
 - Upgrade harfbuzz to 14.2.1
 - Upgrade gtk4 to 4.22.4 and gtk+3 to 3.24.52
-- Upgrade libadwaita to 1.9.1 and librsvg to 2.62.2
+- Upgrade libadwaita to 1.9.1 and librsvg to 2.62.3
 - Upgrade curl to 8.20.0
 - Upgrade git to 2.54.0 and raise minimum required git to 2.22.0
 - Upgrade cmake to 4.3.3 and meson to 1.11.1
@@ -57,6 +57,13 @@ and this project adheres to
 - Upgrade plymouth to 26.124.222 and dracut to 111
 - Upgrade 7zip to 26.01
 - Upgrade swupdate to 2026.05.1
+- Upgrade util-linux to 2.42.2, parted to 3.7, man-pages to 6.18 and inetutils
+  to 2.8
+- Upgrade python3-numpy to 2.5.0, elfutils to 0.195, bind to 9.20.24 and
+  libinput to 1.31.3
+- Upgrade lttng (tools/ust/modules) to 2.15.1, vte to 0.84.0 and native ovmf to
+  edk2-stable202605
+- Upgrade crash to 9.0.2 and add the crash-memory-driver recipe (meta-oe)
 - Use dbus-broker to provide D-Bus on systemd distros
 - bitbake fetcher hardening: drop shell=True from runfetchcmd and convert all
   fetchers and unpack() to use argument lists instead of shell strings
@@ -71,19 +78,22 @@ and this project adheres to
   edk2-firmware to 202605 (meta-arm)
 - Tegra: update L4T from R36.5.0 to R39.2.0 (JetPack 7.2) with CUDA 13.2, cuDNN
   9.20 and TensorRT 10.16, and switch Orin DEFAULTTUNE to aarch64
-- Tegra community: update PyTorch to 2.11.0, torchvision to 0.26.0 and
-  python3-cuda to 13.2.0
+- Tegra community: update PyTorch to 2.11.0 and torchvision to 0.26.0, and split
+  python3-cuda into python3-cuda-bindings, python3-cuda-pathfinder and
+  python3-cuda-python
 - i.MX: bump linux-fslc-imx BSP to LF6.18.2_1.0.0, imx-gpu-viv to 6.4.11.p4.4,
   firmware-imx to 8.31 and Weston to v14 (meta-freescale)
 - Qualcomm: upgrade linux-qcom-6.18 to v6.18.30, u-boot to 2026.07, Adreno GPU
-  to 1.855.5 and QAIRT SDK to 2.47.0, and switch Ride platforms to Gunyah
-  virtualization (meta-qcom)
+  to 1.855.5, QAIRT SDK to 2.47.0, the iris video driver to v1.0.20 and rmtfs to
+  release 1.3, and switch Ride platforms to Gunyah virtualization (meta-qcom)
 - RISC-V: upgrade linux-mainline kernel to 7.0 (meta-riscv)
 - TI: upgrade Rogue GPU driver to 26.1 and BeagleBoard kernel to 6.12.57
 - Intel: restructure intel-oneapi-toolkit into a unified 2026.0.0.198 recipe
   with mkl/ipp split into sub-packages
 - Raspberry Pi: upgrade linux-raspberrypi/6.12 to 6.12.87
 - Security: upgrade suricata to 8.0.4, clamav to 1.4.4 and crowdsec to 1.7.7
+- Security: fix CVEs in libssh2 (CVE-2026-55199, CVE-2026-55200) and binutils
+  (CVE-2026-6846)
 
 ### Added
 
