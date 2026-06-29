@@ -37,6 +37,7 @@
 - [Layer Management](layer-management.md)
 - [OE/Yocto Feedback](oe-yocto-feedback.md)
 - [Yoe Projects](yoe-projects.md)
+- [Agentic Workflow](agentic-workflow.md)
 
 # Reference
 
