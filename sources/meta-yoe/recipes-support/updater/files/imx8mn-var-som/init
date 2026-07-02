@@ -1,1 +1,659 @@
-../updater.installer
+#!/bin/sh
+
+VERSION=21.4
+
+. ./platform
+
+SPLASH_DIR="/mnt/.splash"
+
+INSTALL_ROOTFS_MOUNT=$ROOTFS_MOUNT_POINT
+INSTALL_BOOT_MOUNT=$BOOT_MOUNT_POINT
+INSTALL_DATA_MOUNT=$DATA_MOUNT_POINT
+INSTALL_BOOT_MOUNT_IN_ROOTFS=$INSTALL_ROOTFS_MOUNT$INSTALL_BOOT_MOUNT
+INSTALL_DATA_MOUNT_IN_ROOTFS=$INSTALL_ROOTFS_MOUNT$INSTALL_DATA_MOUNT
+
+EMMC_ROOTFS_MOUNT=$ROOTFS_MOUNT_POINT
+EMMC_BOOT_MOUNT=$BOOT_MOUNT_POINT
+EMMC_DATA_MOUNT=$DATA_MOUNT_POINT
+EMMC_BOOT_MOUNT_IN_ROOTFS=$EMMC_ROOTFS_MOUNT$EMMC_BOOT_MOUNT
+EMMC_DATA_MOUNT_IN_ROOTFS=$EMMC_ROOTFS_MOUNT$EMMC_DATA_MOUNT
+
+SD_ROOTFS_MOUNT=$ROOTFS_MOUNT_POINT
+SD_BOOT_MOUNT=$BOOT_MOUNT_POINT
+SD_DATA_MOUNT=$DATA_MOUNT_POINT
+SD_BOOT_MOUNT_IN_ROOTFS=$SD_ROOTFS_MOUNT$SD_BOOT_MOUNT
+SD_DATA_MOUNT_IN_ROOTFS=$SD_ROOTFS_MOUNT$SD_DATA_MOUNT
+
+# Linux filesystem is 0x83 and FAT is 0xc see
+# https://tldp.org/HOWTO/Partition-Mass-Storage-Definitions-Naming-HOWTO/x190.html
+if [ "$BOOT_FSTYPE" = "ext4" ]; then
+  BOOTPART_TYPE=83
+else
+  BOOTPART_TYPE=c
+fi
+
+if [ "$OVERLAY_TYPE" = "persistent" -o "$OVERLAY_TYPE" = "tmpfs" ]; then
+  FINAL_ROOTFS="/mnt/overlay"
+else
+  FINAL_ROOTFS="/mnt/rootfs"
+fi
+
+speak() {
+  if [ "$UPDATER_SPEECH" = "1" ]; then
+    msg "speak $1"
+    espeak "$1"
+  else
+    msg "$1"
+  fi
+}
+
+msg() {
+  echo "$@" >/dev/console
+}
+
+# Prints information
+msg_splash() {
+  msg $1
+
+  if [ "$splash_enabled" = 1 ]; then
+    progress=$2
+
+    if [ "$progress" = "" ]; then
+      progress="0"
+    fi
+
+    TMPDIR=$SPLASH_DIR psplash-write "MSG $1"
+    TMPDIR=$SPLASH_DIR psplash-write "PROGRESS $progress"
+    usleep 500000
+  fi
+}
+
+rescue_shell() {
+  msg "$@"
+  msg "Something went wrong. Dropping you to a shell."
+  exec /bin/sh
+}
+
+start_splash() {
+  if [ -e /usr/bin/psplash ]; then
+    splash_enabled=1
+    # set up psplash
+    mkdir -p "$SPLASH_DIR"
+    mount tmpfs -t tmpfs $SPLASH_DIR -o,size=40k 2>&1 >/dev/console
+    TMPDIR=$SPLASH_DIR psplash &
+    2>&1 >/dev/console
+    sleep 1
+  fi
+}
+
+# normal reboot does not work, so get a bigger hammer ...
+restart() {
+  echo "restarting system ..."
+  sync
+  reboot -f
+}
+
+initialize() {
+  msg "============================================================"
+  msg "Updater version $VERSION"
+  mkdir -p /dev /sys /proc
+
+  mount -t devtmpfs none /dev
+  mount -t sysfs none /sys
+  mount -t proc none /proc
+
+  start_splash
+
+  msg_splash "$TITLE v${VERSION}"
+  msg_splash 10
+
+  plat_init
+
+  speak "updater version $VERSION"
+
+  mkdir -p $BOOT_MOUNT_POINT
+  mkdir -p $DATA_MOUNT_POINT
+}
+
+# Pass device,partition e.g. $EMMC_DEVICE $EMMC_DATA_DEV
+# Default is SD device if nothing is passed
+resize_sd() {
+  if [ -z "$1" ]; then
+    DEVICE=$SD_DEVICE
+    PART=$SD_DATA_DEV
+  else
+    DEVICE=$1
+    if [ -z "$2"]; then
+      echo "Please specify partition to resize e.g. /dev/mmcblk0p3" || return 1
+      return 0
+    fi
+    PART=$2
+  fi
+  PART_NAME=$(basename ${PART})
+  PART_SIZE=$(cat "/sys/class/block/${PART_NAME}/size")
+  PART_NUM=$(cat "/sys/class/block/${PART_NAME}/partition")
+  # only continue if partition size is 1MB
+  echo "Checking data partition size ..." || return 1
+  if [ $PART_SIZE -gt 2048 ]; then
+    return 0
+  fi
+  echo "Resizing data partition ..." || return 1
+  echo "- +" | sfdisk -N ${PART_NUM} ${DEVICE}
+  e2fsck -fy ${PART}
+  resize2fs ${PART}
+}
+
+partition_sd() {
+  echo "Partitioning started ..." || return 1
+  if [ -z "$1" ]; then
+    DEVICE=$SD_DEVICE
+  else
+    DEVICE=$1
+  fi
+  sync
+  umount ${DEVICE}p1
+  umount ${DEVICE}p2
+  umount ${DEVICE}p3
+
+  # Delete existing partition tables
+  dd if=/dev/zero of=$DEVICE bs=1 count=512 conv=fsync conv=notrunc
+  sync
+  # Three primary partitions: one FAT bootable part (boot),
+  # second for rootfs and the rest is in third(data)
+  sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS | fdisk $DEVICE
+n      # add new partition
+p      # Partition type
+4      # partition number
+       # default - first sector
++${RESERVED_SIZE} # partition size
+n      # add new partition
+p      # Partition type
+1      # partition number
+       # default - first sector
++${BOOT_SIZE} # partition size
+n      # add new partition
+p      # Partition type
+2      # partition number
+       # default - first sector
++${ROOTFS_SIZE} # partition size
+n      # add new partition
+p      # Partition type
+3      # partition number
+       # default - first sector
+       # default - last sector
+t      # change partition type
+1      # partition number
+${BOOTPART_TYPE} # boot partition filesystem
+t      # change partition type
+2      # partition number
+83     # Linux filesystem
+t      # change partition type
+3      # partition number
+83     # Linux filesystem
+a      # toggle a bootable flag
+1      # partition number
+d      # delete temp partition 4
+4      # partition number
+w      # write partition table and exit
+FDISK_CMDS
+  partprobe $DEVICE
+  fdisk -l $DEVICE
+  echo "partitioning $DEVICE done"
+  echo "Formatting boot partition"
+  format_${STORAGE}_boot
+  echo "Formatting rootfs partition"
+  format_${STORAGE}_rootfs
+  echo "Formatting data partition"
+  format_${STORAGE}_data
+  return 0
+}
+
+format_sd_boot() {
+if [ "$BOOT_FSTYPE" = "ext4" ]; then
+  mkfs.${BOOT_FSTYPE} -O 64bit -L "BOOT" -F $SD_BOOT_DEV || return 1
+else
+  mkfs.${BOOT_FSTYPE} -I -n "BOOT" $SD_BOOT_DEV || return 1
+fi
+}
+
+format_sd_rootfs() {
+  mkfs.${FSTYPE} -O 64bit -L "ROOT" -F $SD_ROOTFS_DEV || return 1
+}
+
+format_sd_data() {
+  mkfs.${FSTYPE} -O 64bit -L "DATA" -F $SD_DATA_DEV || return 1
+}
+
+partition_emmc() {
+  partition_sd $EMMC_DEVICE
+}
+
+resize_emmc() {
+  resize_sd $EMMC_DEVICE $EMMC_DATA_DEV
+}
+
+format_emmc_boot() {
+if [ "$BOOT_FSTYPE" = "ext4" ]; then
+  mkfs.${BOOT_FSTYPE} -O 64bit -L "BOOT" -F $EMMC_BOOT_DEV || return 1
+else
+  mkfs.${BOOT_FSTYPE} -I -n "BOOT" $EMMC_BOOT_DEV || return 1
+fi
+}
+
+format_emmc_rootfs() {
+  mkfs.${FSTYPE} -O 64bit -L "ROOT" -F $EMMC_ROOTFS_DEV || return 1
+}
+
+format_emmc_data() {
+  mkfs.${FSTYPE} -O 64bit -L "DATA" -F $EMMC_DATA_DEV || return 1
+}
+
+mount_usb() {
+  mkdir -p $USB_MOUNT_POINT
+  for part in sda1 sda sdb1 sdb
+  do
+    test -e /dev/$part && mount /dev/$part $USB_MOUNT_POINT 2>/dev/null
+    if [ $? -eq 0 ]; then
+      msg_splash "Found Installer disk at /dev/$part"
+      return 0
+    fi
+  done
+  msg_splash "No USB Installer disk detected"
+  return 1
+}
+
+umount_usb() {
+  if mount | grep usb; then
+    umount $USB_MOUNT_POINT
+  fi
+  return 0
+}
+
+mount_sd() {
+  mkdir -p $SD_MOUNT_POINT
+  test -e $SD_BOOT_DEV && mount $SD_BOOT_DEV $SD_MOUNT_POINT 2>/dev/null
+  if [ $? -eq 0 ]; then
+    msg_splash "SD card mounted"
+    return 0
+  else
+    msg_splash "No SD card detected"
+    return 1
+  fi
+}
+
+umount_sd() {
+  if mount | grep sd; then
+    umount $SD_MOUNT_POINT
+  fi
+
+  return 0
+}
+
+mount_boot() {
+  mount=$1
+  device=$2
+  mkdir -p $mount
+  if [ -e $device ]; then
+    if ! mount $device $mount; then
+      fsck -y $device
+      if ! mount $device $mount; then
+        return 1
+      fi
+    fi
+  else
+    return 1
+  fi
+}
+
+mount_data() {
+  msg_splash "Mounting data partition"
+  mount=$1
+  device=$2
+  mkdir -p $mount
+  if [ -e $device ]; then
+    if ! mount $device $mount; then
+      fsck -y $device
+      if ! mount $device $mount; then
+        return 1
+      fi
+    fi
+  else
+    return 1
+  fi
+}
+
+mount_overlay_data() {
+  mkdir -p /mnt/data/upper /mnt/data/upper/data /mnt/data/work /mnt/data/persistent /mnt/overlay
+  mount -t overlay -o ro,lowerdir=/mnt/data/persistent:/mnt/rootfs,upperdir=/mnt/data/upper,workdir=/mnt/data/work overlay /mnt/overlay
+}
+
+mount_overlay_tmpfs() {
+  TMPUPPER=/mnt/tmpupper
+  mkdir $TMPUPPER
+  mount -t tmpfs tmpupper $TMPUPPER
+  mkdir -p $TMPUPPER/upper $TMPUPPER/work /mnt/data/persistent /mnt/overlay
+  mount -t overlay -o ro,lowerdir=/mnt/data/persistent:/mnt/rootfs,upperdir=$TMPUPPER/upper,workdir=$TMPUPPER/work overlay /mnt/overlay
+}
+
+umount_overlay() {
+  umount $dir
+}
+
+umount_data() {
+  if mount | grep data; then
+    umount $DATA_MOUNT_POINT
+  fi
+  return 0
+}
+
+mount_rootfs_sd() {
+  mkdir -p /mnt/rootfs /mnt/data /mnt/boot
+  if ! mount $SD_ROOTFS_DEV /mnt/rootfs; then
+    fsck -y $SD_ROOTFS_DEV
+    if ! mount $SD_ROOTFS_DEV /mnt/rootfs; then
+      msg_splash "Error mount SD rootfs, please fix ..."
+      speak "updater, S D file system error"
+      rescue_shell
+    fi
+  fi
+
+  if [ "$MOUNT_BOOT" = "1" ]; then
+    msg_splash "mounting boot"
+    mount_boot /mnt/boot $SD_BOOT_DEV
+    mount -n --move /mnt/boot $FINAL_ROOTFS/boot
+  fi
+
+  mount_data /mnt/data $SD_DATA_DEV
+  if [ "$OVERLAY_TYPE" = "persistent" ]; then
+    msg_splash "Mounting filesystem overlay on data partition"
+    mount_overlay_data
+  elif [ "$OVERLAY_TYPE" = "tmpfs" ]; then
+    msg_splash "Mounting filesystem overlay on tmpfs"
+    mount_overlay_tmpfs
+  fi
+  mount -n --move /mnt/data $FINAL_ROOTFS/data
+}
+
+mount_rootfs_emmc() {
+  mkdir -p /mnt/rootfs /mnt/data /mnt/boot
+  if ! mount $EMMC_ROOTFS_DEV /mnt/rootfs; then
+    fsck -y $EMMC_ROOTFS_DEV
+    if ! mount $EMMC_ROOTFS_DEV /mnt/rootfs; then
+      msg_splash "Error mount EMMC rootfs, please fix ..."
+      speak "updater, E M M C file system error"
+      rescue_shell
+    fi
+  fi
+
+  if [ "$MOUNT_BOOT" = "1" ]; then
+    msg_splash "mounting boot"
+    mount_boot /mnt/boot $EMMC_BOOT_DEV
+    mount -n --move /mnt/boot $FINAL_ROOTFS/boot
+  fi
+
+  mount_data /mnt/data $EMMC_DATA_DEV
+  if [ "$OVERLAY_TYPE" = "persistent" ]; then
+    msg_splash "Mounting filesystem overlay on data partition"
+    mount_overlay_data
+  elif [ "$OVERLAY_TYPE" = "tmpfs" ]; then
+    msg_splash "Mounting filesystem overlay on tmpfs"
+    mount_overlay_tmpfs
+  fi
+  mount -n --move /mnt/data $FINAL_ROOTFS/data
+}
+
+mount_rootfs_nand() {
+  msg_splash "Boot from NAND not implemented ..."
+}
+
+process_update() {
+  if ! cpio -id < $1; then
+    msg_splash "Failed to extract update file"
+    return 1
+  fi
+
+  if ! sha256sum -c update.sha256; then
+    msg_splash "error in update file"
+    return 1
+  fi
+
+  if [ "$YOE_UPDATER_MODE" = "factory" ]; then
+    msg_splash "Partitioning storage, please wait ..."
+    if ! partition_${STORAGE}; then
+      msg_splash "Partitioning ${STORAGE} failed, bad media"
+      rescue_shell
+    fi
+  fi
+
+  if ! mount_boot $INSTALL_BOOT_MOUNT $INSTALL_BOOT_DEV; then
+    msg_splash "Formatting BOOT partition"
+    format_${STORAGE}_boot
+    if ! mount_boot $INSTALL_BOOT_MOUNT $INSTALL_BOOT_DEV; then
+      msg_splash "Failed to mount BOOT partition"
+      return 1
+    fi
+  fi
+
+  plat_bootloader_quirks
+
+  for f in $BOOT; do
+    if [ -e $f ]; then
+      if ! diff $f $INSTALL_BOOT_MOUNT/$f 2>&1 >/dev/null; then
+        msg_splash "Updating bootloader asset ... $f"
+        install -Dm 0644 $f $INSTALL_BOOT_MOUNT/$f
+        bootloader_updated=1
+      fi
+    fi
+  done
+
+  if [ -n "$bootloader_updated" ]; then
+    msg_splash "bootloader updated"
+  fi
+
+  for f in $KERNEL; do
+    if [ -e $f ]; then
+      if ! diff $f $INSTALL_BOOT_MOUNT/$f 2>&1 >/dev/null; then
+        msg_splash "Updating kernel asset ... $f"
+        mkdir -p `dirname $INSTALL_BOOT_MOUNT/$f`
+        install -Dm 0644 $f $INSTALL_BOOT_MOUNT/$f
+        kernel_updated=1
+      fi
+    fi
+  done
+
+  umount $INSTALL_BOOT_DEV
+
+  if [ -n "$kernel_updated" -a "$YOE_UPDATER_MODE" != "factory" ]; then
+    msg_splash "kernel updated, rebooting ..."
+    restart
+    rescue_shell
+  fi
+
+  if [ -e $ROOTFS ]; then
+    msg_splash "Updating rootfs"
+    if [ ! -e $INSTALL_ROOTFS_DEV ]; then
+      msg_splash "Failed to find rootfs device"
+      return 1
+    fi
+
+    xzcat ${ROOTFS} | dd of=$INSTALL_ROOTFS_DEV bs=1M
+    msg_splash "rootfs update complete"
+  fi
+  # find if data partition is not formatted
+  fs_type=$(blkid -o value -s TYPE $INSTALL_DATA_DEV)
+  if [ -z "$fs_type" ]; then
+    format_${STORAGE}_data
+  fi
+
+  if [ "$YOE_UPDATER_MODE" = "factory" ]; then
+      msg_splash "Factory Install Complete. Please remove install media and reboot"
+      # Wait for eternity
+      tail -f /dev/null
+  fi
+
+  return 0
+}
+
+# searches for update*.upd and update*.img files
+# and then uses the newest version file it finds
+# also supports the legacy update.img format for now
+
+find_update_file() {
+  DIR=$1
+  cd $DIR
+  extensions="upd img"
+  update=""
+  for ext in $extensions; do
+    update=$(echo $(ls ${UPDATE_FILE_NAME}*.${ext} -v -r 2>/dev/null) | sed "s/update.${ext}//" | sed "s/${ext}.*/${ext}/" | sed "s/^\s*//")
+    if [ -n "${update}" ]; then
+      echo $update
+      break
+    fi
+  done
+
+  if [ -z "${update}" ]; then
+    if [ -e update.img ]; then
+      echo update.img
+    fi
+  fi
+  cd - >/dev/null
+}
+
+check_rescue_shell() {
+  if [ -f $1/rescue-shell ]; then
+    rescue_shell
+  fi
+}
+
+clear_overlay() {
+  msg_splash "Clearing rootfs overlay"
+  rm -rf /mnt/data/upper/*
+  rm -rf /mnt/data/work/*
+}
+
+update_from_usb() {
+  check_rescue_shell $USB_MOUNT_POINT
+  if [ -f $USB_MOUNT_POINT/clear-overlay ]; then
+    clear_overlay
+  fi
+  update_file=$(find_update_file $USB_MOUNT_POINT)
+  if [ "$update_file" != "" ]; then
+    speak "updater, found u s b disk"
+    msg_splash "USB update: $update_file"
+    if [ -e $USB_MOUNT_POINT/yoe-updater.env ]; then
+      . $USB_MOUNT_POINT/yoe-updater.env
+    fi
+    if ! process_update $USB_MOUNT_POINT/$update_file; then
+      msg_splash "Failed to process update from USB"
+      speak "updater, failed to process update from u s b"
+      return 1
+    else
+      msg_splash "Update from USB complete"
+      return 0
+    fi
+  fi
+
+  return 1
+}
+
+update_from_sd() {
+  check_rescue_shell $SD_MOUNT_POINT
+  if [ -f $SD_MOUNT_POINT/clear-overlay ]; then
+    clear_overlay
+  fi
+  update_file=$(find_update_file $SD_MOUNT_POINT)
+  if [ "$update_file" != "" ]; then
+    speak "update found on S D card"
+    msg_splash "SD update: $update_file"
+    if [ -e $SD_MOUNT_POINT/yoe-updater.env ]; then
+      . $SD_MOUNT_POINT/yoe-updater.env
+    fi
+    if ! process_update $SD_MOUNT_POINT/$update_file; then
+      msg_splash "Failed to process update from SD"
+      speak "updater, failed to process update from s d card"
+      return 1
+    else
+      msg_splash "Update from SD complete"
+      return 0
+    fi
+  fi
+
+  return 1
+}
+
+update_from_data() {
+  check_rescue_shell $DATA_MOUNT_POINT
+  if [ -f $DATA_MOUNT_POINT/clear-overlay ]; then
+    clear_overlay
+  fi
+  update_file=$(find_update_file $DATA_MOUNT_POINT)
+  if [ "$update_file" != "" ]; then
+    speak "update found on data partition"
+    msg_splash "Updating from Data partition: $update_file"
+    if ! process_update $DATA_MOUNT_POINT/$update_file; then
+      msg_splash "Failed to process update from data partition"
+      speak "updater, failed to process update from data partition"
+      return 1
+    else
+      rm -rf $DATA_MOUNT_POINT/$update_file
+      msg_splash "Update from Data partition complete"
+      return 0
+    fi
+  fi
+  return 1
+}
+
+update() {
+  # update precedence usb, SD, data partition
+  msg "Sleeping for ${USB_DETECTION_DELAY} second(s) for USB flash to settle..."
+  sleep ${USB_DETECTION_DELAY}
+  msg "checking usb for update ..."
+  if ! (mount_usb && update_from_usb); then
+    msg "checking sd for update ..."
+    if ! (mount_sd && update_from_sd); then
+      msg "checking data partition for update ..."
+      mount_data $DATA_MOUNT_POINT $INSTALL_DATA_DEV && update_from_data
+    fi
+  fi
+}
+
+create_persistent_bind_dir() {
+  for d in ${PERSISTENT_BINDS}; do
+    mkdir -p $FINAL_ROOTFS/data/persistent/$d
+  done
+}
+
+boot() {
+  umount_usb
+  umount_sd
+  umount_data
+  if ! resize_${STORAGE}; then
+    msg_splash "Resizing ${STORAGE} failed, bad media"
+    rescue_shell
+  fi
+
+  if [ "$INSTALL_BOOT_DEV" = "$EMMC_BOOT_DEV" ]; then
+    msg_splash "Booting from EMMC ..."
+    speak "booting system from E M M C"
+    mount_rootfs_emmc
+  elif [ "$INSTALL_BOOT_DEV" = "$SD_BOOT_DEV" ]; then
+    msg_splash "Booting from SD ..."
+    speak "booting system from S D"
+    mount_rootfs_sd
+  else
+    msg_splash "No bootable device found"
+    rescue_shell
+  fi
+
+  msg_splash "Creating volatile bind dirs in data partition ..."
+  create_persistent_bind_dir
+  msg_splash "switching to main filesystem"
+  msg_splash 50
+
+#  exec switch_root -c /dev/console /mnt/overlay /sbin/init
+  exec switch_root $FINAL_ROOTFS /sbin/init
+}
+
+initialize
+update
+boot
