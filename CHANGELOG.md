@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.07] - 2026-07-20
+
+### Changed
+
+- libpsl: stop embedding the build directory path in the generated
+  suffixes_dafsa.h, fixing the buildpaths QA failure and improving
+  reproducibility (oe-core)
+- python3-wxgtk4: use a valid SPDX identifier (LGPL-2.0-or-later WITH
+  WxWindows-exception-3.1) for the wxWindows license to fix the license-exists
+  QA failure (meta-python)
+- xterm: rename configure.in to configure.ac so gnu-configize/do_configure work
+  with autoconf 2.70 and newer (meta-oe)
+
+### Removed
+
+- Removed recipes - proxy-libintl (meta-oe)
+
 ## [2026.06] - 2026-06-30
 
 ### Changed
