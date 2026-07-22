@@ -6,6 +6,55 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.07] - 2026-07-20
+
+### Changed
+
+- python3-wxgtk4: use a valid SPDX identifier (LGPL-2.0-or-later WITH
+  WxWindows-exception-3.1) for the wxWindows license to fix the license-exists
+  QA failure (meta-python)
+- Intel: upgrade linux-intel and linux-intel-rt to 6.18.33, intel-media-driver
+  to 26.2.3, intel-compute-runtime to 26.22.38646.4, intel-graphics-compiler to
+  2.36.3, level-zero to 1.31.0 and linux-npu-driver to 1.33.0 (meta-intel)
+- Qualcomm: upgrade linux-qcom-6.18 to v6.18.37, u-boot to 2026.07, the Adreno
+  GPU driver to 1.877.2, the Adreno KGSL driver to v1.0.8, the iris video driver
+  to v1.0.21 and the CamX driver to v1.0.4 (meta-qcom)
+- i.MX: update the i.MX opencv fork to 4.13.0 and mcore to lf-6.18.20-2.0.0, and
+  apply a layer-wide oelint metadata cleanup (meta-freescale)
+- TI: migrate mesa-pvr to v25.2.8, update the K3 TF-A to 2.15 and relocate
+  linux-firmware from meta-arago (meta-ti)
+- Tegra: expose the Tegra264 fTPM to Linux, add t264 initrd-flash --erase-nvme
+  and forward DEBUG_PREFIX_MAP flags to nvcc (meta-tegra)
+- Tegra community: update PyTorch to 2.13.0 and torchvision to 0.28.0
+  (meta-tegra-community)
+- Raspberry Pi: switch linux-raspberrypi to 6.18 (pinning RPi4 to 6.12) and
+  update rpi-eeprom and bootfiles firmware (meta-raspberrypi)
+- RISC-V: update u-boot-spl-k3 and esos-k3 to 1.0.2 (meta-riscv)
+- meta-arm: update the Arm GNU toolchain and OpenCSD to 1.8.3, refresh the
+  Corstone-1000 A320 FVP to 11.31 and fix u-boot UEFI secure boot on v2026.04
+- Variscite: update linux-variscite and u-boot-variscite to the latest revisions
+  (meta-variscite-bsp)
+- Rockchip: update the rauc keyring path for the meta-rauc relocation
+  (meta-rockchip)
+- swupdate: add SWUPDATE_CMS_MD to select the CMS digest (meta-swupdate)
+- xfce4-dev-tools: upgrade 4.21.1 to 4.21.2 (meta-oe)
+- Convert recipe licenses to valid SPDX expressions and fix license-format
+  errors across meta-qt6, meta-odroid, meta-oe and oe-core (glib-networking,
+  linux-firmware, ktx-software, liboauth, mimic and others)
+
+### Added
+
+- Qualcomm: add the Shikra-EVK machine and modem-firmware packaging recipes for
+  RB3 Gen2 and QCM6490-IDP (meta-qcom)
+- RISC-V: add the k3-com260 machine (meta-riscv)
+- Tegra community: add DeepStream 9.1 (L4T R39.2) and the holoscan-sensor-bridge
+  and nvcomp recipes (meta-tegra-community)
+- Add the python3-pytest-relaxed recipe (meta-python)
+
+### Removed
+
+- Removed recipes - proxy-libintl (meta-oe)
+
 ## [2026.06] - 2026-06-30
 
 ### Changed
