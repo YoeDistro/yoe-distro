@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2026.07] - 2026-07-20
+## [2026.07] - 2026-07-31
 
 ### Changed
 
@@ -17,14 +17,21 @@ and this project adheres to
   to 26.2.3, intel-compute-runtime to 26.22.38646.4, intel-graphics-compiler to
   2.36.3, level-zero to 1.31.0 and linux-npu-driver to 1.33.0 (meta-intel)
 - Qualcomm: upgrade linux-qcom-6.18 to v6.18.37, u-boot to 2026.07, the Adreno
-  GPU driver to 1.877.2, the Adreno KGSL driver to v1.0.8, the iris video driver
-  to v1.0.21 and the CamX driver to v1.0.4 (meta-qcom)
+  GPU driver to 1.877.2, the Adreno KGSL driver to v1.0.9, the iris video driver
+  to v1.0.22, the CamX driver to v1.0.4 and firmware-qcom-boot to 00135, and
+  enable the FastCV DSP packages for Shikra, Glymur and IQ-615 (meta-qcom)
 - i.MX: update the i.MX opencv fork to 4.13.0 and mcore to lf-6.18.20-2.0.0, and
   apply a layer-wide oelint metadata cleanup (meta-freescale)
 - TI: migrate mesa-pvr to v25.2.8, update the K3 TF-A to 2.15 and relocate
   linux-firmware from meta-arago (meta-ti)
+- TI: bump linux-ti-mainline to v7.1 and u-boot-ti-mainline to v2026.07
+  (meta-ti)
 - Tegra: expose the Tegra264 fTPM to Linux, add t264 initrd-flash --erase-nvme
   and forward DEBUG_PREFIX_MAP flags to nvcc (meta-tegra)
+- Tegra: add tegra264 support to linux-yocto 6.18 via the tegra-kernel-cache
+  kmeta, add TEGRA_MINIMAL_BOOT and FMP image type GUID controls for UEFI
+  capsules, refactor the devkit audio/wifi/ethernet handling and fix WiFi,
+  Bluetooth and Ethernet on p3768 (meta-tegra)
 - Tegra community: update PyTorch to 2.13.0 and torchvision to 0.28.0
   (meta-tegra-community)
 - Raspberry Pi: switch linux-raspberrypi to 6.18 (pinning RPi4 to 6.12) and
@@ -36,11 +43,44 @@ and this project adheres to
   (meta-variscite-bsp)
 - Rockchip: update the rauc keyring path for the meta-rauc relocation
   (meta-rockchip)
-- swupdate: add SWUPDATE_CMS_MD to select the CMS digest (meta-swupdate)
+- swupdate: add SWUPDATE_CMS_MD to select the CMS digest and support multiple
+  CMS signers (meta-swupdate)
 - xfce4-dev-tools: upgrade 4.21.1 to 4.21.2 (meta-oe)
 - Convert recipe licenses to valid SPDX expressions and fix license-format
   errors across meta-qt6, meta-odroid, meta-oe and oe-core (glib-networking,
   linux-firmware, ktx-software, liboauth, mimic and others)
+- Upgrade glibc to 2.44 release and fix the resulting m4 ptest hang
+- Upgrade binutils to 2.47 release
+- Upgrade perl to 5.44.0
+- Upgrade systemd to 261.1 and enable coredump by default
+- Upgrade qemu to 11.0.3
+- Upgrade cmake to 4.4.1 and pseudo to 1.9.10
+- Upgrade linux-yocto/6.18 to v6.18.39 and bump linux-yocto-dev to v7.2
+- Upgrade opensbi to 1.9
+- Upgrade libpsl to 0.23.0, convert it to meson and enable it in curl and wget
+- Upgrade libarchive to 3.8.9, ethtool and btrfs-tools to 7.1, sqlite3 to
+  3.53.4, gnupg to 2.5.21, dropbear to 2026.94, bind to 9.20.26 and libseccomp
+  to 2.6.1 (oe-core)
+- Security fixes for patch (CVE-2026-56288, CVE-2026-56289), python3
+  (CVE-2026-4360) and wget (CVE-2026-58469, CVE-2026-58472) (oe-core)
+- xorg-libs: build with meson where possible (oe-core)
+- kernel-arch: add KERNEL_TOOLCHAIN to switch the whole kernel toolchain and
+  fall back to GNU ld unless ld-is-lld is in DISTRO_FEATURES (oe-core)
+- rust: refactor source handling into a shared work-shared recipe and fix
+  reproducibility with shared source trees (oe-core)
+- testimage: capture systemd coredumps on test failures (oe-core)
+- kernel-fit-image: introduce FIT_OS to override the 'os' field and make the
+  kernel entry point and load address optional (oe-core)
+- bitbake: vendorize the bundled third-party libraries, add PyPI packaging for
+  bitbake-setup, accept sha256 revisions and fix command argument construction
+  in the git, az, svn, sftp, repo and gitannex fetchers
+- meta-oe upgrades: fwupd 2.1.7, tmux 3.7, zfs 2.4.3, freerdp3 3.30.0, xfsprogs
+  7.1.1, nss 3.126, poppler 26.07.0, cryptsetup 2.8.7, transmission 4.1.3, redis
+  8.8.1, nodejs 24.18.1 and gst-editing-services 1.28.4
+- Qt6: backport a qtwebengine build fix and skip the buildpaths QA check for the
+  qtbase, qtdeclarative and shiboken src/ptest packages (meta-qt6)
+- meta-clang: pin perf via KERNEL_TOOLCHAIN instead of TOOLCHAIN in
+  nonclangable.conf so kernel-arch inheritors keep matching signatures
 
 ### Added
 
@@ -50,10 +90,27 @@ and this project adheres to
 - Tegra community: add DeepStream 9.1 (L4T R39.2) and the holoscan-sensor-bridge
   and nvcomp recipes (meta-tegra-community)
 - Add the python3-pytest-relaxed recipe (meta-python)
+- Import the libzip recipe from meta-oe and add the gstreamer1.0-plugins-rs
+  package (oe-core)
+- Add nativesdk-packagegroup-sdk-host-clang,
+  nativesdk-packagegroup-sdk-host-rust and packagegroup-core-buildessential-rust
+  (oe-core)
+- Add the python3-pytest-httpserver, python3-devtools, python3-pytest-examples,
+  python3-ruff, python3-canopen and python3-canmatrix recipes (meta-python)
+- Add the memory-control-config recipe for per-service systemd memory limits
+  (meta-oe)
+- Qt6: add python3-pyqt6 6.11.0, python3-pyqt6-sip 13.11.1 and
+  python3-pyqt-builder-native 1.19.1 (meta-qt6)
+- Tegra: add the tegra-nvsci-headers, tegra-libraries-vulkan-sc and
+  tegra-vulkan-sc-samples recipes (meta-tegra)
+- Tegra community: add the vkcube, rendercheck, stream and schbench recipes
+  (meta-tegra-community)
 
 ### Removed
 
-- Removed recipes - proxy-libintl (meta-oe)
+- Removed recipes - proxy-libintl, uml-utilities (meta-oe), libxfont (oe-core),
+  ti-cgt6x-7, ti-cgt470 (meta-ti) and the obsolete tegra-wifi and
+  tegra-bluetooth recipes (meta-tegra)
 
 ## [2026.06] - 2026-06-30
 
