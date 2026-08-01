@@ -81,6 +81,13 @@ and this project adheres to
   qtbase, qtdeclarative and shiboken src/ptest packages (meta-qt6)
 - meta-clang: pin perf via KERNEL_TOOLCHAIN instead of TOOLCHAIN in
   nonclangable.conf so kernel-arch inheritors keep matching signatures
+- Upgrade the Vulkan stack to 1.4.357.0 - vulkan-headers, vulkan-loader,
+  vulkan-tools, vulkan-utility-libraries, vulkan-validation-layers, vulkan-volk,
+  spirv-headers, spirv-tools and glslang (oe-core)
+- libgit2: add a nativesdk variant for the cargo and rust components that use it
+  instead of a bundled copy (oe-core)
+- oe-selftest: drop a duplicated KVM presence test from the u-boot tests
+  (oe-core)
 
 ### Added
 
