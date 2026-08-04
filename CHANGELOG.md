@@ -6,6 +6,95 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.08] - 2026-08-31
+
+### Changed
+
+- kernel-arch: fold the remainder of linux-kernel-base into kernel-arch, move
+  the kernel and u-boot arch mapping helpers into lib/oe/kernel.py, separate
+  barebox and u-boot out of kernel-arch.bbclass and stop exporting UBOOT_ARCH
+  (oe-core)
+- Move sanity and utils helper code out of the bbclasses into lib/oe, merge the
+  distro_identifier functions and drop the unused explode_deps helper (oe-core)
+- cargo: centralise the anti-vendoring environment variables in cargo_common so
+  crate recipes link against system libraries instead of bundling C code, and
+  add the missing build dependencies to cargo, cargo-c, python3-maturin and
+  python3-uv-build (oe-core)
+- wic: add runtime dependencies on the tools wic invokes, gate syslinux-native
+  on the target rather than the build host and drop the obsolete cross-binutils
+  and target bootloader firmware dependencies (oe-core)
+- opkg: enable sha256 checksum verification by default and skip checksums for
+  unsigned local feeds (oe-core)
+- ncurses: stop moving the terminfo files from /usr/share to /etc (oe-core)
+- Have perl, git, xz, dbus, glib-2.0 and systemd inherit
+  upstream-stable-release-point (oe-core)
+- rust-target-config: set the MIPS ABI in the generated target JSON, and stop
+  rust-common exporting rustlibdir (oe-core)
+- kernel-devsrc: install the sources required by the BPF host tools (oe-core)
+- qemu: allow building for mingw targets (oe-core)
+- yocto-uninative: update to 5.2 for glibc 2.44 (oe-core)
+- Upgrade cmake to 4.4.2, mesa to 26.1.6, glib-2.0 to 2.88.3, harfbuzz to
+  14.3.0, gstreamer1.0 to 1.28.5, nghttp2 to 1.70.0, shadow to 4.20.0, libpsl to
+  0.23.1, pkgconf to 3.0.5, at-spi2-core to 2.60.6, libmicrohttpd to 1.0.9,
+  mpg123 to 1.33.7, hwdata to 0.410, msmtp to 1.8.34, ttyrun to 2.44.0,
+  spirv-llvm-translator to 22.1.5, diffoscope to 326, python3-pyopenssl to
+  26.4.0, python3-markdown to 3.10.3 and barebox-tools to 2026.07.0 (oe-core)
+- Security fixes for libssh2 (CVE-2026-66033, CVE-2026-66034, CVE-2026-66035),
+  coreutils (CVE-2026-56391, CVE-2026-56392), diffutils (CVE-2026-53910), bison
+  (CVE-2026-56389) and busybox (CVE-2026-38754), plus CVE status updates for
+  glibc, gstreamer1.0 and util-linux (oe-core)
+- image_types_sparse: switch the ext\* conversion to ext2simg_android, and
+  export the android-tools libsparse, libbase and liblog headers and libraries
+  to the sysroot (meta-oe)
+- Add the missing build dependencies to nushell, lsd, librav1e and rsyslog, and
+  the missing runtime dependencies to python3-typer and python3-rich (meta-oe,
+  meta-python)
+- Pin tags or branches in the SRC_URI of libmodule, openal-soft, liblc3,
+  libmatroska, apache-websocket, sdbus-c++-libsystemd and boinc-client (meta-oe)
+- Adopt the new oe.kernel and oe.utils helpers in turbostat, zabbix and
+  crash-cross-canadian, and drop the obsolete linux-kernel-base dependency from
+  kernel-selftest (meta-oe)
+- Drop the obsolete INC_PR declarations and the leftover TMPDIR scrubbing in
+  libhtml-tree-perl and libmodule-build-tiny-perl (meta-oe)
+- Fix libsdl3 with cmake 4.4 and oprofile with binutils 2.47, and only enable
+  hsi in fwupd on x86 (meta-oe)
+- Propagate ffmpeg's commercial LICENSE_FLAGS to mpv and python3-mpv (meta-oe)
+- Upgrade netdata to 2.10.4, cockpit to 364, webmin to 2.653, gnome-panel to
+  3.58.1, gnome-console to 50.0, imagemagick to 7.1.29, php to 8.5.9, liburing
+  to 2.15, libcec to 8.1.3, libplacebo to 7.360.1, jsoncpp to 1.9.8, parallel to
+  20260722, gtkwave to 3.3.128, drm-info to 2.10.0, libwmf to 0.2.15, mbpoll to
+  1.5.4, crow to 1.3.3, cjose to 0.6.2.7, boinc-client to 8.2.15, zenity to
+  4.2.2, eog to 50.2, gnome-bluetooth to 47.2, appstream-glib to 0.8.4 and
+  xdg-desktop-portal-wlr to 0.8.4 (meta-oe)
+- Upgrade aom to 3.14.1, svt-av1 to 4.2.0, libavif to 1.4.2, libde265 to 1.0.19,
+  libsrtp to 2.8.0, liblc3 to 1.1.3, libupnp to 1.14.31, openal-soft to 1.25.2,
+  fluidsynth to 2.5.7, mpd to 0.24.13, ncmpc to 0.53, libmpdclient to 2.26,
+  gupnp to 1.6.10, gssdp to 1.6.6, gupnp-tools to 0.12.4, rygel to 45.2, gerbera
+  to 3.2.1, srt to 1.5.6, gst-shark to 0.9.1, tinycompress to 1.2.16,
+  nv-codec-headers to 13.1.15.0, libdvdread to 7.1.1, libmatroska to 1.7.2 and
+  libebml to 1.4.7 (meta-multimedia)
+- Upgrade unbound to 1.25.2, tcpreplay to 4.5.5, cifs-utils to 7.7, nghttp3 to
+  1.18.0, ulogd2 to 2.0.9, usbredir to 0.15.0 and sngrep to 1.8.4
+  (meta-networking)
+- Upgrade python3-fastapi to 0.141.1, python3-unidiff to 1.0.0, python3-wrapt to
+  2.3.0, python3-pillow-heif to 1.5.0, python3-pika to 1.4.2 and
+  python3-annotated-doc to 0.0.5 (meta-python)
+- i.MX: add an IMX_BOOTLOADER_PTABLE variable and set it to gpt for i.MX 8 and 9
+  only (meta-freescale)
+- Qt6: update the 6.11 submodule refs and revert the qtdeclarative build fix
+  patch (meta-qt6)
+- packagegroup-cross-canadian: use oe.utils (meta-clang)
+
+### Added
+
+- Add the e2fsprogs-ext4sparse-native recipe, which builds ext2simg using
+  android-tools-native (meta-oe)
+
+### Removed
+
+- Removed the linux-kernel-base bbclass, whose remaining code now lives in
+  kernel-arch and lib/oe/kernel.py (oe-core)
+
 ## [2026.07] - 2026-07-31
 
 ### Changed
