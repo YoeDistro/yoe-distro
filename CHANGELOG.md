@@ -84,16 +84,140 @@ and this project adheres to
 - Qt6: update the 6.11 submodule refs and revert the qtdeclarative build fix
   patch (meta-qt6)
 - packagegroup-cross-canadian: use oe.utils (meta-clang)
+- Move extend_recipe_sysroot out of BB_HASHEXCLUDE_COMMON and into the
+  vardepsexclude of the staging, cross, native, wic-tool and gcc-runtime classes
+  (oe-core)
+- Drop the python3-wheel dependency from the setuptools3, python_mesonpy and
+  python_setuptools_build_meta classes and from python3-setuptools-rust, and add
+  python3-wheel-native to the recipes that actually need it (oe-core, meta-oe,
+  meta-python, meta-filesystems)
+- Continue the cargo class consolidation: fold oe_cargo_build into
+  cargo_do_compile, have cargo_c inherit cargo_common, move the shared
+  assignments and the PKG_CONFIG_ALLOW_CROSS export into cargo_common and pass
+  the cargo-c flags via CARGO_BUILD_FLAGS (oe-core)
+- swig: upgrade to 4.5.0 and fix babeltrace2, u-boot pylibfdt and python3-dtc
+  with it, plus Python 2/3 C-API compatibility patches for python3-fann2,
+  python3-m2crypto, upm and openipmi (oe-core, meta-oe, meta-python)
+- Strip build machine paths from installed artefacts: the build triplet from the
+  libtool script and the ptest Makefiles, HOSTTOOLS_DIR from python3-numpy's
+  `__config__.py` and the host paths from ruby's nativesdk rbconfig.rb, and make
+  oe_mkext234fs reproducible (oe-core)
+- devtool: ide-sdk gains a debugger back-end abstraction with LLDB and clang
+  support, including for ide=none, waits for the gdbserver and lldb-server
+  ports, and reports why a debug server did not start (oe-core)
+- sdk: add an SDK_FEATURES lever and fold SDK_TOOLCHAIN_LANGS into it (oe-core)
+- u-boot: always build with GCC, and add support for the Clang toolchain
+  (oe-core)
+- Have libxml2, python3, openssl, binutils, libgcrypt, sqlite3, util-linux,
+  lttng-tools, lttng-ust, lttng-modules and babeltrace2 inherit
+  upstream-stable-release-point (oe-core)
+- opkg: fix sha256 support, and promote systemd's dlopen "suggested"
+  dependencies to RRECOMMENDS (oe-core)
+- npm: fix the npm_pack tar exclude path and allow per-recipe tarball exclusions
+  (oe-core)
+- clang: enable the LLVM, Clang and LLD test suites and add oe-selftests for
+  them (oe-core)
+- Upgrade systemd to 261.2, python3 to 3.14.7, mesa to 26.2.0, weston to 16.0.0,
+  meson to 1.12.0, libtool to 2.6.2, openssh to 10.5p1, go to 1.26.6, rsync to
+  3.5.0, wpa-supplicant to 2.12, linux-firmware to 20260810, libffi to 3.8.0,
+  python3-setuptools to 84.0.0, python3-cryptography to 50.0.0, shadow to
+  4.20.2, findutils to 4.11.0, harfbuzz to 14.3.1, fontconfig to 2.18.3,
+  gdk-pixbuf to 2.44.8, expat to 2.8.3, libva to 2.24.1, ruby to 4.0.6, pseudo
+  to 1.9.11 and linux-yocto to v6.18.43 (oe-core)
+- Security fixes for libssh2 (CVE-2026-66032, CVE-2026-58050), cpio
+  (CVE-2026-66484, CVE-2026-66485, CVE-2026-66486), libsndfile1 (CVE-2026-37555)
+  and hdf5 (CVE-2026-26197, CVE-2026-26199), plus CVE_PRODUCT corrections for
+  python3-git, python3-click, python3-dbusmock, python3-wheel, python3-babel and
+  python3-attrs (oe-core, meta-oe, meta-python)
+- Vendorize the bundled third-party Python libraries under `bb._vendor` and
+  publish bitbake-setup to PyPI (bitbake)
+- fetch2: fix the command construction in the az, git, gitannex, repo, sftp and
+  svn fetchers, accept sha256 revisions, support user-defined crate protocols,
+  export AWS_SHARED_CREDENTIALS_FILE for S3 and re-enable the npm and npmsw
+  fetchers now that checksums come from SRC_URI (bitbake)
+- fetch2/wget: handle long filenames, reuse cached HTTPS connections and stop
+  retrying on a 404 (bitbake)
+- Correct the build backend and the build/runtime dependencies of a large set of
+  python3 recipes (meta-python)
+- Fix the buildpaths QA warnings in glade, libstemmer, snapper, tcpreplay and
+  python3-pandas, and the do_fetch failures in perfetto, open62541, ipc-run and
+  llhttp (meta-oe, meta-networking, meta-python)
+- restinio: upgrade to 0.7.9.1, which drops the bundled http_parser in favour of
+  the new llhttp and expected-lite recipes (meta-networking)
+- mctp: split the tools and mctpd into separate recipes, and upgrade 2.5 -> 2.6
+  (meta-networking)
+- cpufrequtils: fetch from git.kernel.org, fix do_install, drop the toolchain
+  patch and add an nls PACKAGECONFIG (meta-oe)
+- Upgrade postgresql to 18.4 and psqlodbc to 18.00.0002, wxwidgets to 3.2.11,
+  nodejs to 24.19.0, redis to 8.10.0, opencv to 4.14.0, grpc to 1.83.0, perfetto
+  to 57.2, rocksdb to 11.1.2, glade to 3.40.0, unicode-ucd to 16.0.0, minizip-ng
+  to 4.2.2, libdeflate to 1.25, gtkmm4 to 4.22.0, gtkmm3 to 3.24.11 and
+  opentelemetry-cpp to 1.28.0 (meta-oe)
+- Upgrade samba to 4.23.11, networkmanager to 1.58.0, snort3 to 3.12.2.0,
+  openconnect to 9.21, keepalived to 2.4.3, rdma-core to 64.0, hostapd to 2.12,
+  tcpreplay to 4.6.0, unbound to 1.26.0, ngtcp2 to 1.25.0, mbedtls to 3.6.7 and
+  open62541 to 1.5.6 (meta-networking)
+- Shikra EVK support: U-Boot board configuration, machine configuration and an
+  initramfs firmware image (meta-qcom)
+- Enable CAMX EL2/KVM device tree overlays for the Hamoa and Purwa platforms,
+  and update the camx driver, libraries and camera-service (meta-qcom)
+- Make the kernel deploy-time tasks safe in partially cached builds by consuming
+  the DTBs and boot images published by do_deploy in linux-qcom-dtbbin,
+  linux-qcom-bootimg, dtb-fit-image and qcom-capsule (meta-qcom)
+- Convert the closed-source recipes to SPDX license strings, replace the
+  qcm6490-idp and rb3gen2 firmware recipes with placeholders and update
+  linux-qcom-next, trusted-firmware-a-qcom and optee-os-qcom to their latest
+  qcom-next tags (meta-qcom)
+- A large oelint-driven cleanup across the layer: document the custom tasks and
+  helpers, order recipe variables consistently, use FILES += for the split
+  packages and install files instead of copying them (meta-freescale)
+- Scope the i.MX weston-init PACKAGECONFIG and do_install to i.MX so the IVI
+  weston.ini no longer replaces oe-core's everywhere, and move the i.MX SDK host
+  tools to TOOLCHAIN_HOST_TASK (meta-freescale)
+- Milk-V Duo 256M and Duo-S board support, covering U-Boot, the FSBL, the
+  mainline kernel, the kas configuration and the bitbake-registry entries
+  (meta-riscv)
+- VisionFive fixes: set KERNEL_IMAGETYPE to Image, fix the SD card autoboot, fix
+  the boot.scr.uimg deploy, pin the linux-starfive-dev SRCREV and switch
+  visionfive2-firmware to the starfive-tech GitHub (meta-riscv)
+- tegra-flash-init: replace sgdisk with sfdisk, fix unmounting of automounted
+  partitions in initrd-flash and make-sdcard, and correct the Orin Nano NVMe
+  devkit storage configuration (meta-tegra)
+- ti-core-initramfs: add the initramfs to the fitImage, and adapt
+  kernel_legacyhs and ti-devicetree-prefix to the recent oe-core kernel arch
+  changes (meta-ti)
+- u-boot: disable the interrupt timeout for the Raspberry Pi 5, and upgrade the
+  Adafruit python modules (meta-raspberrypi)
+- fvp: update FVP Base to 11.32.19 and change the COMPATIBLE_HOST default
+  (meta-arm)
+- Qt6: update the 6.11 submodule refs and bump the version to 6.11.3 (meta-qt6)
+- iw612-bt: prevent duplicate forked processes after suspend
+  (meta-variscite-bsp)
+- site: bump IMG_VERSION to 2026.08
 
 ### Added
 
 - Add the e2fsprogs-ext4sparse-native recipe, which builds ext2simg using
   android-tools-native (meta-oe)
+- Add the llhttp and expected-lite recipes, needed by restinio 0.7.x
+  (meta-networking)
+- Add the exempi, python3-python-xmp-toolkit and python3-glances recipes, the
+  latter with ptest support (meta-oe, meta-python)
+- Add the coremark-pro, ramspeed-smp, sockperf, wrk2, unixbench, hackbench and
+  cyclictest benchmark recipes (meta-oe)
+- Add a python_pbr class for the Python Build Reasonableness backend, and switch
+  python3-pbr to it (oe-core)
+- Add bitbake-registry configurations for nodistro and poky on master to every
+  meta-openembedded sub-layer (meta-oe)
+- Add the imx93-11x11-lpddr4x-frdm machine configuration (meta-freescale)
 
 ### Removed
 
 - Removed the linux-kernel-base bbclass, whose remaining code now lives in
   kernel-arch and lib/oe/kernel.py (oe-core)
+- Removed the gptfdisk recipe and wic's dependency on it (oe-core)
+- Removed the stale qcs615, qcs6490, qcs8300 and qcs9100 boot firmware recipes
+  and the recipes whose LICENSE was set to CLOSED (meta-qcom)
 
 ## [2026.07] - 2026-07-31
 
