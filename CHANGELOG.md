@@ -194,6 +194,64 @@ and this project adheres to
 - iw612-bt: prevent duplicate forked processes after suspend
   (meta-variscite-bsp)
 - site: bump IMG_VERSION to 2026.08
+- gcc: upgrade to the GCC 16.2 release, and rust to 1.97.1 (oe-core)
+- mesa: fork libclc into a new mesa-libclc recipe for Rusticl, switch mesa and
+  mesa-tools-native over to it and align the x86 mesa config with LLVM graphics
+  (oe-core)
+- fetch2: switch to shared locking for read accesses, add
+  utils.lockfile_to_exclusive, allow lockfile/unlockfile to take empty names and
+  drop the unneeded checksum check and the ESTALE error handling (bitbake)
+- classes/insane: improve the HOME check exceptions, and ignore the hardcoded
+  home paths in sudo (oe-core)
+- python3: add the missing pyc files to the core package and fix the stringold
+  cache files (oe-core)
+- kernel-devsrc: copy gen-kernel-hwcaps.sh on arm64 and kernel/sched/ext/ext.h,
+  and have testexport capture meta/lib/oe (oe-core)
+- linux-firmware: split out the iwlwifi 5000-5 firmware (oe-core)
+- uboot-sign: list the TEE loadable behind U-Boot, and clang: fix the
+  IsOpenEmbedded() detection for CLANG_EXTRA_OE_DISTRO entries (oe-core)
+- devtool: fix the file copy in standard finish --force, and use a
+  LicenseRef-RecipetoolTransient LICENSE while fetching (oe-core)
+- wpa-supplicant: use the wpa_supplicant.conf from ${S} (oe-core)
+- Upgrade boost to 1.92.0, ca-certificates to 20260816, lttng-modules to 2.15.3,
+  epiphany to 50.6, dhcpcd to 10.5.2, procps to 4.0.7, libpsl to 0.23.3,
+  python3-wheel to 0.48.0, python3-scons to 4.11.0, python3-pbr to 7.1.0 and
+  diffoscope to 328 (oe-core)
+- CVE_PRODUCT corrections for python3-numpy, python3-pycryptodome,
+  python3-pycryptodomex and python3-cbor2, and mark apt CVE-2011-3374 as
+  fixed-version (oe-core, meta-python)
+- Add the UPSTREAM_CHECK variables to a large set of meta-networking recipes,
+  the new benchmark recipes and several meta-oe recipes so the upstream version
+  checks work, and set PV in the unixbench and wrk recipe names (meta-oe,
+  meta-networking)
+- Fix the ptest dependencies, arguments and diagnostics of python3-cbor2,
+  python3-faker, python3-ecdsa, python3-fastapi, python3-glances,
+  python3-google-auth-oauthlib, python3-rich-toolkit, python3-portion,
+  python3-pytest-env, python3-gunicorn, python3-msgpack, python3-wsproto,
+  python3-scapy and openl2tp (meta-python, meta-networking)
+- giflib: fix CVE-2026-26740, and create the usbmux user that the usbmuxd udev
+  rule requires (meta-oe)
+- libspdm: skip the unsupported architectures instead of erroring, and fix the
+  build of redis' bundled xxHash with -Og (meta-oe)
+- Upgrade firewalld to 2.5.1, wireshark to 4.6.8, botan to 3.13.0, ostree to
+  2026.3, redis to 8.10.1, qpdf to 12.4.0, tcpreplay to 4.6.1, graphviz to
+  15.1.1, gnome-software to 50.3, gnome-control-center to 49.9, libcdio to
+  2.4.0, libtsm to 4.7.1, expected-lite to 0.10.0 and b4 to 0.16.0 (meta-oe,
+  meta-networking, meta-gnome)
+- iq-8275 board support: U-Boot board configuration, machine configuration and
+  build support, plus a CDT for the Shikra IQS ITP board (meta-qcom)
+- Update the qcs615, qcs6490, qcs8300 and qcs9100 boot firmware to 00137, and
+  u-boot-qcom from 2026.07 to 2026.10-rc1 (meta-qcom)
+- Declare the phone MACHINE_FEATURES on iq-x7181-evk, iq-x5121-evk and
+  qcs615-ride, and TPM2 on iq-615-evk (meta-qcom)
+- Continue the oelint cleanup: drop the metadata duplicated from the shared
+  includes, make REQUIRED_DISTRO_FEATURES, UUU_BOOTLOADER and PACKAGE_ARCH weak
+  defaults, make the linux-imx SRC_URI and the imx-gpu-viv LIC_FILES_CHKSUM
+  overridable, and document the i.MX-fork overrides (meta-freescale)
+- u-boot: fix the k1 SRC_URI, and move linux-mainline-k1 to the 7.2 kernel
+  (meta-riscv)
+- opencv: adjust the bbappend for the 4.14 upgrade from meta-oe, and add the
+  video codec container CSV entries to tegra-configs (meta-tegra)
 
 ### Added
 
@@ -210,6 +268,9 @@ and this project adheres to
 - Add bitbake-registry configurations for nodistro and poky on master to every
   meta-openembedded sub-layer (meta-oe)
 - Add the imx93-11x11-lpddr4x-frdm machine configuration (meta-freescale)
+- Add the mesa-libclc recipe, a fork of libclc for Rusticl in mesa (oe-core)
+- Add AGENTS.md, documenting the conventions for AI coding agents (oe-core,
+  bitbake)
 
 ### Removed
 
@@ -218,6 +279,8 @@ and this project adheres to
 - Removed the gptfdisk recipe and wic's dependency on it (oe-core)
 - Removed the stale qcs615, qcs6490, qcs8300 and qcs9100 boot firmware recipes
   and the recipes whose LICENSE was set to CLOSED (meta-qcom)
+- Removed the libclc recipe, superseded by mesa-libclc, and the broken wic link
+  in scripts/esdk-tools (oe-core)
 
 ## [2026.07] - 2026-07-31
 
