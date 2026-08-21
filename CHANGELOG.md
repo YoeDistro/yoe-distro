@@ -310,6 +310,7 @@ and this project adheres to
   and the recipes whose LICENSE was set to CLOSED (meta-qcom)
 - Removed the libclc recipe, superseded by mesa-libclc, and the broken wic link
   in scripts/esdk-tools (oe-core)
+- Removed the libtracefs recipe, which now lives in oe-core (meta-oe)
 
 ## [2026.07] - 2026-07-31
 
