@@ -252,6 +252,33 @@ and this project adheres to
   (meta-riscv)
 - opencv: adjust the bbappend for the 4.14 upgrade from meta-oe, and add the
   video codec container CSV entries to tegra-configs (meta-tegra)
+- boost: add support for the Boost.Python NumPy extension, backed by a new
+  python-numpy-include feature in boost-build-native, and use the python3-native
+  executable (oe-core)
+- utils: fix lockfile_to_exclusive to avoid a deadlock, cache the SSL context in
+  the wget fetcher instead of recreating it every time, and repair the
+  pyproject.toml build-system section and minimum Python version (bitbake)
+- mesa: fix the clang and lld link failure in the addrlib AVX2 detection
+  (oe-core)
+- initramfs-framework: add an opt-in root-only udev trigger, and have
+  kernel-fit-image reference the boot script as "script" (oe-core)
+- Skip the flaky ptests: the signal-based kill tests and the pgrep full process
+  name match in procps, and test_attach_to_process_with_colors in python3
+  (oe-core)
+- suitesparse: fix the CMake 4 configure failure and avoid the install rpath
+  buildpaths QA warning, and add the samba and libldb package conflicts
+  (meta-oe)
+- Upgrade elfutils to 0.196, powertop to 2.16, python3-pygments to 2.21.0, poke
+  to 5.0 and fastrpc to 1.0.7 (oe-core, meta-oe, meta-qcom)
+- CVE_PRODUCT mappings for python3-web3 and python3-httplib2 (meta-python)
+- CI hardening: scope the workflow token permissions to jobs, expand the CI
+  expressions via the environment instead of the run scripts and annotate the
+  by-design triggers for the zizmor gate (meta-qcom)
+- gstreamer1.0-plugins-bad: enable v4l2codecs on the mainline BSPs
+  (meta-freescale)
+- python3-adafruit-blinka: upgrade 6.2.2 -> 9.2.0 (meta-raspberrypi)
+- linux-yocto-tegra: bump SRCREV_tegrameta (meta-tegra)
+- Qt6: update the 6.11 submodule refs (meta-qt6)
 
 ### Added
 
@@ -271,6 +298,8 @@ and this project adheres to
 - Add the mesa-libclc recipe, a fork of libclc for Rusticl in mesa (oe-core)
 - Add AGENTS.md, documenting the conventions for AI coding agents (oe-core,
   bitbake)
+- Import the libtracefs recipe from meta-oe (oe-core)
+- Add the lg and python3-lgpio recipes (meta-raspberrypi)
 
 ### Removed
 
