@@ -279,6 +279,41 @@ and this project adheres to
 - python3-adafruit-blinka: upgrade 6.2.2 -> 9.2.0 (meta-raspberrypi)
 - linux-yocto-tegra: bump SRCREV_tegrameta (meta-tegra)
 - Qt6: update the 6.11 submodule refs (meta-qt6)
+- Fix the ptest packaging and runners of hunspell (keep the failure diagnostics
+  and add the missing gconv RDEPENDS), freerdp3, pegtl and libdbi-perl (install
+  the missing test data and RDEPENDS) and postgresql (drop the bashisms), have
+  fwupd and xdg-dbus-proxy use VIRTUAL-RUNTIME_dbus and skip the xdg-dbus-proxy
+  tests when dbus-daemon is unavailable (meta-oe)
+- Fix the UPSTREAM_CHECK regexes and add the missing UPSTREAM_CHECK variables to
+  cockpit, cmocka, uim, onig, msktutil, librdkafka, libpaper, freeipmi, exempi
+  and cabextract (meta-oe, meta-webserver)
+- pcsc-lite: install the systemd system units, fix the vboxguestdrivers
+  vboxvideo build on kernels lacking drm_fb_helper_alloc_info and fix the
+  permissions of the freeradius certificates generated with make (meta-oe,
+  meta-networking)
+- Upgrade librdkafka to 2.15.0, libp11 to 0.4.20, libconfuse to 3.4, glaze to
+  8.1.0 and cjose to 0.6.2.8 (meta-oe)
+- CVE_PRODUCT mappings for python3-pymongo, python3-m2crypto, python3-py,
+  python3-simpleeval, python3-filelock, python3-mako and python3-pycryptodomex
+  (meta-python, oe-core)
+- trusted-firmware-a-qcom and optee-os-qcom: split into per-platform recipes,
+  and drop the unsatisfiable app token scopes from the publish-results CI job
+  (meta-qcom)
+- libtracefs: build with meson, and drop the rename overwrite detection from
+  recipe_sanity (oe-core)
+- kernel-devsrc: copy the arch/x86 vdso2c sources for the on-target prepare, and
+  strip the riscv vdso-cfi-offsets .cmd file (oe-core)
+- elfutils: fix the aarch64-native build failure, and wget: fix CVE-2026-58471
+  (oe-core)
+- python3-pyopenssl: enable ptest, skip the flaky python3 test_interrupt on musl
+  and raise the strace ptest timeout from 600 to 900 (oe-core)
+- Upgrade qemu to 11.1.0, mesa to 26.2.1, webkitgtk to 2.52.6, stress-ng to
+  0.22.00, bind to 9.20.27, strace to 7.2, lua to 5.5.1, erofs-utils to 1.9.4,
+  libcap-ng to 0.9.5, libevdev to 1.13.7, python3-lxml to 6.1.2,
+  python3-vcs-versioning to 2.3.1, python3-sphinx-argparse to 0.6.1, puzzles to
+  the latest revision, linux-libc-headers to 7.2 and linux-yocto/6.18 to
+  v6.18.44 (oe-core)
+- docs: add more detail to Creating-a-custom-MACHINE.md (meta-tegra)
 
 ### Added
 
@@ -300,6 +335,7 @@ and this project adheres to
   bitbake)
 - Import the libtracefs recipe from meta-oe (oe-core)
 - Add the lg and python3-lgpio recipes (meta-raspberrypi)
+- Add the python3-msgspec recipe (meta-python)
 
 ### Removed
 
@@ -311,6 +347,8 @@ and this project adheres to
 - Removed the libclc recipe, superseded by mesa-libclc, and the broken wic link
   in scripts/esdk-tools (oe-core)
 - Removed the libtracefs recipe, which now lives in oe-core (meta-oe)
+- Removed the linux-atm recipe, and stopped building and delivering ntpdate
+  (meta-networking)
 
 ## [2026.07] - 2026-07-31
 
