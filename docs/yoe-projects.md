@@ -50,6 +50,7 @@ Currently these projects are supported.
 - var-som-mx8x
 - visionfive
 - visionfive2
+- intel-x86-64
 
 ## Converting a project
 
