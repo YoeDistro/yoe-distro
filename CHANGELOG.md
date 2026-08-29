@@ -314,6 +314,77 @@ and this project adheres to
   the latest revision, linux-libc-headers to 7.2 and linux-yocto/6.18 to
   v6.18.44 (oe-core)
 - docs: add more detail to Creating-a-custom-MACHINE.md (meta-tegra)
+- Fix the build with OpenSSL 4.0 in krb5, grpc, python3-grpcio, opensc,
+  pkcs11-helper, libtorrent-rasterbar, libnet-ssleay-perl, freeradius, snort3,
+  civetweb, lftp, imapfilter, boinc-client, thrift, znc, libesmtp, ntopng,
+  libcoap and pjproject, and drop openssl-engines from the freediameter RDEPENDS
+  (meta-oe, meta-networking, meta-python)
+- Fix the build with OpenSSL 4.0 in kea, u-boot, serf and socat, and backport
+  upstream OpenSSL 4.0 support to python3 (oe-core)
+- Add a tinfoil prepared task runner and a bitbake -b mode that runs a single
+  task, stop setConfig coercing bool values to truthy strings, include the task
+  name in pending_hash_index, fix the prio_map init of the basic scheduler and
+  treat a GCS GatewayTimeout as a fetch failure (bitbake)
+- devtool ide-sdk: attach via extended-remote, default to all modified recipes,
+  detect stale gcc python helpers in the recipe sysroot, fix the meson
+  IntelliSense for the gcc toolchain and wait for gdbserver readiness, plus new
+  oe-selftest coverage; devtool: handle symlinks when cleaning the source tree
+  and pass tar -m in deploy-target (oe-core)
+- boost: make ICU support configurable, kernel-fit-image: skip the signing key
+  check for a PKCS #11 URI, grub: disable grub-protect for native builds,
+  cmake-native: use the bundled nghttp2 with the bundled curl, and retain: allow
+  certain tasks to be ignored (oe-core)
+- initscripts: avoid the service dependency in mountnfs.sh, ccp-example: fix the
+  PID file handling, ptest-perl: fix the overly greedy SKIP detection,
+  license_finder: ignore non-files in license directories, and
+  boost-build-native: work around the reproducibility issues (oe-core)
+- CVE_PRODUCT mappings for dnsmasq, ldns, mariadb, jq, php, libssh,
+  python3-ldap, python3-twisted, python3-ujson, python3-twitter, python3-flask,
+  python3-flask-user, python3-aiohttp, python3-waitress and python3-werkzeug
+  (meta-oe, meta-networking, meta-python), and for patch, vim, vim-tiny,
+  python3-lxml and u-boot, which now shares its CVE_PRODUCT with u-boot-tools
+  (oe-core)
+- cve-exclusions: set the status of CVE-2019-14899, CVE-2021-3714,
+  CVE-2021-3864, CVE-2022-0400, CVE-2022-1247, CVE-2022-4543, CVE-2023-3397,
+  CVE-2023-6238 and CVE-2023-6240, and set the libevent status for
+  CVE-2026-63380 (oe-core)
+- Upgrade rust to 1.98.0, go to 1.27.0, gstreamer1.0 and its plugin set to
+  1.28.6, cmake to 4.4.3, ccache to 4.14, pkgconf to 3.0.6, barebox to
+  2026.08.0, vim to 9.2.0993, man-pages to 6.19, diffoscope to 329, libslirp to
+  4.9.4, libxmlb to 0.3.29, libxfont2 to 2.0.9, netbase to 6.6, repo to 2.66.1,
+  cargo-c to 0.10.25, utfcpp to 4.2.0, ed to 1.22.6, makedepend to 1.0.10,
+  python3-cryptography to 50.0.1, python3-maturin to 1.15.0, python3-pip to
+  26.2.1, python3-idna to 3.19, python3-pdm to 2.28.2, python3-git to 3.1.60,
+  python3-uv-build to 0.12.6 and python3-imagesize to 2.0.1, and pick up the
+  glibc stable 2.44 branch updates (oe-core)
+- Upgrade php to 8.5.10, nodejs to 24.20.0, doxygen to 1.18.0, cockpit to 366,
+  proftpd to 1.3.9d, srt to 1.5.7, mpd to 0.24.14, libmpdclient to 2.27, ncmpc
+  to 0.54, libopenmpt to 0.8.9, libheif to 1.23.2, imagemagick to 7.1.2-30,
+  libdeflate to 1.26, libmxml to 4.0.5, faad2 to 2.11.3, vboxguestdrivers to
+  7.2.16, asyncmqtt to 10.3.1, swagger-ui to 5.32.14, ctags to 6.2.20260823.0
+  and a batch of python3 modules including python3-evdev to 2.0.0 and
+  python3-nanobind to 3.0.0 (meta-oe, meta-python)
+- pipewire: add the pw-voiceui SVA voice-UI control/listen client, tinyalsa:
+  dispatch pcm_ioctl() through the plugin ops, thermald: fix the build on 32-bit
+  ARM, redis: fix the install prefix, and libfaketime: extend to nativesdk
+  (meta-oe)
+- Update the linux-qcom-next and linux-qcom-6.18 kernel tags, upgrade the
+  shikra, sm8750 and kaanapali boot firmware, iris-video-dlkm, kgsl-dlkm,
+  camera-service and userspace-resource-manager, backport A830v1 support to mesa
+  and enable the qcomflash image type by default (meta-qcom)
+- Update the Holoscan stack: holoscan-sdk and holohub-apps to 4.5.0,
+  holoscan-sensor-bridge to 2.7.0 and gxf-core to 5.7.1, and add
+  python3-wheel-native to the DEPENDS of python3-cuda and python3-cupy
+  (meta-tegra-community)
+- u-boot: fix the pylibfdt build with swig 4.5.0, and pick up the CI/CD
+  auto-merger updates (meta-ti)
+- arm/uefi-secureboot: fix the race with the secureboot keys, and enable CMA for
+  the Ethos-U on corstone1000 (meta-arm)
+- Document the INSANE_SKIP exceptions and fix the variable spacing and
+  multi-line indentation flagged by oelint across the i.MX and QorIQ recipes
+  (meta-freescale)
+- docs: add the JetPack 6.2.3 / L4T R36.5.2 release notes and update
+  Which-branch for the latest scarthgap (meta-tegra)
 
 ### Added
 
@@ -336,6 +407,8 @@ and this project adheres to
 - Import the libtracefs recipe from meta-oe (oe-core)
 - Add the lg and python3-lgpio recipes (meta-raspberrypi)
 - Add the python3-msgspec recipe (meta-python)
+- Add a monitor-disk-space configuration fragment (oe-core)
+- Import the libclc recipe from the removed oe-core recipe (meta-ti)
 
 ### Removed
 
@@ -349,6 +422,10 @@ and this project adheres to
 - Removed the libtracefs recipe, which now lives in oe-core (meta-oe)
 - Removed the linux-atm recipe, and stopped building and delivering ntpdate
   (meta-networking)
+- Removed support for the GROUPMEMS_PARAM variable from useradd.bbclass, along
+  with its useradd_base, useradd-staticids, package.bbclass and
+  documentation.conf references (oe-core)
+- Removed the xdp-tools-ti recipe (meta-ti)
 
 ## [2026.07] - 2026-07-31
 
