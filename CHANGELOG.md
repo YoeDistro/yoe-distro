@@ -385,6 +385,38 @@ and this project adheres to
   (meta-freescale)
 - docs: add the JetPack 6.2.3 / L4T R36.5.2 release notes and update
   Which-branch for the latest scarthgap (meta-tegra)
+- Fix the ptest failures caused by pytest, CPython and dependency version skew
+  in python3-pytest-sugar, python3-time-machine, python3-wrapt, python3-uvicorn,
+  python3-typing-inspection, python3-typer, python3-rapidjson, python3-pyzmq,
+  python3-pylint, python3-pydbus, python3-pydantic, python3-orjson,
+  python3-flask, python3-filelock and python3-bleak (meta-python)
+- fitimage.bbclass: add a command line property, srt: match the SRCREV to its
+  tag, and upgrade googletest to 1.18.0 (meta-oe)
+- Upgrade openssl to 3.5.8, qemu to 11.1.1, the lttng stack (lttng-tools,
+  lttng-ust and lttng-modules) to 2.16.0, harfbuzz to 14.4.0, vte to 0.84.1,
+  dos2unix to 7.5.7, python3-click to 8.5.0, python3-websockets to 17.1 and
+  python3-scons to 4.11.1 (oe-core)
+- wget: fix CVE-2026-58470, bluez5: fix the ABORT response being discarded in
+  gobex transfers, improve_kernel_cve_report: fix the backported-patch check,
+  and correct the homepage of golang and python3-certifi (oe-core)
+- Fix the OP-TEE coexistence, migrate the gst-plugins-imsdk-common source
+  repository to qimsdk, and cut the cost of building the qcomflash tarball by
+  skipping the OTA images it already contains (meta-qcom)
+- aide: fix the unstable install task hash and the build with nettle 4.x,
+  samhain: fix the server startup on systemd-based systems, suricata: handle the
+  oe_cargo_build removal, and tpm2-tools: fix the PACKAGECONFIG typo
+  (meta-security)
+- Fill in the missing HOMEPAGE/SUMMARY in the meta-tpm recipes, fix the
+  ima-evm-utils LICENSE and the LICENSE syntax QA warnings, set the CVE status
+  for tpm2-tss (CVE-2024-29040) and tpm2-tools (CVE-2017-7524, CVE-2024-29039),
+  drop an unused dm-verity variable and fix the broken README URLs and wic doc
+  paths (meta-security)
+- optee-test: fix the build against OpenSSL 4.0, l4t_deb_pkgfeed: drop the use
+  of the tar wrapper workaround, and strip the trailing whitespace from the
+  optee and gcc-for-nvcc recipes (meta-tegra)
+- weston: fix the PACKAGES order so xwayland.so stays in weston-xwayland, and
+  ignore the known out-of-layer requires in oelint (meta-freescale)
+- Update the submodule refs on the 6.11 branch (meta-qt6)
 
 ### Added
 
@@ -426,6 +458,7 @@ and this project adheres to
   with its useradd_base, useradd-staticids, package.bbclass and
   documentation.conf references (oe-core)
 - Removed the xdp-tools-ti recipe (meta-ti)
+- Removed the tar-l4t-workaround-native recipe (meta-tegra)
 
 ## [2026.07] - 2026-07-31
 
