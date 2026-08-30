@@ -417,6 +417,21 @@ and this project adheres to
 - weston: fix the PACKAGES order so xwayland.so stays in weston-xwayland, and
   ignore the known out-of-layer requires in oelint (meta-freescale)
 - Update the submodule refs on the 6.11 branch (meta-qt6)
+- Update to JetPack 7.2.1 / L4T 39.2.1: rename the l4t recipes from 39.2.0,
+  refresh the BSP and nvidia-l4t-\* deb checksums, update the kernel and
+  nvidia-kernel-oot SRCREVs, the edk2-nvidia UEFI sources to r39.2.1, CUDA to
+  13.2.2 / 595.71.05, and vpi and pva-sdk, plus the matching release notes
+  (meta-tegra)
+- l4t-usb-device-mode: mark l4tbr0 as not required for online and use
+  SYSTEMD_WANTS instead of a synchronous systemctl call, tegra-nvpower: split
+  pylibjetsonpower into its own python subpackage, nvgstapps: fix audioconvert
+  being skipped for list-type format caps in nvgstplayer, tegra-common: add
+  kernel-module-spidev to RRECOMMENDS, tegra-uefi-prebuilt: skip when
+  TEGRA_MINIMAL_BOOT is set, and factor out the vendor kernel check (meta-tegra)
+- gst-plugins-imsdk-common: add App Builder SDK packaging support, update the
+  linux-qcom-6.18 kernel to the qcom-6.18.y-20260828 tag (v6.18.37), and
+  introduce weekly CI builds (meta-qcom)
+- vpi4-samples: update to 4.1.4 (meta-tegra-community)
 
 ### Added
 
@@ -441,6 +456,10 @@ and this project adheres to
 - Add the python3-msgspec recipe (meta-python)
 - Add a monitor-disk-space configuration fragment (oe-core)
 - Import the libclc recipe from the removed oe-core recipe (meta-ti)
+- Add the cuda-culibos recipe (meta-tegra)
+- Add the cudnn-samples and cudnn-tests recipes for the cuDNN 9.20.0 sample
+  applications, and the freeimage recipe for FreeImage 3.19.11
+  (meta-tegra-community)
 
 ### Removed
 
