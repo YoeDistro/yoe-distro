@@ -385,6 +385,53 @@ and this project adheres to
   (meta-freescale)
 - docs: add the JetPack 6.2.3 / L4T R36.5.2 release notes and update
   Which-branch for the latest scarthgap (meta-tegra)
+- Fix the ptest failures caused by pytest, CPython and dependency version skew
+  in python3-pytest-sugar, python3-time-machine, python3-wrapt, python3-uvicorn,
+  python3-typing-inspection, python3-typer, python3-rapidjson, python3-pyzmq,
+  python3-pylint, python3-pydbus, python3-pydantic, python3-orjson,
+  python3-flask, python3-filelock and python3-bleak (meta-python)
+- fitimage.bbclass: add a command line property, srt: match the SRCREV to its
+  tag, and upgrade googletest to 1.18.0 (meta-oe)
+- Upgrade openssl to 3.5.8, qemu to 11.1.1, the lttng stack (lttng-tools,
+  lttng-ust and lttng-modules) to 2.16.0, harfbuzz to 14.4.0, vte to 0.84.1,
+  dos2unix to 7.5.7, python3-click to 8.5.0, python3-websockets to 17.1 and
+  python3-scons to 4.11.1 (oe-core)
+- wget: fix CVE-2026-58470, bluez5: fix the ABORT response being discarded in
+  gobex transfers, improve_kernel_cve_report: fix the backported-patch check,
+  and correct the homepage of golang and python3-certifi (oe-core)
+- Fix the OP-TEE coexistence, migrate the gst-plugins-imsdk-common source
+  repository to qimsdk, and cut the cost of building the qcomflash tarball by
+  skipping the OTA images it already contains (meta-qcom)
+- aide: fix the unstable install task hash and the build with nettle 4.x,
+  samhain: fix the server startup on systemd-based systems, suricata: handle the
+  oe_cargo_build removal, and tpm2-tools: fix the PACKAGECONFIG typo
+  (meta-security)
+- Fill in the missing HOMEPAGE/SUMMARY in the meta-tpm recipes, fix the
+  ima-evm-utils LICENSE and the LICENSE syntax QA warnings, set the CVE status
+  for tpm2-tss (CVE-2024-29040) and tpm2-tools (CVE-2017-7524, CVE-2024-29039),
+  drop an unused dm-verity variable and fix the broken README URLs and wic doc
+  paths (meta-security)
+- optee-test: fix the build against OpenSSL 4.0, l4t_deb_pkgfeed: drop the use
+  of the tar wrapper workaround, and strip the trailing whitespace from the
+  optee and gcc-for-nvcc recipes (meta-tegra)
+- weston: fix the PACKAGES order so xwayland.so stays in weston-xwayland, and
+  ignore the known out-of-layer requires in oelint (meta-freescale)
+- Update the submodule refs on the 6.11 branch (meta-qt6)
+- Update to JetPack 7.2.1 / L4T 39.2.1: rename the l4t recipes from 39.2.0,
+  refresh the BSP and nvidia-l4t-\* deb checksums, update the kernel and
+  nvidia-kernel-oot SRCREVs, the edk2-nvidia UEFI sources to r39.2.1, CUDA to
+  13.2.2 / 595.71.05, and vpi and pva-sdk, plus the matching release notes
+  (meta-tegra)
+- l4t-usb-device-mode: mark l4tbr0 as not required for online and use
+  SYSTEMD_WANTS instead of a synchronous systemctl call, tegra-nvpower: split
+  pylibjetsonpower into its own python subpackage, nvgstapps: fix audioconvert
+  being skipped for list-type format caps in nvgstplayer, tegra-common: add
+  kernel-module-spidev to RRECOMMENDS, tegra-uefi-prebuilt: skip when
+  TEGRA_MINIMAL_BOOT is set, and factor out the vendor kernel check (meta-tegra)
+- gst-plugins-imsdk-common: add App Builder SDK packaging support, update the
+  linux-qcom-6.18 kernel to the qcom-6.18.y-20260828 tag (v6.18.37), and
+  introduce weekly CI builds (meta-qcom)
+- vpi4-samples: update to 4.1.4 (meta-tegra-community)
 
 ### Added
 
@@ -409,6 +456,10 @@ and this project adheres to
 - Add the python3-msgspec recipe (meta-python)
 - Add a monitor-disk-space configuration fragment (oe-core)
 - Import the libclc recipe from the removed oe-core recipe (meta-ti)
+- Add the cuda-culibos recipe (meta-tegra)
+- Add the cudnn-samples and cudnn-tests recipes for the cuDNN 9.20.0 sample
+  applications, and the freeimage recipe for FreeImage 3.19.11
+  (meta-tegra-community)
 
 ### Removed
 
@@ -426,6 +477,7 @@ and this project adheres to
   with its useradd_base, useradd-staticids, package.bbclass and
   documentation.conf references (oe-core)
 - Removed the xdp-tools-ti recipe (meta-ti)
+- Removed the tar-l4t-workaround-native recipe (meta-tegra)
 
 ## [2026.07] - 2026-07-31
 
