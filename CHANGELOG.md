@@ -6,6 +6,115 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.09] - 2026-09-30
+
+### Changed
+
+- clang/llvm: upgrade to the 23.1.0 release, build openmp through the LLVM
+  runtimes entry point, disable clangd's decision-forest completion model on
+  powerpc and ignore the tests that fail with the new version, plus the matching
+  build fixes for ovmf, pango, vulkan-samples, gettext and rust, which no longer
+  passes the removed x86 amx-tf32 feature to LLVM (oe-core)
+- rpm: upgrade 4.20.1 -> 6.0.2, add an RPM format reader to libarchive and
+  disable its filter auto-bidding, drop the external dependency generator,
+  suppress the fileattr dependency generators, define \_lib and \_libdir for
+  rpmbuild, enable the DNF filelists to resolve file dependencies, handle the
+  RPM 6 non-zero exit on %post failure and bump abi_version (oe-core)
+- linux-yocto: introduce the 7.2 reference kernel recipes, update 7.2 to v7.2.2
+  and 6.18 to v6.18.48, remap the rust debug info paths and fix the BSP
+  configuration warnings (oe-core)
+- kernel: centralise the module installation path in
+  KERNEL_MODULE_INSTALL_PREFIX and re-sign the kernel modules after the package
+  stripping process, via the new get_ext_mod helper in lib/oe/kernel_module.py
+  (oe-core)
+- Rename bitbake's lib/fetch2 to lib/fetch and invert the compat shim so
+  bb.fetch2 is now an alias of bb.fetch, switch the bitbake and oe-core code
+  over to it, and require bitbake 2.19.1 in sanity.conf (bitbake, oe-core)
+- devtool: ide-sdk gains runqemu slirp support, automatic image debug settings
+  written to a bbappend, VSCode IntelliSense for the rootfs-dbg sources and
+  automatically disabled ssh host key checking for loopback targets, and both
+  ide-sdk and deploy-target gain --package/--file-glob deploy filters (oe-core)
+- hashserv: use the new queued streaming API for the upstream unihash and exist
+  queries, fix the upstream get-unihash miss truncating the stream, and cancel
+  all clients on server stop via the new asyncrpc task group (bitbake)
+- runqueue: wait for the covered tasks before setscene, report the memory
+  pressure limit correctly, fix the check in process_possible_migrations and
+  drop a batch of unused attributes and dynamically created state (bitbake)
+- xorg: depend on util-macros-native explicitly in libxcb, xcb-util,
+  xorg-lib-common and xorg-driver-common, and drop the now redundant
+  dependencies from xorg-lib, rgb and font-util (oe-core)
+- glibc: pull in the stable 2.44 branch updates, and upgrade openssl to 4.0.2,
+  go to 1.27.1, mesa to 26.2.2, iproute2 to 7.2.0, nasm to 3.02, sysstat to
+  12.8.0, pango to 1.58.2, rpm to 6.0.2, appstream to 1.2.0, gnupg to 2.5.22,
+  libpcre2 to 10.48, expat to 2.8.4, libgcrypt to 1.12.3, libksba to 1.8.1,
+  libical to 4.0.5, librepo to 1.21.0, orc to 0.4.43, re2c to 4.6, debianutils
+  to 5.24, python3-pygobject to 3.58.0, python3-build to 1.6.0, python3-pdm to
+  2.29.0, python3-git to 3.1.61 and spirv-llvm-translator to 23.1.1 (oe-core)
+- Security fix for libssh2 (CVE-2026-58051), backport the RISC-V TLB page
+  flushing patches to qemu, avoid the CC-BY-SA-4.0 license for the lttng-tools
+  code packages and fix the run-postinsts removal on multilib images (oe-core)
+- Upgrade xterm to 411, uftrace to 0.20, libvpx to 1.17.0, catch2 to 3.16.0,
+  pstack to 2.18.4, uutils-coreutils to 0.11.0, glaze to 8.3.0, qpdf to 12.4.1,
+  imlib2 to 1.12.7, feh to 3.12.4, libtorrent to 0.16.21, libcloudproviders to
+  0.4.1, nanopb to 0.4.92 and xclock to 1.2.1 (meta-oe)
+- Upgrade python3-zeroconf to 0.151.3, python3-ipython to 9.17.0, python3-pylint
+  to 4.0.8, python3-coverage to 7.16.0, python3-regex to 2026.8.31,
+  python3-wrapt to 2.4.0, python3-orjson to 3.12.0, python3-msgpack to 1.2.2,
+  python3-mmh3 to 5.3.0, python3-tox to 4.61.2, python3-typer to 0.27.2,
+  python3-google-auth to 2.57.0, python3-engineio to 4.14.0, python3-ninja to
+  1.13.2, python3-kiwisolver to 1.5.1, python3-virtualenv to 21.7.8,
+  python3-charset-normalizer to 3.5.1 and python3-cmake to 4.4.3 (meta-python)
+- capnproto: build position independent code, disable GOST support in ldns,
+  install the bootimg utilities from android-tools, convert the python3-qrcode
+  optional dependencies into PACKAGECONFIG and fix the glaze install paths
+  (meta-oe, meta-python)
+- Consolidate the RISC-V mainline kernel metadata into a single linux-mainline
+  recipe defaulting to 7.2 (updated to v7.2.2) and switch milkv-duo, eswin-ebc77
+  and the k1 machines over to it, switch orangepi-rv2 to mainline Linux, U-Boot
+  and OpenSBI, and deprecate orangepi-rv2 and eswin-ebc77 for Yocto 6.2
+  (meta-riscv)
+- u-boot-spl-spacemit: set EXTRA_OEMAKE for openssl 4.x, refresh the eswin-ebc77
+  patches and fix its ethernet, add an INSANE_SKIP to opensbi-dbg for
+  dc-roma-fml13v01 and update the linux-k3 SRCREV (meta-riscv)
+- rb1: switch to the new edk2-based downstream boot firmware release, upgrade
+  firmware-qcom-boot-glymur to v00084 and firmware-qcom-boot-iq-x7181 to v00019,
+  and add the SoC staging dtbo for iq-x5121-evk (meta-qcom)
+- gst-plugins-imsdk: upgrade 1.0.2 -> 2.0.0, update kgsl-dlkm to v1.0.13,
+  backport the A722 GPU support patch, prioritise blacklisting iris_vpu so
+  qcom-iris loads on kaanapali and sm8750, and allow net_admin for the Qualcomm
+  module loaders in refpolicy (meta-qcom)
+- optee: use Type=notify for tee-supplicant.service, and improve the
+  tegra-helper-scripts for non-bmaptool flashing (meta-tegra)
+- python3-jetson-stats: upgrade 4.3.1 -> 7.2.1 (meta-tegra-community)
+- linux-ti-staging-rt_6.18: add the ARM32 RT branch (meta-ti)
+- An oelint-driven cleanup across the layer, covering the mandatory and
+  out-of-context variables, the license remote files, the ordered DEPENDS and
+  the no-copy tasks (meta-freescale)
+- Update the submodule refs on the 6.11 branch (meta-qt6)
+
+### Added
+
+- Add the linux-yocto 7.2 reference kernel recipes and a kernel-src SDK feature
+  to populate_sdk_base, and ship tools/include from kernel-devsrc for the
+  archscripts host tools (oe-core)
+- Add the python3-rtslib-fb recipe (meta-oe)
+- Add the python3-nvidia-ml-py 13.610.43 recipe (meta-tegra-community)
+- Add kas configurations for muse-pi-pro, milkv-megrez, mangopi-mq-pro,
+  freedom-u540 and dc-roma-fml13v01, plus a validate-bsp-coverage script and the
+  workflow that runs it (meta-riscv)
+- Add the DTSO and fit compatible for the rb3gen2 industrial mezzanine M.2
+  QCC2072 variant (meta-qcom)
+
+### Removed
+
+- Removed the makedepend recipe and the obsolete mesa build dependencies
+  (oe-core)
+- Removed the hackbench and cyclictest benchmark recipes again, and the
+  redundant python3-wheel-native dependency from python3-mako (meta-oe, oe-core)
+- Removed the linux-milkv-duo, linux-eswin-ebc77-mainline and linux-mainline-k1
+  kernel recipes, the linux-milkv-duo-dev BSP recipe and milkv-duo-bootfiles,
+  all superseded by linux-mainline (meta-riscv)
+
 ## [2026.08] - 2026-08-31
 
 ### Changed
