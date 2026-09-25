@@ -178,6 +178,31 @@ and this project adheres to
 - Sync g2d with meta-imx lf-6.18.20_2.0.0, upgrade firmware-imx to 8.32 and
   continue the oelint cleanup (meta-freescale)
 - Update the submodule refs on the 6.11 branch again (meta-qt6)
+- Switch the layer compatibility to the blacksail release series and drop
+  wrynose from CORENAMES ahead of its release (meta-yoe, oe-core, meta-oe,
+  meta-arm)
+- GNOME: move adwaita-icon-theme, epiphany and gsettings-desktop-schemas to 51.0
+  and at-spi2-core to 2.62.0.1, and improve the gnome_verdir() logic in the
+  gnomebase class (oe-core)
+- Upgrade nfs-utils to 3.1.1, libinput to 1.32.0, mesa to 26.2.3, ffmpeg to
+  9.0.2, harfbuzz to 14.5.0, cairo to 1.18.6, librsvg to 2.63.2, libsecret to
+  0.21.8.2, gpgme to 2.2.0, gnupg to 2.5.23, util-linux to 2.42.4, rsync to
+  3.5.1, ruby to 4.0.7, meson to 1.12.1, libdnf to 0.76.0, libsolv to 0.7.40,
+  libslirp to 4.9.5, barebox to 2026.09.0, linux-firmware to 20260916, gzip to
+  1.15, expat to 2.8.5, xxhash to 0.8.4, fastfloat to 8.3.0, stress-ng to
+  0.22.01, diffoscope to 330, repo to 2.68, python3-poetry-core to 2.5.0,
+  python3-urllib3 to 2.8.0 and python3-hatchling to 1.32.4 (oe-core)
+- Fix the kernel reproducibility issues in linux-yocto 7.2 and 6.18, fix the gcc
+  check for a working assembler --gdwarf-4 option, make the libtirpc TIRPC_1.3.7
+  symbol version conditional, add the missing commas in the udev-extraconf
+  rules, default qemuriscv to fw_dynamic.elf as the QEMU BIOS and skip the clang
+  selftest suites on qemuppc (oe-core)
+- Update linux-qcom-6.18 to v6.18.44, update the iq-x7181 boot firmware to
+  v00028 and skip blkid probing for the raw partitions (meta-qcom)
+- Add SD card boot support for beaglev-ahead and disable the RTOS core in the
+  milkv-duo FSBL (meta-riscv)
+- Add the oelint CI workflow and infrastructure (meta-freescale,
+  meta-freescale-3rdparty)
 
 ### Added
 
@@ -200,6 +225,10 @@ and this project adheres to
 - Add an open-firmware iq-9075-evk variant booting through U-Boot SPL, CamX for
   Purwa and support for building external device trees into the boot images
   (meta-qcom)
+- Add the libpwquality recipe, moved from meta-oe (oe-core)
+- Add support for the Talos Lyra EVK board (meta-qcom)
+- Add the beaglev-fire MACHINE along with the hss-payload-generator-native and
+  gptfdisk 1.0.10 recipes (meta-riscv)
 
 ### Removed
 
