@@ -91,6 +91,118 @@ and this project adheres to
   out-of-context variables, the license remote files, the ordered DEPENDS and
   the no-copy tasks (meta-freescale)
 - Update the submodule refs on the 6.11 branch (meta-qt6)
+- clang/llvm: upgrade to the 23.1.1 release, fix the builds of libcamera, pegtl,
+  pcapplusplus, dlt-daemon, thermald, bcc, castxml, bit7z and libfaketime with
+  clang/LLVM 23, work around a clang 23 hang in dovecot, and roll libclc back to
+  22.1.8 for mesa-pvr (oe-core, meta-oe, meta-ti)
+- OpenSSL 4: fix the builds of mariadb (AES CBC/CTR/GCM), synergy, imx-cst,
+  extract-cert, wvstreams, unbound, ntp, softhsm, ipmiutil, mercurial, trousers,
+  tpm2-openssl and ncrack, enable the OpenSSL engine stub API for
+  trusted-firmware-a and the Arm u-boot, and backport the OpenSSL 4 fixes to the
+  linux-ti-staging, linux-bb.org, linux-variscite, linux-orangepi, u-boot-ti,
+  u-boot-bb.org, u-boot-variscite, u-boot-k3, u-boot-orangepi and
+  u-boot-spl-spacemit recipes (meta-oe, meta-security, meta-arm, meta-ti,
+  meta-variscite-bsp, meta-riscv)
+- linux-yocto: update 7.2 to v7.2.6 and 7.2-rt to v7.2-rt5, 6.18 to v6.18.52 and
+  6.18-rt to v6.18.37-rt6, fix menuconfig outside the Yocto environment and
+  avoid a spurious drm vblank-timeout warning (oe-core)
+- devtool: ide-sdk gains clangd support for VSCode IntelliSense (also for
+  non-clang toolchain recipes) with clang-format, LLDB attach mode, NFS rootfs
+  and a real hardware NFS export helper, runs do_install through BitBake and
+  accepts multiple --ide plugins; deploy-target can deploy straight into a local
+  rootfs directory, and devtool upgrade writes the changelog metadata as a JSON
+  sidecar (oe-core)
+- initramfs-framework: support LABEL with a root-only udev trigger, allow opting
+  out of the efivarfs mount and avoid external commands in the module loop,
+  cmdline parsing and rootfs resolution, with findfs enabled in busybox for
+  LABEL support (oe-core)
+- rust: upgrade to 1.98.1, land a series of reproducibility fixes (sorted
+  hygiene data, deterministic DocLinkResMap, build host triple kept out of cargo
+  metadata, cc object names hashed relative to their source roots), add
+  secure-plt to the generated powerpc targets and map the cargo vendoring
+  directory for the C compiler (oe-core)
+- Move python3-six from oe-core to meta-oe and drop the six dependency from
+  python3-dateutil, python3-ecdsa, python3-astroid, python3-html5lib,
+  python3-pywbem, python3-behave and some twenty other recipes, remove the
+  redundant PYPI_PACKAGE assignments across the layers, and parse pyproject.toml
+  and Cargo.toml with tomllib in the setuptools and cargo-update-recipe-crates
+  classes (oe-core, meta-oe, meta-python)
+- bitbake: restrict network access with landlock for tasks without network, show
+  the elapsed time on the knotty task progress bar, vendor tomli, support
+  submodules in BBIMPORTS and fix relative gitsm paths (bitbake)
+- Upgrade glib-2.0 to 2.90.0, ffmpeg to 9.0.1, gstreamer1.0 to 1.28.7, systemd
+  to 261.3, curl to 8.22.0, automake to 1.19, lame to 4.0, libpcap to 1.11.0,
+  util-linux to 2.42.3, xz to 5.8.4, libxml2 to 2.15.4, gtk4 to 4.22.5, librsvg
+  to 2.63.0, dpkg to 1.23.11, xdg-utils to 1.2.1, rpcbind to 1.3.1, libportal to
+  0.11.0, libgcrypt to 1.12.4, libucontext to 1.5.2, linux-firmware to 20260910,
+  tzdata to 2026d, bind to 9.20.29, ppp to 2.5.4, orc to 0.4.44, librepo to
+  1.21.1, python3-numpy to 2.5.3 and python3-lxml to 6.1.3 (oe-core)
+- Security fix for wget (CVE-2026-16599), add ptest support for wget, zstd and
+  python3-six, fix the m4, gettext, coreutils, util-linux, tar, gawk and python3
+  ptests, and fix the openssl and libmodule-build-perl build arch contamination
+  (oe-core)
+- GNOME: move gnome-shell, mutter, gdm, gnome-session, gnome-settings-daemon,
+  gnome-keyring, gnome-desktop, gnome-software, gnome-console and most of the
+  core apps to 51.0, along with gjs 1.90.0, mozjs 140, evolution-data-server
+  3.62.0, gvfs 1.62.0, libpeas 2.2.1, gexiv2 0.16.2 and localsearch/tinysparql
+  3.12.0 (meta-oe)
+- Upgrade postgresql to 18.6, nodejs to 24.21.0, zabbix to 7.4.14, fluentbit to
+  5.1.2, tailscale to 1.102.3, zfs to 2.4.4, bpftrace to 0.26.1,
+  vboxguestdrivers to 7.2.18, msgpack-c to 7.0.2, msgpack-cpp to 9.0.0,
+  microsoft-gsl to 5.0.0, accountsservice to 26.27.3, uutils-coreutils to
+  0.12.0, wireplumber to 0.5.17, webkitgtk3 to 2.52.6, spice-gtk to 0.43, rygel
+  to 46.0, ostree to 2026.4, valkey to 9.1.2, 7zip to 26.03 and thermald to
+  2.5.13 (meta-oe)
+- Upgrade python3-ruff to 0.16.8, python3-pybind11 to 3.1.0, python3-nanobind to
+  3.1.0, python3-pikepdf to 10.13.0.post1, python3-glances to 4.5.6,
+  python3-configshell-fb to 2.0.3 and python3-pywbemtools to 1.4.1 (meta-python)
+- polkit: patch CVE-2026-4897 and CVE-2026-85498 and split the systemd
+  service/dbus config into its own package, and switch lcms to meson (meta-oe)
+- Upgrade clamav to 1.5.4, suricata to 8.0.6, crowdsec to 1.8.1, sssd to 2.13.1,
+  ossec-hids to 4.3.0, krill to 0.16.0, tpm2-tools to 5.8, tpm2-pkcs11 to 1.10.1
+  and openscap to 1.4.4 (meta-security)
+- Revert the RB1 switch to the edk2 boot firmware, switch rb3gen2-core-kit and
+  qcm6490-idp to the KVM hypervisor, update linux-qcom-6.18 to v6.18.44 and
+  upgrade qairt-sdk to 2.50.0, minkipc to v1.2.10 and gst-plugins-imsdk to 2.0.2
+  (meta-qcom)
+- Add CVE_PRODUCT and CVE_VERSION metadata across the Jetson Linux, CUDA,
+  TensorRT, OP-TEE and EDK2 recipes, update TensorRT to 10.16 and adapt
+  tegra-sources to the bb.fetch rename (meta-tegra)
+- Switch orangepi-r2s to mainline Linux, U-Boot and OpenSBI, consolidate the k1
+  and k3 SPL into u-boot-spl-spacemit and allow the zicsr and zifencei
+  extensions in TUNE_RISCV_PKGARCH (meta-riscv, oe-core)
+- Upgrade the corstone1000 u-boot to v2026.07 and OP-TEE to 4.10.0, and add
+  EARLY_TA_PATHS for adding early TAs from bbappends (meta-arm)
+- Add the missing HiFiBerry overlays and create the groups used by the udev
+  rules (meta-raspberrypi)
+- Sync g2d with meta-imx lf-6.18.20_2.0.0, upgrade firmware-imx to 8.32 and
+  continue the oelint cleanup (meta-freescale)
+- Update the submodule refs on the 6.11 branch again (meta-qt6)
+- Switch the layer compatibility to the blacksail release series and drop
+  wrynose from CORENAMES ahead of its release (meta-yoe, oe-core, meta-oe,
+  meta-arm)
+- GNOME: move adwaita-icon-theme, epiphany and gsettings-desktop-schemas to 51.0
+  and at-spi2-core to 2.62.0.1, and improve the gnome_verdir() logic in the
+  gnomebase class (oe-core)
+- Upgrade nfs-utils to 3.1.1, libinput to 1.32.0, mesa to 26.2.3, ffmpeg to
+  9.0.2, harfbuzz to 14.5.0, cairo to 1.18.6, librsvg to 2.63.2, libsecret to
+  0.21.8.2, gpgme to 2.2.0, gnupg to 2.5.23, util-linux to 2.42.4, rsync to
+  3.5.1, ruby to 4.0.7, meson to 1.12.1, libdnf to 0.76.0, libsolv to 0.7.40,
+  libslirp to 4.9.5, barebox to 2026.09.0, linux-firmware to 20260916, gzip to
+  1.15, expat to 2.8.5, xxhash to 0.8.4, fastfloat to 8.3.0, stress-ng to
+  0.22.01, diffoscope to 330, repo to 2.68, python3-poetry-core to 2.5.0,
+  python3-urllib3 to 2.8.0 and python3-hatchling to 1.32.4 (oe-core)
+- Fix the kernel reproducibility issues in linux-yocto 7.2 and 6.18, fix the gcc
+  check for a working assembler --gdwarf-4 option, make the libtirpc TIRPC_1.3.7
+  symbol version conditional, add the missing commas in the udev-extraconf
+  rules, default qemuriscv to fw_dynamic.elf as the QEMU BIOS and skip the clang
+  selftest suites on qemuppc (oe-core)
+- Update linux-qcom-6.18 to v6.18.44, update the iq-x7181 boot firmware to
+  v00028 and skip blkid probing for the raw partitions (meta-qcom)
+- Add SD card boot support for beaglev-ahead and disable the RTOS core in the
+  milkv-duo FSBL (meta-riscv)
+- Add the oelint CI workflow and infrastructure (meta-freescale,
+  meta-freescale-3rdparty)
 
 ### Added
 
@@ -104,6 +216,19 @@ and this project adheres to
   workflow that runs it (meta-riscv)
 - Add the DTSO and fit compatible for the rb3gen2 industrial mezzanine M.2
   QCC2072 variant (meta-qcom)
+- Add smolkit, a low-footprint drop-in polkit replacement, plus the boardid,
+  loupe, glycin, gexiv2-0.14, gnome-online-accounts-gtk, tomcli, floret,
+  boot-time-analysis-tools, libcrypt-urandom-perl, libcrypt-openssl-bignum-perl,
+  python3-cucumber-expressions and python3-targetcli-fb recipes (meta-oe,
+  meta-python)
+- Add python3-tomlkit and libfaketime, both moved from meta-oe (oe-core)
+- Add an open-firmware iq-9075-evk variant booting through U-Boot SPL, CamX for
+  Purwa and support for building external device trees into the boot images
+  (meta-qcom)
+- Add the libpwquality recipe, moved from meta-oe (oe-core)
+- Add support for the Talos Lyra EVK board (meta-qcom)
+- Add the beaglev-fire MACHINE along with the hss-payload-generator-native and
+  gptfdisk 1.0.10 recipes (meta-riscv)
 
 ### Removed
 
@@ -114,6 +239,13 @@ and this project adheres to
 - Removed the linux-milkv-duo, linux-eswin-ebc77-mainline and linux-mainline-k1
   kernel recipes, the linux-milkv-duo-dev BSP recipe and milkv-duo-bootfiles,
   all superseded by linux-mainline (meta-riscv)
+- Removed python3-six (moved to meta-oe) and dropped ext3 from the qemu
+  MACHINE_FEATURES (oe-core)
+- Removed the python3-attrdict3, python3-pathlib2, python3-networkmanager,
+  mycroft and loudmouth recipes (meta-oe, meta-python)
+- Removed the openssl-tpm-engine and tpm2-tss-engine recipes (meta-security)
+- Removed u-boot 2025.10 (meta-arm) and the u-boot-spl-k1, u-boot-spl-k3 and
+  orangepi vendor recipes (meta-riscv)
 
 ## [2026.08] - 2026-08-31
 
