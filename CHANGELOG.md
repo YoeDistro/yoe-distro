@@ -203,6 +203,29 @@ and this project adheres to
   milkv-duo FSBL (meta-riscv)
 - Add the oelint CI workflow and infrastructure (meta-freescale,
   meta-freescale-3rdparty)
+- Mark the blacksail release series as compatible in the layer configs and add
+  the blacksail configs to the bitbake default registry and toaster fixtures
+  (bitbake, meta-raspberrypi, meta-rockchip, meta-ti, meta-odroid,
+  meta-variscite-bsp, meta-variscite-bsp-common)
+- Fix the gcc configargs.h build arch contamination and add context to the lame
+  patches (oe-core)
+- Upgrade glibmm-2.68 to 2.90.0, glibmm to 2.66.10, php to 8.5.11, x265 to 4.2,
+  ibus to 1.5.34 and canopenterm to 2.04, add repo.or.cz as a premirror for
+  ulogd2, libnftnl, libnetfilter-queue and libnetfilter-log, and fix sushi on
+  Wayland-only GTK4 (meta-oe)
+- beaglev-ahead: switch to mainline U-Boot, OpenSBI and linux-mainline, enlarge
+  the U-Boot area to 4 MiB and boot from the SD card if one is inserted
+  (meta-riscv)
+- Bump the corstone1000 TF-M to 2.3.0 and avoid its provisioning reset
+  (meta-arm)
+- Switch qcom-sm8750 to the armv8-6a-crypto tune, switch the IQ-9075 EVK + IFP
+  mezzanine to KVM by default and add the at24 and qca808x modules to
+  packagegroup-machine-essential (meta-qcom)
+- Bump max_leb_cnt for am335x-evm and am437-evm, add multimedia-layer support
+  with a platform specific pipewire configuration, and turn the u-boot OpenSSL 4
+  fixes into a build option (meta-ti)
+- Fix the stale PREFERRED_VERSION for libcamera-imx after the 0.7.1 bump
+  (meta-freescale), and continue the oelint cleanup (meta-freescale-3rdparty)
 
 ### Added
 
@@ -229,6 +252,10 @@ and this project adheres to
 - Add support for the Talos Lyra EVK board (meta-qcom)
 - Add the beaglev-fire MACHINE along with the hss-payload-generator-native and
   gptfdisk 1.0.10 recipes (meta-riscv)
+- Add the firmware-ddr-training-th1520 recipe (meta-riscv)
+- Add TF-M 2.3 signing support (meta-arm)
+- Add the nxpaw693 SDIO module to firmware-nxp-wifi (meta-freescale)
+- Add a Boost PACKAGECONFIG to crow (meta-oe)
 
 ### Removed
 
@@ -246,6 +273,8 @@ and this project adheres to
 - Removed the openssl-tpm-engine and tpm2-tss-engine recipes (meta-security)
 - Removed u-boot 2025.10 (meta-arm) and the u-boot-spl-k1, u-boot-spl-k3 and
   orangepi vendor recipes (meta-riscv)
+- Removed libpwquality (moved to oe-core) from meta-oe and the unused
+  orangepi-r2s-usb.wks (meta-oe, meta-riscv)
 
 ## [2026.08] - 2026-08-31
 
