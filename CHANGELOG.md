@@ -10,6 +10,64 @@ and this project adheres to
 
 ### Changed
 
+- clang/llvm: upgrade to the 23.1.2 release and spirv-llvm-translator to 23.1.2,
+  replace the OE-specific clang test guard with an upstream backport and ignore
+  how TARGET_ARCH is computed in clang-cross (oe-core)
+- Upgrade systemd to 262, rust to 1.99.0, gdb to 18.1, u-boot to 2026.10,
+  openssl to 4.0.3, openssh to 10.6p1, gtk4 to 4.24.0, libsoup to 3.8.0,
+  glib-networking to 2.90.0, coreutils to 9.12, tcl to 9.1.0, git to 2.56.0,
+  qemu to 11.1.2, expat to 2.9.0, cmake to 4.4.4, harfbuzz to 14.6.0, systemtap
+  to 5.6, gnupg to 2.5.24, libpcre2 to 10.49, cups to 2.4.20, parted to 3.8,
+  bindgen-cli to 0.73.2, the Vulkan/SPIR-V stack to 1.4.363.0 and tzdata to
+  2026e, and move musl to the latest tip of trunk (oe-core)
+- linux-yocto: update 7.2 to v7.2.8 and 6.18 to v6.18.54, and bump
+  linux-yocto-dev to v7.3 (oe-core)
+- classes/pypi: normalise PYPI_PACKAGE and teach recipetool to set
+  PYPI_PACKAGE_SDIST when needed, with the recipes updated to match (oe-core,
+  meta-oe)
+- Replace dwarfsrcfiles with eu-srcfiles in the package class, fix elfutils'
+  handling of DWARF5 compilation units and deploy the image-buildinfo file
+  (oe-core)
+- devtool: ide-sdk can combine the shared and modified modes, export NFS in
+  shared mode, run shared recipe IDE hooks and let IDE plugins add packages to
+  rootfs-dbg; the rust SDK now installs target-specific environment scripts so
+  cargo builds for the target (oe-core)
+- Security fixes for wget (CVE-2026-15146), nasm (CVE-2026-6067), popt
+  (CVE-2026-18739, CVE-2026-18743) and alsa-lib (CVE-2026-90781), plus CVE
+  status updates for openssh, ffmpeg, glibc, binutils, libsoup, bluez5, graphene
+  and libxfont (oe-core)
+- Strip the build machine triplet from ruby's rbconfig.rb and curl-config, take
+  the opkg default architecture from the target CPU, stage the X11 locale data
+  in the native and target sysroots and make sstate-cache-management find
+  work-shared stamps and skip unreadable directories (oe-core)
+- Bump bitbake to 2.20.0, rename the partial wget download on a checksum
+  mismatch and cache missing files in the mtime cache (bitbake)
+- Update TF-A LTS to 2.14.9 and fix the cot-dt2c parser, and backport the
+  Corstone-1000 security fixes to TF-M and update its TF-A to 2.15.0 (meta-arm)
+- Upgrade pipewire to 1.6.9, wireplumber to 0.5.18, wolfssl to 5.9.4, grpc to
+  1.84.0, wireshark to 4.6.9, nftables to 1.1.7, xfsprogs to 7.2.0, cryptsetup
+  to 2.8.8, fuse3 to 3.18.3, gimp to 3.2.6, imagemagick to 7.1.2-32, freerdp3 to
+  3.32.1, fastfetch to 2.69.0, nushell to 0.116.0, pahole to 1.32, unicode-ucd
+  to 18.0.0 and python3-filelock to 4.0.4, and fix the musl builds of a long
+  list of recipes including android-tools, sockperf, xfstests, tcpreplay and
+  xdp-tools (meta-oe, meta-python)
+- Re-enable gobject-introspection for libmodulemd and webkitgtk on clang x86-64
+  (meta-clang)
+- Update linux-qcom-next to qcom-next-7.3-rc2-20260928 and linux-qcom-6.18 to
+  v6.18.44, upgrade adreno to 1.887.3, add flashing support for open-firmware
+  boot on the IQ-9075 EVK and RB3Gen2 and fix FastRPC on the IQ-8275-EVK and
+  Monza (meta-qcom)
+- Generalise the TH1520 support (BeagleV-Ahead, LicheePi 4A) with AON firmware,
+  UBOOT_EXTLINUX and BOOTSTD_FULL, move the milkv-duo boards to upstream U-Boot
+  booting with extlinux and bump linux-mainline to v7.2.8 (meta-riscv)
+- Split tensorrt into full, dispatch and lean recipes, bump the linux-yocto
+  SRCREV_tegrameta for 6.18.54 and fix the tegra flashing helpers (meta-tegra)
+- Switch the rkbin firmware to SPDX LicenseRef licenses (meta-rockchip), set the
+  EdgeAI DSP firmware as default for am62dxx (meta-ti), fix the linux-intel
+  menuconfig link (meta-intel) and continue the check-layer and oelint cleanup
+  (meta-freescale, meta-freescale-3rdparty)
+- Mark the blacksail release series as compatible (meta-intel, meta-security,
+  meta-swupdate)
 - clang/llvm: upgrade to the 23.1.0 release, build openmp through the LLVM
   runtimes entry point, disable clangd's decision-forest completion model on
   powerpc and ignore the tests that fail with the new version, plus the matching
@@ -229,6 +287,13 @@ and this project adheres to
 
 ### Added
 
+- Add ptest support for libpcap, psmisc and npth, the libtoml11 recipe, a yaml
+  PACKAGECONFIG for libubootenv, ldd in buildtools-extended-tarball and the
+  sqlite3 unlock notify API (oe-core)
+- Add the ptyxis, v4l2rtspserver, python3-ping3, python3-varlink,
+  python3-asyncvarlink and python3-construct recipes (meta-oe, meta-python)
+- Add the licheepi-4a MACHINE (meta-riscv)
+- Add HDMI, DLC panel and LVDS overlay support for shikra-evk (meta-qcom)
 - Add the linux-yocto 7.2 reference kernel recipes and a kernel-src SDK feature
   to populate_sdk_base, and ship tools/include from kernel-devsrc for the
   archscripts host tools (oe-core)
@@ -259,6 +324,11 @@ and this project adheres to
 
 ### Removed
 
+- Removed the dwarfsrcfiles, python3-pytz and python3-dtschema-wrapper recipes
+  (oe-core)
+- Removed the milkv-megrez, nezha, mangopi-mq-pro, star64, visionfive, beaglev,
+  ae350-ax45mp and eswin-ebc77 BSPs (meta-riscv)
+- Removed the Vybrid recipes (meta-freescale-3rdparty)
 - Removed the makedepend recipe and the obsolete mesa build dependencies
   (oe-core)
 - Removed the hackbench and cyclictest benchmark recipes again, and the
