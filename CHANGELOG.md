@@ -6,6 +6,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.10] - 2026-10-31
+
+### Changed
+
+- Start the 2026.10 release, codenamed `Qezel`, and bump IMG_VERSION to 26.10.0
+  (meta-yoe, kas)
+- Upgrade apache2 to 2.4.69, libwebsockets to 5.0.0, lvgl and lvgl-demo-fb to
+  9.6.0, gtkmm4 to 4.24.0, kmscon to 10.0.4, libtsm to 4.8.0, fluentbit to
+  5.1.3, pgpool2 to 4.7.3, freeipmi to 1.6.20, upower to 1.91.5, dconf to 51.0,
+  gtksourceview5 to 5.22.0, gnome-keyring to 51.1, swagger-ui to 5.33.1,
+  python3-django to 6.0.9 and 5.2.18, python3-aiohttp to 3.14.4,
+  python3-zeroconf to 0.151.5 and python3-werkzeug to 3.1.9 (meta-oe,
+  meta-python)
+- Make the android-tools adbd fs_config opt-in via PACKAGECONFIG, enable the
+  polkit agent helper socket, create the pcscd user and group via useradd, run
+  the luajit host helpers under qemu-user on non-x86 build hosts and fix a file
+  descriptor leak and the drmprime overlay framebuffer size in mpv (meta-oe)
+- fitimage.bbclass: fail early on engine parameters in
+  FITIMAGE_MKIMAGE_EXTRA_ARGS and document provider-based PKCS#11 signing
+  (meta-oe)
+- Refresh the vulkan-loader LF-11869 patch for 1.4.363.0 (meta-freescale)
+- Update the camx driver to v1.0.7 (meta-qcom)
+- Update the qt6 submodule refs on the 6.11 branch (meta-qt6)
+- Update linux-variscite and replace the obsolete flock runtime dependency of
+  iw612-utils (meta-variscite-bsp)
+- Drop the redundant PYPI_PACKAGE settings from the python recipes
+  (meta-tegra-community)
+
+### Added
+
+- Add the python3-pytz recipe, moved from oe-core (meta-python)
+- Add a wayland PACKAGECONFIG to lvgl (meta-oe)
+
 ## [2026.09] - 2026-09-30
 
 ### Changed
