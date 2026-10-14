@@ -33,11 +33,45 @@ and this project adheres to
   iw612-utils (meta-variscite-bsp)
 - Drop the redundant PYPI_PACKAGE settings from the python recipes
   (meta-tegra-community)
+- Upgrade go to 1.27.2, subversion to 1.15.0, libevdev to 1.14.0, libzip to
+  1.12, powertop to 2.16.1 and mesa to 26.2.4 with a gallivm build fix for LLVM
+  23, and pull glibc 2.44 stable branch updates (oe-core)
+- Enable ML-DSA-44/Ed25519 host keys by default in openssh and add a
+  pregenerated ML-DSA-44/Ed25519 host key, fix a host include path leaking into
+  sqlite3 with readline/editline, track SPDX_INCLUDE_SOURCES in the
+  do_create_spdx signature, fix buildhistory-diff with a missing previous build
+  revision and make runqemu allocate slirp MAC addresses via lock files
+  (oe-core)
+- Security fixes for gcc (CVE-2026-102010) (oe-core)
+- Upgrade strongwan to 6.1.0, openvpn to 2.7.8, mariadb to 11.4.13, thrift and
+  python3-thrift to 0.25.0, open62541 to 1.5.9, 7zip to 26.04, python3-yarl to
+  1.25.1, python3-wrapt to 2.5.0, python3-texttable to 1.7.1 and
+  python3-asyncvarlink to 0.3.3 (meta-oe, meta-python)
+- Security fixes for tesseract, libde265, tinyproxy, hdf5, gpsd, ntopng, dool,
+  sngrep, cjson, libyang and miniupnpd, plus CVE status updates for wolfssl,
+  dovecot, smarty, iniparser, python3-gunicorn, python3-eventlet, libiec61850,
+  gerbera, gpm, haveged, eject, civetweb, capnproto and bcc (meta-oe,
+  meta-python)
+- Keep the polkit agent helper units in the main package, restore PKCS#11
+  signing on OpenSSL 4 in imx-cst via the provider and revert the pipewire
+  pw-voiceui client and the PYPI_PACKAGE_SDIST change for
+  python3-google-api-core (meta-oe, meta-python)
+- Update edk2 to edk2-stable202608 and trusted-firmware-m to 2.3.1 (meta-arm)
+- Backport A753 and A735 GPU support to mesa (meta-qcom)
+- Update linux-mainline to v7.2.9, enable working graphics and wireless on the
+  th1520/licheepi-4a, fix a linux-starfive-dev crash when unloading the PowerVR
+  module, enable the milkv-duo RTC and stop reserving coprocessor and OpenSBI
+  memory on duo, and revert two th1520 u-boot regressions (meta-riscv)
+- Make bitbake-setup depend on websockets in the PyPI packaging (bitbake)
 
 ### Added
 
 - Add the python3-pytz recipe, moved from oe-core (meta-python)
 - Add a wayland PACKAGECONFIG to lvgl (meta-oe)
+
+### Removed
+
+- Removed the libzip recipe, now provided by oe-core (meta-oe)
 
 ## [2026.09] - 2026-09-30
 
