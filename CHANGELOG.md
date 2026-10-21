@@ -15,8 +15,8 @@ and this project adheres to
 - Upgrade apache2 to 2.4.69, libwebsockets to 5.0.0, lvgl and lvgl-demo-fb to
   9.6.0, gtkmm4 to 4.24.0, kmscon to 10.0.4, libtsm to 4.8.0, fluentbit to
   5.1.3, pgpool2 to 4.7.3, freeipmi to 1.6.20, upower to 1.91.5, dconf to 51.0,
-  gtksourceview5 to 5.22.0, gnome-keyring to 51.1, swagger-ui to 5.33.1,
-  python3-django to 6.0.9 and 5.2.18, python3-aiohttp to 3.14.4,
+  gtksourceview5 to 5.22.0, gnome-keyring to 51.1, swagger-ui to 5.33.3,
+  python3-django to 6.0.9 and 5.2.18, python3-aiohttp to 3.14.5,
   python3-zeroconf to 0.151.5 and python3-werkzeug to 3.1.9 (meta-oe,
   meta-python)
 - Make the android-tools adbd fs_config opt-in via PACKAGECONFIG, enable the
@@ -45,7 +45,7 @@ and this project adheres to
 - Security fixes for gcc (CVE-2026-102010) (oe-core)
 - Upgrade strongwan to 6.1.0, openvpn to 2.7.8, mariadb to 11.4.13, thrift and
   python3-thrift to 0.25.0, open62541 to 1.5.9, 7zip to 26.04, python3-yarl to
-  1.25.1, python3-wrapt to 2.5.0, python3-texttable to 1.7.1 and
+  1.25.1, python3-wrapt to 2.5.1, python3-texttable to 1.7.1 and
   python3-asyncvarlink to 0.3.3 (meta-oe, meta-python)
 - Security fixes for tesseract, libde265, tinyproxy, hdf5, gpsd, ntopng, dool,
   sngrep, cjson, libyang and miniupnpd, plus CVE status updates for wolfssl,
@@ -63,15 +63,60 @@ and this project adheres to
   module, enable the milkv-duo RTC and stop reserving coprocessor and OpenSBI
   memory on duo, and revert two th1520 u-boot regressions (meta-riscv)
 - Make bitbake-setup depend on websockets in the PyPI packaging (bitbake)
+- Enable the polkit distro feature, needed by GNOME and KDE packages (meta-yoe)
+- clang/llvm: upgrade to the 23.1.3 release and fix the opensbi build with clang
+  23 (oe-core)
+- Upgrade gstreamer to 1.28.8, curl to 8.23.0, sqlite3 to 3.54.1, freetype to
+  2.15.0, ghostscript to 10.08.0, libadwaita to 1.10.0, librsvg to 2.63.3, eudev
+  to 3.2.15, sysklogd to 2.8.0, pkgconf to 3.0.8, cargo-c to 0.10.26 and
+  python3-numpy to 2.5.4 (oe-core)
+- Add a riscv64gcv tune, record component release dates in SPDX 3.0 output, add
+  TESTIMAGE_AUTO_SKIP_IMAGES and rootfs-dbg NFS boot support to
+  testimage/runqemu, add avahi ptests, re-enable the python3 and strace ptests
+  on riscv64, make erofs-utils reproducible across build architectures, merge
+  /etc/group and nss-systemd group members in systemd and pull in pseudo fixes
+  (oe-core)
+- Security fixes for bison (CVE-2026-56390) (oe-core)
+- Upgrade nodejs to 24.22.0, nginx to 1.30.6, x265 to 4.3, flatpak to 1.18.4,
+  tailscale to 1.104.1, libbpf to 1.8.0, rrdtool to 1.11.0, freerdp3 to 3.32.2,
+  imagemagick to 7.1.2-34, mpd to 0.24.16, nmap to 7.991, zbar to 0.23.95,
+  python3-black to 26.10.1 and python3-cantools to 45.0.0 (meta-oe, meta-python)
+- Enable luajit on riscv64 via the plctlab LuaJIT fork, build samba and libbpf
+  on riscv32, split dumpcap into its own wireshark package, build libcamera with
+  64-bit time_t and fix several musl, clang/lld and riscv32 build issues
+  (meta-oe)
+- Security fixes for libvncserver, pjproject, opensc, mtr, tinyproxy, tmate and
+  udisks2, plus CVE status updates for nginx, ncp, netdata and zeroconf
+  (meta-oe)
+- Update linux-qcom-next to qcom-next-7.3-rc4-20261014, linux-qcom-6.18 to
+  v6.18.44, adreno to 1.887.4, kgsl-dlkm to v1.0.17 and fastrpc to 1.0.8, add
+  build-time secure-boot signing of Qualcomm firmware and initial Mahua-CRD
+  board support (meta-qcom)
+- Update linux-mainline to v7.2.11, move the Milk-V Duo S to mainline Linux and
+  U-Boot, prefer mainline Linux and U-Boot on riscv machines and drop obsolete
+  packagegroup bbappends (meta-riscv)
+- Make the DWC2 USB modes mutually exclusive, add runqemu QB\_ variables and let
+  bluetoothd power on the adapter (meta-raspberrypi)
+- Update hafnium to 2.15.0 and arm-toolchain to 15.3.rel2 (meta-arm)
+- Add mainline i.MX95 GPU support (meta-freescale)
+- Enable super mode for the AGX Orin 32GB and make initrd-flash fail on all
+  flashing errors (meta-tegra)
+- Update swupdate to the latest git commit (meta-swupdate)
+- Work around wget2 bugs in Range handling and --continue (bitbake)
 
 ### Added
 
 - Add the python3-pytz recipe, moved from oe-core (meta-python)
 - Add a wayland PACKAGECONFIG to lvgl (meta-oe)
+- Add the python3-stdnum, python3-zeep, python3-isodate and python3-vermin
+  recipes (meta-python)
+- Add the camxfirmware-nord camera firmware recipe (meta-qcom)
 
 ### Removed
 
 - Removed the libzip recipe, now provided by oe-core (meta-oe)
+- Removed the libtoml11 recipe (meta-oe)
+- Removed the downstream u-boot-milkv-duo recipe (meta-riscv)
 
 ## [2026.09] - 2026-09-30
 
