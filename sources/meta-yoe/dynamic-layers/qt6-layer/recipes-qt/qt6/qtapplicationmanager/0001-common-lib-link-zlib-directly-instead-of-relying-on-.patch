@@ -24,14 +24,12 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
  src/common-lib/CMakeLists.txt | 17 ++++++++---------
  1 file changed, 8 insertions(+), 9 deletions(-)
 
-diff --git a/src/common-lib/CMakeLists.txt b/src/common-lib/CMakeLists.txt
-index 8d39f1fa..8c2062b8 100644
 --- a/src/common-lib/CMakeLists.txt
 +++ b/src/common-lib/CMakeLists.txt
-@@ -65,12 +65,11 @@ qt_internal_extend_target(AppManCommonPrivate CONDITION NOT QT_FEATURE_am_system
+@@ -66,12 +66,11 @@ qt_internal_extend_target(AppManCommonPr
          Qt::BundledLibYaml
  )
-
+ 
 -qt_internal_extend_target(AppManCommonPrivate CONDITION LINUX AND QT_FEATURE_system_zlib
 -    LIBRARIES
 -        WrapZLIB::WrapZLIB
