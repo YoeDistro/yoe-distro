@@ -103,6 +103,36 @@ and this project adheres to
   flashing errors (meta-tegra)
 - Update swupdate to the latest git commit (meta-swupdate)
 - Work around wget2 bugs in Range handling and --continue (bitbake)
+- Upgrade the GNOME stack to 51.1 (gnome-shell, mutter, gdm, nautilus,
+  gnome-control-center, gnome-settings-daemon), gnome-terminal to 3.60.0,
+  gnome-flashback to 3.58.0, gnome-commander to 2.0.3, gthumb to 4.0, yelp to
+  49.2, ghex to 50.4, c-ares to 1.34.9, pkcs11-provider to 1.3.0,
+  vboxguestdrivers to 7.2.22, fluentbit to 5.1.4, cifs-utils to 7.9,
+  python3-oauthlib to 4.0.0, python3-networkx to 3.7, python3-paramiko to 5.1.0,
+  python3-grpcio-reflection and python3-grpcio-channelz to 1.84.0 and
+  python3-cantools to 45.1.0 (meta-oe, meta-gnome, meta-python)
+- Security fixes for python3-django (CVE-2026-77050, CVE-2026-84429,
+  CVE-2026-87890, CVE-2026-87975) by moving the 5.2 series to 6.1.2
+  (meta-python)
+- Enable the wireplumber systemd service, let the wireshark libnl PACKAGECONFIG
+  turn off netlink and drop a duplicate avahi from the pipewire PACKAGECONFIG
+  (meta-oe)
+- Update the i.MX BSP to lf-6.18.37_2.1.0: linux-imx 6.18.37, u-boot-imx
+  2026.04, imx-gpu-viv 6.4.11.p4.8, weston, libdrm, optee-imx and the NXP kernel
+  modules, and don't start weston without a display on i.MX 6 and 7
+  (meta-freescale)
+- Update linux-qcom-6.18 to v6.18.52, the camx driver to v1.0.8, optee-os-qcom
+  and trusted-firmware-a-qcom to the 20260930 snapshots and qcom-dtb-metadata to
+  v1.4, add Shikra EL2/KVM and Talos Lyra EVK CAMX device trees and append the
+  source revision to the linux-qcom kernel release (meta-qcom)
+- Update linux-mainline to v7.3 and the SpacemiT K3 linux, u-boot and opensbi
+  revisions, and match the K3 wic layout to the UFS block size (meta-riscv)
+- Add dm-verity support to ti-core-initramfs and linux-ti-staging and update
+  u-boot-ti-mainline to v2026.10 (meta-ti)
+- Enable /dev/mem in linux-yocto for the Trusted Services tests (meta-arm)
+- Build swupdate-gui with LVGL 9.4 and update swupdate to git ade2b95e1
+  (meta-swupdate)
+- Skip recovery devices missing from /dev in tegra-helper-scripts (meta-tegra)
 
 ### Added
 
@@ -111,12 +141,14 @@ and this project adheres to
 - Add the python3-stdnum, python3-zeep, python3-isodate and python3-vermin
   recipes (meta-python)
 - Add the camxfirmware-nord camera firmware recipe (meta-qcom)
+- Add the swupdategui-rs recipe, a recovery GUI written in Rust (meta-swupdate)
 
 ### Removed
 
 - Removed the libzip recipe, now provided by oe-core (meta-oe)
 - Removed the libtoml11 recipe (meta-oe)
 - Removed the downstream u-boot-milkv-duo recipe (meta-riscv)
+- Removed the nxp8997-sdio package from firmware-nxp-wifi (meta-freescale)
 
 ## [2026.09] - 2026-09-30
 
