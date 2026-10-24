@@ -133,6 +133,46 @@ and this project adheres to
 - Build swupdate-gui with LVGL 9.4 and update swupdate to git ade2b95e1
   (meta-swupdate)
 - Skip recovery devices missing from /dev in tegra-helper-scripts (meta-tegra)
+- Upgrade Qt to the 6.12 LTS release (6.12.1) by moving meta-qt6 to the yoe/6.12
+  branch, with CycloneDX and SPDX SBOM generation, pipewire and gstreamer_qt_api
+  options for qtmultimedia, KMS support enabled by default in qtbase and build
+  fixes for riscv32, musl/clang and OpenSSL 4 (meta-qt6)
+- Drop the qtapplicationmanager zlib link patch, no longer needed with meta-qt6
+  6.12 (meta-yoe)
+- Upgrade go to 1.27.3, iproute2 to 7.3.0, elfutils to 0.197, linux-firmware to
+  20261019, libunistring to 1.5, libarchive to 3.8.10, ethtool to 7.2, pkgconf
+  to 3.0.10, libical to 4.0.7, python3-sphinx to 9.2.0 and python3-pip to
+  26.2.2, add libsoup, mpfr and patch ptests, re-enable the tcl8 ptest on
+  riscv64, warn on ';' delimiters in image and SDK \*\_COMMAND lists, build
+  clang as Release, fix a clang crash with -fzero-call-used-regs on large RISC-V
+  frames, fix systemd audit type generation when cross-compiling, keep the SPL
+  BSS padding in uboot-sign and make python3 reproducible across build
+  architectures (oe-core)
+- Security fixes for libXi (CVE-2026-93541, CVE-2026-93542, CVE-2026-93543,
+  CVE-2026-93544, CVE-2026-93545, CVE-2026-94281, CVE-2026-94282,
+  CVE-2026-109089, CVE-2026-109090) and go (CVE-2026-111943), and disable the
+  compromised eMudhra intermediate CA in ca-certificates (oe-core)
+- Upgrade grpc and python3-grpcio to 1.84.1, nss to 3.132, rdma-core to 65.0,
+  ntpsec to 1.2.6, unbound to 1.26.2, zabbix to 7.4.16, transmission to 4.1.4,
+  rtorrent and libtorrent to 0.16.26, 7zip to 26.05, castxml to 0.8.0, nushell
+  to 0.116.1, python3-ruff to 0.17.1, python3-dbus-fast to 5.2.0 and
+  python3-pikepdf to 10.17.0, link packages needing 64-bit atomics with
+  libatomic on riscv32, fix pahole kernel BTF generation when OBJCOPY carries
+  options and fix several python ptest dependencies (meta-oe, meta-python)
+- Security fixes for nodejs (CVE-2026-105481, CVE-2026-105482, CVE-2026-105483,
+  CVE-2026-106069, CVE-2026-106070, CVE-2026-106071, CVE-2026-106072,
+  CVE-2026-106073, CVE-2026-106074, CVE-2026-111497), brotli and python3-brotli
+  (CVE-2026-111497), php (CVE-2026-109618, CVE-2026-109619) and libmspack
+  (CVE-2026-110602) (meta-oe, meta-python)
+- Update mali-imx to r56p0.0 with a matching vulkan-wsi-layer and the imx-g2d
+  libraries and samples to 2.6 (meta-freescale)
+- Upgrade the camxlib modules to v1.0.51 (kodiak to v1.0.47), add CamX for Nord,
+  update hexagon-dsp-binaries to 20261019 and drop the sa8775p-ride device trees
+  (meta-qcom)
+- Update swupdategui-rs to git de64c91 (meta-swupdate)
+- Drop ';' delimiters from the tegra-espimage IMAGE_PREPROCESS_COMMAND
+  (meta-tegra)
+- Fix the lock owner prefix check during server shutdown (bitbake)
 
 ### Added
 
@@ -142,6 +182,9 @@ and this project adheres to
   recipes (meta-python)
 - Add the camxfirmware-nord camera firmware recipe (meta-qcom)
 - Add the swupdategui-rs recipe, a recovery GUI written in Rust (meta-swupdate)
+- Add the python3-fonttools recipe, with native and nativesdk variants
+  (meta-python)
+- Add CLAUDE.md with guidance for working on Yoe with Claude Code
 
 ### Removed
 
