@@ -1,0 +1,210 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository.
+
+## What this repo is
+
+Yoe is an Embedded Linux Distribution built on Yocto/OpenEmbedded. This
+repository is the **superproject**: it does not contain recipes itself, but
+rather ties together a set of OE layers (git submodules under `sources/`),
+project configurations (`conf/projects/`), and tooling (`envsetup.sh`) so that
+one build tree can target many machines (SBCs/SoCs/SOMs). The Yoe-specific
+recipes, classes, and distro config live in the `sources/meta-yoe` submodule.
+
+## Environment setup (required before anything)
+
+Everything starts by sourcing `envsetup.sh` with a _project_ name (not a machine
+name) in a **bash or zsh** shell:
+
+```bash
+. ./envsetup.sh <project>      # e.g. rpi4-64, qemuarm64, jetson-agx-orin-devkit
+```
+
+Run `. ./envsetup.sh` with no argument (or `yoe_get_projects`) to list valid
+projects — each is a directory under `conf/projects/` containing a
+`config.conf`. Sourcing this:
+
+- Sets `PROJECT`, derives `MACHINE` from `conf/projects/$PROJECT/config.conf`,
+  exports `OE_BASE`/`BUILDDIR`.
+- Generates `build/conf/auto.conf` (DL_DIR, SSTATE_DIR, TMPDIR) and
+  `localconfig.sh`.
+- Defines all the `yoe_*` shell functions and **shadows
+  `bitbake`/`devtool`/`bitbake-layers`/etc. with wrapper functions** (see Docker
+  below). Type `yoe_<tab><tab>` to list them.
+
+`git submodule` is **not** run automatically. After cloning or switching
+branches, run `yoe_setup` (= `git submodule init && update`) once.
+
+## Common commands
+
+All build commands run _after_ sourcing envsetup. The `bitbake` you call is the
+wrapper function in `envsetup.sh`, not a bare binary.
+
+```bash
+bitbake yoe-simple-image          # build an image (see image list below)
+bitbake <recipe>                  # build a single recipe
+bitbake -c <task> <recipe>        # run a specific task, e.g. -c compile, -c devshell
+yoe_clean                         # delete build/tmp (TMPDIR)
+yoe_build_all                     # build yoe-simple-image for the routinely-tested projects
+yoe_install_image /dev/sdX <img>  # write a .wic image to SD/USB (uses bmaptool)
+yoe_feed_server                   # bitbake package-index + serve build/tmp/deploy/ipk on :8000
+```
+
+Switch target without re-sourcing fully: `export MACHINE=<machine>` then bitbake
+— but the canonical way to change targets is to re-source
+`. ./envsetup.sh <other-project>`.
+
+Common images (defined in `sources/meta-yoe`): `yoe-simple-image`,
+`yoe-kiosk-image`, `yoe-debug-image`, `yoe-qt6-image`, `yoe-sdk-image`,
+`yoe-installer-image`, `yoe-swupdate-image`, `yoe-initramfs-image`.
+
+### Docs / markdown linting
+
+Markdown is formatted with prettier and docs are built with mdbook:
+
+```bash
+yoe_format          # prettier --write on *.md and docs/**/*.md
+yoe_format_check    # prettier --check (this is the doc-check CI gate)
+yoe_mdbook          # serve docs locally on :3333
+```
+
+### Tests
+
+There is no unit-test suite for this repo. "Testing" means OE image tests
+(oeqa). CI builds `yoe-kiosk-image`/`yoe-sdk-image` for `qemuarm64` and runs
+testimage. To run an image test locally: set `TEST_TARGET_IP`/`TEST_SERVER_IP`
+(see project config.conf), then `bitbake -c testimage <image>`. For oe-selftest,
+see the commented `USER_CLASSES`/`PRSERV_HOST` lines in a project config.conf.
+
+## Docker wrapper (important)
+
+`bitbake`, `devtool`, `recipetool`, `bitbake-layers`, etc. are shell functions
+that route through `wrapcmd` → `dkr`, running the real command inside the
+`yoedistro/yoe-build:trixie-<arch>` container with the source tree bind-mounted.
+This keeps host dependencies constant.
+
+- Disable Docker (run natively on the host) by setting `export DOCKER_REPO=none`
+  — CI does this. Often set in `local.sh`.
+- When running without a TTY (scripts, agents), set `DOCKER_PSEUDO_TTY=no` so
+  `dkr` doesn't pass `--tty` to `docker run`, e.g.
+  `bash -c 'export DOCKER_PSEUDO_TTY=no; . ./envsetup.sh rpi4-64; bitbake piglit'`.
+- `dkr` with no args drops you into an interactive container shell with the
+  environment already sourced.
+
+## Configuration model
+
+Config is layered; understand which file owns what before editing:
+
+- **`conf/projects/<project>/config.conf`** — per-target settings: `MACHINE`,
+  `DISTRO`, `YOE_PROFILE`, image fstypes, machine-specific tweaks, test IPs.
+  Committed; this is what `envsetup.sh` reads and what `conf/site.conf`
+  requires.
+- **`conf/projects/<project>/layers.conf`** — the `BBLAYERS` list for that
+  project (which `sources/*` layers are active). `conf/bblayers.conf` just
+  `require`s this based on `$PROJECT`.
+- **`conf/site.conf`** — team-wide settings checked into git (e.g.
+  `IMG_VERSION`). Can override `YOE_PROFILE`.
+- **`conf/local.conf`** — per-machine/user settings (parallelism, SSTATE_DIR) —
+  copy from `conf/local.conf.sample`. CI generates it from the sample.
+- **`build/conf/auto.conf`** — generated by envsetup; do not edit.
+- **`local.sh`** — sourced by envsetup at start; the place for `DOCKER_REPO`,
+  `LANG`, target IPs, and other shell-level overrides. Not committed.
+
+`YOE_PROFILE` selects libc/init/windowing as
+`yoe-<glibc|musl>-<systemd|sysvinit|busyboxinit>-<wayland|x11|eglfs>`; these
+resolve to the `.inc` files in `sources/meta-yoe/conf/distro/`.
+
+## Layer (submodule) management
+
+Layers are git submodules under `sources/`, pinned by SHA in the superproject —
+this is how builds stay reproducible. The recurring `Layer Updates: ...` commits
+bump these submodule pointers.
+
+```bash
+yoe_add_layer <git-url> [branch]       # git submodule add into sources/ (then add to a project layers.conf)
+yoe_remove_layer <layer-name>          # bitbake-layers remove-layer + submodule deinit + git rm
+yoe_update_all_submodules_to_master    # checkout master + pull in every submodule
+git submodule update --remote          # update each submodule to HEAD of its .gitmodules branch
+```
+
+After adding/removing a layer you must also edit the relevant
+`conf/projects/*/layers.conf`. Submodules are shallow clones by default —
+`git fetch --unshallow` in a submodule for full history.
+
+## KAS (alternative / recommended for new projects)
+
+`envsetup.sh` + submodules is the legacy flow and still fully supported. KAS is
+the newer recommended path: configs live in `kas/*.yml`, run via
+`kas/kas-container`. See `docs/kas.md`. The two flows are independent ways to
+drive the same layers.
+
+## Fixing recipe build failures
+
+Recipe fixes belong in the layer that owns the recipe
+(`find sources -path '*recipes*' -name '<pn>*'`), committed inside that
+submodule, not in the superproject.
+
+- Work dirs are `build/tmp/work/<pkgarch>/<pn>/<pv>/`, with sources in
+  `sources/<pn>-<pv>/` and task logs/scripts in `temp/` (`log.do_<task>.<pid>`,
+  `run.do_<task>`).
+- `temp/run.do_compile` is a standalone shell script with the task's full
+  environment. To surface _all_ compile errors at once instead of the first one,
+  edit the source tree and run a copy of it with the final `do_compile` call
+  replaced by `cmake --build . --target all -- -k 0` (or `make -k`). Then turn
+  the fix into a patch and confirm with a real `bitbake <recipe>`.
+- Patch files are `git format-patch` style with `Upstream-Status:` (`Pending`,
+  then `Submitted [<PR/MR URL>]` once sent) and `Signed-off-by:`, placed in the
+  recipe's files dir and added to `SRC_URI`. Check with `git apply --check`
+  against pristine upstream source.
+- Before writing a patch, check whether upstream `main` already has a fix; if
+  so, backport it (`Upstream-Status: Backport [<commit URL>]`).
+- Bundled third-party code: some failures are in code copied from another
+  project, e.g. Qt testlib's `3rdparty/cycle/cycle_p.h` is FFTW's
+  `kernel/cycle.h`. Send the fix to the original project.
+- Recurring toolchain breakage: glibc ≥ 2.43 makes
+  `strchr`/`strstr`/`memchr`/... return `const` when passed a `const` pointer
+  (C23 const-generic, enabled by `_GNU_SOURCE` even under `-std=gnu99`), so
+  clang errors with `-Wincompatible-pointer-types-discards-qualifiers`. The fix
+  is usually to make the receiving variable `const`.
+
+## Submitting fixes upstream
+
+- GitHub: `gh repo fork <owner/repo>`, push a branch to the fork,
+  `gh pr create -R <owner/repo> --head <user>:<branch>`. If the fork already has
+  a branch with the same name, look at what's on it before pushing.
+- gitlab.freedesktop.org (mesa, piglit, ...): there's no `glab`/API token, but
+  SSH works (`git@ssh.gitlab.freedesktop.org`). Push to the personal fork and
+  open the MR with push options:
+  `git push fork <branch> -o merge_request.create -o merge_request.target=main -o merge_request.target_project=<group/project>`.
+  The fork rejects pushes from shallow clones (`git fetch --unshallow` first),
+  and push options can't contain newlines.
+- After submitting, update the OE patch's `Upstream-Status` to
+  `Submitted [<URL>]`.
+
+## CHANGELOG.md
+
+`CHANGELOG.md` follows Keep a Changelog. Entries go under the current release
+heading (`## [YYYY.MM]`) in `### Changed` / `### Added` / `### Removed`.
+
+- To document a `Layer Updates:` commit, list each bumped submodule's commits:
+  `git -C sources/<layer> log --no-merges --format=%s <old>..<new>`, with
+  old/new from `git rev-parse <commit>^:sources/<layer>` and
+  `<commit>:sources/<layer>`.
+- Write one summarizing bullet per layer (or per theme), ending with the layer
+  name in parentheses, e.g. `(meta-oe, meta-python)` or `(oe-core)`. Put CVE
+  fixes in their own `Security fixes for ... (CVE-...)` bullet; search with
+  `--grep=CVE -i`.
+- Run `yoe_format` / `npx prettier --write CHANGELOG.md` afterwards (it rewraps
+  lines) and commit as `CHANGELOG: Document changes`.
+
+## Conventions
+
+- Commit messages are signed off (`git commit -s`). Layer-bump commits use the
+  `Layer Updates: <submodule paths>` subject style.
+- Submodules are often checked out on local working branches with unpushed
+  commits; check `git status -sb` / `git log` in the submodule before
+  committing, and don't rewrite commits other than your own.
+- Don't edit generated files (`build/conf/auto.conf`, `localconfig.sh`).
+- Detailed machine and topic docs are in `docs/` (mdbook); start at
+  `docs/README.md`.
