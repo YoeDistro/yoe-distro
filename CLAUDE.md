@@ -6,11 +6,12 @@ code in this repository.
 ## What this repo is
 
 Yoe is an Embedded Linux Distribution built on Yocto/OpenEmbedded. This
-repository is the **superproject**: it does not contain recipes itself, but
-rather ties together a set of OE layers (git submodules under `sources/`),
-project configurations (`conf/projects/`), and tooling (`envsetup.sh`) so that
-one build tree can target many machines (SBCs/SoCs/SOMs). The Yoe-specific
-recipes, classes, and distro config live in the `sources/meta-yoe` submodule.
+repository is the **superproject**: it ties together a set of OE layers (git
+submodules under `sources/`), project configurations (`conf/projects/`), and
+tooling (`envsetup.sh`) so that one build tree can target many machines
+(SBCs/SoCs/SOMs). The Yoe-specific recipes, classes, and distro config live in
+`sources/meta-yoe`, which is **not** a submodule: its files are tracked directly
+in this repository, so changes to it are ordinary superproject commits.
 
 ## Environment setup (required before anything)
 
@@ -143,7 +144,8 @@ drive the same layers.
 
 Recipe fixes belong in the layer that owns the recipe
 (`find sources -path '*recipes*' -name '<pn>*'`), committed inside that
-submodule, not in the superproject.
+submodule, not in the superproject. The exception is `sources/meta-yoe`, which
+is committed in the superproject itself.
 
 - Work dirs are `build/tmp/work/<pkgarch>/<pn>/<pv>/`, with sources in
   `sources/<pn>-<pv>/` and task logs/scripts in `temp/` (`log.do_<task>.<pid>`,

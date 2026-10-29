@@ -173,6 +173,32 @@ and this project adheres to
 - Drop ';' delimiters from the tegra-espimage IMAGE_PREPROCESS_COMMAND
   (meta-tegra)
 - Fix the lock owner prefix check during server shutdown (bitbake)
+- Fill resolv.conf from kernel IP autoconfiguration (ip=) on sysvinit so DNS
+  works on qemu and nfsroot, and raise the ptest-runner timeout to 1200s for
+  QEMU machines emulated with TCG (meta-yoe)
+- Upgrade redis to 8.10.3, nano to 9.3, libraw to 0.22.3, c-periphery to 2.5.1,
+  btop to 1.4.8, iotop to 1.33, haveged to 1.9.27, fluentbit to 5.1.5, openh264
+  to 2.7.0, mpd to 0.24.17, libheif to 1.23.7, swagger-ui to 5.34.0, webmin to
+  2.660, ostree to 2026.5, python3-tzlocal to 5.4.5 and python3-ipy to 1.2
+  (meta-oe, meta-python)
+- Adapt the polkit ConsoleKit backend to ConsoleKit2 2.0, enable consolekit
+  session tracking in networkmanager without x11, add a C++ PACKAGECONFIG to
+  hdf5, fix squid systemd/tmpfiles installation, fix an fftw planner hang on
+  musl and fix or skip flaky re2, tbb, fuse3, libgpiod, python3-scapy,
+  python3-pyzmq and python3-fsspec ptests (meta-oe, meta-python)
+- Update linux-qcom-next to qcom-next-7.3-rc6-20261023 (meta-qcom)
+- Upgrade consolekit to ConsoleKit2 2.0.0, rust to 1.99.1, python3 to 3.14.9,
+  harfbuzz to 15.0.0, strace to 7.3, bind to 9.20.30, ccache to 4.14.2,
+  man-pages to 6.20, usbutils to 020, lrzsz to 0.13.1, libtraceevent to 1.9.1,
+  libtracefs to 1.8.4, python3-hypothesis to 6.170.8, python3-uv-build to
+  0.13.5, python3-zipp to 4.1.2 and python3-pycparser to 3.12 (oe-core)
+- Package dbus-daemon separately from the system bus units, add liburcu ptests,
+  support SPL FIT configuration signing in uboot-sign, add SDK support to
+  vex.bbclass, enable the Vector extension in the qemuriscv64 kernel, let
+  compiler-rt provide libatomic, write locked-sigs.inc atomically and fix mesa
+  TLSDESC detection on RISC-V, piglit with glibc 2.43+/clang and Python 3.14.9,
+  and several musl and clang ptest failures in glib-2.0, glib-networking,
+  gettext, elfutils, tcl, gawk and python3 (oe-core)
 
 ### Added
 
@@ -184,6 +210,7 @@ and this project adheres to
 - Add the swupdategui-rs recipe, a recovery GUI written in Rust (meta-swupdate)
 - Add the python3-fonttools recipe, with native and nativesdk variants
   (meta-python)
+- Add the python3-simple-websocket recipe (meta-python)
 - Add CLAUDE.md with guidance for working on Yoe with Claude Code
 
 ### Removed
