@@ -12,6 +12,39 @@ and this project adheres to
 
 - Start the 2026.10 release, codenamed `Qezel`, and bump IMG_VERSION to 26.10.0
   (meta-yoe, kas)
+- Add i.MX 952 support with the imx952-19x19-lpddr5-evk and
+  imx952-15x15-lpddr5-frdm machines, update u-boot-fslc to 2026.10, port
+  imx-lib, imx-test, ethos-u, opencv, alsa-lib, wireplumber and imx-alsa-plugins
+  to the lf-6.18.37_2.1.0 release, prefer libcamera 0.7.2.imx, build imx-atf out
+  of tree and default the System Manager firmware name on i.MX 943/95 only
+  (meta-freescale)
+- Upgrade python3-protobuf to 7.36.2, python3-pyflakes to 4.0.3,
+  python3-soupsieve to 3.0.4, python3-ujson to 6.0.0, python3-pyee to 16.0.0,
+  python3-snagboot to 3.0.1, python3-tornado to 6.6, python3-virtualenv to
+  21.14.13, python3-sentry-sdk to 2.73.0, python3-tox to 4.67.1 and ~50 other
+  python recipes, plus nbdkit to 1.49.4, nanomsg to 1.3.0, ipcalc to 1.2.0,
+  valkey to 9.1.3, redis to 8.10.3, openh264 to 2.7.0, fluentbit to 5.1.5,
+  swagger-ui to 5.34.0, hunspell, weechat, nano, btop, iotop, mpd and libheif
+  (meta-oe, meta-python)
+- Add python3-simple-websocket, enable kernel-selftest in world builds, add a
+  nettle PACKAGECONFIG to neatvnc, drop the pre-generated bison output from
+  mariadb, use /run in the squid tmpfiles.d and fix the python3-engineio runtime
+  dependencies (meta-oe, meta-python)
+- Security fixes for python3-pyrad via the upgrade to 2.6.0 with BlastRADIUS
+  countermeasures (CVE-2024-3596) (meta-python)
+- Update linux-qcom-6.18 to v6.18.52, upgrade the QCS615, QCS8300, QCS9100 and
+  QCS6490 boot firmware to 00150, add SELinux policies for tqftpserv and revert
+  the containerd source path permissions fix (meta-qcom)
+- Add the k3-pico-itx-mainline and k3-com260-mainline machines with mainline
+  kernel support, rename the k3-vendor-image class to k3-image and set
+  UBOOT_ENTRYPOINT for beaglev-fire (meta-riscv)
+- Update holoscan-sdk to 5.0.0 and add holoscan-camera, hsb-config, cvcuda,
+  shader-slang, reflect-cpp, vulkan-memory-allocator and related dependencies,
+  drop nvtx, gxf-core and holohub-apps, and update matx to 1.1.0, dlpack to 1.3
+  and imgui to 1.89.3 (meta-tegra-community)
+- Update optee to 4.11.0, add a dm-verity dynamic layer for meta-security, set
+  pipewire default audio targets and drop TI_COMMON_DEPLOY from task signatures
+  (meta-ti)
 - Upgrade apache2 to 2.4.69, libwebsockets to 5.0.0, lvgl and lvgl-demo-fb to
   9.6.0, gtkmm4 to 4.24.0, kmscon to 10.0.4, libtsm to 4.8.0, fluentbit to
   5.1.3, pgpool2 to 4.7.3, freeipmi to 1.6.20, upower to 1.91.5, dconf to 51.0,
