@@ -19,6 +19,37 @@ and this project adheres to
 
 - Start the 2026.10 release, codenamed `Qezel`, and bump IMG_VERSION to 26.10.0
   (meta-yoe, kas)
+- Error on duplicate BBPATH entries and only search each BBPATH directory once
+  in include_all (bitbake)
+- Update linux-yocto to v7.2.13 and v6.18.59 with refreshed aufs and backported
+  yaffs2 fixes, upgrade icu to 79.1, python3 to 3.14.10, valgrind to 3.28.0,
+  libsoup to 3.8.1, librsvg to 2.63.4, libslirp to 4.9.6, libsolv to 0.7.41 and
+  patch to 2.8.1, switch several tarballs to .tar.xz, keep clang from raising
+  spurious FP exceptions in musl, fix lrzsz with clang 23 and SBOM license and
+  CreationInfo handling (oe-core)
+- Security fixes for boost (CVE-2023-34399) (oe-core)
+- Update linux-fslc to 7.2.13 and linux-fslc-lts to 6.18.59, enable the Ethos-U
+  NPU driver and the mesa Ethos-U/Teflon delegate on i.MX 93, allow the mainline
+  BSP on imx93-evk and imx93-11x11-lpddr4x-frdm, upgrade jailhouse-imx to
+  lf-6.18.37_2.1.0 and fix kernel-module-nxp-wlan with Linux 7.2
+  (meta-freescale)
+- Upgrade nodejs to 24.22.2 and fix its build with ICU 79, pipewire to 1.6.11,
+  polkit to 128, nng to 2.1.0 (dropping nngpp), python3-fastapi to 0.162.0,
+  python3-starlette to 1.10.0, python3-multidict to 7.2.1, python3-hexbytes to
+  2.0.0, python3-eth-abi to 6.0.0, crash, exiv2, tesseract, utf8proc, catch2,
+  lldpd, proftpd, tcpreplay and ~30 other recipes, add luaunit and the
+  python3-opentelemetry api, sdk and semantic-conventions recipes, stop using
+  gitpkgv in tvheadend, freerdp, libusbmuxd and usbmuxd and fix
+  python3-platformdirs ptests on musl (meta-oe, meta-python, meta-networking)
+- Follow the 6.140 branch for qtwebengine and qtpdf, update qtwayland's LICENSE
+  and refresh the 6.12 submodule refs (meta-qt6)
+- Add the Nord RRD board and testimage CI, update linux-qcom-6.18 to the
+  20261028 tag, update camx-dlkm to v1.0.9 and fix kgsl-dlkm modpost on debug
+  kernels (meta-qcom)
+- Add the Zhihe A210 machine and kernel, add vulkan-wsi-layer, enable seccomp
+  and dma-buf heaps on visionfive2 and fix a k3-image task dependency
+  (meta-riscv)
+- Drop claraviz (meta-tegra-community)
 - Add i.MX 952 support with the imx952-19x19-lpddr5-evk and
   imx952-15x15-lpddr5-frdm machines, update u-boot-fslc to 2026.10, port
   imx-lib, imx-test, ethos-u, opencv, alsa-lib, wireplumber and imx-alsa-plugins
