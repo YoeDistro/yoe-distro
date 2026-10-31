@@ -20,7 +20,9 @@ PACKAGE_INSTALL = "\
 "
 
 FACTORY_INSTALL_IMAGE ?= "yoe-simple-image"
-do_image_wic[depends] += "${@bb.utils.contains('IMAGE_CLASSES', 'qemuboot', '', '${FACTORY_INSTALL_IMAGE}:do_updater' ,d)}"
+# qemu machines have no updater; check qemuall rather than the qemuboot image
+# class, which some real machines (raspberrypi4-64) inherit for runqemu.
+do_image_wic[depends] += "${@'' if 'qemuall' in d.getVar('MACHINEOVERRIDES').split(':') else '${FACTORY_INSTALL_IMAGE}:do_updater'}"
 
 do_create_updater_env() {
     cat >${DEPLOY_DIR_IMAGE}/yoe-updater.env <<_EOF
