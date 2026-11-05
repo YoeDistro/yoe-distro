@@ -390,6 +390,30 @@ mount_rootfs_nand() {
   fi
 }
 
+clear_overlay() {
+  msg_splash "Clearing rootfs overlay"
+  rm -rf /mnt/data/upper/*
+  rm -rf /mnt/data/work/*
+}
+
+check_rescue_shell() {
+  if [ -f $1/rescue-shell ]; then
+    rescue_shell
+  fi
+}
+
+update() {
+  # update precedence usb, SD, data partition
+  msg "checking usb ..."
+  if ! (mount_usb && update_from_usb); then
+    msg "checking sd ..."
+    if ! (mount_sd_boot && update_from_sd); then
+      msg "checking data ..."
+      update_from_data
+    fi
+  fi
+}
+
 boot() {
   mkdir -p $ROOTFS_MOUNT
 
@@ -415,18 +439,6 @@ boot() {
   msg_splash "switching to main filesystem"
 
   exec switch_root -c /dev/console $ROOTFS_MOUNT /sbin/init 5
-}
-
-update() {
-  # update precedence usb, SD, data partition
-  msg "checking usb ..."
-  if ! (mount_usb && update_from_usb); then
-    msg "checking sd ..."
-    if ! (mount_sd_boot && update_from_sd); then
-      msg "checking data ..."
-      update_from_data
-    fi
-  fi
 }
 
 initialize
