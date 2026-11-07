@@ -139,6 +139,7 @@ PREFERRED_PROVIDER_u-boot ??= "u-boot"
 PREFERRED_RPROVIDER_ssh ??= "openssh"
 # Use systemd's resolved implementation
 PREFERRED_RPROVIDER_libnss-mdns ??= "avahi-libnss-mdns"
+PREFERRED_PROVIDER_libunwind = "${@bb.utils.contains_any("TC_CXX_RUNTIME", "llvm android", "libcxx", "libunwind", d)}"
 
 # Resolves
 # NOTE: Multiple providers are available for runtime libva-dev-native (libva-initial-native, libva-native)
