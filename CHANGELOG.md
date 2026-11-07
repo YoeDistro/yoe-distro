@@ -13,6 +13,11 @@ and this project adheres to
 - Start the 2026.11 release, codenamed `Rambouillet`, and bump IMG_VERSION to
   26.11.0 (meta-yoe, kas)
 
+### Removed
+
+- Remove the meta-clang layer; the clang toolchain recipes now live in oe-core
+  (conf/projects, kas)
+
 ## [2026.10] - 2026-10-31
 
 ### Changed
