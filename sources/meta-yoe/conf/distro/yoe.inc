@@ -15,6 +15,7 @@ SDK_NAME = "${SDK_NAME_PREFIX}-${SDKMACHINE}-${IMAGE_BASENAME}-${TUNE_PKGARCH}-$
 SDKPATHINSTALL = "/opt/${DISTRO}/${SDK_VERSION}"
 SDKEXTPATH = "~/${SDK_NAME_PREFIX}_sdk/${DISTRO_VERSION}"
 SDK_INCLUDE_NATIVESDK = "1"
+SDK_FEATURES += 'clang go rust'
 
 SDK_VERSION[vardepvalue] = "${SDK_VERSION}"
 
@@ -138,6 +139,7 @@ PREFERRED_PROVIDER_u-boot ??= "u-boot"
 PREFERRED_RPROVIDER_ssh ??= "openssh"
 # Use systemd's resolved implementation
 PREFERRED_RPROVIDER_libnss-mdns ??= "avahi-libnss-mdns"
+PREFERRED_PROVIDER_libunwind = "${@bb.utils.contains_any("TC_CXX_RUNTIME", "llvm android", "libcxx", "libunwind", d)}"
 
 # Resolves
 # NOTE: Multiple providers are available for runtime libva-dev-native (libva-initial-native, libva-native)

@@ -12,6 +12,62 @@ and this project adheres to
 
 - Start the 2026.11 release, codenamed `Rambouillet`, and bump IMG_VERSION to
   26.11.0 (meta-yoe, kas)
+- Include the clang, go and rust toolchains in the SDK, and prefer the LLVM
+  libunwind (from libcxx) when TC_CXX_RUNTIME selects the llvm runtime
+  (meta-yoe)
+- Add a bb.build API reference and a terms glossary to the documentation, and
+  fix the -S lockedsigs help text (bitbake)
+- Upgrade openssl to 4.1.0 with OpenSSL 4.1 fixes for sudo, python3-pyopenssl
+  and python3-cryptography, upgrade openssh to 10.6p2, qemu to 11.1.3, cmake to
+  4.4.5, weston to 16.0.2 (RDP backend now built against FreeRDP 3),
+  wayland-protocols to 1.50, gtk4 to 4.24.1, expat to 2.10.0, kmod to 34.3,
+  python3-pytest to 9.2.0, python3-pip to 26.3 and tzdata to 2026f, package
+  dbus-daemon separately from the system bus units, fix python3 zipimport and
+  sysconfig packaging, include SDK target packages in the SDK SBOM, keep
+  dropbear host keys across package updates and fix lrzsz with clang 23
+  (oe-core)
+- Security fixes for alsa-lib (CVE-2026-96674, CVE-2026-96675) (oe-core)
+- Add PySide6 and shiboken6 recipes for Qt 6.12.1 (meta-qt6)
+- Upgrade openldap to 2.7.2, nss to 3.133, rocksdb to 11.13.2, graphviz to
+  16.1.0, botan to 3.14.0, libsdl3 to 3.4.20, libwebsockets to 5.1.0, apache2 to
+  2.4.70, python3-pillow to 13.0.0, python3-twisted to 26.10.0, libgpiod to
+  2.3.2 and many other python and meta-oe packages, revive the mongodb build,
+  add python3-proto-plus, python3-httpcore2, python3-truststore and a leancrypto
+  kernel module recipe, drop python3-tomlkit and libfaketime now in oe-core and
+  fix several python ptests (meta-oe, meta-python, meta-networking,
+  meta-multimedia)
+- Security fixes for hdf5 (CVE-2026-19023, CVE-2026-19024, CVE-2026-19026,
+  CVE-2026-19027, CVE-2026-19028, CVE-2026-120689, CVE-2026-120754,
+  CVE-2026-120755, CVE-2026-120756, CVE-2026-120757, CVE-2026-120758),
+  libgphoto2 (CVE-2026-120451, CVE-2026-120452), ndpi (CVE-2026-116744), flatcc
+  (CVE-2026-116733, CVE-2026-116734), assimp (CVE-2026-117608) and
+  python3-pillow (CVE-2026-112393) (meta-oe, meta-python, meta-networking)
+- Update OP-TEE and optee-ftpm to 4.11.0 and fix ICMP error handling in
+  edk2-firmware (meta-arm)
+- Add i.MX 937 FRDM support, add M7/M33 core images to the i.MX 943, 952 and
+  8ULP boot containers, install ELE runtime firmware on i.MX 8ULP/943/95, enable
+  EFI capsule authentication in u-boot-imx and bump linux-fslc-imx to
+  LF6.18.37_2.1.0 (meta-freescale)
+- Update linux-qcom-6.18 to v6.18.56 and linux-qcom-next to 7.3, add Gunyah
+  build variants, RTSS mailbox, location-apis and qcom-metadata-editor recipes,
+  upgrade camxlib, OP-TEE, TF-A and boot firmware, and enable efi, vfat and pci
+  machine features by default on arm64 (meta-qcom)
+- Package linux-firmware-rpidistro per machine, remove the deprecated omxplayer
+  and picamera components and harden CI (meta-raspberrypi)
+- Upgrade linux-mainline to 7.3.1, refresh the SpacemiT K3 kernel, U-Boot and
+  firmware and add Zhihe A210 CI (meta-riscv)
+- Update tpm2-tss to 4.2.0, python3-tpm2-pytss to 3.0.0 and ding-libs to 0.7.0
+  (meta-security)
+- Generate SWU files with the new swugenerator recipe and start swupdategui-rs
+  on SysV init systems (meta-swupdate)
+- Bump linux-yocto tegra metadata for 6.18.59 and fix tegrarcm and blkid
+  handling in the flashing and init scripts (meta-tegra)
+- Security fixes for edk2 (CVE-2026-97631) (meta-tegra)
+
+### Removed
+
+- Remove the meta-clang layer; the clang toolchain recipes now live in oe-core
+  (conf/projects, kas)
 
 ## [2026.10] - 2026-10-31
 
