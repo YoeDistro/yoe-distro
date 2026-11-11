@@ -41,7 +41,7 @@ IMAGE_INSTALL += "\
   iw \
 	minicom \
 	screen \
-	cpufrequtils \
+	cpupower \
 	nano \
 	sox \
 	ethtool \
