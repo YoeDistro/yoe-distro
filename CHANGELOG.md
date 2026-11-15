@@ -63,6 +63,43 @@ and this project adheres to
 - Bump linux-yocto tegra metadata for 6.18.59 and fix tegrarcm and blkid
   handling in the flashing and init scripts (meta-tegra)
 - Security fixes for edk2 (CVE-2026-97631) (meta-tegra)
+- Cache compiled inline Python expressions in the datastore and fix an
+  uninitialised variable in the fetcher (bitbake)
+- Upgrade clang/llvm to 23.1.5, zlib to 1.4, lz4 to 1.11.1, git to 2.56.1,
+  automake to 1.20, eudev to 3.3.0, bluez5 to 5.88, gstreamer to 1.28.9, ruby to
+  4.0.9, xserver-xorg to 21.1.25, xwayland to 24.1.14 and python3-setuptools to
+  84.2.1, generate SPDX from deploy tasks (replacing do_create_image_spdx), keep
+  rootfs mtimes in ext2/3/4 images, write font caches that are valid in the
+  final image, split out the rtl8125 firmware, add --run-tests to
+  yocto-check-layer and fix the libsoup, elfutils, dbus and popt ptests
+  (oe-core)
+- Security fixes for sudo (CVE-2026-82474) and popt (CVE-2026-18839) (oe-core)
+- Upgrade samba to 4.25.1, frr to 10.7.1, networkmanager to 1.58.1, nodejs to
+  24.22.3, bpftool-native to 7.3.4, apache2 to 2.4.71, netdata to 2.12.3,
+  corosync to 3.2.0, chrony to 4.9, autofs to 5.2.0, vsomeip to 3.8.0, rdma-core
+  to 66.0, ndpi/ntopng to 6.0/7.0, gedit to 51.0, gimp to 3.2.8 and many other
+  gnome and python packages, move cpprest and websocketpp to maintained forks,
+  split cpufreq-bench out of cpupower into cpupower-bench, add pg-cron and a
+  pgxs class for PostgreSQL extensions, and fix lld builds of fastfetch and
+  libhugetlbfs (meta-oe, meta-python, meta-networking, meta-gnome,
+  meta-webserver)
+- Security fixes for tinyproxy (CVE-2026-125371) and apitrace (CVE-2026-126050)
+  (meta-networking, meta-oe)
+- Add i.MX 8M Plus, 8M Plus UltraLite, 8ULP, 91, 93, 93W, 943 and 95 board
+  machine configurations from meta-imx, add a Mali/Mesa dual-driver mode with
+  NXP's mesa 26.2.0.imx fork, update imx-gpu-sdk to 6.5.2 and ship the i.MX 95
+  B1 ELE boot container (meta-freescale)
+- Update linux-qcom-6.18 to v6.18.56 and camxlib to v1.0.59, upgrade the
+  kaanapali, nord and shikra boot firmware, backport mesa support for Adreno
+  X2-85, 850 and 845, and fix u-boot-qcom SPL clocks and booting under Gunyah
+  without KVM (meta-qcom)
+- Update the Corstone-1000 documentation for the 2026.11 release and add
+  release, patch-age and unused-recipe scripts (meta-arm)
+- Upgrade linux-mainline to 7.3.4 and recommend the RTL8125 firmware on Orange
+  Pi R2S (meta-riscv)
+- Fix buildpaths and rpaths QA issues in python3-shiboken6-generator (meta-qt6),
+  truncate the SD card boot volume label to 11 characters (meta-raspberrypi) and
+  improve the machine suffix documentation (meta-swupdate)
 
 ### Removed
 
