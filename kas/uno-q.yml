@@ -1,0 +1,12 @@
+header:
+  version: 20
+  includes:
+    - kas/include/base.yml
+    - kas/include/qcom-arduino.yml
+
+machine: uno-q
+
+local_conf_header:
+
+  MACHINE description: |
+    # Arduino UNO Q (QRB2210)
