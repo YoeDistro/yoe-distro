@@ -16,6 +16,8 @@ Available configurations:
 - `jetson-agx-orin-devkit.yml`
 - `jetson-orin-nano-devkit-nvme.yml`
 - `rpi4-64.yml`
+- `uno-q.yml`
+- `ventuno-q.yml`
 - `visionfive.yml`
 - `visionfive2.yml`
 

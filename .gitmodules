@@ -82,3 +82,7 @@
 	path = sources/meta-security
 	url = https://github.com/yoedistro/meta-security
 	branch = master
+[submodule "sources/meta-qcom-arduino"]
+	path = sources/meta-qcom-arduino
+	url = https://github.com/YoeDistro/meta-qcom-arduino
+	branch = main

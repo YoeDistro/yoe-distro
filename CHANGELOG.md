@@ -101,6 +101,13 @@ and this project adheres to
   truncate the SD card boot volume label to 11 characters (meta-raspberrypi) and
   improve the machine suffix documentation (meta-swupdate)
 
+### Added
+
+- Add the meta-qcom-arduino BSP layer and the uno-q (Arduino UNO Q, QRB2210) and
+  ventuno-q (Arduino VENTUNO Q, QCS8275) projects, which boot through UEFI
+  (systemd-boot + UKI) with the efi distro feature enabled (meta-qcom-arduino,
+  conf/projects)
+
 ### Removed
 
 - Remove the meta-clang layer; the clang toolchain recipes now live in oe-core

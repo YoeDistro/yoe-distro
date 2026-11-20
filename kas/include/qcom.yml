@@ -1,0 +1,25 @@
+header:
+  version: 20
+
+target: "yoe-simple-image"
+
+repos:
+
+  meta-arm:
+    url: https://github.com/YoeDistro/meta-arm
+    path: layers/meta-arm
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
+  meta-qcom:
+    url: https://github.com/YoeDistro/meta-qcom
+    path: layers/meta-qcom
+
+local_conf_header:
+
+  yoe-<libc>-<init-system>-<windowing-system>: |
+    YOE_PROFILE = "yoe-glibc-systemd-wayland"
+
+  meta-qcom boots aarch64 boards through UEFI (systemd-boot + UKI): |
+    DISTRO_FEATURES:append = " efi"

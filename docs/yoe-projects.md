@@ -44,10 +44,12 @@ Currently these projects are supported.
 - rpi5
 - unleashed
 - unmatched
+- uno-q
 - var-dart-imx6ul
 - var-som-mx8
 - var-som-mx8m-nano
 - var-som-mx8x
+- ventuno-q
 - visionfive
 - visionfive2
 

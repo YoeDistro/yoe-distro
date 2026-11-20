@@ -1,0 +1,18 @@
+header:
+  version: 20
+  includes:
+    - kas/include/qcom.yml
+
+repos:
+
+  meta-qcom-arduino:
+    url: https://github.com/YoeDistro/meta-qcom-arduino
+    branch: main
+    path: layers/meta-qcom-arduino
+
+local_conf_header:
+
+  Needed for Running bitbake -ctestimage <image>: |
+    #TEST_TARGET_IP = "10.0.0.34"
+    #TEST_SERVER_IP = "10.0.0.13"
+    TEST_TARGET = "simpleremote"
