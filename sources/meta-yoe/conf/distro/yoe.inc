@@ -186,7 +186,7 @@ QB_MEM = "-m 1024"
 # testimage runs QEMU machines under TCG emulation unless it can use KVM
 # (target arch matches the build host, or both are x86), and ptests there
 # can stay silent for longer than the default 450s ptest-runner timeout
-PTEST_RUNNER_TIMEOUT ?= "${@'1200' if 'qemuall' in d.getVar('MACHINEOVERRIDES').split(':') and not oe.types.qemu_use_kvm(d.getVar('QEMU_USE_KVM') or '1', d.getVar('TARGET_ARCH')) else '450'}"
+PTEST_RUNNER_TIMEOUT ?= "${@'1200' if 'qemuall' in d.getVar('MACHINEOVERRIDES').split(':') and not (getattr(oe.qemu, 'qemu_use_kvm', None) or oe.types.qemu_use_kvm)(d.getVar('QEMU_USE_KVM') or '1', d.getVar('TARGET_ARCH')) else '450'}"
 
 # Enable fortran by default, lot of new machine need it surprisingly
 FORTRAN = ",fortran"
