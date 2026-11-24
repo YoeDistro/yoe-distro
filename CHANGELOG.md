@@ -19,7 +19,7 @@ and this project adheres to
   fix the -S lockedsigs help text (bitbake)
 - Upgrade openssl to 4.1.0 with OpenSSL 4.1 fixes for sudo, python3-pyopenssl
   and python3-cryptography, upgrade openssh to 10.6p2, qemu to 11.1.3, cmake to
-  4.4.5, weston to 16.0.2 (RDP backend now built against FreeRDP 3),
+  4.5.0, weston to 16.0.2 (RDP backend now built against FreeRDP 3),
   wayland-protocols to 1.50, gtk4 to 4.24.1, expat to 2.10.0, kmod to 34.3,
   python3-pytest to 9.2.0, python3-pip to 26.3 and tzdata to 2026f, package
   dbus-daemon separately from the system bus units, fix python3 zipimport and
@@ -28,8 +28,8 @@ and this project adheres to
   (oe-core)
 - Security fixes for alsa-lib (CVE-2026-96674, CVE-2026-96675) (oe-core)
 - Add PySide6 and shiboken6 recipes for Qt 6.12.1 (meta-qt6)
-- Upgrade openldap to 2.7.2, nss to 3.133, rocksdb to 11.13.2, graphviz to
-  16.1.0, botan to 3.14.0, libsdl3 to 3.4.20, libwebsockets to 5.1.0, apache2 to
+- Upgrade openldap to 2.7.2, nss to 3.134, rocksdb to 11.13.2, graphviz to
+  16.1.2, botan to 3.14.1, libsdl3 to 3.4.20, libwebsockets to 5.1.0, apache2 to
   2.4.70, python3-pillow to 13.0.0, python3-twisted to 26.10.0, libgpiod to
   2.3.2 and many other python and meta-oe packages, revive the mongodb build,
   add python3-proto-plus, python3-httpcore2, python3-truststore and a leancrypto
@@ -60,14 +60,15 @@ and this project adheres to
   (meta-security)
 - Generate SWU files with the new swugenerator recipe and start swupdategui-rs
   on SysV init systems (meta-swupdate)
-- Bump linux-yocto tegra metadata for 6.18.59 and fix tegrarcm and blkid
+- Bump linux-yocto tegra metadata for 6.18.63 and fix tegrarcm and blkid
   handling in the flashing and init scripts (meta-tegra)
-- Security fixes for edk2 (CVE-2026-97631) (meta-tegra)
+- Security fixes for edk2 (CVE-2026-97631) and linux-noble-nvidia-tegra
+  (CVE-2026-98432) (meta-tegra)
 - Cache compiled inline Python expressions in the datastore and fix an
   uninitialised variable in the fetcher (bitbake)
 - Upgrade clang/llvm to 23.1.5, zlib to 1.4, lz4 to 1.11.1, git to 2.56.1,
   automake to 1.20, eudev to 3.3.0, bluez5 to 5.88, gstreamer to 1.28.9, ruby to
-  4.0.9, xserver-xorg to 21.1.25, xwayland to 24.1.14 and python3-setuptools to
+  4.0.9, xserver-xorg to 21.1.26, xwayland to 24.1.15 and python3-setuptools to
   84.2.1, generate SPDX from deploy tasks (replacing do_create_image_spdx), keep
   rootfs mtimes in ext2/3/4 images, write font caches that are valid in the
   final image, split out the rtl8125 firmware, add --run-tests to
@@ -75,7 +76,7 @@ and this project adheres to
   (oe-core)
 - Security fixes for sudo (CVE-2026-82474) and popt (CVE-2026-18839) (oe-core)
 - Upgrade samba to 4.25.1, frr to 10.7.1, networkmanager to 1.58.1, nodejs to
-  24.22.3, bpftool-native to 7.3.4, apache2 to 2.4.71, netdata to 2.12.3,
+  24.22.3, bpftool-native to 7.3.5, apache2 to 2.4.71, netdata to 2.13.0,
   corosync to 3.2.0, chrony to 4.9, autofs to 5.2.0, vsomeip to 3.8.0, rdma-core
   to 66.0, ndpi/ntopng to 6.0/7.0, gedit to 51.0, gimp to 3.2.8 and many other
   gnome and python packages, move cpprest and websocketpp to maintained forks,
@@ -89,7 +90,7 @@ and this project adheres to
   machine configurations from meta-imx, add a Mali/Mesa dual-driver mode with
   NXP's mesa 26.2.0.imx fork, update imx-gpu-sdk to 6.5.2 and ship the i.MX 95
   B1 ELE boot container (meta-freescale)
-- Update linux-qcom-6.18 to v6.18.56 and camxlib to v1.0.59, upgrade the
+- Update linux-qcom-6.18 to v6.18.56 and camxlib to v1.0.61, upgrade the
   kaanapali, nord and shikra boot firmware, backport mesa support for Adreno
   X2-85, 850 and 845, and fix u-boot-qcom SPL clocks and booting under Gunyah
   without KVM (meta-qcom)
@@ -100,6 +101,123 @@ and this project adheres to
 - Fix buildpaths and rpaths QA issues in python3-shiboken6-generator (meta-qt6),
   truncate the SD card boot volume label to 11 characters (meta-raspberrypi) and
   improve the machine suffix documentation (meta-swupdate)
+- Return the package identity of crate, gomod and npm URLs from the fetchers,
+  verify checksums for file:// URLs, fetch S3 URLs via boto3 by default, fix a
+  multiconfig runqueue deadlock, improve deferred task sorting and group Toaster
+  command line builds by TOASTER_PROJECT (bitbake)
+- Upgrade python3 to 3.15.2, rust to 1.100.0, go to 1.27.4, webkitgtk to 2.54.3,
+  ffmpeg to 9.1, grub to 2.16, rpm to 6.1.0, dnf to 5.4.7.0 (DNF5, dropping
+  libdnf and libcomps), systemd to 262.2, dbus to 1.16.4, harfbuzz to 15.2.0,
+  groff to 1.25.0, makedumpfile to 1.8.0, utfcpp to 5.0.0 and ConsoleKit to
+  ConsoleKit2 2.0.0, update linux-yocto to v7.2.15 and v6.18.63 and
+  linux-yocto-dev to v7.4, pull musl master and glibc 2.44 stable updates, add
+  rva20u64, rva22u64 and rva23u64 RISC-V profile tunes, support musl multilib,
+  compile python3 .pyc files at packaging time, list npm shrinkwrap dependencies
+  in SRC_URI, stop forwarding the journal to syslog by default, don't use
+  Transparent Huge Pages in glibc malloc by default, add rust-analyzer to the
+  SDK behind a PACKAGECONFIG, enable linker version scripts for nettle, libidn2
+  and libtasn1 under lld and clean up oeqa (oe-core)
+- Security fixes for binutils (CVE-2026-90828, CVE-2026-91781, CVE-2026-91782),
+  gcc (CVE-2026-125709), glibc (CVE-2026-84243, CVE-2026-100290,
+  CVE-2026-115819), gnutls (CVE-2026-127039, CVE-2026-127040, CVE-2026-127231),
+  grub (CVE-2026-97876), go (CVE-2026-97033, CVE-2026-97034, CVE-2026-97035,
+  CVE-2026-97036, CVE-2026-97037, CVE-2026-97038, CVE-2026-97039,
+  CVE-2026-97040, CVE-2026-97041, CVE-2026-97042, CVE-2026-97043,
+  CVE-2026-97054), xserver-xorg and xwayland (CVE-2026-109091, CVE-2026-109092,
+  CVE-2026-109093, CVE-2026-109094, CVE-2026-109095, CVE-2026-109096,
+  CVE-2026-109903, CVE-2026-109904), dbus (CVE-2026-120749), libfontenc
+  (CVE-2026-109908), ovmf (CVE-2026-111497), speex (CVE-2026-116741),
+  libsndfile1 (CVE-2024-50613, CVE-2025-52194, CVE-2026-109828),
+  libconvert-asn1-perl (CVE-2026-126540, CVE-2026-126568, CVE-2026-126576,
+  CVE-2026-126682, CVE-2026-126819, CVE-2026-126956, CVE-2026-131868,
+  CVE-2026-131877) and libxml-parser-perl (CVE-2006-10002, CVE-2006-10003)
+  (oe-core)
+- Upgrade php to 8.6.0 (relicensed to BSD-3-Clause), libupnp to 22.2.4 (new
+  soname, built with CMake), libssh to 0.12.2, libabigail to 3.0, libcamera to
+  0.8.0, mpv to 0.42.0, bluealsa to 5.0.0, fdk-aac to 3.0.0, faac to 2.2,
+  libtorrent-rasterbar to 2.1.2, multipath-tools to 0.15.1, fwts to 26.09.00,
+  fluentbit to 5.2.0, valkey to 9.2.0, grpc to 1.85.2, abseil-cpp to 20260817.0,
+  perfetto to 59.1, poppler to 26.11.0, freerdp3 to 3.33.1, udisks2 to 2.12.0,
+  hdf5 to 2.2.0, cockpit to 372, nginx to 1.30.7, dracut to 113, xfsprogs to
+  7.3.0, tmux to 3.8, jemalloc to 5.4.0 and webkitgtk3 to 2.54.3 in step with
+  oe-core's webkitgtk (meta-oe, meta-multimedia, meta-webserver, meta-initramfs,
+  meta-filesystems)
+- Upgrade python3-dateutil to 4.0.0, python3-sentry-sdk to 3.0.0, python3-web3
+  to 8.0.0, python3-deprecated to 3.0.1, python3-isort to 9.0.2,
+  python3-watchdog to 7.1.1, python3-portalocker to 4.4.2, python3-croniter to
+  7.0.0, python3-gunicorn to 27.0.1, python3-matplotlib to 3.11.2,
+  python3-pandas to 3.1.1, python3-grpcio to 1.85.3, python3-fastapi to 0.165.0
+  and ~140 other python recipes, plus libcgi-perl to 5.02 and ~20 other perl
+  modules, and fix python3-pytokens, python3-geojson and libsigrokdecode for
+  Python 3.15 (meta-python, meta-perl, meta-oe)
+- Add neovim 0.12.6 with lpeg, luv, libtreesitter 0.27.2 and tree-sitter
+  grammars for 18 languages (plus a tree-sitter PACKAGECONFIG for emacs), rsinit
+  (an initramfs /init written in Rust), vock (shows the kernel code a userspace
+  command executes), pdfio 1.6.6 and a systemd-confext image class, add libupnp
+  and overlayfs-tools ptests, make kernel-selftest report per-test results and
+  skip tests the kernel can't support, adapt polkit and networkmanager to
+  ConsoleKit2 2.0, and remove logfsprogs and the stale python3-pycups 2.0.1
+  recipe (meta-oe, meta-initramfs, meta-multimedia, meta-networking,
+  meta-filesystems, meta-python)
+- Fix builds with lld (linker version scripts for neon, lldpd, libcdio-paranoia
+  and libidn; libkcapi, wtmpdb, tremor, dante, frame, libnetfilter-cttimeout and
+  libxklavier), clang (libdc1394, tinymembench, fluentbit on riscv64; caps and
+  wvstreams now build with gcc), musl (libabigail, ot-br-posix, python3-m2crypto
+  multilib), GCC 16 (android-tools), cargo's new build-dir layout
+  (uutils-coreutils, librust-cxx) and libcamera 0.8 (pipewire), and correct the
+  LICENSE of ~25 recipes to proper SPDX identifiers (meta-oe, meta-networking,
+  meta-multimedia, meta-python, meta-filesystems)
+- Security fixes for php (CVE-2026-15353, CVE-2026-48841, CVE-2026-115560,
+  CVE-2026-126714, CVE-2026-127960, CVE-2026-128064, CVE-2026-129182,
+  CVE-2026-129289, CVE-2026-129291, CVE-2026-129292, CVE-2026-129438,
+  CVE-2026-129474, CVE-2026-129481, CVE-2026-129496, CVE-2026-129501,
+  CVE-2026-129506, CVE-2026-129538), nginx (CVE-2026-113425, CVE-2026-118899,
+  CVE-2026-120967, CVE-2026-120993, CVE-2026-121810, CVE-2026-123007,
+  CVE-2026-123633, CVE-2026-123634, CVE-2026-123640, CVE-2026-125283), krb5
+  (CVE-2026-71199, CVE-2026-107884, CVE-2026-111423), wireshark
+  (CVE-2026-130434, CVE-2026-130469), ettercap (CVE-2026-129431,
+  CVE-2026-129432, CVE-2026-131853, CVE-2026-131855), iperf3 (CVE-2026-101276,
+  CVE-2026-101283), valkey (CVE-2026-130822), hdf5 (CVE-2026-17572,
+  CVE-2026-17573, CVE-2026-17574, CVE-2026-26197, CVE-2026-26199), udisks2
+  (CVE-2026-7867), libcupsfilters (CVE-2025-64503) and evince (CVE-2026-63729)
+  (meta-oe, meta-networking, meta-webserver, meta-gnome)
+- Security fixes for python3-django (CVE-2026-108147, CVE-2026-111211,
+  CVE-2026-111362, CVE-2026-113593, CVE-2026-113733, CVE-2026-114582),
+  python3-m2crypto (CVE-2026-109087), python3-py7zr (CVE-2026-23879),
+  python3-sqlparse (CVE-2026-112307), python3-send2trash (CVE-2026-55788),
+  libcgi-perl (CVE-2026-120631, CVE-2026-120632, CVE-2026-120633,
+  CVE-2026-120634, CVE-2026-120635, CVE-2026-120636, CVE-2026-120637,
+  CVE-2026-120638, CVE-2026-120639, CVE-2026-120640, CVE-2026-120641,
+  CVE-2026-120642, CVE-2026-120643, CVE-2026-120644, CVE-2026-120645,
+  CVE-2026-120646, CVE-2026-120647, CVE-2026-120648, CVE-2026-120650,
+  CVE-2026-120651), liburi-perl (CVE-2026-19953), libauthen-sasl-perl
+  (CVE-2026-86219), libnet-dns-perl (CVE-2026-101340) and libconfig-general-perl
+  (CVE-2026-129820, CVE-2026-129821) (meta-python, meta-perl)
+- Make KVM the default hypervisor on shikra-evk, add the qcom-rtss-can RTSS CAN
+  daemon (recommended on qcs8300, qcs9100 and qcom-armv8a), deploy Sahara and
+  RTSS images for SAIL NOR flashing, upgrade fastrpc to v1.0.9, adreno to
+  1.887.7, kgsl-dlkm to v2.0.1, camx-dlkm to v1.0.11, msm-gbm-backend to
+  v1.2.11, gst-plugins-imsdk to 2.0.4, minkipc to v1.2.11 and the nord, shikra
+  and iq-x7181 boot firmware, update u-boot-qcom to qcom-next-v2026.10-20261115,
+  enable SELinux in linux-qcom-rt and boot-test iq-x5121-evk in CI (meta-qcom)
+- Add a devicetree-uno-q recipe, store the U-Boot environment on eMMC, enable
+  ASIX88179 USB Ethernet and a USB host U-Boot config on uno-q and refresh the
+  ventuno-q hci_qca patches (meta-qcom-arduino)
+- Update swupdate to 2026.05.2 and swupdategui-rs, and drop the Lua rescuegui
+  and tekui recipes now replaced by swupdategui-rs (meta-swupdate)
+- Bump ti-sgx-ddk for wrynose and re-enable multisampling, and fix SPDX deploy
+  SBOM name clashes for k3r5 and yocto-check-layer (meta-ti)
+- Fix the OP-TEE build without Tegra264 support in linux-noble-nvidia-tegra and
+  apply alt-roots in nvidia-container-toolkit's csv mode (meta-tegra)
+- Restore the kernel options and CPU errata dropped by the 32-bit architecture
+  removal and add an lttng-modules config fragment (meta-rockchip)
+- Define CMDLINE_CMA, limit FDT relocation on 64-bit machines in the U-Boot
+  script and make libpisp boost logging a PACKAGECONFIG (meta-raspberrypi)
+- Fix tpm2-openssl with OpenSSL 4.1.0 and dm-verity-image-initramfs's
+  IMAGE_PREPROCESS_COMMAND (meta-security)
+- Fix the libuv mingw SDK and qtwebengine 32-bit ARM builds with GCC 16
+  (meta-qt6), add jailhouse device trees for imx93-11x11-lpddr4x-frdm and allow
+  pipewire-pulse user services for root (meta-freescale)
 
 ### Added
 
