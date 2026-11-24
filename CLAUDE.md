@@ -116,6 +116,17 @@ Config is layered; understand which file owns what before editing:
 `yoe-<glibc|musl>-<systemd|sysvinit|busyboxinit>-<wayland|x11|eglfs>`; these
 resolve to the `.inc` files in `sources/meta-yoe/conf/distro/`.
 
+To build with another profile (e.g. musl), set `YOE_PROFILE` in `conf/site.conf`
+(after its `require` of `config.conf`) and restore the file afterwards. The qemu
+projects hard-set it in `conf/projects/qemucommon/config.conf`, which overrides
+an exported `YOE_PROFILE`, and `bitbake -R <file>` is read after the distro has
+already included the profile, so neither of those works.
+
+Downloads go to `downloads/` (DL_DIR). Large git recipes (glibc, binutils,
+webkit) try the slow Yocto premirror first; seed
+`downloads/git2/<host.path.repo.git>` with `git clone --bare --mirror <url>`
+plus a `.done` file to skip it.
+
 ## Layer (submodule) management
 
 Layers are git submodules under `sources/`, pinned by SHA in the superproject —
@@ -169,8 +180,102 @@ is committed in the superproject itself.
   (C23 const-generic, enabled by `_GNU_SOURCE` even under `-std=gnu99`), so
   clang errors with `-Wincompatible-pointer-types-discards-qualifiers`. The fix
   is usually to make the receiving variable `const`.
+- Put the reasoning for a fix in the commit message; leave a recipe comment only
+  when needed, and keep it to one line.
+
+### Toolchain notes (Yoe builds with clang + lld by default)
+
+- meta-clang was removed (superproject 18b6de66); its old workarounds are
+  readable with
+  `git -C .git/modules/sources/meta-clang show HEAD:conf/nonclangable.conf`.
+  Prefer a real fix over restoring them.
+- lld defaults to `--no-undefined-version`. Stale version-script entries fail
+  the link: drop or guard them, or add `-Wl,--undefined-version` for that
+  recipe. The gnulib `gl_LD_VERSION_SCRIPT` probe (also copied into nettle,
+  neon, lldpd, tiff) fails silently under lld, so the library is built
+  unversioned; use `--enable-ld-version-script` where it is honored. Detect with
+  `readelf -d <lib> | grep VERDEF`.
+- clang 23 adds `-Wunused-but-set-global` (in `-Wall`) and fires
+  `-Wunused-template` on unused `static` templates in headers. Both usually flag
+  real dead code; fix the code or linkage instead of adding `-Wno-`.
+- clang folds out-of-range float→integer casts (UB) more aggressively than gcc,
+  e.g. `d == (long)d` becomes "is integral". Reproduce with a few-line file and
+  the recipe's own `recipe-sysroot-native` clang.
+- clang writes `DW_AT_dwo_name` from `-o` without applying `-ffile-prefix-map`,
+  so `-gsplit-dwarf` with an absolute `-o` trips the `buildpaths` QA check.
+  Compile from the output dir with a relative `-o`.
+- Pin kernel-class recipes to gcc with `KERNEL_TOOLCHAIN:pn-X = "gcc"`, not
+  `TOOLCHAIN:pn-X`. The latter changes the signature and fails yocto-check-layer
+  `test_signatures`.
+- `clang-native`'s build-tree `bin/clang-*` loads the host `libclang-cpp.so`;
+  set `LD_LIBRARY_PATH=<workdir>/build/lib` when testing a clang patch with it.
+- glibc 2.44 `posix_spawn_file_actions_addchdir`: gnulib's probe misses the
+  `<spawn.h>` alias and builds a self-recursive replacement (`jmp` to itself),
+  which hangs. Set `ac_cv_func_posix_spawn_file_actions_addchdir=yes` in
+  `CACHED_CONFIGUREVARS`.
+- A build-host link with `-L<target sysroot>/usr/lib` fails only when host and
+  target arch match (the target `libm.so` ld script has absolute paths). With
+  Rust this happens via `-sys` crates in build-dependencies; keep them out of
+  the build-dependency graph.
+- When oe-core bumps python3-setuptools, recipes whose `pyproject.toml` caps it
+  (`setuptools<X`) fail `do_compile`; patch the cap out
+  (`Upstream-Status: Inappropriate [oe-core specific]`).
+- CPython with OpenSSL 4 reports `ssl.HAS_TLSv1_2 = False` even though TLS 1.2
+  works; gate on `ssl.OPENSSL_VERSION_INFO[0] >= 4` instead.
+
+### Upgrading recipes
+
+- For git recipes, check that `SRCREV` is the tag's commit (the `^{}` line of
+  `git ls-remote`, not the annotated tag object) and is on the `branch=`
+  (`git merge-base --is-ancestor`). Also re-check `branch=`, `tag=` and any
+  `BRANCH` variable. Existing DL_DIR clones hide these mistakes.
+- After an upgrade, run `bitbake -c cleanall <pn>` and rebuild, so fetch and
+  build start from scratch.
+
+### Debugging ptests
+
+- Look first at `testimage/ptest_log/ptest-runner.log` and the image's
+  `temp/log.do_testimage.*`. Per-test results are in
+  `build/tmp/log/oeqa/testresults.json` (`ptestresult.rawlogs`). meta-python and
+  meta-networking ptest images set `PTEST_EXPECT_FAILURE = "1"`, so testimage
+  passes regardless; read TOTAL/FAIL in the runner log.
+- qemux86-64 (x86-64-v3) binaries run natively on an AVX2 host: copy the image
+  workdir's `rootfs` and run the ptest in `unshare -r -m` + chroot,
+  rbind-mounting `/dev` and `/proc` (pytest needs `/dev/null`). It uses the
+  image's busybox, so it also catches GNU-only flags in `run-ptest`.
+- For kernel- or cgroup-dependent tests, boot the deployed ext4 with
+  `qemu-system-x86_64 -enable-kvm ... -drive ...,snapshot=on` and an ssh
+  `hostfwd` (use `scp -O`). The qemux86-64 kernel has no `CONFIG_CFS_BANDWIDTH`.
+  Reproduce testimage-only timing flakes by loading every host CPU with busy
+  loops while looping the test.
+- Never `pkill -f`/`pgrep -f` a pattern that also appears in your own command
+  line (it kills the calling shell, or loops forever); use PIDs.
+- Yoe systemd uses dbus-broker. Ptests needing a private bus (GTestDBus,
+  dbus-run-session) RDEPEND on the split-out `dbus-daemon` package. To drop
+  `${PN}` from `${PN}-ptest`, use `RDEPENDS:${PN}-ptest:remove`; a hard
+  assignment wipes class-added deps.
+- Missing perl core modules are the usual meta-perl ptest failure
+  (`Can't locate X.pm` → `perl-module-x`). Target perl's Config names clang, so
+  ptests compiling C need
+  `RDEPENDS:${PN}-ptest:append:toolchain-clang = " clang"`.
+- A pytest collection error means nothing ran; fix the RDEPENDS and expect a
+  second round of real failures. pypi sdists often lack test data; fetch it from
+  git with a second `SRC_URI` entry.
+- musl: `:toolchain-gcc` overrides follow the build toolchain, not the on-target
+  gcc; musl has no `.eh_frame` (unwinder tests need `musl-dbg`);
+  `ctypes.util.find_library()` returns None; strerror wording differs from
+  glibc; and use-after-free that glibc tolerates segfaults. sysvinit images have
+  an empty `resolv.conf`, so DNS-dependent tests fail there.
+- A test wrapped in `timeout` (without `--foreground`) receives the signal
+  twice, so programs that force-exit on a second signal lose their output.
+- kselftest: fix tests to SKIP when a kernel feature is missing; don't enable
+  extra kernel options for them.
 
 ## Submitting fixes upstream
+
+- First read the project's AGENTS.md / CLAUDE.md / CONTRIBUTING.md for rules on
+  AI-assisted contributions: don't submit where they are banned, and add the
+  required trailer (e.g. strace and meta-qcom want `Assisted-by:`) where asked.
 
 - GitHub: `gh repo fork <owner/repo>`, push a branch to the fork,
   `gh pr create -R <owner/repo> --head <user>:<branch>`. If the fork already has
