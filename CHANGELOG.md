@@ -218,6 +218,55 @@ and this project adheres to
 - Fix the libuv mingw SDK and qtwebengine 32-bit ARM builds with GCC 16
   (meta-qt6), add jailhouse device trees for imx93-11x11-lpddr4x-frdm and allow
   pipewire-pulse user services for root (meta-freescale)
+- Upgrade zstd to 1.6.0, cmake to 4.5.1, expat to 2.11.0, linux-firmware to
+  20261124, ca-certificates to 20261123, ruby to 4.0.10, nfs-utils to 3.2.1,
+  btrfs-tools to 7.3, blueprint-compiler to 0.22.2, gstreamer1.0-plugins-rs to
+  0.15.4, at-spi2-core to 2.62.2, screen, repo, rxvt-unicode, man-db, libconfig
+  and fastfloat, add fdisk, hwdb, sysinstall and ukify PACKAGECONFIGs to
+  systemd, error out on very long package architectures, fix the packaging of
+  the python3 config directory, initramfs-framework dependencies and devtool's
+  error for an SRCREV on no branch, and fix the tcl, gawk, glib-networking,
+  librsvg, rpm-sequoia and perl ptests (oe-core)
+- Security fixes for perl (CVE-2026-82560, CVE-2026-15534) and gcc
+  (CVE-2026-115456) (oe-core)
+- Upgrade postgresql to 19.0, mariadb to 12.3.4, nodejs to 26.13.1, protobuf to
+  7.36.2, libeigen to 5.0.1, libiio to 1.0.0, libyang to 6.4.13, libnfs to
+  8.1.0, nvme-cli to 3.2, fltk to 1.4.5 (with a new fltk1.3 recipe for
+  tigervnc), emacs to 31.1, pcp to 7.2.2, rasdaemon to 1.0.0, zabbix to 8.0.0,
+  glaze to 9.1.0, glm to 1.0.3, cjose to 0.8.1, simpleiot to 0.36.1, nginx to
+  1.30.8, sdbus-c++-libsystemd to 262.2, python3-mypy to 2.4.1 and many other
+  python and meta-oe packages, move binwalk, geoipupdate, inotify-tools and
+  psutils to their rewritten upstream releases, add python3-argparse-manpage,
+  python3-pypdf, python3-puremagic, python3-ast-serialize, python3-librt,
+  python3-tibs and lua-std-normalize, backport libyang 5/6 API support to frr
+  and the nettle 4 port to neatvnc, fix the libgpiod, sdbus-c++, python3-yappi,
+  postgresql and python3-google-auth-oauthlib ptests and fix many upstream
+  version checks (meta-oe, meta-python, meta-networking, meta-webserver)
+- Security fix for jq (CVE-2026-40164) and CVE status updates for nginx, tnftp
+  (CVE-2004-1294) and open-vm-tools (CVE-2026-123894) (meta-oe, meta-networking,
+  meta-webserver)
+- Bump linux-fslc-imx to LF6.18.37_2.1.0 with stable updates up to v6.18.65,
+  linux-fslc-lts to 6.18.65 and linux-fslc to 7.2.15, install the boot firmware
+  files into /firmware and use them from the sysroot for imx-boot, build the NXP
+  mesa native tools as mesa-imx-tools-native, use u-boot-imx by default on
+  imx8mm-evk with the NXP BSP and run yocto-check-layer on the machines a pull
+  request affects (meta-freescale)
+- Update linux-qcom-next to 7.4-rc3, upgrade the glymur and nord boot firmware,
+  iris-video-dlkm to v1.0.29, kgsl-dlkm to v2.0.2 and qcom-dtb-metadata to 1.6,
+  add board variant directories with per-variant VIP tables to qcomflash, make
+  the systemd-boot menu timeout configurable, add phone to the nord-rrd
+  MACHINE_FEATURES and stop building qcs615-ride in CI (meta-qcom)
+- Update trusted-firmware-rmm to v0.9.0 and consolidate the QEMU U-Boot and EFI
+  disk WKS files (meta-arm)
+- Add the orangepi-rv machine and keep U-Boot from clobbering the fdt and
+  ramdisk addresses on K3 (meta-riscv)
+- Remove a redundant subprocess_setup() and disable tinfoil data tracking also
+  when an operation fails (bitbake)
+- Fix the qtwebengine 32-bit ARM musttail workaround and an SDK delimiter
+  warning (meta-qt6), support the BCM43439 on the CM0 (meta-raspberrypi), add
+  ECDSA key signing and fix the U-Boot config for am62l (meta-ti), and fix a CPU
+  PM domain use-after-free on uno-q and refresh the ventuno-q hci_qca patches
+  (meta-qcom-arduino)
 
 ### Added
 
