@@ -52,6 +52,7 @@ Currently these projects are supported.
 - ventuno-q
 - visionfive
 - visionfive2
+- intel-x86-64
 
 ## Converting a project
 
