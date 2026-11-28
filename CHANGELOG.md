@@ -267,6 +267,45 @@ and this project adheres to
   ECDSA key signing and fix the U-Boot config for am62l (meta-ti), and fix a CPU
   PM domain use-after-free on uno-q and refresh the ventuno-q hci_qca patches
   (meta-qcom-arduino)
+- Upgrade opencv to 5.1.0 (with a new opencv4 recipe for the 4.x API), mongodb
+  to 7.0.48, suitesparse to 7.14.1, minifi-cpp to 1.1.0, sysdig to 0.41.4, redis
+  to 8.12.0, proj to 9.9.0, kpatch to 0.9.11, safec to 3.16, minini to 1.5,
+  tomlplusplus to 3.5.1, gpsd to 3.28, mosquitto to 2.1.4, snort3 to 3.13.2.0,
+  sngrep to 1.10.0, xl2tpd to 1.3.20, libgweather4 to 4.6.0, the GNOME 51 point
+  releases, xfce4-dev-tools to 4.21.3 and many python packages, add influxdb3,
+  libperfetto-c, libunibreak, gweather-locations, python3-python-sbom and
+  python3-zipremove, fetch dlm, libnewt, libuser, mailcap, volume-key,
+  phoronix-test-suite, trace-cmd, fswebcam, libchamplain and mod-dnssd from
+  their current upstream locations, fix the nodejs build with gcc 12, the
+  pjproject build on musl, a uftrace parallel build race and the cjson CMake
+  package paths, fix the sdbus-c++, tomlplusplus and platformdirs ptests, skip
+  the kernel-selftest cgroup tests that hit the OOM killer and fix about 150
+  upstream version checks (meta-oe, meta-python, meta-networking,
+  meta-multimedia, meta-gnome, meta-filesystems, meta-perl, meta-initramfs,
+  meta-webserver, meta-xfce)
+- Security fixes for mbedtls (CVE-2026-50582, CVE-2026-90469, CVE-2026-90470,
+  CVE-2026-90475, CVE-2026-93776, CVE-2026-93777, CVE-2026-93831,
+  CVE-2026-93833, CVE-2026-93835, CVE-2026-93842 to CVE-2026-93845,
+  CVE-2026-115488 to CVE-2026-115491, CVE-2026-115493, CVE-2026-116375,
+  CVE-2026-116462), pjproject (CVE-2026-57160 to CVE-2026-57166, CVE-2026-77396,
+  CVE-2026-84975), hdf5 (CVE-2026-19023 to CVE-2026-19028, CVE-2026-120689,
+  CVE-2026-120754 to CVE-2026-120758), flatpak (CVE-2026-133842,
+  CVE-2026-133845), gdm (CVE-2026-132858, CVE-2026-133445), psqlodbc
+  (CVE-2026-136499, CVE-2026-136515), gpsd (CVE-2026-58459, CVE-2026-60122),
+  cannelloni (CVE-2026-37539), fetchmail (CVE-2026-94184) and cryptsetup
+  (CVE-2021-4122) (meta-oe, meta-networking, meta-multimedia, meta-gnome)
+- Upgrade linux-fslc to 7.3.6, fix kernel-module-nxp-wlan with Linux 7.3,
+  install the i.MX boot container firmware into /firmware, pack the M4 images
+  for i.MX 8QM, 8QXP, 8DX and 8DXL into imx-boot and make the isp-imx run.sh
+  work with BusyBox (meta-freescale)
+- Add the nord-rrd-open-fw machine with TF-A, OP-TEE and U-Boot SPL FIT support
+  for nord, add the linux-qcom 7.3 early sample kernel, update linux-qcom-6.18
+  to v6.18.63, add the IQ-8275-EVK CDTs and build lk with the Arm GNU bare-metal
+  toolchain (meta-qcom)
+- Add the spacemit-x60 and spacemit-x100 tunes and use them for K1 and K3, and
+  upgrade linux-mainline to 7.3.6 (meta-riscv), add the upstream RKNPU, RKNN and
+  Rocket AI accelerator support (meta-rockchip), and fix usbhost on uno-q with
+  kernel 7.4 (meta-qcom-arduino)
 
 ### Added
 
